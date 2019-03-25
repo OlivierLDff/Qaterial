@@ -1,0 +1,166 @@
+<RCC>
+    <qresource prefix="/QQuickMaterialHelper">
+
+        <!-- CORE -->
+        <file>Core/qmldir</file>
+        <file>Core/ColorIcon.qml</file>
+        <file>Core/IconLabel.qml</file>
+        <file>Core/Ripple.qml</file>
+        <file>Core/ElevationEffect.qml</file>
+        <file>Core/DebugRectangle.qml</file>
+        <file>Core/RoundImage.qml</file>
+        <file>Core/ErrorSequentialAnimation.qml</file>
+
+
+
+        <!-- CONTAINERS -->
+        <file>Containers/qmldir</file>
+        <file>Containers/ScrollablePage.qml</file>
+
+
+
+        <!-- FONTS -->
+        <file>Fonts/qmldir</file>
+        <file>Fonts/RobotoFontLoader.qml</file>
+
+
+
+        <!-- STYLES -->
+        <file>Style/qmldir</file>
+        <file>Style/MaterialStyle.qml</file>
+        
+
+
+        <!-- COMPONENTS -->
+        <file>Components/qmldir</file>
+        <file>Components/images/menu-down.svg</file>
+        <file>Components/images/menu-left.svg</file>
+        <file>Components/images/menu-right.svg</file>
+        <file>Components/images/menu-up.svg</file>
+        <file>Components/images/check.svg</file>
+        <file>Components/images/alert-circle.svg</file>
+        <file>Components/images/close-circle.svg</file>
+        <file>Components/images/content-copy.svg</file>
+        <file>Components/images/eye.svg</file>
+        <file>Components/images/eye-off.svg</file>
+
+        <!-- COMPONENTS / CORE -->
+        <file>Components/RoundColorIcon.qml</file>
+
+        <!-- COMPONENTS / CONTAINERS -->
+        <file>Components/ApplicationWindow.qml</file>
+        <file>Components/Page.qml</file>
+        <file>Components/Pane.qml</file>
+        <file>Components/Frame.qml</file>
+        <file>Components/GroupBox.qml</file>
+        <file>Components/ScrollBar.qml</file>
+        <file>Components/ScrollIndicator.qml</file>
+        <file>Components/ScrollView.qml</file>
+        <file>Components/SwipeView.qml</file>
+
+        <!-- COMPONENTS / CARDS -->
+        <file>Components/Card.qml</file>
+        <file>Components/CardBackground.qml</file>
+        <file>Components/CardMedia.qml</file>
+        <file>Components/CardSupportingText.qml</file>
+        <file>Components/CardTitle.qml</file>
+        <file>Components/CardRoundThumbnailTitle.qml</file>
+
+        <!-- COMPONENTS / BANNERS -->
+        <file>Components/Banner.qml</file>
+        <file>Components/Snackbar.qml</file>
+
+        <!-- COMPONENTS / APP BAR -->
+        <file>Components/ToolBar.qml</file>
+
+        <!-- COMPONENTS / MENU -->
+        <file>Components/Menu.qml</file>
+        <file>Components/MenuBar.qml</file>
+        <file>Components/MenuBarItem.qml</file>
+        <file>Components/MenuItem.qml</file>
+        <file>Components/MenuSeparator.qml</file>
+
+        <!-- COMPONENTS / BUTTONS -->
+        <file>Components/FlatButton.qml</file>
+        <file>Components/OutlineButton.qml</file>
+        <file>Components/RaisedButton.qml</file>
+        <file>Components/Button.qml</file>
+        <file>Components/RawMaterialButton.qml</file>
+
+        <!-- COMPONENTS / CONTROL BUTTONS -->
+        <file>Components/SwitchButton.qml</file>
+        <file>Components/CheckButton.qml</file>
+        <file>Components/RadioButton.qml</file>
+
+        <!-- COMPONENTS / FAB -->
+        <file>Components/FabIconLabel.qml</file>
+        <file>Components/FabButton.qml</file>
+        <file>Components/ExtendedFabButton.qml</file>
+        <file>Components/MiniFabButton.qml</file>
+        <file>Components/FlatFabButton.qml</file>
+        <file>Components/MiniFlatFabButton.qml</file>
+        <file>Components/ScalableFlatFabButton.qml</file>
+        <file>Components/OutlinedFabButton.qml</file>
+        <file>Components/MiniOutlinedFabButton.qml</file>
+        <file>Components/ScalableOutlinedFabButton.qml</file>
+
+        <!-- COMPONENTS / ICON BUTONS -->
+        <file>Components/ToolButton.qml</file>
+        <file>Components/AppBarButton.qml</file>
+        <file>Components/RoundButton.qml</file>
+        <file>Components/SquareButton.qml</file>
+        <file>Components/ToggleButton.qml</file>
+        <file>Components/ToolSeparator.qml</file>
+        <file>Components/ToggleSeparator.qml</file>
+
+        <!-- COMPONENTS / TEXT -->
+        <file>Components/Label.qml</file>
+        <file>Components/LabelPixelSize.qml</file>
+
+        <!-- COMPONENTS / TAB -->
+        <file>Components/TabBar.qml</file>
+        <file>Components/TabButton.qml</file>
+        <file>Components/FixedTabBar.qml</file>
+        <file>Components/ScrollableTabBar.qml</file>
+        <file>Components/ClusturedTabBar.qml</file>
+
+        <!-- COMPONENTS / DELEGATES -->
+        <file>Components/ListDelegateText.qml</file>
+        <file>Components/ListDelegateContent.qml</file>
+        <file>Components/ListDelegateBackground.qml</file>
+        <file>Components/ItemDelegate.qml</file>
+        <file>Components/SwitchDelegate.qml</file>
+        <file>Components/SwitchIndicator.qml</file>
+        <file>Components/CheckDelegate.qml</file>
+        <file>Components/CheckIndicator.qml</file>
+        <file>Components/RadioDelegate.qml</file>
+        <file>Components/RadioIndicator.qml</file>
+        <file>Components/SwipeDelegate.qml</file>
+
+        <!-- COMPONENTS / DIALOG -->
+        <file>Components/Dialog.qml</file>
+        <file>Components/DialogButtonBox.qml</file>
+
+        <!-- COMPONENTS / TEXT FIELD -->
+        <file>Components/CursorDelegate.qml</file>
+        <file>Components/PlaceholderText.qml</file>
+        <file>Components/TextField.qml</file>
+        <file>Components/TextFieldButtonContainer.qml</file>
+        <file>Components/TextFieldIconButton.qml</file>
+        <file>Components/TextFieldClearButton.qml</file>
+        <file>Components/TextFieldCopyButton.qml</file>
+        <file>Components/TextFieldPasswordButton.qml</file>
+        <file>Components/TextFieldIcon.qml</file>
+        <file>Components/TextFieldAlertIcon.qml</file>
+        <file>Components/TextArea.qml</file>
+        <file>Components/TextAreaContent.qml</file>
+        <file>Components/TextAreaScrollView.qml</file>
+        <file>Components/TextAreaScrollBar.qml</file>
+        <file>Components/ScrollableTextArea.qml</file>
+        <file>Components/ComboBox.qml</file>
+
+        <!-- COMPONENTS / NAVIGATION -->
+        <file>Components/Drawer.qml</file>
+
+    </qresource>
+</RCC>

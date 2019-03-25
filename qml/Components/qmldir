@@ -1,0 +1,109 @@
+module QQuickMaterialHelper.components
+depends QtQuick 2.12
+depends QtQuick.Controls 2.12
+depends QtQuick.Templates 2.12
+
+ToolBar                     1.12 ToolBar.qml
+AppBar                      1.12 ToolBar.qml
+
+RoundColorIcon              1.12 RoundColorIcon.qml
+
+FlatButton                  1.12 FlatButton.qml
+OutlineButton               1.12 OutlineButton.qml
+RaisedButton                1.12 RaisedButton.qml
+Button                      1.12 Button.qml
+RawMaterialButton           1.12 RawMaterialButton.qml
+
+internal FabIconLabel       FabIconLabel.qml
+FabButton                   1.12 FabButton.qml
+ScalableFlatFabButton       1.12 ScalableFlatFabButton.qml
+MiniFabButton               1.12 MiniFabButton.qml
+ExtendedFabButton           1.12 ExtendedFabButton.qml
+FlatFabButton               1.12 FlatFabButton.qml
+MiniFlatFabButton           1.12 MiniFlatFabButton.qml
+OutlinedFabButton           1.12 OutlinedFabButton.qml
+MiniOutlinedFabButton       1.12 MiniOutlinedFabButton.qml
+ScalableOutlinedFabButton   1.12 ScalableOutlinedFabButton.qml
+
+ToolButton                  1.12 ToolButton.qml
+RoundButton                 1.12 RoundButton.qml
+AppBarButton                1.12 AppBarButton.qml
+SquareButton                1.12 SquareButton.qml
+ToggleButton                1.12 ToggleButton.qml
+ToolSeparator               1.12 ToolSeparator.qml
+ToggleSeparator             1.12 ToggleSeparator.qml
+
+RadioButton                 1.12 RadioButton.qml
+SwitchButton                1.12 SwitchButton.qml
+CheckButton                 1.12 CheckButton.qml
+
+Label                       1.12 Label.qml
+LabelPixelSize              1.12 LabelPixelSize.qml
+
+TabBar                      1.12 TabBar.qml
+TabButton                   1.12 TabButton.qml
+FixedTabBar                 1.12 FixedTabBar.qml
+ScrollableTabBar            1.12 ScrollableTabBar.qml
+ClusturedTabBar             1.12 ClusturedTabBar.qml
+
+ListDelegateBackground      1.12 ListDelegateBackground.qml
+ListDelegateText            1.12 ListDelegateText.qml
+ListDelegateContent         1.12 ListDelegateContent.qml
+
+ItemDelegate                1.12 ItemDelegate.qml
+
+SwitchDelegate              1.12 SwitchDelegate.qml
+SwitchIndicator             1.12 SwitchIndicator.qml
+CheckDelegate               1.12 CheckDelegate.qml
+CheckIndicator              1.12 CheckIndicator.qml
+RadioDelegate               1.12 RadioDelegate.qml
+RadioIndicator              1.12 RadioIndicator.qml
+SwipeDelegate               1.12 SwipeDelegate.qml
+
+Menu                        1.12 Menu.qml
+MenuBar                     1.12 MenuBar.qml
+MenuBarItem                 1.12 MenuBarItem.qml
+MenuItem                    1.12 MenuItem.qml
+MenuSeparator               1.12 MenuSeparator.qml
+
+SwipeView                   1.12 SwipeView.qml
+ScrollView                  1.12 ScrollView.qml
+ApplicationWindow           1.12 ApplicationWindow.qml
+Page                        1.12 Page.qml
+Pane                        1.12 Pane.qml
+Frame                       1.12 Frame.qml
+GroupBox                    1.12 GroupBox.qml
+ScrollBar                   1.12 ScrollBar.qml
+ScrollIndicator             1.12 ScrollIndicator.qml
+
+Card                        1.12 Card.qml
+Cardbackground              1.12 Cardbackground.qml
+CardMedia                   1.12 CardMedia.qml
+CardTitle                   1.12 CardTitle.qml
+CardSupportingText          1.12 CardSupportingText.qml
+CardRoundThumbnailTitle     1.12 CardRoundThumbnailTitle.qml
+
+Banner                      1.12 Banner.qml
+Snackbar                    1.12 Snackbar.qml
+
+CursorDelegate              1.12 CursorDelegate.qml
+PlaceholderText             1.12 PlaceholderText.qml
+TextField                   1.12 TextField.qml
+TextFieldButtonContainer    1.12 TextFieldButtonContainer.qml
+TextFieldIconButton         1.12 TextFieldIconButton.qml
+TextFieldClearButton        1.12 TextFieldClearButton.qml
+TextFieldCopyButton         1.12 TextFieldCopyButton.qml
+TextFieldPasswordButton     1.12 TextFieldPasswordButton.qml
+TextFieldIcon               1.12 TextFieldIcon.qml
+TextFieldAlertIcon          1.12 TextFieldAlertIcon.qml
+TextArea                    1.12 TextArea.qml
+TextAreaContent             1.12 TextAreaContent.qml
+TextAreaScrollView          1.12 TextAreaScrollView.qml
+TextAreaScrollBar           1.12 TextAreaScrollBar.qml
+ScrollableTextArea          1.12 ScrollableTextArea.qml
+ComboBox                    1.12 ComboBox.qml
+
+Dialog                      1.12 Dialog.qml
+DialogButtonBox             1.12 DialogButtonBox.qml
+
+Drawer                      1.12 Drawer.qml

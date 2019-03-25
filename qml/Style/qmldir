@@ -1,0 +1,3 @@
+module QQuickMaterialHelper.Style
+
+singleton MaterialStyle 1.12 MaterialStyle.qml

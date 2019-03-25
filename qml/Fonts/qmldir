@@ -1,0 +1,3 @@
+module QQuickMaterialHelper.Fonts
+
+RobotoFontLoader 1.12 RobotoFontLoader.qml
