@@ -37,14 +37,19 @@ FabButton
 
     property bool rippleClip: true
 
+    property double backgroundImplicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended : 
+            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+    property double backgroundImplicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended : 
+            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+    property double backgroundScale: 1.0
+
     background: Rectangle 
     {
-        implicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended : 
-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
-        implicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended : 
-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+        implicitWidth: control.backgroundImplicitWidth
+        implicitHeight: control.backgroundImplicitHeight
         radius: control.radius
         color: control.backgroundColor
+        scale: control.backgroundScale
 
         border.width: control.outlined ? 1 : 0
         border.color: control.borderColor

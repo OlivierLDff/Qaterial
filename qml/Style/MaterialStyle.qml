@@ -476,8 +476,8 @@ Item
 
     property var fab: QtObject 
     {
-        property double minWidth:                   root.dense ? 34 : 56
-        property double minWidthMini:               root.dense ? 28 : 40
+        property double minWidth:                   root.dense ? 44 : 56
+        property double minWidthMini:               root.dense ? 32 : 40
         property double minWidthExtended:           root.dense ? 52 : 64
         property double minHeightExtended:          minWidth//root.dense ? 34 : 48
 

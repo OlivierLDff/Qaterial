@@ -1,0 +1,168 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b3167ac..613baba 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,9 +4,6 @@ SET( QQUICKMATERIALHELPER_BUILD_SHARED OFF CACHE BOOL "Build as a shared library
+ SET( QQUICKMATERIALHELPER_USE_NAMESPACE ON CACHE BOOL "Should the library be compiled with a namespace. Default: ON" )
+ SET( QQUICKMATERIALHELPER_NAMESPACE "QQuickMaterialHelper" CACHE BOOL "Namespace of the library is QQUICKMATERIALHELPER_USE_NAMESPACE is ON. Default : QQuickMaterialHelper" FORCE )
+ 
+-SET( QSUPERMACROS_REPOSITORY "https://github.com/OlivierLDff/QSuperMacros.git" CACHE STRING "Repository of QSuperMacros" )
+-SET( QSUPERMACROS_TAG "master" CACHE STRING "Git Tag of QSuperMacros" )
+-
+ SET(QQUICKMATERIALHELPER_VERSION_MAJOR 1)
+ SET(QQUICKMATERIALHELPER_VERSION_MINOR 0)
+ SET(QQUICKMATERIALHELPER_VERSION_PATCH 0)
+@@ -47,18 +44,6 @@ FIND_PACKAGE(Qt5Quick CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
+ FIND_PACKAGE(Qt5QuickControls2 CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
+ FIND_PACKAGE(Qt5QuickCompiler CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
+ 
+-# ────────── QSUPERMACRO LIB ──────────────────────────────────────────
+-
+-IF(QSUPERMACROS_TARGET AND NOT QQUICKMATERIALHELPER_DOWNLOAD_QSUPERMACROS)
+-	MESSAGE( STATUS "Found ${QSUPERMACROS_TARGET} v${QSUPERMACROS_VERSION}" )
+-ELSE(QSUPERMACROS_TARGET AND NOT QQUICKMATERIALHELPER_DOWNLOAD_QSUPERMACROS)
+-	SET(QQUICKMATERIALHELPER_DOWNLOAD_QSUPERMACROS ON CACHE BOOL "The QSuperMacros library have been downloaded")
+-	INCLUDE(${CMAKE_CURRENT_SOURCE_DIR}/cmake/BuildQSuperMacros.cmake)
+-	IF(NOT QSUPERMACROS_TARGET)
+-		MESSAGE( FATAL_ERROR "Fail to configure QSuperMacros Library" )
+-	ENDIF(NOT QSUPERMACROS_TARGET)
+-ENDIF(QSUPERMACROS_TARGET AND NOT QQUICKMATERIALHELPER_DOWNLOAD_QSUPERMACROS)
+-
+ # ────────── SOURCES ──────────────────────────────────────────
+ 
+ # Add qml to the qtquick compiler
+@@ -126,5 +111,5 @@ TARGET_COMPILE_DEFINITIONS( ${QQUICKMATERIALHELPER_TARGET} PUBLIC -DQQUICKMATERI
+ TARGET_COMPILE_DEFINITIONS( ${QQUICKMATERIALHELPER_TARGET} PUBLIC -DQQUICKMATERIALHELPER_NAMESPACE=${QQUICKMATERIALHELPER_NAMESPACE} )
+ ENDIF(QQUICKMATERIALHELPER_USE_NAMESPACE)
+ 
+-TARGET_LINK_LIBRARIES( ${QQUICKMATERIALHELPER_TARGET} ${QSUPERMACROS_TARGET} )
++TARGET_LINK_LIBRARIES( ${QQUICKMATERIALHELPER_TARGET} )
+ qt5_use_modules( ${QQUICKMATERIALHELPER_TARGET} Core Gui Svg Xml XmlPatterns Quick QuickControls2 )
+\ No newline at end of file
+diff --git a/qml/Components/FlatFabButton.qml b/qml/Components/FlatFabButton.qml
+index a2e071d..d7920ea 100644
+--- a/qml/Components/FlatFabButton.qml
++++ b/qml/Components/FlatFabButton.qml
+@@ -37,14 +37,19 @@ FabButton
+ 
+     property bool rippleClip: true
+ 
++    property double backgroundImplicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended : 
++            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
++    property double backgroundImplicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended : 
++            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
++    property double backgroundScale: 1.0
++
+     background: Rectangle 
+     {
+-        implicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended : 
+-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+-        implicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended : 
+-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
++        implicitWidth: control.backgroundImplicitWidth
++        implicitHeight: control.backgroundImplicitHeight
+         radius: control.radius
+         color: control.backgroundColor
++        scale: control.backgroundScale
+ 
+         border.width: control.outlined ? 1 : 0
+         border.color: control.borderColor
+diff --git a/qml/Components/ListDelegateBackground.qml b/qml/Components/ListDelegateBackground.qml
+index 837c27c..1b0a796 100644
+--- a/qml/Components/ListDelegateBackground.qml
++++ b/qml/Components/ListDelegateBackground.qml
+@@ -8,6 +8,11 @@ Rectangle
+     implicitHeight: MaterialStyle.delegate.implicitHeight(type, lines)
+     implicitWidth: 200
+ 
++    property alias rippleWidth: _ripple.width
++    property alias rippleHeight: _ripple.height
++    property alias rippleX: _ripple.x
++    property alias rippleY: _ripple.y
++
+     color: highlighted ? Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.2) : (transparentBackground ? "transparent" : MaterialStyle.backgroundColor)
+ 
+     property alias pressed: _ripple.pressed
+@@ -26,6 +31,7 @@ Rectangle
+         id: _ripple
+         width: parent.width
+         height: parent.height
++        onXChanged: console.log("x: " + x)
+ 
+         clip: visible
+         color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
+diff --git a/qml/Components/ScalableFlatFabButton.qml b/qml/Components/ScalableFlatFabButton.qml
+index dddaf82..2f8bf50 100644
+--- a/qml/Components/ScalableFlatFabButton.qml
++++ b/qml/Components/ScalableFlatFabButton.qml
+@@ -10,5 +10,5 @@ FlatFabButton
+     rippleClip: true
+     scaleDuration: 100
+     property bool isActive: hovered || down || visualFocus
+-    scale: isActive ? 1.0 : 0.9
++    backgroundScale: isActive ? 1.0 : 0.9
+ } // FlatFabButton
+diff --git a/qml/Components/SwipeDelegate.qml b/qml/Components/SwipeDelegate.qml
+index f229cf4..3687b1b 100644
+--- a/qml/Components/SwipeDelegate.qml
++++ b/qml/Components/SwipeDelegate.qml
+@@ -96,6 +96,11 @@ T.SwipeDelegate
+         iconSource: control.icon.source
+     }
+ 
++    property alias rippleWidth: _background.rippleWidth
++    property alias rippleHeight: _background.rippleHeight
++    property alias rippleX: _background.rippleX
++    property alias rippleY: _background.rippleY
++
+     background: ListDelegateBackground 
+     {
+         id: _background
+@@ -120,5 +125,5 @@ T.SwipeDelegate
+         orientation: Qt.Horizontal
+         visible: control.forceDrawSeparator ||
+             control.drawSeparator && (control.ListView.view ? (control.ListView.view.count > 1 && index < (control.ListView.view.count-1)) : false)
+-    }
++    } // ToolSeparator
+ } // SwipeDelegate
+diff --git a/qml/Containers/qmldir b/qml/Containers/qmldir
+index 8aca603..aaf8268 100644
+--- a/qml/Containers/qmldir
++++ b/qml/Containers/qmldir
+@@ -1,3 +1,5 @@
+ module QQuickMaterialHelper.Containers
+ 
+-ScrollablePage 1.12 ScrollablePage.qml
+\ No newline at end of file
++ScrollablePage 1.12 ScrollablePage.qml
++CheckableListView 1.12 CheckableListView.qml
++CheckableListViewDelegate 1.12 CheckableListViewDelegate.qml
+\ No newline at end of file
+diff --git a/qml/QQuickMaterialHelper.qrc b/qml/QQuickMaterialHelper.qrc
+index 1604548..7698444 100644
+--- a/qml/QQuickMaterialHelper.qrc
++++ b/qml/QQuickMaterialHelper.qrc
+@@ -16,6 +16,8 @@
+         <!-- CONTAINERS -->
+         <file>Containers/qmldir</file>
+         <file>Containers/ScrollablePage.qml</file>
++        <file>Containers/CheckableListView.qml</file>
++        <file>Containers/CheckableListViewDelegate.qml</file>
+ 
+ 
+ 
+diff --git a/qml/Style/MaterialStyle.qml b/qml/Style/MaterialStyle.qml
+index 7121899..c9ca849 100644
+--- a/qml/Style/MaterialStyle.qml
++++ b/qml/Style/MaterialStyle.qml
+@@ -476,8 +476,8 @@ Item
+ 
+     property var fab: QtObject 
+     {
+-        property double minWidth:                   root.dense ? 34 : 56
+-        property double minWidthMini:               root.dense ? 28 : 40
++        property double minWidth:                   root.dense ? 44 : 56
++        property double minWidthMini:               root.dense ? 32 : 40
+         property double minWidthExtended:           root.dense ? 52 : 64
+         property double minHeightExtended:          minWidth//root.dense ? 34 : 48
+ 

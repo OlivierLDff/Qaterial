@@ -10,5 +10,5 @@ FlatFabButton
     rippleClip: true
     scaleDuration: 100
     property bool isActive: hovered || down || visualFocus
-    scale: isActive ? 1.0 : 0.9
+    backgroundScale: isActive ? 1.0 : 0.9
 } // FlatFabButton

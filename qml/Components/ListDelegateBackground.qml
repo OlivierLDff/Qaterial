@@ -8,6 +8,11 @@ Rectangle
     implicitHeight: MaterialStyle.delegate.implicitHeight(type, lines)
     implicitWidth: 200
 
+    property alias rippleWidth: _ripple.width
+    property alias rippleHeight: _ripple.height
+    property alias rippleX: _ripple.x
+    property alias rippleY: _ripple.y
+
     color: highlighted ? Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.2) : (transparentBackground ? "transparent" : MaterialStyle.backgroundColor)
 
     property alias pressed: _ripple.pressed
@@ -26,6 +31,7 @@ Rectangle
         id: _ripple
         width: parent.width
         height: parent.height
+        onXChanged: console.log("x: " + x)
 
         clip: visible
         color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)

@@ -96,6 +96,11 @@ T.SwipeDelegate
         iconSource: control.icon.source
     }
 
+    property alias rippleWidth: _background.rippleWidth
+    property alias rippleHeight: _background.rippleHeight
+    property alias rippleX: _background.rippleX
+    property alias rippleY: _background.rippleY
+
     background: ListDelegateBackground 
     {
         id: _background
@@ -120,5 +125,5 @@ T.SwipeDelegate
         orientation: Qt.Horizontal
         visible: control.forceDrawSeparator ||
             control.drawSeparator && (control.ListView.view ? (control.ListView.view.count > 1 && index < (control.ListView.view.count-1)) : false)
-    }
+    } // ToolSeparator
 } // SwipeDelegate

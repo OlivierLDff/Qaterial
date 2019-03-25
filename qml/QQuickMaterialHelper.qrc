@@ -16,6 +16,8 @@
         <!-- CONTAINERS -->
         <file>Containers/qmldir</file>
         <file>Containers/ScrollablePage.qml</file>
+        <file>Containers/CheckableListView.qml</file>
+        <file>Containers/CheckableListViewDelegate.qml</file>
 
 
 

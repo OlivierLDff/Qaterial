@@ -1,3 +1,5 @@
 module QQuickMaterialHelper.Containers
 
 ScrollablePage 1.12 ScrollablePage.qml
+CheckableListView 1.12 CheckableListView.qml
+CheckableListViewDelegate 1.12 CheckableListViewDelegate.qml
