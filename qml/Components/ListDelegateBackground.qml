@@ -31,7 +31,6 @@ Rectangle
         id: _ripple
         width: parent.width
         height: parent.height
-        onXChanged: console.log("x: " + x)
 
         clip: visible
         color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
