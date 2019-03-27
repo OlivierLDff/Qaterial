@@ -79,7 +79,7 @@ ScrollIndicator             1.12 ScrollIndicator.qml
 Card                        1.12 Card.qml
 OutlinedCard                1.12 OutlinedCard.qml
 CardBackground              1.12 CardBackground.qml
-CardRippleBackground        1.12 CardRippleBackground
+CardRippleBackground        1.12 CardRippleBackground.qml
 CardMedia                   1.12 CardMedia.qml
 CardTitle                   1.12 CardTitle.qml
 CardSupportingText          1.12 CardSupportingText.qml
