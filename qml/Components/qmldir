@@ -77,7 +77,8 @@ ScrollBar                   1.12 ScrollBar.qml
 ScrollIndicator             1.12 ScrollIndicator.qml
 
 Card                        1.12 Card.qml
-Cardbackground              1.12 Cardbackground.qml
+OutlinedCard                1.12 OutlinedCard.qml
+CardBackground              1.12 CardBackground.qml
 CardMedia                   1.12 CardMedia.qml
 CardTitle                   1.12 CardTitle.qml
 CardSupportingText          1.12 CardSupportingText.qml
