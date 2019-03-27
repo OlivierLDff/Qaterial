@@ -64,6 +64,7 @@
         <file>Components/Card.qml</file>
         <file>Components/OutlinedCard.qml</file>
         <file>Components/CardBackground.qml</file>
+        <file>Components/CardRippleBackground.qml</file>
         <file>Components/CardMedia.qml</file>
         <file>Components/CardSupportingText.qml</file>
         <file>Components/CardTitle.qml</file>
