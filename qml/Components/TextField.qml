@@ -178,7 +178,7 @@ T.TextField
     Loader
     {
         id: _trailingContent
-        y: MaterialStyle.textField.topPadding
+        y: control.title != "" ? MaterialStyle.textField.topPadding : 0
         x: control.width - width
         opacity: control.trailingVisible ? color.a : 0.0
         onSourceComponentChanged:

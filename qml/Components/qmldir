@@ -113,6 +113,8 @@ TextFieldDialog             1.12 TextFieldDialog.qml
 RadioDialog                 1.12 RadioDialog.qml
 RadioDialogDelegate         1.12 RadioDialogDelegate.qml
 
+TextFieldDelegate           1.12 TextFieldDelegate.qml
+
 HorizontalLineSeparator     1.12 HorizontalLineSeparator.qml
 VerticalLineSeparator       1.12 VerticalLineSeparator.qml
 
