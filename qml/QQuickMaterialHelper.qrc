@@ -147,6 +147,8 @@
         <file>Components/ModalDialog.qml</file>
         <file>Components/AlertDialog.qml</file>
         <file>Components/TextFieldDialog.qml</file>
+        <file>Components/RadioDialog.qml</file>
+        <file>Components/RadioDialogDelegate.qml</file>
 
         <!-- COMPONENTS / TEXT FIELD -->
         <file>Components/CursorDelegate.qml</file>

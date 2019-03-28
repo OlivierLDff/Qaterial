@@ -25,10 +25,18 @@ T.DialogButtonBox
     property color foregroundColor: MaterialStyle.accentColor
     property color backgroundColor: MaterialStyle.backgroundColor
 
-    delegate: FlatButton { foregroundColor: control.foregroundColor }
+    /*delegate: FlatButton 
+    { 
+        foregroundColor: control.foregroundColor 
+        onClicked: _list.positionViewAtBeginning()
+    }*/
+    delegate: FlatButton
+    {
+    }
 
     contentItem: ListView 
     {
+        id: _list
         model: control.contentModel
         spacing: control.spacing
         orientation: ListView.Horizontal
@@ -44,6 +52,6 @@ T.DialogButtonBox
         // Rounded corners should be only at the top or at the bottom
         //topPadding: control.position === T.DialogButtonBox.Footer ? -2 : 0
         //bottomPadding: control.position === T.DialogButtonBox.Header ? -2 : 0
-        clip: true
+        //clip: true
     } // Rectangle
 }

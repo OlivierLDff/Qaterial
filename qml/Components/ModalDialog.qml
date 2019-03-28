@@ -3,6 +3,7 @@
 
 import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Components 1.12
+import QQuickMaterialHelper.Style 1.12
 
 Dialog 
 {
@@ -10,8 +11,8 @@ Dialog
 	modal: true
 	focus: true
 
-	x: (parent.width - width) / 2
-	y: (parent.height - height) / 2
+	x: Math.floor((parent.width - width) / 2)
+	y: Math.floor((parent.height - height) / 2)
 	parent: Overlay.overlay
-	width: parent.width / 3 * 2
+	width: Math.floor(Math.min(parent.width - 2*MaterialStyle.card.horizontalPadding , MaterialStyle.dialog.implicitWidth))
 }

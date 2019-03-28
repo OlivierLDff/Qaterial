@@ -23,7 +23,7 @@ T.Dialog
                              + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
     padding: MaterialStyle.dialog.horizontalPadding
-    topPadding: MaterialStyle.dialog.topPadding + (drawSeparator ? 1 : 0)
+    topPadding: MaterialStyle.dialog.topPadding //+ (drawSeparator ? 1 : 0)
     bottomPadding: (drawSeparator ? 1 : (MaterialStyle.dialog.horizontalPadding + 1))
 
     enter: Transition 
@@ -62,7 +62,7 @@ T.Dialog
             //anchors.topMargin: control.topPadding
             anchors.horizontalCenter: parent.horizontalCenter
             implicitWidth: control.width
-            y: control.header.height + control.topPadding - height
+            y: control.header.height + control.topPadding - 1
         }
 
         HorizontalLineSeparator
@@ -95,7 +95,7 @@ T.Dialog
 
     footer: DialogButtonBox 
     {
-        visible: count > 0
+        visible: true//count > 0
         backgroundColor: control.backgroundColor
     } // DialogButtonBox
 

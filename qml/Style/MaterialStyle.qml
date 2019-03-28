@@ -999,5 +999,8 @@ Item
         property double horizontalPadding:          root.dense ? 18 : 24
         property double topPadding:                 root.dense ? 16 : 20
         property double elevation:                  root.dense ? 18 : 24
+        property double implicitWidth:              root.dense ? 224 : 280
+        property double maxHeight:                  root.dense ? 500 : 500
+        property double indicatorSpacing:           root.dense ? 18 : 24
     } // dialog
 }

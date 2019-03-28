@@ -193,6 +193,7 @@ Rectangle
         anchors.right: mirrored ? (_icon.source != "" ? _icon.left : _image.source != "" ? _virtualImage.left : control.right) : control.right
         anchors.leftMargin: !mirrored ? control.spacing : control.leftPadding
         anchors.rightMargin: mirrored ? control.spacing : control.rightPadding
+        mirrored: control.mirrored
     }
 
     DebugRectangle

@@ -35,6 +35,7 @@ T.RadioDelegate
 
     // ALIGNMENT
     property alias alignTextRight : _content.alignTextRight
+    property double indicatorSpacing: MaterialStyle.delegate.indicatorPadding
     readonly property alias lines: _content.lines
     readonly property alias type:  _content.type
 
@@ -93,8 +94,8 @@ T.RadioDelegate
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
         iconSource: control.icon.source
-        leftPadding: !control.mirrored ? 0 : control.indicator.width + MaterialStyle.delegate.indicatorPadding
-        rightPadding: control.mirrored ? 0 : control.indicator.width + MaterialStyle.delegate.indicatorPadding
+        leftPadding: !control.mirrored ? 0 : control.indicator.width + control.indicatorSpacing
+        rightPadding: control.mirrored ? 0 : control.indicator.width + control.indicatorSpacing
     }
 
     background: ListDelegateBackground 
