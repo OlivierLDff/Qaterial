@@ -19,7 +19,7 @@ Item
     // !!!!! FONT LOADER MUST BE SET FIRST !!!!! /
     RobotoFontLoader {}
 
-    property int theme: MaterialStyle.Theme.Light
+    property int theme: MaterialStyle.Theme.Dark
     property bool dense: false
 
     property bool foregroundReversedOnPrimaryLight: true
@@ -40,11 +40,11 @@ Item
     property bool preferAccentOnPrimary:            theme === MaterialStyle.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
     property color primaryColorLight:               "#f44336"
-    property color primaryColorDark:                "#212121"
+    property color primaryColorDark:                "#202225"//"#212121"
     property color accentColorLight:                "#FFC107"
-    property color accentColorDark:                 "#FFC107"
+    property color accentColorDark:                 "#FFB835"
     property color backgroundColorLight:            "#FFFFFF"
-    property color backgroundColorDark:             "#303030"
+    property color backgroundColorDark:             "#2F3136"//"#303030"
     property color foregroundColorLight:            "#000000"
     property color foregroundColorDark:             "#FFFFFF"
 

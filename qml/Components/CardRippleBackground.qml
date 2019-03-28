@@ -23,8 +23,10 @@ CardBackground
     Ripple 
     {
         id: _ripple
-        width: parent.width
-        height: parent.height
+        width: parent.width - parent.border.width*2
+        height: parent.height - parent.border.width*2
+        x: parent.border.width
+        y: parent.border.width
 
         clip: visible
         color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
@@ -37,7 +39,7 @@ CardBackground
             {
                 width: _ripple.width
                 height: _ripple.height
-                radius: _background.radius
+                radius: control.radius
             }
         } // OpacityMask
     } // Ripple
