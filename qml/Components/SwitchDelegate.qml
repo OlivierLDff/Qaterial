@@ -63,7 +63,7 @@ T.SwitchDelegate
     onTypeChanged: Qt.callLater(reanchors)
     onLinesChanged: Qt.callLater(reanchors)
     onMirroredChanged: Qt.callLater(reanchors)
-    Component.onCompleted: Qt.callLater(reanchors)
+    Component.onCompleted: reanchors()
 
     leftPadding: 0
     rightPadding: 0
