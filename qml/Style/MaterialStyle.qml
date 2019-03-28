@@ -989,4 +989,15 @@ Item
         property double backgroundBorderHeight:     root.dense ? 2 : 2
         property double backgroundVerticalOffset:   root.dense ? 6 : 8
     } // textField
+
+    property var dialog: QtObject 
+    {
+        property double spacing:                    0
+        property double padding:                    root.dense ? 2 : 4
+        property double buttonRectImplicitHeight:   root.dense ? 42 : 52
+        property double radius:                     root.dense ? 2 : 4
+        property double horizontalPadding:          root.dense ? 18 : 24
+        property double topPadding:                 root.dense ? 16 : 20
+        property double elevation:                  root.dense ? 18 : 24
+    } // dialog
 }

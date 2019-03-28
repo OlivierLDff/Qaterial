@@ -27,6 +27,7 @@ T.MenuSeparator
 
     property bool onPrimary: false
     property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool accentColorAuthorized: onPrimary && MaterialStyle.preferAccentOnPrimary
 
     property color foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor()) :
                     highlighted && accentColorAuthorized ? MaterialStyle.accentColor :
