@@ -15,4 +15,5 @@ RadioDelegate
     indicatorSpacing: MaterialStyle.dialog.indicatorSpacing
     alignTextRight: true
     LayoutMirroring.enabled: true
+    width: parent.width // Not sure if this should be here ?
 }

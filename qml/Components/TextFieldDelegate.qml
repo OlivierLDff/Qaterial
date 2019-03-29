@@ -45,10 +45,8 @@ ItemDelegate
     TextFieldDialog
     {
         id: _textFieldDialog
-        onAccepted:
-        {
-            control.accepted(text)
-        }
+        onAccepted: control.accepted(text)
+        onRejected: control.rejected()
     }
 
     onClicked: _textFieldDialog.open()

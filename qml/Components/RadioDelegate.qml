@@ -118,7 +118,7 @@ T.RadioDelegate
             border.color: "cyan"
             visible: control.drawline
         }
-        x: text ? (control.mirrored ? control.leftPadding : control.width - width - control.rightPadding) : control.leftPadding + (control.availableWidth - width) / 2
+        x: text || secondaryText || overlineText ? (control.mirrored ? control.leftPadding : control.width - width - control.rightPadding) : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         control: control
     } // RadioIndicator

@@ -59,6 +59,7 @@ CheckIndicator              1.12 CheckIndicator.qml
 RadioDelegate               1.12 RadioDelegate.qml
 RadioIndicator              1.12 RadioIndicator.qml
 SwipeDelegate               1.12 SwipeDelegate.qml
+EnumDelegate                1.12 EnumDelegate.qml
 
 Menu                        1.12 Menu.qml
 MenuBar                     1.12 MenuBar.qml

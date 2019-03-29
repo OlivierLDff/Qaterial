@@ -141,6 +141,7 @@
         <file>Components/RadioIndicator.qml</file>
         <file>Components/SwipeDelegate.qml</file>
         <file>Components/TextFieldDelegate.qml</file>
+        <file>Components/EnumDelegate.qml</file>
 
         <!-- COMPONENTS / DIALOG -->
         <file>Components/Dialog.qml</file>
