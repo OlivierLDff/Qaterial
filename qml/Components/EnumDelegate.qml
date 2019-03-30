@@ -18,7 +18,7 @@ ItemDelegate
     property alias model: _radioDialog.model
     property alias value: _radioDialog.currentIndex
     property alias delegate: _radioDialog.delegate
-
+    property alias currentIndex: _radioDialog.currentIndex
     property alias title: _radioDialog.title
 
     RadioDialog
