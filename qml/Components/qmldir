@@ -110,9 +110,13 @@ Dialog                      1.12 Dialog.qml
 DialogButtonBox             1.12 DialogButtonBox.qml
 ModalDialog                 1.12 ModalDialog.qml
 AlertDialog                 1.12 AlertDialog.qml
+AlertIconDialog             1.12 AlertIconDialog.qml
 TextFieldDialog             1.12 TextFieldDialog.qml
 RadioDialog                 1.12 RadioDialog.qml
 RadioDialogDelegate         1.12 RadioDialogDelegate.qml
+
+DialogManager         		1.12 DialogManager.qml
+DialogManagerSettings       1.12 DialogManagerSettings.qml
 
 TextFieldDelegate           1.12 TextFieldDelegate.qml
 
