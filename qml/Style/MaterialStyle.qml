@@ -1,4 +1,8 @@
-pragma Singleton
+/** 
+ * Copyright (C) Olivier Le Doeuff 2019 
+ * Contact: olivier.ldff@gmail.com 
+ */
+ pragma Singleton
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12
@@ -6,7 +10,7 @@ import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Fonts 1.12
 
-Item 
+QtObject 
 {
     id: root
 
