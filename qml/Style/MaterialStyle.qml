@@ -17,7 +17,7 @@ Item
     }
     
     // !!!!! FONT LOADER MUST BE SET FIRST !!!!! /
-    RobotoFontLoader {}
+    //RobotoFontLoader {}
 
     property int theme: MaterialStyle.Theme.Dark
     property bool dense: false

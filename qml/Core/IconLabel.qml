@@ -131,8 +131,6 @@ Item
                 anchors.verticalCenter = control.verticalCenter
         } // reanchors()
 
-        //Component.onCompleted: reanchors()
-
         DebugRectangle
         {
             anchors.fill: parent
