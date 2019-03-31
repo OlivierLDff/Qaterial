@@ -6,7 +6,9 @@ import QtQuick 2.12
 QtObject
 {
     property var acceptedCallback
+    property var appliedCallback
     property var rejectedCallback
+    property var helpRequestedCallback
 
     property string text
     property string title
