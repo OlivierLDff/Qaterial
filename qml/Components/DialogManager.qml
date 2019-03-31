@@ -65,6 +65,11 @@ Item
         }
     }
 
+    Loader
+    {
+        id: _dialogLoader
+    }
+
     property var settings: null
     
     function openWithSettings(dialogManagerSettings)
