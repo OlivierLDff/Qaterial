@@ -49,6 +49,7 @@ ClusturedTabBar             1.12 ClusturedTabBar.qml
 ListDelegateBackground      1.12 ListDelegateBackground.qml
 ListDelegateText            1.12 ListDelegateText.qml
 ListDelegateContent         1.12 ListDelegateContent.qml
+ListSectionTitle       	    1.12 ListSectionTitle.qml
 
 ItemDelegate                1.12 ItemDelegate.qml
 

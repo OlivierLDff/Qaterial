@@ -132,6 +132,7 @@
         <file>Components/ListDelegateText.qml</file>
         <file>Components/ListDelegateContent.qml</file>
         <file>Components/ListDelegateBackground.qml</file>
+        <file>Components/ListSectionTitle.qml</file>
         <file>Components/ItemDelegate.qml</file>
         <file>Components/SwitchDelegate.qml</file>
         <file>Components/SwitchIndicator.qml</file>
