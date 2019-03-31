@@ -26,17 +26,15 @@ ModalDialog
     property alias iconhighlighted: _icon.highlighted
     property alias iconReverseHighlight: _icon.reverseHighlight
 
-    spacing: MaterialStyle.card.horizontalPadding
+    property double iconSpacing: MaterialStyle.card.horizontalPadding
+
+    width: undefined
 
     contentItem: Item
     {
         implicitHeight: Math.floor(Math.max(_icon.implicitHeight, _text.implicitHeight))
 
-        DebugRectangle
-        {
-            anchors.fill: parent
-            border.color: "red"
-        }
+        implicitWidth: MaterialStyle.dialog.implicitWidth - 2*MaterialStyle.card.horizontalPadding
 
         RoundColorIcon
         {
@@ -45,6 +43,7 @@ ModalDialog
             anchors.verticalCenter: parent.verticalCenter
             highlighted: true
             fill: true
+            visible: source != ""
             //color: "red"
             //roundColor:"green"
             //roundBorderColor:"green"
@@ -54,12 +53,14 @@ ModalDialog
             id: _text
 
             text: control.text
-            x: _icon.width + control.spacing
+            x: _icon.visible ? (_icon.width + control.iconSpacing) : 0
             width: parent.width - x
             textType: MaterialStyle.TextType.ListText
             color: MaterialStyle.secondaryTextColor()
             wrapMode: Text.Wrap
-            anchors.verticalCenter: parent.verticalCenter
+            elide: Text.ElideRight
+            maximumLineCount: 8
+            //anchors.verticalCenter: parent.verticalCenter
         } // Label
     } //Item
 } // ModalDialog

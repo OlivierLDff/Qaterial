@@ -23,7 +23,7 @@ Item
             //iconSource: root.settings && root.settings.iconSource ? root.settings.iconSource : ""
             //iconColor: root.settings && root.settings.iconColor ? root.settings.iconColor : undefined
             //standardButtons: root.settings && root.settings.standardButtons ? root.settings.standardButtons : 0
-            standardButtons: Dialog.Cancel | Dialog.Yes
+            //standardButtons: Dialog.Cancel | Dialog.Yes
 
             Component.onCompleted:
             {
@@ -31,8 +31,8 @@ Item
                     iconSource = root.settings.iconSource
                 if(root.settings && root.settings.iconColor)
                     iconColor = root.settings.iconColor
-                //if(root.settings && root.settings.standardButtons)
-                //    standardButtons = root.settings.standardButtons
+                if(root.settings && root.settings.standardButtons)
+                   standardButtons = root.settings.standardButtons
 
                 open()
             }
