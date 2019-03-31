@@ -83,7 +83,7 @@ T.TextField
     font.styleName: MaterialStyle.textTypeToStyleName(textType)
     font.pointSize: MaterialStyle.textTypeToPointSize(textType)
     font.capitalization: MaterialStyle.fontCapitalization(textType)
-    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(textType)
+    font.letterSpacing: MaterialStyle.textTypeToLetterSpacing(textType)
 
     // DEBUG
     property bool drawline: MaterialStyle.debug.drawDebugButton
