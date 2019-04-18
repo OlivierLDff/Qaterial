@@ -59,18 +59,18 @@ QQUICKMATERIALHELPER_NAMESPACE_START
 class QQUICKMATERIALHELPER_API_ Helper
 {
 public:
-	static void RegisterTypes(const char* uri = nullptr);
-	static void LoadRessources();
+	static void registerTypes(const char* uri = nullptr);
+	static void loadRessources();
 	/** Library Major Version */
-	static uint32_t GetMajor();
+	static uint32_t getMajor();
 	/** Library Minor Version */
-	static uint32_t GetMinor();
+	static uint32_t getMinor();
 	/** Library Patch Version */
-	static uint32_t GetPatch();
+	static uint32_t getPatch();
 	/** Library Tag Version */
-	static uint32_t GetTag();
-	/** Get version in form major.minor.patch.tag */
-	static QString GetVersion();
+	static uint32_t getTag();
+	/** get version in form major.minor.patch.tag */
+	static QString getVersion();
 };
 
 QQUICKMATERIALHELPER_NAMESPACE_END

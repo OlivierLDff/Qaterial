@@ -24,56 +24,56 @@
 
 static const char* _defaultUri = "QQuickMaterialHelper";
 static const char** _uri = &_defaultUri;
-static void RegisterTypes()
+static void registerTypes()
 {
 }
 
-static void RegisterTypes(const char* uri) { _uri = &uri; RegisterTypes(); }
+static void registerTypes(const char* uri) { _uri = &uri; registerTypes(); }
 static void LoadRessources() 
 { 
 	Q_INIT_RESOURCE(QQuickMaterialHelper); 
 	Q_INIT_RESOURCE(QQuickMaterialHelperFonts); 
 }
 
-Q_COREAPP_STARTUP_FUNCTION(RegisterTypes)
+Q_COREAPP_STARTUP_FUNCTION(registerTypes)
 Q_COREAPP_STARTUP_FUNCTION(LoadRessources)
 
 QQUICKMATERIALHELPER_USING_NAMESPACE;
 
-void Helper::RegisterTypes(const char* uri)
+void Helper::registerTypes(const char* uri)
 {
-	::RegisterTypes(uri);
+	::registerTypes(uri);
 }
 
-void Helper::LoadRessources()
+void Helper::loadRessources()
 {
 	::LoadRessources();
 }
 
-uint32_t Helper::GetMajor()
+uint32_t Helper::getMajor()
 {
 	return QQUICKMATERIALHELPER_VERSION_MAJOR;
 }
 
-uint32_t Helper::GetMinor()
+uint32_t Helper::getMinor()
 {
 	return QQUICKMATERIALHELPER_VERSION_MINOR;
 }
 
-uint32_t Helper::GetPatch()
+uint32_t Helper::getPatch()
 {
 	return QQUICKMATERIALHELPER_VERSION_PATCH;
 }
 
-uint32_t Helper::GetTag()
+uint32_t Helper::getTag()
 {
 	return QQUICKMATERIALHELPER_VERSION_TAG_HEX;
 }
 
-QString Helper::GetVersion()
+QString Helper::getVersion()
 {
-	return QString::number(GetMajor()) + "." +
-		QString::number(GetMinor()) + "." +
-		QString::number(GetTag()) + "." +
-		QString::number(GetTag(),16);
+	return QString::number(getMajor()) + "." +
+		QString::number(getMinor()) + "." +
+		QString::number(getTag()) + "." +
+		QString::number(getTag(),16);
 }
