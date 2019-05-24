@@ -8,8 +8,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
- pragma Singleton
-
 
 import QtQuick 2.12
 
@@ -32,4 +30,6 @@ Item {
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/fonts/roboto/Roboto-LightItalic.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/fonts/roboto/Roboto-Thin.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/fonts/roboto/Roboto-ThinItalic.ttf")}
+
+    Component.onCompleted: console.log("Load Roboto Font")
 }
