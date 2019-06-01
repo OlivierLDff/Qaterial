@@ -808,9 +808,9 @@ QtObject
 
     property var debug: QtObject 
     {
-        property bool drawDebugButton:              true
-        property bool drawDebugIconLabel:           true
-        property bool drawDebugDelegate:            true
+        property bool drawDebugButton:              false
+        property bool drawDebugIconLabel:           false
+        property bool drawDebugDelegate:            false
     }
 
     property var switchIndicator: QtObject 
