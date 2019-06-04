@@ -215,11 +215,11 @@ T.TextField
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
         } // Behavior y
-        font.pointSize: MaterialStyle.textTypeToPointSize(textType)
-        Behavior on font.pointSize
+        font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
+        Behavior on font.pixelSize
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
-        } // Behavior pointsize
+        } // Behavior pixelsize
         Behavior on color
         {
             ColorAnimation { easing.type:Easing.OutCubic; duration: 200 }

@@ -153,10 +153,10 @@ Control
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
         } // Behavior y
         font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
-        Behavior on font.pointSize
+        Behavior on font.pixelSize
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
-        } // Behavior pointsize
+        } // Behavior pixelsize
         Behavior on color
         {
             ColorAnimation { easing.type:Easing.OutCubic; duration: 200 }
