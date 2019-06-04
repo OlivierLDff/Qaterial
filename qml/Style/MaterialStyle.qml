@@ -496,10 +496,10 @@ QtObject
         property double spacing:                    root.dense ? 8 : 12
         property double iconWidth:                  root.dense ? 18 : 24
 
-        property double fontPointSize:              root.buttonFontPointSize
+/*        property double fontPointSize:              root.buttonFontPointSize
         property int fontCapitalisation:            Font.AllUppercase
         property string fontFamily:                 root.fontFamily
-        property string fontStyleName:              "Medium"
+        property string fontStyleName:              "Medium"*/
 
         property double elevation:                  root.dense ? 4 : 6
         property double pressedElevation:           root.dense ? 10 : 12
@@ -566,12 +566,6 @@ QtObject
         property double smallTopPadding:            root.dense ? 3 : 6
         property double iconPadding:                root.dense ? 6 : 12
         property double iconWidth:                  root.dense ? 18 : 24
-
-        property double fontPointSize:              root.buttonFontPointSize
-        property double smallFontPointSize:         root.hintFontPointSize
-        property int fontCapitalisation:            Font.AllUppercase
-        property string fontFamily:                 root.fontFamily
-        property string fontStyleName:              "Medium"
 
         property double topInset:                   root.dense ? 0 : 0
         property double bottomInset:                root.dense ? 0 : 0

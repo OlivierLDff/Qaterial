@@ -152,7 +152,7 @@ Control
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
         } // Behavior y
-        font.pointSize: MaterialStyle.textTypeToPointSize(textType)
+        font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
         Behavior on font.pointSize
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }

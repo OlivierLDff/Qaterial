@@ -38,10 +38,11 @@ T.Button
     leftInset: MaterialStyle.fab.leftInset
     rightInset: MaterialStyle.fab.rightInset
 
-    font.family: MaterialStyle.fab.fontFamily
-    font.pointSize: MaterialStyle.fab.fontPointSize
-    font.capitalization: MaterialStyle.fab.fontCapitalisation
-    font.styleName: MaterialStyle.fab.fontStyleName
+    font.family: MaterialStyle.textTypeToFontFamily(MaterialStyle.TextType.Button)
+    font.styleName: MaterialStyle.textTypeToStyleName(MaterialStyle.TextType.Button)
+    font.pixelSize: MaterialStyle.textTypeToPixelSize(MaterialStyle.TextType.Button)
+    font.capitalization: MaterialStyle.fontCapitalization(MaterialStyle.TextType.Button)
+    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(MaterialStyle.TextType.Button)
 
     readonly property bool defaultPadding: type === MaterialStyle.FabType.Default ? MaterialStyle.fab.padding : 
     	(type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.paddingMini : MaterialStyle.fab.textPadding)

@@ -81,7 +81,7 @@ T.TextField
 
     font.family: MaterialStyle.textTypeToFontFamily(textType)
     font.styleName: MaterialStyle.textTypeToStyleName(textType)
-    font.pointSize: MaterialStyle.textTypeToPointSize(textType)
+    font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
     font.capitalization: MaterialStyle.fontCapitalization(textType)
     font.letterSpacing: MaterialStyle.textTypeToLetterSpacing(textType)
 

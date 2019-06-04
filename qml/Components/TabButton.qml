@@ -35,10 +35,11 @@ T.TabButton
     bottomPadding: topPadding
     spacing: display === AbstractButton.TextUnderIcon ? (useSmallFont ? MaterialStyle.tabButton.smallSpacingVertical : MaterialStyle.tabButton.spacingVertical ) : (useSmallFont ? MaterialStyle.tabButton.smallSpacing : MaterialStyle.tabButton.spacing)
 
-    font.family: MaterialStyle.tabButton.fontFamily
-    font.pointSize: useSmallFont ? MaterialStyle.tabButton.smallFontPointSize : MaterialStyle.tabButton.fontPointSize
-    font.capitalization: MaterialStyle.tabButton.fontCapitalisation
-    font.styleName: MaterialStyle.tabButton.fontStyleName
+    font.family: MaterialStyle.textTypeToFontFamily(MaterialStyle.TextType.Button)
+    font.styleName: MaterialStyle.textTypeToStyleName(MaterialStyle.TextType.Button)
+    font.pixelSize: useSmallFont ? MaterialStyle.textTypeToPixelSize(MaterialStyle.TextType.Hint) : MaterialStyle.textTypeToPixelSize(MaterialStyle.TextType.Button)
+    font.capitalization: MaterialStyle.fontCapitalization(MaterialStyle.TextType.Button)
+    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(MaterialStyle.TextType.Button)
 
     icon.width: MaterialStyle.tabButton.iconWidth
     icon.height: MaterialStyle.tabButton.iconWidth
