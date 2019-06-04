@@ -53,23 +53,11 @@ T.SwipeDelegate
                              Math.max(implicitContentHeight, 
                                       indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-    function reanchors()
-    {
-        leftPadding = !mirrored ? MaterialStyle.delegate.leftPadding(control.type, control.lines) : MaterialStyle.delegate.rightPadding(control.type, control.lines)
-        rightPadding = mirrored ? MaterialStyle.delegate.leftPadding(control.type, control.lines) : MaterialStyle.delegate.rightPadding(control.type, control.lines)
-        spacing = MaterialStyle.delegate.spacing(control.type, control.lines)
-    }
-
-    onTypeChanged: Qt.callLater(reanchors)
-    onLinesChanged: Qt.callLater(reanchors)
-    onMirroredChanged: Qt.callLater(reanchors)
-    Component.onCompleted: reanchors()
-
-    leftPadding: 0
-    rightPadding: 0
+    leftPadding: !mirrored ? MaterialStyle.delegate.leftPadding(type, lines) : MaterialStyle.delegate.rightPadding(type, lines)
+    rightPadding: mirrored ? MaterialStyle.delegate.leftPadding(type, lines) : MaterialStyle.delegate.rightPadding(type, lines)
+    spacing: MaterialStyle.delegate.spacing(type, lines)
     topPadding: 0
     bottomPadding: 0
-    spacing: 0
     bottomInset: _separator.visible ? 1 : 0
     focusPolicy: Qt.StrongFocus
 
@@ -114,6 +102,9 @@ T.SwipeDelegate
         onPrimary: control.onPrimary
         highlighted: control.highlighted
     } // Rectangle
+
+    property alias toolSeparatorLeftPadding: _separator.leftPadding
+    property alias toolSeparatorRightPadding: _separator.rightPadding
 
     ToolSeparator
     {
