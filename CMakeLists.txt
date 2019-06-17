@@ -2,11 +2,13 @@
 #   QQuickMaterialHelper CMake script by Olivier Le Doeuff
 #
 
+CMAKE_MINIMUM_REQUIRED( VERSION 3.1.0 )
+
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       CMAKE PROPERTIES                           │
 # └──────────────────────────────────────────────────────────────────┘
 
-CMAKE_MINIMUM_REQUIRED( VERSION 3.1.0 )SET( QQUICKMATERIALHELPER_TARGET "QQuickMaterialHelper" CACHE STRING "Target Name" )
+SET( QQUICKMATERIALHELPER_TARGET "QQuickMaterialHelper" CACHE STRING "Target Name" )
 SET( QQUICKMATERIALHELPER_PROJECT "QQuickMaterialHelper" CACHE STRING "Project Name")
 SET( QQUICKMATERIALHELPER_BUILD_SHARED OFF CACHE BOOL "Build as a shared library" )
 SET( QQUICKMATERIALHELPER_USE_NAMESPACE ON CACHE BOOL "Should the library be compiled with a namespace. Default: ON" )
