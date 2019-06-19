@@ -73,6 +73,7 @@
         <!-- COMPONENTS / BANNERS -->
         <file>Components/Banner.qml</file>
         <file>Components/Snackbar.qml</file>
+        <file>Components/SnackbarManager.qml</file>
 
         <!-- COMPONENTS / APP BAR -->
         <file>Components/ToolBar.qml</file>

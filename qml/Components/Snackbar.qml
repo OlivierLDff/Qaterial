@@ -5,13 +5,18 @@
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-
+import QtQuick.Layouts 1.12
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 import QQuickMaterialHelper.Components 1.12
 
 Pane 
 {
+
+
+  
+          
+
     id: control
 
     // TEXT
@@ -70,7 +75,7 @@ Pane
         FlatButton
         {
             id: _action
-            visible: text != ""
+            visible: text 
             onPressed: control.actionPressed()
             anchors.right: parent.right
             anchors.rightMargin: 2
@@ -78,5 +83,10 @@ Pane
             anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
             onPrimary: true
         } // FlatButton
-    }
-} // Pane
+        
+
+}
+
+}
+
+ // Pane
