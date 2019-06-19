@@ -89,6 +89,7 @@ CardRoundThumbnailTitle     1.12 CardRoundThumbnailTitle.qml
 
 Banner                      1.12 Banner.qml
 Snackbar                    1.12 Snackbar.qml
+SnackbarManager				1.12 SnackbarManager.qml
 
 CursorDelegate              1.12 CursorDelegate.qml
 PlaceholderText             1.12 PlaceholderText.qml
