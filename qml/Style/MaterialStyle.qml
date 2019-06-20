@@ -52,6 +52,26 @@ QtObject
     property color foregroundColorLight:            "#000000"
     property color foregroundColorDark:             "#FFFFFF"
 
+    property color blueGrey:                        "#607D8B"
+    property color grey:                            "#9E9E9E"
+    property color brown:                           "#795548"
+    property color deepOrange:                      "#FF5722"
+    property color orange:                          "#FF9800"
+    property color amber:                           "#FFC107"
+    property color yellow:                          "#FFEB3B"
+    property color lime:                            "#8BC34A"
+    property color green:                           "#4CAF50"
+    property color teal:                            "#009688"
+    property color cyan:                            "#00BCD4"
+    property color lightBlue:                       "#03A9F4"
+    property color blue:                            "#2196F3"
+    property color indigo:                          "#3F51B5"
+    property color deepPurple:                      "#673AB7"
+    property color purple:                          "#9C27B0"
+    property color pink:                            "#E91E63"
+    property color red:                             "#f44336"
+
+
     property color primaryColor:                    theme === MaterialStyle.Theme.Light ? primaryColorLight : primaryColorDark
     property color accentColor:                     theme === MaterialStyle.Theme.Light ? accentColorLight : accentColorDark
     property color backgroundColor:                 theme === MaterialStyle.Theme.Light ? backgroundColorLight : backgroundColorDark
