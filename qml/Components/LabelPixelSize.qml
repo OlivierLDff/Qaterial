@@ -4,12 +4,12 @@
  */
 
 import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
 
 import QQuickMaterialHelper.Style 1.12
 
-Label
+T.Label
 {
     id: control
 
@@ -17,7 +17,8 @@ Label
     linkColor: MaterialStyle.accentColor
 
     property int textType: MaterialStyle.TextType.Body1
-    property bool colorReversed: false
+    property bool onPrimary: false
+    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
 
     font.family: MaterialStyle.textTypeToFontFamily(textType)
     font.styleName: MaterialStyle.textTypeToStyleName(textType)

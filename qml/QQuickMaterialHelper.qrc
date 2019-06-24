@@ -134,6 +134,7 @@
         <!-- COMPONENTS / TEXT -->
         <file>Components/Label.qml</file>
         <file>Components/LabelPixelSize.qml</file>
+        <file>Components/LabelPointSize.qml</file>
 
         <!-- COMPONENTS / TAB -->
         <file>Components/TabBar.qml</file>
