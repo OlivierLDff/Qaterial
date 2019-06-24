@@ -3,12 +3,15 @@
  * Contact: olivier.ldff@gmail.com 
  */
  
+ // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
 
+// Qt Graphical
 import QtGraphicalEffects 1.12
 
+// MaterialHelper
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 
