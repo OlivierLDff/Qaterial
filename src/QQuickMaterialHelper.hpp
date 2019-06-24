@@ -60,7 +60,7 @@ class QQUICKMATERIALHELPER_API_ Helper
 {
 public:
 	static void registerTypes(const char* uri = nullptr);
-	static void loadRessources();
+	static void loadResources();
 	/** Library Major Version */
 	static uint32_t getMajor();
 	/** Library Minor Version */

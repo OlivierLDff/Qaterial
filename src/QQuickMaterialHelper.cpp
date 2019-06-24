@@ -29,14 +29,13 @@ static void registerTypes()
 }
 
 static void registerTypes(const char* uri) { _uri = &uri; registerTypes(); }
-static void LoadRessources() 
+static void loadResources() 
 { 
 	Q_INIT_RESOURCE(QQuickMaterialHelper); 
-	Q_INIT_RESOURCE(QQuickMaterialHelperFonts); 
 }
 
 Q_COREAPP_STARTUP_FUNCTION(registerTypes)
-Q_COREAPP_STARTUP_FUNCTION(LoadRessources)
+Q_COREAPP_STARTUP_FUNCTION(loadResources)
 
 QQUICKMATERIALHELPER_USING_NAMESPACE;
 
@@ -45,9 +44,9 @@ void Helper::registerTypes(const char* uri)
 	::registerTypes(uri);
 }
 
-void Helper::loadRessources()
+void Helper::loadResources()
 {
-	::LoadRessources();
+	::loadResources();
 }
 
 uint32_t Helper::getMajor()

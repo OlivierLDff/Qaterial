@@ -72,10 +72,6 @@ CONFIGURE_FILE(
   ${CMAKE_CURRENT_SOURCE_DIR}/qml/QQuickMaterialHelper.qrc
   ${CMAKE_CURRENT_BINARY_DIR}/QQuickMaterialHelper.junk
 )
-CONFIGURE_FILE(
-  ${CMAKE_CURRENT_SOURCE_DIR}/fonts/QQuickMaterialHelperFonts.qrc
-  ${CMAKE_CURRENT_BINARY_DIR}/QQuickMaterialHelperFonts.junk
-)
 
 # Dont Run Moc on cpp file generated from cpp
 FOREACH(CacheQml ${QQUICKMATERIALHELPER_QML_RES})
@@ -89,9 +85,9 @@ file(GLOB_RECURSE QQUICKMATERIALHELPER_QML_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/qml/
 # Set file in folder, good for visualization inside IDE
 foreach(_source IN ITEMS ${QQUICKMATERIALHELPER_QML_SRCS})
     get_filename_component(_source_path "${_source}" PATH)
-    file(RELATIVE_PATH _source_path_rel ${CMAKE_CURRENT_SOURCE_DIR} "${_source_path}")
+    file(RELATIVE_PATH _source_path_rel ${CMAKE_CURRENT_SOURCE_DIR}/qml "${_source_path}")
     string(REPLACE "/" "\\" _group_path "${_source_path_rel}")
-    source_group("${_group_path}" FILES "${_source}")
+    source_group("Qml/${_group_path}" FILES "${_source}")
 endforeach()
 
 
@@ -99,7 +95,6 @@ SET(QQUICKMATERIALHELPER_SRCS
     ${QQUICKMATERIALHELPER_QML_RES}
     ${CMAKE_CURRENT_SOURCE_DIR}/src/QQuickMaterialHelper.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/QQuickMaterialHelper.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/fonts/QQuickMaterialHelperFonts.qrc
     ${QQUICKMATERIALHELPER_QML_SRCS}
     )
 
