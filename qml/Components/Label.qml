@@ -19,10 +19,26 @@ T.Label
     property int textType: MaterialStyle.TextType.Body1
     property bool onPrimary: false
     property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool usePixelSize: MaterialStyle.usePixelSize
+
+    property double pixelSize: MaterialStyle.textTypeToPixelSize(textType)
+    property double pointSize: MaterialStyle.textTypeToPointSize(textType)
+
+    Binding on font.pixelSize 
+    {
+        when: control.usePixelSize
+        value: control.pixelSize
+    }
+
+    Binding on font.pointSize 
+    {
+        when: !control.usePixelSize
+        value: control.pointSize
+    }
 
     font.family: MaterialStyle.textTypeToFontFamily(textType)
     font.styleName: MaterialStyle.textTypeToStyleName(textType)
-    font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
+    //font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
     font.capitalization: MaterialStyle.fontCapitalization(textType)
     font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(textType)
 } // Label
