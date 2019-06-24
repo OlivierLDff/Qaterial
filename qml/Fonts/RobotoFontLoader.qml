@@ -14,22 +14,16 @@ import QQuickMaterialHelper.Fonts 1.12
 
 Item 
 {
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-BlackItalic.ttf") }
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Black.ttf")}
+    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-BlackItalic.ttf") }
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Bold.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-BoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-Bold.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-BoldItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Medium.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-MediumItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Regular.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-Italic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-Light.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-LightItalic.ttf")}
-    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/RobotoCondensed-Regular.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Italic.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Light.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-LightItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Medium.ttf")}
+    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-MediumItalic.ttf")}
+    FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Regular.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-Thin.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/QQuickMaterialHelper/Fonts/roboto/Roboto-ThinItalic.ttf")}
 
