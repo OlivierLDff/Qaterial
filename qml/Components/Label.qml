@@ -39,5 +39,5 @@ T.Label
     font.family: MaterialStyle.textTypeToFontFamily(textType)
     font.styleName: MaterialStyle.textTypeToStyleName(textType)
     font.capitalization: MaterialStyle.fontCapitalization(textType)
-    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(textType)
+    font.letterSpacing: MaterialStyle.textTypeToLetterSpacing(textType)
 } // Label

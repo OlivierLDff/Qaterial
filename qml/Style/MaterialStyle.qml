@@ -216,6 +216,8 @@ QtObject
         MenuHint
     }
 
+    property bool usePixelSize: true
+
     property string fontFamily: "Roboto"
 
     property string display3FontFamily:         fontFamily
