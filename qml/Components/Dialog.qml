@@ -1,10 +1,12 @@
 /** Copyright (C) Olivier Le Doeuff 2019 
  * Contact: olivier.ldff@gmail.com */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
+// MaterialStyle
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 import QQuickMaterialHelper.Components 1.12
@@ -95,7 +97,7 @@ T.Dialog
 
     footer: DialogButtonBox 
     {
-        visible: true//count > 0
+        visible: count > 0
         backgroundColor: control.backgroundColor
     } // DialogButtonBox
 
