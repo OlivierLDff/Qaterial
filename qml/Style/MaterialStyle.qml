@@ -985,6 +985,8 @@ QtObject
         property double implicitHeight2:            root.dense ? 54 : 68
         property double radius:                     root.dense ? 3 : 4
         property double elevation:                  6
+        property double shortDisplayTime:           2000
+        property double longDisplayTime:            5000
     } // snackbar
 
     property var textField: QtObject 

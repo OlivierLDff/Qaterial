@@ -3,20 +3,17 @@
  * Contact: olivier.ldff@gmail.com 
  */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+
+// MaterialHelper
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 import QQuickMaterialHelper.Components 1.12
 
 Pane 
-{
-
-
-  
-          
-
+{ 
     id: control
 
     // TEXT
@@ -83,10 +80,5 @@ Pane
             anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
             onPrimary: true
         } // FlatButton
-        
-
-}
-
-}
-
- // Pane
+    } // contentItem
+} // Pane

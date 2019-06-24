@@ -1,139 +1,146 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.4
-import QtQuick.Controls.Material 2.4
+// Qt
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+
+// MaterialHelper
 import QQuickMaterialHelper.Components 1.12
 import QQuickMaterialHelper.Containers 1.12
 import QQuickMaterialHelper.Style 1.12
+
 /**
   * @brief Manager that creates snack bar dinamically
   */
-Item {
-    /**
-      * Public
-      */
-
-
-    
-    readonly property real fadeTime: 300
-    readonly property real defaultTime: 3000
-    property real time: defaultTime
-
-
-
-    /**
-      * @brief Shows a snackbar
-      *
-      * @param {string} text Text to show
-      * @param {real} duration Duration to show in milliseconds, defaults to 3000
-      */
-    /**
-      * Private
-      */
+ Item 
+ {
     id: root
+
+    // The actual time we are using that can be override by the user
+    property real snackbarTimeout: Material.shortDisplayTime
+    // Use to force the display off of the snackbar bar
+    property bool displaySnackbar: false
+    // If the snackbar can be kill before the end of it's lifetime
+    property bool canBeKilled: true
 
     z: Infinity
 
-
+    // Snackbar component that is intentianted
     Component 
     {
-      id:_snackbarComp
-    
-    Snackbar {
-      id : _snackbar
+        id:_snackbarComp
 
-      
-      onActionPressed :
-       {
-          if(root.settings && root.settings.onAccept){
-              root.settings.onAccept()
-                _snackbarLoader.sourceComponent = null // close snack bar because the user have made his choice
-           }
-          
-
-        }
-     text : root.settings && root.settings.text ? root.settings.text : ""
-     action: root.settings && root.settings.action ? root.settings.action: ""
-
-
-        Component.onCompleted: 
+        Snackbar 
         {
-      
-        if (typeof root.settings.timeout !== "undefined") { // checks if parameter was passed
-            time = Math.max(root.settings.timeout , 5 * fadeTime);
-        }
-        else {
-            time = defaultTime;
-        }
+            id : _snackbar
+            opacity: 0
 
-        animation.start();
-   
-        }
+            onActionPressed :
+            {
+                if(root.settings && root.settings.onAccept)
+                {
+                    root.settings.onAccept()
+                    //_snackbarLoader.sourceComponent = null // close snack bar because the user have made his choice
+                    // todo
+                }
 
-        SequentialAnimation on opacity {
-        id: animation
-        running: false 
+            }
+            text : root.settings && root.settings.text ? root.settings.text : ""
+            action: root.settings && root.settings.action ? root.settings.action: ""
 
+            Component.onCompleted: 
+            {
+                snackbarTimeout = root.settings.timeout === undefined ? Material.shortDisplayTime : root.settings.timeout
+                canBeKilled = root.settings.canBeKilled === undefined ? true : root.settings.canBeKilled
+                opacity = 1
+            }
 
-        NumberAnimation {
-            to: 1
-            duration: fadeTime
-        } 
+            property bool pendingDestroy: false
 
-        PauseAnimation {
-            duration: time - 2 * fadeTime
-        } 
+            function goToPendingDestroy()
+            {
+                fadeDuration = displaySnackbar ? 250 : 50
+                opacity = 0
+                _destroyTimer.start()
+            }
 
-        NumberAnimation {
-            to: 0
-            duration: fadeTime
-        }
-
-        onRunningChanged: {
-            if (!running ) {
+            function destroySnackbar()
+            {
                 _snackbarLoader.sourceComponent = null
-
-            if(root.settings && root.settings.onClose){
-             root.settings.onClose()
-           }
-            
-                root.nextSnackbar() // to know if other snack bar is required 
-    }
-    } // onRunningChanged
-
-}  //sequential animation
-}  //snackbar
-}  // component
-
- Loader{
-  anchors.horizontalCenter: parent.horizontalCenter
-  anchors.bottom : parent.bottom
-  id: _snackbarLoader
- }
-
- property var settings: null
- property var settingsCurrent : null
- property var settingsArray : []
-
-//function to show a snack bar prepared in paramters
-   function show(snackbarManagerSettings) {
-
-        if(_snackbarLoader.sourceComponent){
-          settingsArray.push(snackbarManagerSettings)
-        }
-        else{
-          settings = snackbarManagerSettings
-          _snackbarLoader.sourceComponent = _snackbarComp
-        }
-     }
-
-
-
- // function to load the next snack bar recorded before  
-    function nextSnackbar (){
-        if (settingsCurrent = settingsArray.shift())
-            show (settingsCurrent)
-
-    }
         
-       
+                if(root.settings && root.settings.onClose)
+                    root.settings.onClose()
+        
+                root.popSnackBar() // to know if other snack bar is required                 
+            }
+
+            Connections
+            {
+                target: root
+                onDisplaySnackbarChanged:
+                {
+                    if(!root.displaySnackbar && !pendingDestroy)
+                        goToPendingDestroy()
+                }
+            }
+
+            Timer
+            {
+                interval: root.snackbarTimeout
+                running: true
+                onTriggered: goToPendingDestroy()
+            }
+
+            Timer
+            {
+                id: _destroyTimer
+                interval: fadeDuration
+                onTriggered: destroySnackbar()
+            }
+
+            property real fadeDuration: 150
+
+            Behavior on opacity 
+            {
+                NumberAnimation 
+                { 
+                    duration: fadeDuration 
+                    easing.type: Easing.OutQuad
+                }
+            }
+        } // SnackBar
+    } // Component
+
+    Loader
+    {
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom : parent.bottom
+        id: _snackbarLoader
     }
+
+    property var settings: null
+    property var settingsCurrent : null
+    property var settingsArray : []
+
+    //Show a snackbar prepared in paramters
+    function show(config) 
+    {
+        if(_snackbarLoader.sourceComponent)
+        {
+            settingsArray.push(config)
+            if(canBeKilled)
+                displaySnackbar = false
+        }
+        else
+        {
+            settings = config
+            displaySnackbar = true
+            _snackbarLoader.sourceComponent = _snackbarComp
+        }
+    }
+
+    // function to load the next snack bar recorded before  
+    function popSnackBar()
+    {
+        if (settingsCurrent = settingsArray.shift())
+            show(settingsCurrent)
+    }
+}
