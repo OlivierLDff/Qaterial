@@ -3,8 +3,10 @@
  * Contact: olivier.ldff@gmail.com 
  */
 
+// Qt
 import QtQuick 2.12
 
+// MaterialHelper
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 import QQuickMaterialHelper.Components 1.12
