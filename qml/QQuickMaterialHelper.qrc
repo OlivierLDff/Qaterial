@@ -194,5 +194,8 @@
         <!-- COMPONENTS / NAVIGATION -->
         <file>Components/Drawer.qml</file>
 
+        <!-- COMPONENTS / LOADING -->
+        <file>Components/BusyIndicator.qml</file>
+
     </qresource>
 </RCC>

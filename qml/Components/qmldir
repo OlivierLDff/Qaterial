@@ -126,3 +126,5 @@ HorizontalLineSeparator     1.12 HorizontalLineSeparator.qml
 VerticalLineSeparator       1.12 VerticalLineSeparator.qml
 
 Drawer                      1.12 Drawer.qml
+
+BusyIndicator               1.12 BusyIndicator.qml
