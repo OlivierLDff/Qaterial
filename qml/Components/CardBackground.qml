@@ -21,7 +21,7 @@ Rectangle
     property bool onPrimary: false
     property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
 
-    color: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.backgroundColor
+    color: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.cardColor
     property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
     radius: MaterialStyle.card.radius 
     border.width: outlined ? 1 : 0
