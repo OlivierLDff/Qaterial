@@ -150,7 +150,8 @@ QtObject
 
     property color appBarColor:                     primaryColor
     property color dialogColor:                     Qt.lighter(backgroundColor, 1.375)
-    property color cardColor:                       Qt.lighter(backgroundColor, 1.375)
+    property color cardColor:                       theme === MaterialStyle.Theme.Light ? backgroundColor : Qt.lighter(backgroundColor, 1.375)
+    property color cardBackgroundColor:             theme === MaterialStyle.Theme.Light ? Qt.darker(backgroundColor, 1.25) : backgroundColor
     property color paneColor:                       Qt.lighter(backgroundColor, 1.375)
     property color overlayColor:                    Qt.rgba(backgroundColorDark.r, backgroundColorDark.g, backgroundColorDark.b, 0.6)
     property color snackbarColorLight:              "#323232"
