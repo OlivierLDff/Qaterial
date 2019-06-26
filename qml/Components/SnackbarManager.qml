@@ -15,7 +15,7 @@ import QQuickMaterialHelper.Style 1.12
     id: root
 
     // The actual time we are using that can be override by the user
-    property real snackbarTimeout: Material.shortDisplayTime
+    property real snackbarTimeout: MaterialStyle.snackbar.shortDisplayTime
     // Use to force the display off of the snackbar bar
     property bool displaySnackbar: false
     // If the snackbar can be kill before the end of it's lifetime
@@ -48,7 +48,7 @@ import QQuickMaterialHelper.Style 1.12
 
             Component.onCompleted: 
             {
-                snackbarTimeout = root.settings.timeout === undefined ? Material.shortDisplayTime : root.settings.timeout
+                snackbarTimeout = root.settings.timeout === undefined ? MaterialStyle.snackbar.shortDisplayTime : root.settings.timeout
                 canBeKilled = root.settings.canBeKilled === undefined ? true : root.settings.canBeKilled
                 opacity = 1
             }
