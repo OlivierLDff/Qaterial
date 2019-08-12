@@ -1,15 +1,25 @@
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
 import QtQuick.Controls.Universal 2.12
+
+import QQuickMaterialHelper.Style 1.12
+import QQuickMaterialHelper.Core 1.12
 
 T.Slider {
     id: control
 
-    property int faderWidth : 2
-    property bool osc : true
+   
+    property bool osc : true // to create an osc fader, same witdh for the handle and for the fader
+   
+    property bool highlighted  : true // for highlited the fader
+    property bool accentRipple: false
     property int handleWidth : ((faderWidth*0.6) +2)*4
-    
+    property int faderWidth : 2
 
+    readonly property int rawRippleColor: enabled ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary 
+
+    property color rippleColor: MaterialStyle.rippleColor(accentRipple ? MaterialStyle.RippleBackground.AccentLight :  "rawRippleColor")
 
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -21,20 +31,44 @@ T.Slider {
 
     property bool useSystemFocusVisuals: true
 
-    handle: Rectangle {
-        implicitWidth: control.horizontal ? 8 : osc ? faderWidth : handleWidth 
-        implicitHeight: control.horizontal ? 24 : 8
-
+    handle: Item {
+        id : _handleItem
         x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.visualPosition * (control.availableHeight - height))
 
-        radius: 4
-        color: control.pressed ? control.Universal.chromeHighColor :
-               osc ?  control.Universal.chromeHighColor :
+
+    Rectangle {
+        id : _rectangleHandle
+        implicitWidth: control.horizontal ? 8 : osc ? faderWidth : handleWidth 
+        implicitHeight: control.horizontal ? osc ? faderWidth :handleWidth  : 8
+       
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        radius: width / 2
+           color: control.pressed ? control.Universal.chromeHighColor :
                control.hovered ? control.Universal.chromeAltLowColor :
                control.enabled ? control.Universal.accent : control.Universal.chromeDisabledHighColor
+       
+        }
+    
+    Ripple {
+        x: (parent.width - width) / 2
+        y: (parent.height - height) / 2
+        width: _rectangleHandle.width
+        height: _rectangleHandle.height
+        active: control.pressed || control.hovered
+        color: control.rippleColor
 
+        scale: control.pressed ? 1.2 : 1
+
+        Behavior on scale {
+            NumberAnimation {
+                duration: 250
+            }
     }
+}
+}
+
 
     background: Item {
         implicitWidth: control.horizontal ? 200 : 18
