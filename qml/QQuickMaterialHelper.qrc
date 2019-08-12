@@ -197,5 +197,8 @@
         <!-- COMPONENTS / LOADING -->
         <file>Components/BusyIndicator.qml</file>
 
+        <!-- COMPONENTS / FADER -->
+        <file>Components/Fader.qml</file>
+
     </qresource>
 </RCC>
