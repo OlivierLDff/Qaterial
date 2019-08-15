@@ -79,6 +79,7 @@ Pane
             anchors.verticalCenter: _content.verticalCenter
             anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
             onPrimary: true
+            rippleColor: MaterialStyle.snackbarRippleColor()
         } // FlatButton
     } // contentItem
 } // Pane
