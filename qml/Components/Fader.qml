@@ -10,13 +10,22 @@ T.Slider {
     id: control
 
    
-    property bool osc : true // to create an osc fader, same witdh for the handle and for the fader
+    property bool osc : false // to create an osc fader, same witdh for the handle and for the fader
    
     property bool highlighted  : true // for highlited the fader
     property bool accentRipple: false
-    property int handleWidth : ((faderWidth*0.6) +2)*4
+    
+    function isCircle()
+{
+    if (faderWidth <= 5 ){ 
+        return true
+    }
+}
+    property bool circle : false
+   
+    property int handleWidth : circle ? faderWidth * 2 :(faderWidth*0.6 +2)*4
     property int faderWidth : 2
-
+    property color faderColor : MaterialStyle.amber
     readonly property int rawRippleColor: enabled ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary 
 
     property color rippleColor: MaterialStyle.rippleColor(accentRipple ? MaterialStyle.RippleBackground.AccentLight :  "rawRippleColor")
@@ -35,19 +44,21 @@ T.Slider {
         id : _handleItem
         x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.visualPosition * (control.availableHeight - height))
-
+        
 
     Rectangle {
         id : _rectangleHandle
-        implicitWidth: control.horizontal ? 8 : osc ? faderWidth : handleWidth 
-        implicitHeight: control.horizontal ? osc ? faderWidth :handleWidth  : 8
-       
+        implicitWidth: control.horizontal ? osc ? faderWidth/2.75 : isCircle() ? handleWidth : 8 : osc ? faderWidth : handleWidth 
+        implicitHeight: control.horizontal ? osc ? faderWidth :handleWidth  : osc ? faderWidth/2.75 : isCircle() ? handleWidth : 8
+        
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
-        radius: width / 2
-           color: control.pressed ? control.Universal.chromeHighColor :
-               control.hovered ? control.Universal.chromeAltLowColor :
-               control.enabled ? control.Universal.accent : control.Universal.chromeDisabledHighColor
+
+        radius: osc ? (faderWidth/2.75)/1.12 : isCircle() ?  width /2: width/1.5
+
+        color: control.pressed ? Qt.darker(faderColor,1.50) :
+        control.hovered ? Qt.darker(faderColor,1.40) :
+        control.enabled ? osc ? Qt.darker(faderColor,1.30) : faderColor : MaterialStyle.buttonDisabledColor
        
         }
     
@@ -97,7 +108,7 @@ T.Slider {
             width: control.horizontal ? control.position * parent.width : faderWidth // SliderTrackThemeHeight
             height: !control.horizontal ? control.position * parent.height : faderWidth // SliderTrackThemeHeight
 
-            color: control.enabled ? control.Universal.accent : control.Universal.chromeDisabledHighColor
-        }
+            color: control.enabled ? osc ? Qt.lighter(faderColor,1.12) : faderColor  : MaterialStyle.buttonDisabledColor
     }
+}
 }
