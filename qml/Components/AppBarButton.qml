@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QQuickMaterialHelper.Style 1.12
@@ -18,7 +18,7 @@ RoundButton
 
     backgroundImplicitWidth: MaterialStyle.toolButton.appBarButtonWidth
     backgroundImplicitHeight: MaterialStyle.toolButton.appBarButtonHeight
-    
+
     foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
                     colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
 } // RoundButton

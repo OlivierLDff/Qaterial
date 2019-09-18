@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
  pragma Singleton
 
@@ -10,7 +10,7 @@ import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Fonts 1.12
 
-QtObject 
+QtObject
 {
     id: root
 
@@ -19,7 +19,7 @@ QtObject
         Light,
         Dark
     }
-    
+
     // !!!!! FONT LOADER MUST BE SET FIRST !!!!! /
     //RobotoFontLoader {}
 
@@ -198,7 +198,7 @@ QtObject
         return rippleColorLight
     }
 
-    enum TextType 
+    enum TextType
     {
         Display3,
         Display2,
@@ -471,7 +471,7 @@ QtObject
         return 0;
     }
 
-    property var rawButton: QtObject 
+    property var rawButton: QtObject
     {
         property double minWidth:                   root.dense ? 52 : 64
         property double minHeight:                  root.dense ? 24 : 36
@@ -502,7 +502,7 @@ QtObject
         Extended
     }
 
-    property var fab: QtObject 
+    property var fab: QtObject
     {
         property double minWidth:                   root.dense ? 44 : 56
         property double minWidthMini:               root.dense ? 32 : 40
@@ -531,13 +531,13 @@ QtObject
         property double anchorsOffset:              root.dense ? 10 : 16
     } // QtObject
 
-    property var toolbar: QtObject 
+    property var toolbar: QtObject
     {
         property double implicitHeight:             root.dense ? 38 : 48
         property double elevation:                  root.dense ? 3 : 4
     }
 
-    property var toolButton: QtObject 
+    property var toolButton: QtObject
     {
         property double minWidth:                   root.dense ? 28 : 36
         property double minHeight:                  root.dense ? 28 : 36
@@ -563,7 +563,7 @@ QtObject
         property double separatorImplicitWidth:     root.dense ? 24 : 38
     } // QtObject
 
-    property var tabBar: QtObject 
+    property var tabBar: QtObject
     {
         property double elevation:                  10
         property double highlightHeight:            root.dense ? 2 : 2
@@ -573,7 +573,7 @@ QtObject
         property double maxTabWidth:                root.dense ? 200 : 360
     } // QtObject
 
-    property var tabButton: QtObject 
+    property var tabButton: QtObject
     {
         property double minWidth:                   root.dense ? 70 : 90
         property double minHeight:                  root.dense ? 30 : 48
@@ -608,20 +608,20 @@ QtObject
         Large = 5
     }
 
-    property var delegate: QtObject 
+    property var delegate: QtObject
     {
         property double implicitWidth:             root.dense ? 160 : 200
         function implicitHeight1Line(type)
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Overline: 
+                case MaterialStyle.DelegateType.Overline:
                     return                          root.dense ? 52 : 64
                 case MaterialStyle.DelegateType.Icon:
                 case MaterialStyle.DelegateType.Round:
                      return                         root.dense ? 44 : 56
                 case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large: 
+                case MaterialStyle.DelegateType.Large:
                     return                          root.dense ? 58 : 72
                 default: break
             }
@@ -632,12 +632,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Overline: 
+                case MaterialStyle.DelegateType.Overline:
                     return                          root.dense ? 70 : 88
                 case MaterialStyle.DelegateType.Icon:
                 case MaterialStyle.DelegateType.Round:
                 case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large: 
+                case MaterialStyle.DelegateType.Large:
                     return                          root.dense ? 62 : 72
                 default: break
             }
@@ -665,12 +665,12 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon: 
+                    case MaterialStyle.DelegateType.Icon:
                         return                      root.dense ? 26 : 32
                     case MaterialStyle.DelegateType.Round:
                     case MaterialStyle.DelegateType.Square:
                         return                      root.dense ? 12 : 16
-                    case MaterialStyle.DelegateType.Large: 
+                    case MaterialStyle.DelegateType.Large:
                         return                      root.dense ? 16 : 20
                     default: break
                 }
@@ -680,15 +680,15 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon: 
+                    case MaterialStyle.DelegateType.Icon:
                         return                      root.dense ? 26 : 32
                     case MaterialStyle.DelegateType.Round:
                     case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large: 
+                    case MaterialStyle.DelegateType.Large:
                         return                      root.dense ? 12 : 16
                     default: break
                 }
-                return 0;                
+                return 0;
             }
         }
 
@@ -696,12 +696,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon: 
+                case MaterialStyle.DelegateType.Icon:
                     return                          root.dense ? 12 : 16
                 case MaterialStyle.DelegateType.Round:
                     return                          root.dense ? 6 : 8
                 case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large: 
+                case MaterialStyle.DelegateType.Large:
                     return                          root.dense ? 7 : 8
                 default: break
             }
@@ -712,12 +712,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon: 
+                case MaterialStyle.DelegateType.Icon:
                     return                          root.dense ? 20 : 24
                 case MaterialStyle.DelegateType.Round:
                     return                          root.dense ? 12 : 16
                 case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large: 
+                case MaterialStyle.DelegateType.Large:
                     return                          root.dense ? 9 : 8
                 default: break
             }
@@ -728,7 +728,7 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon: 
+                case MaterialStyle.DelegateType.Icon:
                 case MaterialStyle.DelegateType.Round:
                 case MaterialStyle.DelegateType.Square:
                 case MaterialStyle.DelegateType.Large:
@@ -768,18 +768,18 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon: 
+                    case MaterialStyle.DelegateType.Icon:
                     case MaterialStyle.DelegateType.Round:
                     case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large: 
+                    case MaterialStyle.DelegateType.Large:
                         return                          root.dense ? 26 : 32
                     default: break
                 }
-                return                                  root.dense ? 22 : 28                
+                return                                  root.dense ? 22 : 28
             }
             else if(lines >= 3)
             {
-                return                                  root.dense ? 22 : 28 
+                return                                  root.dense ? 22 : 28
             }
             return 0
         }
@@ -792,10 +792,10 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon: 
+                    case MaterialStyle.DelegateType.Icon:
                     case MaterialStyle.DelegateType.Round:
                     case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large: 
+                    case MaterialStyle.DelegateType.Large:
                         return                          root.dense ? 42 : 52
                     default: break
                 }
@@ -824,21 +824,21 @@ QtObject
 
     }
 
-    property var debug: QtObject 
+    property var debug: QtObject
     {
         property bool drawDebugButton:              false
         property bool drawDebugIconLabel:           false
         property bool drawDebugDelegate:            false
     }
 
-    property var switchIndicator: QtObject 
+    property var switchIndicator: QtObject
     {
         property color switchCheckedTrackColor: Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.5)
         property color switchUncheckedTrackColor: MaterialStyle.dividersColor()
         property color switchDisabledTrackColor: MaterialStyle.disabledDividersColor()
 
         property color switchCheckedHandleColor: MaterialStyle.accentColor
-        property color switchUncheckedHandleColor: MaterialStyle.theme === MaterialStyle.Theme.Light ? MaterialStyle.primaryTextColorDark : MaterialStyle.secondaryTextColorDark 
+        property color switchUncheckedHandleColor: MaterialStyle.theme === MaterialStyle.Theme.Light ? MaterialStyle.primaryTextColorDark : MaterialStyle.secondaryTextColorDark
         property color switchDisabledHandleColor: Qt.darker(switchUncheckedHandleColor, (MaterialStyle.theme === MaterialStyle.Theme.Light) ? 1.25 : 1.6)
 
         property double implicitWidth:              root.dense ? 30 : 38
@@ -847,13 +847,13 @@ QtObject
         property double handleRadius:               root.dense ? 16 : 20
     }
 
-    property var radioIndicator: QtObject 
+    property var radioIndicator: QtObject
     {
         property double implicitWidth:              root.dense ? 16 : 20
         property double implicitHeight:             root.dense ? 16 : 20
     }
 
-    property var checkIndicator: QtObject 
+    property var checkIndicator: QtObject
     {
         property double implicitWidth:              root.dense ? 16 : 18
         property double implicitHeight:             root.dense ? 16 : 18
@@ -900,7 +900,7 @@ QtObject
         property double separatorImplicitWidth:     root.dense ? 150 : 200
     }
 
-    property var menuBarItem: QtObject 
+    property var menuBarItem: QtObject
     {
         property double minWidth:                   root.dense ? 54 : 64
         property double minHeight:                  root.dense ? 24 : 32
@@ -916,7 +916,7 @@ QtObject
         property double rightInset:                 root.dense ? 0 : 0
     } // QtObject
 
-    property var menuItem: QtObject 
+    property var menuItem: QtObject
     {
         property double minWidth:                   root.dense ? 160 : 200
         property double minHeight:                  root.dense ? 24 : 32
@@ -933,7 +933,7 @@ QtObject
         property double rightInset:                 root.dense ? 1 : 2
     } // QtObject
 
-    property var scroll: QtObject 
+    property var scroll: QtObject
     {
         property double implicitWidth:              root.dense ? 7 : 12
         property double implicitWidthBackground:    root.dense ? 7 : 12
@@ -942,7 +942,7 @@ QtObject
         property double padding:                    root.dense ? 4 : 4
     } // QtObjects
 
-    property var card: QtObject 
+    property var card: QtObject
     {
         property double horizontalPadding:          root.dense ? 12 : 16
         property double verticalPadding:            root.dense ? 6 : 8
@@ -958,12 +958,12 @@ QtObject
         property double mediaImplicitHeight:        root.dense ? 156 : 194
     } // QtObject
 
-    property var banner: QtObject 
+    property var banner: QtObject
     {
         property double minimumWidth:               root.dense ? 288 : 360
         property double smallTextPadding:           root.dense ? 28 : 36
         property double smallTextPaddingDesktop:    root.dense ? 72 : 90
-        
+
         property double mobileMaxWidth:             root.dense ? 520 : 650
 
         property double implicitHeight1Line:        root.dense ? 44 : 54
@@ -974,13 +974,13 @@ QtObject
         property double implicitHeight3LineDesk:    root.dense ? 72 : 90
     } // QtObject
 
-    property var roundIcon: QtObject 
+    property var roundIcon: QtObject
     {
         property double size:                       root.dense ? 32 : 40
         property double iconWidth:                  root.dense ? 18 : 24
     }
 
-    property var snackbar: QtObject 
+    property var snackbar: QtObject
     {
         property double implicitWidth:              root.dense ? 276 : 344
         property double implicitHeight:             root.dense ? 38 : 48
@@ -991,7 +991,7 @@ QtObject
         property double longDisplayTime:            5000
     } // snackbar
 
-    property var textField: QtObject 
+    property var textField: QtObject
     {
         property double cursorWidth:                root.dense ? 2 : 2
         property double implicitWidth:              root.dense ? 96 : 120
@@ -1014,7 +1014,7 @@ QtObject
         property double backgroundVerticalOffset:   root.dense ? 6 : 8
     } // textField
 
-    property var dialog: QtObject 
+    property var dialog: QtObject
     {
         property double spacing:                    0
         property double padding:                    root.dense ? 2 : 4

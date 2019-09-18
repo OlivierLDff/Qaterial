@@ -1,4 +1,4 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
@@ -16,8 +16,6 @@ Item
         id: _dialogComp
         AlertIconDialog
         {
-            id: _dialog
-
             text: root.settings && root.settings.text ? root.settings.text : ""
             title: root.settings && root.settings.title ? root.settings.title : ""
 
@@ -33,19 +31,19 @@ Item
                 open()
             }
 
-            onAccepted: 
+            onAccepted:
             {
                 if(root.settings && root.settings.acceptedCallback)
                     root.settings.acceptedCallback()
             }
 
-            onApplied: 
+            onApplied:
             {
                 if(root.settings && root.settings.appliedCallback)
                     root.settings.appliedCallback()
             }
 
-            onHelpRequested: 
+            onHelpRequested:
             {
                 if(root.settings && root.settings.helpRequestedCallback)
                     root.settings.helpRequestedCallback()
@@ -54,7 +52,62 @@ Item
             onRejected:
             {
                 if(root.settings && root.settings.rejectedCallback)
-                    root.settings.rejectedCallback()       
+                    root.settings.rejectedCallback()
+            }
+
+            onClosed:
+            {
+                root.settings = null
+                _dialogLoader.sourceComponent = undefined
+            }
+        }
+    }
+
+    Component
+    {
+        id: _textFieldDialogComp
+        TextFieldDialog
+        {
+            text: root.settings && root.settings.text ? root.settings.text : ""
+            title: root.settings && root.settings.title ? root.settings.title : ""
+            textTitle: root.settings && root.settings.textTitle ? root.settings.textTitle : ""
+            placeholderText: root.settings && root.settings.placeholderText ? root.settings.placeholderText : ""
+            helperText: root.settings && root.settings.helperText ? root.settings.helperText : ""
+            validator: root.settings && root.settings.validator ? root.settings.validator : null
+            inputMethodHints: root.settings && root.settings.inputMethodHints ? root.settings.inputMethodHints : Qt.ImhSensitiveData
+            maximumLengthCount: root.settings && root.settings.maximumLengthCount ? root.settings.maximumLengthCount : 32767
+            selectAllText: root.settings && root.settings.selectAllText ? root.settings.selectAllText : false
+
+            Component.onCompleted:
+            {
+                if(root.settings && root.settings.standardButtons)
+                   standardButtons = root.settings.standardButtons
+
+                open()
+            }
+
+            onAccepted:
+            {
+                if(root.settings && root.settings.acceptedCallback)
+                    root.settings.acceptedCallback(text)
+            }
+
+            onApplied:
+            {
+                if(root.settings && root.settings.appliedCallback)
+                    root.settings.appliedCallback()
+            }
+
+            onHelpRequested:
+            {
+                if(root.settings && root.settings.helpRequestedCallback)
+                    root.settings.helpRequestedCallback()
+            }
+
+            onRejected:
+            {
+                if(root.settings && root.settings.rejectedCallback)
+                    root.settings.rejectedCallback()
             }
 
             onClosed:
@@ -71,7 +124,7 @@ Item
     }
 
     property var settings: null
-    
+
     function openWithSettings(dialogManagerSettings)
     {
         // 1) Close if already open
@@ -83,5 +136,18 @@ Item
 
         // 3) Open the dialog
         _dialogLoader.sourceComponent = _dialogComp
+    }
+
+    function openTextField(textFieldDialogSettings)
+    {
+        // 1) Close if already open
+        if(_dialogLoader.sourceComponent)
+            _dialogLoader.sourceComponent = undefined
+
+        // 2) Keep settings in memory
+        settings = textFieldDialogSettings
+
+        // 3) Open the dialog
+        _dialogLoader.sourceComponent = _textFieldDialogComp
     }
 } // Item
