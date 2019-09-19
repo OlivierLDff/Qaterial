@@ -1,4 +1,4 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 // Qt
@@ -11,7 +11,7 @@ import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 import QQuickMaterialHelper.Components 1.12
 
-T.Dialog 
+T.Dialog
 {
     id: control
 
@@ -28,14 +28,14 @@ T.Dialog
     topPadding: MaterialStyle.dialog.topPadding //+ (drawSeparator ? 1 : 0)
     bottomPadding: (drawSeparator ? 1 : (MaterialStyle.dialog.horizontalPadding + 1))
 
-    enter: Transition 
+    enter: Transition
     {
         // grow_fade_in
         NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
         NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 }
     } // Transition
 
-    exit: Transition 
+    exit: Transition
     {
         // shrink_fade_out
         NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
@@ -44,15 +44,16 @@ T.Dialog
 
     property double elevation: MaterialStyle.dialog.elevation
     property color backgroundColor: MaterialStyle.dialogColor
+    property color overlayColor: MaterialStyle.overlayColor
     property bool drawSeparator: false
 
-    background: Rectangle 
+    background: Rectangle
     {
         radius: MaterialStyle.dialog.radius
         color: MaterialStyle.dialogColor
 
         layer.enabled: control.elevation > 0
-        layer.effect: ElevationEffect 
+        layer.effect: ElevationEffect
         {
             elevation: control.elevation
         } // ElevationEffect
@@ -79,7 +80,7 @@ T.Dialog
 
     } // Rectangle
 
-    header: Label 
+    header: Label
     {
         text: control.title
         visible: control.title
@@ -87,7 +88,7 @@ T.Dialog
         padding: MaterialStyle.dialog.horizontalPadding
         bottomPadding: 0
         textType: MaterialStyle.TextType.Title
-        background: Rectangle 
+        background: Rectangle
         {
             radius: MaterialStyle.dialog.radius
             color: control.backgroundColor
@@ -95,21 +96,21 @@ T.Dialog
         }
     }
 
-    footer: DialogButtonBox 
+    footer: DialogButtonBox
     {
         visible: count > 0
         backgroundColor: control.backgroundColor
     } // DialogButtonBox
 
-    T.Overlay.modal: Rectangle 
+    T.Overlay.modal: Rectangle
     {
-        color: MaterialStyle.overlayColor
+        color: control.overlayColor
         Behavior on opacity { NumberAnimation { duration: 150 } }
     }
 
-    T.Overlay.modeless: Rectangle 
+    T.Overlay.modeless: Rectangle
     {
-        color: MaterialStyle.overlayColor
+        color: control.overlayColor
         Behavior on opacity { NumberAnimation { duration: 150 } }
     }
 } // Dialog
