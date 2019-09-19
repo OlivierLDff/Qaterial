@@ -151,4 +151,17 @@ Item
         // 3) Open the dialog
         _dialogLoader.sourceComponent = _textFieldDialogComp
     }
+
+    function openFromComponent(component)
+    {
+        // 1) Close if already open
+        if(_dialogLoader.sourceComponent)
+            _dialogLoader.sourceComponent = undefined
+
+        // 2) Keep settings in memory
+        settings = null
+
+        // 3) Open the dialog
+        _dialogLoader.sourceComponent = component
+    }
 } // Item
