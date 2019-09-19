@@ -126,9 +126,13 @@ import QQuickMaterialHelper.Style 1.12
     {
         if(_snackbarLoader.sourceComponent)
         {
-            settingsArray.push(config)
             if(canBeKilled)
+            {
                 displaySnackbar = false
+                if(settingsArray.length)
+                    settingsArray.length = 0
+            }
+            settingsArray.push(config)
         }
         else
         {
