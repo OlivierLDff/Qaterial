@@ -5,14 +5,10 @@
 
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
 
-// Should be removed
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Material.impl 2.12
-
-import QQuickMaterialHelper.Style 1.12
-import QQuickMaterialHelper.Core 1.12
+import QQuickMaterialHelper.Style 1.12 as MStyle
+import QQuickMaterialHelper.Core 1.12 as MCore
+import QQuickMaterialHelper.Components 1.12 as MComponents
 
 T.Slider
 {
@@ -25,7 +21,11 @@ T.Slider
 
     padding: 6
 
-    handle: SliderHandle
+    property color rippleColor: MStyle.MaterialStyle.rippleColorTheme
+    property color accentColor: MStyle.MaterialStyle.accentColor
+    property color foregroundColor: MStyle.MaterialStyle.hintTextColor()
+
+    handle: MComponents.SliderHandle
     {
         x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.visualPosition * (control.availableHeight - height))
@@ -33,7 +33,9 @@ T.Slider
         handleHasFocus: control.visualFocus
         handlePressed: control.pressed
         handleHovered: control.hovered
-    } // SliderHandle
+        rippleColor: control.rippleColor
+        accentColor: control.accentColor
+    } // MComponents.SliderHandle
 
     background: Rectangle
     {
@@ -43,16 +45,17 @@ T.Slider
         implicitHeight: control.horizontal ? 48 : 200
         width: control.horizontal ? control.availableWidth : 1
         height: control.horizontal ? 1 : control.availableHeight
-        color: control.Material.foreground
+        color: control.foregroundColor
         scale: control.horizontal && control.mirrored ? -1 : 1
 
-        Rectangle {
+        Rectangle
+        {
             x: control.horizontal ? 0 : (parent.width - width) / 2
             y: control.horizontal ? (parent.height - height) / 2 : control.visualPosition * parent.height
             width: control.horizontal ? control.position * parent.width : 3
             height: control.horizontal ? 3 : control.position * parent.height
 
-            color: control.Material.accentColor
-        }
-    }
-}
+            color: control.accentColor
+        } // Rectangle
+    } // Rectangle
+} // Slider

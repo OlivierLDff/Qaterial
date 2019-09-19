@@ -43,7 +43,7 @@
         <!-- STYLES -->
         <file>Style/qmldir</file>
         <file>Style/MaterialStyle.qml</file>
-        
+
 
 
         <!-- COMPONENTS -->
@@ -199,6 +199,10 @@
 
         <!-- COMPONENTS / FADER -->
         <file>Components/Fader.qml</file>
+
+        <!-- COMPONENTS / SLIDERS -->
+        <file>Components/Slider.qml</file>
+        <file>Components/SliderHandle.qml</file>
 
     </qresource>
 </RCC>

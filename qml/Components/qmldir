@@ -49,7 +49,7 @@ ClusturedTabBar             1.12 ClusturedTabBar.qml
 ListDelegateBackground      1.12 ListDelegateBackground.qml
 ListDelegateText            1.12 ListDelegateText.qml
 ListDelegateContent         1.12 ListDelegateContent.qml
-ListSectionTitle       	    1.12 ListSectionTitle.qml
+ListSectionTitle            1.12 ListSectionTitle.qml
 
 ItemDelegate                1.12 ItemDelegate.qml
 
@@ -89,7 +89,7 @@ CardRoundThumbnailTitle     1.12 CardRoundThumbnailTitle.qml
 
 Banner                      1.12 Banner.qml
 Snackbar                    1.12 Snackbar.qml
-SnackbarManager				1.12 SnackbarManager.qml
+SnackbarManager             1.12 SnackbarManager.qml
 
 CursorDelegate              1.12 CursorDelegate.qml
 PlaceholderText             1.12 PlaceholderText.qml
@@ -117,7 +117,7 @@ TextFieldDialog             1.12 TextFieldDialog.qml
 RadioDialog                 1.12 RadioDialog.qml
 RadioDialogDelegate         1.12 RadioDialogDelegate.qml
 
-DialogManager         		1.12 DialogManager.qml
+DialogManager               1.12 DialogManager.qml
 DialogManagerSettings       1.12 DialogManagerSettings.qml
 
 TextFieldDelegate           1.12 TextFieldDelegate.qml
@@ -129,4 +129,6 @@ Drawer                      1.12 Drawer.qml
 
 BusyIndicator               1.12 BusyIndicator.qml
 
-Fader            			1.12 Fader.qml
+Fader                       1.12 Fader.qml
+Slider                      1.12 Slider.qml
+SliderHandle                1.12 SliderHandle.qml
