@@ -132,3 +132,4 @@ BusyIndicator               1.12 BusyIndicator.qml
 Fader                       1.12 Fader.qml
 Slider                      1.12 Slider.qml
 SliderHandle                1.12 SliderHandle.qml
+SliderDelegate              1.12 SliderDelegate.qml

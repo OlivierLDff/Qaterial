@@ -203,6 +203,7 @@
         <!-- COMPONENTS / SLIDERS -->
         <file>Components/Slider.qml</file>
         <file>Components/SliderHandle.qml</file>
+        <file>Components/SliderDelegate.qml</file>
 
     </qresource>
 </RCC>
