@@ -1,8 +1,8 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
- 
+
  // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
@@ -48,25 +48,25 @@ T.Button
     property bool outlined: false
 
     property color foregroundColor: !enabled ? (flat ? MaterialStyle.disabledTextColor() : MaterialStyle.disabledTextColor()) :
-        flat && highlighted ? MaterialStyle.accentColor : 
+        flat && highlighted ? MaterialStyle.accentColor :
         colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
 
-    property color backgroundColor: flat ? ((outlined && pressed) ? MaterialStyle.backgroundColor : "transparent") : 
+    property color backgroundColor: flat ? ((outlined && pressed) ? MaterialStyle.backgroundColor : "transparent") :
         !enabled ? (MaterialStyle.buttonDisabledColor) :
        (highlighted ? MaterialStyle.accentColor : MaterialStyle.buttonColor )
 
-    readonly property int flatRippleColor: onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background 
-    readonly property int rawRippleColor: highlighted ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary 
+    readonly property int flatRippleColor: onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background
+    readonly property int rawRippleColor: highlighted ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary
 
     property color rippleColor: MaterialStyle.rippleColor(accentRipple ? MaterialStyle.RippleBackground.AccentLight : (flat ? flatRippleColor : rawRippleColor))
 
-    property color outlinedColor: outlined ? 
-        (!enabled ? MaterialStyle.disabledDividersColor() : pressed ? foregroundColor : MaterialStyle.dividersColor()) : 
+    property color outlinedColor: outlined ?
+        (!enabled ? MaterialStyle.disabledDividersColor() : pressed ? foregroundColor : MaterialStyle.dividersColor()) :
         "transparent"
 
     property bool onPrimary: false
-    property bool colorReversed: (flat && onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary) || 
-                                (highlighted && MaterialStyle.shouldReverseForegroundOnAccent) || 
+    property bool colorReversed: (flat && onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary) ||
+                                (highlighted && MaterialStyle.shouldReverseForegroundOnAccent) ||
                                 (!flat && !highlighted && MaterialStyle.shouldReverseForegroundOnPrimary)
 
     property double radius: MaterialStyle.rawButton.cornerRadius
@@ -77,12 +77,12 @@ T.Button
 
     property double elevation: flat ? ((control.down || control.hovered) ? MaterialStyle.rawButton.flatPressedElevation : MaterialStyle.rawButton.flatElevation)
                          : (control.down ? MaterialStyle.rawButton.defaultPressedElevation : MaterialStyle.rawButton.defaultElevation)
-    
+
     property bool clipRipple: true
     property bool forceRipple: false
     property bool accentRipple: false
 
-    contentItem: IconLabel 
+    contentItem: IconLabel
     {
         id: _iconLabel
         textType: MaterialStyle.TextType.Button
@@ -96,7 +96,7 @@ T.Button
     property double backgroundImplicitWidth: MaterialStyle.rawButton.minWidth
     property double backgroundImplicitHeight: MaterialStyle.rawButton.minHeight
 
-    background: Rectangle 
+    background: Rectangle
     {
         DebugRectangle
         {
@@ -115,12 +115,12 @@ T.Button
         // Material.background: "transparent" and get a proper flat button without needing
         // to set Material.elevation as well
         layer.enabled: control.enabled && (control.backgroundColor.a > 0)
-        layer.effect: ElevationEffect 
+        layer.effect: ElevationEffect
         {
             elevation: control.elevation
         }
 
-        Ripple 
+        Ripple
         {
             id: ripple
             property bool isActive: control.down || control.visualFocus || control.hovered || control.forceRipple
@@ -133,9 +133,9 @@ T.Button
             color: control.rippleColor
             // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
             layer.enabled: control.clipRipple
-            layer.effect: OpacityMask 
+            layer.effect: OpacityMask
             {
-                maskSource: Rectangle 
+                maskSource: Rectangle
                 {
                     width: ripple.width
                     height: ripple.height

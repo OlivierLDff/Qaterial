@@ -50,7 +50,7 @@ Item
 		anchors.centerIn: parent
 	} // Image
 
-	ColorOverlay 
+	ColorOverlay
 	{
 		source: control
 		anchors.fill: control
