@@ -10,7 +10,7 @@ import QQuickMaterialHelper.Style 1.12
 /**
   * @brief Manager that creates snack bar dinamically
   */
- Item 
+ Item
  {
     id: root
 
@@ -24,11 +24,11 @@ import QQuickMaterialHelper.Style 1.12
     z: Infinity
 
     // Snackbar component that is intentianted
-    Component 
+    Component
     {
         id:_snackbarComp
 
-        Snackbar 
+        Snackbar
         {
             id : _snackbar
             opacity: 0
@@ -38,6 +38,7 @@ import QQuickMaterialHelper.Style 1.12
                 if(root.settings && root.settings.onAccept)
                 {
                     root.settings.onAccept()
+                    goToPendingDestroy()
                     //_snackbarLoader.sourceComponent = null // close snack bar because the user have made his choice
                     // todo
                 }
@@ -46,7 +47,7 @@ import QQuickMaterialHelper.Style 1.12
             text : root.settings && root.settings.text ? root.settings.text : ""
             action: root.settings && root.settings.action ? root.settings.action: ""
 
-            Component.onCompleted: 
+            Component.onCompleted:
             {
                 snackbarTimeout = root.settings.timeout === undefined ? MaterialStyle.snackbar.shortDisplayTime : root.settings.timeout
                 canBeKilled = root.settings.canBeKilled === undefined ? true : root.settings.canBeKilled
@@ -65,11 +66,11 @@ import QQuickMaterialHelper.Style 1.12
             function destroySnackbar()
             {
                 _snackbarLoader.sourceComponent = null
-        
+
                 if(root.settings && root.settings.onClose)
                     root.settings.onClose()
-        
-                root.popSnackBar() // to know if other snack bar is required                 
+
+                root.popSnackBar() // to know if other snack bar is required
             }
 
             Connections
@@ -98,11 +99,11 @@ import QQuickMaterialHelper.Style 1.12
 
             property real fadeDuration: 150
 
-            Behavior on opacity 
+            Behavior on opacity
             {
-                NumberAnimation 
-                { 
-                    duration: fadeDuration 
+                NumberAnimation
+                {
+                    duration: fadeDuration
                     easing.type: Easing.OutQuad
                 }
             }
@@ -121,7 +122,7 @@ import QQuickMaterialHelper.Style 1.12
     property var settingsArray : []
 
     //Show a snackbar prepared in paramters
-    function show(config) 
+    function show(config)
     {
         if(_snackbarLoader.sourceComponent)
         {
@@ -137,7 +138,7 @@ import QQuickMaterialHelper.Style 1.12
         }
     }
 
-    // function to load the next snack bar recorded before  
+    // function to load the next snack bar recorded before
     function popSnackBar()
     {
         if (settingsCurrent = settingsArray.shift())
