@@ -41,8 +41,8 @@ T.Slider
     {
         x: control.leftPadding + (control.horizontal ? 0 : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : 0)
-        implicitWidth: control.horizontal ? 200 : 48
-        implicitHeight: control.horizontal ? 48 : 200
+        implicitWidth: control.horizontal ? 200 : 34
+        implicitHeight: control.horizontal ? 34 : 200
         width: control.horizontal ? control.availableWidth : 1
         height: control.horizontal ? 1 : control.availableHeight
         color: control.foregroundColor
