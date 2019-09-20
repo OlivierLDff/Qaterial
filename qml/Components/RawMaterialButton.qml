@@ -123,13 +123,12 @@ T.Button
         Ripple
         {
             id: ripple
-            property bool isActive: control.down || control.visualFocus || control.hovered || control.forceRipple
             width: parent.width + (control.outlined ? -2 : 0)
             height: parent.height + (control.outlined ? -2 : 0)
             anchors.centerIn: parent
             pressed: control.pressed
             anchor: control
-            active: isActive
+            active: control.down || control.visualFocus || control.hovered || control.forceRipple
             color: control.rippleColor
             // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
             layer.enabled: control.clipRipple

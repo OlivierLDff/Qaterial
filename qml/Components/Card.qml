@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
@@ -17,12 +17,15 @@ Pane
     property bool onPrimary: false
     property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
 
-    property alias radius: _cardBackground.radius
+    radius: MaterialStyle.card.radius
 
-    property alias backgroundColor: _cardBackground.color
-    property alias outlinedColor: _cardBackground.borderColor
-    property alias outlined: _cardBackground.outlined
-    property alias isActive: _cardBackground.isActive
+    property color backgroundColor: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.cardColor
+    property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
+    property bool outlined: false
+
+    property double elevation: isActive ? MaterialStyle.card.activeElevation : (outlined ? 0 : MaterialStyle.card.defaultElevation)
+
+    property bool isActive: (elevationOnHovered && hovered) || pressed || visualFocus
 
     property string headerText
     property string subHeaderText
@@ -36,8 +39,13 @@ Pane
     background: CardBackground
     {
         id: _cardBackground
-        isActive: (control.elevationOnHovered && control.hovered) || control.pressed || control.visualFocus
+        isActive: control.isActive
         onPrimary: control.onPrimary
         enabled: control.enabled
+        radius: control.radius
+        color: control.backgroundColor
+        borderColor: control.borderColor
+        outlined: control.outlined
+        elevation: control.elevation
     } // Rectangle
 }
