@@ -33,6 +33,7 @@ T.Button
     }
 
     property alias textType: _iconLabel.textType
+    property int elide: Text.ElideNone
 
     topInset: MaterialStyle.rawButton.topInset
     bottomInset: MaterialStyle.rawButton.bottomInset
@@ -91,6 +92,8 @@ T.Button
         icon: control.icon
         text: control.text
         color: control.foregroundColor
+
+        elide: control.elide
     } // IconLabel
 
     property double backgroundImplicitWidth: MaterialStyle.rawButton.minWidth

@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 // Qt
@@ -39,8 +39,8 @@ Item
 
     implicitWidth: iconOnTop ? Math.max(iconWidth, labelWidth) :
                     iconWidth + labelWidth + spacing
-    implicitHeight: iconOnTop ? iconHeight + labelHeight : 
-                    Math.max(iconHeight, labelHeight) 
+    implicitHeight: iconOnTop ? iconHeight + labelHeight :
+                    Math.max(iconHeight, labelHeight)
 
     property bool drawline: MaterialStyle.debug.drawDebugIconLabel
 
@@ -71,7 +71,7 @@ Item
             iconSize: Math.max(width, height)
             color: control.icon.color
 
-            anchors.centerIn: parent        
+            anchors.centerIn: parent
         } // ColorIcon
 
         DebugRectangle
@@ -121,7 +121,7 @@ Item
         readonly property bool iconOnRight: !control.iconOnTop && control.mirrored && _icon.visible
 
         anchors.left: iconOnLeft ? _iconItem.right : control.left
-        anchors.right: iconOnRight ? _iconItem.left : control.right 
+        anchors.right: iconOnRight ? _iconItem.left : control.right
 
         anchors.leftMargin: iconOnLeft ? control.spacing : control.anchors.leftMargin
         anchors.rightMargin: iconOnRight ? control.spacing : control.anchors.rightMargin
@@ -149,7 +149,7 @@ Item
     function reanchors()
     {
         _label.reanchors()
-        _iconItem.reanchors()        
+        _iconItem.reanchors()
     }
 
     Component.onCompleted: reanchors()

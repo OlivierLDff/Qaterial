@@ -9,7 +9,7 @@
 // Qt Header
 #include <QCoreApplication>
 
-// Dependancies Header
+// Dependencies Header
 
 // Application Header
 #include <QQuickMaterialHelper.hpp>
