@@ -20,5 +20,5 @@ RoundButton
     backgroundImplicitHeight: MaterialStyle.toolButton.appBarButtonHeight
 
     foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
-                    colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
+                    highlighted ? MaterialStyle.accentColor : (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor())
 } // RoundButton
