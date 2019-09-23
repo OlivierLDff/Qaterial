@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
@@ -50,8 +50,8 @@ T.MenuItem
 
     property bool outlined: false
 
-    property color foregroundColor: enabled ? (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) : 
-                                    (colorReversed ? MaterialStyle.hintTextColorReversed() : hintTextColor.primaryTextColor())
+    property color foregroundColor: enabled ? (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) :
+                                    (colorReversed ? MaterialStyle.hintTextColorReversed() : MaterialStyle.hintTextColor())
 
     property color backgroundColor: "transparent"
 
@@ -65,12 +65,12 @@ T.MenuItem
     icon.width: MaterialStyle.menuItem.iconWidth
     icon.height: MaterialStyle.menuItem.iconWidth
     icon.color: foregroundColor
-    
+
     property bool clipRipple: true
     property bool forceRipple: false
     property bool accentRipple: false
 
-    indicator: Label 
+    indicator: Label
     {
         x: control.mirrored ? control.leftPadding : control.width - width - control.rightPadding
         y: control.topPadding + (control.availableHeight - height) / 2
@@ -92,7 +92,7 @@ T.MenuItem
         }
     } // Label
 
-    arrow: ColorIcon 
+    arrow: ColorIcon
     {
         x: control.mirrored ? control.padding : control.width - width - control.padding
         y: control.topPadding + (control.availableHeight - height) / 2
@@ -111,9 +111,9 @@ T.MenuItem
         readonly property url source: "qrc:/QQuickMaterialHelper/Components/images/check.svg"
     }
 
-    contentItem: IconLabel 
+    contentItem: IconLabel
     {
-        id: _iconLabel     
+        id: _iconLabel
 
         readonly property real arrowPadding: control.subMenu && control.arrow ? control.arrow.width + control.spacing : 0
         readonly property real indicatorPadding: control.indicator && control.indicator.visible ? control.indicator.width + control.spacing : 0
@@ -137,7 +137,7 @@ T.MenuItem
     property double backgroundImplicitWidth: MaterialStyle.menuItem.minWidth
     property double backgroundImplicitHeight: MaterialStyle.menuItem.minHeight
 
-    background: Rectangle 
+    background: Rectangle
     {
         DebugRectangle
         {
@@ -151,7 +151,7 @@ T.MenuItem
         radius: control.radius
         color: control.backgroundColor
 
-        Ripple 
+        Ripple
         {
             id: ripple
             property bool isActive: control.down || control.visualFocus || control.hovered || control.forceRipple
@@ -164,9 +164,9 @@ T.MenuItem
             color: control.rippleColor
             // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
             layer.enabled: control.clipRipple
-            layer.effect: OpacityMask 
+            layer.effect: OpacityMask
             {
-                maskSource: Rectangle 
+                maskSource: Rectangle
                 {
                     width: ripple.width
                     height: ripple.height

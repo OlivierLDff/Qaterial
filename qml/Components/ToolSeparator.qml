@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
@@ -10,7 +10,7 @@ import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 
-T.ToolSeparator 
+T.ToolSeparator
 {
     id: control
 
@@ -40,7 +40,7 @@ T.ToolSeparator
         visible: control.drawline
     }
 
-    contentItem: Rectangle 
+    contentItem: Rectangle
     {
         implicitWidth: vertical ? 1 : MaterialStyle.toolButton.separatorImplicitWidth
         implicitHeight: vertical ? MaterialStyle.toolButton.separatorImplicitWidth : 1

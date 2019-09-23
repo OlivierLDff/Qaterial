@@ -1,6 +1,6 @@
-/** 
- * Copyright (C) Olivier Le Doeuff 2019 
- * Contact: olivier.ldff@gmail.com 
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
  */
 
 import QtQuick 2.12
@@ -10,7 +10,7 @@ import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Style 1.12
 import QQuickMaterialHelper.Core 1.12
 
-T.MenuSeparator 
+T.MenuSeparator
 {
     id: control
 
@@ -44,7 +44,7 @@ T.MenuSeparator
         visible: control.drawline
     } // DebugRectangle
 
-    contentItem: Rectangle 
+    contentItem: Rectangle
     {
         implicitWidth: control.separatorImplicitWidth
         implicitHeight: 1
@@ -56,6 +56,6 @@ T.MenuSeparator
             border.color: "red"
             visible: control.drawline
         } // DebugRectangle
-    
+
     } // Rectangle
 } // MenuSeparator
