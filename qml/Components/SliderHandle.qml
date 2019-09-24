@@ -14,6 +14,8 @@ Item
     implicitWidth: initialSize
     implicitHeight: initialSize
 
+    property bool enabled
+
     property real value: 0
     property bool handleHasFocus: false
     property bool handlePressed: false
@@ -22,6 +24,7 @@ Item
 
     property color rippleColor: MStyle.MaterialStyle.rippleColorTheme
     property color accentColor: MStyle.MaterialStyle.accentColor
+    property color disabledColor: MStyle.MaterialStyle.disabledTextColor()
 
     Rectangle
     {
@@ -29,7 +32,7 @@ Item
         width: parent.width
         height: parent.height
         radius: width / 2
-        color: root.accentColor
+        color: root.enabled ? root.accentColor : root.disabledColor
         scale: root.handlePressed ? 1.5 : 1
 
         Behavior on scale {

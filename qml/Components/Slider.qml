@@ -24,7 +24,8 @@ T.Slider
     property color rippleColor: MStyle.MaterialStyle.rippleColorTheme
     property color accentColor: MStyle.MaterialStyle.accentColor
     property color foregroundColor: MStyle.MaterialStyle.hintTextColor()
-
+    property color disabledColor: MStyle.MaterialStyle.disabledTextColor()
+    property color backgroundDisabledColor: MStyle.MaterialStyle.disabledDividersColor()
     handle: MComponents.SliderHandle
     {
         x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
@@ -35,6 +36,8 @@ T.Slider
         handleHovered: control.hovered
         rippleColor: control.rippleColor
         accentColor: control.accentColor
+        disabledColor: control.disabledColor
+        enabled: control.enabled
     } // MComponents.SliderHandle
 
     background: Rectangle
@@ -45,7 +48,7 @@ T.Slider
         implicitHeight: control.horizontal ? 34 : 200
         width: control.horizontal ? control.availableWidth : 1
         height: control.horizontal ? 1 : control.availableHeight
-        color: control.foregroundColor
+        color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
         scale: control.horizontal && control.mirrored ? -1 : 1
 
         Rectangle
@@ -55,7 +58,7 @@ T.Slider
             width: control.horizontal ? control.position * parent.width : 3
             height: control.horizontal ? 3 : control.position * parent.height
 
-            color: control.accentColor
+            color: control.enabled ? control.accentColor : control.disabledColor
         } // Rectangle
     } // Rectangle
 } // Slider
