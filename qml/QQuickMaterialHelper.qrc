@@ -168,6 +168,7 @@
         <file>Components/RadioDialogDelegate.qml</file>
         <file>Components/DialogManager.qml</file>
         <file>Components/DialogManagerSettings.qml</file>
+        <file>Components/BusyIndicatorDialog.qml</file>
 
         <!-- COMPONENTS / TEXT FIELD -->
         <file>Components/CursorDelegate.qml</file>

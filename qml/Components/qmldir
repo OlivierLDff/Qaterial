@@ -117,8 +117,11 @@ TextFieldDialog             1.12 TextFieldDialog.qml
 RadioDialog                 1.12 RadioDialog.qml
 RadioDialogDelegate         1.12 RadioDialogDelegate.qml
 
+BusyIndicatorDialog         1.12 BusyIndicatorDialog.qml
+
 DialogManager               1.12 DialogManager.qml
 DialogManagerSettings       1.12 DialogManagerSettings.qml
+
 
 TextFieldDelegate           1.12 TextFieldDelegate.qml
 

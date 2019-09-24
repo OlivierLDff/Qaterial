@@ -119,6 +119,16 @@ Item
         }
     }
 
+    Component
+    {
+        id: _busyIndicatorDialogComp
+        BusyIndicatorDialog
+        {
+            text: root.settings && root.settings.text ? root.settings.text : ""
+            Component.onCompleted: open()
+        }
+    }
+
     Loader
     {
         id: _dialogLoader
@@ -150,6 +160,25 @@ Item
 
         // 3) Open the dialog
         _dialogLoader.sourceComponent = _textFieldDialogComp
+    }
+
+    function openBusyIndicator(busyIndicatorDialogSettings)
+    {
+        // 1) Close if already open
+        if(_dialogLoader.sourceComponent)
+            _dialogLoader.sourceComponent = undefined
+
+        // 2) Keep settings in memory
+        settings = busyIndicatorDialogSettings
+
+        // 3) Open the dialog
+        _dialogLoader.sourceComponent = _busyIndicatorDialogComp
+    }
+
+    function closeBusyIndicator()
+    {
+        if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
+            _dialogLoader.sourceComponent = undefined
     }
 
     function openFromComponent(component)
