@@ -1,4 +1,4 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
@@ -29,4 +29,4 @@ ItemDelegate
     }
 
     onClicked: _radioDialog.open()
-} 
+}

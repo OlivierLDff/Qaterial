@@ -1,4 +1,4 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
@@ -7,14 +7,26 @@ import QtQuick.Controls 2.12
 import QQuickMaterialHelper.Components 1.12
 import QQuickMaterialHelper.Style 1.12
 
-ModalDialog 
+ModalDialog
 {
     id: root
 
-    property alias model: _list.model
-    property alias currentIndex: _list.currentIndex
+    property var model: null
+    property var currentIndex: null
 
-    property alias delegate: _list.delegate
+    property var delegate: defaultDelegate
+    readonly property var defaultDelegate: _defaultDelegate
+
+    Component
+    {
+        id: _defaultDelegate
+        RadioDialogDelegate
+        {
+            text: model.text ? model.text : ""
+            secondaryText: model.secondaryText ? model.secondaryText : ""
+        }
+    }
+
     horizontalPadding: 0
     bottomPadding: 1
     drawSeparator: _list.height < _list.contentHeight
@@ -28,11 +40,14 @@ ModalDialog
         interactive: contentHeight > height
         id: _list
         clip: true
-        delegate: RadioDialogDelegate
+        model: root.model
+        delegate: root.delegate
+        currentIndex: root.currentIndex
+
+        onCurrentIndexChanged:
         {
-            text: model.text ? model.text : ""
-            secondaryText: model.secondaryText ? model.secondaryText : ""
-            width: parent.width // Not necessary if it stay inside RadioDialogDelegate.qml ?
+            if(root.currentIndex !== currentIndex)
+                root.currentIndex = currentIndex
         }
-    }   
+    }
 }

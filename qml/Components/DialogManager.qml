@@ -129,6 +129,59 @@ Item
         }
     }
 
+    Component
+    {
+        id: _radioListViewComp
+        RadioDialog
+        {
+            title: root.settings && root.settings.title ? root.settings.title : ""
+            currentIndex: root.settings && root.settings.currentIndex ? root.settings.currentIndex : -1
+            model: root.settings && root.settings.model ? root.settings.model : null
+            delegate: root.settings && root.settings.delegate ? root.settings.delegate : defaultDelegate
+
+            Component.onCompleted:
+            {
+                if(root.settings && root.settings.standardButtons)
+                   standardButtons = root.settings.standardButtons
+
+                if(!model)
+                    console.log("Error : RadioListViewDialog : model is null on open")
+
+                open()
+            }
+
+            onAccepted:
+            {
+                if(root.settings && root.settings.acceptedCallback)
+                    root.settings.acceptedCallback(currentIndex)
+            }
+
+            onApplied:
+            {
+                if(root.settings && root.settings.appliedCallback)
+                    root.settings.appliedCallback()
+            }
+
+            onHelpRequested:
+            {
+                if(root.settings && root.settings.helpRequestedCallback)
+                    root.settings.helpRequestedCallback()
+            }
+
+            onRejected:
+            {
+                if(root.settings && root.settings.rejectedCallback)
+                    root.settings.rejectedCallback()
+            }
+
+            onClosed:
+            {
+                root.settings = null
+                _dialogLoader.sourceComponent = undefined
+            }
+        }
+    }
+
     Loader
     {
         id: _dialogLoader
@@ -179,6 +232,19 @@ Item
     {
         if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
             _dialogLoader.sourceComponent = undefined
+    }
+
+    function openRadioListView(radioListViewDialogSettings)
+    {
+        // 1) Close if already open
+        if(_dialogLoader.sourceComponent)
+            _dialogLoader.sourceComponent = undefined
+
+        // 2) Keep settings in memory
+        settings = radioListViewDialogSettings
+
+        // 3) Open the dialog
+        _dialogLoader.sourceComponent = _radioListViewComp
     }
 
     function openFromComponent(component)
