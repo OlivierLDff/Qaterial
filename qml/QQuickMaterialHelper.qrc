@@ -72,6 +72,7 @@
         <file>Components/ScrollIndicator.qml</file>
         <file>Components/ScrollView.qml</file>
         <file>Components/SwipeView.qml</file>
+        <file>Components/DoublePage.qml</file>
 
         <!-- COMPONENTS / CARDS -->
         <file>Components/Card.qml</file>

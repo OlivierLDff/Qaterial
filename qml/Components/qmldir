@@ -77,6 +77,7 @@ Frame                       1.12 Frame.qml
 GroupBox                    1.12 GroupBox.qml
 ScrollBar                   1.12 ScrollBar.qml
 ScrollIndicator             1.12 ScrollIndicator.qml
+DoublePage                  1.12 DoublePage.qml
 
 Card                        1.12 Card.qml
 OutlinedCard                1.12 OutlinedCard.qml
