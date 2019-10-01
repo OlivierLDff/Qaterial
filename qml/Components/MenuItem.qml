@@ -40,8 +40,6 @@ T.MenuItem
     leftInset: MaterialStyle.menuItem.leftInset
     rightInset: MaterialStyle.menuItem.rightInset
 
-    //property alias textType: _iconLabel.textType
-
     leftPadding: (icon.source != "" && !mirrored || text == "" ? MaterialStyle.menuItem.iconPadding : MaterialStyle.menuItem.padding) + leftInset
     rightPadding: (icon.source != "" && mirrored || text == "" ? MaterialStyle.menuItem.iconPadding : MaterialStyle.menuItem.padding) + rightInset
     topPadding: 0

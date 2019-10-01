@@ -26,11 +26,11 @@ Page
     /// Are we on a small screen and we need to use a stack view to hold each page. Or on wide screen and the two*
     /// pages can appear on the side of each one
     readonly property bool useStackView: width < (firstPageWidth + secondPageWidth)
-    onUseStackViewChanged: pushOrPop()
+    onUseStackViewChanged: Qt.callLater(pushOrPop)
 
     /// Should be bind to the property that say that second page is active
     property bool secondPageActive: false
-    onSecondPageActiveChanged: pushOrPop()
+    onSecondPageActiveChanged: Qt.callLater(pushOrPop)
 
     /// Hold the first page component. This component is either full screen or is firstPageWidth
     property var firstPage: null
@@ -39,7 +39,7 @@ Page
     /// first page
     property var secondPage: null
 
-    readonly property bool secondPagePushed: _localStackView.depth > 1
+    property bool secondPagePushed: false
 
     /// Called when a back shortcut is pressed.
     /// You should call this from your header back app button
@@ -48,6 +48,8 @@ Page
     {
         if(secondPagePushed)
         {
+            secondPagePushed = false
+            console.log("Debug (DoublePage.qml) : Pop Second Page")
             _localStackView.pop()
             return true
         }
@@ -57,13 +59,27 @@ Page
     /// Push or pop the second page depending on useStackView and secondPageActive
     function pushOrPop()
     {
+        if(_localStackView.depth === 0)
+        {
+            console.log("Debug (DoublePage.qml) : Call later push or pop")
+            Qt.callLater(pushOrPop)
+            return
+        }
         if(useStackView && secondPageActive)
         {
             if(!secondPagePushed)
+            {
+                secondPagePushed = true
+                console.log("Debug (DoublePage.qml) : Push Second Page, depth: " + _localStackView.depth)
                 _localStackView.push(secondPage)
+            }
         }
         else if(secondPagePushed)
+        {
+            secondPagePushed = false
+            console.log("Debug (DoublePage.qml) : Pop Second Page")
             _localStackView.pop()
+        }
     }
 
     /// StackView that contain the first page and push the second page if needed
