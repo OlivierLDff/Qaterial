@@ -41,8 +41,6 @@ QC2.Control
     leftPadding: MStyle.MaterialStyle.card.verticalPadding
     rightPadding: MStyle.MaterialStyle.card.verticalPadding
 
-
-
     contentItem: Q.Item
     {
         implicitHeight: _textLabel.implicitHeight
