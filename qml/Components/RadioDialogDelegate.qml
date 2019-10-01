@@ -1,4 +1,4 @@
-/** Copyright (C) Olivier Le Doeuff 2019 
+/** Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com */
 
 import QtQuick 2.12
@@ -10,7 +10,7 @@ import QQuickMaterialHelper.Style 1.12
 RadioDelegate
 {
     onClicked: ListView.view.currentIndex = index
-    checked: ListView.view.currentIndex === index
+    checked: ListView.isCurrentItem
     backgroundColor: MaterialStyle.dialogColor
     indicatorSpacing: MaterialStyle.dialog.indicatorSpacing
     alignTextRight: true

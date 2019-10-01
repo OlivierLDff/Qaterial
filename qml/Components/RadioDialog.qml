@@ -12,7 +12,7 @@ ModalDialog
     id: root
 
     property var model: null
-    property var currentIndex: null
+    property int currentIndex: 0
 
     property var delegate: defaultDelegate
     readonly property var defaultDelegate: _defaultDelegate
@@ -42,6 +42,7 @@ ModalDialog
         clip: true
         model: root.model
         delegate: root.delegate
+        highlightFollowsCurrentItem: true
         currentIndex: root.currentIndex
 
         onCurrentIndexChanged:

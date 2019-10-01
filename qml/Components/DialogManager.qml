@@ -135,7 +135,7 @@ Item
         RadioDialog
         {
             title: root.settings && root.settings.title ? root.settings.title : ""
-            currentIndex: root.settings && root.settings.currentIndex ? root.settings.currentIndex : -1
+            currentIndex: root.settings && root.settings.currentIndex !== undefined ? root.settings.currentIndex : -1
             model: root.settings && root.settings.model ? root.settings.model : null
             delegate: root.settings && root.settings.delegate ? root.settings.delegate : defaultDelegate
 
