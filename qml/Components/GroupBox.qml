@@ -33,7 +33,7 @@ T.GroupBox
     property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
     property alias radius: _rect.radius
 
-    property alias titleType: _label.textType
+    property int textType: MaterialStyle.TextType.Overline
 
     property bool inlineTitle: false
 
@@ -44,7 +44,7 @@ T.GroupBox
         width: control.availableWidth - x
 
         text: control.title
-        textType: MaterialStyle.TextType.Overline
+        textType: control.textType
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
         elide: Text.ElideRight
@@ -56,10 +56,10 @@ T.GroupBox
     background: Rectangle
     {
         id: _rect
-        y: control.inlineTitle ? _label.implicitHeight/2 : (control.topPadding - control.bottomPadding)
+        y: control.inlineTitle ? label.implicitHeight/2 : (control.topPadding - control.bottomPadding)
         implicitWidth: 200
         width: parent.width
-        height: parent.height + (control.inlineTitle ? (-_label.implicitHeight/2) : (-control.topPadding + control.bottomPadding))
+        height: parent.height + (control.inlineTitle ? (-label.implicitHeight/2) : (-control.topPadding + control.bottomPadding))
         radius: MaterialStyle.card.radius
         color: control.inlineTitle ? "transparent" : control.color
         border.color: control.borderColor
@@ -75,8 +75,8 @@ T.GroupBox
                 height: _rect.height
                 Rectangle
                 {
-                    width: _label.contentWidth + control.verticalPadding*2
-                    height: _label.implicitHeight
+                    width: label.contentWidth + control.verticalPadding*2
+                    height: label.implicitHeight
                     x: control.leftPadding
                     y: -height/2
                 } // Rectangle
