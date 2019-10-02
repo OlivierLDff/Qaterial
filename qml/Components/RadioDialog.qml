@@ -33,7 +33,7 @@ ModalDialog
     property double maxHeight: MaterialStyle.dialog.maxHeight
 
     standardButtons: Dialog.Ok | Dialog.Cancel
-    contentItem:ListView
+    contentItem: ListView
     {
         implicitHeight: Math.min(root.maxHeight, _list.contentHeight)
         //height: 200

@@ -90,7 +90,7 @@ Item
             onAccepted:
             {
                 if(root.settings && root.settings.acceptedCallback)
-                    root.settings.acceptedCallback(text)
+                    root.settings.acceptedCallback(text, acceptableInput)
             }
 
             onApplied:
