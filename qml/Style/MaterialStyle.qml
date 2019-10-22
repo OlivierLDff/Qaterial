@@ -155,7 +155,7 @@ QtObject
     property color paneColor:                       Qt.lighter(backgroundColor, 1.375)
     property color overlayColor:                    Qt.rgba(backgroundColorDark.r, backgroundColorDark.g, backgroundColorDark.b, 0.6)
     property color snackbarColorLight:              "#323232"
-    property color snackbarColorDark:               "#E0FFFFFF"
+    property color snackbarColorDark:               "#F0F0F0"
     property color snackbarTextColorLight:          Qt.rgba(textColorDark.r, textColorDark.g, textColorDark.b, primaryTextColorRatioLight)
     property color snackbarTextColorDark:           primaryTextColorLight
     function snackbarColor()                        { return theme === MaterialStyle.Theme.Light ? snackbarColorLight          : snackbarColorDark     }
