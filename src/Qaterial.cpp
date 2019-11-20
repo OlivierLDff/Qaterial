@@ -32,7 +32,7 @@ static QObject* registerVersionSingleton(QQmlEngine* engine, QJSEngine* scriptEn
 //					FUNCTIONS
 // ─────────────────────────────────────────────────────────────
 
-static const char* _defaultUri = "Qaterial";
+static const char* _defaultUri = "Qaterial.Impl";
 static const char** _uri = &_defaultUri;
 static void registerTypes()
 {
@@ -84,7 +84,7 @@ QString Helper::version()
 {
 	return QString::number(major()) + "." +
 		QString::number(minor()) + "." +
-		QString::number(tag()) + "." +
+		QString::number(patch()) + "." +
 		QString::number(tag(),16);
 }
 
