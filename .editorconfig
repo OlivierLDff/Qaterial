@@ -1,0 +1,26 @@
+root=true
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line=lf
+insert_final_newline=true
+
+# ReSharper properties
+resharper_enforce_line_ending_style=true
+resharper_use_indent_from_vs=false
+
+[{qmldir}]
+indent_style=space
+indent_size=4
+trim_trailing_whitespace=true
+insert_final_newline=true
+
+[*.{appxmanifest,build,c,c++,cc,config,cp,cpp,csproj,cu,cuh,cxx,dbml,discomap,dtd,h,hh,hpp,hxx,inc,inl,ino,ipp,jsproj,lsproj,mpp,njsproj,nuspec,proj,props,proto,resw,resx,StyleCop,targets,tasks,tpp,vbproj,xaml,xamlx,xml,xoml,xsd,qml,txt,qrc}]
+indent_style=space
+indent_size=4
+tab_width=4
+trim_trailing_whitespace=true
+insert_final_newline=true

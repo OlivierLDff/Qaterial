@@ -1,9 +1,0 @@
-module QQuickMaterialHelper.Core
-
-ColorIcon              			1.12 ColorIcon.qml
-IconLabel              			1.12 IconLabel.qml
-Ripple                 			1.12 Ripple.qml
-ElevationEffect        			1.12 ElevationEffect.qml
-DebugRectangle         			1.12 DebugRectangle.qml
-RoundImage             			1.12 RoundImage.qml
-ErrorSequentialAnimation        1.12 ErrorSequentialAnimation.qml
