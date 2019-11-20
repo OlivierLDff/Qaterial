@@ -22,7 +22,7 @@ Item
         elide: Text.ElideRight
         maximumLineCount: 2
         verticalAlignment: Text.AlignVCenter
-        textType: MaterialStyle.TextType.ListSecText
+        textType: Style.TextType.ListSecText
         anchors.fill: parent
     }
 }

@@ -15,16 +15,16 @@ T.Label
 {
     id: control
 
-    color: enabled ? (colorReversed ? MaterialStyle.textTypeToColorReversed(textType) : MaterialStyle.textTypeToColor(textType)) : MaterialStyle.hintTextColor()
-    linkColor: MaterialStyle.accentColor
+    color: enabled ? (colorReversed ? Style.textTypeToColorReversed(textType) : Style.textTypeToColor(textType)) : Style.hintTextColor()
+    linkColor: Style.accentColor
 
-    property int textType: MaterialStyle.TextType.Body1
+    property int textType: Style.TextType.Body1
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
-    property bool usePixelSize: MaterialStyle.usePixelSize
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+    property bool usePixelSize: Style.usePixelSize
 
-    property double pixelSize: MaterialStyle.textTypeToPixelSize(textType)
-    property double pointSize: MaterialStyle.textTypeToPointSize(textType)
+    property double pixelSize: Style.textTypeToPixelSize(textType)
+    property double pointSize: Style.textTypeToPointSize(textType)
 
     Binding on font.pixelSize
     {
@@ -38,8 +38,8 @@ T.Label
         value: control.pointSize
     }
 
-    font.family: MaterialStyle.textTypeToFontFamily(textType)
-    font.styleName: MaterialStyle.textTypeToStyleName(textType)
-    font.capitalization: MaterialStyle.fontCapitalization(textType)
-    font.letterSpacing: MaterialStyle.textTypeToLetterSpacing(textType)
+    font.family: Style.textTypeToFontFamily(textType)
+    font.styleName: Style.textTypeToStyleName(textType)
+    font.capitalization: Style.fontCapitalization(textType)
+    font.letterSpacing: Style.textTypeToLetterSpacing(textType)
 } // Label

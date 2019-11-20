@@ -18,6 +18,9 @@
         <file>CheckableListView.qml</file>
         <file>CheckableListViewDelegate.qml</file>
 
+        <file>SplitView.qml</file>
+        <file>StackView.qml</file>
+
         <!-- FONTS -->
 
         <file>RobotoFontLoader.qml</file>
@@ -36,6 +39,7 @@
 
         <!-- STYLES -->
         <file>Style.qml</file>
+        <file>StyleSettingsDialog.qml</file>
 
         <!-- COMPONENTS -->
         <file>Images/menu-down.svg</file>

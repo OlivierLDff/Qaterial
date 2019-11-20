@@ -29,7 +29,7 @@ Rectangle
     property double bottomPadding: padding
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     readonly property int lines: (secondaryText != "" ? _info.lineCount : 0) + 1
     property int elide: mirrored ? Text.ElideLeft : Text.ElideRight
@@ -42,9 +42,9 @@ Rectangle
         visible: control.drawline
     } // DebugRectangle
 
-    // MaterialStyle.DelegateType.Default | MaterialStyle.DelegateType.Overline | MaterialStyle.DelegateType.Icon
-    // MaterialStyle.DelegateType.Round | MaterialStyle.DelegateType.Square | MaterialStyle.DelegateType.Large
-    property int type: MaterialStyle.DelegateType.Default
+    // Style.DelegateType.Default | Style.DelegateType.Overline | Style.DelegateType.Icon
+    // Style.DelegateType.Round | Style.DelegateType.Square | Style.DelegateType.Large
+    property int type: Style.DelegateType.Default
 
     color: "transparent"
     implicitHeight: _info.visible ? (_info.y + _info.implicitHeight) : (_text.implicitHeight)
@@ -66,7 +66,7 @@ Rectangle
         id: _overline
         visible : text != ""
         enabled: control.enabled
-        textType: MaterialStyle.TextType.Overline
+        textType: Style.TextType.Overline
         elide: control.elide
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
@@ -74,7 +74,7 @@ Rectangle
         horizontalAlignment: control.textAligment
 
         anchors.baseline: control.top
-        anchors.baselineOffset: MaterialStyle.delegate.baselineOffsetOverline(control.lines)
+        anchors.baselineOffset: Style.delegate.baselineOffsetOverline(control.lines)
         anchors.left: control.left
         anchors.right: control.right
         anchors.leftMargin: control.leftPadding
@@ -93,7 +93,7 @@ Rectangle
         id: _text
         visible : text != ""
         enabled: control.enabled
-        textType: MaterialStyle.TextType.ListText
+        textType: Style.TextType.ListText
         elide: control.elide
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
@@ -103,7 +103,7 @@ Rectangle
         readonly property bool centerBaseline: control.secondaryText != "" || control.overlineText != ""
 
         anchors.verticalCenter: control.verticalCenter
-        anchors.baselineOffset: centerBaseline ? MaterialStyle.delegate.baselineOffsetText(control.type, control.lines) : 0
+        anchors.baselineOffset: centerBaseline ? Style.delegate.baselineOffsetText(control.type, control.lines) : 0
         anchors.left: control.left
         anchors.right: control.right
         anchors.leftMargin: control.leftPadding
@@ -133,7 +133,7 @@ Rectangle
         id: _info
         visible : text != ""
         enabled: control.enabled
-        textType: MaterialStyle.TextType.ListSecText
+        textType: Style.TextType.ListSecText
         elide: control.elide
         maximumLineCount: 2
         onPrimary: control.onPrimary
@@ -143,7 +143,7 @@ Rectangle
         horizontalAlignment: control.textAligment
 
         anchors.baseline: control.top
-        anchors.baselineOffset: MaterialStyle.delegate.baselineOffsetSecText(control.type, lineCount + 1)
+        anchors.baselineOffset: Style.delegate.baselineOffsetSecText(control.type, lineCount + 1)
 
         anchors.left: control.left
         anchors.right: control.right

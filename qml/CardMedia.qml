@@ -13,12 +13,12 @@ import Qaterial 1.0
 Image
 {
     id: control
-    height: MaterialStyle.card.mediaImplicitHeight
-    width: MaterialStyle.card.mediaImplicitWidth
+    height: Style.card.mediaImplicitHeight
+    width: Style.card.mediaImplicitWidth
     fillMode: Image.PreserveAspectCrop
 
     property bool clipTop: false
-    property double radius: MaterialStyle.card.radius
+    property double radius: Style.card.radius
 
     layer.enabled: clipTop
     layer.effect: OpacityMask

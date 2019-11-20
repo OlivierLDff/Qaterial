@@ -27,7 +27,7 @@ T.ScrollIndicator
         implicitHeight: 4
         radius: 2
 
-        color: MaterialStyle.hintTextColor()
+        color: Style.hintTextColor()
         visible: control.size < 1.0
         opacity: 0.0
 

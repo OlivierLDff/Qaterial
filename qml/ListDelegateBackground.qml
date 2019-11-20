@@ -5,7 +5,7 @@ import Qaterial 1.0
 
 Rectangle
 {
-    implicitHeight: MaterialStyle.delegate.implicitHeight(type, lines)
+    implicitHeight: Style.delegate.implicitHeight(type, lines)
     implicitWidth: 200
 
     property alias rippleWidth: _ripple.width
@@ -13,7 +13,7 @@ Rectangle
     property alias rippleX: _ripple.x
     property alias rippleY: _ripple.y
 
-    color: highlighted ? Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.2) : (transparentBackground ? "transparent" : MaterialStyle.backgroundColor)
+    color: highlighted ? Qt.rgba(Style.accentColor.r, Style.accentColor.g, Style.accentColor.b, 0.2) : (transparentBackground ? "transparent" : Style.backgroundColor)
 
     property alias pressed: _ripple.pressed
     property alias rippleActive: _ripple.active
@@ -33,6 +33,6 @@ Rectangle
         height: parent.height
 
         clip: visible
-        color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
+        color: Style.rippleColor(parent.onPrimary ? Style.RippleBackground.Primary : Style.RippleBackground.Background)
     }
 } // Rectangle

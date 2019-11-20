@@ -12,11 +12,11 @@ AppBarButton
     property TextField textField
     property TextArea textArea
     property ComboBox comboBox
-    backgroundImplicitHeight: MaterialStyle.textField.iconWidth
+    backgroundImplicitHeight: Style.textField.iconWidth
     topInset: 0
     bottomInset: 0
-    foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
-                colorReversed ? MaterialStyle.secondaryTextColorReversed() : MaterialStyle.secondaryTextColor()
+    foregroundColor: !enabled ? (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor()) :
+                colorReversed ? Style.secondaryTextColorReversed() : Style.secondaryTextColor()
 
     width: visible ? implicitWidth : 0
 }

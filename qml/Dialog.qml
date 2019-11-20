@@ -22,9 +22,9 @@ T.Dialog
                              + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
                              + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-    padding: MaterialStyle.dialog.horizontalPadding
-    topPadding: MaterialStyle.dialog.topPadding //+ (drawSeparator ? 1 : 0)
-    bottomPadding: (drawSeparator ? 1 : (MaterialStyle.dialog.horizontalPadding + 1))
+    padding: Style.dialog.horizontalPadding
+    topPadding: Style.dialog.topPadding //+ (drawSeparator ? 1 : 0)
+    bottomPadding: (drawSeparator ? 1 : (Style.dialog.horizontalPadding + 1))
 
     enter: Transition
     {
@@ -40,15 +40,15 @@ T.Dialog
         NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
     } // Transition
 
-    property double elevation: MaterialStyle.dialog.elevation
-    property color backgroundColor: MaterialStyle.dialogColor
-    property color overlayColor: MaterialStyle.overlayColor
+    property double elevation: Style.dialog.elevation
+    property color backgroundColor: Style.dialogColor
+    property color overlayColor: Style.overlayColor
     property bool drawSeparator: false
 
     background: Rectangle
     {
-        radius: MaterialStyle.dialog.radius
-        color: MaterialStyle.dialogColor
+        radius: Style.dialog.radius
+        color: Style.dialogColor
 
         layer.enabled: control.elevation > 0
         layer.effect: ElevationEffect
@@ -83,12 +83,12 @@ T.Dialog
         text: control.title
         visible: control.title
         elide: Label.ElideRight
-        padding: MaterialStyle.dialog.horizontalPadding
+        padding: Style.dialog.horizontalPadding
         bottomPadding: 0
-        textType: MaterialStyle.TextType.Title
+        textType: Style.TextType.Title
         background: Rectangle
         {
-            radius: MaterialStyle.dialog.radius
+            radius: Style.dialog.radius
             color: control.backgroundColor
             //clip: true
         }

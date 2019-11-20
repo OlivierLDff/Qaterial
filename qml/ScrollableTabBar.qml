@@ -15,13 +15,13 @@ TabBar
     id: root
     property alias model: _repeater.model
     property int display: AbstractButton.TextOnly
-    property double minWidth: MaterialStyle.tabBar.minTabWidth
-    property double maxWidth: MaterialStyle.tabBar.maxTabWidth
+    property double minWidth: Style.tabBar.minTabWidth
+    property double maxWidth: Style.tabBar.maxTabWidth
     property int maxElement: 5
     implicitWidth: width
 
-    leftPadding: !mirrored ? MaterialStyle.tabBar.minLeftWidth : 0
-    rightPadding: mirrored ? MaterialStyle.tabBar.minLeftWidth : 0
+    leftPadding: !mirrored ? Style.tabBar.minLeftWidth : 0
+    rightPadding: mirrored ? Style.tabBar.minLeftWidth : 0
 
     Repeater
     {

@@ -22,8 +22,8 @@ ScrollBar
 
     background: Rectangle
     {
-        implicitWidth: control.interactive ? MaterialStyle.scroll.implicitWidthBackground : MaterialStyle.scroll.implicitWidthInactive
-        implicitHeight: control.interactive ? MaterialStyle.scroll.implicitWidthBackground : MaterialStyle.scroll.implicitWidthInactive
+        implicitWidth: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
+        implicitHeight: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
         color: "transparent"
     } // Rectangle
 
@@ -33,7 +33,7 @@ ScrollBar
         implicitHeight: 4
         radius: 2
 
-        color: MaterialStyle.hintTextColor()
+        color: Style.hintTextColor()
         visible: control.size < 1.0
         opacity: 0.5
 

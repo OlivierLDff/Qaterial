@@ -18,8 +18,8 @@ ModalDialog
     contentItem: Label
     {
         text: control.text
-        textType: MaterialStyle.TextType.ListText
-        color: MaterialStyle.secondaryTextColor()
+        textType: Style.TextType.ListText
+        color: Style.secondaryTextColor()
         //width: control.width - control.leftPadding - control.rightPadding
         wrapMode: Text.Wrap
     }

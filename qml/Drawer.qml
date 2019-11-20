@@ -30,9 +30,9 @@ T.Drawer
     exit: Transition { SmoothedAnimation { velocity: 5 } }
 
     property double elevation: !interactive && !dim ? 0 : 16
-    property color backgroundColor: MaterialStyle.dialogColor
-    property color dividerColor: MaterialStyle.dividersColor()
-    property color overlayColor: MaterialStyle.overlayColor
+    property color backgroundColor: Style.dialogColor
+    property color dividerColor: Style.dividersColor()
+    property color overlayColor: Style.overlayColor
 
     background: Rectangle
     {

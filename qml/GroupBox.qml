@@ -20,20 +20,20 @@ T.GroupBox
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    spacing: MaterialStyle.card.spacing
-    horizontalPadding: MaterialStyle.card.horizontalPadding
-    verticalPadding: MaterialStyle.card.verticalPadding
+    spacing: Style.card.spacing
+    horizontalPadding: Style.card.horizontalPadding
+    verticalPadding: Style.card.verticalPadding
 
     topPadding: verticalPadding + (inlineTitle ? (implicitLabelWidth > 0 ? implicitLabelHeight/2 + spacing : 0) : (implicitLabelWidth > 0 ? implicitLabelHeight + spacing : 0))
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property color color: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.backgroundColor
-    property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
+    property color color: onPrimary ? Style.primaryColor : Style.backgroundColor
+    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
     property alias radius: _rect.radius
 
-    property int textType: MaterialStyle.TextType.Overline
+    property int textType: Style.TextType.Overline
 
     property bool inlineTitle: false
 
@@ -50,7 +50,7 @@ T.GroupBox
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
 
-        property bool drawline: MaterialStyle.debug.drawDebugIconLabel
+        property bool drawline: Style.debug.drawDebugIconLabel
     }
 
     background: Rectangle
@@ -60,7 +60,7 @@ T.GroupBox
         implicitWidth: 200
         width: parent.width
         height: parent.height + (control.inlineTitle ? (-label.implicitHeight/2) : (-control.topPadding + control.bottomPadding))
-        radius: MaterialStyle.card.radius
+        radius: Style.card.radius
         color: control.inlineTitle ? "transparent" : control.color
         border.color: control.borderColor
         border.width: 1

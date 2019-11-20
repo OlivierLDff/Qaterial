@@ -39,7 +39,7 @@ T.SwipeDelegate
     // COLOR
     property alias backgroundColor: _background.color
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     // SEPARATOR
     property bool drawSeparator: forceDrawSeparator
@@ -51,9 +51,9 @@ T.SwipeDelegate
                              Math.max(implicitContentHeight,
                                       indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-    leftPadding: !mirrored ? MaterialStyle.delegate.leftPadding(type, lines) : MaterialStyle.delegate.rightPadding(type, lines)
-    rightPadding: mirrored ? MaterialStyle.delegate.leftPadding(type, lines) : MaterialStyle.delegate.rightPadding(type, lines)
-    spacing: MaterialStyle.delegate.spacing(type, lines)
+    leftPadding: !mirrored ? Style.delegate.leftPadding(type, lines) : Style.delegate.rightPadding(type, lines)
+    rightPadding: mirrored ? Style.delegate.leftPadding(type, lines) : Style.delegate.rightPadding(type, lines)
+    spacing: Style.delegate.spacing(type, lines)
     topPadding: 0
     bottomPadding: 0
     bottomInset: _separator.visible ? 1 : 0
@@ -61,7 +61,7 @@ T.SwipeDelegate
 
     swipe.transition: Transition { SmoothedAnimation { velocity: 3; easing.type: Easing.InOutCubic } }
 
-    property bool drawline: MaterialStyle.debug.drawDebugDelegate
+    property bool drawline: Style.debug.drawDebugDelegate
     DebugRectangle
     {
         anchors.fill: parent

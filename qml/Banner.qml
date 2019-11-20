@@ -44,14 +44,14 @@ Pane
     //topPadding: mobileOrientation && displaySmallText ? 2 : 0
     bottomPadding: (control.drawSeparator ? 1 : 0)
 
-    property bool mobileOrientation: (width < MaterialStyle.banner.mobileMaxWidth)
-    property bool drawline: MaterialStyle.debug.drawDebugDelegate
+    property bool mobileOrientation: (width < Style.banner.mobileMaxWidth)
+    property bool drawline: Style.debug.drawDebugDelegate
 
     contentItem: Item
     {
         id: _content
-        implicitWidth:  MaterialStyle.banner.minimumWidth
-        implicitHeight: MaterialStyle.banner.implicitHeight1Line
+        implicitWidth:  Style.banner.minimumWidth
+        implicitHeight: Style.banner.implicitHeight1Line
 
         DebugRectangle
         {
@@ -75,9 +75,9 @@ Pane
 
         function reanchors()
         {
-            var mobileImplicitHeight = (_medLabel.lineCount === 2 || _medLabel.visible) ? (thumbnailVisible ? MaterialStyle.banner.implicitHeightThumb : MaterialStyle.banner.implicitHeight2Line) : MaterialStyle.banner.implicitHeight1Line
+            var mobileImplicitHeight = (_medLabel.lineCount === 2 || _medLabel.visible) ? (thumbnailVisible ? Style.banner.implicitHeightThumb : Style.banner.implicitHeight2Line) : Style.banner.implicitHeight1Line
 
-            var desktopImplicitHeight = _smallLabel.lineCount === 3 ? MaterialStyle.banner.implicitHeight3LineDesk :  _smallLabel.lineCount === 2 ? MaterialStyle.banner.implicitHeight2LineDesk : MaterialStyle.banner.implicitHeight1LineDesk
+            var desktopImplicitHeight = _smallLabel.lineCount === 3 ? Style.banner.implicitHeight3LineDesk :  _smallLabel.lineCount === 2 ? Style.banner.implicitHeight2LineDesk : Style.banner.implicitHeight1LineDesk
 
             implicitHeight = (control.mobileOrientation ? mobileImplicitHeight : desktopImplicitHeight)
             _thumbnail.reanchors()
@@ -87,8 +87,8 @@ Pane
         Item
         {
             id: _thumbnail
-            width: MaterialStyle.roundIcon.size
-            height: MaterialStyle.roundIcon.size
+            width: Style.roundIcon.size
+            height: Style.roundIcon.size
             visible: parent.thumbnailVisible
             RoundColorIcon
             {
@@ -110,7 +110,7 @@ Pane
                 visible: source != "" && !_roundIcon.visible
             }
             anchors.left: _content.left
-            anchors.leftMargin: MaterialStyle.card.horizontalPadding
+            anchors.leftMargin: Style.card.horizontalPadding
 
             function reanchors()
             {
@@ -130,9 +130,9 @@ Pane
             text: control.text
             anchors.verticalCenter: _content.verticalCenter
             anchors.left: _thumbnail.visible ? _thumbnail.right : _content.left
-            anchors.leftMargin: MaterialStyle.card.horizontalPadding
+            anchors.leftMargin: Style.card.horizontalPadding
             anchors.right: _actionRow.left
-            anchors.rightMargin: control.mobileOrientation ? (MaterialStyle.banner.smallTextPadding) : MaterialStyle.banner.smallTextPaddingDesktop
+            anchors.rightMargin: control.mobileOrientation ? (Style.banner.smallTextPadding) : Style.banner.smallTextPaddingDesktop
             maximumLineCount: control.mobileOrientation ? 1 : 3
             wrapMode: control.mobileOrientation ? Text.NoWrap : Text.WordWrap
             elide: control.mobileOrientation ? Text.ElideNone : Text.ElideRight
@@ -151,11 +151,11 @@ Pane
             visible: !_smallLabel.visible
             text: control.text
             anchors.left: _thumbnail.visible ? _thumbnail.right : _content.left
-            anchors.leftMargin: MaterialStyle.card.horizontalPadding
+            anchors.leftMargin: Style.card.horizontalPadding
             anchors.right: _content.right
-            anchors.rightMargin: MaterialStyle.card.horizontalPadding
+            anchors.rightMargin: Style.card.horizontalPadding
             anchors.top: _content.top
-            anchors.topMargin: MaterialStyle.card.horizontalPadding + (_thumbnail.visible ? MaterialStyle.card.verticalPadding : 0)
+            anchors.topMargin: Style.card.horizontalPadding + (_thumbnail.visible ? Style.card.verticalPadding : 0)
             maximumLineCount: 2
             wrapMode: Text.WordWrap
             elide: Text.ElideRight
@@ -211,7 +211,7 @@ Pane
             anchors.top: _content.bottom
             //anchors.bottomMargin: -1
             z: 10
-            color: control.colorReversed ? MaterialStyle.dividersColorReversed() : MaterialStyle.dividersColor()
+            color: control.colorReversed ? Style.dividersColorReversed() : Style.dividersColor()
         }
     }
 } // Pane

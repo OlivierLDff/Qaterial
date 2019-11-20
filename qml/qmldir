@@ -13,16 +13,15 @@ module Qaterial
 #   DEPENDS   #
 ###############
 
-depends QtQuick 2.12
-depends QtQuick.Controls 2.12
-depends QtQuick.Templates 2.12
-depends QtGraphicalEffects 1.12
+depends QtQuick 2.13
+depends QtQuick.Controls 2.13
 
 ###############
 #    STYLE    #
 ###############
 
-Style                       1.0 Style.qml
+singleton Style             1.0 Style.qml
+StyleSettingsDialog         1.0 StyleSettingsDialog.qml
 
 ###############
 #    CORE     #
@@ -49,6 +48,10 @@ RobotoFontLoader            1.0 RobotoFontLoader.qml
 ScrollablePage              1.0 ScrollablePage.qml
 CheckableListView           1.0 CheckableListView.qml
 CheckableListViewDelegate   1.0 CheckableListViewDelegate.qml
+SwipeView                   1.0 SwipeView.qml
+ScrollView                  1.0 ScrollView.qml
+StackView                   1.0 StackView.qml
+SplitView                   1.0 SplitView.qml
 
 ###############
 #  COMPONENT  #
@@ -119,8 +122,6 @@ MenuBarItem                 1.0 MenuBarItem.qml
 MenuItem                    1.0 MenuItem.qml
 MenuSeparator               1.0 MenuSeparator.qml
 
-SwipeView                   1.0 SwipeView.qml
-ScrollView                  1.0 ScrollView.qml
 ApplicationWindow           1.0 ApplicationWindow.qml
 Page                        1.0 Page.qml
 Pane                        1.0 Pane.qml

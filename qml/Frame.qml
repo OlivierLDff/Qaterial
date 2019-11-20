@@ -19,14 +19,14 @@ T.Frame
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    horizontalPadding: MaterialStyle.card.horizontalPadding
-    verticalPadding: MaterialStyle.card.verticalPadding
+    horizontalPadding: Style.card.horizontalPadding
+    verticalPadding: Style.card.verticalPadding
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property color color: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.backgroundColor
-    property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
+    property color color: onPrimary ? Style.primaryColor : Style.backgroundColor
+    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
     property alias radius: _rect.radius
 
     property double elevation
@@ -35,7 +35,7 @@ T.Frame
     {
         id: _rect
         implicitWidth: 200
-        radius: MaterialStyle.card.radius
+        radius: Style.card.radius
         color: control.elevation > 0 ? control.color : "transparent"
         border.color: control.borderColor
         border.width: 1

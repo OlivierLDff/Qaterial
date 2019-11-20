@@ -38,7 +38,7 @@ Item
     implicitWidth: iconWidth + labelWidth + (labelVisible ? spacing : 0)
     implicitHeight: Math.max(iconHeight, labelHeight)
 
-    property bool drawline: MaterialStyle.debug.drawDebugIconLabel
+    property bool drawline: Style.debug.drawDebugIconLabel
 
     // AbstractButton.IconOnly | AbstractButton.TextOnly | AbstractButton.TextBesideIcon | AbstractButton.TextUnderIcon
     property int display: AbstractButton.TextBesideIcon

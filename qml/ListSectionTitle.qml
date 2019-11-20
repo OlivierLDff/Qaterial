@@ -18,14 +18,14 @@ Label
     {
         id: _separator
         width: parent.width
-        y: Math.floor(MaterialStyle.card.horizontalPadding/2)
+        y: Math.floor(Style.card.horizontalPadding/2)
         verticalPadding: 0
         orientation: Qt.Horizontal
         visible: control.separatorVisible
     }
-    padding: MaterialStyle.card.horizontalPadding
-    bottomPadding: MaterialStyle.card.verticalPadding
-    topPadding: _separator.visible ? MaterialStyle.card.horizontalPadding : MaterialStyle.card.verticalPadding
-    textType: MaterialStyle.TextType.Overline
+    padding: Style.card.horizontalPadding
+    bottomPadding: Style.card.verticalPadding
+    topPadding: _separator.visible ? Style.card.horizontalPadding : Style.card.verticalPadding
+    textType: Style.TextType.Overline
     elide: Text.ElideRight
 }

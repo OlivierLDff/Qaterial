@@ -41,7 +41,7 @@ T.ItemDelegate
     // COLOR
     property alias backgroundColor: _background.color
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     // SEPARATOR
     property bool drawSeparator: forceDrawSeparator
@@ -53,15 +53,15 @@ T.ItemDelegate
                              Math.max(implicitContentHeight,
                                       indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-    leftPadding: !mirrored ? MaterialStyle.delegate.leftPadding(control.type, control.lines) : MaterialStyle.delegate.rightPadding(control.type, control.lines)
-    rightPadding: mirrored ? MaterialStyle.delegate.leftPadding(control.type, control.lines) : MaterialStyle.delegate.rightPadding(control.type, control.lines)
+    leftPadding: !mirrored ? Style.delegate.leftPadding(control.type, control.lines) : Style.delegate.rightPadding(control.type, control.lines)
+    rightPadding: mirrored ? Style.delegate.leftPadding(control.type, control.lines) : Style.delegate.rightPadding(control.type, control.lines)
     topPadding: 0
     bottomPadding: 0
-    spacing: MaterialStyle.delegate.spacing(control.type, control.lines)
+    spacing: Style.delegate.spacing(control.type, control.lines)
     bottomInset: _separator.visible ? 1 : 0
     focusPolicy: Qt.StrongFocus
 
-    property bool drawline: MaterialStyle.debug.drawDebugDelegate
+    property bool drawline: Style.debug.drawDebugDelegate
     DebugRectangle
     {
         anchors.fill: parent

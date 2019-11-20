@@ -22,7 +22,7 @@ T.MenuBarItem
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     DebugRectangle
     {
@@ -31,35 +31,35 @@ T.MenuBarItem
         visible: control.drawline
     }
 
-    topInset: MaterialStyle.menuBarItem.topInset
-    bottomInset: MaterialStyle.menuBarItem.bottomInset
-    leftInset: MaterialStyle.menuBarItem.leftInset
-    rightInset: MaterialStyle.menuBarItem.rightInset
+    topInset: Style.menuBarItem.topInset
+    bottomInset: Style.menuBarItem.bottomInset
+    leftInset: Style.menuBarItem.leftInset
+    rightInset: Style.menuBarItem.rightInset
 
     property alias textType: _iconLabel.textType
 
-    leftPadding: (icon.source != "" && !mirrored || text == "" ? MaterialStyle.menuBarItem.iconPadding : MaterialStyle.menuBarItem.padding) + leftInset
-    rightPadding: (icon.source != "" && mirrored || text == "" ? MaterialStyle.menuBarItem.iconPadding : MaterialStyle.menuBarItem.padding) + rightInset
+    leftPadding: (icon.source != "" && !mirrored || text == "" ? Style.menuBarItem.iconPadding : Style.menuBarItem.padding) + leftInset
+    rightPadding: (icon.source != "" && mirrored || text == "" ? Style.menuBarItem.iconPadding : Style.menuBarItem.padding) + rightInset
     topPadding: 0
     bottomPadding: 0
-    spacing: MaterialStyle.menuBarItem.spacing
+    spacing: Style.menuBarItem.spacing
 
     property bool outlined: false
 
-    property color foregroundColor: enabled ? (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) :
-                                    (colorReversed ? MaterialStyle.hintTextColorReversed() : hintTextColor.primaryTextColor())
+    property color foregroundColor: enabled ? (colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor()) :
+                                    (colorReversed ? Style.hintTextColorReversed() : hintTextColor.primaryTextColor())
 
     property color backgroundColor: "transparent"
 
-    property color rippleColor: MaterialStyle.rippleColor(onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
+    property color rippleColor: Style.rippleColor(onPrimary ? Style.RippleBackground.Primary : Style.RippleBackground.Background)
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property double radius: MaterialStyle.menuBarItem.cornerRadius
+    property double radius: Style.menuBarItem.cornerRadius
 
-    icon.width: MaterialStyle.menuBarItem.iconWidth
-    icon.height: MaterialStyle.menuBarItem.iconWidth
+    icon.width: Style.menuBarItem.iconWidth
+    icon.height: Style.menuBarItem.iconWidth
     icon.color: foregroundColor
 
     property bool clipRipple: true
@@ -73,12 +73,12 @@ T.MenuBarItem
         display: control.display
         icon: control.icon
         text: control.text
-        textType: MaterialStyle.TextType.Menu
+        textType: Style.TextType.Menu
         color: control.foregroundColor
     } // IconLabel
 
-    property double backgroundImplicitWidth: MaterialStyle.menuBarItem.minWidth
-    property double backgroundImplicitHeight: MaterialStyle.menuBarItem.minHeight
+    property double backgroundImplicitWidth: Style.menuBarItem.minWidth
+    property double backgroundImplicitHeight: Style.menuBarItem.minHeight
 
     focusPolicy: Qt.StrongFocus
 

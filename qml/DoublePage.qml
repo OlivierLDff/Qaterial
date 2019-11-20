@@ -16,10 +16,10 @@ Page
     id: root
 
     /// First page fixed width.
-    property int firstPageWidth: MaterialStyle.dense ? 250 : 300
+    property int firstPageWidth: Style.dense ? 250 : 300
 
     /// Second page minimal width.
-    property int secondPageWidth: MaterialStyle.dense ? 500 : 600
+    property int secondPageWidth: Style.dense ? 500 : 600
 
     /// Are we on a small screen and we need to use a stack view to hold each page. Or on wide screen and the two*
     /// pages can appear on the side of each one

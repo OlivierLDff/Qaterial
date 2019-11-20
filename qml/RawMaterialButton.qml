@@ -23,7 +23,7 @@ T.Button
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
     DebugRectangle
     {
         anchors.fill: parent
@@ -34,49 +34,49 @@ T.Button
     property alias textType: _iconLabel.textType
     property int elide: Text.ElideNone
 
-    topInset: MaterialStyle.rawButton.topInset
-    bottomInset: MaterialStyle.rawButton.bottomInset
-    leftInset: MaterialStyle.rawButton.leftInset
-    rightInset: MaterialStyle.rawButton.rightInset
+    topInset: Style.rawButton.topInset
+    bottomInset: Style.rawButton.bottomInset
+    leftInset: Style.rawButton.leftInset
+    rightInset: Style.rawButton.rightInset
 
-    leftPadding: (icon.source != "" && !mirrored || text == "" ? MaterialStyle.rawButton.iconPadding : (flat && !outlined) ? MaterialStyle.rawButton.spacing : MaterialStyle.rawButton.padding) + leftInset
-    rightPadding: (icon.source != "" && mirrored || text == "" ? MaterialStyle.rawButton.iconPadding : (flat && !outlined) ? MaterialStyle.rawButton.spacing : MaterialStyle.rawButton.padding) + rightInset
+    leftPadding: (icon.source != "" && !mirrored || text == "" ? Style.rawButton.iconPadding : (flat && !outlined) ? Style.rawButton.spacing : Style.rawButton.padding) + leftInset
+    rightPadding: (icon.source != "" && mirrored || text == "" ? Style.rawButton.iconPadding : (flat && !outlined) ? Style.rawButton.spacing : Style.rawButton.padding) + rightInset
     topPadding: 0
     bottomPadding: 0
-    spacing: MaterialStyle.rawButton.spacing
+    spacing: Style.rawButton.spacing
 
     property bool outlined: false
 
-    property color foregroundColor: !enabled ? (flat ? MaterialStyle.disabledTextColor() : MaterialStyle.disabledTextColor()) :
-        flat && highlighted ? MaterialStyle.accentColor :
-        colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
+    property color foregroundColor: !enabled ? (flat ? Style.disabledTextColor() : Style.disabledTextColor()) :
+        flat && highlighted ? Style.accentColor :
+        colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor()
 
-    property color backgroundColor: flat ? ((outlined && pressed) ? MaterialStyle.backgroundColor : "transparent") :
-        !enabled ? (MaterialStyle.buttonDisabledColor) :
-       (highlighted ? MaterialStyle.accentColor : MaterialStyle.buttonColor )
+    property color backgroundColor: flat ? ((outlined && pressed) ? Style.backgroundColor : "transparent") :
+        !enabled ? (Style.buttonDisabledColor) :
+       (highlighted ? Style.accentColor : Style.buttonColor )
 
-    readonly property int flatRippleColor: onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background
-    readonly property int rawRippleColor: highlighted ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary
+    readonly property int flatRippleColor: onPrimary ? Style.RippleBackground.Primary : Style.RippleBackground.Background
+    readonly property int rawRippleColor: highlighted ? Style.RippleBackground.Accent : Style.RippleBackground.Primary
 
-    property color rippleColor: MaterialStyle.rippleColor(accentRipple ? MaterialStyle.RippleBackground.AccentLight : (flat ? flatRippleColor : rawRippleColor))
+    property color rippleColor: Style.rippleColor(accentRipple ? Style.RippleBackground.AccentLight : (flat ? flatRippleColor : rawRippleColor))
 
     property color outlinedColor: outlined ?
-        (!enabled ? MaterialStyle.disabledDividersColor() : pressed ? foregroundColor : MaterialStyle.dividersColor()) :
+        (!enabled ? Style.disabledDividersColor() : pressed ? foregroundColor : Style.dividersColor()) :
         "transparent"
 
     property bool onPrimary: false
-    property bool colorReversed: (flat && onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary) ||
-                                (highlighted && MaterialStyle.shouldReverseForegroundOnAccent) ||
-                                (!flat && !highlighted && MaterialStyle.shouldReverseForegroundOnPrimary)
+    property bool colorReversed: (flat && onPrimary && Style.shouldReverseForegroundOnPrimary) ||
+                                (highlighted && Style.shouldReverseForegroundOnAccent) ||
+                                (!flat && !highlighted && Style.shouldReverseForegroundOnPrimary)
 
-    property double radius: MaterialStyle.rawButton.cornerRadius
+    property double radius: Style.rawButton.cornerRadius
 
-    icon.width: MaterialStyle.rawButton.iconWidth
-    icon.height: MaterialStyle.rawButton.iconWidth
+    icon.width: Style.rawButton.iconWidth
+    icon.height: Style.rawButton.iconWidth
     icon.color: foregroundColor
 
-    property double elevation: flat ? ((control.down || control.hovered) ? MaterialStyle.rawButton.flatPressedElevation : MaterialStyle.rawButton.flatElevation)
-                         : (control.down ? MaterialStyle.rawButton.defaultPressedElevation : MaterialStyle.rawButton.defaultElevation)
+    property double elevation: flat ? ((control.down || control.hovered) ? Style.rawButton.flatPressedElevation : Style.rawButton.flatElevation)
+                         : (control.down ? Style.rawButton.defaultPressedElevation : Style.rawButton.defaultElevation)
 
     property bool clipRipple: true
     property bool forceRipple: false
@@ -85,7 +85,7 @@ T.Button
     contentItem: IconLabel
     {
         id: _iconLabel
-        textType: MaterialStyle.TextType.Button
+        textType: Style.TextType.Button
         spacing: control.spacing
         display: control.display
         icon: control.icon
@@ -95,8 +95,8 @@ T.Button
         elide: control.elide
     } // IconLabel
 
-    property double backgroundImplicitWidth: MaterialStyle.rawButton.minWidth
-    property double backgroundImplicitHeight: MaterialStyle.rawButton.minHeight
+    property double backgroundImplicitWidth: Style.rawButton.minWidth
+    property double backgroundImplicitHeight: Style.rawButton.minHeight
 
     background: Rectangle
     {
@@ -111,7 +111,7 @@ T.Button
         implicitHeight: control.backgroundImplicitHeight
         radius: control.radius
         color: control.backgroundColor
-        border.width: control.outlined ? (control.pressed ? MaterialStyle.rawButton.outlinedFocusWidth : MaterialStyle.rawButton.outlinedWidth) : 0
+        border.width: control.outlined ? (control.pressed ? Style.rawButton.outlinedFocusWidth : Style.rawButton.outlinedWidth) : 0
         border.color: control.outlinedColor
         // The layer is disabled when the button color is transparent so you can do
         // Material.background: "transparent" and get a proper flat button without needing

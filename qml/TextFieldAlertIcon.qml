@@ -10,7 +10,7 @@ import Qaterial 1.0
 TextFieldIcon
 {
     id: control
-    color: MaterialStyle.errorColor
+    color: Style.errorColor
     source: "qrc:/Qaterial/Images/alert-circle.svg"
     onVisibleChanged:
     {

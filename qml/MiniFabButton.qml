@@ -10,5 +10,5 @@ FabButton
 {
     flat: true
     highlighted: false
-    type: MaterialStyle.FabType.Mini
+    type: Style.FabType.Mini
 } // RawMaterialButton

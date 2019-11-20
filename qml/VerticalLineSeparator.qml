@@ -7,6 +7,6 @@ import Qaterial 1.0
 
 HorizontalLineSeparator
 {
-    implicitHeight: MaterialStyle.menu.separatorImplicitWidth
+    implicitHeight: Style.menu.separatorImplicitWidth
     implicitWidth: 1
 } // HorizontalLineSeparator

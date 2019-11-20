@@ -14,24 +14,24 @@ ColorIcon
     property bool highlighted: true
     property bool reverseHighlight: false
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
     property bool enabled: true
 
-    iconSize: MaterialStyle.roundIcon.iconWidth
-	roundSize: MaterialStyle.roundIcon.size
+    iconSize: Style.roundIcon.iconWidth
+	roundSize: Style.roundIcon.size
 
 	width: roundSize
 	height: roundSize
 
     roundOpacity: !(fill && highlighted && reverseHighlight) || !enabled
 
-    color: enabled ? (fill && highlighted && reverseHighlight ? (MaterialStyle.shouldReverseForegroundOnAccent ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) : (highlighted ? MaterialStyle.accentColor : MaterialStyle.primaryTextColor())) : (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor())
+    color: enabled ? (fill && highlighted && reverseHighlight ? (Style.shouldReverseForegroundOnAccent ? Style.primaryTextColorReversed() : Style.primaryTextColor()) : (highlighted ? Style.accentColor : Style.primaryTextColor())) : (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor())
 
     roundColor: !fill ? "transparent" : enabled ?
-    	(highlighted && reverseHighlight ? MaterialStyle.accentColor : (colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor())) :
-    	(colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor())
+    	(highlighted && reverseHighlight ? Style.accentColor : (colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor())) :
+    	(colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor())
 
     roundBorderColor: !outlined ? "transparent" : enabled ?
-    	(highlighted && reverseHighlight ? MaterialStyle.accentColor : (colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor())) :
-    	(colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor())
+    	(highlighted && reverseHighlight ? Style.accentColor : (colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor())) :
+    	(colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor())
 }

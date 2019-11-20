@@ -2,7 +2,7 @@
  * Copyright (C) Olivier Le Doeuff 2019
  * Contact: olivier.ldff@gmail.com
  */
- pragma Singleton
+pragma Singleton
 
 import QtQuick 2.12
 import QtQuick.Controls 2.12
@@ -19,10 +19,7 @@ QtObject
         Dark
     }
 
-    // !!!!! FONT LOADER MUST BE SET FIRST !!!!! /
-    //RobotoFontLoader {}
-
-    property int theme: MaterialStyle.Theme.Dark
+    property int theme: Style.Theme.Dark
     property bool dense: false
 
     property bool foregroundReversedOnPrimaryLight: true
@@ -37,10 +34,10 @@ QtObject
     property bool preferAccentOnPrimaryLight: false
     property bool preferAccentOnPrimaryDark: true
 
-    property bool shouldReverseForegroundOnPrimary: theme === MaterialStyle.Theme.Light ? foregroundReversedOnPrimaryLight : foregroundReversedOnPrimaryDark
-    property bool shouldReverseRippleOnPrimary:     theme === MaterialStyle.Theme.Light ? rippleReversedOnPrimaryLight : rippleReversedOnPrimaryDark
-    property bool shouldReverseForegroundOnAccent:  theme === MaterialStyle.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
-    property bool preferAccentOnPrimary:            theme === MaterialStyle.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
+    property bool shouldReverseForegroundOnPrimary: theme === Style.Theme.Light ? foregroundReversedOnPrimaryLight : foregroundReversedOnPrimaryDark
+    property bool shouldReverseRippleOnPrimary:     theme === Style.Theme.Light ? rippleReversedOnPrimaryLight : rippleReversedOnPrimaryDark
+    property bool shouldReverseForegroundOnAccent:  theme === Style.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
+    property bool preferAccentOnPrimary:            theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
     property color primaryColorLight:               "#f44336"
     property color primaryColorDark:                "#202225"//"#212121"
@@ -71,14 +68,14 @@ QtObject
     property color red:                             "#f44336"
 
 
-    property color primaryColor:                    theme === MaterialStyle.Theme.Light ? primaryColorLight : primaryColorDark
-    property color accentColor:                     theme === MaterialStyle.Theme.Light ? accentColorLight : accentColorDark
-    property color backgroundColor:                 theme === MaterialStyle.Theme.Light ? backgroundColorLight : backgroundColorDark
-    property color foregroundColor:                 theme === MaterialStyle.Theme.Light ? foregroundColorLight : foregroundColorDark
+    property color primaryColor:                    theme === Style.Theme.Light ? primaryColorLight : primaryColorDark
+    property color accentColor:                     theme === Style.Theme.Light ? accentColorLight : accentColorDark
+    property color backgroundColor:                 theme === Style.Theme.Light ? backgroundColorLight : backgroundColorDark
+    property color foregroundColor:                 theme === Style.Theme.Light ? foregroundColorLight : foregroundColorDark
 
     property color textColorLight:                  foregroundColorLight
     property color textColorDark:                   foregroundColorDark
-    property color textColor:                       theme === MaterialStyle.Theme.Light ? textColorLight : textColorDark
+    property color textColor:                       theme === Style.Theme.Light ? textColorLight : textColorDark
     property color errorColor:                      "#f44336"
 
     property double primaryTextColorRatioLight:         0.87
@@ -125,52 +122,52 @@ QtObject
     property color disabledDividersColorDark:       Qt.rgba(textColorDark.r, textColorDark.g, textColorDark.b, disabledDividersColorRatioDark)
     property color errorTextColorDark:              Qt.rgba(errorColor.r, errorColor.g, errorColor.b, errorTextColorRatioDark)
 
-    function primaryTextColor()                     { return theme === MaterialStyle.Theme.Light ? primaryTextColorLight       : primaryTextColorDark      }
-    function displayTextColor()                     { return theme === MaterialStyle.Theme.Light ? displayTextColorLight       : displayTextColorDark      }
-    function secondaryTextColor()                   { return theme === MaterialStyle.Theme.Light ? secondaryTextColorLight     : secondaryTextColorDark    }
-    function disabledTextColor()                    { return theme === MaterialStyle.Theme.Light ? disabledTextColorLight      : disabledTextColorDark     }
-    function hintTextColor()                        { return theme === MaterialStyle.Theme.Light ? hintTextColorLight          : hintTextColorDark         }
-    function iconColor()                            { return theme === MaterialStyle.Theme.Light ? iconColorLight              : iconColorDark             }
-    function helperTextColor()                      { return theme === MaterialStyle.Theme.Light ? helperTextColorLight        : helperTextColorDark       }
-    function dividersColor()                        { return theme === MaterialStyle.Theme.Light ? dividersColorLight          : dividersColorDark         }
-    function disabledDividersColor()                { return theme === MaterialStyle.Theme.Light ? disabledDividersColorLight  : disabledDividersColorDark }
-    function errorTextColor()                       { return theme === MaterialStyle.Theme.Light ? errorTextColorLight         : errorTextColorDark        }
+    function primaryTextColor()                     { return theme === Style.Theme.Light ? primaryTextColorLight       : primaryTextColorDark      }
+    function displayTextColor()                     { return theme === Style.Theme.Light ? displayTextColorLight       : displayTextColorDark      }
+    function secondaryTextColor()                   { return theme === Style.Theme.Light ? secondaryTextColorLight     : secondaryTextColorDark    }
+    function disabledTextColor()                    { return theme === Style.Theme.Light ? disabledTextColorLight      : disabledTextColorDark     }
+    function hintTextColor()                        { return theme === Style.Theme.Light ? hintTextColorLight          : hintTextColorDark         }
+    function iconColor()                            { return theme === Style.Theme.Light ? iconColorLight              : iconColorDark             }
+    function helperTextColor()                      { return theme === Style.Theme.Light ? helperTextColorLight        : helperTextColorDark       }
+    function dividersColor()                        { return theme === Style.Theme.Light ? dividersColorLight          : dividersColorDark         }
+    function disabledDividersColor()                { return theme === Style.Theme.Light ? disabledDividersColorLight  : disabledDividersColorDark }
+    function errorTextColor()                       { return theme === Style.Theme.Light ? errorTextColorLight         : errorTextColorDark        }
 
-    function primaryTextColorReversed()             { return theme != MaterialStyle.Theme.Light ? primaryTextColorLight        : primaryTextColorDark      }
-    function displayTextColorReversed()             { return theme != MaterialStyle.Theme.Light ? displayTextColorLight        : displayTextColorDark      }
-    function secondaryTextColorReversed()           { return theme != MaterialStyle.Theme.Light ? secondaryTextColorLight      : secondaryTextColorDark    }
-    function disabledTextColorReversed()            { return theme != MaterialStyle.Theme.Light ? disabledTextColorLight       : disabledTextColorDark     }
-    function hintTextColorReversed()                { return theme != MaterialStyle.Theme.Light ? hintTextColorLight           : hintTextColorDark         }
-    function iconColorReversed()                    { return theme != MaterialStyle.Theme.Light ? iconColorLight               : iconColorDark             }
-    function helperTextColorReversed()              { return theme != MaterialStyle.Theme.Light ? helperTextColorLight         : helperTextColorDark       }
-    function dividersColorReversed()                { return theme != MaterialStyle.Theme.Light ? dividersColorLight           : dividersColorDark         }
-    function disabledDividersColorReversed()        { return theme != MaterialStyle.Theme.Light ? disabledDividersColorLight   : disabledDividersColorDark }
-    function errorTextColorReversed()               { return theme != MaterialStyle.Theme.Light ? errorTextColorLight          : errorTextColorDark        }
+    function primaryTextColorReversed()             { return theme != Style.Theme.Light ? primaryTextColorLight        : primaryTextColorDark      }
+    function displayTextColorReversed()             { return theme != Style.Theme.Light ? displayTextColorLight        : displayTextColorDark      }
+    function secondaryTextColorReversed()           { return theme != Style.Theme.Light ? secondaryTextColorLight      : secondaryTextColorDark    }
+    function disabledTextColorReversed()            { return theme != Style.Theme.Light ? disabledTextColorLight       : disabledTextColorDark     }
+    function hintTextColorReversed()                { return theme != Style.Theme.Light ? hintTextColorLight           : hintTextColorDark         }
+    function iconColorReversed()                    { return theme != Style.Theme.Light ? iconColorLight               : iconColorDark             }
+    function helperTextColorReversed()              { return theme != Style.Theme.Light ? helperTextColorLight         : helperTextColorDark       }
+    function dividersColorReversed()                { return theme != Style.Theme.Light ? dividersColorLight           : dividersColorDark         }
+    function disabledDividersColorReversed()        { return theme != Style.Theme.Light ? disabledDividersColorLight   : disabledDividersColorDark }
+    function errorTextColorReversed()               { return theme != Style.Theme.Light ? errorTextColorLight          : errorTextColorDark        }
 
     property color appBarColor:                     primaryColor
     property color dialogColor:                     Qt.lighter(backgroundColor, 1.375)
-    property color cardColor:                       theme === MaterialStyle.Theme.Light ? backgroundColor : Qt.lighter(backgroundColor, 1.375)
-    property color cardBackgroundColor:             theme === MaterialStyle.Theme.Light ? Qt.darker(backgroundColor, 1.25) : backgroundColor
+    property color cardColor:                       theme === Style.Theme.Light ? backgroundColor : Qt.lighter(backgroundColor, 1.375)
+    property color cardBackgroundColor:             theme === Style.Theme.Light ? Qt.darker(backgroundColor, 1.25) : backgroundColor
     property color paneColor:                       Qt.lighter(backgroundColor, 1.375)
     property color overlayColor:                    Qt.rgba(backgroundColorDark.r, backgroundColorDark.g, backgroundColorDark.b, 0.6)
     property color snackbarColorLight:              "#323232"
     property color snackbarColorDark:               "#F0F0F0"
     property color snackbarTextColorLight:          Qt.rgba(textColorDark.r, textColorDark.g, textColorDark.b, primaryTextColorRatioLight)
     property color snackbarTextColorDark:           primaryTextColorLight
-    function snackbarColor()                        { return theme === MaterialStyle.Theme.Light ? snackbarColorLight          : snackbarColorDark     }
-    function snackbarRippleColor()                  { return theme === MaterialStyle.Theme.Light ? rippleColorLight            : rippleColorDark       }
-    function snackbarTextColor()                    { return theme === MaterialStyle.Theme.Light ? snackbarTextColorLight      : snackbarTextColorDark }
+    function snackbarColor()                        { return theme === Style.Theme.Light ? snackbarColorLight          : snackbarColorDark     }
+    function snackbarRippleColor()                  { return theme === Style.Theme.Light ? rippleColorLight            : rippleColorDark       }
+    function snackbarTextColor()                    { return theme === Style.Theme.Light ? snackbarTextColorLight      : snackbarTextColorDark }
 
     property color buttonColor:                     primaryColor
     property color buttonAccentColor:               accentColor
-    property color buttonDisabledColor:             theme === MaterialStyle.Theme.Light ? Qt.darker(paneColor, 1.12) : Qt.lighter(paneColor, 1.1)
+    property color buttonDisabledColor:             theme === Style.Theme.Light ? Qt.darker(paneColor, 1.12) : Qt.lighter(paneColor, 1.1)
     property color buttonTextColor:                 primaryTextColorDark
     property color buttonOutlinedColor:             "#1E000000"
 
     property color rippleColorLight:                "#20FFFFFF"
     property color rippleColorDark:                 "#0C000000"
-    property color rippleColorTheme:                theme === MaterialStyle.Theme.Light ? rippleColorDark : rippleColorLight
-    property color rippleColorThemeReversed:        theme === MaterialStyle.Theme.Light ? rippleColorLight : rippleColorDark
+    property color rippleColorTheme:                theme === Style.Theme.Light ? rippleColorDark : rippleColorLight
+    property color rippleColorThemeReversed:        theme === Style.Theme.Light ? rippleColorLight : rippleColorDark
 
     enum RippleBackground
     {
@@ -184,14 +181,14 @@ QtObject
     {
         switch(rippleBackground)
         {
-            case MaterialStyle.RippleBackground.Background:
-                return theme === MaterialStyle.Theme.Light ? rippleColorDark : rippleColorLight
-            case MaterialStyle.RippleBackground.Primary:
+            case Style.RippleBackground.Background:
+                return theme === Style.Theme.Light ? rippleColorDark : rippleColorLight
+            case Style.RippleBackground.Primary:
                 return shouldReverseRippleOnPrimary ? rippleColorThemeReversed : rippleColorTheme
-            case MaterialStyle.RippleBackground.Accent:
+            case Style.RippleBackground.Accent:
                 return rippleColorLight
-            case MaterialStyle.RippleBackground.AccentLight:
-                return Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.2)
+            case Style.RippleBackground.AccentLight:
+                return Qt.rgba(Style.accentColor.r, Style.accentColor.g, Style.accentColor.b, 0.2)
             default: break
         }
         return rippleColorLight
@@ -293,22 +290,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return display3FontFamily;
-            case MaterialStyle.TextType.Display2:   return display2FontFamily;
-            case MaterialStyle.TextType.Display1:   return display1FontFamily;
-            case MaterialStyle.TextType.Heading:    return headingFontFamily;
-            case MaterialStyle.TextType.Title:      return titleFontFamily;
-            case MaterialStyle.TextType.Subheading: return subHeadingFontFamily;
-            case MaterialStyle.TextType.ListText:   return listTextFontFamily;
-            case MaterialStyle.TextType.ListSecText:return listSecTextFontFamily;
-            case MaterialStyle.TextType.Overline:   return overlineFontFamily;
-            case MaterialStyle.TextType.Body2:      return body2FontFamily;
-            case MaterialStyle.TextType.Body1:      return body1FontFamily;
-            case MaterialStyle.TextType.Caption:    return captionFontFamily;
-            case MaterialStyle.TextType.Hint:       return hintFontFamily;
-            case MaterialStyle.TextType.Button:     return buttonFontFamily;
-            case MaterialStyle.TextType.Menu:       return menuFontFamily;
-            case MaterialStyle.TextType.MenuHint:   return menuHintFontFamily;
+            case Style.TextType.Display3:   return display3FontFamily;
+            case Style.TextType.Display2:   return display2FontFamily;
+            case Style.TextType.Display1:   return display1FontFamily;
+            case Style.TextType.Heading:    return headingFontFamily;
+            case Style.TextType.Title:      return titleFontFamily;
+            case Style.TextType.Subheading: return subHeadingFontFamily;
+            case Style.TextType.ListText:   return listTextFontFamily;
+            case Style.TextType.ListSecText:return listSecTextFontFamily;
+            case Style.TextType.Overline:   return overlineFontFamily;
+            case Style.TextType.Body2:      return body2FontFamily;
+            case Style.TextType.Body1:      return body1FontFamily;
+            case Style.TextType.Caption:    return captionFontFamily;
+            case Style.TextType.Hint:       return hintFontFamily;
+            case Style.TextType.Button:     return buttonFontFamily;
+            case Style.TextType.Menu:       return menuFontFamily;
+            case Style.TextType.MenuHint:   return menuHintFontFamily;
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -319,22 +316,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return display3FontStyleName;
-            case MaterialStyle.TextType.Display2:   return display2FontStyleName;
-            case MaterialStyle.TextType.Display1:   return display1FontStyleName;
-            case MaterialStyle.TextType.Heading:    return headingFontStyleName;
-            case MaterialStyle.TextType.Title:      return titleFontStyleName;
-            case MaterialStyle.TextType.Subheading: return subHeadingFontStyleName;
-            case MaterialStyle.TextType.ListText:   return listTextFontStyleName;
-            case MaterialStyle.TextType.ListSecText:return listSecTextFontStyleName;
-            case MaterialStyle.TextType.Overline:   return overlineFontStyleName;
-            case MaterialStyle.TextType.Body2:      return body2FontStyleName;
-            case MaterialStyle.TextType.Body1:      return body1FontStyleName;
-            case MaterialStyle.TextType.Caption:    return captionFontStyleName;
-            case MaterialStyle.TextType.Hint:       return hintFontStyleName;
-            case MaterialStyle.TextType.Button:     return buttonFontStyleName;
-            case MaterialStyle.TextType.Menu:       return menuFontStyleName;
-            case MaterialStyle.TextType.MenuHint:   return menuHintFontStyleName;
+            case Style.TextType.Display3:   return display3FontStyleName;
+            case Style.TextType.Display2:   return display2FontStyleName;
+            case Style.TextType.Display1:   return display1FontStyleName;
+            case Style.TextType.Heading:    return headingFontStyleName;
+            case Style.TextType.Title:      return titleFontStyleName;
+            case Style.TextType.Subheading: return subHeadingFontStyleName;
+            case Style.TextType.ListText:   return listTextFontStyleName;
+            case Style.TextType.ListSecText:return listSecTextFontStyleName;
+            case Style.TextType.Overline:   return overlineFontStyleName;
+            case Style.TextType.Body2:      return body2FontStyleName;
+            case Style.TextType.Body1:      return body1FontStyleName;
+            case Style.TextType.Caption:    return captionFontStyleName;
+            case Style.TextType.Hint:       return hintFontStyleName;
+            case Style.TextType.Button:     return buttonFontStyleName;
+            case Style.TextType.Menu:       return menuFontStyleName;
+            case Style.TextType.MenuHint:   return menuHintFontStyleName;
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -345,22 +342,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return display3FontPointSize;
-            case MaterialStyle.TextType.Display2:   return display2FontPointSize;
-            case MaterialStyle.TextType.Display1:   return display1FontPointSize;
-            case MaterialStyle.TextType.Heading:    return headingFontPointSize;
-            case MaterialStyle.TextType.Title:      return titleFontPointSize;
-            case MaterialStyle.TextType.Subheading: return subHeadingFontPointSize;
-            case MaterialStyle.TextType.ListText:   return listTextFontPointSize;
-            case MaterialStyle.TextType.ListSecText:return listSecTextFontPointSize;
-            case MaterialStyle.TextType.Overline:   return overlineFontPointSize;
-            case MaterialStyle.TextType.Body2:      return body2FontPointSize;
-            case MaterialStyle.TextType.Body1:      return body1FontPointSize;
-            case MaterialStyle.TextType.Caption:    return captionFontPointSize;
-            case MaterialStyle.TextType.Hint:       return hintFontPointSize;
-            case MaterialStyle.TextType.Button:     return buttonFontPointSize;
-            case MaterialStyle.TextType.Menu:       return menuFontPointSize;
-            case MaterialStyle.TextType.MenuHint:   return menuHintFontPointSize;
+            case Style.TextType.Display3:   return display3FontPointSize;
+            case Style.TextType.Display2:   return display2FontPointSize;
+            case Style.TextType.Display1:   return display1FontPointSize;
+            case Style.TextType.Heading:    return headingFontPointSize;
+            case Style.TextType.Title:      return titleFontPointSize;
+            case Style.TextType.Subheading: return subHeadingFontPointSize;
+            case Style.TextType.ListText:   return listTextFontPointSize;
+            case Style.TextType.ListSecText:return listSecTextFontPointSize;
+            case Style.TextType.Overline:   return overlineFontPointSize;
+            case Style.TextType.Body2:      return body2FontPointSize;
+            case Style.TextType.Body1:      return body1FontPointSize;
+            case Style.TextType.Caption:    return captionFontPointSize;
+            case Style.TextType.Hint:       return hintFontPointSize;
+            case Style.TextType.Button:     return buttonFontPointSize;
+            case Style.TextType.Menu:       return menuFontPointSize;
+            case Style.TextType.MenuHint:   return menuHintFontPointSize;
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -371,22 +368,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return display3FontPixelSize;
-            case MaterialStyle.TextType.Display2:   return display2FontPixelSize;
-            case MaterialStyle.TextType.Display1:   return display1FontPixelSize;
-            case MaterialStyle.TextType.Heading:    return headingFontPixelSize;
-            case MaterialStyle.TextType.Title:      return titleFontPixelSize;
-            case MaterialStyle.TextType.Subheading: return subHeadingFontPixelSize;
-            case MaterialStyle.TextType.ListText:   return listTextFontPixelSize;
-            case MaterialStyle.TextType.ListSecText:return listSecTextFontPixelSize;
-            case MaterialStyle.TextType.Overline:   return overlineFontPixelSize;
-            case MaterialStyle.TextType.Body2:      return body2FontPixelSize;
-            case MaterialStyle.TextType.Body1:      return body1FontPixelSize;
-            case MaterialStyle.TextType.Caption:    return captionFontPixelSize;
-            case MaterialStyle.TextType.Hint:       return hintFontPixelSize;
-            case MaterialStyle.TextType.Button:     return buttonFontPixelSize;
-            case MaterialStyle.TextType.Menu:       return menuFontPixelSize;
-            case MaterialStyle.TextType.MenuHint:   return menuHintFontPixelSize;
+            case Style.TextType.Display3:   return display3FontPixelSize;
+            case Style.TextType.Display2:   return display2FontPixelSize;
+            case Style.TextType.Display1:   return display1FontPixelSize;
+            case Style.TextType.Heading:    return headingFontPixelSize;
+            case Style.TextType.Title:      return titleFontPixelSize;
+            case Style.TextType.Subheading: return subHeadingFontPixelSize;
+            case Style.TextType.ListText:   return listTextFontPixelSize;
+            case Style.TextType.ListSecText:return listSecTextFontPixelSize;
+            case Style.TextType.Overline:   return overlineFontPixelSize;
+            case Style.TextType.Body2:      return body2FontPixelSize;
+            case Style.TextType.Body1:      return body1FontPixelSize;
+            case Style.TextType.Caption:    return captionFontPixelSize;
+            case Style.TextType.Hint:       return hintFontPixelSize;
+            case Style.TextType.Button:     return buttonFontPixelSize;
+            case Style.TextType.Menu:       return menuFontPixelSize;
+            case Style.TextType.MenuHint:   return menuHintFontPixelSize;
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -397,22 +394,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return displayTextColor();
-            case MaterialStyle.TextType.Display2:   return displayTextColor();
-            case MaterialStyle.TextType.Display1:   return displayTextColor();
-            case MaterialStyle.TextType.Heading:    return primaryTextColor();
-            case MaterialStyle.TextType.Title:      return primaryTextColor();
-            case MaterialStyle.TextType.Subheading: return primaryTextColor();
-            case MaterialStyle.TextType.ListText:   return primaryTextColor();
-            case MaterialStyle.TextType.ListSecText:return secondaryTextColor();
-            case MaterialStyle.TextType.Overline:   return secondaryTextColor();
-            case MaterialStyle.TextType.Body2:      return primaryTextColor();
-            case MaterialStyle.TextType.Body1:      return primaryTextColor();
-            case MaterialStyle.TextType.Caption:    return secondaryTextColor();
-            case MaterialStyle.TextType.Hint:       return hintTextColor();
-            case MaterialStyle.TextType.Button:     return primaryTextColor();
-            case MaterialStyle.TextType.Menu:       return primaryTextColor();
-            case MaterialStyle.TextType.MenuHint:   return secondaryTextColor();
+            case Style.TextType.Display3:   return displayTextColor();
+            case Style.TextType.Display2:   return displayTextColor();
+            case Style.TextType.Display1:   return displayTextColor();
+            case Style.TextType.Heading:    return primaryTextColor();
+            case Style.TextType.Title:      return primaryTextColor();
+            case Style.TextType.Subheading: return primaryTextColor();
+            case Style.TextType.ListText:   return primaryTextColor();
+            case Style.TextType.ListSecText:return secondaryTextColor();
+            case Style.TextType.Overline:   return secondaryTextColor();
+            case Style.TextType.Body2:      return primaryTextColor();
+            case Style.TextType.Body1:      return primaryTextColor();
+            case Style.TextType.Caption:    return secondaryTextColor();
+            case Style.TextType.Hint:       return hintTextColor();
+            case Style.TextType.Button:     return primaryTextColor();
+            case Style.TextType.Menu:       return primaryTextColor();
+            case Style.TextType.MenuHint:   return secondaryTextColor();
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -423,22 +420,22 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Display3:   return displayTextColorReversed();
-            case MaterialStyle.TextType.Display2:   return displayTextColorReversed();
-            case MaterialStyle.TextType.Display1:   return displayTextColorReversed();
-            case MaterialStyle.TextType.Heading:    return primaryTextColorReversed();
-            case MaterialStyle.TextType.Title:      return primaryTextColorReversed();
-            case MaterialStyle.TextType.Subheading: return primaryTextColorReversed();
-            case MaterialStyle.TextType.ListText:   return primaryTextColorReversed();
-            case MaterialStyle.TextType.ListSecText:return secondaryTextColorReversed();
-            case MaterialStyle.TextType.Overline:   return secondaryTextColorReversed();
-            case MaterialStyle.TextType.Body2:      return primaryTextColorReversed();
-            case MaterialStyle.TextType.Body1:      return primaryTextColorReversed();
-            case MaterialStyle.TextType.Caption:    return secondaryTextColorReversed();
-            case MaterialStyle.TextType.Hint:       return hintTextColorReversed();
-            case MaterialStyle.TextType.Button:     return primaryTextColorReversed();
-            case MaterialStyle.TextType.Menu:       return primaryTextColorReversed();
-            case MaterialStyle.TextType.MenuHint:   return secondaryTextColorReversed();
+            case Style.TextType.Display3:   return displayTextColorReversed();
+            case Style.TextType.Display2:   return displayTextColorReversed();
+            case Style.TextType.Display1:   return displayTextColorReversed();
+            case Style.TextType.Heading:    return primaryTextColorReversed();
+            case Style.TextType.Title:      return primaryTextColorReversed();
+            case Style.TextType.Subheading: return primaryTextColorReversed();
+            case Style.TextType.ListText:   return primaryTextColorReversed();
+            case Style.TextType.ListSecText:return secondaryTextColorReversed();
+            case Style.TextType.Overline:   return secondaryTextColorReversed();
+            case Style.TextType.Body2:      return primaryTextColorReversed();
+            case Style.TextType.Body1:      return primaryTextColorReversed();
+            case Style.TextType.Caption:    return secondaryTextColorReversed();
+            case Style.TextType.Hint:       return hintTextColorReversed();
+            case Style.TextType.Button:     return primaryTextColorReversed();
+            case Style.TextType.Menu:       return primaryTextColorReversed();
+            case Style.TextType.MenuHint:   return secondaryTextColorReversed();
             default: break;
         }
         console.log("Unknown Text Type : " + type)
@@ -449,8 +446,8 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Overline:
-            case MaterialStyle.TextType.Button:
+            case Style.TextType.Overline:
+            case Style.TextType.Button:
                 return Font.AllUppercase;
             default: break;
         }
@@ -461,9 +458,9 @@ QtObject
     {
         switch(type)
         {
-            case MaterialStyle.TextType.Overline:
+            case Style.TextType.Overline:
                 return 2;
-            case MaterialStyle.TextType.ListSecText:
+            case Style.TextType.ListSecText:
                 return 0.4;
             default: break;
         }
@@ -614,13 +611,13 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Overline:
+                case Style.DelegateType.Overline:
                     return                          root.dense ? 52 : 64
-                case MaterialStyle.DelegateType.Icon:
-                case MaterialStyle.DelegateType.Round:
+                case Style.DelegateType.Icon:
+                case Style.DelegateType.Round:
                      return                         root.dense ? 44 : 56
-                case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large:
+                case Style.DelegateType.Square:
+                case Style.DelegateType.Large:
                     return                          root.dense ? 58 : 72
                 default: break
             }
@@ -631,12 +628,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Overline:
+                case Style.DelegateType.Overline:
                     return                          root.dense ? 70 : 88
-                case MaterialStyle.DelegateType.Icon:
-                case MaterialStyle.DelegateType.Round:
-                case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large:
+                case Style.DelegateType.Icon:
+                case Style.DelegateType.Round:
+                case Style.DelegateType.Square:
+                case Style.DelegateType.Large:
                     return                          root.dense ? 62 : 72
                 default: break
             }
@@ -664,12 +661,12 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon:
+                    case Style.DelegateType.Icon:
                         return                      root.dense ? 26 : 32
-                    case MaterialStyle.DelegateType.Round:
-                    case MaterialStyle.DelegateType.Square:
+                    case Style.DelegateType.Round:
+                    case Style.DelegateType.Square:
                         return                      root.dense ? 12 : 16
-                    case MaterialStyle.DelegateType.Large:
+                    case Style.DelegateType.Large:
                         return                      root.dense ? 16 : 20
                     default: break
                 }
@@ -679,11 +676,11 @@ QtObject
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon:
+                    case Style.DelegateType.Icon:
                         return                      root.dense ? 26 : 32
-                    case MaterialStyle.DelegateType.Round:
-                    case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large:
+                    case Style.DelegateType.Round:
+                    case Style.DelegateType.Square:
+                    case Style.DelegateType.Large:
                         return                      root.dense ? 12 : 16
                     default: break
                 }
@@ -695,12 +692,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon:
+                case Style.DelegateType.Icon:
                     return                          root.dense ? 12 : 16
-                case MaterialStyle.DelegateType.Round:
+                case Style.DelegateType.Round:
                     return                          root.dense ? 6 : 8
-                case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large:
+                case Style.DelegateType.Square:
+                case Style.DelegateType.Large:
                     return                          root.dense ? 7 : 8
                 default: break
             }
@@ -711,12 +708,12 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon:
+                case Style.DelegateType.Icon:
                     return                          root.dense ? 20 : 24
-                case MaterialStyle.DelegateType.Round:
+                case Style.DelegateType.Round:
                     return                          root.dense ? 12 : 16
-                case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large:
+                case Style.DelegateType.Square:
+                case Style.DelegateType.Large:
                     return                          root.dense ? 9 : 8
                 default: break
             }
@@ -727,10 +724,10 @@ QtObject
         {
             switch(type)
             {
-                case MaterialStyle.DelegateType.Icon:
-                case MaterialStyle.DelegateType.Round:
-                case MaterialStyle.DelegateType.Square:
-                case MaterialStyle.DelegateType.Large:
+                case Style.DelegateType.Icon:
+                case Style.DelegateType.Round:
+                case Style.DelegateType.Square:
+                case Style.DelegateType.Large:
                     return                          root.dense ? 12 : 16
                 default: break
             }
@@ -749,7 +746,7 @@ QtObject
 
         function leftPadding(type, lines)
         {
-            if(type === MaterialStyle.DelegateType.Large)
+            if(type === Style.DelegateType.Large)
                 return                              0
             return                                  root.dense ? 12 : 16
         }
@@ -761,16 +758,16 @@ QtObject
 
         function baselineOffsetText(type, lines)
         {
-            if(type === MaterialStyle.DelegateType.Overline)
+            if(type === Style.DelegateType.Overline)
                 return                                  root.dense ? 38 : 48
             else if(lines === 2)
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon:
-                    case MaterialStyle.DelegateType.Round:
-                    case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large:
+                    case Style.DelegateType.Icon:
+                    case Style.DelegateType.Round:
+                    case Style.DelegateType.Square:
+                    case Style.DelegateType.Large:
                         return                          root.dense ? 26 : 32
                     default: break
                 }
@@ -785,16 +782,16 @@ QtObject
 
         function baselineOffsetSecText(type, lines)
         {
-            if(type === MaterialStyle.DelegateType.Overline)
+            if(type === Style.DelegateType.Overline)
                 return                                  root.dense ? 53 : 70
             else if(lines === 2)
             {
                 switch(type)
                 {
-                    case MaterialStyle.DelegateType.Icon:
-                    case MaterialStyle.DelegateType.Round:
-                    case MaterialStyle.DelegateType.Square:
-                    case MaterialStyle.DelegateType.Large:
+                    case Style.DelegateType.Icon:
+                    case Style.DelegateType.Round:
+                    case Style.DelegateType.Square:
+                    case Style.DelegateType.Large:
                         return                          root.dense ? 42 : 52
                     default: break
                 }
@@ -832,13 +829,13 @@ QtObject
 
     property var switchIndicator: QtObject
     {
-        property color switchCheckedTrackColor: Qt.rgba(MaterialStyle.accentColor.r, MaterialStyle.accentColor.g, MaterialStyle.accentColor.b, 0.5)
-        property color switchUncheckedTrackColor: MaterialStyle.dividersColor()
-        property color switchDisabledTrackColor: MaterialStyle.disabledDividersColor()
+        property color switchCheckedTrackColor: Qt.rgba(Style.accentColor.r, Style.accentColor.g, Style.accentColor.b, 0.5)
+        property color switchUncheckedTrackColor: Style.dividersColor()
+        property color switchDisabledTrackColor: Style.disabledDividersColor()
 
-        property color switchCheckedHandleColor: MaterialStyle.accentColor
-        property color switchUncheckedHandleColor: MaterialStyle.theme === MaterialStyle.Theme.Light ? MaterialStyle.primaryTextColorDark : MaterialStyle.secondaryTextColorDark
-        property color switchDisabledHandleColor: Qt.darker(switchUncheckedHandleColor, (MaterialStyle.theme === MaterialStyle.Theme.Light) ? 1.25 : 1.6)
+        property color switchCheckedHandleColor: Style.accentColor
+        property color switchUncheckedHandleColor: Style.theme === Style.Theme.Light ? Style.primaryTextColorDark : Style.secondaryTextColorDark
+        property color switchDisabledHandleColor: Qt.darker(switchUncheckedHandleColor, (Style.theme === Style.Theme.Light) ? 1.25 : 1.6)
 
         property double implicitWidth:              root.dense ? 30 : 38
         property double implicitHeight:             root.dense ? 26 : 32

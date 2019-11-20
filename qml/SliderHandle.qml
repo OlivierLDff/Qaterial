@@ -23,9 +23,9 @@ Item
     property bool handleHovered: false
     readonly property int initialSize: 13
 
-    property color rippleColor: MStyle.MaterialStyle.rippleColorTheme
-    property color accentColor: MStyle.MaterialStyle.accentColor
-    property color disabledColor: MStyle.MaterialStyle.disabledTextColor()
+    property color rippleColor: MStyle.Style.rippleColorTheme
+    property color accentColor: MStyle.Style.accentColor
+    property color disabledColor: MStyle.Style.disabledTextColor()
 
     Rectangle
     {

@@ -25,7 +25,7 @@ T.Button
     Behavior on implicitWidth { NumberAnimation { easing.type: Easing.InOutQuad; duration: 200 } }
     Behavior on implicitHeight { NumberAnimation { easing.type: Easing.InOutQuad; duration: 200 } }
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     DebugRectangle
     {
@@ -34,50 +34,50 @@ T.Button
         visible: control.drawline
     }
 
-    topInset: MaterialStyle.fab.topInset
-    bottomInset: MaterialStyle.fab.bottomInset
-    leftInset: MaterialStyle.fab.leftInset
-    rightInset: MaterialStyle.fab.rightInset
+    topInset: Style.fab.topInset
+    bottomInset: Style.fab.bottomInset
+    leftInset: Style.fab.leftInset
+    rightInset: Style.fab.rightInset
 
-    font.family: MaterialStyle.textTypeToFontFamily(MaterialStyle.TextType.Button)
-    font.styleName: MaterialStyle.textTypeToStyleName(MaterialStyle.TextType.Button)
-    font.pixelSize: MaterialStyle.textTypeToPixelSize(MaterialStyle.TextType.Button)
-    font.capitalization: MaterialStyle.fontCapitalization(MaterialStyle.TextType.Button)
-    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(MaterialStyle.TextType.Button)
+    font.family: Style.textTypeToFontFamily(Style.TextType.Button)
+    font.styleName: Style.textTypeToStyleName(Style.TextType.Button)
+    font.pixelSize: Style.textTypeToPixelSize(Style.TextType.Button)
+    font.capitalization: Style.fontCapitalization(Style.TextType.Button)
+    font.letterSpacing:  Style.textTypeToLetterSpacing(Style.TextType.Button)
 
-    readonly property bool defaultPadding: type === MaterialStyle.FabType.Default ? MaterialStyle.fab.padding :
-    	(type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.paddingMini : MaterialStyle.fab.textPadding)
+    readonly property bool defaultPadding: type === Style.FabType.Default ? Style.fab.padding :
+    	(type === Style.FabType.Mini ? Style.fab.paddingMini : Style.fab.textPadding)
 
-    leftPadding: (type === MaterialStyle.FabType.Extended ? (mirrored ? MaterialStyle.fab.textPadding : MaterialStyle.fab.iconPadding ) : defaultPadding) + leftInset
-    rightPadding: (type === MaterialStyle.FabType.Extended ? (mirrored ? MaterialStyle.fab.iconPadding : MaterialStyle.fab.textPadding ) : defaultPadding) + rightInset
+    leftPadding: (type === Style.FabType.Extended ? (mirrored ? Style.fab.textPadding : Style.fab.iconPadding ) : defaultPadding) + leftInset
+    rightPadding: (type === Style.FabType.Extended ? (mirrored ? Style.fab.iconPadding : Style.fab.textPadding ) : defaultPadding) + rightInset
 
     topPadding: 0
     bottomPadding: 0
-    spacing: MaterialStyle.fab.spacing
+    spacing: Style.fab.spacing
 
-    // MaterialStyle.FabType.Default | MaterialStyle.FabType.Mini | MaterialStyle.FabType.Extended
-    property int type: extendedOnHovered && hovered && text != "" ? MaterialStyle.FabType.Extended : MaterialStyle.FabType.Default
+    // Style.FabType.Default | Style.FabType.Mini | Style.FabType.Extended
+    property int type: extendedOnHovered && hovered && text != "" ? Style.FabType.Extended : Style.FabType.Default
 
-    property color foregroundColor: !enabled ? (flat ? MaterialStyle.disabledTextColor() : MaterialStyle.disabledTextColor()) :
-        flat && highlighted ? MaterialStyle.buttonAccentColor :
-        flat ? MaterialStyle.secondaryTextColor() : MaterialStyle.buttonTextColor
+    property color foregroundColor: !enabled ? (flat ? Style.disabledTextColor() : Style.disabledTextColor()) :
+        flat && highlighted ? Style.buttonAccentColor :
+        flat ? Style.secondaryTextColor() : Style.buttonTextColor
 
-    property color backgroundColor: flat ? ((pressed) ? MaterialStyle.backgroundColor : MaterialStyle.backgroundColor) :
-        !enabled ? (MaterialStyle.buttonDisabledColor) :
-       (highlighted ? MaterialStyle.buttonAccentColor : MaterialStyle.buttonColor )
+    property color backgroundColor: flat ? ((pressed) ? Style.backgroundColor : Style.backgroundColor) :
+        !enabled ? (Style.buttonDisabledColor) :
+       (highlighted ? Style.buttonAccentColor : Style.buttonColor )
 
-    property color rippleColor: MaterialStyle.rippleColor(flat ? MaterialStyle.RippleBackground.Background : (highlighted ? MaterialStyle.RippleBackground.Accent : MaterialStyle.RippleBackground.Primary ))
+    property color rippleColor: Style.rippleColor(flat ? Style.RippleBackground.Background : (highlighted ? Style.RippleBackground.Accent : Style.RippleBackground.Primary ))
 
     property double radius: height/2
 
-    icon.width: MaterialStyle.fab.iconWidth
-    icon.height: MaterialStyle.fab.iconWidth
+    icon.width: Style.fab.iconWidth
+    icon.height: Style.fab.iconWidth
     icon.color: foregroundColor
 
     highlighted: true
-    display: type === MaterialStyle.FabType.Extended ? AbstractButton.TextBesideIcon : AbstractButton.IconOnly
+    display: type === Style.FabType.Extended ? AbstractButton.TextBesideIcon : AbstractButton.IconOnly
 
-    property double elevation: (down || hovered) ? MaterialStyle.fab.pressedElevation : MaterialStyle.fab.elevation
+    property double elevation: (down || hovered) ? Style.fab.pressedElevation : Style.fab.elevation
 
     scale: enabledScale ? (enabled ? 1 : 0.0) : 1
     property double scaleDuration: 200
@@ -99,10 +99,10 @@ T.Button
 
     background: Rectangle
     {
-        implicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended :
-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
-        implicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended :
-                       type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+        implicitWidth: type === Style.FabType.Extended ? Style.fab.minWidthExtended :
+                       type === Style.FabType.Mini ? Style.fab.minWidthMini : Style.fab.minWidth
+        implicitHeight: type === Style.FabType.Extended ? Style.fab.minHeightExtended :
+                       type === Style.FabType.Mini ? Style.fab.minWidthMini : Style.fab.minWidth
 
         DebugRectangle
         {

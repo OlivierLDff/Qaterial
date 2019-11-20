@@ -22,7 +22,7 @@ T.MenuItem
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     width: parent.width
 
@@ -35,33 +35,33 @@ T.MenuItem
 
     display: AbstractButton.TextBesideIcon
 
-    topInset: MaterialStyle.menuItem.topInset
-    bottomInset: MaterialStyle.menuItem.bottomInset
-    leftInset: MaterialStyle.menuItem.leftInset
-    rightInset: MaterialStyle.menuItem.rightInset
+    topInset: Style.menuItem.topInset
+    bottomInset: Style.menuItem.bottomInset
+    leftInset: Style.menuItem.leftInset
+    rightInset: Style.menuItem.rightInset
 
-    leftPadding: (icon.source != "" && !mirrored || text == "" ? MaterialStyle.menuItem.iconPadding : MaterialStyle.menuItem.padding) + leftInset
-    rightPadding: (icon.source != "" && mirrored || text == "" ? MaterialStyle.menuItem.iconPadding : MaterialStyle.menuItem.padding) + rightInset
+    leftPadding: (icon.source != "" && !mirrored || text == "" ? Style.menuItem.iconPadding : Style.menuItem.padding) + leftInset
+    rightPadding: (icon.source != "" && mirrored || text == "" ? Style.menuItem.iconPadding : Style.menuItem.padding) + rightInset
     topPadding: 0
     bottomPadding: 0
-    spacing: MaterialStyle.menuItem.spacing
+    spacing: Style.menuItem.spacing
 
     property bool outlined: false
 
-    property color foregroundColor: enabled ? (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) :
-                                    (colorReversed ? MaterialStyle.hintTextColorReversed() : MaterialStyle.hintTextColor())
+    property color foregroundColor: enabled ? (colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor()) :
+                                    (colorReversed ? Style.hintTextColorReversed() : Style.hintTextColor())
 
     property color backgroundColor: "transparent"
 
-    property color rippleColor: MaterialStyle.rippleColor(onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
+    property color rippleColor: Style.rippleColor(onPrimary ? Style.RippleBackground.Primary : Style.RippleBackground.Background)
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property double radius: MaterialStyle.menuItem.cornerRadius
+    property double radius: Style.menuItem.cornerRadius
 
-    icon.width: MaterialStyle.menuItem.iconWidth
-    icon.height: MaterialStyle.menuItem.iconWidth
+    icon.width: Style.menuItem.iconWidth
+    icon.height: Style.menuItem.iconWidth
     icon.color: foregroundColor
 
     property bool clipRipple: true
@@ -74,11 +74,11 @@ T.MenuItem
         y: control.topPadding + (control.availableHeight - height) / 2
         //width: control.icon.width
         //height: control.icon.height
-        width: MaterialStyle.menuItem.shortcutImplicitWidth
+        width: Style.menuItem.shortcutImplicitWidth
         text: control.action && control.action.shortcut ? control.action.shortcut : ""
         visible: control.action && control.action.shortcut != ""
         horizontalAlignment: control.mirrored ? Qt.AlignRight : Qt.AlignLeft
-        textType: MaterialStyle.TextType.MenuHint
+        textType: Style.TextType.MenuHint
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
 
@@ -103,8 +103,8 @@ T.MenuItem
 
     readonly property var checkedIcon: QtObject
     {
-        readonly property double width: MaterialStyle.menuItem.iconWidth
-        readonly property double height: MaterialStyle.menuItem.iconWidth
+        readonly property double width: Style.menuItem.iconWidth
+        readonly property double height: Style.menuItem.iconWidth
         readonly property color color: foregroundColor
         readonly property url source: "qrc:/Qaterial/Images/check.svg"
     }
@@ -125,15 +125,15 @@ T.MenuItem
 
         spacing: control.spacing
         display: control.display
-        textType: MaterialStyle.TextType.Menu
+        textType: Style.TextType.Menu
         icon: control.checkable && checked ? control.checkedIcon : control.icon
         text: control.text
         color: control.foregroundColor
 
     } // IconLabel
 
-    property double backgroundImplicitWidth: MaterialStyle.menuItem.minWidth
-    property double backgroundImplicitHeight: MaterialStyle.menuItem.minHeight
+    property double backgroundImplicitWidth: Style.menuItem.minWidth
+    property double backgroundImplicitHeight: Style.menuItem.minHeight
 
     background: Rectangle
     {

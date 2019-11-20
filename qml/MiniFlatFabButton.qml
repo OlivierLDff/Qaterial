@@ -8,5 +8,5 @@ import Qaterial 1.0
 
 FlatFabButton
 {
-    type: MaterialStyle.FabType.Mini
+    type: Style.FabType.Mini
 } // FlatFabButton

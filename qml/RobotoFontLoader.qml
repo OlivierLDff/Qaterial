@@ -8,9 +8,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-
+// Qt
 import QtQuick 2.12
-import Qaterial.Fonts 1.12
 
 Item
 {

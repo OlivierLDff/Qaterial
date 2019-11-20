@@ -22,14 +22,14 @@ T.CheckBox
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    spacing: MaterialStyle.checkButton.spacing
-    horizontalPadding: MaterialStyle.checkButton.horizontalPadding
-    verticalPadding: MaterialStyle.checkButton.verticalPadding
+    spacing: Style.checkButton.spacing
+    horizontalPadding: Style.checkButton.horizontalPadding
+    verticalPadding: Style.checkButton.verticalPadding
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     property alias elide: _label.elide
     property alias textType: _label.textType
@@ -51,14 +51,14 @@ T.CheckBox
         {
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
-            width: MaterialStyle.switchButton.rippleWidth
-            height: MaterialStyle.switchButton.rippleWidth
+            width: Style.switchButton.rippleWidth
+            height: Style.switchButton.rippleWidth
 
             z: -1
             anchor: control
             pressed: control.pressed
             active: control.down || control.visualFocus || control.hovered
-            color: MaterialStyle.rippleColor(control.checked ? MaterialStyle.RippleBackground.AccentLight : MaterialStyle.RippleBackground.Background)
+            color: Style.rippleColor(control.checked ? Style.RippleBackground.AccentLight : Style.RippleBackground.Background)
         } // Ripple
 
         DebugRectangle

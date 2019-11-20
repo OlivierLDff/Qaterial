@@ -20,23 +20,23 @@ T.MenuSeparator
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    verticalPadding: MaterialStyle.menu.separatorHSmallPadding
-    rightPadding: !mirrored ? MaterialStyle.menu.separatorWSmallPadding : MaterialStyle.menu.separatorWLargePadding
-    leftPadding: mirrored ? MaterialStyle.menu.separatorWSmallPadding : MaterialStyle.menu.separatorWLargePadding
+    verticalPadding: Style.menu.separatorHSmallPadding
+    rightPadding: !mirrored ? Style.menu.separatorWSmallPadding : Style.menu.separatorWLargePadding
+    leftPadding: mirrored ? Style.menu.separatorWSmallPadding : Style.menu.separatorWLargePadding
 
     property bool highlighted: false
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
-    property bool accentColorAuthorized: onPrimary && MaterialStyle.preferAccentOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+    property bool accentColorAuthorized: onPrimary && Style.preferAccentOnPrimary
 
-    property color foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor()) :
-                    highlighted && accentColorAuthorized ? MaterialStyle.accentColor :
-                    colorReversed ? MaterialStyle.dividersColorReversed() : MaterialStyle.dividersColor()
+    property color foregroundColor: !enabled ? (colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor()) :
+                    highlighted && accentColorAuthorized ? Style.accentColor :
+                    colorReversed ? Style.dividersColorReversed() : Style.dividersColor()
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
-    property double separatorImplicitWidth: MaterialStyle.menu.separatorImplicitWidth
+    property double separatorImplicitWidth: Style.menu.separatorImplicitWidth
 
     DebugRectangle
     {

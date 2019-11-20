@@ -24,7 +24,7 @@ T.Page
                              + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
                              + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-    property color backgroundColor: MaterialStyle.backgroundColor
+    property color backgroundColor: Style.backgroundColor
 
     background: Rectangle
     {

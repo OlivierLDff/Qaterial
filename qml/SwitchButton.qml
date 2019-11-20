@@ -19,15 +19,15 @@ T.Switch
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    horizontalPadding: MaterialStyle.switchButton.horizontalPadding
-    verticalPadding: MaterialStyle.switchButton.verticalPadding
-    spacing: MaterialStyle.switchButton.spacing
+    horizontalPadding: Style.switchButton.horizontalPadding
+    verticalPadding: Style.switchButton.verticalPadding
+    spacing: Style.switchButton.spacing
     focusPolicy: Qt.StrongFocus
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     property alias elide: _label.elide
     property alias textType: _label.textType
@@ -49,11 +49,11 @@ T.Switch
         {
             x: parent.handle.x + parent.handle.width / 2 - width / 2
             y: parent.handle.y + parent.handle.height / 2 - height / 2
-            width: MaterialStyle.switchButton.rippleWidth
-            height: MaterialStyle.switchButton.rippleWidth
+            width: Style.switchButton.rippleWidth
+            height: Style.switchButton.rippleWidth
             pressed: control.pressed
             active: control.down || control.visualFocus || control.hovered
-            color: MaterialStyle.rippleColor(control.checked ? MaterialStyle.RippleBackground.AccentLight : MaterialStyle.RippleBackground.Background)
+            color: Style.rippleColor(control.checked ? Style.RippleBackground.AccentLight : Style.RippleBackground.Background)
         } // Ripple
 
 

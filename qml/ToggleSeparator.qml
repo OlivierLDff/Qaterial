@@ -17,17 +17,17 @@ ToolSeparator
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    horizontalPadding: vertical ? MaterialStyle.toolButton.separatorLargePadding : MaterialStyle.toolButton.separatorSmallPadding
-    verticalPadding: vertical ? MaterialStyle.toolButton.separatorSmallPadding : MaterialStyle.toolButton.separatorLargePadding
+    horizontalPadding: vertical ? Style.toolButton.separatorLargePadding : Style.toolButton.separatorSmallPadding
+    verticalPadding: vertical ? Style.toolButton.separatorSmallPadding : Style.toolButton.separatorLargePadding
 
     property bool highlighted: false
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     property color foregroundColor: "transparent"
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     DebugRectangle
     {
@@ -38,8 +38,8 @@ ToolSeparator
 
     contentItem: Rectangle
     {
-        implicitWidth: vertical ? 1 : MaterialStyle.toolButton.separatorImplicitWidth
-        implicitHeight: vertical ? MaterialStyle.toolButton.separatorImplicitWidth : 1
+        implicitWidth: vertical ? 1 : Style.toolButton.separatorImplicitWidth
+        implicitHeight: vertical ? Style.toolButton.separatorImplicitWidth : 1
         color: control.foregroundColor
     } // Rectangle
 } // ToolSeparator

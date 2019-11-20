@@ -29,7 +29,7 @@ CardBackground
         y: parent.border.width
 
         clip: visible
-        color: MaterialStyle.rippleColor(parent.onPrimary ? MaterialStyle.RippleBackground.Primary : MaterialStyle.RippleBackground.Background)
+        color: Style.rippleColor(parent.onPrimary ? Style.RippleBackground.Primary : Style.RippleBackground.Background)
 
         // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
         layer.enabled: true

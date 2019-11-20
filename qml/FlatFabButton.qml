@@ -18,9 +18,9 @@ FabButton
     flat: true
     elevation: 0
     highlighted: checked
-    type: MaterialStyle.FabType.Default
+    type: Style.FabType.Default
 
-    readonly property double __inset: rippleClip ? MaterialStyle.fab.flatInset : MaterialStyle.fab.flatInsetNoClip
+    readonly property double __inset: rippleClip ? Style.fab.flatInset : Style.fab.flatInsetNoClip
 
     topInset:       __inset
     bottomInset:    __inset
@@ -28,21 +28,21 @@ FabButton
     rightInset:     __inset
 
     backgroundColor: !enabled ? "transparent" :
-        highlighted ?  MaterialStyle.buttonAccentColor : MaterialStyle.disabledDividersColor()
+        highlighted ?  Style.buttonAccentColor : Style.disabledDividersColor()
     property color borderColor: "transparent"
     property bool outlined: false
 
-    foregroundColor: !enabled ? MaterialStyle.disabledTextColor() :
-        highlighted ? (MaterialStyle.shouldReverseForegroundOnAccent ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()) :
-        MaterialStyle.theme === MaterialStyle.Theme.Light ? MaterialStyle.primaryTextColor() : MaterialStyle.secondaryTextColor()
+    foregroundColor: !enabled ? Style.disabledTextColor() :
+        highlighted ? (Style.shouldReverseForegroundOnAccent ? Style.primaryTextColorReversed() : Style.primaryTextColor()) :
+        Style.theme === Style.Theme.Light ? Style.primaryTextColor() : Style.secondaryTextColor()
     enabledScale: false
 
     property bool rippleClip: true
 
-    property double backgroundImplicitWidth: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minWidthExtended :
-            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
-    property double backgroundImplicitHeight: type === MaterialStyle.FabType.Extended ? MaterialStyle.fab.minHeightExtended :
-            type === MaterialStyle.FabType.Mini ? MaterialStyle.fab.minWidthMini : MaterialStyle.fab.minWidth
+    property double backgroundImplicitWidth: type === Style.FabType.Extended ? Style.fab.minWidthExtended :
+            type === Style.FabType.Mini ? Style.fab.minWidthMini : Style.fab.minWidth
+    property double backgroundImplicitHeight: type === Style.FabType.Extended ? Style.fab.minHeightExtended :
+            type === Style.FabType.Mini ? Style.fab.minWidthMini : Style.fab.minWidth
     property double backgroundScale: 1.0
 
     background: Rectangle

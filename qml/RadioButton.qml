@@ -21,14 +21,14 @@ T.RadioButton
                              implicitContentHeight + topPadding + bottomPadding,
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
-    horizontalPadding: MaterialStyle.radioButton.horizontalPadding
-    verticalPadding: MaterialStyle.radioButton.verticalPadding
-    spacing: MaterialStyle.radioButton.spacing
+    horizontalPadding: Style.radioButton.horizontalPadding
+    verticalPadding: Style.radioButton.verticalPadding
+    spacing: Style.radioButton.spacing
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
 
     property alias elide: _label.elide
     property alias textType: _label.textType
@@ -50,14 +50,14 @@ T.RadioButton
         {
             x: (parent.width - width) / 2
             y: (parent.height - height) / 2
-            width: MaterialStyle.radioButton.rippleWidth
-            height: MaterialStyle.radioButton.rippleWidth
+            width: Style.radioButton.rippleWidth
+            height: Style.radioButton.rippleWidth
 
             z: -1
             anchor: control
             pressed: control.pressed
             active: control.down || control.visualFocus || control.hovered
-            color: MaterialStyle.rippleColor(control.checked ? MaterialStyle.RippleBackground.AccentLight : MaterialStyle.RippleBackground.Background)
+            color: Style.rippleColor(control.checked ? Style.RippleBackground.AccentLight : Style.RippleBackground.Background)
         } // Ripple
         DebugRectangle
         {

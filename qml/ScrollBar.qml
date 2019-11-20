@@ -21,24 +21,24 @@ T.ScrollBar
 
     padding: 0
     visible: control.policy !== T.ScrollBar.AlwaysOff
-    rightPadding: MaterialStyle.scroll.padding
-    leftPadding: MaterialStyle.scroll.padding
+    rightPadding: Style.scroll.padding
+    leftPadding: Style.scroll.padding
 
     contentItem: Rectangle
     {
-        implicitWidth: control.interactive ? MaterialStyle.scroll.implicitWidth : MaterialStyle.scroll.implicitWidthInactive
-        implicitHeight: control.interactive ? MaterialStyle.scroll.implicitWidth : MaterialStyle.scroll.implicitWidthInactive
-        radius: MaterialStyle.scroll.radius
+        implicitWidth: control.interactive ? Style.scroll.implicitWidth : Style.scroll.implicitWidthInactive
+        implicitHeight: control.interactive ? Style.scroll.implicitWidth : Style.scroll.implicitWidthInactive
+        radius: Style.scroll.radius
 
-        color: control.pressed ? MaterialStyle.secondaryTextColor() :
-               control.interactive && control.hovered ? MaterialStyle.helperTextColor() : MaterialStyle.dividersColor()
+        color: control.pressed ? Style.secondaryTextColor() :
+               control.interactive && control.hovered ? Style.helperTextColor() : Style.dividersColor()
         opacity: 0.0
     } // Rectangle
 
     background: Rectangle
     {
-        implicitWidth: control.interactive ? MaterialStyle.scroll.implicitWidthBackground : MaterialStyle.scroll.implicitWidthInactive
-        implicitHeight: control.interactive ? MaterialStyle.scroll.implicitWidthBackground : MaterialStyle.scroll.implicitWidthInactive
+        implicitWidth: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
+        implicitHeight: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
         color: "#30000000"
         opacity: 0.0
         visible: control.interactive

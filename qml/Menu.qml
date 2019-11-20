@@ -18,7 +18,7 @@ T.Menu
 {
     id: control
 
-    property double elevation: MaterialStyle.menu.elevation
+    property double elevation: Style.menu.elevation
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentWidth + leftPadding + rightPadding)
@@ -26,12 +26,12 @@ T.Menu
                              contentHeight + topPadding + bottomPadding)
 
     margins: 0
-    verticalPadding: MaterialStyle.menu.verticalPadding
+    verticalPadding: Style.menu.verticalPadding
 
     transformOrigin: !cascade ? Item.Top : (mirrored ? Item.TopRight : Item.TopLeft)
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     delegate: MenuItem { onPrimary: control.onPrimary; colorReversed: control.colorReversed }
 
@@ -61,14 +61,14 @@ T.Menu
         ScrollIndicator.vertical: ScrollIndicator {}
     } // ListView
 
-    property color backgroundColor: MaterialStyle.dialogColor
+    property color backgroundColor: Style.dialogColor
 
     background: Rectangle
     {
-        implicitWidth: MaterialStyle.menu.implicitWidth
-        implicitHeight: MaterialStyle.menu.implicitHeight
+        implicitWidth: Style.menu.implicitWidth
+        implicitHeight: Style.menu.implicitHeight
 
-        radius: MaterialStyle.menu.radius
+        radius: Style.menu.radius
         color: control.backgroundColor
 
         layer.enabled: control.elevation > 0
@@ -80,13 +80,13 @@ T.Menu
 
     T.Overlay.modal: Rectangle
     {
-        color: MaterialStyle.overlayColor
+        color: Style.overlayColor
         Behavior on opacity { NumberAnimation { duration: 150 } }
     } // Rectangle
 
     T.Overlay.modeless: Rectangle
     {
-        color: MaterialStyle.overlayColor
+        color: Style.overlayColor
         Behavior on opacity { NumberAnimation { duration: 150 } }
     } // Rectangle
 }

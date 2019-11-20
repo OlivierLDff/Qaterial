@@ -13,8 +13,8 @@ import Qaterial 1.0
 Item
 {
     id: indicator
-    implicitWidth: MaterialStyle.switchIndicator.implicitWidth
-    implicitHeight: MaterialStyle.switchIndicator.implicitHeight
+    implicitWidth: Style.switchIndicator.implicitWidth
+    implicitHeight: Style.switchIndicator.implicitHeight
 
     property Item control
     property alias handle: handle
@@ -24,11 +24,11 @@ Item
     Rectangle
     {
         width: parent.width
-        height: MaterialStyle.switchIndicator.trackHeight
+        height: Style.switchIndicator.trackHeight
         radius: height / 2
         y: parent.height / 2 - height / 2
-        color: control.enabled ? (control.checked ? MaterialStyle.switchIndicator.switchCheckedTrackColor : MaterialStyle.switchIndicator.switchUncheckedTrackColor)
-                               : MaterialStyle.switchIndicator.switchDisabledTrackColor
+        color: control.enabled ? (control.checked ? Style.switchIndicator.switchCheckedTrackColor : Style.switchIndicator.switchUncheckedTrackColor)
+                               : Style.switchIndicator.switchDisabledTrackColor
     } // Rectangle
 
     Rectangle
@@ -36,11 +36,11 @@ Item
         id: handle
         x: Math.max(0, Math.min(parent.width - width, control.visualPosition * parent.width - (width / 2)))
         y: (parent.height - height) / 2
-        width: MaterialStyle.switchIndicator.handleRadius
-        height: MaterialStyle.switchIndicator.handleRadius
+        width: Style.switchIndicator.handleRadius
+        height: Style.switchIndicator.handleRadius
         radius: width / 2
-        color: control.enabled ? (control.checked ? MaterialStyle.switchIndicator.switchCheckedHandleColor : MaterialStyle.switchIndicator.switchUncheckedHandleColor)
-                               : MaterialStyle.switchIndicator.switchDisabledHandleColor
+        color: control.enabled ? (control.checked ? Style.switchIndicator.switchCheckedHandleColor : Style.switchIndicator.switchUncheckedHandleColor)
+                               : Style.switchIndicator.switchDisabledHandleColor
 
         Behavior on x
         {

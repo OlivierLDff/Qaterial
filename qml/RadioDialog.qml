@@ -31,7 +31,7 @@ ModalDialog
     horizontalPadding: 0
     bottomPadding: 1
     drawSeparator: _list.height < _list.contentHeight
-    property double maxHeight: MaterialStyle.dialog.maxHeight
+    property double maxHeight: Style.dialog.maxHeight
 
     standardButtons: Dialog.Ok | Dialog.Cancel
     contentItem: ListView

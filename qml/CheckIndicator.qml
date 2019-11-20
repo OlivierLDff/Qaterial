@@ -13,13 +13,13 @@ import Qaterial 1.0
 Rectangle
 {
     id: indicatorItem
-    implicitWidth: MaterialStyle.checkIndicator.implicitWidth
-    implicitHeight: MaterialStyle.checkIndicator.implicitHeight
+    implicitWidth: Style.checkIndicator.implicitWidth
+    implicitHeight: Style.checkIndicator.implicitHeight
     color: "transparent"
-    border.color: !control.enabled ? MaterialStyle.hintTextColor()
-        : checkState !== Qt.Unchecked ? MaterialStyle.accentColor : MaterialStyle.secondaryTextColor()
+    border.color: !control.enabled ? Style.hintTextColor()
+        : checkState !== Qt.Unchecked ? Style.accentColor : Style.secondaryTextColor()
     border.width: checkState !== Qt.Unchecked ? width / 2 : 2
-    radius: MaterialStyle.checkIndicator.radius
+    radius: Style.checkIndicator.radius
 
     property Item control
     property int checkState: control.checkState
@@ -47,7 +47,7 @@ Rectangle
         id: checkImage
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
-        iconSize: MaterialStyle.checkIndicator.iconWidth
+        iconSize: Style.checkIndicator.iconWidth
         source: "qrc:/Qaterial/Images/check.svg"
         color: "white"
 
@@ -59,8 +59,8 @@ Rectangle
     {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
-        width: MaterialStyle.checkIndicator.partiallyCheckedWidth
-        height: MaterialStyle.checkIndicator.partiallyCheckedHeight
+        width: Style.checkIndicator.partiallyCheckedWidth
+        height: Style.checkIndicator.partiallyCheckedHeight
         color: "white"
 
         scale: checkState === Qt.PartiallyChecked ? 1 : 0

@@ -20,13 +20,13 @@ T.Pane
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    padding: MaterialStyle.card.horizontalPadding
+    padding: Style.card.horizontalPadding
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     property double elevation: 0
-    property color color: control.onPrimary ? MaterialStyle.primaryColor : MaterialStyle.backgroundColor
+    property color color: control.onPrimary ? Style.primaryColor : Style.backgroundColor
     property double radius: 0
 
     background: Rectangle

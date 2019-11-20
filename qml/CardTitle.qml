@@ -22,7 +22,7 @@ Item
     property bool mirrored: false
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     property alias padding: _column.padding
     property alias leftPadding: _column.leftPadding
@@ -30,7 +30,7 @@ Item
     property alias topPadding: _column.topPadding
     property alias bottomPadding: _column.bottomPadding
 
-    property bool drawline: MaterialStyle.debug.drawDebugIconLabel
+    property bool drawline: Style.debug.drawDebugIconLabel
 
     DebugRectangle
     {
@@ -47,7 +47,7 @@ Item
         Label
         {
             id: _title
-            textType: MaterialStyle.TextType.Title
+            textType: Style.TextType.Title
             elide: Text.ElideRight
             horizontalAlignment: control.mirrored ? Text.AlignRight : Text.AlignLeft
             width: parent.width - control.rightPadding - control.leftPadding
@@ -61,7 +61,7 @@ Item
         Label
         {
             id: _text
-            textType: MaterialStyle.TextType.ListSecText
+            textType: Style.TextType.ListSecText
             elide: Text.ElideRight
             horizontalAlignment: control.mirrored ? Text.AlignRight : Text.AlignLeft
             width: parent.width - control.rightPadding - control.leftPadding

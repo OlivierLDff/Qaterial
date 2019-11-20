@@ -21,11 +21,11 @@ T.Slider
 
     padding: 6
 
-    property color rippleColor: MaterialStyle.rippleColorTheme
-    property color accentColor: MaterialStyle.accentColor
-    property color foregroundColor: MaterialStyle.hintTextColor()
-    property color disabledColor: MaterialStyle.disabledTextColor()
-    property color backgroundDisabledColor: MaterialStyle.disabledDividersColor()
+    property color rippleColor: Style.rippleColorTheme
+    property color accentColor: Style.accentColor
+    property color foregroundColor: Style.hintTextColor()
+    property color disabledColor: Style.disabledTextColor()
+    property color backgroundDisabledColor: Style.disabledDividersColor()
     handle: SliderHandle
     {
         x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)

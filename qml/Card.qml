@@ -15,15 +15,15 @@ Pane
     id: control
     padding: 0
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    radius: MaterialStyle.card.radius
+    radius: Style.card.radius
 
-    property color backgroundColor: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.cardColor
-    property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
+    property color backgroundColor: onPrimary ? Style.primaryColor : Style.cardColor
+    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
     property bool outlined: false
 
-    property double elevation: isActive ? MaterialStyle.card.activeElevation : (outlined ? 0 : MaterialStyle.card.defaultElevation)
+    property double elevation: isActive ? Style.card.activeElevation : (outlined ? 0 : Style.card.defaultElevation)
 
     property bool isActive: (elevationOnHovered && hovered) || pressed || visualFocus
 

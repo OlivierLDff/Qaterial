@@ -10,28 +10,28 @@ RawMaterialButton
     flat: true
     highlighted: checked
 
-    icon.width: MaterialStyle.toolButton.iconWidth
-    icon.height: MaterialStyle.toolButton.iconWidth
+    icon.width: Style.toolButton.iconWidth
+    icon.height: Style.toolButton.iconWidth
 
-    topInset: MaterialStyle.toolButton.topInset
-    bottomInset: MaterialStyle.toolButton.bottomInset
-    leftInset: MaterialStyle.toolButton.leftInset
-    rightInset: MaterialStyle.toolButton.rightInset
+    topInset: Style.toolButton.topInset
+    bottomInset: Style.toolButton.bottomInset
+    leftInset: Style.toolButton.leftInset
+    rightInset: Style.toolButton.rightInset
 
     leftPadding: 0
     rightPadding: 0
 
-    backgroundImplicitWidth: MaterialStyle.toolButton.minWidth
-    backgroundImplicitHeight: MaterialStyle.toolButton.minHeight
+    backgroundImplicitWidth: Style.toolButton.minWidth
+    backgroundImplicitHeight: Style.toolButton.minHeight
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
     property bool useSecondaryColor: false
 
-    readonly property bool accentColorAuthorized: (onPrimary && MaterialStyle.preferAccentOnPrimary || !onPrimary)
+    readonly property bool accentColorAuthorized: (onPrimary && Style.preferAccentOnPrimary || !onPrimary)
 
-    foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
-                    highlighted && accentColorAuthorized ? MaterialStyle.accentColor :
-                    !highlighted && !accentColorAuthorized || useSecondaryColor ? (colorReversed ? MaterialStyle.secondaryTextColorReversed() : MaterialStyle.secondaryTextColor()) :
-                    colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
+    foregroundColor: !enabled ? (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor()) :
+                    highlighted && accentColorAuthorized ? Style.accentColor :
+                    !highlighted && !accentColorAuthorized || useSecondaryColor ? (colorReversed ? Style.secondaryTextColorReversed() : Style.secondaryTextColor()) :
+                    colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor()
 } // RawMaterialButton

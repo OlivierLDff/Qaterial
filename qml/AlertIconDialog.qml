@@ -32,7 +32,7 @@ ModalDialog
     {
         implicitHeight: Math.floor(Math.max(_icon.implicitHeight, _text.implicitHeight))
 
-        implicitWidth: MaterialStyle.dialog.implicitWidth - 2*MaterialStyle.card.horizontalPadding
+        implicitWidth: Style.dialog.implicitWidth - 2*Style.card.horizontalPadding
 
         RoundColorIcon
         {
@@ -50,8 +50,8 @@ ModalDialog
             text: control.text
             x: _icon.visible ? (_icon.width + control.horizontalPadding) : 0
             width: parent.width - x
-            textType: MaterialStyle.TextType.ListText
-            color: MaterialStyle.secondaryTextColor()
+            textType: Style.TextType.ListText
+            color: Style.secondaryTextColor()
             wrapMode: Text.Wrap
             elide: Text.ElideRight
             maximumLineCount: 8

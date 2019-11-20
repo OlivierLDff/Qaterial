@@ -57,16 +57,16 @@ Rectangle
     property double bottomPadding: padding
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     readonly property alias lines: _text.lines
 
-    // MaterialStyle.DelegateType.Default | MaterialStyle.DelegateType.Overline | MaterialStyle.DelegateType.Icon
-    // MaterialStyle.DelegateType.Round | MaterialStyle.DelegateType.Square | MaterialStyle.DelegateType.Large
-    readonly property int type: (icon.source != "") ? (roundIcon ? MaterialStyle.DelegateType.RoundIcon : MaterialStyle.DelegateType.Icon) :
-        overlineText != "" ? MaterialStyle.DelegateType.Overline :
-        (roundSourceSet || squareSourceSet) ? (largeThumbnail ? MaterialStyle.DelegateType.Square : MaterialStyle.DelegateType.Round) :
-        largeSourceSet ? MaterialStyle.DelegateType.Large : MaterialStyle.DelegateType.Default
+    // Style.DelegateType.Default | Style.DelegateType.Overline | Style.DelegateType.Icon
+    // Style.DelegateType.Round | Style.DelegateType.Square | Style.DelegateType.Large
+    readonly property int type: (icon.source != "") ? (roundIcon ? Style.DelegateType.RoundIcon : Style.DelegateType.Icon) :
+        overlineText != "" ? Style.DelegateType.Overline :
+        (roundSourceSet || squareSourceSet) ? (largeThumbnail ? Style.DelegateType.Square : Style.DelegateType.Round) :
+        largeSourceSet ? Style.DelegateType.Large : Style.DelegateType.Default
 
     property alias imageSourceSize: _image.sourceSize
 
@@ -88,7 +88,7 @@ Rectangle
     {
         id: _icon
         visible: source != ""
-        iconSize: MaterialStyle.delegate.iconWidth
+        iconSize: Style.delegate.iconWidth
         highlighted: true
         enabled: control.enabled
 
@@ -97,7 +97,7 @@ Rectangle
         height: roundIcon ? roundSize : iconSize
 
         anchors.top: control.top
-        anchors.topMargin: MaterialStyle.delegate.topPadding(control.type, control.lines)
+        anchors.topMargin: Style.delegate.topPadding(control.type, control.lines)
         anchors.left: control.left
 
         function reanchors()
@@ -123,15 +123,15 @@ Rectangle
         id: _virtualImage
         enabled: control.enabled
         visible: control.roundSourceSet || control.squareSourceSet || control.largeSourceSet
-        width: control.roundSourceSet ? MaterialStyle.delegate.roundWidth(control.largeThumbnail) :
-            control.squareSourceSet ? MaterialStyle.delegate.squareWidth(control.largeThumbnail) :
-            control.largeSourceSet ? MaterialStyle.delegate.largeWidth() : 0
-        height: control.roundSourceSet ? MaterialStyle.delegate.roundWidth(control.largeThumbnail) :
-            control.squareSourceSet ? MaterialStyle.delegate.squareWidth(control.largeThumbnail) :
-            control.largeSourceSet ? MaterialStyle.delegate.largeHeight() : 0
+        width: control.roundSourceSet ? Style.delegate.roundWidth(control.largeThumbnail) :
+            control.squareSourceSet ? Style.delegate.squareWidth(control.largeThumbnail) :
+            control.largeSourceSet ? Style.delegate.largeWidth() : 0
+        height: control.roundSourceSet ? Style.delegate.roundWidth(control.largeThumbnail) :
+            control.squareSourceSet ? Style.delegate.squareWidth(control.largeThumbnail) :
+            control.largeSourceSet ? Style.delegate.largeHeight() : 0
 
         anchors.top: control.top
-        anchors.topMargin: MaterialStyle.delegate.topPadding(control.type, control.lines)
+        anchors.topMargin: Style.delegate.topPadding(control.type, control.lines)
         anchors.left: control.left
 
         function reanchors()

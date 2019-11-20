@@ -64,27 +64,27 @@ T.TextField
     property bool leadingIconErrorAnimation: false
     property bool trailingInline: true
 
-    property int textType: MaterialStyle.TextType.ListText
-    property int titleTextType: titleUp ? MaterialStyle.TextType.Caption : textType
+    property int textType: Style.TextType.ListText
+    property int titleTextType: titleUp ? Style.TextType.Caption : textType
     property int placeholderTextType: textType
     property int prefixTextType: textType
     property int suffixTextType: textType
-    property int hintTextType: MaterialStyle.TextType.Hint
+    property int hintTextType: Style.TextType.Hint
 
     property bool titleUp: control.activeFocus || control.length || control.preeditText
     readonly property bool anyHintVisible: (control.helperText != "" || control._errorText != "") || _lineCountLabel.visible
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    font.family: MaterialStyle.textTypeToFontFamily(textType)
-    font.styleName: MaterialStyle.textTypeToStyleName(textType)
-    font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
-    font.capitalization: MaterialStyle.fontCapitalization(textType)
-    font.letterSpacing: MaterialStyle.textTypeToLetterSpacing(textType)
+    font.family: Style.textTypeToFontFamily(textType)
+    font.styleName: Style.textTypeToStyleName(textType)
+    font.pixelSize: Style.textTypeToPixelSize(textType)
+    font.capitalization: Style.fontCapitalization(textType)
+    font.letterSpacing: Style.textTypeToLetterSpacing(textType)
 
     // DEBUG
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
     DebugRectangle
     {
         anchors.fill: parent
@@ -117,17 +117,17 @@ T.TextField
                              contentHeight + topPadding + bottomPadding,
                              placeholder.implicitHeight + topPadding + bottomPadding)
 
-    topPadding: control.title != "" ? MaterialStyle.textField.topPaddingTitle : MaterialStyle.textField.topPadding
-    bottomPadding: anyHintVisible ? MaterialStyle.textField.bottomPaddingHint : MaterialStyle.textField.bottomPadding
+    topPadding: control.title != "" ? Style.textField.topPaddingTitle : Style.textField.topPadding
+    bottomPadding: anyHintVisible ? Style.textField.bottomPaddingHint : Style.textField.bottomPadding
 
-    property double virtualLeftPadding: ((leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0) + ((leadingIconVisible && !leadingIconInline) ?MaterialStyle.textField.horizontalPadding : 0)
+    property double virtualLeftPadding: ((leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0) + ((leadingIconVisible && !leadingIconInline) ?Style.textField.horizontalPadding : 0)
 
-    property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((trailingVisible && !trailingInline) ?MaterialStyle.textField.horizontalPadding : 0)
+    property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((trailingVisible && !trailingInline) ?Style.textField.horizontalPadding : 0)
 
     leftPadding: virtualLeftPadding + (prefixText != "" ? _prefixLabel.contentWidth + textSpacing : 0)
     rightPadding: virtualRightPadding + (suffixText != "" ? _suffixLabel.contentWidth + textSpacing : 0)
-    property double leadingSpacing: MaterialStyle.textField.leadingSpacing
-    property double textSpacing: MaterialStyle.textField.textSpacing
+    property double leadingSpacing: Style.textField.leadingSpacing
+    property double textSpacing: Style.textField.textSpacing
     property double trailingSpacing: 0
 
     leftInset: (!leadingIconInline && leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0
@@ -137,17 +137,17 @@ T.TextField
 
     // COLORS
     property alias textColor: control.color
-    color: enabled ? MaterialStyle.primaryTextColor() : MaterialStyle.hintTextColor()
-    selectionColor: MaterialStyle.accentColor
-    selectedTextColor: MaterialStyle.shouldReverseForegroundOnAccent ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor()
-    placeholderTextColor: MaterialStyle.hintTextColor()
+    color: enabled ? Style.primaryTextColor() : Style.hintTextColor()
+    selectionColor: Style.accentColor
+    selectedTextColor: Style.shouldReverseForegroundOnAccent ? Style.primaryTextColorReversed() : Style.primaryTextColor()
+    placeholderTextColor: Style.hintTextColor()
     verticalAlignment: TextInput.AlignVCenter
 
-    property color titleTextColor: enabled ? (errorState && titleUp ? MaterialStyle.errorColor : MaterialStyle.hintTextColor()) : MaterialStyle.dividersColor()
-    property color helperTextColor: enabled ? (errorState ? MaterialStyle.errorColor : MaterialStyle.hintTextColor()) : MaterialStyle.dividersColor()
-    property color prefixTextColor: enabled ? (MaterialStyle.hintTextColor()) : MaterialStyle.dividersColor()
-    property color suffixTextColor: enabled ? (MaterialStyle.hintTextColor()) : MaterialStyle.dividersColor()
-    property color leadingIconColor: enabled ? (activeFocus ? MaterialStyle.accentColor : MaterialStyle.secondaryTextColor()) : MaterialStyle.disabledTextColor()
+    property color titleTextColor: enabled ? (errorState && titleUp ? Style.errorColor : Style.hintTextColor()) : Style.dividersColor()
+    property color helperTextColor: enabled ? (errorState ? Style.errorColor : Style.hintTextColor()) : Style.dividersColor()
+    property color prefixTextColor: enabled ? (Style.hintTextColor()) : Style.dividersColor()
+    property color suffixTextColor: enabled ? (Style.hintTextColor()) : Style.dividersColor()
+    property color leadingIconColor: enabled ? (activeFocus ? Style.accentColor : Style.secondaryTextColor()) : Style.disabledTextColor()
 
     // BEHAVIOR
     selectByMouse: true
@@ -161,10 +161,10 @@ T.TextField
         id: _leadingIcon
         color: control.leadingIconColor
         source: control.leadingIconSource
-        iconSize: MaterialStyle.textField.iconSize
-        width: MaterialStyle.textField.iconWidth
-        height: MaterialStyle.textField.iconWidth
-        y: MaterialStyle.textField.topPadding
+        iconSize: Style.textField.iconSize
+        width: Style.textField.iconWidth
+        height: Style.textField.iconWidth
+        y: Style.textField.topPadding
 
         opacity: control.leadingIconVisible ? color.a : 0.0
         Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic; duration: 200 } }
@@ -176,7 +176,7 @@ T.TextField
     Loader
     {
         id: _trailingContent
-        y: control.title != "" ? MaterialStyle.textField.topPadding : 0
+        y: control.title != "" ? Style.textField.topPadding : 0
         x: control.width - width
         opacity: control.trailingVisible ? color.a : 0.0
         onSourceComponentChanged:
@@ -204,7 +204,7 @@ T.TextField
         textType: control.titleTextType
         color: control.titleTextColor
         x: control.virtualLeftPadding
-        y: titleUp ? MaterialStyle.textField.topPaddingTitleOffset : control.topPadding
+        y: titleUp ? Style.textField.topPaddingTitleOffset : control.topPadding
         width: control.width - control.virtualLeftPadding - control.virtualRightPadding
         verticalAlignment: control.verticalAlignment
         renderType: control.renderType
@@ -213,7 +213,7 @@ T.TextField
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
         } // Behavior y
-        font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
+        font.pixelSize: Style.textTypeToPixelSize(textType)
         Behavior on font.pixelSize
         {
             NumberAnimation { easing.type:Easing.OutCubic; duration: 200 }
@@ -279,7 +279,7 @@ T.TextField
         color: control.helperTextColor
         width: control.width - control.virtualLeftPadding - control.virtualRightPadding - _lineCountLabel.width
         x: control.virtualLeftPadding
-        y: control.height - height - MaterialStyle.textField.bottomPaddingHintOffset
+        y: control.height - height - Style.textField.bottomPaddingHintOffset
         verticalAlignment: control.verticalAlignment
         renderType: control.renderType
         elide: Text.ElideRight
@@ -301,7 +301,7 @@ T.TextField
         textType: control.hintTextType
         color: control.helperTextColor
         x: control.width - width - (control.trailingInline ? 0 : control.virtualRightPadding)
-        y: control.height - height - MaterialStyle.textField.bottomPaddingHintOffset
+        y: control.height - height - Style.textField.bottomPaddingHintOffset
         verticalAlignment: control.verticalAlignment
         renderType: control.renderType
     } // LineCounter
@@ -374,13 +374,13 @@ T.TextField
     } // PlaceholderText
 
     // BACKGROUND
-    property double backgroundBorderHeight: MaterialStyle.textField.backgroundBorderHeight
-    property color backgroundColor: errorState ? MaterialStyle.errorColor : MaterialStyle.hintTextColor()
-    property color backgroundHighlightColor: errorState ? MaterialStyle.errorColor : MaterialStyle.accentColor
+    property double backgroundBorderHeight: Style.textField.backgroundBorderHeight
+    property color backgroundColor: errorState ? Style.errorColor : Style.hintTextColor()
+    property color backgroundHighlightColor: errorState ? Style.errorColor : Style.accentColor
     background: Rectangle
     {
         y: control.height - height - control.bottomPadding + 8
-        implicitWidth: MaterialStyle.textField.implicitWidth
+        implicitWidth: Style.textField.implicitWidth
         width: parent.width
         height: control.activeFocus || control.hovered ? control.backgroundBorderHeight : 1
         color: control.backgroundColor

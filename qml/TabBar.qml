@@ -22,18 +22,18 @@ T.TabBar
 
     spacing: 1
 
-    property color backgroundColor: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.backgroundColor
-    property color accentColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
-                                highlighted ? MaterialStyle.accentColor :
-                                colorReversed ? MaterialStyle.primaryTextColorReversed() :
-                                                MaterialStyle.primaryTextColor()
+    property color backgroundColor: onPrimary ? Style.primaryColor : Style.backgroundColor
+    property color accentColor: !enabled ? (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor()) :
+                                highlighted ? Style.accentColor :
+                                colorReversed ? Style.primaryTextColorReversed() :
+                                                Style.primaryTextColor()
 
-    property bool highlighted: onPrimary ? MaterialStyle.preferAccentOnPrimary : true
+    property bool highlighted: onPrimary ? Style.preferAccentOnPrimary : true
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property double elevation: position === TabBar.Footer ? MaterialStyle.tabBar.elevation : 0
+    property double elevation: position === TabBar.Footer ? Style.tabBar.elevation : 0
 
     contentItem: ListView
     {
@@ -58,7 +58,7 @@ T.TabBar
             z: 2
             Rectangle
             {
-                height: MaterialStyle.tabBar.highlightHeight
+                height: Style.tabBar.highlightHeight
                 width: parent.width
                 y: control.position === TabBar.Footer ? 0 : parent.height - height
                 color: control.accentColor

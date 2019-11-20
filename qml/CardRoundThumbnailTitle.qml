@@ -18,17 +18,17 @@ Item
     property alias headerText: _cardTitle.headerText
     property alias subHeaderText: _cardTitle.subHeaderText
     property alias thumbnail: _roundImage.source
-    property double imageSize: MaterialStyle.card.roundImageSize
-    property double spacing: MaterialStyle.card.roundImageSpacing
+    property double imageSize: Style.card.roundImageSize
+    property double spacing: Style.card.roundImageSpacing
     property alias textSpacing: _cardTitle.spacing
     property bool mirrored: false
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
     readonly property bool imagePresent: _roundImage.source != ""
 
-    property bool drawline: MaterialStyle.debug.drawDebugIconLabel
+    property bool drawline: Style.debug.drawDebugIconLabel
 
     DebugRectangle
     {

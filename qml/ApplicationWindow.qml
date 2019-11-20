@@ -12,8 +12,8 @@ T.ApplicationWindow
 {
     id: window
 
-    color: MaterialStyle.backgroundColor
-    property color overlayColor: MaterialStyle.overlayColor
+    color: Style.backgroundColor
+    property color overlayColor: Style.overlayColor
 
     overlay.modal: Rectangle
     {

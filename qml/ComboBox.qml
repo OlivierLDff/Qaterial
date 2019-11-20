@@ -27,7 +27,7 @@ T.ComboBox
                              implicitIndicatorHeight + topPadding + bottomPadding)
 
     // DEBUG
-   // property bool drawline: MaterialStyle.debug.drawDebugButton
+   // property bool drawline: Style.debug.drawDebugButton
    // DebugRectangle
    // {
    //     anchors.fill: parent

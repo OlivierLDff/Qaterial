@@ -11,14 +11,14 @@ RoundButton
     leftPadding: 0
     rightPadding: 0
 
-    topInset: MaterialStyle.toolButton.padding
-    bottomInset: MaterialStyle.toolButton.padding
-    leftInset: MaterialStyle.toolButton.padding
-    rightInset: MaterialStyle.toolButton.padding
+    topInset: Style.toolButton.padding
+    bottomInset: Style.toolButton.padding
+    leftInset: Style.toolButton.padding
+    rightInset: Style.toolButton.padding
 
-    backgroundImplicitWidth: MaterialStyle.toolButton.appBarButtonWidth
-    backgroundImplicitHeight: MaterialStyle.toolButton.appBarButtonHeight
+    backgroundImplicitWidth: Style.toolButton.appBarButtonWidth
+    backgroundImplicitHeight: Style.toolButton.appBarButtonHeight
 
-    foregroundColor: !enabled ? (colorReversed ? MaterialStyle.disabledTextColorReversed() : MaterialStyle.disabledTextColor()) :
-                    highlighted ? MaterialStyle.accentColor : (colorReversed ? MaterialStyle.primaryTextColorReversed() : MaterialStyle.primaryTextColor())
+    foregroundColor: !enabled ? (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor()) :
+                    highlighted ? Style.accentColor : (colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor())
 } // RoundButton

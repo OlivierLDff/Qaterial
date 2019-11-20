@@ -32,13 +32,13 @@ T.MenuBar
     } // Row
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    property color backgroundColor: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.dialogColor
+    property color backgroundColor: onPrimary ? Style.primaryColor : Style.dialogColor
 
     background: Rectangle
     {
-        implicitHeight: MaterialStyle.menu.implicitHeight
+        implicitHeight: Style.menu.implicitHeight
         color: control.backgroundColor
     }
 } // MenuBar

@@ -19,9 +19,9 @@ ModalDialog
 
     contentItem: Item
     {
-        implicitHeight: Math.floor(_icon.implicitHeight + _text.implicitHeight + MaterialStyle.card.verticalPadding)
+        implicitHeight: Math.floor(_icon.implicitHeight + _text.implicitHeight + Style.card.verticalPadding)
 
-        implicitWidth: MaterialStyle.dialog.implicitWidth - 2*MaterialStyle.card.horizontalPadding
+        implicitWidth: Style.dialog.implicitWidth - 2*Style.card.horizontalPadding
 
         BusyIndicator
         {
@@ -34,10 +34,10 @@ ModalDialog
 
             text: control.text
             anchors.horizontalCenter: parent.horizontalCenter
-            y: _icon.height + MaterialStyle.card.verticalPadding
+            y: _icon.height + Style.card.verticalPadding
             width: parent.width
-            textType: MaterialStyle.TextType.ListText
-            color: MaterialStyle.secondaryTextColor()
+            textType: Style.TextType.ListText
+            color: Style.secondaryTextColor()
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
         } // Label

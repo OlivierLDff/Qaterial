@@ -12,8 +12,8 @@ FabButton
     flat: false
     highlighted: true
 
-    leftPadding: MaterialStyle.fab.padding
-    rightPadding: MaterialStyle.fab.padding
+    leftPadding: Style.fab.padding
+    rightPadding: Style.fab.padding
 
     contentItem: FabIconLabel
     {
@@ -28,5 +28,5 @@ FabButton
 
     property bool extended: (!extendedOnHovered || extendedOnHovered && (hovered || down || visualFocus)) && text != ""
 
-    type: extended ? MaterialStyle.FabType.Extended : MaterialStyle.FabType.Default
+    type: extended ? Style.FabType.Extended : Style.FabType.Default
 } // RawMaterialButton

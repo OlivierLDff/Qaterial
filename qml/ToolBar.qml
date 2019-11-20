@@ -13,7 +13,7 @@ T.ToolBar
 {
     id: control
 
-    property double elevation: MaterialStyle.toolbar.elevation
+    property double elevation: Style.toolbar.elevation
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             contentWidth + leftPadding + rightPadding)
@@ -22,11 +22,11 @@ T.ToolBar
 
     spacing: 16
 
-    property color backgroundColor: MaterialStyle.primaryColor
+    property color backgroundColor: Style.primaryColor
 
     background: Rectangle
     {
-        implicitHeight: MaterialStyle.toolbar.implicitHeight
+        implicitHeight: Style.toolbar.implicitHeight
         color: control.backgroundColor
 
         layer.enabled: control.elevation > 0

@@ -12,8 +12,8 @@ RadioDelegate
 {
     onClicked: ListView.view.currentIndex = index
     checked: ListView.isCurrentItem
-    backgroundColor: MaterialStyle.dialogColor
-    indicatorSpacing: MaterialStyle.dialog.indicatorSpacing
+    backgroundColor: Style.dialogColor
+    indicatorSpacing: Style.dialog.indicatorSpacing
     alignTextRight: true
     LayoutMirroring.enabled: true
     width: parent.width // Not sure if this should be here ?

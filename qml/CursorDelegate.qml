@@ -13,8 +13,8 @@ Rectangle
 {
     id: cursor
 
-    color: MaterialStyle.accentColor
-    width: MaterialStyle.textField.cursorWidth
+    color: Style.accentColor
+    width: Style.textField.cursorWidth
     visible: parent.activeFocus && !parent.readOnly && parent.selectionStart === parent.selectionEnd
 
     Connections

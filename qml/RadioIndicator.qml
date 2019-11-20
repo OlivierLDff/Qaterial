@@ -14,12 +14,12 @@ import Qaterial 1.0
 
 Rectangle
 {
-    implicitWidth: MaterialStyle.radioIndicator.implicitWidth
-    implicitHeight: MaterialStyle.radioIndicator.implicitHeight
+    implicitWidth: Style.radioIndicator.implicitWidth
+    implicitHeight: Style.radioIndicator.implicitHeight
     radius: width / 2
     border.width: 2
-    border.color: !control.enabled ? MaterialStyle.hintTextColor()
-        : control.checked || control.down ? MaterialStyle.accentColor : MaterialStyle.secondaryTextColor()
+    border.color: !control.enabled ? Style.hintTextColor()
+        : control.checked || control.down ? Style.accentColor : Style.secondaryTextColor()
     color: "transparent"
 
     Behavior on border.color
@@ -38,8 +38,8 @@ Rectangle
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         readonly property bool shouldBeVisible: control.checked || control.down
-        width: shouldBeVisible ? MaterialStyle.radioIndicator.implicitWidth/2 : 0
-        height: shouldBeVisible ? MaterialStyle.radioIndicator.implicitHeight/2 : 0
+        width: shouldBeVisible ? Style.radioIndicator.implicitWidth/2 : 0
+        height: shouldBeVisible ? Style.radioIndicator.implicitHeight/2 : 0
         radius: width / 2
         color: parent.border.color
         //visible: control.checked || control.down

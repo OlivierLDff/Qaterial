@@ -16,14 +16,14 @@ Rectangle
     property bool enabled: true
     property bool outlined: false
     property bool isActive: false
-    property double elevation: isActive ? MaterialStyle.card.activeElevation : (outlined ? 0 : MaterialStyle.card.defaultElevation)
+    property double elevation: isActive ? Style.card.activeElevation : (outlined ? 0 : Style.card.defaultElevation)
 
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    color: onPrimary ? MaterialStyle.primaryColor : MaterialStyle.cardColor
-    property color borderColor: enabled ? MaterialStyle.dividersColor() : MaterialStyle.disabledDividersColor()
-    radius: MaterialStyle.card.radius
+    color: onPrimary ? Style.primaryColor : Style.cardColor
+    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
+    radius: Style.card.radius
     border.width: outlined ? 1 : 0
     border.color: isActive ? "transparent" : borderColor
 

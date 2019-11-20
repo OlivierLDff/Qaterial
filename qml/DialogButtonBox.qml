@@ -18,13 +18,13 @@ T.DialogButtonBox
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    spacing: MaterialStyle.dialog.spacing
-    padding: MaterialStyle.dialog.padding
+    spacing: Style.dialog.spacing
+    padding: Style.dialog.padding
     alignment: Qt.AlignRight
     buttonLayout: T.DialogButtonBox.AndroidLayout
 
-    property color foregroundColor: MaterialStyle.accentColor
-    property color backgroundColor: MaterialStyle.backgroundColor
+    property color foregroundColor: Style.accentColor
+    property color backgroundColor: Style.backgroundColor
 
     /*delegate: FlatButton
     {
@@ -47,8 +47,8 @@ T.DialogButtonBox
 
     background: Rectangle
     {
-        implicitHeight: MaterialStyle.dialog.buttonRectImplicitHeight
-        radius: MaterialStyle.dialog.radius
+        implicitHeight: Style.dialog.buttonRectImplicitHeight
+        radius: Style.dialog.radius
         color: control.backgroundColor
         // Rounded corners should be only at the top or at the bottom
         //topPadding: control.position === T.DialogButtonBox.Footer ? -2 : 0

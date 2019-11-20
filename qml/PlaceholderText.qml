@@ -9,5 +9,5 @@ import Qaterial 1.0
 Label
 {
     id: control
-    property int textType: MaterialStyle.TextType.Hint
+    property int textType: Style.TextType.Hint
 } // Label

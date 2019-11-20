@@ -11,15 +11,15 @@ import Qaterial 1.0
 
 Rectangle
 {
-    implicitWidth: MaterialStyle.menu.separatorImplicitWidth
+    implicitWidth: Style.menu.separatorImplicitWidth
     implicitHeight: 1
     property bool enabled: true
-    color: !enabled ? (colorReversed ? MaterialStyle.disabledDividersColorReversed() : MaterialStyle.disabledDividersColor()) :
-                highlighted && accentColorAuthorized ? MaterialStyle.accentColor :
-                colorReversed ? MaterialStyle.dividersColorReversed() : MaterialStyle.dividersColor()
+    color: !enabled ? (colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor()) :
+                highlighted && accentColorAuthorized ? Style.accentColor :
+                colorReversed ? Style.dividersColorReversed() : Style.dividersColor()
 
     property bool highlighted: false
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
-    property bool accentColorAuthorized: onPrimary && MaterialStyle.preferAccentOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+    property bool accentColorAuthorized: onPrimary && Style.preferAccentOnPrimary
 } // Rectangle

@@ -23,19 +23,19 @@ Pane
 
     padding: 0
 
-    elevation: MaterialStyle.snackbar.elevation
-    radius: MaterialStyle.snackbar.radius
+    elevation: Style.snackbar.elevation
+    radius: Style.snackbar.radius
 
-    property bool drawline: MaterialStyle.debug.drawDebugDelegate
-    color: MaterialStyle.snackbarColor()
+    property bool drawline: Style.debug.drawDebugDelegate
+    color: Style.snackbarColor()
 
     property bool expandable: false
 
     contentItem: Item
     {
         id: _content
-        implicitWidth: control.expandable ? (Math.max(MaterialStyle.snackbar.implicitWidth, _label.implicitWidth + _action.implicitWidth) + MaterialStyle.card.horizontalPadding*(control.action != "" ? 3 : 2)) : MaterialStyle.snackbar.implicitWidth
-        implicitHeight: (_label.lineCount > 1) ? MaterialStyle.snackbar.implicitHeight2 : MaterialStyle.snackbar.implicitHeight
+        implicitWidth: control.expandable ? (Math.max(Style.snackbar.implicitWidth, _label.implicitWidth + _action.implicitWidth) + Style.card.horizontalPadding*(control.action != "" ? 3 : 2)) : Style.snackbar.implicitWidth
+        implicitHeight: (_label.lineCount > 1) ? Style.snackbar.implicitHeight2 : Style.snackbar.implicitHeight
 
         DebugRectangle
         {
@@ -50,14 +50,14 @@ Pane
             text: control.text
             anchors.verticalCenter: _content.verticalCenter
             anchors.left: parent.left
-            anchors.leftMargin: MaterialStyle.card.horizontalPadding
+            anchors.leftMargin: Style.card.horizontalPadding
             anchors.right: (control.action != "") ? _action.left : parent.right
-            anchors.rightMargin: (control.action != "") ? MaterialStyle.card.horizontalPadding : MaterialStyle.card.verticalPadding
+            anchors.rightMargin: (control.action != "") ? Style.card.horizontalPadding : Style.card.verticalPadding
             maximumLineCount: control.expandable ? 1 : 2
             wrapMode: control.expandable ? Text.NoWrap : Text.WordWrap
             elide: (control.mirrored ? Text.ElideLeft : Text.ElideRight)
 
-            color: MaterialStyle.snackbarTextColor()
+            color: Style.snackbarTextColor()
 
             DebugRectangle
             {
@@ -77,7 +77,7 @@ Pane
             anchors.verticalCenter: _content.verticalCenter
             anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
             onPrimary: true
-            rippleColor: MaterialStyle.snackbarRippleColor()
+            rippleColor: Style.snackbarRippleColor()
         } // FlatButton
     } // contentItem
 } // Pane

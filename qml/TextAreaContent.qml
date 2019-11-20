@@ -13,19 +13,19 @@ T.TextArea
 {
     id: control
 
-    property int textType: MaterialStyle.TextType.ListText
+    property int textType: Style.TextType.ListText
     property int placeholderTextType: textType
     property bool onPrimary: false
-    property bool colorReversed: onPrimary && MaterialStyle.shouldReverseForegroundOnPrimary
+    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
 
-    font.family: MaterialStyle.textTypeToFontFamily(textType)
-    font.styleName: MaterialStyle.textTypeToStyleName(textType)
-    font.pixelSize: MaterialStyle.textTypeToPixelSize(textType)
-    font.capitalization: MaterialStyle.fontCapitalization(textType)
-    font.letterSpacing:  MaterialStyle.textTypeToLetterSpacing(textType)
+    font.family: Style.textTypeToFontFamily(textType)
+    font.styleName: Style.textTypeToStyleName(textType)
+    font.pixelSize: Style.textTypeToPixelSize(textType)
+    font.capitalization: Style.fontCapitalization(textType)
+    font.letterSpacing:  Style.textTypeToLetterSpacing(textType)
 
     // DEBUG
-    property bool drawline: MaterialStyle.debug.drawDebugButton
+    property bool drawline: Style.debug.drawDebugButton
     DebugRectangle
     {
         anchors.fill: parent
@@ -63,9 +63,9 @@ T.TextArea
 
     // COLORS
     property alias textColor: control.color
-    color: enabled ? MaterialStyle.primaryTextColor() : MaterialStyle.hintTextColor()
-    selectionColor: MaterialStyle.accentColor
-    placeholderTextColor: MaterialStyle.hintTextColor()
+    color: enabled ? Style.primaryTextColor() : Style.hintTextColor()
+    selectionColor: Style.accentColor
+    placeholderTextColor: Style.hintTextColor()
     verticalAlignment: TextInput.AlignTop
 
     // BEHAVIOR
@@ -103,7 +103,7 @@ T.TextArea
     background: Rectangle
     {
         id: _back
-        implicitWidth: MaterialStyle.textField.implicitWidth
+        implicitWidth: Style.textField.implicitWidth
         color: "transparent"
     } // Rectangle
 } // TextArea

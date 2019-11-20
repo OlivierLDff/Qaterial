@@ -15,9 +15,9 @@ FlatFabButton
 	id: control
 
     backgroundColor: "transparent"
-    borderColor: enabled ? (highlighted ? MaterialStyle.accentColor : MaterialStyle.dividersColor()) : MaterialStyle.disabledDividersColor()
+    borderColor: enabled ? (highlighted ? Style.accentColor : Style.dividersColor()) : Style.disabledDividersColor()
     outlined: true
 
-    foregroundColor: !enabled ? MaterialStyle.disabledTextColor() :
-        highlighted ? MaterialStyle.accentColor : MaterialStyle.primaryTextColor()
+    foregroundColor: !enabled ? Style.disabledTextColor() :
+        highlighted ? Style.accentColor : Style.primaryTextColor()
 } // FabButton

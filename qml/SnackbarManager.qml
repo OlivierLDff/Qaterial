@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
+
 // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
@@ -30,7 +35,7 @@ Item
             opacity: 0
 
             // The actual time we are using that can be override by the user
-            property real snackbarTimeout: root.settings.timeout === undefined ? MaterialStyle.snackbar.shortDisplayTime : root.settings.timeout
+            property real snackbarTimeout: root.settings.timeout === undefined ? Style.snackbar.shortDisplayTime : root.settings.timeout
             // Used to call the onAccept callback or the onClose.
             property bool actionCalled
             // Indicate that the snackbar is about to be destroyed (and fade out animation is playing)
