@@ -49,7 +49,7 @@ message( STATUS "QATERIAL_TARGET                 : ${QATERIAL_TARGET}" )
 message( STATUS "QATERIAL_VERSION                : ${QATERIAL_VERSION}" )
 message( STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}" )
 message( STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}" )
-message(STATUS "QATERIAL_FOLDER_PREFIX           : " ${QATERIAL_FOLDER_PREFIX})
+message( STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}" )
 
 message( STATUS "------ ${QATERIAL_TARGET} End Configuration ------" )
 
