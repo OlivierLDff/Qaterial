@@ -68,8 +68,8 @@ T.Switch
     contentItem: Label
     {
         id: _label
-        leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
-        rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
+        leftPadding: (text && control.indicator && !control.mirrored) ? control.indicator.width + control.spacing : 0
+        rightPadding: (text && control.indicator && control.mirrored) ? control.indicator.width + control.spacing : 0
 
         onPrimary: control.onPrimary
         colorReversed: control.colorReversed
