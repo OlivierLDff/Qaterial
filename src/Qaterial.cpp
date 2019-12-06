@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-//					INCLUDE
+//                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
 // C Header
@@ -16,7 +16,7 @@
 #include <Qaterial.hpp>
 
 // ─────────────────────────────────────────────────────────────
-//					DECLARATION
+//                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
 static QATERIAL_NAMESPACE::Version VERSION;
@@ -24,15 +24,15 @@ static QATERIAL_NAMESPACE::Version VERSION;
 static QObject* registerVersionSingleton(QQmlEngine* engine, QJSEngine* scriptEngine)
 {
     Q_UNUSED(engine)
-        Q_UNUSED(scriptEngine)
-        return &VERSION;
+    Q_UNUSED(scriptEngine)
+    return &VERSION;
 }
 
 // ─────────────────────────────────────────────────────────────
-//					FUNCTIONS
+//                  FUNCTIONS
 // ─────────────────────────────────────────────────────────────
 
-static const char* _defaultUri = "Qaterial.Impl";
+static const char* _defaultUri = "Qaterial";
 static const char** _uri = &_defaultUri;
 static void registerTypes()
 {
@@ -42,7 +42,7 @@ static void registerTypes()
 static void registerTypes(const char* uri) { _uri = &uri; registerTypes(); }
 static void loadResources()
 {
-	Q_INIT_RESOURCE(Qaterial);
+    Q_INIT_RESOURCE(Qaterial);
 }
 
 Q_COREAPP_STARTUP_FUNCTION(registerTypes)
@@ -50,65 +50,65 @@ Q_COREAPP_STARTUP_FUNCTION(loadResources)
 
 QATERIAL_USING_NAMESPACE;
 
-void Helper::registerTypes(const char* uri)
+void Utils::registerTypes(const char* uri)
 {
-	::registerTypes(uri);
+    ::registerTypes(uri);
 }
 
-void Helper::loadResources()
+void Utils::loadResources()
 {
-	::loadResources();
+    ::loadResources();
 }
 
-uint32_t Helper::major()
+uint32_t Utils::major()
 {
-	return QATERIAL_VERSION_MAJOR;
+    return QATERIAL_VERSION_MAJOR;
 }
 
-uint32_t Helper::minor()
+uint32_t Utils::minor()
 {
-	return QATERIAL_VERSION_MINOR;
+    return QATERIAL_VERSION_MINOR;
 }
 
-uint32_t Helper::patch()
+uint32_t Utils::patch()
 {
-	return QATERIAL_VERSION_PATCH;
+    return QATERIAL_VERSION_PATCH;
 }
 
-uint32_t Helper::tag()
+uint32_t Utils::tag()
 {
-	return QATERIAL_VERSION_TAG_HEX;
+    return QATERIAL_VERSION_TAG_HEX;
 }
 
-QString Helper::version()
+QString Utils::version()
 {
-	return QString::number(major()) + "." +
-		QString::number(minor()) + "." +
-		QString::number(patch()) + "." +
-		QString::number(tag(),16);
+    return QString::number(major()) + "." +
+        QString::number(minor()) + "." +
+        QString::number(patch()) + "." +
+        QString::number(tag(),16);
 }
 
 quint32 Version::major() const
 {
-    return Helper::major();
+    return Utils::major();
 }
 
 quint32 Version::minor() const
 {
-    return Helper::minor();
+    return Utils::minor();
 }
 
 quint32 Version::patch() const
 {
-    return Helper::patch();
+    return Utils::patch();
 }
 
 quint32 Version::tag() const
 {
-    return Helper::tag();
+    return Utils::tag();
 }
 
 QString Version::version() const
 {
-    return Helper::version();
+    return Utils::version();
 }

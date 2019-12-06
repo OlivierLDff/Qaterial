@@ -56,7 +56,7 @@ QATERIAL_NAMESPACE_START
 
 /**
  */
-class QATERIAL_API_ Helper
+class QATERIAL_API_ Utils
 {
 public:
     static void registerTypes(const char* uri = nullptr);
