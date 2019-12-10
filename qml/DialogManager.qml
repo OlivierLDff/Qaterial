@@ -91,7 +91,7 @@ Item
             onAccepted:
             {
                 if(root.settings && root.settings.acceptedCallback)
-                    root.settings.acceptedCallback(text, acceptableInput)
+                    root.settings.acceptedCallback(text, acceptableInput && !error)
             }
 
             onApplied:
