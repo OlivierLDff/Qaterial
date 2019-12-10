@@ -261,7 +261,9 @@ T.TextField
                 _errorAnimation.start()
             if(leadingIconErrorAnimation)
                  _errorLeadingAnimation.start()
-            _errorText = s
+            _errorText = s ? s : " "
+            if(!s)
+                console.log("Error: No Error text provided, please provide errorText property to guide your user")
         }
     }
     Label // Hint
