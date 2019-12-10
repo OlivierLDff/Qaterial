@@ -10,6 +10,7 @@
         <file>Ripple.qml</file>
         <file>ElevationEffect.qml</file>
         <file>DebugRectangle.qml</file>
+        <file>DebugObject.qml</file>
         <file>RoundImage.qml</file>
         <file>ErrorSequentialAnimation.qml</file>
 

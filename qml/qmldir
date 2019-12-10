@@ -32,6 +32,7 @@ IconLabel                   1.0 IconLabel.qml
 Ripple                      1.0 Ripple.qml
 ElevationEffect             1.0 ElevationEffect.qml
 DebugRectangle              1.0 DebugRectangle.qml
+DebugObject                 1.0 DebugObject.qml
 RoundImage                  1.0 RoundImage.qml
 ErrorSequentialAnimation    1.0 ErrorSequentialAnimation.qml
 

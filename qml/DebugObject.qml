@@ -1,0 +1,83 @@
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
+
+// Qt
+import QtQuick 2.12
+
+// Backend
+import Qaterial 1.0 as Qaterial
+
+Rectangle
+{
+    id: root
+    color: "#202020"
+    border.width: 1
+    border.color: "#101010"
+    width: parent.width
+    height: _mainColumn.height
+
+    property string title: ""
+    property alias content: _loader.sourceComponent
+
+    Item
+    {
+        id: _mainColumn
+        height: _header.height + _expandableRect.height
+        Rectangle
+        {
+            id: _header
+
+            width: root.width
+            height: 30
+            color: "#101010"
+
+            Qaterial.Label
+            {
+                text: root.title
+                textType: Qaterial.Style.TextType.Body2
+                anchors.verticalCenter: parent.verticalCenter
+                x: 4
+                width: parent.width - 4 - _expandButton.width
+                elide: Text.ElideRight
+            } // Label
+
+            Qaterial.AppBarButton
+            {
+                id: _expandButton
+                icon.source: _expandableRect.expanded ? "qrc:///Qaterial/Images/menu-up.svg" : "qrc:///Qaterial/Images/menu-down.svg"
+                backgroundImplicitWidth: Qaterial.Style.dense ? 12 : 16
+                backgroundImplicitHeight: Qaterial.Style.dense ? 12 : 16
+                leftPadding: 0
+                rightPadding: 0
+                x: parent.width - implicitWidth
+                anchors.verticalCenter: parent.verticalCenter
+
+                onClicked: _expandableRect.expanded = !_expandableRect.expanded
+            } // AppBarButton
+        }
+
+        Item
+        {
+            id: _expandableRect
+            clip: true
+            property bool expanded: false
+            y: _header.height
+            height: expanded && _loader.item ? _loader.item.height : 0
+            width: root.width
+
+            //Behavior on height { NumberAnimation { duration: 200 } }
+
+            Loader
+            {
+                id: _loader
+                x: 8
+                width: _expandableRect.width - 8
+                //active: _expandableRect.expanded
+                //anchors.bottom: parent.bottom
+            }
+        }
+
+    } // Column
+} // Frame
