@@ -4,6 +4,14 @@
 
 cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
+# DEPENDENCIES
+
+set(QSUPERMACROS_REPOSITORY "https://github.com/OlivierLDff/QSuperMacros" CACHE STRING "Repository of QSuperMacros")
+set(QSUPERMACROS_TAG "master" CACHE STRING "Git tag/branch of QSuperMacros")
+
+set(STRINGIFY_REPOSITORY "https://github.com/OlivierLDff/Stringify" CACHE STRING "Repository of Stringify")
+set(STRINGIFY_TAG "master" CACHE STRING "Git tag/branch of Stringify")
+
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       PROJECT SETTINGS                           │
 # └──────────────────────────────────────────────────────────────────┘
@@ -65,42 +73,76 @@ find_package(Qt5QuickControls2 CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
 find_package(Qt5QuickCompiler CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
 
 # ┌──────────────────────────────────────────────────────────────────┐
+# │                       DEPENDENCIES                               │
+# └──────────────────────────────────────────────────────────────────┘
+
+include(FetchContent)
+
+# QSuperMacros
+set(QSUPERMACROS_FOLDER_PREFIX "Dependencies/QSuperMacros" CACHE STRING "")
+FetchContent_Declare(
+    QSuperMacros
+    GIT_REPOSITORY ${QSUPERMACROS_REPOSITORY}
+    GIT_TAG        ${QSUPERMACROS_TAG}
+)
+
+# Stringify
+set(STRINGIFY_FOLDER_PREFIX "Dependencies/Stringify" CACHE STRING "")
+FetchContent_Declare(
+    Stringify
+    GIT_REPOSITORY ${STRINGIFY_REPOSITORY}
+    GIT_TAG        ${STRINGIFY_TAG}
+)
+
+FetchContent_MakeAvailable(QSuperMacros)
+FetchContent_MakeAvailable(Stringify)
+
+# ┌──────────────────────────────────────────────────────────────────┐
 # │              ADD SOURCE TO QT QUICK COMPILER                     │
 # └──────────────────────────────────────────────────────────────────┘
+
+file(GLOB_RECURSE QATERIAL_QML_SRCS qml/*.qml)
+
+foreach(SOURCE IN ITEMS ${QATERIAL_QML_SRCS})
+    get_filename_component(SOURCE_PATH "${SOURCE}" PATH)
+    file(RELATIVE_PATH SOURCE_PATH_REL ${CMAKE_CURRENT_SOURCE_DIR}/qml "${SOURCE_PATH}")
+    string(REPLACE "/" "\\" GROUP_PATH "${SOURCE_PATH_REL}")
+    source_group("Qml\\${GROUP_PATH}" FILES "${SOURCE}")
+endforeach()
 
 # Add qml to the qtquick compiler
 qtquick_compiler_add_resources(QATERIAL_QML_RES ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc)
 
-# Trick to rerun cmake each time qml.qrc is updated
+# Trick to rerun cmake each time Qaterial.qrc is updated
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc
-  ${CMAKE_CURRENT_BINARY_DIR}/Qaterial.junk
+  ${CMAKE_CURRENT_BINARY_DIR}/qml.junk
 )
 
-# Dont Run Moc on cpp file generated from cpp
-foreach(QATERIAL_QML_FILE ${QATERIAL_QML_RES})
-    set_property(SOURCE ${QATERIAL_QML_FILE} PROPERTY SKIP_AUTOMOC ON)
-    source_group( "QmlMoc Files" FILES ${QATERIAL_QML_FILE} )
+# Dont Run Moc on cpp file generated from qml
+foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
+    set_property(SOURCE ${QATERIAL_CURRENT_QML_FILE} PROPERTY SKIP_AUTOMOC ON)
+    source_group("Qml\\QtQuickCompiler Files" FILES ${QATERIAL_CURRENT_QML_FILE})
 endforeach()
 
-# We use every qml file inside the IDE.
-file(GLOB_RECURSE QATERIAL_QML_SRCS ${CMAKE_CURRENT_SOURCE_DIR}/qml/*.qml)
+set(QATERAIL_UTILS_SRCS
 
-# Set file in folder, good for visualization inside IDE
-foreach(_source IN ITEMS ${QATERIAL_QML_SRCS})
-    get_filename_component(_source_path "${_source}" PATH)
-    file(RELATIVE_PATH _source_path_rel ${CMAKE_CURRENT_SOURCE_DIR}/qml "${_source_path}")
-    string(REPLACE "/" "\\" _group_path "${_source_path_rel}")
-    source_group("Qml Files\\${_group_path}" FILES "${_source}")
-endforeach()
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Export.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Version.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Utils.hpp
 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Version.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils.cpp
+    )
 
 set(QATERIAL_SRCS
+    ${QATERAIL_UTILS_SRCS}
     ${QATERIAL_QML_RES}
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Qaterial.cpp
     ${QATERIAL_QML_SRCS}
     )
+
+source_group("Utils" FILES ${QATERAIL_UTILS_SRCS})
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                        CREATE TARGET                             │
@@ -127,6 +169,8 @@ set_target_properties(${QATERIAL_TARGET} PROPERTIES PREFIX "")
 if(QATERIAL_FOLDER_PREFIX)
     set_target_properties(${QATERIAL_TARGET} PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
 endif() # QATERIAL_FOLDER_PREFIX
+
+target_link_libraries(${QATERIAL_TARGET} QSuperMacros Stringify)
 
 # Version
 target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_MAJOR=${QATERIAL_VERSION_MAJOR} )

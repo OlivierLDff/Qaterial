@@ -33,29 +33,28 @@ Rectangle
             height: 30
             color: "#101010"
 
+            Qaterial.AppBarButton
+            {
+                id: _expandButton
+                icon.source: _expandableRect.expanded ? "qrc:///Qaterial/Images/menu-down.svg" : "qrc:///Qaterial/Images/menu-right.svg"
+                backgroundImplicitWidth: Qaterial.Style.dense ? 12 : 16
+                backgroundImplicitHeight: Qaterial.Style.dense ? 12 : 16
+                leftPadding: 0
+                rightPadding: 0
+                anchors.verticalCenter: parent.verticalCenter
+
+                onClicked: _expandableRect.expanded = !_expandableRect.expanded
+            } // AppBarButton
+
             Qaterial.Label
             {
                 text: root.title
                 textType: Qaterial.Style.TextType.Body2
                 anchors.verticalCenter: parent.verticalCenter
-                x: 4
+                x: 4 + _expandButton.implicitWidth
                 width: parent.width - 4 - _expandButton.width
                 elide: Text.ElideRight
             } // Label
-
-            Qaterial.AppBarButton
-            {
-                id: _expandButton
-                icon.source: _expandableRect.expanded ? "qrc:///Qaterial/Images/menu-up.svg" : "qrc:///Qaterial/Images/menu-down.svg"
-                backgroundImplicitWidth: Qaterial.Style.dense ? 12 : 16
-                backgroundImplicitHeight: Qaterial.Style.dense ? 12 : 16
-                leftPadding: 0
-                rightPadding: 0
-                x: parent.width - implicitWidth
-                anchors.verticalCenter: parent.verticalCenter
-
-                onClicked: _expandableRect.expanded = !_expandableRect.expanded
-            } // AppBarButton
         }
 
         Item
