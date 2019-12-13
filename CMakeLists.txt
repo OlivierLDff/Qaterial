@@ -2,7 +2,7 @@
 #   Qaterial CMake script by Olivier Le Doeuff
 #
 
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.11.0 FATAL_ERROR)
 
 # DEPENDENCIES
 
