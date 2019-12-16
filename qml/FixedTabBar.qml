@@ -6,9 +6,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import Qaterial.Style 1.12
-import Qaterial.Core 1.12
-import Qaterial.Components 1.12
+import Qaterial 1.0
 
 TabBar
 {

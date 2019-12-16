@@ -3,6 +3,10 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
+import QtQuick 2.12
+import QtGraphicalEffects 1.12
+
 // Qaterial
 import Qaterial 1.0
 

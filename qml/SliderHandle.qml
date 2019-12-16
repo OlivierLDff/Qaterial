@@ -23,9 +23,9 @@ Item
     property bool handleHovered: false
     readonly property int initialSize: 13
 
-    property color rippleColor: MStyle.Style.rippleColorTheme
-    property color accentColor: MStyle.Style.accentColor
-    property color disabledColor: MStyle.Style.disabledTextColor()
+    property color rippleColor: Style.rippleColorTheme
+    property color accentColor: Style.accentColor
+    property color disabledColor: Style.disabledTextColor()
 
     Rectangle
     {
@@ -43,7 +43,7 @@ Item
         }
     }
 
-    MCore.Ripple
+    Ripple
     {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
