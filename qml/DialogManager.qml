@@ -78,6 +78,7 @@ Item
             inputMethodHints: root.settings && root.settings.inputMethodHints ? root.settings.inputMethodHints : Qt.ImhSensitiveData
             maximumLengthCount: root.settings && root.settings.maximumLengthCount ? root.settings.maximumLengthCount : 32767
             selectAllText: root.settings && root.settings.selectAllText ? root.settings.selectAllText : false
+            errorText: root.settings && root.settings.errorText ? root.settings.errorText : false
             echoMode: root.settings && root.settings.echoMode ? root.settings.echoMode : TextInput.Normal
 
             Component.onCompleted:
