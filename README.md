@@ -1,7 +1,8 @@
 Qaterial
 ===============
 
-A collection of helper for QtQuick and QtQuickControls to build faster UI using Qml. This library contain multiple override of QtQuickControls (Material) to match better google guideline and allow more customization.
+A collection Material Components to build UI using Qml. The project [QaterialGallery](https://github.com/OlivierLDff/QaterialGallery) demonstrate the use of the library and show example, how to use components.
+This library is still under development so big changes might happened. If you intend to use this in your project, you should use a stable version because master change often.
 
 *This is a hard fork from QtQuickMaterialHelper. Aim of this fork is mainly to rename the library with a shorter name, and shorter path.*
 
