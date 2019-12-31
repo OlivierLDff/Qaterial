@@ -73,7 +73,7 @@ Rectangle
                 id: _loader
                 x: 8
                 width: _expandableRect.width - 8
-                //active: _expandableRect.expanded
+                active: _expandableRect.expanded
                 //anchors.bottom: parent.bottom
             }
         }
