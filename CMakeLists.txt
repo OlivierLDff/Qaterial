@@ -17,7 +17,7 @@ set(STRINGIFY_TAG "master" CACHE STRING "Git tag/branch of Stringify")
 # └──────────────────────────────────────────────────────────────────┘
 
 set(QATERIAL_VERSION_MAJOR 1)
-set(QATERIAL_VERSION_MINOR 1)
+set(QATERIAL_VERSION_MINOR 2)
 set(QATERIAL_VERSION_PATCH 0)
 if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git" )
     execute_process(
