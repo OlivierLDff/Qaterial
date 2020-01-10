@@ -20,6 +20,7 @@ Rectangle
 
     property string title: ""
     property alias content: _loader.sourceComponent
+    property bool expanded: false
 
     Item
     {
@@ -36,14 +37,14 @@ Rectangle
             Qaterial.AppBarButton
             {
                 id: _expandButton
-                icon.source: _expandableRect.expanded ? "qrc:///Qaterial/Images/menu-down.svg" : "qrc:///Qaterial/Images/menu-right.svg"
+                icon.source: root.expanded ? "qrc:///Qaterial/Images/menu-down.svg" : "qrc:///Qaterial/Images/menu-right.svg"
                 backgroundImplicitWidth: Qaterial.Style.dense ? 12 : 16
                 backgroundImplicitHeight: Qaterial.Style.dense ? 12 : 16
                 leftPadding: 0
                 rightPadding: 0
                 anchors.verticalCenter: parent.verticalCenter
 
-                onClicked: _expandableRect.expanded = !_expandableRect.expanded
+                onClicked: root.expanded = !root.expanded
             } // AppBarButton
 
             Qaterial.Label
@@ -61,9 +62,8 @@ Rectangle
         {
             id: _expandableRect
             clip: true
-            property bool expanded: false
             y: _header.height
-            height: expanded && _loader.item ? _loader.item.height : 0
+            height: root.expanded && _loader.item ? _loader.item.height : 0
             width: root.width
 
             //Behavior on height { NumberAnimation { duration: 200 } }
@@ -73,7 +73,7 @@ Rectangle
                 id: _loader
                 x: 8
                 width: _expandableRect.width - 8
-                active: _expandableRect.expanded
+                active: root.expanded
                 //anchors.bottom: parent.bottom
             }
         }
