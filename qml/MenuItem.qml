@@ -60,9 +60,20 @@ T.MenuItem
 
     property double radius: Style.menuItem.cornerRadius
 
+
+    readonly property var checkedIcon: QtObject
+    {
+        readonly property double width: Style.menuItem.iconWidth
+        readonly property double height: Style.menuItem.iconWidth
+        readonly property color color: foregroundColor
+        readonly property url source: "qrc:/Qaterial/Images/check.svg"
+    }
+
+
     icon.width: Style.menuItem.iconWidth
     icon.height: Style.menuItem.iconWidth
     icon.color: foregroundColor
+    icon.source: checkable && checked ? "qrc:/Qaterial/Images/check.svg" : ""
 
     property bool clipRipple: true
     property bool forceRipple: false
@@ -101,14 +112,6 @@ T.MenuItem
         source: "qrc:/Qaterial/Images/menu-right.svg"
     } // ColorIcon
 
-    readonly property var checkedIcon: QtObject
-    {
-        readonly property double width: Style.menuItem.iconWidth
-        readonly property double height: Style.menuItem.iconWidth
-        readonly property color color: foregroundColor
-        readonly property url source: "qrc:/Qaterial/Images/check.svg"
-    }
-
     contentItem: IconLabel
     {
         id: _iconLabel
@@ -126,7 +129,7 @@ T.MenuItem
         spacing: control.spacing
         display: control.display
         textType: Style.TextType.Menu
-        icon: control.checkable && checked ? control.checkedIcon : control.icon
+        icon: control.icon
         text: control.text
         color: control.foregroundColor
 
