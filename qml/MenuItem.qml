@@ -24,7 +24,7 @@ T.MenuItem
 
     property bool drawline: Style.debug.drawDebugButton
 
-    width: parent.width
+    width: parent ? parent.width : 100
 
     DebugRectangle
     {
