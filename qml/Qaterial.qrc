@@ -193,6 +193,7 @@
 
         <!-- COMPONENTS / LOADING -->
         <file>BusyIndicator.qml</file>
+        <file>ProgressBar.qml</file>
 
         <!-- COMPONENTS / FADER -->
         <file>Fader.qml</file>

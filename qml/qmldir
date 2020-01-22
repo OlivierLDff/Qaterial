@@ -185,6 +185,7 @@ VerticalLineSeparator       1.0 VerticalLineSeparator.qml
 Drawer                      1.0 Drawer.qml
 
 BusyIndicator               1.0 BusyIndicator.qml
+ProgressBar                 1.0 ProgressBar.qml
 
 Fader                       1.0 Fader.qml
 Slider                      1.0 Slider.qml
