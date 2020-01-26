@@ -65,12 +65,14 @@ message( STATUS "------ ${QATERIAL_TARGET} End Configuration ------" )
 # │                         QT5 CMAKE                                │
 # └──────────────────────────────────────────────────────────────────┘
 
-#[[set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM BOTH)
-message(STATUS "CMAKE_FIND_ROOT_PATH : " ${CMAKE_FIND_ROOT_PATH})]]
-find_package(Qt5Core CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
-find_package(Qt5Quick CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
-find_package(Qt5QuickControls2 CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
-find_package(Qt5QuickCompiler CONFIG REQUIRED CMAKE_FIND_ROOT_PATH_BOTH)
+find_package(Qt5Core CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5Gui CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5Quick CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5QuickControls2 CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5Svg CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5XmlPatterns CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5Xml CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5QuickCompiler CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       DEPENDENCIES                               │
