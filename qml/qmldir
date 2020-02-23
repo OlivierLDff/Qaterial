@@ -122,6 +122,7 @@ MenuBar                     1.0 MenuBar.qml
 MenuBarItem                 1.0 MenuBarItem.qml
 MenuItem                    1.0 MenuItem.qml
 MenuSeparator               1.0 MenuSeparator.qml
+RadioMenuItem               1.0 RadioMenuItem.qml
 
 ApplicationWindow           1.0 ApplicationWindow.qml
 Page                        1.0 Page.qml
@@ -172,6 +173,7 @@ RadioDialog                 1.0 RadioDialog.qml
 RadioDialogDelegate         1.0 RadioDialogDelegate.qml
 
 BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
+ProgressBarDialog           1.0 ProgressBarDialog.qml
 
 DialogManager               1.0 DialogManager.qml
 DialogManagerSettings       1.0 DialogManagerSettings.qml
