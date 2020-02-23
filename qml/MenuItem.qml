@@ -69,6 +69,13 @@ T.MenuItem
         readonly property url source: "qrc:/Qaterial/Images/check.svg"
     }
 
+    readonly property var radioIcon: QtObject
+    {
+        readonly property double width: Style.menuItem.iconWidth
+        readonly property double height: Style.menuItem.iconWidth
+        readonly property color color: foregroundColor
+        readonly property url source: control.checked ? "qrc:///Qaterial/Images/radiobox-marked.svg" : "qrc:///Qaterial/Images/radiobox-blank.svg"
+    }
 
     icon.width: Style.menuItem.iconWidth
     icon.height: Style.menuItem.iconWidth

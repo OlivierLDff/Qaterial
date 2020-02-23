@@ -53,6 +53,8 @@
         <file>Images/content-copy.svg</file>
         <file>Images/eye.svg</file>
         <file>Images/eye-off.svg</file>
+        <file>Images/radiobox-blank.svg</file>
+        <file>Images/radiobox-marked.svg</file>
 
         <!-- COMPONENTS / CORE -->
         <file>RoundColorIcon.qml</file>
@@ -93,6 +95,7 @@
         <file>MenuBarItem.qml</file>
         <file>MenuItem.qml</file>
         <file>MenuSeparator.qml</file>
+        <file>RadioMenuItem.qml</file>
 
         <!-- COMPONENTS / BUTTONS -->
         <file>FlatButton.qml</file>
