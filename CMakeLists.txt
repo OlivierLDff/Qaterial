@@ -70,7 +70,6 @@ find_package(Qt5Gui CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Quick CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5QuickControls2 CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Svg CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5XmlPatterns CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5Xml CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package(Qt5QuickCompiler CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 
@@ -190,4 +189,4 @@ endif() # QATERIAL_USE_NAMESPACE
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
 ## Require a certain amount of qt library
-qt5_use_modules( ${QATERIAL_TARGET} Core Gui Svg Xml XmlPatterns Quick QuickControls2 )
+qt5_use_modules( ${QATERIAL_TARGET} Core Gui Svg Xml Quick QuickControls2 )
