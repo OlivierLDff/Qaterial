@@ -47,6 +47,7 @@ RobotoFontLoader            1.0 RobotoFontLoader.qml
 ###############
 
 ScrollablePage              1.0 ScrollablePage.qml
+ZoomableFlickable           1.0 ZoomableFlickable.qml
 CheckableListView           1.0 CheckableListView.qml
 CheckableListViewDelegate   1.0 CheckableListViewDelegate.qml
 SwipeView                   1.0 SwipeView.qml

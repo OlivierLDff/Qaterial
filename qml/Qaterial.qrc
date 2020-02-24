@@ -16,6 +16,7 @@
 
         <!-- CONTAINERS -->
         <file>ScrollablePage.qml</file>
+        <file>ZoomableFlickable.qml</file>
         <file>CheckableListView.qml</file>
         <file>CheckableListViewDelegate.qml</file>
 
