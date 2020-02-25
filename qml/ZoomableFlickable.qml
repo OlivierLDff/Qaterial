@@ -3,6 +3,7 @@
 
 // Qt
 import QtQuick 2.12
+//import Qaterial 1.0 as Qaterial
 
 Item
 {
@@ -27,6 +28,29 @@ Item
     property real maxZoom: 10
     // Current zoom
     property real zoom: 1
+    // Enable behavior on _flickable zoom/contentX/contentY
+    property bool zoomAnimation: true
+    property bool interactive: true
+
+    function cancelFlick()
+    {
+        _flickable.cancelFlick()
+    }
+
+    function flick(xVelocity, yVelocity)
+    {
+        _flickable.flick(xVelocity, yVelocity)
+    }
+
+    function returnToBounds()
+    {
+        _flickable.returnToBounds()
+    }
+
+    signal flickEnded()
+    signal flickStarted()
+    signal movementEnded()
+    signal movementStarted()
 
     Flickable
     {
@@ -58,21 +82,30 @@ Item
         property real zoomLatency: 150
         property bool pinching
 
+        readonly property bool zoomAnimation: root.zoomAnimation && !pinching
+
+        interactive: root.interactive && root.zoom > 1
+
         Behavior on zoom
         {
             NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint }
-            enabled: !_flickable.pinching
+            enabled: _flickable.zoomAnimation
         }
         Behavior on contentX
         {
             NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint }
-            enabled: !_flickable.pinching
+            enabled: _flickable.zoomAnimation
         }
         Behavior on contentY
         {
             NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint }
-            enabled: !_flickable.pinching
+            enabled: _flickable.zoomAnimation
         }
+
+        onFlickEnded: root.flickEnded()
+        onFlickStarted: root.flickStarted()
+        onMovementEnded: root.movementEnded()
+        onMovementStarted: root.movementStarted()
 
         // The loader scale it's content size
         Loader
@@ -101,7 +134,8 @@ Item
             _flickable.contentY += (zoomY/scaleRatio - zoomY)
 
             // Update content scale
-            _flickable.zoom = newScale
+            //_flickable.zoom = newScale
+            root.zoom = newScale/defaultZoom
         } // zoomToPoint
 
         PinchArea
@@ -162,7 +196,7 @@ Item
                     _flickable.zoomLatency = _flickable.unZoomLatency
                     if(_flickable.zoom !== _flickable.defaultZoom)
                     {
-                        _flickable.zoom = _flickable.defaultZoom
+                        root.zoom = 1//1/_flickable.defaultZoom
                         _flickable.contentX = 0
                         _flickable.contentY = 0
                     }
@@ -177,4 +211,52 @@ Item
         ScrollIndicator.vertical: root.ScrollIndicator.vertical
         ScrollIndicator.horizontal: root.ScrollIndicator.horizontal
     } // Flickable
+
+    /*Rectangle
+    {
+        color: "transparent"
+        border.width: 1
+        border.color: "red"
+        anchors.fill: parent
+    }
+
+    Rectangle
+    {
+        color: "transparent"
+        border.width: 1
+        border.color: "green"
+        anchors.fill: _flickable
+    }
+
+    Column
+    {
+        Qaterial.Label
+        {
+            text: "contentRatio " + _flickable.contentRatio
+        }
+        Qaterial.Label
+        {
+            text: "contentWidth " + _flickable.contentWidth
+        }
+        Qaterial.Label
+        {
+            text: "contentHeight " + _flickable.contentHeight
+        }
+        Qaterial.Label
+        {
+            text: "width " + _flickable.width
+        }
+        Qaterial.Label
+        {
+            text: "height " + _flickable.height
+        }
+        Qaterial.Label
+        {
+            text: "zoom " + _flickable.zoom
+        }
+        Qaterial.Label
+        {
+            text: "zoom " + root.zoom
+        }
+    }*/
 } // Item
