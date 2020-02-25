@@ -142,9 +142,10 @@ Item
         {
             id: _pinchArea
 
-            anchors.fill: parent
-
             property real zoomFactor
+
+            anchors.fill: parent
+            enabled: root.interactive
 
             onPinchStarted:
             {
