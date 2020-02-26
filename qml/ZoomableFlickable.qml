@@ -32,6 +32,9 @@ Item
     property bool zoomAnimation: true
     property bool interactive: true
 
+    property var verticalScrollIndicator
+    property var horizontalScrollIndicator
+
     function cancelFlick()
     {
         _flickable.cancelFlick()
@@ -209,8 +212,8 @@ Item
             } // MouseArea
         } // PinchArea
 
-        ScrollIndicator.vertical: root.ScrollIndicator.vertical
-        ScrollIndicator.horizontal: root.ScrollIndicator.horizontal
+        ScrollIndicator.vertical: root.verticalScrollIndicator
+        ScrollIndicator.horizontal: root.horizontalScrollIndicator
     } // Flickable
 
     /*Rectangle
