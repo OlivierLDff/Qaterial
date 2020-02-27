@@ -110,14 +110,6 @@ Item
         onMovementEnded: root.movementEnded()
         onMovementStarted: root.movementStarted()
 
-        // The loader scale it's content size
-        Loader
-        {
-            id:     _loader
-            width:  _flickable.contentWidth
-            height: _flickable.contentHeight
-        } // Loader
-
         // Apply deltaZoom to zoom property with center zoomX & zoomY
         function zoomToPoint(deltaZoom, zoomX, zoomY)
         {
@@ -214,6 +206,14 @@ Item
 
         ScrollIndicator.vertical: root.verticalScrollIndicator
         ScrollIndicator.horizontal: root.horizontalScrollIndicator
+
+        // The loader scale it's content size
+        Loader
+        {
+            id:     _loader
+            width:  _flickable.contentWidth
+            height: _flickable.contentHeight
+        } // Loader
     } // Flickable
 
     /*Rectangle
