@@ -31,6 +31,7 @@ Item
     // Enable behavior on _flickable zoom/contentX/contentY
     property bool zoomAnimation: true
     property bool interactive: true
+    property bool pinched: false
 
     property var verticalScrollIndicator
     property var horizontalScrollIndicator
@@ -83,9 +84,9 @@ Item
         readonly property real wheelZoomLatency: 150
 
         property real zoomLatency: 150
-        property bool pinching
+        property bool pinched
 
-        readonly property bool zoomAnimation: root.zoomAnimation && !pinching
+        readonly property bool zoomAnimation: root.zoomAnimation && !root.pinched
 
         interactive: root.interactive && root.zoom > 1
 
@@ -147,8 +148,9 @@ Item
                 // Keep track of current zoom, because pinch.scale always start at 1.
                 zoomFactor = _flickable.zoom
                 // Disable property animation
-                _flickable.pinching = true
+                root.pinched = true
             }
+
             onPinchUpdated:
             {
                 // Get delta scale and apply zoom factor to it
@@ -162,46 +164,58 @@ Item
                 _flickable.contentY += pinch.previousCenter.y - pinch.center.y
 
             }
+
             onPinchFinished:
             {
                 // Enable property animation
-                _flickable.pinching = false
+                root.pinched = false
                 // Then force the flickable to rebound. Order matter to have smooth reanchoring
                 _flickable.returnToBounds()
             }
 
-            // Handle
+            // Handle:
             // - double click to unzoom and zoom*2
             // - wheel to zoom
-            MouseArea
+            // Mouse Area is inside a loader because when a dragHandler is on top of mouse area
+            // it stay pressed for no reason.
+            // The mouse area get rebuilt each time it because interactive.
+            // It the only i found to mimic a "reset" function or "unpress"
+            Loader
             {
                 anchors.fill: parent
-                scrollGestureEnabled: false  // 2-finger-flick gesture should pass through to the Flickable
-                onWheel:
+                active: root.interactive
+                sourceComponent: MouseArea
                 {
-                    // Reset animation to fast because user know what he is doing
-                    _flickable.zoomLatency = _flickable.wheelZoomLatency
-                    // Zoom speed can be adjusted here. Maybe expose some property here ?
-                    _flickable.zoomToPoint(_flickable.zoom * wheel.angleDelta.y / 120 / 10, wheel.x, wheel.y)
-                    // Make sure _flickable is anchored properly after zoom
-                    _flickable.returnToBounds()
-                } // onWheel
-                onDoubleClicked:
-                {
-                    // Reset animation speed to slow for user to understand better what's happening
-                    _flickable.zoomLatency = _flickable.unZoomLatency
-                    if(_flickable.zoom !== _flickable.defaultZoom)
+                    scrollGestureEnabled: false  // 2-finger-flick gesture should passs through to the Flickable
+                    onWheel:
                     {
-                        root.zoom = 1//1/_flickable.defaultZoom
-                        _flickable.contentX = 0
-                        _flickable.contentY = 0
-                    }
-                    else
+                        // Reset animation to fast because user know what he is doing
+                        _flickable.zoomLatency = _flickable.wheelZoomLatency
+                        // Zoom speed can be adjusted here. Maybe expose some property here ?
+                        _flickable.zoomToPoint(_flickable.zoom * wheel.angleDelta.y / 120 / 10, wheel.x, wheel.y)
+                        // Make sure _flickable is anchored properly after zoom
+                        _flickable.returnToBounds()
+                    } // onWheel
+                    onDoubleClicked:
                     {
-                        _flickable.zoomToPoint(_flickable.defaultZoom < 0.7 ? 1 : _flickable.defaultZoom*2, mouse.x, mouse.y)
-                    }
-                } // onDoubleClicked
-            } // MouseArea
+                        // Reset animation speed to slow for user to understand better what's happening
+                        _flickable.zoomLatency = _flickable.unZoomLatency
+                        if(_flickable.zoom !== _flickable.defaultZoom)
+                        {
+                            root.zoom = 1//1/_flickable.defaultZoom
+                            _flickable.contentX = 0
+                            _flickable.contentY = 0
+                        }
+                        else
+                        {
+                            _flickable.zoomToPoint(_flickable.defaultZoom < 0.7 ? 1 : _flickable.defaultZoom*2, mouse.x, mouse.y)
+                        }
+                    } // onDoubleClicked
+
+                    onPressed: console.log("pressed")
+                    onReleased: console.log("released")
+                } // MouseArea
+            }
         } // PinchArea
 
         ScrollIndicator.vertical: root.verticalScrollIndicator
