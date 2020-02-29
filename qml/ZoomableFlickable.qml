@@ -51,6 +51,28 @@ Item
         _flickable.returnToBounds()
     }
 
+    function isXOutsideLeft(value)
+    {
+        return value < _flickable.contentX &&
+            _flickable.contentX > 0
+    }
+    function isXOutsideRight(value)
+    {
+        return value > (_flickable.contentX + _flickable.width) &&
+            (_flickable.contentX + _flickable.width) < _flickable.contentWidth
+    }
+
+    function isYOutsideTop(value)
+    {
+        return value < _flickable.contentY &&
+            _flickable.contentY > 0
+    }
+    function isYOutsideBottom(value)
+    {
+        return value > (_flickable.contentY + _flickable.height) &&
+            (_flickable.contentY + _flickable.height) < _flickable.contentHeight
+    }
+
     signal flickEnded()
     signal flickStarted()
     signal movementEnded()
