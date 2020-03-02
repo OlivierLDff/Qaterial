@@ -26,8 +26,13 @@ Item
     property real minZoom: 1
     // Maximum zoom value to avoid zooming infinitely
     property real maxZoom: 10
-    // Current zoom
+    // Normalized Current zoom. 1 mean the whole image can be seen
     property real zoom: 1
+    // Normalized zoom center x (beetween 0 and 1)
+    property alias contentX: _flickable.contentX
+    // Normalized zoom center y (beetween 0 and 1)
+    property alias contentY: _flickable.contentY
+
     // Enable behavior on _flickable zoom/contentX/contentY
     property bool zoomAnimation: true
     property bool interactive: true
@@ -110,6 +115,9 @@ Item
 
         readonly property bool zoomAnimation: root.zoomAnimation && !root.pinched
 
+        //contentX:
+        //contentY:
+
         interactive: root.interactive && root.zoom > 1
 
         Behavior on zoom
@@ -145,11 +153,11 @@ Item
             else if(newScale > _flickable.maxZoom)
                 newScale = _flickable.maxZoom
 
-            const scaleRatio = previousScale/newScale
+            const scaleRatio = newScale/previousScale
 
             // Make sure center stay at center after scale
-            _flickable.contentX += (zoomX/scaleRatio - zoomX)
-            _flickable.contentY += (zoomY/scaleRatio - zoomY)
+            _flickable.contentX += (zoomX*scaleRatio - zoomX)
+            _flickable.contentY += (zoomY*scaleRatio - zoomY)
 
             // Update content scale
             //_flickable.zoom = newScale
@@ -184,7 +192,6 @@ Item
                 // Move the flickable if pinch center moved
                 _flickable.contentX += pinch.previousCenter.x - pinch.center.x
                 _flickable.contentY += pinch.previousCenter.y - pinch.center.y
-
             }
 
             onPinchFinished:
