@@ -45,7 +45,6 @@ set( QATERIAL_NAMESPACE "Qaterial" CACHE STRING "Namespace of the library is QAT
 
 project( ${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX )
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set( CMAKE_CXX_STANDARD 11 )
 
 # LOG OPTIONS
 
@@ -160,6 +159,8 @@ else()
     target_compile_definitions( ${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC )
 
 endif()
+
+target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_11)
 
 # Set public include directory
 target_include_directories( ${QATERIAL_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include )
