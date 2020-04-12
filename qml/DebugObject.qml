@@ -15,8 +15,8 @@ Rectangle
     color: "#202020"
     border.width: 1
     border.color: "#101010"
-    width: parent.width
-    height: _mainColumn.height
+    implicitWidth: 200
+    implicitHeight: _mainColumn.height
 
     property string title: ""
     property alias content: _loader.sourceComponent
@@ -26,6 +26,7 @@ Rectangle
     {
         id: _mainColumn
         height: _header.height + _expandableRect.height
+        width: parent.width
         Rectangle
         {
             id: _header
@@ -45,7 +46,8 @@ Rectangle
                 anchors.verticalCenter: parent.verticalCenter
 
                 onClicked: root.expanded = !root.expanded
-            } // AppBarButton
+            }
+            // AppBarButton
 
             Qaterial.Label
             {
@@ -55,7 +57,8 @@ Rectangle
                 x: 4 + _expandButton.implicitWidth
                 width: parent.width - 4 - _expandButton.width
                 elide: Text.ElideRight
-            } // Label
+            }
+            // Label
         }
 
         Item
@@ -66,8 +69,6 @@ Rectangle
             height: root.expanded && _loader.item ? _loader.item.height : 0
             width: root.width
 
-            //Behavior on height { NumberAnimation { duration: 200 } }
-
             Loader
             {
                 id: _loader
@@ -77,6 +78,8 @@ Rectangle
                 //anchors.bottom: parent.bottom
             }
         }
-
-    } // Column
-} // Frame
+        // Item
+    }
+    // Column
+}
+// Frame
