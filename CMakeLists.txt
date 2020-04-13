@@ -127,10 +127,10 @@ endforeach()
 
 set(QATERAIL_UTILS_SRCS
 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Export.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Version.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/Qaterial/Utils.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Qaterial.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Export.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Version.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Utils.hpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Version.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils.cpp
@@ -163,7 +163,7 @@ endif()
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_11)
 
 # Set public include directory
-target_include_directories( ${QATERIAL_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/include )
+target_include_directories( ${QATERIAL_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 # Avoid libnQaterial on darwin for example.
 set_target_properties(${QATERIAL_TARGET} PROPERTIES PREFIX "")
