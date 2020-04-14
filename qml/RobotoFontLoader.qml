@@ -26,5 +26,5 @@ Item
     FontLoader {source: Qt.resolvedUrl("qrc:/Qaterial/Fonts/roboto/Roboto-Thin.ttf")}
     FontLoader {source: Qt.resolvedUrl("qrc:/Qaterial/Fonts/roboto/Roboto-ThinItalic.ttf")}
 
-    Component.onCompleted: console.log("Load Roboto Font")
+    //Component.onCompleted: console.log("Load Roboto Font")
 }
