@@ -6,14 +6,16 @@ import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.ApplicationWindow
 {
     id: window
 
-    color: Style.backgroundColor
-    property color overlayColor: Style.overlayColor
+    Qaterial.RobotoFontLoader {}
+
+    color: Qaterial.Style.backgroundColor
+    property color overlayColor: Qaterial.Style.overlayColor
 
     overlay.modal: Rectangle
     {
@@ -26,4 +28,13 @@ T.ApplicationWindow
         color: window.overlayColor
         Behavior on opacity { NumberAnimation { duration: 150 } }
     } // Rectangle
+
+    Component.onCompleted:
+    {
+        if(!Qaterial.DialogManager.parent)
+            Qaterial.DialogManager.parent = contentItem
+
+        if(!Qaterial.SnackbarManager.parent)
+            Qaterial.SnackbarManager.parent = contentItem
+    }
 } // ApplicationWindow

@@ -3,6 +3,8 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+pragma Singleton
+
 // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
@@ -22,6 +24,11 @@ Item
     property bool canBeKilled: (settings && (settings.canBeKilled !== undefined))? settings.canBeKilled : true
 
     z: Infinity
+
+    width: parent ? parent.width : 200
+    anchors.top: parent ? parent.top : undefined
+    anchors.bottomMargin: Style.card.horizontalPadding
+    anchors.bottom: parent ? parent.bottom : undefined
 
     // Snackbar component that is instantiated
     Component

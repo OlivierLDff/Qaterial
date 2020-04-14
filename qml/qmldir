@@ -40,7 +40,7 @@ ErrorSequentialAnimation    1.0 ErrorSequentialAnimation.qml
 #    FONTS    #
 ###############
 
-RobotoFontLoader            1.0 RobotoFontLoader.qml
+RobotoFontLoader  1.0 RobotoFontLoader.qml
 
 ###############
 # CONTAINERS  #
@@ -145,7 +145,7 @@ CardRoundThumbnailTitle     1.0 CardRoundThumbnailTitle.qml
 
 Banner                      1.0 Banner.qml
 Snackbar                    1.0 Snackbar.qml
-SnackbarManager             1.0 SnackbarManager.qml
+singleton SnackbarManager   1.0 SnackbarManager.qml
 
 CursorDelegate              1.0 CursorDelegate.qml
 PlaceholderText             1.0 PlaceholderText.qml
@@ -177,7 +177,7 @@ BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
 ProgressBarDialog           1.0 ProgressBarDialog.qml
 DoubleProgressBarDialog     1.0 DoubleProgressBarDialog.qml
 
-DialogManager               1.0 DialogManager.qml
+singleton DialogManager     1.0 DialogManager.qml
 DialogManagerSettings       1.0 DialogManagerSettings.qml
 
 
