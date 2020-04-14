@@ -2,25 +2,46 @@
 //                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
-// C Header
-
-// C++ Header
-
-// Qt Header
-#include <QCoreApplication> // Call register type at startup when loaded as a dynamic library
-#include <QLoggingCategory> // Logging support
-
-// Dependencies Header
-
 // Application Header
 #include <Qaterial/Utils.hpp>
 #include <Qaterial/Version.hpp>
+#include <Qaterial/Logger.hpp>
+
+// Qt Header
+#include <QCoreApplication> // Call register type at startup when loaded as a dynamic library
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-Q_LOGGING_CATEGORY(QATERIAL_UTILS_LOG_CAT, "qaterial.utils")
+#ifdef NDEBUG
+# define LOG_DEV_DEBUG(str, ...) do {} while (0)
+#else
+# define LOG_DEV_DEBUG(str, ...) Qaterial::Logger::UTILS->debug( str, ## __VA_ARGS__ );
+#endif
+
+#ifdef NDEBUG
+# define LOG_DEV_INFO(str, ...)  do {} while (0)
+#else
+# define LOG_DEV_INFO(str, ...)  Qaterial::Logger::UTILS->info(  str, ## __VA_ARGS__ );
+#endif
+
+#ifdef NDEBUG
+# define LOG_DEV_WARN(str, ...)  do {} while (0)
+#else
+# define LOG_DEV_WARN(str, ...)  Qaterial::Logger::UTILS->warn(  str, ## __VA_ARGS__ );
+#endif
+
+#ifdef NDEBUG
+# define LOG_DEV_ERR(str, ...)   do {} while (0)
+#else
+# define LOG_DEV_ERR(str, ...)   Qaterial::Logger::UTILS->error( str, ## __VA_ARGS__ );
+#endif
+
+#define LOG_DEBUG(str, ...)      Qaterial::Logger::UTILS->debug( str, ## __VA_ARGS__ );
+#define LOG_INFO(str, ...)       Qaterial::Logger::UTILS->info(  str, ## __VA_ARGS__ );
+#define LOG_WARN(str, ...)       Qaterial::Logger::UTILS->warn(  str, ## __VA_ARGS__ );
+#define LOG_ERR(str, ...)        Qaterial::Logger::UTILS->error( str, ## __VA_ARGS__ );
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS
@@ -33,10 +54,10 @@ static quint8 _minor = 0;
 
 static void Qaterial_registerTypes()
 {
-    qCDebug(QATERIAL_UTILS_LOG_CAT, "Register Qaterial v%s", qPrintable(Qaterial::Version::version().readable()));
+    LOG_DEV_INFO("Register Qaterial v{}", Qaterial::Version::version().readable().toStdString());
 
-    qCDebug(QATERIAL_UTILS_LOG_CAT, "Register Singleton %s.Version %d.%d to QML", *_uri, _major, _minor);
-    QATERIAL_NAMESPACE::Version::registerSingleton(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register Singleton {}.Version {}.{} to QML", *_uri, _major, _minor);
+    Qaterial::Version::registerSingleton(*_uri, _major, _minor);
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
@@ -50,7 +71,7 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
 
 static void Qaterial_loadResources()
 {
-    qCDebug(QATERIAL_UTILS_LOG_CAT, "Load Qaterial.qrc v%s", qPrintable(Qaterial::Version::version().readable()));
+    LOG_DEV_INFO("Load Qaterial.qrc v{}", qPrintable(Qaterial::Version::version().readable()));
     Q_INIT_RESOURCE(Qaterial);
 }
 
@@ -59,7 +80,7 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 #endif
 
-QATERIAL_USING_NAMESPACE;
+using namespace Qaterial;
 
 void Utils::registerTypes(const char* uri, const quint8 major, const quint8 minor)
 {

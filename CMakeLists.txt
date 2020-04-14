@@ -2,15 +2,12 @@
 #   Qaterial CMake script by Olivier Le Doeuff
 #
 
-cmake_minimum_required(VERSION 3.11.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
 # DEPENDENCIES
 
-set(QSUPERMACROS_REPOSITORY "https://github.com/OlivierLDff/QSuperMacros" CACHE STRING "Repository of QSuperMacros")
-set(QSUPERMACROS_TAG "master" CACHE STRING "Git tag/branch of QSuperMacros")
-
-set(STRINGIFY_REPOSITORY "https://github.com/OlivierLDff/Stringify" CACHE STRING "Repository of Stringify")
-set(STRINGIFY_TAG "master" CACHE STRING "Git tag/branch of Stringify")
+set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "Repository of spdlog")
+set(SPDLOG_TAG "v1.x" CACHE STRING "Git tag/branch of spdlog")
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │                       PROJECT SETTINGS                           │
@@ -39,9 +36,6 @@ set( QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name" )
 set( QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)" )
 
 set( QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library" )
-
-set( QATERIAL_USE_NAMESPACE ON CACHE BOOL "Should the library be compiled with a namespace. Default: ON" )
-set( QATERIAL_NAMESPACE "Qaterial" CACHE STRING "Namespace of the library is QATERIAL_USE_NAMESPACE is ON. Default : Qaterial" )
 
 project( ${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX )
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -78,24 +72,14 @@ find_package(Qt5QuickCompiler CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
 
 include(FetchContent)
 
-# QSuperMacros
-set(QSUPERMACROS_FOLDER_PREFIX "Dependencies/QSuperMacros" CACHE STRING "")
+# spdlog
 FetchContent_Declare(
-    QSuperMacros
-    GIT_REPOSITORY ${QSUPERMACROS_REPOSITORY}
-    GIT_TAG        ${QSUPERMACROS_TAG}
+    spdlog
+    GIT_REPOSITORY ${SPDLOG_REPOSITORY}
+    GIT_TAG        ${SPDLOG_TAG}
 )
 
-# Stringify
-set(STRINGIFY_FOLDER_PREFIX "Dependencies/Stringify" CACHE STRING "")
-FetchContent_Declare(
-    Stringify
-    GIT_REPOSITORY ${STRINGIFY_REPOSITORY}
-    GIT_TAG        ${STRINGIFY_TAG}
-)
-
-FetchContent_MakeAvailable(QSuperMacros)
-FetchContent_MakeAvailable(Stringify)
+FetchContent_MakeAvailable(spdlog)
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │              ADD SOURCE TO QT QUICK COMPILER                     │
@@ -131,9 +115,11 @@ set(QATERAIL_UTILS_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Export.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Version.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Utils.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Logger.hpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Version.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Logger.cpp
     )
 
 set(QATERIAL_SRCS
@@ -172,7 +158,7 @@ if(QATERIAL_FOLDER_PREFIX)
     set_target_properties(${QATERIAL_TARGET} PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
 endif() # QATERIAL_FOLDER_PREFIX
 
-target_link_libraries(${QATERIAL_TARGET} QSuperMacros Stringify)
+target_link_libraries(${QATERIAL_TARGET} spdlog)
 
 # Version
 target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_MAJOR=${QATERIAL_VERSION_MAJOR} )
@@ -180,11 +166,6 @@ target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_MINOR=
 target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_PATCH=${QATERIAL_VERSION_PATCH} )
 target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_TAG=${QATERIAL_VERSION_TAG} )
 target_compile_definitions( ${QATERIAL_TARGET} PRIVATE -DQATERIAL_VERSION_TAG_HEX=${QATERIAL_VERSION_TAG_HEX} )
-
-if(QATERIAL_USE_NAMESPACE)
-    target_compile_definitions( ${QATERIAL_TARGET} PUBLIC -DQATERIAL_USE_NAMESPACE )
-    target_compile_definitions( ${QATERIAL_TARGET} PUBLIC -DQATERIAL_NAMESPACE=${QATERIAL_NAMESPACE} )
-endif() # QATERIAL_USE_NAMESPACE
 
 # We need autorcc to generate file and automoc for version
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)

@@ -5,30 +5,41 @@
 //                  INCLUDE
 // ─────────────────────────────────────────────────────────────
 
-// C Header
-
-// C++ Header
+// Application Header
+#include <Qaterial/Export.hpp>
 
 // Qt Header
 #include <QObject>
-#include <QQmlSingletonHelper.h>
-#include <QQmlAutoPropertyHelpers.h>
-
-// Dependencies Header
-
-// Application Header
-#include <Qaterial/Export.hpp>
+#include <QQmlEngine>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-QATERIAL_NAMESPACE_START
+#define QATERIAL_SINGLETON_IMPL(Class, name, Name) \
+    public: \
+        static Class & name () { \
+            static Class ret; \
+            return ret; \
+        } \
+        static QObject * set##Name (QQmlEngine * qmlEngine, QJSEngine * jsEngine) { \
+            Q_UNUSED (jsEngine) \
+            Q_UNUSED (qmlEngine) \
+            QObject * ret = &name (); \
+            QQmlEngine::setObjectOwnership (ret, QQmlEngine::CppOwnership); \
+            return ret; \
+        } \
+        static void registerSingleton (const char * uri, const int majorVersion, const int minorVersion, const char * n = #Class) { \
+            qmlRegisterSingletonType<Class> (uri, majorVersion, minorVersion, n, &Class::set##Name); \
+        } \
+private:
+
+namespace Qaterial {
 
 class QATERIAL_API_ Version : public QObject
 {
     Q_OBJECT
-    QSM_SINGLETON_IMPL(Version, version, Version);
+    QATERIAL_SINGLETON_IMPL(Version, version, Version);
 
     // ──────── CONSTRUCTOR ────────────────
 public:
@@ -36,22 +47,27 @@ public:
 
     // ──────── ATTRIBUTES ────────────────
 private:
-    /** \brief Library Major Version */
-    QSM_CONSTANT_AUTO_PROPERTY(quint32, major, Major)
+    Q_PROPERTY(quint32 major READ major CONSTANT);
+    Q_PROPERTY(quint32 minor READ minor CONSTANT);
+    Q_PROPERTY(quint32 patch READ patch CONSTANT);
+    Q_PROPERTY(quint32 tag READ tag CONSTANT);
+    Q_PROPERTY(QString readable READ readable CONSTANT);
 
-    /** \brief Library Minor Version */
-    QSM_CONSTANT_AUTO_PROPERTY(quint32, minor, Minor)
+private:
+    quint32 _major = 0;
+    quint32 _minor = 0;
+    quint32 _patch = 0;
+    quint32 _tag = 0;
+    QString _readable;
 
-    /** \brief Library Patch Version */
-    QSM_CONSTANT_AUTO_PROPERTY(quint32, patch, Patch)
-
-    /** \brief Library Tag Version */
-    QSM_CONSTANT_AUTO_PROPERTY(quint32, tag, Tag)
-
-    /** \brief Library Version as major.minor.patch.tag */
-    QSM_CONSTANT_AUTO_PROPERTY(QString, readable, Readable)
+public:
+    quint32 major() const { return _major; }
+    quint32 minor() const { return _minor; }
+    quint32 patch() const { return _patch; }
+    quint32 tag() const { return _tag; }
+    QString readable() const { return _readable; }
 };
 
-QATERIAL_NAMESPACE_END
+}
 
 #endif
