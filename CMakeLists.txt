@@ -15,7 +15,7 @@ set(SPDLOG_TAG "v1.x" CACHE STRING "Git tag/branch of spdlog")
 
 set(QATERIAL_VERSION_MAJOR 1)
 set(QATERIAL_VERSION_MINOR 2)
-set(QATERIAL_VERSION_PATCH 0)
+set(QATERIAL_VERSION_PATCH 1)
 if( EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git" )
     execute_process(
         COMMAND git describe --always
