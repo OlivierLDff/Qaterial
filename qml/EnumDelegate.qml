@@ -8,6 +8,7 @@ import QtQuick.Controls 2.12
 // Qaterial
 import Qaterial 1.0
 
+// todo : improve that to use Qaterial.DialogManager
 ItemDelegate
 {
     id: control
