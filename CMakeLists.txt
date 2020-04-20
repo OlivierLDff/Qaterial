@@ -77,6 +77,7 @@ FetchContent_Declare(
     spdlog
     GIT_REPOSITORY ${SPDLOG_REPOSITORY}
     GIT_TAG        ${SPDLOG_TAG}
+    GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(spdlog)
