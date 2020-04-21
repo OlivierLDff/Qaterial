@@ -206,8 +206,10 @@
 
         <!-- COMPONENTS / SLIDERS -->
         <file>Slider.qml</file>
+        <file>RangeSlider.qml</file>
         <file>SliderHandle.qml</file>
         <file>SliderDelegate.qml</file>
+        <file>RangeSliderDelegate.qml</file>
 
     </qresource>
 </RCC>
