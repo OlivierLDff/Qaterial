@@ -4,74 +4,74 @@
  */
 
 // Qt
-import QtQuick 2.12 as Q
-import QtQuick.Layouts 1.12 as QL
-import QtQuick.Controls 2.12 as QC2
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-QC2.Control
+Control
 {
-    id: control
-    implicitWidth: Style.delegate.implicitWidth
-    implicitHeight: contentItem.implicitHeight + _slider.implicitHeight
+  id: _control
+  implicitWidth: Qaterial.Style.delegate.implicitWidth
+  implicitHeight: contentItem.implicitHeight + _slider.implicitHeight
 
-    property string text
-    property string secondaryText
+  property string text
+  property string secondaryText
 
-    signal moved()
+  signal moved()
 
-    function decrease() { _slider.decrease() }
-    function increase() { _slider.increase() }
-    function valueAt(position) { return _slider.valueAt(position) }
+  function decrease() { _slider.decrease() }
+  function increase() { _slider.increase() }
+  function valueAt(position) { return _slider.valueAt(position) }
 
-    property alias value: _slider.value
-    property alias from: _slider.from
-    property alias to: _slider.to
-    property alias snapMode: _slider.snapMode
-    property alias live : _slider.live
-    property alias position: _slider.position
-    property alias pressed: _slider.pressed
-    property alias stepSize: _slider.stepSize
+  property alias value: _slider.value
+  property alias from: _slider.from
+  property alias to: _slider.to
+  property alias snapMode: _slider.snapMode
+  property alias live : _slider.live
+  property alias position: _slider.position
+  property alias pressed: _slider.pressed
+  property alias stepSize: _slider.stepSize
 
-    spacing: 8
+  spacing: 8
 
-    leftPadding: Style.card.verticalPadding
-    rightPadding: Style.card.verticalPadding
+  leftPadding: Qaterial.Style.card.verticalPadding
+  rightPadding: Qaterial.Style.card.verticalPadding
 
-    contentItem: Q.Item
+  contentItem: Item
+  {
+    implicitHeight: _textLabel.implicitHeight
+    implicitWidth: _textLabel.implicitWidth + _secondaryLabel.implicitWidth
+
+    Qaterial.Label
     {
-        implicitHeight: _textLabel.implicitHeight
-        implicitWidth: _textLabel.implicitWidth + _secondaryLabel.implicitWidth
-
-        Label
-        {
-            id: _textLabel
-            text: control.text
-            textType: Style.TextType.Body1
-        }
-
-        Label
-        {
-            id: _secondaryLabel
-            x: _textLabel.implicitWidth + control.spacing
-            y: Math.floor(_textLabel.height/2) - Math.floor(height/2)
-            text: control.secondaryText
-            textType: Style.TextType.Hint
-        }
-
-        Slider
-        {
-            id: _slider
-            y: _textLabel.implicitHeight
-
-            width: control.width - control.leftPadding - control.rightPadding
-            x: leftPadding
-
-            onMoved: control.moved()
-
-            parent: control
-        }
+      id: _textLabel
+      text: _control.text
+      textType: Qaterial.Style.TextType.Body1
     }
-}
+
+    Qaterial.Label
+    {
+      id: _secondaryLabel
+      x: _textLabel.implicitWidth + _control.spacing
+      y: Math.floor(_textLabel.height/2) - Math.floor(height/2)
+      text: _control.secondaryText
+      textType: Qaterial.Style.TextType.Hint
+    }
+
+    Qaterial.Slider
+    {
+      id: _slider
+      y: _textLabel.implicitHeight
+
+      width: _control.width - _control.leftPadding - _control.rightPadding
+      x: leftPadding
+
+      onMoved: _control.moved()
+
+      parent: _control
+    }
+  } // Item
+} // Control

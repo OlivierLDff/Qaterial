@@ -60,7 +60,6 @@ T.Slider
             y: control.horizontal ? (parent.height - height) / 2 : control.visualPosition * parent.height
             width: control.horizontal ? control.position * parent.width : 3
             height: control.horizontal ? 3 : control.position * parent.height
-
             color: control.enabled ? control.accentColor : control.disabledColor
         } // Rectangle
     } // Rectangle
