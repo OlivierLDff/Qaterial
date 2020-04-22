@@ -8,7 +8,7 @@ import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.RangeSlider
 {
@@ -21,12 +21,13 @@ T.RangeSlider
 
     padding: 6
 
-    property color rippleColor: Style.rippleColorTheme
-    property color accentColor: Style.accentColor
-    property color foregroundColor: Style.hintTextColor()
-    property color disabledColor: Style.disabledTextColor()
-    property color backgroundDisabledColor: Style.disabledDividersColor()
-    first.handle: SliderHandle
+    property color rippleColor: Qaterial.Style.rippleColorTheme
+    property color accentColor: Qaterial.Style.accentColor
+    property color foregroundColor: Qaterial.Style.hintTextColor()
+    property color disabledColor: Qaterial.Style.disabledTextColor()
+    property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
+
+    first.handle: Qaterial.SliderHandle
     {
         x: control.leftPadding + (control.horizontal ? control.first.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.first.visualPosition * (control.availableHeight - height))
@@ -38,9 +39,9 @@ T.RangeSlider
         accentColor: control.accentColor
         disabledColor: control.disabledColor
         enabled: control.enabled
-    } // MComponents.SliderHandle
+    } // Qaterial.SliderHandle
 
-    second.handle: SliderHandle
+    second.handle: Qaterial.SliderHandle
     {
         x: control.leftPadding + (control.horizontal ? control.second.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
         y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.second.visualPosition * (control.availableHeight - height))
@@ -52,7 +53,7 @@ T.RangeSlider
         accentColor: control.accentColor
         disabledColor: control.disabledColor
         enabled: control.enabled
-    } // MComponents.SliderHandle
+    } // Qaterial.SliderHandle
 
     property int backgroundImplicitWidth: horizontal ? 200 : 34
     property int backgroundImplicitHeight: horizontal ? 34 : 200
