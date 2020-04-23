@@ -3,25 +3,28 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-ColorIcon
+Qaterial.ColorIcon
 {
-	id: control
-    property TextField textField
-    property TextArea textArea
-    property ComboBox comboBox
-    iconSize: Style.textField.iconSize
-    width: visible ? Style.textField.iconWidth : 0//width: Style.textField.iconWidth
-    height: Style.textField.iconWidth
+  id: _control
+  property Qaterial.TextField textField
+  property Qaterial.TextArea textArea
+  property Qaterial.ComboBox comboBox
+  iconSize: Qaterial.Style.textField.iconSize
+  width: visible ? Qaterial.Style.textField.iconWidth : 0//width: Qaterial.Style.textField.iconWidth
+  height: Qaterial.Style.textField.iconWidth
 
-    property bool drawline: Style.debug.drawDebugButton
-    DebugRectangle
-    {
-        anchors.fill: parent
-        border.color: "pink"
-        visible: control.drawline
-    }
-}
+  property bool drawline: Qaterial.Style.debug.drawDebugButton
+
+  Qaterial.DebugRectangle
+  {
+    anchors.fill: parent
+    border.color: "pink"
+    visible: _control.drawline
+  } // DebugRectangle
+} // ColorIcon

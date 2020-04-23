@@ -3,63 +3,67 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-ScrollBar
+Qaterial.ScrollBar
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitContentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitContentHeight + topPadding + bottomPadding)
 
-    padding: 2
-    policy: ScrollBar.AlwaysOn
+  padding: 2
+  policy: ScrollBar.AlwaysOn
 
-    background: Rectangle
+  background: Rectangle
+  {
+    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
+    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
+    color: "transparent"
+  } // Rectangle
+
+  contentItem: Rectangle
+  {
+    implicitWidth: 4
+    implicitHeight: 4
+    radius: 2
+
+    color: Qaterial.Style.hintTextColor()
+    visible: _control.size < 1.0
+    opacity: 0.5
+
+    states: State
     {
-        implicitWidth: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
-        implicitHeight: control.interactive ? Style.scroll.implicitWidthBackground : Style.scroll.implicitWidthInactive
-        color: "transparent"
-    } // Rectangle
+      name: "active"
+      when: _control.active
+      PropertyChanges { target: _control.contentItem; opacity: 0.75 }
+    } // State
 
-    contentItem: Rectangle
-    {
-        implicitWidth: 4
-        implicitHeight: 4
-        radius: 2
+    transitions:
+    [
+      Transition
+      {
+        to: "active"
+        NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 1.0 } // NumberAnimation
+      }, // Transition
 
-        color: Style.hintTextColor()
-        visible: control.size < 1.0
-        opacity: 0.5
-
-        states: State
+      Transition
+      {
+        from: "active"
+        SequentialAnimation
         {
-            name: "active"
-            when: control.active
-            PropertyChanges { target: control.contentItem; opacity: 0.75 }
-        } // State
-
-        transitions:
-        [
-            Transition
-            {
-                to: "active"
-                NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 1.0 }
-            }, // Transition
-            Transition
-            {
-                from: "active"
-                SequentialAnimation {
-                    PropertyAction{ targets: [contentItem, background]; property: "opacity"; value: 1.0 }
-                    PauseAnimation { duration: 2450 }
-                    NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 0.5 }
-                }
-            } // Transition
-        ] // padding
-    } // Rectangle
+            PropertyAction { targets: [contentItem, background]; property: "opacity"; value: 1.0 } // NumberAnimation
+            PauseAnimation { duration: 2450 } // PauseAnimation
+            NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 0.5 } // NumberAnimation
+        }
+      } // Transition
+    ] // transitions
+  } // Rectangle
 } // ScrollBar

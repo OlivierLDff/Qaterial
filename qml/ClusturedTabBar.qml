@@ -8,25 +8,25 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-TabBar
+Qaterial.TabBar
 {
-    id: root
-    property alias model: _repeater.model
-    property int display: AbstractButton.TextBesideIcon
-    width: implicitWidth
+  id: _root
+  property alias model: _repeater.model
+  property int display: AbstractButton.TextBesideIcon
+  width: implicitWidth
 
-    Repeater
+  Repeater
+  {
+    id: _repeater
+    delegate: Qaterial.TabButton
     {
-        id: _repeater
-        delegate: TabButton
-        {
-            display: root.display
-            text: model.text ? model.text : ""
-            icon.source: model.source ? model.source : ""
-            onPrimary: root.onPrimary
-            enabled: root.enabled
-        }
-    }
+      display: _root.display
+      text: model.text ? model.text : ""
+      icon.source: model.source ? model.source : ""
+      onPrimary: _root.onPrimary
+      enabled: _root.enabled
+    } // TabButton
+  } // Repeater
 } // TabBar

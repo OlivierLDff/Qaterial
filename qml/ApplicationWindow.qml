@@ -1,5 +1,7 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
 // Qt
 import QtQuick 2.12
@@ -10,29 +12,29 @@ import Qaterial 1.0 as Qaterial
 
 T.ApplicationWindow
 {
-    id: window
+  id: _window
 
-    color: Qaterial.Style.backgroundColor
-    property color overlayColor: Qaterial.Style.overlayColor
+  color: Qaterial.Style.backgroundColor
+  property color overlayColor: Qaterial.Style.overlayColor
 
-    overlay.modal: Rectangle
-    {
-        color: window.overlayColor
-        Behavior on opacity { NumberAnimation { duration: 150 } }
-    } // Rectangle
+  overlay.modal: Rectangle
+  {
+    color: _window.overlayColor
+    Behavior on opacity { NumberAnimation { duration: 150 } }
+  } // Rectangle
 
-    overlay.modeless: Rectangle
-    {
-        color: window.overlayColor
-        Behavior on opacity { NumberAnimation { duration: 150 } }
-    } // Rectangle
+  overlay.modeless: Rectangle
+  {
+    color: _window.overlayColor
+    Behavior on opacity { NumberAnimation { duration: 150 } }
+  } // Rectangle
 
-    Component.onCompleted:
-    {
-        if(!Qaterial.DialogManager.parent)
-            Qaterial.DialogManager.parent = contentItem
+  Component.onCompleted:
+  {
+    if(!Qaterial.DialogManager.parent)
+    Qaterial.DialogManager.parent = contentItem
 
-        if(!Qaterial.SnackbarManager.parent)
-            Qaterial.SnackbarManager.parent = contentItem
-    }
+    if(!Qaterial.SnackbarManager.parent)
+    Qaterial.SnackbarManager.parent = contentItem
+  } // Component
 } // ApplicationWindow

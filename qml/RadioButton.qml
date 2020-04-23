@@ -9,83 +9,84 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.RadioButton
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding + implicitIndicatorWidth)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding,
-                             implicitIndicatorHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitContentWidth + leftPadding + rightPadding + implicitIndicatorWidth)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitContentHeight + topPadding + bottomPadding,
+                           implicitIndicatorHeight + topPadding + bottomPadding)
 
-    horizontalPadding: Style.radioButton.horizontalPadding
-    verticalPadding: Style.radioButton.verticalPadding
-    spacing: Style.radioButton.spacing
+  horizontalPadding: Qaterial.Style.radioButton.horizontalPadding
+  verticalPadding: Qaterial.Style.radioButton.verticalPadding
+  spacing: Qaterial.Style.radioButton.spacing
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    property bool drawline: Style.debug.drawDebugButton
+  property bool drawline: Qaterial.Style.debug.drawDebugButton
 
-    property alias elide: _label.elide
-    property alias textType: _label.textType
+  property alias elide: _label.elide
+  property alias textType: _label.textType
 
-    DebugRectangle
+  Qaterial.DebugRectangle
+  {
+    anchors.fill: parent
+    border.color: "pink"
+    visible: _control.drawline
+  } // DebugRectangle
+
+  indicator: Qaterial.RadioIndicator
+  {
+    x: text ? (_control.mirrored ? _control.width - width - _control.rightPadding : _control.leftPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
+    y: _control.topPadding + (_control.availableHeight - height) / 2
+    control: _control
+
+    Qaterial.Ripple
     {
-        anchors.fill: parent
-        border.color: "pink"
-        visible: control.drawline
-    }
+      x: (parent.width - width) / 2
+      y: (parent.height - height) / 2
+      width: Qaterial.Style.radioButton.rippleWidth
+      height: Qaterial.Style.radioButton.rippleWidth
 
-    indicator: RadioIndicator
+      z: -1
+      anchor: _control
+      pressed: _control.pressed
+      active: _control.down || _control.visualFocus || _control.hovered
+      color: Qaterial.Style.rippleColor(_control.checked ? Qaterial.Style.RippleBackground.AccentLight : Qaterial.Style.RippleBackground.Background)
+    } // Ripple
+
+    Qaterial.DebugRectangle
     {
-        x: text ? (control.mirrored ? control.width - width - control.rightPadding : control.leftPadding) : control.leftPadding + (control.availableWidth - width) / 2
-        y: control.topPadding + (control.availableHeight - height) / 2
-        control: control
+      anchors.fill: parent
+      border.color: "red"
+      visible: _control.drawline
+    } // DebugRectangle
+  } // RadioIndicator
 
-        Ripple
-        {
-            x: (parent.width - width) / 2
-            y: (parent.height - height) / 2
-            width: Style.radioButton.rippleWidth
-            height: Style.radioButton.rippleWidth
+  contentItem: Qaterial.Label
+  {
+    id: _label
+    leftPadding: _control.indicator && !_control.mirrored ? _control.indicator.width + _control.spacing : 0
+    rightPadding: _control.indicator && _control.mirrored ? _control.indicator.width + _control.spacing : 0
 
-            z: -1
-            anchor: control
-            pressed: control.pressed
-            active: control.down || control.visualFocus || control.hovered
-            color: Style.rippleColor(control.checked ? Style.RippleBackground.AccentLight : Style.RippleBackground.Background)
-        } // Ripple
-        DebugRectangle
-        {
-            anchors.fill: parent
-            border.color: "red"
-            visible: control.drawline
-        } // DebugRectangle
-    } // RadioIndicator
+    onPrimary: _control.onPrimary
+    colorReversed: _control.colorReversed
 
-    contentItem: Label
+    text: _control.text
+    enabled: _control.enabled
+    verticalAlignment: Text.AlignVCenter
+    elide: !_control.mirrored ? Text.ElideRight : Text.ElideLeft
+
+    Qaterial.DebugRectangle
     {
-        id: _label
-        leftPadding: control.indicator && !control.mirrored ? control.indicator.width + control.spacing : 0
-        rightPadding: control.indicator && control.mirrored ? control.indicator.width + control.spacing : 0
-
-        onPrimary: control.onPrimary
-        colorReversed: control.colorReversed
-
-        text: control.text
-        enabled: control.enabled
-        verticalAlignment: Text.AlignVCenter
-        elide: !control.mirrored ? Text.ElideRight : Text.ElideLeft
-
-        DebugRectangle
-        {
-            anchors.fill: parent
-            border.color: "green"
-            visible: control.drawline
-        } // DebugRectangle
-    } // Label
+      anchors.fill: parent
+      border.color: "green"
+      visible: _control.drawline
+    } // DebugRectangle
+  } // Label
 } // RadioButton

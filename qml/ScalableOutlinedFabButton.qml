@@ -4,12 +4,12 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-OutlinedFabButton
+Qaterial.OutlinedFabButton
 {
-    rippleClip: true
-    scaleDuration: 100
-    property bool isActive: hovered || down || visualFocus
-    scale: isActive ? 1.0 : 0.9
-} // FlatFabButton
+  rippleClip: true
+  scaleDuration: 100
+  property bool isActive: hovered || down || visualFocus
+  scale: isActive ? 1.0 : 0.9
+} // OutlinedFabButton

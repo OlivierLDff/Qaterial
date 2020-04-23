@@ -1,55 +1,57 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
 // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-ModalDialog
+Qaterial.ModalDialog
 {
-    id: root
+  id: _root
 
-    property var model: null
-    property int currentIndex: 0
+  property var model: null
+  property int currentIndex: 0
 
-    property var delegate: defaultDelegate
-    readonly property var defaultDelegate: _defaultDelegate
+  property var delegate: defaultDelegate
+  readonly property var defaultDelegate: _defaultDelegate
 
-    Component
+  Component
+  {
+    id: _defaultDelegate
+    Qaterial.RadioDialogDelegate
     {
-        id: _defaultDelegate
-        RadioDialogDelegate
-        {
-            text: model.text ? model.text : ""
-            secondaryText: model.secondaryText ? model.secondaryText : ""
-        }
-    }
+      text: model.text ? model.text : ""
+      secondaryText: model.secondaryText ? model.secondaryText : ""
+    } // RadioDialogDelegate
+  } // Component
 
-    horizontalPadding: 0
-    bottomPadding: 1
-    drawSeparator: _list.height < _list.contentHeight
-    property double maxHeight: Style.dialog.maxHeight
+  horizontalPadding: 0
+  bottomPadding: 1
+  drawSeparator: _list.height < _list.contentHeight
+  property double maxHeight: Qaterial.Style.dialog.maxHeight
 
-    standardButtons: Dialog.Ok | Dialog.Cancel
-    contentItem: ListView
+  standardButtons: Dialog.Ok | Dialog.Cancel
+  contentItem: ListView
+  {
+    implicitHeight: Math.min(_root.maxHeight, _list.contentHeight)
+    //height: 200
+    interactive: contentHeight > height
+    id: _list
+    clip: true
+    model: _root.model
+    delegate: _root.delegate
+    highlightFollowsCurrentItem: true
+    currentIndex: _root.currentIndex
+
+    onCurrentIndexChanged:
     {
-        implicitHeight: Math.min(root.maxHeight, _list.contentHeight)
-        //height: 200
-        interactive: contentHeight > height
-        id: _list
-        clip: true
-        model: root.model
-        delegate: root.delegate
-        highlightFollowsCurrentItem: true
-        currentIndex: root.currentIndex
-
-        onCurrentIndexChanged:
-        {
-            if(root.currentIndex !== currentIndex)
-                root.currentIndex = currentIndex
-        }
+      if(_root.currentIndex !== currentIndex)
+          _root.currentIndex = currentIndex
     }
-}
+  } // ListView
+} // ModelDialog

@@ -8,76 +8,76 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Pane
+Qaterial.Pane
 {
-    id: control
+  id: _control
 
-    // TEXT
-    property string text
+  // TEXT
+  property string text
 
-    // ACTION
-    property alias action: _action.text
-    signal actionPressed()
+  // ACTION
+  property alias action: _action.text
+  signal actionPressed()
 
-    padding: 0
+  padding: 0
 
-    elevation: Style.snackbar.elevation
-    radius: Style.snackbar.radius
+  elevation: Qaterial.Style.snackbar.elevation
+  radius: Qaterial.Style.snackbar.radius
 
-    property bool drawline: Style.debug.drawDebugDelegate
-    color: Style.snackbarColor()
+  property bool drawline: Qaterial.Style.debug.drawDebugDelegate
+  color: Qaterial.Style.snackbarColor()
 
-    property bool expandable: false
+  property bool expandable: false
 
-    contentItem: Item
+  contentItem: Item
+  {
+    id: _content
+    implicitWidth: _control.expandable ? (Math.max(Qaterial.Style.snackbar.implicitWidth, _label.implicitWidth + _action.implicitWidth) + Qaterial.Style.card.horizontalPadding*(_control.action != "" ? 3 : 2)) : Qaterial.Style.snackbar.implicitWidth
+    implicitHeight: (_label.lineCount > 1) ? Qaterial.Style.snackbar.implicitHeight2 : Qaterial.Style.snackbar.implicitHeight
+
+    Qaterial.DebugRectangle
     {
-        id: _content
-        implicitWidth: control.expandable ? (Math.max(Style.snackbar.implicitWidth, _label.implicitWidth + _action.implicitWidth) + Style.card.horizontalPadding*(control.action != "" ? 3 : 2)) : Style.snackbar.implicitWidth
-        implicitHeight: (_label.lineCount > 1) ? Style.snackbar.implicitHeight2 : Style.snackbar.implicitHeight
+      anchors.fill: parent
+      border.color: "pink"
+      visible: _control.drawline
+    } // DebugRectangle
 
-        DebugRectangle
-        {
-            anchors.fill: parent
-            border.color: "pink"
-            visible: control.drawline
-        }
+    Qaterial.Label // Label when there is only one action or in desktop mode
+    {
+      id: _label
+      text: _control.text
+      anchors.verticalCenter: _content.verticalCenter
+      anchors.left: parent.left
+      anchors.leftMargin: Qaterial.Style.card.horizontalPadding
+      anchors.right: (_control.action != "") ? _action.left : parent.right
+      anchors.rightMargin: (_control.action != "") ? Qaterial.Style.card.horizontalPadding : Qaterial.Style.card.verticalPadding
+      maximumLineCount: _control.expandable ? 1 : 2
+      wrapMode: _control.expandable ? Text.NoWrap : Text.WordWrap
+      elide: (_control.mirrored ? Text.ElideLeft : Text.ElideRight)
 
-        Label // Label when there is only one action or in desktop mode
-        {
-            id: _label
-            text: control.text
-            anchors.verticalCenter: _content.verticalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: Style.card.horizontalPadding
-            anchors.right: (control.action != "") ? _action.left : parent.right
-            anchors.rightMargin: (control.action != "") ? Style.card.horizontalPadding : Style.card.verticalPadding
-            maximumLineCount: control.expandable ? 1 : 2
-            wrapMode: control.expandable ? Text.NoWrap : Text.WordWrap
-            elide: (control.mirrored ? Text.ElideLeft : Text.ElideRight)
+      color: Qaterial.Style.snackbarTextColor()
 
-            color: Style.snackbarTextColor()
+      Qaterial.DebugRectangle
+      {
+        anchors.fill: parent
+        border.color: "red"
+        visible: _control.drawline
+      } // DebugRectangle
+    } // Label
 
-            DebugRectangle
-            {
-                anchors.fill: parent
-                border.color: "red"
-                visible: control.drawline
-            }
-        } // Label
-
-        FlatButton
-        {
-            id: _action
-            visible: text
-            onPressed: control.actionPressed()
-            anchors.right: parent.right
-            anchors.rightMargin: 2
-            anchors.verticalCenter: _content.verticalCenter
-            anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
-            onPrimary: true
-            rippleColor: Style.snackbarRippleColor()
-        } // FlatButton
-    } // contentItem
+    Qaterial.FlatButton
+    {
+      id: _action
+      visible: text
+      onPressed: _control.actionPressed()
+      anchors.right: parent.right
+      anchors.rightMargin: 2
+      anchors.verticalCenter: _content.verticalCenter
+      anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
+      onPrimary: true
+      rippleColor: Qaterial.Style.snackbarRippleColor()
+    } // FlatButton
+  } // Item
 } // Pane

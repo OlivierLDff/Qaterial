@@ -3,35 +3,37 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
 T.SwipeView
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    contentItem: ListView
-    {
-        model: control.contentModel
-        interactive: control.interactive
-        currentIndex: control.currentIndex
+  contentItem: ListView
+  {
+    model: _control.contentModel
+    interactive: _control.interactive
+    currentIndex: _control.currentIndex
 
-        spacing: control.spacing
-        orientation: control.orientation
-        snapMode: ListView.SnapOneItem
-        boundsBehavior: Flickable.StopAtBounds
+    spacing: _control.spacing
+    orientation: _control.orientation
+    snapMode: ListView.SnapOneItem
+    boundsBehavior: Flickable.StopAtBounds
 
-        highlightRangeMode: ListView.StrictlyEnforceRange
-        preferredHighlightBegin: 0
-        preferredHighlightEnd: 0
-        highlightMoveDuration: 250
-        maximumFlickVelocity: 4 * (control.orientation === Qt.Horizontal ? width : height)
-    }
-}
+    highlightRangeMode: ListView.StrictlyEnforceRange
+    preferredHighlightBegin: 0
+    preferredHighlightEnd: 0
+    highlightMoveDuration: 250
+    maximumFlickVelocity: 4 * (_control.orientation === Qt.Horizontal ? width : height)
+  } // ListView
+} // SwipeView

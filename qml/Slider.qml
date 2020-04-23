@@ -12,56 +12,56 @@ import Qaterial 1.0 as Qaterial
 
 T.Slider
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitHandleWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitHandleHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitHandleWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitHandleHeight + topPadding + bottomPadding)
 
-    padding: 6
+  padding: 6
 
-    property color rippleColor: Qaterial.Style.rippleColorTheme
-    property color accentColor: Qaterial.Style.accentColor
-    property color foregroundColor: Qaterial.Style.hintTextColor()
-    property color disabledColor: Qaterial.Style.disabledTextColor()
-    property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
+  property color rippleColor: Qaterial.Style.rippleColorTheme
+  property color accentColor: Qaterial.Style.accentColor
+  property color foregroundColor: Qaterial.Style.hintTextColor()
+  property color disabledColor: Qaterial.Style.disabledTextColor()
+  property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
 
-    handle: Qaterial.SliderHandle
+  handle: Qaterial.SliderHandle
+  {
+    x: _control.leftPadding + (_control.horizontal ? _control.visualPosition * (_control.availableWidth - width) : (_control.availableWidth - width) / 2)
+    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : _control.visualPosition * (_control.availableHeight - height))
+    value: _control.value
+    handleHasFocus: _control.visualFocus
+    handlePressed: _control.pressed
+    handleHovered: _control.hovered
+    rippleColor: _control.rippleColor
+    accentColor: _control.accentColor
+    disabledColor: _control.disabledColor
+    enabled: _control.enabled
+  } // SliderHandle
+
+  property int backgroundImplicitWidth: horizontal ? 200 : 34
+  property int backgroundImplicitHeight: horizontal ? 34 : 200
+
+  background: Rectangle
+  {
+    x: _control.leftPadding + (_control.horizontal ? 0 : (_control.availableWidth - width) / 2)
+    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : 0)
+    implicitWidth: _control.backgroundImplicitWidth
+    implicitHeight: _control.backgroundImplicitHeight
+    width: _control.horizontal ? _control.availableWidth : 1
+    height: _control.horizontal ? 1 : _control.availableHeight
+    color: _control.enabled ? _control.foregroundColor : _control.backgroundDisabledColor
+    scale: _control.horizontal && _control.mirrored ? -1 : 1
+
+    Rectangle
     {
-        x: control.leftPadding + (control.horizontal ? control.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
-        y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.visualPosition * (control.availableHeight - height))
-        value: control.value
-        handleHasFocus: control.visualFocus
-        handlePressed: control.pressed
-        handleHovered: control.hovered
-        rippleColor: control.rippleColor
-        accentColor: control.accentColor
-        disabledColor: control.disabledColor
-        enabled: control.enabled
-    } // Qaterial.SliderHandle
-
-    property int backgroundImplicitWidth: horizontal ? 200 : 34
-    property int backgroundImplicitHeight: horizontal ? 34 : 200
-
-    background: Rectangle
-    {
-        x: control.leftPadding + (control.horizontal ? 0 : (control.availableWidth - width) / 2)
-        y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : 0)
-        implicitWidth: control.backgroundImplicitWidth
-        implicitHeight: control.backgroundImplicitHeight
-        width: control.horizontal ? control.availableWidth : 1
-        height: control.horizontal ? 1 : control.availableHeight
-        color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
-        scale: control.horizontal && control.mirrored ? -1 : 1
-
-        Rectangle
-        {
-            x: control.horizontal ? 0 : (parent.width - width) / 2
-            y: control.horizontal ? (parent.height - height) / 2 : control.visualPosition * parent.height
-            width: control.horizontal ? control.position * parent.width : 3
-            height: control.horizontal ? 3 : control.position * parent.height
-            color: control.enabled ? control.accentColor : control.disabledColor
-        } // Rectangle
+      x: _control.horizontal ? 0 : (parent.width - width) / 2
+      y: _control.horizontal ? (parent.height - height) / 2 : _control.visualPosition * parent.height
+      width: _control.horizontal ? _control.position * parent.width : 3
+      height: _control.horizontal ? 3 : _control.position * parent.height
+      color: _control.enabled ? _control.accentColor : _control.disabledColor
     } // Rectangle
+  } // Rectangle
 } // Slider

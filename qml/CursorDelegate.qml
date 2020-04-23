@@ -7,35 +7,35 @@
 import QtQuick 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-    id: cursor
+  id: _cursor
 
-    color: Style.accentColor
-    width: Style.textField.cursorWidth
-    visible: parent.activeFocus && !parent.readOnly && parent.selectionStart === parent.selectionEnd
+  color: Qaterial.Style.accentColor
+  width: Qaterial.Style.textField._cursorWidth
+  visible: parent.activeFocus && !parent.readOnly && parent.selectionStart === parent.selectionEnd
 
-    Connections
+  Connections
+  {
+    target: _cursor.parent
+    onCursorPositionChanged:
     {
-        target: cursor.parent
-        onCursorPositionChanged:
-        {
-            // keep a moving cursor visible
-            cursor.opacity = 1
-            timer.restart()
-        }
-    } // Connections
+      // keep a moving cursor visible
+      _cursor.opacity = 1
+      _timer.restart()
+    }
+  } // Connections
 
-    Timer
-    {
-        id: timer
-        running: cursor.parent.activeFocus && !cursor.parent.readOnly
-        repeat: true
-        interval: Qt.styleHints.cursorFlashTime / 2
-        onTriggered: cursor.opacity = !cursor.opacity ? 1 : 0
-        // force the cursor visible when gaining focus
-        onRunningChanged: cursor.opacity = 1
-    } // Timer
+  Timer
+  {
+    id: _timer
+    running: _cursor.parent.activeFocus && !_cursor.parent.readOnly
+    repeat: true
+    interval: Qt.styleHints._cursorFlashTime / 2
+    onTriggered: _cursor.opacity = !_cursor.opacity ? 1 : 0
+    // force the cursor visible when gaining focus
+    onRunningChanged: _cursor.opacity = 1
+  } // Timer
 } // Rectangle

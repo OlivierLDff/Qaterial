@@ -8,40 +8,40 @@ import QtQuick 2.12
 import QtGraphicalEffects 1.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Image
 {
-    id: control
-    height: Style.card.mediaImplicitHeight
-    width: Style.card.mediaImplicitWidth
-    fillMode: Image.PreserveAspectCrop
+  id: _control
+  height: Qaterial.Style.card.mediaImplicitHeight
+  width: Qaterial.Style.card.mediaImplicitWidth
+  fillMode: Image.PreserveAspectCrop
 
-    property bool clipTop: false
-    property double radius: Style.card.radius
+  property bool clipTop: false
+  property double radius: Qaterial.Style.card.radius
 
-    layer.enabled: clipTop
-    layer.effect: OpacityMask
+  layer.enabled: clipTop
+  layer.effect: OpacityMask
+  {
+    maskSource: Rectangle
     {
-        maskSource: Rectangle
-        {
-            width: control.width
-            height: control.height
-            radius: control.radius
+      width: _control.width
+      height: _control.height
+      radius: _control.radius
 
-            Rectangle
-            {
-                width: parent.width
-                y: control.radius
-                height: parent.height-radius
-            }
-        }
-    } // OpacityMask
+      Rectangle
+      {
+        width: parent.width
+        y: _control.radius
+        height: parent.height-radius
+      } // Rectangle
+    } // Rectangle
+  } // OpacityMask
 
-    /*DebugRectangle
-    {
-        anchors.fill: control
-        border.color: "blue"
-        z: 10
-    } // DebugRectangle*/
+  /*Qaterial.DebugRectangle
+  {
+      anchors.fill: _control
+      border.color: "blue"
+      z: 10
+  } // DebugRectangle*/
 } // Image

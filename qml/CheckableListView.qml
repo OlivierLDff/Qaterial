@@ -8,7 +8,7 @@ import QtQuick 2.12
 
 ListView
 {
-	id: root
+	id: _root
 	/** Indicate if delegates need to appear as checkable or not */
 	property bool checkBoxEnabled: false
 	/** Array that store every checked delegate and in which order
@@ -33,14 +33,14 @@ ListView
 			checkedItemIndexes.push(i)
 
 		updateCheckedItemCounter()
-	}
+	} // function checkAllItem()
 
 	Shortcut
 	{
-		enabled: root.checkBoxEnabled
-	    sequence: "Escape"
-	    onActivated: root.checkBoxEnabled = false
-	}
+		enabled: _root.checkBoxEnabled
+    sequence: "Escape"
+    onActivated: _root.checkBoxEnabled = false
+	} // Shortcut
 
 	/** Uncheck all of the item */
 	function uncheckAllItem()
@@ -48,7 +48,7 @@ ListView
 		// 1) Clear the index array
 		checkedItemIndexes = []
 		updateCheckedItemCounter()
-	}
+	} // function uncheckAllItem()
 
 	/** Push the index to the list of checked item. If the item is already
 	 * checked it will be unchecked and rechecked at the end of the array to keep the
@@ -61,7 +61,7 @@ ListView
 		// 2) Simply push the item at the end of the list
 		checkedItemIndexes.push(index)
 		updateCheckedItemCounter()
-	}
+	} // function checkItem(index)
 
 	/** Uncheck an index from the list */
 	function uncheckItem(index)
@@ -76,7 +76,7 @@ ListView
 			checkedItemIndexes.splice(indexOfItem, 1)
 			updateCheckedItemCounter()
 		}
-	}
+	} // function uncheckItem(index)
 
 	/** Delete in the model all checked item */
 	function deleteCheckedItem()
@@ -94,19 +94,20 @@ ListView
 			model.remove(objectToRemove[i])
 		}
 		checkBoxEnabled = false
-	}
+	} // function deleteCheckedItem()
 
 	function isChecked(index)
 	{
 		return checkedItemIndexes.indexOf(index) >= 0
-	}
+	} // function isCheck(index)
 
 	Connections
 	{
-		target: root.model
-		onRowsAboutToBeInserted: root.uncheckAllItem()
-		onRowsAboutToBeMoved: root.uncheckAllItem()
-		onRowsAboutToBeRemoved: root.uncheckAllItem()
-	}
+		target: _root.model
+		onRowsAboutToBeInserted: _root.uncheckAllItem()
+		onRowsAboutToBeMoved: _root.uncheckAllItem()
+		onRowsAboutToBeRemoved: _root.uncheckAllItem()
+	} // Connections
+
 	onCheckBoxEnabledChanged: uncheckAllItem()
-}
+} // ListView

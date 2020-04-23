@@ -1,5 +1,7 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
 // Qt
 import QtQuick 2.12
@@ -7,20 +9,19 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-ModalDialog
+Qaterial.ModalDialog
 {
-    id: control
+  id: _control
 
-    property string text
+  property string text
 
-    contentItem: Label
-    {
-        text: control.text
-        textType: Style.TextType.ListText
-        color: Style.secondaryTextColor()
-        //width: control.width - control.leftPadding - control.rightPadding
-        wrapMode: Text.Wrap
-    }
-} // Dialog
+  contentItem: Qaterial.Label
+  {
+    text: _control.text
+    textType: Qaterial.Style.TextType.ListText
+    color: Qaterial.Style.secondaryTextColor()
+    wrapMode: Text.Wrap
+  } // Label
+} // ModalDialog

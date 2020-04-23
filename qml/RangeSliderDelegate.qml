@@ -53,7 +53,7 @@ Control
       id: _textLabel
       text: _control.text
       textType: Style.TextType.Body1
-    }
+    } // Label
 
     Qaterial.Label
     {
@@ -62,7 +62,7 @@ Control
       y: Math.floor(_textLabel.height/2) - Math.floor(height/2)
       text: _control.secondaryText
       textType: Style.TextType.Hint
-    }
+    } // Label
 
     Qaterial.RangeSlider
     {
@@ -76,6 +76,6 @@ Control
       second.onMoved: _control.secondMoved()
 
       parent: _control
-    }
+    } // RangeSlider
   } // Item
 } // Control

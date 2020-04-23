@@ -3,56 +3,58 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
 Container
 {
-    id: container
-    property TextField textField
-    property TextArea textArea
-    property ComboBox comboBox
-    width: list.contentWidth
-    contentItem: ListView
-    {
-        id: list
-        model: container.contentModel
-        snapMode: ListView.SnapOneItem
-        orientation: ListView.Horizontal
-    }
+  id: _container
+  property Qaterial.TextField textField
+  property Qaterial.TextArea textArea
+  property Qaterial.ComboBox comboBox
+  width: list.contentWidth
 
-    function assignTextFieldToContentItem()
-    {
-        if(textField)
-        {
-            for (var i = 0; i < count; i++)
-            {
-                var item = itemAt(i)
-                if(item && ((typeof item.textField) == "object"))
-                    item.textField = container.textField
-            }
-        }
-        if(textArea)
-        {
-            for (var i = 0; i < count; i++)
-            {
-                var item = itemAt(i)
-                if(item && ((typeof item.textArea) == "object"))
-                    item.textArea = container.textArea
-            }
-        }
-        if(comboBox)
-        {
-            for (var i = 0; i < count; i++)
-            {
-                var item = itemAt(i)
-                if(item && ((typeof item.comboBox) == "object"))
-                    item.comboBox = container.comboBox
-            }
-        }
-    }
+  contentItem: ListView
+  {
+    id: list
+    model: _container.contentModel
+    snapMode: ListView.SnapOneItem
+    orientation: ListView.Horizontal
+  }
 
-    onTextFieldChanged: assignTextFieldToContentItem()
-}
+  function assignTextFieldToContentItem()
+  {
+    if(textField)
+    {
+      for (var i = 0; i < count; i++)
+      {
+          var item = itemAt(i)
+          if(item && ((typeof item.textField) == "object"))
+              item.textField = _container.textField
+      }
+    }
+    if(textArea)
+    {
+      for (var i = 0; i < count; i++)
+      {
+          var item = itemAt(i)
+          if(item && ((typeof item.textArea) == "object"))
+              item.textArea = _container.textArea
+      }
+    }
+    if(comboBox)
+    {
+      for (var i = 0; i < count; i++)
+      {
+          var item = itemAt(i)
+          if(item && ((typeof item.comboBox) == "object"))
+              item.comboBox = _container.comboBox
+      }
+    }
+  } // function assignTextFieldToContentItem()
+  onTextFieldChanged: assignTextFieldToContentItem()
+} // Container

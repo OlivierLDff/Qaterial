@@ -4,9 +4,9 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Card
+Qaterial.Card
 {
-    elevation: MateriaStyle.card.elevation
+  elevation: Qaterial.Style.card.activeElevation
 }

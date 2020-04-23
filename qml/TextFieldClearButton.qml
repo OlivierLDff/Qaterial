@@ -3,16 +3,18 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-TextFieldIconButton
+Qaterial.TextFieldIconButton
 {
-    icon.source: "qrc:/Qaterial/Images/close-circle.svg"
-    onClicked:
-    {
-    	if(textField) textField.clear()
-    	if(textArea) textArea.clear()
-    }
-}
+  icon.source: "qrc:/Qaterial/Images/close-circle.svg"
+  onClicked:
+  {
+  	if(textField) textField.clear()
+  	if(textArea) textArea.clear()
+  }
+} // TextFieldIconButton

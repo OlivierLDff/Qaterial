@@ -4,21 +4,21 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-RoundButton
+Qaterial.RoundButton
 {
-    leftPadding: 0
-    rightPadding: 0
+  leftPadding: 0
+  rightPadding: 0
 
-    topInset: Style.toolButton.padding
-    bottomInset: Style.toolButton.padding
-    leftInset: Style.toolButton.padding
-    rightInset: Style.toolButton.padding
+  topInset: Qaterial.Style.toolButton.padding
+  bottomInset: Qaterial.Style.toolButton.padding
+  leftInset: Qaterial.Style.toolButton.padding
+  rightInset: Qaterial.Style.toolButton.padding
 
-    backgroundImplicitWidth: Style.toolButton.appBarButtonWidth
-    backgroundImplicitHeight: Style.toolButton.appBarButtonHeight
+  backgroundImplicitWidth: Qaterial.Style.toolButton.appBarButtonWidth
+  backgroundImplicitHeight: Qaterial.Style.toolButton.appBarButtonHeight
 
-    foregroundColor: !enabled ? (colorReversed ? Style.disabledTextColorReversed() : Style.disabledTextColor()) :
-                    highlighted ? Style.accentColor : (colorReversed ? Style.primaryTextColorReversed() : Style.primaryTextColor())
+  foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
+      highlighted ? Qaterial.Style.accentColor : (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor())
 } // RoundButton

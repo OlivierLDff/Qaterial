@@ -7,49 +7,51 @@
 import QtQuick 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Item
 {
-    id: root
-    implicitWidth: initialSize
-    implicitHeight: initialSize
+  id: _root
+  implicitWidth: initialSize
+  implicitHeight: initialSize
 
-    property bool enabled
+  property bool enabled
 
-    property real value: 0
-    property bool handleHasFocus: false
-    property bool handlePressed: false
-    property bool handleHovered: false
-    readonly property int initialSize: 13
+  property real value: 0
+  property bool handleHasFocus: false
+  property bool handlePressed: false
+  property bool handleHovered: false
+  readonly property int initialSize: 13
 
-    property color rippleColor: Style.rippleColorTheme
-    property color accentColor: Style.accentColor
-    property color disabledColor: Style.disabledTextColor()
+  property color rippleColor: Qaterial.Style.rippleColorTheme
+  property color accentColor: Qaterial.Style.accentColor
+  property color disabledColor: Qaterial.Style.disabledTextColor()
 
-    Rectangle
+  Rectangle
+  {
+    id: _handleRect
+    width: parent.width
+    height: parent.height
+    radius: width / 2
+    color: _root.enabled ? _root.accentColor : _root.disabledColor
+    scale: _root.handlePressed ? 1.5 : 1
+
+    Behavior on scale
     {
-        id: handleRect
-        width: parent.width
-        height: parent.height
-        radius: width / 2
-        color: root.enabled ? root.accentColor : root.disabledColor
-        scale: root.handlePressed ? 1.5 : 1
+      NumberAnimation
+      {
+        duration: 250
+      } // NumberAnimation
+    } // Behavior
+  } // Rectangle
 
-        Behavior on scale {
-            NumberAnimation {
-                duration: 250
-            }
-        }
-    }
-
-    Ripple
-    {
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        width: 22; height: 22
-        pressed: root.handlePressed
-        active: root.handlePressed || root.handleHasFocus || root.handleHovered
-        color: root.rippleColor
-    }
-}
+  Qaterial.Ripple
+  {
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
+    width: 22; height: 22
+    pressed: _root.handlePressed
+    active: _root.handlePressed || _root.handleHasFocus || _root.handleHovered
+    color: _root.rippleColor
+  } // Ripple
+} // Item

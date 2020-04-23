@@ -8,16 +8,16 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-FlatFabButton
+Qaterial.FlatFabButton
 {
-	id: control
+  id: _control
 
-    backgroundColor: "transparent"
-    borderColor: enabled ? (highlighted ? Style.accentColor : Style.dividersColor()) : Style.disabledDividersColor()
-    outlined: true
+  backgroundColor: "transparent"
+  borderColor: enabled ? (highlighted ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()) : Qaterial.Style.disabledDividersColor()
+  outlined: true
 
-    foregroundColor: !enabled ? Style.disabledTextColor() :
-        highlighted ? Style.accentColor : Style.primaryTextColor()
-} // FabButton
+  foregroundColor: !enabled ? Qaterial.Style.disabledTextColor() :
+      highlighted ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
+} // FlatFabButton

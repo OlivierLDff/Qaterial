@@ -9,25 +9,25 @@ import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.Page
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding,
-                            implicitHeaderWidth,
-                            implicitFooterWidth)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding
-                             + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
-                             + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding,
+                          implicitHeaderWidth,
+                          implicitFooterWidth)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding
+                           + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
+                           + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-    property color backgroundColor: Style.backgroundColor
+  property color backgroundColor: Qaterial.Style.backgroundColor
 
-    background: Rectangle
-    {
-        color: control.backgroundColor
-    } // Rectangle
+  background: Rectangle
+  {
+    color: _control.backgroundColor
+  } // Rectangle
 } // Page

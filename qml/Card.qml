@@ -8,44 +8,44 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Pane
+Qaterial.Pane
 {
-    id: control
-    padding: 0
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  id: _control
+  padding: 0
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    radius: Style.card.radius
+  radius: Qaterial.Style.card.radius
 
-    property color backgroundColor: onPrimary ? Style.primaryColor : Style.cardColor
-    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
-    property bool outlined: false
+  property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
+  property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
+  property bool outlined: false
 
-    property double elevation: isActive ? Style.card.activeElevation : (outlined ? 0 : Style.card.defaultElevation)
+  property double elevation: isActive ? Qaterial.Style.card.activeElevation : (outlined ? 0 : Qaterial.Style.card.defaultElevation)
 
-    property bool isActive: (elevationOnHovered && hovered) || pressed || visualFocus
+  property bool isActive: (elevationOnHovered && hovered) || pressed || visualFocus
 
-    property string headerText
-    property string subHeaderText
-    property string supportingText
-    property string media
-    property string thumbnail
+  property string headerText
+  property string subHeaderText
+  property string supportingText
+  property string media
+  property string thumbnail
 
-    property bool pressed: false
-    property bool elevationOnHovered: false
+  property bool pressed: false
+  property bool elevationOnHovered: false
 
-    background: CardBackground
-    {
-        id: _cardBackground
-        isActive: control.isActive
-        onPrimary: control.onPrimary
-        enabled: control.enabled
-        radius: control.radius
-        color: control.backgroundColor
-        borderColor: control.borderColor
-        outlined: control.outlined
-        elevation: control.elevation
-    } // Rectangle
-}
+  background: Qaterial.CardBackground
+  {
+    id: _cardBackground
+    isActive: _control.isActive
+    onPrimary: _control.onPrimary
+    enabled: _control.enabled
+    radius: _control.radius
+    color: _control.backgroundColor
+    borderColor: _control.borderColor
+    outlined: _control.outlined
+    elevation: _control.elevation
+  } // CardBackground
+} // Pane

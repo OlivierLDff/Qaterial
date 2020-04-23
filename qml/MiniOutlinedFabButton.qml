@@ -4,9 +4,9 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-OutlinedFabButton
+Qaterial.OutlinedFabButton
 {
-    type: Style.FabType.Mini
-} // FlatFabButton
+  type: Qaterial.Style.FabType.Mini
+} // OutlinedFabButton

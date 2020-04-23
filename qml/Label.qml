@@ -9,37 +9,37 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.Label
 {
-    id: control
+  id: _control
 
-    color: enabled ? (colorReversed ? Style.textTypeToColorReversed(textType) : Style.textTypeToColor(textType)) : Style.hintTextColor()
-    linkColor: Style.accentColor
+  color: enabled ? (colorReversed ? Qaterial.Style.textTypeToColorReversed(textType) : Qaterial.Style.textTypeToColor(textType)) : Qaterial.Style.hintTextColor()
+  linkColor: Qaterial.Style.accentColor
 
-    property int textType: Style.TextType.Body1
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
-    property bool usePixelSize: Style.usePixelSize
+  property int textType: Qaterial.Style.TextType.Body1
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
+  property bool usePixelSize: Qaterial.Style.usePixelSize
 
-    property double pixelSize: Style.textTypeToPixelSize(textType)
-    property double pointSize: Style.textTypeToPointSize(textType)
+  property double pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
+  property double pointSize: Qaterial.Style.textTypeToPointSize(textType)
 
-    Binding on font.pixelSize
-    {
-        when: control.usePixelSize
-        value: control.pixelSize
-    }
+  Binding on font.pixelSize
+  {
+    when: _control.usePixelSize
+    value: _control.pixelSize
+  } // Biding
 
-    Binding on font.pointSize
-    {
-        when: !control.usePixelSize
-        value: control.pointSize
-    }
+  Binding on font.pointSize
+  {
+      when: !_control.usePixelSize
+      value: _control.pointSize
+  } // Biding
 
-    font.family: Style.textTypeToFontFamily(textType)
-    font.styleName: Style.textTypeToStyleName(textType)
-    font.capitalization: Style.fontCapitalization(textType)
-    font.letterSpacing: Style.textTypeToLetterSpacing(textType)
+  font.family: Qaterial.Style.textTypeToFontFamily(textType)
+  font.styleName: Qaterial.Style.textTypeToStyleName(textType)
+  font.capitalization: Qaterial.Style.fontCapitalization(textType)
+  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(textType)
 } // Label

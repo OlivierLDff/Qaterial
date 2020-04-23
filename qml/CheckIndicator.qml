@@ -8,98 +8,98 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-    id: indicatorItem
-    implicitWidth: Style.checkIndicator.implicitWidth
-    implicitHeight: Style.checkIndicator.implicitHeight
-    color: "transparent"
-    border.color: !control.enabled ? Style.hintTextColor()
-        : checkState !== Qt.Unchecked ? Style.accentColor : Style.secondaryTextColor()
-    border.width: checkState !== Qt.Unchecked ? width / 2 : 2
-    radius: Style.checkIndicator.radius
+  id: _indicatorItem
+  implicitWidth: Qaterial.Style.checkIndicator.implicitWidth
+  implicitHeight: Qaterial.Style.checkIndicator.implicitHeight
+  color: "transparent"
+  border.color: !control.enabled ? Qaterial.Style.hintTextColor()
+      : checkState !== Qt.Unchecked ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
+  border.width: checkState !== Qt.Unchecked ? width / 2 : 2
+  radius: Qaterial.Style.checkIndicator.radius
 
-    property Item control
-    property int checkState: control.checkState
+  property Item control
+  property int checkState: control.checkState
 
-    Behavior on border.width
+  Behavior on border.width
+  {
+    NumberAnimation
     {
-        NumberAnimation
-        {
-            duration: 100
-            easing.type: Easing.OutCubic
-        } // NumberAnimation
-    } // Behavior
+      duration: 100
+      easing.type: Easing.OutCubic
+    } // NumberAnimation
+  } // Behavior
 
-    Behavior on border.color
+  Behavior on border.color
+  {
+    ColorAnimation
     {
-        ColorAnimation
-        {
-            duration: 100
-            easing.type: Easing.OutCubic
-        } // ColorAnimation
-    } // Behavior
+      duration: 100
+      easing.type: Easing.OutCubic
+    } // ColorAnimation
+  } // Behavior
 
-    ColorIcon
+  Qaterial.ColorIcon
+  {
+    id: checkImage
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
+    iconSize: Qaterial.Style.checkIndicator.iconWidth
+    source: "qrc:/Qaterial/Images/check.svg"
+    color: "white"
+
+    scale: checkState === Qt.Checked ? 1 : 0
+    Behavior on scale { NumberAnimation { duration: 100 } }
+  } // ColorIcon
+
+  Rectangle
+  {
+    x: (parent.width - width) / 2
+    y: (parent.height - height) / 2
+    width: Qaterial.Style.checkIndicator.partiallyCheckedWidth
+    height: Qaterial.Style.checkIndicator.partiallyCheckedHeight
+    color: "white"
+
+    scale: checkState === Qt.PartiallyChecked ? 1 : 0
+    Behavior on scale { NumberAnimation { duration: 100 } }
+  } // Rectangle
+
+  states:
+  [
+    State
     {
-        id: checkImage
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        iconSize: Style.checkIndicator.iconWidth
-        source: "qrc:/Qaterial/Images/check.svg"
-        color: "white"
-
-        scale: checkState === Qt.Checked ? 1 : 0
-        Behavior on scale { NumberAnimation { duration: 100 } }
-    } // ColorIcon
-
-    Rectangle
+      name: "checked"
+      when: checkState === Qt.Checked
+    }, // State
+    State
     {
-        x: (parent.width - width) / 2
-        y: (parent.height - height) / 2
-        width: Style.checkIndicator.partiallyCheckedWidth
-        height: Style.checkIndicator.partiallyCheckedHeight
-        color: "white"
+      name: "partiallychecked"
+      when: checkState === Qt.PartiallyChecked
+    } // State
+  ] // states
 
-        scale: checkState === Qt.PartiallyChecked ? 1 : 0
-        Behavior on scale { NumberAnimation { duration: 100 } }
-    } // Rectangle
-
-    states:
-    [
-        State
-        {
-            name: "checked"
-            when: checkState === Qt.Checked
-        }, // State
-        State
-        {
-            name: "partiallychecked"
-            when: checkState === Qt.PartiallyChecked
-        } // State
-    ]
-
-    transitions: Transition
+  transitions: Transition
+  {
+    SequentialAnimation
     {
-        SequentialAnimation
-        {
-            NumberAnimation
-            {
-                target: indicatorItem
-                property: "scale"
-                // Go down 2 pixels in size.
-                to: 1 - 2 / indicatorItem.width
-                duration: 120
-            } // NumberAnimation
-            NumberAnimation
-            {
-                target: indicatorItem
-                property: "scale"
-                to: 1
-                duration: 120
-            } // NumberAnimation
-        } // SequentialAnimation
-    } // Transition
+      NumberAnimation
+      {
+        target: _indicatorItem
+        property: "scale"
+        // Go down 2 pixels in size.
+        to: 1 - 2 / _indicatorItem.width
+        duration: 120
+      } // NumberAnimation
+      NumberAnimation
+      {
+        target: _indicatorItem
+        property: "scale"
+        to: 1
+        duration: 120
+      } // NumberAnimation
+    } // SequentialAnimation
+  } // Transition
 } // Rectangle

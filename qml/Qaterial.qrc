@@ -24,7 +24,6 @@
         <file>StackView.qml</file>
 
         <!-- FONTS -->
-
         <file>Fonts/roboto/Roboto-Black.ttf</file>
         <file>Fonts/roboto/Roboto-BlackItalic.ttf</file>
         <file>Fonts/roboto/Roboto-Bold.ttf</file>
@@ -73,6 +72,7 @@
 
         <!-- COMPONENTS / CARDS -->
         <file>Card.qml</file>
+        <file>ElevatedCard.qml</file>
         <file>OutlinedCard.qml</file>
         <file>CardBackground.qml</file>
         <file>CardRippleBackground.qml</file>

@@ -4,14 +4,14 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-RawMaterialButton
+Qaterial.RawMaterialButton
 {
-    flat: true
-    highlighted: true
-    outlined: true
-    //highlighted: checked || pressed
+  flat: true
+  highlighted: true
+  outlined: true
+  //highlighted: checked || pressed
 
-    accentRipple: checked || pressed
+  accentRipple: checked || pressed
 } // RawMaterialButton

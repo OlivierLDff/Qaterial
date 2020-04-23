@@ -64,7 +64,7 @@ RaisedButton                1.0 RaisedButton.qml
 Button                      1.0 Button.qml
 RawMaterialButton           1.0 RawMaterialButton.qml
 
-internal FabIconLabel       FabIconLabel.qml
+FabIconLabel                1.0 FabIconLabel.qml
 FabButton                   1.0 FabButton.qml
 ScalableFlatFabButton       1.0 ScalableFlatFabButton.qml
 MiniFabButton               1.0 MiniFabButton.qml
@@ -129,6 +129,7 @@ ScrollIndicator             1.0 ScrollIndicator.qml
 DoublePage                  1.0 DoublePage.qml
 
 Card                        1.0 Card.qml
+ElevatedCard                1.0 ElevatedCard.qml
 OutlinedCard                1.0 OutlinedCard.qml
 CardBackground              1.0 CardBackground.qml
 CardRippleBackground        1.0 CardRippleBackground.qml

@@ -1,5 +1,7 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
 // Qt
 import QtQuick 2.12
@@ -7,108 +9,107 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.Dialog
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding,
-                            implicitHeaderWidth,
-                            implicitFooterWidth)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding
-                             + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
-                             + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding,
+                          implicitHeaderWidth,
+                          implicitFooterWidth)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding
+                           + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
+                           + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-    padding: Style.dialog.horizontalPadding
-    topPadding: Style.dialog.topPadding //+ (drawSeparator ? 1 : 0)
-    bottomPadding: (drawSeparator ? 1 : (Style.dialog.horizontalPadding + 1))
+  padding: Qaterial.Style.dialog.horizontalPadding
+  topPadding: Qaterial.Style.dialog.topPadding //+ (drawSeparator ? 1 : 0)
+  bottomPadding: (drawSeparator ? 1 : (Qaterial.Style.dialog.horizontalPadding + 1))
 
-    enter: Transition
+  enter: Transition
+  {
+    // grow_fade_in
+    NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
+    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 }
+  } // Transition
+
+  exit: Transition
+  {
+    // shrink_fade_out
+    NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
+    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
+  } // Transition
+
+  property double elevation: Qaterial.Style.dialog.elevation
+  property color backgroundColor: Qaterial.Style.dialogColor
+  property color overlayColor: Qaterial.Style.overlayColor
+  property bool drawSeparator: false
+
+  background: Rectangle
+  {
+    radius: Qaterial.Style.dialog.radius
+    color: Qaterial.Style.dialogColor
+
+    layer.enabled: _control.elevation > 0
+    layer.effect: Qaterial.ElevationEffect
     {
-        // grow_fade_in
-        NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
-        NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 }
-    } // Transition
+      elevation: _control.elevation
+    } // ElevationEffect
 
-    exit: Transition
+    Qaterial.HorizontalLineSeparator
     {
-        // shrink_fade_out
-        NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
-        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
-    } // Transition
+      visible: _control.drawSeparator && header.visible
+      //anchors.top: header.bottom
+      //anchors.topMargin: _control.topPadding
+      anchors.horizontalCenter: parent.horizontalCenter
+      implicitWidth: _control.width
+      y: _control.header.height + _control.topPadding - 1
+    } // HorizontalLineSeparator
 
-    property double elevation: Style.dialog.elevation
-    property color backgroundColor: Style.dialogColor
-    property color overlayColor: Style.overlayColor
-    property bool drawSeparator: false
+    Qaterial.HorizontalLineSeparator
+    {
+      visible: _control.drawSeparator && footer.visible
+      y: _control.height - footer.height - _control.bottomPadding
+      //anchors.bottom: footer.top
+      //anchors.bottomMargin: _control.bottomPadding
+      anchors.horizontalCenter: parent.horizontalCenter
+      implicitWidth: _control.width
+    } // HorizontalLineSeparator
+  } // Rectangle
 
+  header: Qaterial.Label
+  {
+    text: _control.title
+    visible: _control.title
+    elide: Label.ElideRight
+    padding: Qaterial.Style.dialog.horizontalPadding
+    bottomPadding: 0
+    textType: Qaterial.Style.TextType.Title
     background: Rectangle
     {
-        radius: Style.dialog.radius
-        color: Style.dialogColor
-
-        layer.enabled: control.elevation > 0
-        layer.effect: ElevationEffect
-        {
-            elevation: control.elevation
-        } // ElevationEffect
-
-        HorizontalLineSeparator
-        {
-            visible: control.drawSeparator && header.visible
-            //anchors.top: header.bottom
-            //anchors.topMargin: control.topPadding
-            anchors.horizontalCenter: parent.horizontalCenter
-            implicitWidth: control.width
-            y: control.header.height + control.topPadding - 1
-        }
-
-        HorizontalLineSeparator
-        {
-            visible: control.drawSeparator && footer.visible
-            y: control.height - footer.height - control.bottomPadding
-            //anchors.bottom: footer.top
-            //anchors.bottomMargin: control.bottomPadding
-            anchors.horizontalCenter: parent.horizontalCenter
-            implicitWidth: control.width
-        }
-
+      radius: Qaterial.Style.dialog.radius
+      color: _control.backgroundColor
+      //clip: true
     } // Rectangle
+  } // Label
 
-    header: Label
-    {
-        text: control.title
-        visible: control.title
-        elide: Label.ElideRight
-        padding: Style.dialog.horizontalPadding
-        bottomPadding: 0
-        textType: Style.TextType.Title
-        background: Rectangle
-        {
-            radius: Style.dialog.radius
-            color: control.backgroundColor
-            //clip: true
-        }
-    }
+  footer: Qaterial.DialogButtonBox
+  {
+    visible: count > 0
+    backgroundColor: _control.backgroundColor
+  } // DialogButtonBox
 
-    footer: DialogButtonBox
-    {
-        visible: count > 0
-        backgroundColor: control.backgroundColor
-    } // DialogButtonBox
+  T.Overlay.modal: Rectangle
+  {
+    color: _control.overlayColor
+    Behavior on opacity { NumberAnimation { duration: 150 } }
+  } // Rectangle
 
-    T.Overlay.modal: Rectangle
-    {
-        color: control.overlayColor
-        Behavior on opacity { NumberAnimation { duration: 150 } }
-    }
-
-    T.Overlay.modeless: Rectangle
-    {
-        color: control.overlayColor
-        Behavior on opacity { NumberAnimation { duration: 150 } }
-    }
+  T.Overlay.modeless: Rectangle
+  {
+    color: _control.overlayColor
+    Behavior on opacity { NumberAnimation { duration: 150 } }
+  } // Rectangle
 } // Dialog

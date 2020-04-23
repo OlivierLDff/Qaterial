@@ -4,9 +4,9 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-FlatFabButton
+Qaterial.FlatFabButton
 {
-    type: Style.FabType.Mini
+  type: Qaterial.Style.FabType.Mini
 } // FlatFabButton

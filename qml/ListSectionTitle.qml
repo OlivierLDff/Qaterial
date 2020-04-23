@@ -8,24 +8,26 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Label
+Qaterial.Label
 {
-    id: control
-    property bool separatorVisible: false
-    ToolSeparator
-    {
-        id: _separator
-        width: parent.width
-        y: Math.floor(Style.card.horizontalPadding/2)
-        verticalPadding: 0
-        orientation: Qt.Horizontal
-        visible: control.separatorVisible
-    }
-    padding: Style.card.horizontalPadding
-    bottomPadding: Style.card.verticalPadding
-    topPadding: _separator.visible ? Style.card.horizontalPadding : Style.card.verticalPadding
-    textType: Style.TextType.Overline
-    elide: Text.ElideRight
-}
+  id: _control
+  property bool separatorVisible: false
+
+  Qaterial.ToolSeparator
+  {
+    id: _separator
+    width: parent.width
+    y: Math.floor(Qaterial.Style.card.horizontalPadding/2)
+    verticalPadding: 0
+    orientation: Qt.Horizontal
+    visible: _control.separatorVisible
+  } // ToolSeparator
+
+  padding: Qaterial.Style.card.horizontalPadding
+  bottomPadding: Qaterial.Style.card.verticalPadding
+  topPadding: _separator.visible ? Qaterial.Style.card.horizontalPadding : Qaterial.Style.card.verticalPadding
+  textType: Qaterial.Style.TextType.Overline
+  elide: Text.ElideRight
+} // Label

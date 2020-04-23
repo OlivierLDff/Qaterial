@@ -4,11 +4,11 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-FabButton
+Qaterial.FabButton
 {
-    flat: true
-    highlighted: false
-    type: Style.FabType.Mini
-} // RawMaterialButton
+  flat: true
+  highlighted: false
+  type: Qaterial.Style.FabType.Mini
+} // FabButton

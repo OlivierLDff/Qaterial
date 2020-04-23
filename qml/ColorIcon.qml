@@ -9,14 +9,14 @@ import QtGraphicalEffects 1.12
 
 Item
 {
-	id: root
+	id: _root
 
 	// ICON CONTROL
-	property alias source: control.source
+	property alias source: _control.source
 	property bool fill: false
 	property bool outlined: false
 	property bool roundIcon: fill || outlined
-	property alias mirror: control.mirror
+	property alias mirror: _control.mirror
 	property bool roundOpacity: true
 
 	// COLORS
@@ -34,38 +34,38 @@ Item
 	Rectangle
 	{
 		id: _round
-		width: root.roundSize
-		height: root.roundSize
-		color: root.fill ? root.roundColor : "transparent"
-		radius: root.roundSize/2
-		visible: root.roundIcon
-		border.width: root.outlined ? 1 : 0
-		border.color: root.outlined ? root.roundBorderColor : "transparent"
+		width: _root.roundSize
+		height: _root.roundSize
+		color: _root.fill ? _root.roundColor : "transparent"
+		radius: _root.roundSize/2
+		visible: _root.roundIcon
+		border.width: _root.outlined ? 1 : 0
+		border.color: _root.outlined ? _root.roundBorderColor : "transparent"
 		opacity: roundOpacity ? 0.5 : 1.0
 	} // Rectangle
 
 	Image
 	{
-	    id: control
-	    width: root.iconSize
-	    height: root.iconSize
-	    visible: false
+		id: _control
+		width: _root.iconSize
+		height: _root.iconSize
+		visible: false
 		fillMode: Image.PreserveAspectFit
-		sourceSize.height: root.iconSize
-		sourceSize.width: root.iconSize
+		sourceSize.height: _root.iconSize
+		sourceSize.width: _root.iconSize
 		anchors.centerIn: parent
 	} // Image
 
 	ColorOverlay
 	{
-		source: control
-		anchors.fill: control
-		color.r: root.color.r
-		color.g: root.color.g
-		color.b: root.color.b
+		source: _control
+		anchors.fill: _control
+		color.r: _root.color.r
+		color.g: _root.color.g
+		color.b: _root.color.b
 		color.a: 1
 		cached : true
 	} // ColorOverlay
 
 	opacity: color.a
-}
+} // Item

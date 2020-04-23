@@ -3,13 +3,14 @@
  * Contact: olivier.ldff@gmail.com
  */
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-SquareButton
+Qaterial.SquareButton
 {
-    highlighted: checked || pressed
-    forceRipple: checked
-    accentRipple: highlighted
-    checkable: true
-    useSecondaryColor: true
+  highlighted: checked || pressed
+  forceRipple: checked
+  accentRipple: highlighted
+  checkable: true
+  useSecondaryColor: true
 } // SquareButton

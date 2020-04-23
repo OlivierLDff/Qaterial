@@ -1,33 +1,35 @@
-/** Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com */
+/**
+ * Copyright (C) Olivier Le Doeuff 2019
+ * Contact: olivier.ldff@gmail.com
+ */
 
 // Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-// todo : improve that to use Qaterial.DialogManager
-ItemDelegate
+// TO DO : improve that to use Qaterial.DialogManager
+Qaterial.ItemDelegate
 {
-    id: control
+  id: _control
 
-    signal accepted(int value)
-    signal rejected()
+  signal accepted(int value)
+  signal rejected()
 
-    property alias model: _radioDialog.model
-    property alias value: _radioDialog.currentIndex
-    property alias delegate: _radioDialog.delegate
-    property alias currentIndex: _radioDialog.currentIndex
-    property alias title: _radioDialog.title
+  property alias model: _radioDialog.model
+  property alias value: _radioDialog.currentIndex
+  property alias delegate: _radioDialog.delegate
+  property alias currentIndex: _radioDialog.currentIndex
+  property alias title: _radioDialog.title
 
-    RadioDialog
-    {
-        id: _radioDialog
-        onAccepted: control.accepted(currentIndex)
-        onRejected: control.rejected()
-    }
+  Qaterial.RadioDialog
+  {
+    id: _radioDialog
+    onAccepted: _control.accepted(currentIndex)
+    onRejected: _control.rejected()
+  } // RadioDialog
 
-    onClicked: _radioDialog.open()
-}
+  onClicked: _radioDialog.open()
+} // ItemDelegate

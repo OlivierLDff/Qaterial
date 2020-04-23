@@ -9,54 +9,53 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.MenuSeparator
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitContentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitContentHeight + topPadding + bottomPadding)
 
-    verticalPadding: Style.menu.separatorHSmallPadding
-    rightPadding: !mirrored ? Style.menu.separatorWSmallPadding : Style.menu.separatorWLargePadding
-    leftPadding: mirrored ? Style.menu.separatorWSmallPadding : Style.menu.separatorWLargePadding
+  verticalPadding: Qaterial.Style.menu.separatorHSmallPadding
+  rightPadding: !mirrored ? Qaterial.Style.menu.separatorWSmallPadding : Qaterial.Style.menu.separatorWLargePadding
+  leftPadding: mirrored ? Qaterial.Style.menu.separatorWSmallPadding : Qaterial.Style.menu.separatorWLargePadding
 
-    property bool highlighted: false
+  property bool highlighted: false
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
-    property bool accentColorAuthorized: onPrimary && Style.preferAccentOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
+  property bool accentColorAuthorized: onPrimary && Qaterial.Style.preferAccentOnPrimary
 
-    property color foregroundColor: !enabled ? (colorReversed ? Style.disabledDividersColorReversed() : Style.disabledDividersColor()) :
-                    highlighted && accentColorAuthorized ? Style.accentColor :
-                    colorReversed ? Style.dividersColorReversed() : Style.dividersColor()
+  property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() : Qaterial.Style.disabledDividersColor()) :
+                  highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
+                  colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
 
-    property bool drawline: Style.debug.drawDebugButton
+  property bool drawline: Qaterial.Style.debug.drawDebugButton
 
-    property double separatorImplicitWidth: Style.menu.separatorImplicitWidth
+  property double separatorImplicitWidth: Qaterial.Style.menu.separatorImplicitWidth
 
-    DebugRectangle
+  Qaterial.DebugRectangle
+  {
+    anchors.fill: parent
+    border.color: "pink"
+    visible: _control.drawline
+  } // DebugRectangle
+
+  contentItem: Rectangle
+  {
+    implicitWidth: _control.separatorImplicitWidth
+    implicitHeight: 1
+    color: _control.foregroundColor
+
+    Qaterial.DebugRectangle
     {
-        anchors.fill: parent
-        border.color: "pink"
-        visible: control.drawline
+      anchors.fill: parent
+      border.color: "red"
+      visible: _control.drawline
     } // DebugRectangle
-
-    contentItem: Rectangle
-    {
-        implicitWidth: control.separatorImplicitWidth
-        implicitHeight: 1
-        color: control.foregroundColor
-
-        DebugRectangle
-        {
-            anchors.fill: parent
-            border.color: "red"
-            visible: control.drawline
-        } // DebugRectangle
-
-    } // Rectangle
+  } // Rectangle
 } // MenuSeparator

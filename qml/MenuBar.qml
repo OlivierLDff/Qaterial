@@ -9,36 +9,36 @@ import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.MenuBar
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    delegate: MenuBarItem { onPrimary: control.onPrimary; colorReversed: control.colorReversed }
+  delegate: Qaterial.MenuBarItem { onPrimary: _control.onPrimary; colorReversed: _control.colorReversed }
 
-    contentItem: Row
+  contentItem: Row
+  {
+    spacing: _control.spacing
+    Repeater
     {
-        spacing: control.spacing
-        Repeater
-        {
-            model: control.contentModel
-        } // Repeater
-    } // Row
+      model: _control.contentModel
+    } // Repeater
+  } // Row
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    property color backgroundColor: onPrimary ? Style.primaryColor : Style.dialogColor
+  property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.dialogColor
 
-    background: Rectangle
-    {
-        implicitHeight: Style.menu.implicitHeight
-        color: control.backgroundColor
-    }
+  background: Rectangle
+  {
+    implicitHeight: Qaterial.Style.menu.implicitHeight
+    color: _control.backgroundColor
+  } // Rectangle
 } // MenuBar

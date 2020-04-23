@@ -4,10 +4,10 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-Label
+Qaterial.Label
 {
-    id: control
-    property int textType: Style.TextType.Hint
+  id: _control
+  property int textType: Qaterial.Style.TextType.Hint
 } // Label

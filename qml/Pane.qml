@@ -9,35 +9,35 @@ import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.Pane
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    padding: Style.card.horizontalPadding
+  padding: Qaterial.Style.card.horizontalPadding
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    property double elevation: 0
-    property color color: control.onPrimary ? Style.primaryColor : Style.backgroundColor
-    property double radius: 0
+  property double elevation: 0
+  property color color: _control.onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.backgroundColor
+  property double radius: 0
 
-    background: Rectangle
+  background: Rectangle
+  {
+    id: _back
+    color: _control.color
+    radius: _control.radius
+    layer.enabled: _control.enabled && _control.elevation > 0
+    layer.effect: Qaterial.ElevationEffect
     {
-        id: _back
-        color: control.color
-        radius: control.radius
-        layer.enabled: control.enabled && control.elevation > 0
-        layer.effect: ElevationEffect
-        {
-            elevation: control.elevation
-        } // ElevationEffect
-    } // Rectangle
+      elevation: _control.elevation
+    } // ElevationEffect
+  } // Rectangle
 } // Pane

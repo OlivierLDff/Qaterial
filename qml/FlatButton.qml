@@ -4,10 +4,10 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-RawMaterialButton
+Qaterial.RawMaterialButton
 {
-    flat: true
-    highlighted: true
+  flat: true
+  highlighted: true
 } // RawMaterialButton

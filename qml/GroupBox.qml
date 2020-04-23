@@ -9,78 +9,78 @@ import QtQuick.Templates 2.12 as T
 import QtGraphicalEffects 1.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.GroupBox
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    spacing: Style.card.spacing
-    horizontalPadding: Style.card.horizontalPadding
-    verticalPadding: Style.card.verticalPadding
+  spacing: Qaterial.Style.card.spacing
+  horizontalPadding: Qaterial.Style.card.horizontalPadding
+  verticalPadding: Qaterial.Style.card.verticalPadding
 
-    topPadding: verticalPadding + (inlineTitle ? (implicitLabelWidth > 0 ? implicitLabelHeight/2 + spacing : 0) : (implicitLabelWidth > 0 ? implicitLabelHeight + spacing : 0))
+  topPadding: verticalPadding + (inlineTitle ? (implicitLabelWidth > 0 ? implicitLabelHeight/2 + spacing : 0) : (implicitLabelWidth > 0 ? implicitLabelHeight + spacing : 0))
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    property color color: onPrimary ? Style.primaryColor : Style.backgroundColor
-    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
-    property alias radius: _rect.radius
+  property color color: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.backgroundColor
+  property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
+  property alias radius: _rect.radius
 
-    property int textType: Style.TextType.Overline
+  property int textType: Qaterial.Style.TextType.Overline
 
-    property bool inlineTitle: false
+  property bool inlineTitle: false
 
-    label: Label
+  label: Qaterial.Label
+  {
+    id: _label
+    x: _control.leftPadding + (_control.inlineTitle ? (_control.verticalPadding) : 0 )
+    width: _control.availableWidth - x
+
+    text: _control.title
+    textType: _control.textType
+    onPrimary: _control.onPrimary
+    colorReversed: _control.colorReversed
+    elide: Text.ElideRight
+    verticalAlignment: Text.AlignVCenter
+
+    property bool drawline: Qaterial.Style.debug.drawDebugIconLabel
+  } // Label
+
+  background: Rectangle
+  {
+    id: _rect
+    y: _control.inlineTitle ? label.implicitHeight/2 : (_control.topPadding - _control.bottomPadding)
+    implicitWidth: 200
+    width: parent.width
+    height: parent.height + (_control.inlineTitle ? (-label.implicitHeight/2) : (-_control.topPadding + _control.bottomPadding))
+    radius: Qaterial.Style.card.radius
+    color: _control.inlineTitle ? "transparent" : _control.color
+    border.color: _control.borderColor
+    border.width: 1
+    layer.enabled: _control.inlineTitle && _control.implicitLabelWidth
+    layer.effect: OpacityMask
     {
-        id: _label
-        x: control.leftPadding + (control.inlineTitle ? (control.verticalPadding) : 0 )
-        width: control.availableWidth - x
-
-        text: control.title
-        textType: control.textType
-        onPrimary: control.onPrimary
-        colorReversed: control.colorReversed
-        elide: Text.ElideRight
-        verticalAlignment: Text.AlignVCenter
-
-        property bool drawline: Style.debug.drawDebugIconLabel
-    }
-
-    background: Rectangle
-    {
-        id: _rect
-        y: control.inlineTitle ? label.implicitHeight/2 : (control.topPadding - control.bottomPadding)
-        implicitWidth: 200
-        width: parent.width
-        height: parent.height + (control.inlineTitle ? (-label.implicitHeight/2) : (-control.topPadding + control.bottomPadding))
-        radius: Style.card.radius
-        color: control.inlineTitle ? "transparent" : control.color
-        border.color: control.borderColor
-        border.width: 1
-        layer.enabled: control.inlineTitle && control.implicitLabelWidth
-        layer.effect: OpacityMask
+      invert: true
+      maskSource: Rectangle
+      {
+        color: "transparent"
+        width: _rect.width
+        height: _rect.height
+        Rectangle
         {
-            invert: true
-            maskSource: Rectangle
-            {
-                color: "transparent"
-                width: _rect.width
-                height: _rect.height
-                Rectangle
-                {
-                    width: label.contentWidth + control.verticalPadding*2
-                    height: label.implicitHeight
-                    x: control.leftPadding
-                    y: -height/2
-                } // Rectangle
-            } // Rectangle
-        } // OpacityMask
-    } // Rectangle
-} // Frame
+          width: label.contentWidth + _control.verticalPadding*2
+          height: label.implicitHeight
+          x: _control.leftPadding
+          y: -height/2
+        } // Rectangle
+      } // Rectangle
+    } // OpacityMask
+  } // Rectangle
+} // GroupBox

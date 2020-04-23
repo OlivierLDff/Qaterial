@@ -3,19 +3,21 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-TextFieldIcon
+Qaterial.TextFieldIcon
 {
-    id: control
-    color: Style.errorColor
-    source: "qrc:/Qaterial/Images/alert-circle.svg"
-    onVisibleChanged:
-    {
-        if(visible)
-            _anim.start()
-    }
-    ErrorSequentialAnimation { id: _anim; target: control; }
-}
+  id: _control
+  color: Qaterial.Style.errorColor
+  source: "qrc:/Qaterial/Images/alert-circle.svg"
+  onVisibleChanged:
+  {
+    if(visible)
+        _anim.start()
+  }
+  ErrorSequentialAnimation { id: _anim; target: _control; }
+} // TextFieldIcon

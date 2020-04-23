@@ -4,29 +4,29 @@
  */
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-FabButton
+Qaterial.FabButton
 {
-	id: control
-    flat: false
-    highlighted: true
+	id: _control
+  flat: false
+  highlighted: true
 
-    leftPadding: Style.fab.padding
-    rightPadding: Style.fab.padding
+  leftPadding: Qaterial.Style.fab.padding
+  rightPadding: Qaterial.Style.fab.padding
 
-    contentItem: FabIconLabel
-    {
-        id: _iconLabel
-        spacing: control.spacing
-        display: control.display
-        icon: control.icon
-        text: control.text
-        font: control.font
-        color: control.foregroundColor
-    } // FabIconLabel
+  contentItem: Qaterial.FabIconLabel
+  {
+    id: _iconLabel
+    spacing: _control.spacing
+    display: _control.display
+    icon: _control.icon
+    text: _control.text
+    font: _control.font
+    color: _control.foregroundColor
+  } // FabIconLabel
 
-    property bool extended: (!extendedOnHovered || extendedOnHovered && (hovered || down || visualFocus)) && text != ""
+  property bool extended: (!extendedOnHovered || extendedOnHovered && (hovered || down || visualFocus)) && text != ""
 
-    type: extended ? Style.FabType.Extended : Style.FabType.Default
-} // RawMaterialButton
+  type: extended ? Qaterial.Style.FabType.Extended : Qaterial.Style.FabType.Default
+} // FabButton

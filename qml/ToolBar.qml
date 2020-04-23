@@ -3,37 +3,39 @@
  * Contact: olivier.ldff@gmail.com
  */
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
 T.ToolBar
 {
-    id: control
+  id: _control
 
-    property double elevation: Style.toolbar.elevation
+  property double elevation: Qaterial.Style.toolbar.elevation
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    spacing: 16
+  spacing: 16
 
-    property color backgroundColor: Style.primaryColor
+  property color backgroundColor: Qaterial.Style.primaryColor
 
-    background: Rectangle
+  background: Rectangle
+  {
+    implicitHeight: Qaterial.Style.toolbar.implicitHeight
+    color: _control.backgroundColor
+
+    layer.enabled: _control.elevation > 0
+    layer.effect: Qaterial.ElevationEffect
     {
-        implicitHeight: Style.toolbar.implicitHeight
-        color: control.backgroundColor
-
-        layer.enabled: control.elevation > 0
-        layer.effect: ElevationEffect
-        {
-            elevation: control.elevation
-            fullWidth: true
-        } // ElevationEffect
-    } // Rectangle
+      elevation: _control.elevation
+      fullWidth: true
+    } // ElevationEffect
+  } // Rectangle
 } // ToolBar

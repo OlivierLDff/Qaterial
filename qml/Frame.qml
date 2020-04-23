@@ -8,42 +8,42 @@ import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 T.Frame
 {
-    id: control
+  id: _control
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            contentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             contentHeight + topPadding + bottomPadding)
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          contentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           contentHeight + topPadding + bottomPadding)
 
-    horizontalPadding: Style.card.horizontalPadding
-    verticalPadding: Style.card.verticalPadding
+  horizontalPadding: Qaterial.Style.card.horizontalPadding
+  verticalPadding: Qaterial.Style.card.verticalPadding
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    property color color: onPrimary ? Style.primaryColor : Style.backgroundColor
-    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
-    property alias radius: _rect.radius
+  property color color: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.backgroundColor
+  property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
+  property alias radius: _rect.radius
 
-    property double elevation
+  property double elevation
 
-    background: Rectangle
+  background: Rectangle
+  {
+    id: _rect
+    implicitWidth: 200
+    radius: Qaterial.Style.card.radius
+    color: _control.elevation > 0 ? _control.color : "transparent"
+    border.color: _control.borderColor
+    border.width: 1
+
+    layer.enabled: _control.enabled && _control.elevation > 0
+    layer.effect: Qaterial.ElevationEffect
     {
-        id: _rect
-        implicitWidth: 200
-        radius: Style.card.radius
-        color: control.elevation > 0 ? control.color : "transparent"
-        border.color: control.borderColor
-        border.width: 1
-
-        layer.enabled: control.enabled && control.elevation > 0
-        layer.effect: ElevationEffect
-        {
-            elevation: control.elevation
-        }
-    } // Rectangle
+      elevation: _control.elevation
+    } // ElevationEffect
+  } // Rectangle
 } // Frame

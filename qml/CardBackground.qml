@@ -8,46 +8,47 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-    id: control
-    property bool enabled: true
-    property bool outlined: false
-    property bool isActive: false
-    property double elevation: isActive ? Style.card.activeElevation : (outlined ? 0 : Style.card.defaultElevation)
+  id: _control
+  property bool enabled: true
+  property bool outlined: false
+  property bool isActive: false
+  property double elevation: isActive ? Qaterial.Style.card.activeElevation : (outlined ? 0 : Qaterial.Style.card.defaultElevation)
 
-    property bool onPrimary: false
-    property bool colorReversed: onPrimary && Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-    color: onPrimary ? Style.primaryColor : Style.cardColor
-    property color borderColor: enabled ? Style.dividersColor() : Style.disabledDividersColor()
-    radius: Style.card.radius
-    border.width: outlined ? 1 : 0
-    border.color: isActive ? "transparent" : borderColor
+  color: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
+  property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
+  radius: Qaterial.Style.card.radius
+  border.width: outlined ? 1 : 0
+  border.color: isActive ? "transparent" : borderColor
 
-    Behavior on border.color
+  Behavior on border.color
+  {
+    ColorAnimation
     {
-        ColorAnimation
-        {
-            duration: 250
-            easing.type: Easing.OutCubic
-        } // ColorAnimation
-    } // Behavior
+      duration: 250
+      easing.type: Easing.OutCubic
+    } // ColorAnimation
+  } // Behavior
 
-    Behavior on elevation
+  Behavior on elevation
+  {
+    NumberAnimation
     {
-        NumberAnimation
-        {
-            duration: 250
-            easing.type: Easing.OutCubic
-        } // ColorAnimation
-    } // Behavior
+      duration: 250
+      easing.type: Easing.OutCubic
+    } // NumberAnimation
+  } // Behavior
 
-    layer.enabled: control.enabled && control.elevation > 0
-    layer.effect: ElevationEffect
-    {
-        elevation: control.elevation
-    } // ElevationEffect
+  layer.enabled: _control.enabled && _control.elevation > 0
+
+  layer.effect: Qaterial.ElevationEffect
+  {
+    elevation: _control.elevation
+  } // ElevationEffect
 } // Rectangle

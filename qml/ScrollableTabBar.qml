@@ -8,34 +8,34 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-TabBar
+Qaterial.TabBar
 {
-    id: root
-    property alias model: _repeater.model
-    property int display: AbstractButton.TextOnly
-    property double minWidth: Style.tabBar.minTabWidth
-    property double maxWidth: Style.tabBar.maxTabWidth
-    property int maxElement: 5
-    implicitWidth: width
+  id: _root
+  property alias model: _repeater.model
+  property int display: AbstractButton.TextOnly
+  property double minWidth: Qaterial.Style.tabBar.minTabWidth
+  property double maxWidth: Qaterial.Style.tabBar.maxTabWidth
+  property int maxElement: 5
+  implicitWidth: width
 
-    leftPadding: !mirrored ? Style.tabBar.minLeftWidth : 0
-    rightPadding: mirrored ? Style.tabBar.minLeftWidth : 0
+  leftPadding: !mirrored ? Qaterial.Style.tabBar.minLeftWidth : 0
+  rightPadding: mirrored ? Qaterial.Style.tabBar.minLeftWidth : 0
 
-    Repeater
+  Repeater
+  {
+    id: _repeater
+    delegate: Qaterial.TabButton
     {
-        id: _repeater
-        delegate: TabButton
-        {
-            elide: Text.ElideRight
-            width: Math.max(root.minWidth, Math.min(root.width / root.maxElement, root.maxWidth))
-            implicitWidth: width
-            display: root.display
-            text: model.text ? model.text : ""
-            icon.source: model.source ? model.source : ""
-            onPrimary: root.onPrimary
-            enabled: root.enabled
-        }
-    }
+      elide: Text.ElideRight
+      width: Math.max(_root.minWidth, Math.min(_root.width / _root.maxElement, _root.maxWidth))
+      implicitWidth: width
+      display: _root.display
+      text: model.text ? model.text : ""
+      icon.source: model.source ? model.source : ""
+      onPrimary: _root.onPrimary
+      enabled: _root.enabled
+    } // TabButton
+  } // Repeater
 } // TabBar

@@ -8,26 +8,26 @@ import QtQuick 2.12
 import QtGraphicalEffects 1.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
 Image
 {
-    id: root
-    fillMode: Image.PreserveAspectFit
+  id: _root
+  fillMode: Image.PreserveAspectFit
 
-    sourceSize.width: width
-    sourceSize.height: height
+  sourceSize.width: width
+  sourceSize.height: height
 
-    property bool rounded: true
+  property bool rounded: true
 
-    layer.enabled: rounded
-    layer.effect: OpacityMask
+  layer.enabled: rounded
+  layer.effect: OpacityMask
+  {
+    maskSource: Rectangle
     {
-        maskSource: Rectangle
-        {
-            width: root.width
-            height: root.height
-            radius: root.width/2
-        }
-    } // OpacityMask
-}
+      width: _root.width
+      height: _root.height
+      radius: _root.width/2
+    } // Rectangle
+  } // OpacityMask
+} // Image

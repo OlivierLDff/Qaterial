@@ -34,28 +34,32 @@
 **
 ****************************************************************************/
 
+// Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls.Material 2.12
 import QtQuick.Controls.Material.impl 2.12
 
-T.BusyIndicator {
-    id: control
+T.BusyIndicator
+{
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)
+  id: _control
 
-    padding: 6
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitContentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitContentHeight + topPadding + bottomPadding)
 
-    contentItem: BusyIndicatorImpl {
-        implicitWidth: control.Material.touchTarget
-        implicitHeight: control.Material.touchTarget
-        color: control.Material.accentColor
+  padding: 6
 
-        running: control.running
-        opacity: control.running ? 1 : 0
-        Behavior on opacity { OpacityAnimator { duration: 250 } }
-    }
-}
+  contentItem: BusyIndicatorImpl
+  {
+    implicitWidth: _control.Material.touchTarget
+    implicitHeight: _control.Material.touchTarget
+    color: _control.Material.accentColor
+
+    running: _control.running
+    opacity: _control.running ? 1 : 0
+    Behavior on opacity { OpacityAnimator { duration: 250 } }
+  } //BusyIndicatorImpl
+} // BusyIndicator

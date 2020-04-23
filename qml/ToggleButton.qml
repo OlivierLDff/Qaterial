@@ -3,9 +3,10 @@
  * Contact: olivier.ldff@gmail.com
  */
 
-import Qaterial 1.0
+// Qaterial
+import Qaterial 1.0 as Qaterial
 
-ToolButton
+Qaterial.ToolButton
 {
-    outlined: true
+  outlined: true
 } // ToolButton

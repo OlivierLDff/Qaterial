@@ -8,7 +8,7 @@ import QtQuick 2.12
 
 Rectangle
 {
-    color: "transparent"
-    border.width: 1
-    border.color: "green"
-}
+  color: "transparent"
+  border.width: 1
+  border.color: "green"
+} // Rectangle
