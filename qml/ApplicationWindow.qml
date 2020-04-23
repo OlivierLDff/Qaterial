@@ -12,8 +12,6 @@ T.ApplicationWindow
 {
     id: window
 
-    Qaterial.RobotoFontLoader {}
-
     color: Qaterial.Style.backgroundColor
     property color overlayColor: Qaterial.Style.overlayColor
 

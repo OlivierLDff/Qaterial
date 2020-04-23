@@ -9,6 +9,8 @@
 
 // Qt Header
 #include <QCoreApplication> // Call register type at startup when loaded as a dynamic library
+#include <QDir>
+#include <QFontDatabase>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
@@ -73,6 +75,20 @@ static void Qaterial_loadResources()
 {
     LOG_DEV_INFO("Load Qaterial.qrc v{}", qPrintable(Qaterial::Version::version().readable()));
     Q_INIT_RESOURCE(Qaterial);
+
+    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/roboto");
+    const QDir dir(robotoPath);
+    for (const auto file : dir.entryList(QDir::Files))
+    {
+        if (QFontDatabase::addApplicationFont(robotoPath + file))
+        {
+            LOG_INFO("Load font {}", file.toStdString());
+        }
+        else
+        {
+            LOG_ERR("Fail to load font {}", file.toStdString());            
+        }
+    }
 }
 
 #ifndef QATERIAL_STATIC

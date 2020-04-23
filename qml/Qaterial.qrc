@@ -25,7 +25,6 @@
 
         <!-- FONTS -->
 
-        <file>RobotoFontLoader.qml</file>
         <file>Fonts/roboto/Roboto-Black.ttf</file>
         <file>Fonts/roboto/Roboto-BlackItalic.ttf</file>
         <file>Fonts/roboto/Roboto-Bold.ttf</file>

@@ -37,12 +37,6 @@ RoundImage                  1.0 RoundImage.qml
 ErrorSequentialAnimation    1.0 ErrorSequentialAnimation.qml
 
 ###############
-#    FONTS    #
-###############
-
-RobotoFontLoader  1.0 RobotoFontLoader.qml
-
-###############
 # CONTAINERS  #
 ###############
 
