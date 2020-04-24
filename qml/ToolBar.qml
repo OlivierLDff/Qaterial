@@ -22,7 +22,7 @@ T.ToolBar
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                            contentHeight + topPadding + bottomPadding)
 
-  spacing: 16
+  spacing: Qaterial.Style.card.horizontalPadding
 
   property color backgroundColor: Qaterial.Style.primaryColor
 
