@@ -6,7 +6,6 @@
 // Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
-import QtQuick.Controls.Material 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
