@@ -170,6 +170,7 @@
         <file>BusyIndicatorDialog.qml</file>
         <file>ProgressBarDialog.qml</file>
         <file>DoubleProgressBarDialog.qml</file>
+        <file>ToolTip.qml</file>
 
         <!-- COMPONENTS / TEXT FIELD -->
         <file>CursorDelegate.qml</file>

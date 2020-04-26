@@ -167,6 +167,7 @@ AlertIconDialog             1.0 AlertIconDialog.qml
 TextFieldDialog             1.0 TextFieldDialog.qml
 RadioDialog                 1.0 RadioDialog.qml
 RadioDialogDelegate         1.0 RadioDialogDelegate.qml
+ToolTip                     1.0 ToolTip.qml
 
 BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
 ProgressBarDialog           1.0 ProgressBarDialog.qml
