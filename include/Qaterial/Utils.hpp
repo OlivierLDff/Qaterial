@@ -15,7 +15,7 @@
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
 
-namespace Qaterial {
+namespace qaterial {
 
 // ─────────────────────────────────────────────────────────────
 //                  CLASS
@@ -31,10 +31,11 @@ public:
      * Registered types are:
      * -
      */
-    static void registerTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+    static void registerTypes(
+        const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
     static void loadResources();
 };
 
 }
 
-#endif // __QATERIAL_UTILS_HPP__
+#endif  // __QATERIAL_UTILS_HPP__
