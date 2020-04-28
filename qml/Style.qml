@@ -1034,4 +1034,11 @@ QtObject
     property double opacity:                    0.9
     property double padding:                    _root.dense ? 8 : 16
   }
+
+  property var slider: QtObject
+  {
+    property double implicitWidth:              _root.dense ? 180 : 200
+    property double implicitHeight:             _root.dense ? 34 : 48
+    property double padding:                    _root.dense ? 6 : 8
+  }
 } // QtObject

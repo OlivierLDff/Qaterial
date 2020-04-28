@@ -19,7 +19,7 @@ T.Slider
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                            implicitHandleHeight + topPadding + bottomPadding)
 
-  padding: 6
+  padding: Qaterial.Style.slider.padding
 
   property color rippleColor: Qaterial.Style.rippleColorTheme
   property color accentColor: Qaterial.Style.accentColor
@@ -41,8 +41,8 @@ T.Slider
     enabled: _control.enabled
   } // SliderHandle
 
-  property int backgroundImplicitWidth: horizontal ? 200 : 34
-  property int backgroundImplicitHeight: horizontal ? 34 : 200
+  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
+  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider.implicitWidth
 
   background: Rectangle
   {
