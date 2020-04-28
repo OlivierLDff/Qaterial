@@ -11,6 +11,7 @@
 #include <QCoreApplication>  // Call register type at startup when loaded as a dynamic library
 #include <QDir>
 #include <QFontDatabase>
+#include <QQuickStyle>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
@@ -87,6 +88,9 @@ static void Qaterial_loadResources()
         else
             LOG_ERR("Fail to load font {}", file.toStdString());
     }
+
+    QQuickStyle::setStyle(QStringLiteral("Qaterial"));
+    QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
 }
 
 #ifndef QATERIAL_STATIC

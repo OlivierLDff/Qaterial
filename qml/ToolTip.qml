@@ -17,8 +17,8 @@ T.ToolTip
   id: _control
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
-  property double backgroupRadius: Qaterial.Style.tooltip.radius
-  property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body2
+  property double backgroupRadius: Qaterial.Style.toolTip.radius
+  property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body1
 
   x: parent ? (parent.width - implicitWidth) / 2 : 0
   y: -implicitHeight - margins/2
@@ -29,8 +29,8 @@ T.ToolTip
                            implicitContentHeight + topPadding + bottomPadding)
 
   margins: 12
-  padding: Qaterial.Style.tooltip.padding
-  horizontalPadding: padding + 8
+  horizontalPadding: Qaterial.Style.toolTip.padding
+  verticalPadding: 0
 
   closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutsideParent | T.Popup.CloseOnReleaseOutsideParent
 
@@ -52,6 +52,7 @@ T.ToolTip
     wrapMode: Text.Wrap
     color: Qaterial.Style.snackbarTextColor()
     horizontalAlignment: Text.AlignHCenter
+    verticalAlignment: Text.AlignVCenter
     textType: _control.textType
 
     // Qaterial.DebugRectangle
@@ -64,9 +65,9 @@ T.ToolTip
 
   background: Rectangle
   {
-    implicitHeight: Qaterial.Style.tooltip.implicitHeight
+    implicitHeight: Qaterial.Style.toolTip.implicitHeight
     color: Qaterial.Style.snackbarColor()
-    opacity: Qaterial.Style.tooltip.opacity
+    opacity: Qaterial.Style.toolTip.opacity
     radius: _control.backgroupRadius
 
     // Qaterial.DebugRectangle

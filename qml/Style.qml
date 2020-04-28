@@ -1027,7 +1027,7 @@ QtObject
     property double indicatorSpacing:           _root.dense ? 18 : 24
   } // QtObject
 
-  property var tooltip: QtObject
+  property var toolTip: QtObject
   {
     property double implicitHeight:             _root.dense ? 24 : 32
     property double radius:                     _root.dense ? 2 : 4

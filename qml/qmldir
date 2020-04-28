@@ -13,8 +13,8 @@ module Qaterial
 #   DEPENDS   #
 ###############
 
-depends QtQuick 2.13
-depends QtQuick.Controls 2.13
+depends QtQuick.Controls 2.12
+depends QtGraphicalEffects 2.12
 
 ###############
 #    STYLE    #
