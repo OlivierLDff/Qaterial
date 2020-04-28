@@ -1026,4 +1026,12 @@ QtObject
     property double maxHeight:                  _root.dense ? 500 : 500
     property double indicatorSpacing:           _root.dense ? 18 : 24
   } // QtObject
+
+  property var tooltip: QtObject
+  {
+    property double implicitHeight:             _root.dense ? 24 : 32
+    property double radius:                     _root.dense ? 2 : 4
+    property double opacity:                    0.9
+    property double padding:                    _root.dense ? 8 : 16
+  }
 } // QtObject

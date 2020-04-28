@@ -7,7 +7,6 @@
  // Qt
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
-import QtQuick.Controls.Material 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -18,9 +17,11 @@ T.ToolTip
   id: _control
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
+  property double backgroupRadius: Qaterial.Style.tooltip.radius
+  property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body2
 
   x: parent ? (parent.width - implicitWidth) / 2 : 0
-  y: -implicitHeight - 24
+  y: -implicitHeight - margins/2
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                           implicitContentWidth + leftPadding + rightPadding)
@@ -28,52 +29,51 @@ T.ToolTip
                            implicitContentHeight + topPadding + bottomPadding)
 
   margins: 12
-  padding: 8
+  padding: Qaterial.Style.tooltip.padding
   horizontalPadding: padding + 8
 
   closePolicy: T.Popup.CloseOnEscape | T.Popup.CloseOnPressOutsideParent | T.Popup.CloseOnReleaseOutsideParent
 
-  Material.theme: Material.Dark
-
   enter: Transition
   {
     // toast_enter
-    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; duration: 500 } // NumberAnimation
+    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutQuad; duration: 100 } // NumberAnimation
   } // Transition
 
   exit: Transition
   {
     // toast_exit
-    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.InQuad; duration: 500 } // NumberAnimation
+    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.InQuad; duration: 200 } // NumberAnimation
   } // Transition
 
   contentItem: Qaterial.Label
   {
     text: _control.text
-    font: _control.font
     wrapMode: Text.Wrap
-    color: _control.Material.foreground
+    color: Qaterial.Style.snackbarTextColor()
     horizontalAlignment: Text.AlignHCenter
+    textType: _control.textType
 
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "green"
-      visible: _control.drawline
-    } // DebugRectangle
+    // Qaterial.DebugRectangle
+    // {
+    //   anchors.fill: parent
+    //   border.color: "green"
+    //   visible: _control.drawline
+    // } // DebugRectangle
   } // Label
 
   background: Rectangle
   {
-    implicitHeight: _control.Material.tooltipHeight
-    color: _control.Material.tooltipColor
-    opacity: 0.9
-    radius: 2
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "pink"
-      visible: _control.drawline
-    } // DebugRectangle
+    implicitHeight: Qaterial.Style.tooltip.implicitHeight
+    color: Qaterial.Style.snackbarColor()
+    opacity: Qaterial.Style.tooltip.opacity
+    radius: _control.backgroupRadius
+
+    // Qaterial.DebugRectangle
+    // {
+    //   anchors.fill: parent
+    //   border.color: "pink"
+    //   visible: _control.drawline
+    // } // DebugRectangle
   } // Rectangle
 } // ToolTip
