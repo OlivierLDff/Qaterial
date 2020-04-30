@@ -169,8 +169,14 @@ if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   FetchContent_MakeAvailable(QtStaticCMake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET}
     QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml
+    EXTRA_PLUGIN
+      QtQuickVirtualKeyboardPlugin
+      QtQuickVirtualKeyboardSettingsPlugin
+      QtQuickVirtualKeyboardStylesPlugin
+      QmlFolderListModelPlugin
     VERBOSE
     )
+  qt_generate_plugin_import(${QATERIAL_TARGET} VERBOSE)
 endif()
 
 if(TARGET Qt5::QmlWorkerScript)
