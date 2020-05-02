@@ -14,6 +14,7 @@ Qaterial.TabBar
 {
   id: _root
   property alias model: _repeater.model
+  property alias button: _repeater.delegate
   property int display: AbstractButton.TextUnderIcon
   property bool hintText: false
   property bool useSmallFont: false

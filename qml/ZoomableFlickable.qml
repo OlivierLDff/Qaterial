@@ -208,6 +208,7 @@ Item
         _flickable.returnToBounds()
       }
 
+      // todo : replace by wheel handler when qt 5.15 will become LTS https://doc.qt.io/qt-5/qml-qtquick-wheelhandler.html
       // Handle:
       // - double click to unzoom and zoom*2
       // - wheel to zoom
@@ -247,8 +248,8 @@ Item
             }
           } // onDoubleClicked
 
-          onPressed: console.log("pressed")
-          onReleased: console.log("released")
+          //onPressed: console.log("pressed")
+          //onReleased: console.log("released")
         } // MouseArea
       } // Loader
     } // PinchArea
