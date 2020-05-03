@@ -47,7 +47,7 @@ Item
   Connections
   {
     target: _root.ListView.view
-    onCheckBoxEnabledChanged:
+    function onCheckBoxEnabledChanged()
     {
       if(!_root.ListView.view.checkBoxEnabled && _root.checked)
           _root.checked = false

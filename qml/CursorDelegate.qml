@@ -20,7 +20,7 @@ Rectangle
   Connections
   {
     target: _cursor.parent
-    onCursorPositionChanged:
+    function onCursorPositionChanged()
     {
       // keep a moving cursor visible
       _cursor.opacity = 1

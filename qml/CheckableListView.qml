@@ -101,12 +101,13 @@ ListView
 		return checkedItemIndexes.indexOf(index) >= 0
 	} // function isCheck(index)
 
+	// should be a QOlm model
 	Connections
 	{
 		target: _root.model
-		onRowsAboutToBeInserted: _root.uncheckAllItem()
-		onRowsAboutToBeMoved: _root.uncheckAllItem()
-		onRowsAboutToBeRemoved: _root.uncheckAllItem()
+		function onObjectInserted(object, index) { _root.uncheckAllItem() }
+		function onObjectRemoved(object, index) { _root.uncheckAllItem() }
+		function onObjectMoved(object, from, to) { _root.uncheckAllItem() }
 	} // Connections
 
 	onCheckBoxEnabledChanged: uncheckAllItem()
