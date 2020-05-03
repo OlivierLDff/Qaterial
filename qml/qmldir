@@ -140,6 +140,7 @@ CardRoundThumbnailTitle     1.0 CardRoundThumbnailTitle.qml
 
 Banner                      1.0 Banner.qml
 Snackbar                    1.0 Snackbar.qml
+SnackbarLoader              1.0 SnackbarLoader.qml
 singleton SnackbarManager   1.0 SnackbarManager.qml
 
 CursorDelegate              1.0 CursorDelegate.qml
@@ -172,9 +173,9 @@ ToolTip                     1.0 ToolTip.qml
 BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
 ProgressBarDialog           1.0 ProgressBarDialog.qml
 DoubleProgressBarDialog     1.0 DoubleProgressBarDialog.qml
-
-singleton DialogManager     1.0 DialogManager.qml
+DialogLoader                1.0 DialogLoader.qml
 DialogManagerSettings       1.0 DialogManagerSettings.qml
+singleton DialogManager     1.0 DialogManager.qml
 
 
 TextFieldDelegate           1.0 TextFieldDelegate.qml

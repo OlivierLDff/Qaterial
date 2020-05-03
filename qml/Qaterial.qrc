@@ -84,6 +84,7 @@
         <!-- COMPONENTS / BANNERS -->
         <file>Banner.qml</file>
         <file>Snackbar.qml</file>
+        <file>SnackbarLoader.qml</file>
         <file>SnackbarManager.qml</file>
 
         <!-- COMPONENTS / APP BAR -->
@@ -165,6 +166,7 @@
         <file>TextFieldDialog.qml</file>
         <file>RadioDialog.qml</file>
         <file>RadioDialogDelegate.qml</file>
+        <file>DialogLoader.qml</file>
         <file>DialogManager.qml</file>
         <file>DialogManagerSettings.qml</file>
         <file>BusyIndicatorDialog.qml</file>

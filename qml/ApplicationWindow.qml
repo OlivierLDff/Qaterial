@@ -37,12 +37,22 @@ T.ApplicationWindow
   Material.accent : Qaterial.Style.accentColor
   Material.foreground: Qaterial.Style.foregroundColor
 
+  Qaterial.SnackbarLoader
+  {
+    id: _snackBarLoader
+  }
+
+  Qaterial.DialogLoader
+  {
+    id: _dialogLoader
+  }
+
   Component.onCompleted:
   {
-    if(!Qaterial.DialogManager.parent)
-      Qaterial.DialogManager.parent = contentItem
+    if(!Qaterial.SnackbarManager.snackBarLoader)
+      Qaterial.SnackbarManager.snackBarLoader = _snackBarLoader
 
-    if(!Qaterial.SnackbarManager.parent)
-      Qaterial.SnackbarManager.parent = contentItem
+    if(!Qaterial.DialogManager.dialogLoader)
+      Qaterial.DialogManager.dialogLoader = _dialogLoader
   } // Component
 } // ApplicationWindow
