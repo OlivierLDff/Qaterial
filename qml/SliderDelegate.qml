@@ -56,7 +56,7 @@ Control
     {
       id: _secondaryLabel
       x: _textLabel.implicitWidth + _control.spacing
-      y: Math.floor(_textLabel.height/2) - Math.floor(height/2)
+      anchors.baseline: _textLabel.baseline
       text: _control.secondaryText
       textType: Qaterial.Style.TextType.Hint
     } // Label
