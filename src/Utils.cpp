@@ -79,7 +79,7 @@ static void Qaterial_loadResources()
     LOG_DEV_INFO("Load Qaterial.qrc v{}", qPrintable(qaterial::Version::version().readable()));
     Q_INIT_RESOURCE(Qaterial);
 
-    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/roboto");
+    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/roboto/");
     const QDir dir(robotoPath);
     for(const auto file: dir.entryList(QDir::Files))
     {
