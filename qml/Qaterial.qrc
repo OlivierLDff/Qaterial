@@ -99,6 +99,7 @@
         <file>RadioMenuItem.qml</file>
 
         <!-- COMPONENTS / BUTTONS -->
+        <file>ButtonGroup.qml</file>
         <file>FlatButton.qml</file>
         <file>OutlineButton.qml</file>
         <file>RaisedButton.qml</file>

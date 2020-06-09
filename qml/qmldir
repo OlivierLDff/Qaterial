@@ -58,6 +58,7 @@ AppBar                      1.0 ToolBar.qml
 
 RoundColorIcon              1.0 RoundColorIcon.qml
 
+ButtonGroup.qml             1.0 ButtonGroup.qml
 FlatButton                  1.0 FlatButton.qml
 OutlineButton               1.0 OutlineButton.qml
 RaisedButton                1.0 RaisedButton.qml
