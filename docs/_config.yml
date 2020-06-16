@@ -1,0 +1,13 @@
+title: Qaterial
+description: Collection of Material Components based on QtQuick/Controls2.
+remote_theme: carlosperate/jekyll-theme-rtd
+
+# Theme settings:
+site_author: Olivier LDff
+repo_url: "https://github.com/OlivierLDff/Qaterial"
+edit_on_github: true
+github_docs_folder: true
+sticky_navigation: true
+prev_next_buttons_location: bottom
+search_enabled: true
+hljs_style: github-gist
