@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
 # ───── DEPENDENCIES ─────
 
-set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "Repository of spdlog")
+set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "Repository of sspdlog")
 set(SPDLOG_TAG "v1.x" CACHE STRING "Git tag/branch of spdlog")
 
 set(QTSTATICCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtStaticCMake.git" CACHE STRING "QtStaticCMake repository, can be a local URL")

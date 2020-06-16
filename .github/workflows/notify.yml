@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  dispatch:
+
+    strategy:
+      matrix:
+        repo: ['OlivierLDff/QaterialOnline', 'OlivierLDff/QaterialGallery']
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: qaterial-update
