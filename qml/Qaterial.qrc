@@ -55,6 +55,19 @@
         <file>Images/radiobox-blank.svg</file>
         <file>Images/radiobox-marked.svg</file>
 
+        <!-- COMPONENTS / TIMEPICKER -->
+        <file>HandClock.qml</file>
+        <file>CircularPathLabel.qml</file>
+        <file>EuCircularHour.qml</file>
+        <file>EuCircularHourPicker.qml</file>
+        <file>AmCircularHour.qml</file>
+        <file>AmCircularHourPicker.qml</file>
+        <file>CircularMinutePicker.qml</file>
+        <file>CircularMinute.qml</file>
+        <file>TimePickerDialog.qml</file>
+
+        <!-- COMPONENTS / DATEPICKER -->
+
         <!-- COMPONENTS / CORE -->
         <file>RoundColorIcon.qml</file>
 
