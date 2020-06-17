@@ -4,14 +4,6 @@
 
 cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
-# ───── DEPENDENCIES ─────
-
-set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "Repository of sspdlog")
-set(SPDLOG_TAG "v1.x" CACHE STRING "Git tag/branch of spdlog")
-
-set(QTSTATICCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtStaticCMake.git" CACHE STRING "QtStaticCMake repository, can be a local URL")
-set(QTSTATICCMAKE_TAG "master" CACHE STRING "QtStaticCMake git tag")
-
 # ───── PROJECT OPTIONS ─────
 
 set(QATERIAL_VERSION_MAJOR 1)
@@ -36,6 +28,7 @@ set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
+set(QATERIAL_ENABLE_TOOLS OFF CACHE BOOL "Build Qaterial test executable")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -47,40 +40,26 @@ message(STATUS "QATERIAL_VERSION                : ${QATERIAL_VERSION}")
 message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
+message(STATUS "QATERIAL_ENABLE_TOOLS           : ${QATERIAL_ENABLE_TOOLS}")
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5Core            CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Gui             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Qml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QmlWorkerScript CONFIG QUIET    NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Quick           CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QuickControls2  CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Svg             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5Xml             CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
-find_package(Qt5QuickCompiler   CONFIG REQUIRED NO_CMAKE_SYSTEM_PATH)
+find_package(Qt5 REQUIRED COMPONENTS
+  Core
+  Gui
+  Qml
+  Quick
+  QuickControls2
+  Svg
+  Xml
+  QuickCompiler
+)
+find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
 # ───── FETCH DEPEDENCIES ─────
 
-include(FetchContent)
-
-# spdlog
-FetchContent_Declare(
-  spdlog
-  GIT_REPOSITORY ${SPDLOG_REPOSITORY}
-  GIT_TAG        ${SPDLOG_TAG}
-  GIT_SHALLOW    1
-  )
-
-# QtStaticCMake
-FetchContent_Declare(
-  QtStaticCMake
-  GIT_REPOSITORY ${QTSTATICCMAKE_REPOSITORY}
-  GIT_TAG        ${QTSTATICCMAKE_TAG}
-  )
-
-FetchContent_MakeAvailable(spdlog)
+include(cmake/FetchSpdlog.cmake)
 
 # ───── QML SOURCES ─────
 
@@ -97,7 +76,8 @@ endforeach()
 qtquick_compiler_add_resources(QATERIAL_QML_RES ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc)
 
 # Trick to rerun cmake each time Qaterial.qrc is updated
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc ${CMAKE_CURRENT_BINARY_DIR}/Qaterial.qrc.junk)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc
+  ${CMAKE_CURRENT_BINARY_DIR}/Qaterial.qrc.junk)
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
@@ -125,9 +105,7 @@ set(QATERIAL_SRCS
 
 source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
 
-# ┌──────────────────────────────────────────────────────────────────┐
-# │                        CREATE TARGET                             │
-# └──────────────────────────────────────────────────────────────────┘
+# ───── QATERIAL TARGET ─────
 
 if(${QATERIAL_BUILD_SHARED})
   add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
@@ -166,7 +144,7 @@ endif()
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
-  FetchContent_MakeAvailable(QtStaticCMake)
+  include(cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET}
     QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml
     EXTRA_PLUGIN
@@ -181,4 +159,10 @@ endif()
 
 if(TARGET Qt5::QmlWorkerScript)
   target_link_libraries(${QATERIAL_TARGET} PUBLIC Qt5::QmlWorkerScript)
+endif()
+
+# ───── QATERIAL TESTS ─────
+
+if(QATERIAL_ENABLE_TOOLS)
+  add_subdirectory(tools)
 endif()
