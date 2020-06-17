@@ -171,13 +171,22 @@ RadioDialog                 1.0 RadioDialog.qml
 RadioDialogDelegate         1.0 RadioDialogDelegate.qml
 ToolTip                     1.0 ToolTip.qml
 
+HandClock                   1.0 HandClock.qml
+CircularPathLabel           1.0 CircularPathLabel.qml
+EuCircularHour              1.0 EuCircularHour.qml
+EuCircularHourPicker        1.0 EuCircularHourPicker.qml
+AmCircularHour              1.0 AmCircularHour.qml
+AmCircularHourPicker        1.0 AmCircularHourPicker.qml
+CircularMinutePicker        1.0 CircularMinutePicker.qml
+CircularMinute              1.0 CircularMinute.qml
+TimePickerDialog            1.0 TimePickerDialog.qml
+
 BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
 ProgressBarDialog           1.0 ProgressBarDialog.qml
 DoubleProgressBarDialog     1.0 DoubleProgressBarDialog.qml
 DialogLoader                1.0 DialogLoader.qml
 DialogManagerSettings       1.0 DialogManagerSettings.qml
 singleton DialogManager     1.0 DialogManager.qml
-
 
 TextFieldDelegate           1.0 TextFieldDelegate.qml
 
