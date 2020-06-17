@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 🚀 Quick Start
+title: 🚀 Getting Start
 nav_order: 1
 ---
 
-# 🚀 Quick Start
+# 🚀 Getting Start

@@ -10,6 +10,6 @@ A collection Material Components to build UI using Qml. The project QaterialGall
 
 ## Overview
 
-- Checkout [Quick Start Guide](https://olivierldff.github.io/QOlm/quickstartcpp.html) to start with cpp.
-- Then read how to use QOml [from Qml](https://olivierldff.github.io/QOlm/quickstartqml.html)
-- And check how to (build the library)[https://olivierldff.github.io/QOlm/build.html].
+- Checkout [Qaterial Gallery](https://olivierldff.github.io/QaterialGallery/).
+- [Getting Start Guide](https://olivierldff.github.io/Qaterial/Quickstart.html).
+- Try it live with [Qaterial Online](https://olivierldff.github.io/QaterialOnline/).

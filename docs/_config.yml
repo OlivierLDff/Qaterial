@@ -1,6 +1,6 @@
 title: Qaterial
 description: Collection of Material Components based on QtQuick/Controls2.
-remote_theme: carlosperate/jekyll-theme-rtd
+remote_theme: https://github.com/carlosperate/jekyll-theme-rtd
 
 # Theme settings:
 site_author: Olivier LDff
@@ -12,4 +12,5 @@ prev_next_buttons_location: bottom
 search_enabled: true
 hljs_style: github-gist
 
-theme: jekyll-theme-cayman
+plugins:
+  - jekyll-remote-theme
