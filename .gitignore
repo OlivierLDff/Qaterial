@@ -6,3 +6,5 @@
 *.idea
 # For macOs users
 .DS_Store
+
+CMakeLists.txt.user
