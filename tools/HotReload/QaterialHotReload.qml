@@ -27,11 +27,13 @@ Qaterial.ApplicationWindow
 
   function loadFileInLoader(source)
   {
+    Qaterial.DialogManager.close()
     loader.create(source)
   }
 
   function loadFile(path)
   {
+    Qaterial.DialogManager.close()
     QaterialEngine.unWatchFile(window.currentFilePath)
     currentFileUrl = path
     // remove prefixed "file:///"
