@@ -39,6 +39,7 @@
 
         <!-- STYLES -->
         <file>Style.qml</file>
+        <file>Icons.qml</file>
         <file>StyleSettingsDialog.qml</file>
 
         <!-- COMPONENTS -->
@@ -188,6 +189,16 @@
         <file>DoubleProgressBarDialog.qml</file>
         <file>ToolTip.qml</file>
 
+        <!-- COMPONENTS / CALENDAR -->
+        <file>Calendar.qml</file>
+        <file>CalendarDayGrid.qml</file>
+        <file>CalendarDayPicker.qml</file>
+        <file>CalendarWeekDayRow.qml</file>
+        <file>CalendarDateButton.qml</file>
+        <file>CalendarMonthGrid.qml</file>
+        <file>CalendarYearGrid.qml</file>
+        <file>CalendarMonthView.qml</file>
+
         <!-- COMPONENTS / TEXT FIELD -->
         <file>CursorDelegate.qml</file>
         <file>PlaceholderText.qml</file>
@@ -227,5 +238,11 @@
         <file>SliderDelegate.qml</file>
         <file>RangeSliderDelegate.qml</file>
 
+        <!-- ICONS -->
+        <file>Icons/calendar.svg</file>
+        <file>Icons/chevron-down.svg</file>
+        <file>Icons/chevron-left.svg</file>
+        <file>Icons/chevron-right.svg</file>
+        <file>Icons/chevron-up.svg</file>
     </qresource>
 </RCC>

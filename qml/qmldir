@@ -21,6 +21,7 @@ depends QtGraphicalEffects 2.12
 ###############
 
 singleton Style             1.0 Style.qml
+singleton Icons             1.0 Icons.qml
 StyleSettingsDialog         1.0 StyleSettingsDialog.qml
 
 ###############
@@ -187,6 +188,15 @@ DoubleProgressBarDialog     1.0 DoubleProgressBarDialog.qml
 DialogLoader                1.0 DialogLoader.qml
 DialogManagerSettings       1.0 DialogManagerSettings.qml
 singleton DialogManager     1.0 DialogManager.qml
+
+singleton Calendar          1.0 Calendar.qml
+CalendarDayGrid             1.0 CalendarDayGrid.qml
+CalendarDayPicker           1.0 CalendarDayPicker.qml
+CalendarWeekDayRow          1.0 CalendarWeekDayRow.qml
+CalendarDateButton          1.0 CalendarDateButton.qml
+CalendarMonthGrid           1.0 CalendarMonthGrid.qml
+CalendarYearGrid            1.0 CalendarYearGrid.qml
+CalendarMonthView           1.0 CalendarMonthView.qml
 
 TextFieldDelegate           1.0 TextFieldDelegate.qml
 
