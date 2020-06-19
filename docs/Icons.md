@@ -1,10 +1,10 @@
 ---
 layout: default
-title: ♨️ Icons
+title: ⭐ Icons
 nav_order: 6
 ---
 
-# ♨️ Icons
+# ⭐ Icons
 
 Qaterial comes with lots of material icons. They can all be found in `qrc:/Qaterial/Icons/<icon>.svg`. For easy access, Qaterial also comes with a singleton `Icons`.
 

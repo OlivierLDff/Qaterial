@@ -10,6 +10,20 @@ nav_order: 5
 
 ![](./images/QaterialHotReload.gif)
 
+## Position anchors
+
+Helpers button can apply anchors to your qml object.
+
+![](./images/QaterialHotReloadAnchors.gif)
+
+* FullScreen: `anchors.fill: parent`
+* Horizontal Center: `anchors.horizontalCenter: parent.horizontalCenter`
+* Vertical Center: `anchors.verticalCenter: parent.verticalCenter`
+* Left: `anchors.left: parent.left`
+* Right: `anchors.right: parent.right`
+* Bottom: `anchors.bottom: parent.bottom`
+* Top: `anchors.top: parent.top`
+
 ## Build & Execute
 
 Add the flag `-DQATERIAL_ENABLE_TOOLS=ON` when configuring the project with cmake to create the executable.
