@@ -181,6 +181,8 @@ AmCircularHourPicker        1.0 AmCircularHourPicker.qml
 CircularMinutePicker        1.0 CircularMinutePicker.qml
 CircularMinute              1.0 CircularMinute.qml
 TimePickerDialog            1.0 TimePickerDialog.qml
+TextFieldTimePicker         1.0 TextFieldTimePicker.qml
+TextFieldClockButton        1.0 TextFieldClockButton.qml
 
 BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
 ProgressBarDialog           1.0 ProgressBarDialog.qml

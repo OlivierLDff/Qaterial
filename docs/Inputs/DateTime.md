@@ -27,9 +27,16 @@ Dialog providing a simple way to pick an Hour. The clock style can be changed fr
 * `styleAm`: style of the clock, Am/Pm when `true` European otherwise (default `false`)
 * `am`: if `styleAm` is used `true` if the user picked an "am" hour `false` otherwise (default `false`)
 
-### Menu Time Picker
+### TextFieldTimePicker
 
+This TextField allows the user to select an EU hour by editing the text in the field or by picking an hour in a TimePickerDialog.
 
+**Properties**
+
+* `hour`: hour displayed when the dialog is opened (default 0)
+* `minute`: minute displayed when the dialog is opened (default 0)
+
+**Signal** : `hourAccepted(hour, minute)` emit when a correct hour is picked by the user
 
 ## Advanced Use
 
