@@ -31,6 +31,11 @@ Qaterial.ApplicationWindow
     loader.create(source)
   }
 
+  function reload()
+  {
+    loadFileInLoader(currentFileUrl)
+  }
+
   function loadFile(path)
   {
     Qaterial.DialogManager.close()
@@ -56,12 +61,26 @@ Qaterial.ApplicationWindow
       property alias y: window.y
       property alias currentFilePath: window.currentFilePath
       property alias currentFileUrl: window.currentFileUrl
+
+      property alias formatHorizontalAlignCenter: formatHorizontalAlignCenter.checked
+      property alias formatVerticalAlignCenter: formatVerticalAlignCenter.checked
+      property alias formatHorizontalAlignLeft: formatHorizontalAlignLeft.checked
+      property alias formatHorizontalAlignRight: formatHorizontalAlignRight.checked
+      property alias formatVerticalAlignBottom: formatVerticalAlignBottom.checked
+      property alias formatVerticalAlignTop: formatVerticalAlignTop.checked
+      property alias fullScreen: fullScreen.checked
   }
 
   Shortcut
   {
       sequence: "F5"
-      onActivated: () => window.loadFileInLoader(window.currentFileUrl)
+      onActivated: () => window.reload()
+  }
+
+  Shortcut
+  {
+      sequence: "Ctrl+O"
+      onActivated: () => fileDialog.open()
   }
 
   QQ1D.FileDialog
@@ -74,7 +93,7 @@ Qaterial.ApplicationWindow
   Connections
   {
     target: QaterialEngine
-    onWatchedFileChanged: () => window.loadFileInLoader(window.currentFileUrl)
+    onWatchedFileChanged: () => window.reload()
   }
 
   header: Qaterial.ToolBar
@@ -85,7 +104,7 @@ Qaterial.ApplicationWindow
       {
         ToolTip.visible: hovered
         ToolTip.text: "Open File to Hot Reload"
-        icon.source: "qrc:/folder-outline.svg"
+        icon.source: Qaterial.Icons.folderOutline
 
         onClicked: () => fileDialog.open()
       }
@@ -93,10 +112,113 @@ Qaterial.ApplicationWindow
       {
         ToolTip.visible: hovered
         ToolTip.text: "Reload (F5)"
-        icon.source: "qrc:/sync.svg"
+        icon.source: Qaterial.Icons.sync
 
-        onClicked: () => window.loadFileInLoader(window.currentFileUrl)
+        onClicked: () => window.reload()
       }
+
+      Qaterial.ToolSeparator {}
+
+      Qaterial.ToolButton
+      {
+        id: formatHorizontalAlignCenter
+
+        enabled: !fullScreen.checked && !formatHorizontalAlignLeft.checked && !formatHorizontalAlignRight.checked
+        icon.source: Qaterial.Icons.formatHorizontalAlignCenter
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Horizontal Center"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolButton
+      {
+        id: formatVerticalAlignCenter
+
+        enabled: !fullScreen.checked && !formatVerticalAlignBottom.checked && !formatVerticalAlignTop.checked
+        icon.source: Qaterial.Icons.formatVerticalAlignCenter
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Vertical Center"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolSeparator {}
+
+      Qaterial.ToolButton
+      {
+        id: formatHorizontalAlignLeft
+
+        enabled: !fullScreen.checked && !formatHorizontalAlignCenter.checked
+        icon.source: Qaterial.Icons.formatHorizontalAlignLeft
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Left"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolButton
+      {
+        id: formatHorizontalAlignRight
+
+        enabled: !fullScreen.checked && !formatHorizontalAlignCenter.checked
+        icon.source: Qaterial.Icons.formatHorizontalAlignRight
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Right"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolButton
+      {
+        id: formatVerticalAlignBottom
+
+        enabled: !fullScreen.checked && !formatVerticalAlignCenter.checked
+        icon.source: Qaterial.Icons.formatVerticalAlignBottom
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Bottom"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolButton
+      {
+        id: formatVerticalAlignTop
+
+        enabled: !fullScreen.checked && !formatVerticalAlignCenter.checked
+        icon.source: Qaterial.Icons.formatVerticalAlignTop
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Align Top"
+
+        onClicked: () => window.reload()
+      }
+
+      Qaterial.ToolSeparator {}
+
+      Qaterial.ToolButton
+      {
+        id: fullScreen
+
+        enabled: !formatHorizontalAlignCenter.checked &&
+                 !formatVerticalAlignCenter.checked &&
+                 !formatHorizontalAlignLeft.checked &&
+                 !formatHorizontalAlignRight.checked &&
+                 !formatVerticalAlignBottom.checked &&
+                 !formatVerticalAlignTop.checked
+        icon.source: checked ? Qaterial.Icons.fullscreen : Qaterial.Icons.fullscreenExit
+
+        ToolTip.visible: hovered
+        ToolTip.text: checked ? "Fullscreen" : "Fullscreen Exit"
+
+        onClicked: () => window.reload()
+      }
+
     } // RowLayout
   } // ToolBar
 
@@ -127,6 +249,22 @@ Qaterial.ApplicationWindow
         if (component.status === Component.Ready)
         {
           loadedObject = component.createObject(loader)
+
+          if(fullScreen.checked)
+            loadedObject.anchors.fill = loader
+          if(formatHorizontalAlignCenter.checked)
+            loadedObject.anchors.horizontalCenter = loader.horizontalCenter
+          if(formatVerticalAlignCenter.checked)
+            loadedObject.anchors.verticalCenter = loader.verticalCenter
+          if(formatHorizontalAlignLeft.checked)
+            loadedObject.anchors.left = loader.left
+          if(formatHorizontalAlignRight.checked)
+            loadedObject.anchors.right = loader.right
+          if(formatVerticalAlignBottom.checked)
+            loadedObject.anchors.bottom = loader.bottom
+          if(formatVerticalAlignTop.checked)
+            loadedObject.anchors.top = loader.top
+
           window.errorString = ""
         }
         else
@@ -158,7 +296,7 @@ Qaterial.ApplicationWindow
         {
           anchors.horizontalCenter: parent.horizontalCenter
           text: "Open File"
-          icon.source: "qrc:/folder-outline.svg"
+          icon.source: Qaterial.Icons.folderOutline
 
           onClicked: () => fileDialog.open()
         }

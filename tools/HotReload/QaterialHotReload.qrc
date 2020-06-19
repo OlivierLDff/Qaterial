@@ -3,8 +3,6 @@
 
     <file>QaterialHotReload.qml</file>
     <file>StatusView.qml</file>
-    <file>folder-outline.svg</file>
-    <file>sync.svg</file>
 
     </qresource>
 </RCC>

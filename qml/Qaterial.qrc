@@ -244,5 +244,19 @@
         <file>Icons/chevron-left.svg</file>
         <file>Icons/chevron-right.svg</file>
         <file>Icons/chevron-up.svg</file>
+
+        <file>Icons/format-horizontal-align-center.svg</file>
+        <file>Icons/format-horizontal-align-left.svg</file>
+        <file>Icons/format-horizontal-align-right.svg</file>
+        <file>Icons/format-vertical-align-bottom.svg</file>
+        <file>Icons/format-vertical-align-center.svg</file>
+        <file>Icons/format-vertical-align-top.svg</file>
+
+        <file>Icons/fullscreen.svg</file>
+        <file>Icons/fullscreen-exit.svg</file>
+
+        <file>Icons/folder-outline.svg</file>
+        <file>Icons/sync.svg</file>
+
     </qresource>
 </RCC>

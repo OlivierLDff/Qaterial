@@ -62,12 +62,29 @@ Rectangle
 
     Qaterial.Label
     {
-      width: parent.width - Qaterial.Style.card.horizontalPadding*2
-      anchors.centerIn: parent
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: parent.left
+      anchors.leftMargin: Qaterial.Style.card.horizontalPadding
+      anchors.right: _version.left
+      anchors.rightMargin: Qaterial.Style.card.horizontalPadding
+
+      width: 200
+
       text: root.error ? `Fail to load ${root.file}` : `File ${root.file} Loaded`
-      wrapMode: Text.WordWrap
+      elide: Text.ElideRight
+
       horizontalAlignment: Text.AlignLeft
       verticalAlignment: Text.AlignVCenter
     } // Qaterial.Label
+
+    Qaterial.Label
+    {
+      id: _version
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      anchors.rightMargin: Qaterial.Style.card.horizontalPadding
+      text: Qaterial.Version.readable
+      textType: Qaterial.Style.TextType.Caption
+    }
   }
 }
