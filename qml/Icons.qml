@@ -7,6 +7,8 @@ QtObject
     readonly property string path: `qrc:/Qaterial/Icons`
 
     readonly property string calendar: `${path}/calendar.svg`
+    readonly property string calendar_clock: `${path}/calendar-clock.svg`
+    readonly property string clock: `${path}/clock-outline.svg`
 
     readonly property string chevronDown: `${path}/chevron-down.svg`
     readonly property string chevronLeft: `${path}/chevron-left.svg`

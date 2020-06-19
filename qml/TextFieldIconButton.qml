@@ -17,8 +17,18 @@ Qaterial.AppBarButton
   backgroundImplicitHeight: Qaterial.Style.textField.iconWidth
   topInset: 0
   bottomInset: 0
-  foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-              colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor()
+  foregroundColor:
+  {
+    if(enabled)
+    {
+      if(colorReversed)
+        return Qaterial.Style.secondaryTextColorReversed()
+      return Qaterial.Style.secondaryTextColor()
+    }
+    if(colorReversed)
+      return Qaterial.Style.disabledTextColorReversed()
+    return Qaterial.Style.disabledTextColor()
+  }
 
   width: visible ? implicitWidth : 0
 } // AppBarButton
