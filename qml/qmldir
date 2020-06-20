@@ -193,13 +193,20 @@ DialogManagerSettings       1.0 DialogManagerSettings.qml
 singleton DialogManager     1.0 DialogManager.qml
 
 singleton Calendar          1.0 Calendar.qml
-CalendarDayGrid             1.0 CalendarDayGrid.qml
-CalendarDayPicker           1.0 CalendarDayPicker.qml
-CalendarWeekDayRow          1.0 CalendarWeekDayRow.qml
+Calendar                    1.0 Calendar.qml
 CalendarDateButton          1.0 CalendarDateButton.qml
-CalendarMonthGrid           1.0 CalendarMonthGrid.qml
-CalendarYearGrid            1.0 CalendarYearGrid.qml
-CalendarMonthView           1.0 CalendarMonthView.qml
+CalendarDayGrid             1.0 CalendarDayGrid.qml
+CalendarWeekDayRow          1.0 CalendarWeekDayRow.qml
+CalendarDayPicker           1.0 CalendarDayPicker.qml
+CalendarDayPickerView       1.0 CalendarDayPickerView.qml
+CalendarMonthPickerView     1.0 CalendarMonthPickerView.qml
+CalendarYearPickerView      1.0 CalendarYearPickerView.qml
+CalendarNavigationBar       1.0 CalendarNavigationBar.qml
+CalendarView                1.0 CalendarView.qml
+CalendarDateDisplay         1.0 CalendarDateDisplay.qml
+DatePickerDialog            1.0 DatePickerDialog.qml
+TextFieldDate               1.0 TextFieldDate.qml
+TextFieldDatePicker         1.0 TextFieldDatePicker.qml
 
 TextFieldDelegate           1.0 TextFieldDelegate.qml
 
