@@ -8,20 +8,20 @@ import QtQuick 2.12
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
-Item
+
+Qaterial.TextFieldIconButton
 {
   id: root
 
   property int hour
   property int minute
+  property bool styleAm
+  property bool am
 
-  signal accepted(int hour, int minute)
+  signal accepted(int hour, int minute, bool am)
 
-  Qaterial.TextFieldIconButton
-  {
-    icon.source: Qaterial.Icons.clock
-    onClicked: Qaterial.DialogManager.openFromComponent(_TimePickerDialog)
-  } // TextFieldIconButton
+  icon.source: Qaterial.Icons.clock
+  onClicked: Qaterial.DialogManager.openFromComponent(_TimePickerDialog)
 
   Component
   {
@@ -30,8 +30,10 @@ Item
     {
       hour: root.hour
       minute: root.minute
-      onAccepted: () => root.accepted(hour, minute)
+      styleAm: root.styleAm
+      am: root.am
+      onAccepted: () => root.accepted(hour, minute, am)
       Component.onCompleted: open()
     }
   } // Component
-}
+} // TextFieldIconButton

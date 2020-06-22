@@ -31,6 +31,7 @@ Qaterial.ModalDialog
     id: _header
     color: Qaterial.Style.accentColor
     implicitHeight: 100
+    radius: Qaterial.Style.dialog.radius
 
     function pad (num, size)
     {
@@ -38,6 +39,14 @@ Qaterial.ModalDialog
       while (s.length < size) s = "0" + s;
       return s;
     }
+
+    Rectangle
+    {
+      // To hide header bottom corner radius
+      anchors.right: parent.right; anchors.left: parent.left; anchors.bottom: parent.bottom
+      height: parent.height/2
+      color: parent.color
+    } // Rectangle
 
     Row
     {
