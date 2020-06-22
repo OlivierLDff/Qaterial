@@ -35,8 +35,10 @@ This TextField allows the user to select an EU hour by editing the text in the f
 
 * `hour`: hour displayed when the dialog is opened (default 0)
 * `minute`: minute displayed when the dialog is opened (default 0)
+* `styleAm`: style of the Clock, American Am/Pm style when `true` (default `false`)
+* `am`: when Am/Pm style is used, represent the time slot of the hour picked, equal `false` when Pm (default `true`)
 
-**Signal** : `hourAccepted(hour, minute)` emit when a correct hour is picked by the user
+**Signal** : `hourAccepted(hour, minute, am)`, emitted when a correct hour is picked by the user
 
 ## Advanced Use
 
