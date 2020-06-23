@@ -8,13 +8,13 @@ nav_order: 5
 
 **QaterialHotReload** is an app that load a `.qml` file, and reloads it each time the file is saved on the system.
 
-![](./images/QaterialHotReload.gif)
+![QaterialHotReload](https://user-images.githubusercontent.com/17255804/85396672-6c787200-b552-11ea-814e-12ae2c6db0e9.gif)
 
 ## Position anchors
 
 Helpers button can apply anchors to your qml object.
 
-![](./images/QaterialHotReloadAnchors.gif)
+![QaterialHotReloadAnchors](https://user-images.githubusercontent.com/17255804/85396675-6d110880-b552-11ea-80aa-fd79855346bc.gif)
 
 * FullScreen: `anchors.fill: parent`
 * Horizontal Center: `anchors.horizontalCenter: parent.horizontalCenter`
