@@ -6,6 +6,7 @@ Rectangle
 {
   id: root
 
+  property string logString
   property string errorString
   property string file
   property bool error: errorString
@@ -33,7 +34,8 @@ Rectangle
     {
       id: _errorTextArea
       width: parent.width
-      text: root.errorString
+      text: root.logString
+      textFormat: TextEdit.RichText
       readOnly: true
       wrapMode: Text.WordWrap
       selectByMouse: true
@@ -46,6 +48,13 @@ Rectangle
       font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Body1)
       font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Body1)
       font.pixelSize: Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Body1)
+
+      onTextChanged: function()
+      {
+        cursorPosition = text.length-1
+        if(height > _flick.height)
+          _flick.contentY = height - _flick.height
+      }
     }
   }
 

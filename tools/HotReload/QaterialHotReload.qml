@@ -22,7 +22,6 @@ import Qt.labs.platform 1.0
 import Qt.labs.qmlmodels 1.0
 
 import Qaterial 1.0 as Qaterial
-import QaterialEngine 1.0
 
 Qaterial.ApplicationWindow
 {
@@ -54,7 +53,7 @@ Qaterial.ApplicationWindow
 
   function loadFile(path)
   {
-    QaterialEngine.unWatchFile(window.currentFilePath)
+    Qaterial.HotReload.unWatchFile(window.currentFilePath)
     currentFileUrl = path
     // remove prefixed "file:///"
     if(Qt.platform.os === "windows")
@@ -63,7 +62,7 @@ Qaterial.ApplicationWindow
         path = path.replace(/^(file:\/{2})/,"");
     // unescape html codes like '%23' for '#'
     currentFilePath = decodeURIComponent(path);
-    QaterialEngine.watchFile(window.currentFilePath)
+    Qaterial.HotReload.watchFile(window.currentFilePath)
 
     loadFileInLoader(window.currentFileUrl)
   }
@@ -105,7 +104,7 @@ Qaterial.ApplicationWindow
 
   Connections
   {
-    target: QaterialEngine
+    target: Qaterial.HotReload
     onWatchedFileChanged: () => window.reload()
   }
 
@@ -257,7 +256,7 @@ Qaterial.ApplicationWindow
           loadedObject = null
         }
 
-        QaterialEngine.clearCache()
+        Qaterial.HotReload.clearCache()
         let component = Qt.createComponent(url)
 
         if (component.status === Component.Ready)
@@ -293,7 +292,7 @@ Qaterial.ApplicationWindow
         if(window.currentFileUrl)
         {
           loader.create(window.currentFileUrl)
-          QaterialEngine.watchFile(window.currentFilePath)
+          Qaterial.HotReload.watchFile(window.currentFilePath)
         }
       }
 
@@ -320,12 +319,42 @@ Qaterial.ApplicationWindow
 
     StatusView
     {
+      id: _statusView
       anchors.bottom: parent.bottom
       width: parent.width
       SplitView.minimumHeight: 40
 
       errorString: window.errorString
       file: window.currentFileName
+
+      Connections
+      {
+        target: Qaterial.HotReload
+        function onNewLog(msg)
+        {
+          const color = function()
+          {
+            if(msg.includes("debug"))
+              return Qaterial.Style.blue
+            if(msg.includes("info"))
+              return Qaterial.Style.green
+            if(msg.includes("warning"))
+              return Qaterial.Style.orange
+            if(msg.includes("error"))
+              return Qaterial.Style.red
+            return Qaterial.Style.primaryTextColor()
+          }();
+
+          _statusView.log(msg, color)
+        }
+      }
+
+      function log(msg, color)
+      {
+        if(logString != "")
+          logString += `<br>`
+        logString += `<font style='color:${color};'>${msg}</font>`
+      }
     } // StatusView
   } // SplitView
 } // ApplicationWindow
