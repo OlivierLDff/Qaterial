@@ -239,12 +239,15 @@
         <file>SliderDelegate.qml</file>
         <file>RangeSliderDelegate.qml</file>
 
+        <!-- COMPONENTS / UTILS -->
+        <file>RectangleAreaHandler.qml</file>
+
         <!-- ICONS -->
         <file>Icons/calendar.svg</file>
 
         <file>Icons/calendar-clock.svg</file>
         <file>Icons/clock-outline.svg</file>
-        
+
         <file>Icons/chevron-down.svg</file>
         <file>Icons/chevron-left.svg</file>
         <file>Icons/chevron-right.svg</file>

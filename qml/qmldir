@@ -217,3 +217,5 @@ RangeSliderDelegate         1.0 RangeSliderDelegate.qml
 Slider                      1.0 Slider.qml
 SliderHandle                1.0 SliderHandle.qml
 SliderDelegate              1.0 SliderDelegate.qml
+
+RectangleAreaHandler        1.0 RectangleAreaHandler.qml
