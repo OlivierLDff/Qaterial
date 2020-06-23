@@ -19,15 +19,14 @@ import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-	width: 200
-	height: 200
-	
-	Qaterial.RectangleAreaHandler
-	{
-		anchors.fill: parent
-        
-        onMoved: (start, end) => console.log(`moved start: ${start}, end: ${end}`)
-	}
+  width: 200
+  height: 200
+
+  Qaterial.RectangleAreaHandler
+  {
+    anchors.fill: parent
+    onMoved: (start, end) => console.log(`moved start: ${start}, end: ${end}`)
+  }
 }
 ```
 
@@ -43,7 +42,7 @@ The size of each handle is determined by `handleSize`. This will determine the *
 
 ## Customization
 
-A `RectangleAreaHandler` is made a 4 `handle` and 4 `handleLinker` that can be customized. 
+A `RectangleAreaHandler` is made a 4 `handle` and 4 `handleLinker` that can be customized.
 
 ![RectangleAreaHandlerCustomizedDemo](https://user-images.githubusercontent.com/17255804/85398291-4c967d80-b555-11ea-9db0-28b3c302a7ee.gif)
 
@@ -60,7 +59,7 @@ import QtQuick.Shapes 1.14
 Qaterial.RectangleAreaHandler
 {
   id: root
-  
+
   handle: Rectangle
   {
     property bool hovered
