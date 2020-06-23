@@ -50,6 +50,7 @@ Item
     border.color: root.handleColor
     border.width: handleWidth
   } // Rectangle
+
   property Component handleLinker: Item
   {
     property bool horizontal
@@ -75,6 +76,9 @@ Item
 
   // Margin around
   property real margin: 16
+
+  // Emitted each time the user is moving the area
+  signal moved(vector2d start, vector2d end)
 
   readonly property real pointerX: _hoverHandler.point.position.x
   readonly property real pointerY: _hoverHandler.point.position.y
@@ -274,8 +278,16 @@ Item
     lastPressedX = pressedX
     lastPressedY = pressedY
 
+    const hasBeenUpdated = _start.x !== currentStart.x ||
+    _start.y !== currentStart.y ||
+    end.x !== currentEnd.x ||
+    _end.y !== currentEnd.y
+
     _start = currentStart
     _end = currentEnd
+
+    if(hasBeenUpdated)
+      moved(_start, _end)
   }
 
   onPressedXChanged: () => drag()

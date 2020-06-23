@@ -8,6 +8,71 @@ Qaterial.RectangleAreaHandler
   start: Qt.vector2d(0.25, 0.25)
   end: Qt.vector2d(0.75, 0.75)
 
+  margin: 16
+  handleSize: 32
+
+  width: parent.width
+  height: parent.height
+
+  // Zone determined with start and end
+  Qaterial.DebugRectangle
+  {
+    x: root.realStartX
+    y: root.realStartY
+
+    width: root.realEndX - x
+    height: root.realEndY - y
+
+    border.color: "green"
+  }
+
+  // Outside Handler
+  Qaterial.DebugRectangle
+  {
+    x: root.realStartX - root.handleSize/2
+    y: root.realStartY - root.handleSize/2
+
+    width: root.realEndX - x + root.handleSize/2
+    height: root.realEndY - y + root.handleSize/2
+
+    border.color: "red"
+  }
+
+  // Inside Handler
+  Qaterial.DebugRectangle
+  {
+    x: root.realStartX + root.handleSize/2
+    y: root.realStartY + root.handleSize/2
+
+    width: root.realEndX - x - root.handleSize/2
+    height: root.realEndY - y - root.handleSize/2
+
+    border.color: "red"
+  }
+
+  // Outside Handler + grab margin
+  Qaterial.DebugRectangle
+  {
+    x: root.realStartX - root.realHalfHandleSize
+    y: root.realStartY - root.realHalfHandleSize
+
+    width: root.realEndX - x + root.realHalfHandleSize
+    height: root.realEndY - y + root.realHalfHandleSize
+
+    border.color: "violet"
+  }
+
+  // Inside Handler + grab margin
+  Qaterial.DebugRectangle
+  {
+    x: root.realStartX + root.realHalfHandleSize
+    y: root.realStartY + root.realHalfHandleSize
+
+    width: root.realEndX - x - root.realHalfHandleSize
+    height: root.realEndY - y - root.realHalfHandleSize
+
+    border.color: "violet"
+  }
 
   Column
   {
@@ -15,4 +80,6 @@ Qaterial.RectangleAreaHandler
     Qaterial.Label { text: `start: {${root.start.x.toFixed(2)},${root.start.y.toFixed(2)}}` }
     Qaterial.Label { text: `end: {${root.end.x.toFixed(2)},${root.end.y.toFixed(2)}}` }
   }
+
+  onMoved: (start, end) => console.log(`moved start: ${start}, end: ${end}`)
 }
