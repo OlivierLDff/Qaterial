@@ -83,6 +83,7 @@
         <file>RoundColorIcon.qml</file>
 
         <!-- COMPONENTS / CONTAINERS -->
+        <file>WindowLayoutSave.qml</file>
         <file>ApplicationWindow.qml</file>
         <file>Page.qml</file>
         <file>Pane.qml</file>

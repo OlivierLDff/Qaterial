@@ -121,6 +121,7 @@ MenuItem                    1.0 MenuItem.qml
 MenuSeparator               1.0 MenuSeparator.qml
 RadioMenuItem               1.0 RadioMenuItem.qml
 
+WindowLayoutSave            1.0 WindowLayoutSave.qml
 ApplicationWindow           1.0 ApplicationWindow.qml
 Page                        1.0 Page.qml
 Pane                        1.0 Pane.qml
