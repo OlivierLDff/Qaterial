@@ -5,6 +5,9 @@
 // Library Headers
 #include <Qaterial/Logger.hpp>
 
+// Qt Headers
+#include <QString>
+
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
@@ -18,10 +21,12 @@ static Logger::LogPtr makeLog(Args&&... args)
 }
 
 const char* const Logger::UTILS_NAME = "qaterial.utils";
+const char* const Logger::QATERIAL_NAME = "qaterial";
 
 const Logger::LogPtr Logger::UTILS = makeLog(UTILS_NAME);
+const Logger::LogPtr Logger::QATERIAL = makeLog(QATERIAL_NAME);
 
-const Logger::LogList Logger::LOGGERS = {UTILS};
+const Logger::LogList Logger::LOGGERS = {UTILS, QATERIAL};
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS
@@ -50,3 +55,11 @@ void Logger::unRegisterSink(const SinkPtr& sink)
         }
     }
 }
+
+void Logger::debug(QString s) { QATERIAL->debug(s.toStdString()); }
+
+void Logger::info(QString s) { QATERIAL->info(s.toStdString()); }
+
+void Logger::warn(QString s) { QATERIAL->warn(s.toStdString()); }
+
+void Logger::error(QString s) { QATERIAL->error(s.toStdString()); }

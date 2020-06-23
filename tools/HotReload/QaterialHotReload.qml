@@ -249,6 +249,7 @@ Qaterial.ApplicationWindow
 
       function create(url)
       {
+        Qaterial.Logger.info(`Load from ${url}`)
         // Destroy previous item
         if(loadedObject)
         {
@@ -283,6 +284,7 @@ Qaterial.ApplicationWindow
         else
         {
           window.errorString = component.errorString()
+          Qaterial.Logger.error(`Fail to load with error ${window.errorString}`)
         }
       }
 

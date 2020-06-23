@@ -25,6 +25,8 @@ void installLoggers()
 #endif
     const auto stdoutSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     qaterial::Logger::registerSink(stdoutSink);
+    stdoutSink->set_level(spdlog::level::debug);
+    qaterial::Logger::QATERIAL->set_level(spdlog::level::debug);
 }
 
 class QaterialEngine : public QObject

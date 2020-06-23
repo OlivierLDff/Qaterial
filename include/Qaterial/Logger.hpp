@@ -7,6 +7,7 @@
 
 // Library Headers
 #include <Qaterial/Export.hpp>
+#include <Qaterial/Property.hpp>
 
 // Dependencies Headers
 #include <spdlog/spdlog.h>
@@ -30,8 +31,14 @@ namespace qaterial {
  * Define static logger that library use.
  * You need to install sink on them
  */
-class QATERIAL_API_ Logger
+class QATERIAL_API_ Logger : public QObject
 {
+    Q_OBJECT
+    QATERIAL_SINGLETON_IMPL(Logger, logger, Logger);
+
+public:
+    Logger(QObject* parent = nullptr) : QObject(parent) {}
+
     // ─────── TYPES ─────────
 public:
     using Log = spdlog::logger;
@@ -43,10 +50,12 @@ public:
     // ─────── LOGGERS NAME ─────────
 public:
     static const char* const UTILS_NAME;
+    static const char* const QATERIAL_NAME;
 
     // ─────── LOGGERS ─────────
 public:
     static const LogPtr UTILS;
+    static const LogPtr QATERIAL;
 
     // ─────── LIST OF ALL LOGGERS ─────────
 public:
@@ -57,6 +66,12 @@ public:
 public:
     static void registerSink(const SinkPtr& sink);
     static void unRegisterSink(const SinkPtr& sink);
+
+public Q_SLOTS:
+    void debug(QString s);
+    void info(QString s);
+    void warn(QString s);
+    void error(QString s);
 };
 
 }

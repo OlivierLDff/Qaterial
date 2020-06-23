@@ -86,15 +86,16 @@ foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
 endforeach()
 
 set(QATERIAL_UTILS_SRCS
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Qaterial.hpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Export.hpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Version.hpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Utils.hpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/Qaterial/Logger.hpp
+  include/Qaterial/Qaterial.hpp
+  include/Qaterial/Export.hpp
+  include/Qaterial/Property.hpp
+  include/Qaterial/Version.hpp
+  include/Qaterial/Utils.hpp
+  include/Qaterial/Logger.hpp
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/Version.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/Logger.cpp
+  src/Version.cpp
+  src/Utils.cpp
+  src/Logger.cpp
   )
 
 set(QATERIAL_SRCS
@@ -116,7 +117,7 @@ else()
 endif()
 
 target_compile_features(${QATERIAL_TARGET}    PUBLIC cxx_std_11)
-target_include_directories(${QATERIAL_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${QATERIAL_TARGET} PUBLIC include)
 target_link_libraries(${QATERIAL_TARGET}      PUBLIC
   spdlog
   Qt5::Core
@@ -146,7 +147,7 @@ get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET}
-    QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml
+    QML_SRC qml
     EXTRA_PLUGIN
       QtQuickVirtualKeyboardPlugin
       QtQuickVirtualKeyboardSettingsPlugin
