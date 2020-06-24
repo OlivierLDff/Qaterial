@@ -11,7 +11,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.RawMaterialButton
 {
-	id: _control
+  id: _control
   flat: true
   highlighted: checked
   clipRipple: false
@@ -20,30 +20,40 @@ Qaterial.RawMaterialButton
   icon.height: Qaterial.Style.fab.iconWidth
 
   leftPadding: Qaterial.Style.fab.iconPadding
-	rightPadding: leftPadding
-	//topPadding: 0
-	//bottomPadding: 0
+  rightPadding: leftPadding
+  //topPadding: 0
+  //bottomPadding: 0
 
-	//topInset: 0
-	//bottomInset: 0
-	//leftInset: Qaterial.Style.fab.iconPadding
-	//rightInset: Qaterial.Style.fab.iconPadding
+  //topInset: 0
+  //bottomInset: 0
+  //leftInset: Qaterial.Style.fab.iconPadding
+  //rightInset: Qaterial.Style.fab.iconPadding
 
   backgroundImplicitWidth: Qaterial.Style.toolButton.minWidth /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
-	backgroundImplicitHeight: Qaterial.Style.toolButton.minHeight /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
+  backgroundImplicitHeight: Qaterial.Style.toolButton.minHeight /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
 
-	property bool onPrimary: false
-	property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
+  property bool onPrimary: false
+  property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-	property bool accentColorAuthorized: (onPrimary && Qaterial.Style.preferAccentOnPrimary || !onPrimary)
+  property bool accentColorAuthorized: (onPrimary && Qaterial.Style.preferAccentOnPrimary || !onPrimary)
 
-	foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-					highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
-					!highlighted && !accentColorAuthorized ? (colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor()) :
-					colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  foregroundColor:
+  {
+    if(!enabled)
+    {
+      if(colorReversed)
+        return Qaterial.Style.disabledTextColorReversed()
+      return Qaterial.Style.disabledTextColor()
+    }
+    if(highlighted && accentColorAuthorized)
+      return Qaterial.Style.accentColor
+    if(!highlighted && !accentColorAuthorized)
+      return colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor()
+    return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  }
 
-	property double animationSpeed: 0
-	onCheckedChanged: animationSpeed = checked ? 0 : 300
+  property double animationSpeed: 0
+  onCheckedChanged: animationSpeed = checked ? 0 : 300
 
   Behavior on foregroundColor
   {

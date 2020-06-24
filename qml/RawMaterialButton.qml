@@ -37,35 +37,77 @@ T.Button
   leftInset: Qaterial.Style.rawButton.leftInset
   rightInset: Qaterial.Style.rawButton.rightInset
 
-  leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + leftInset
-  rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + rightInset
+  leftPadding:
+  {
+    if(icon.source != "" && !mirrored || text == "")
+      return Qaterial.Style.rawButton.iconPadding + leftInset
+
+    if(flat && !outlined)
+      return Qaterial.Style.rawButton.spacing + leftInset
+    return Qaterial.Style.rawButton.padding + leftInset
+  }
+  rightPadding:
+  {
+    if(icon.source != "" && mirrored || text == "")
+      return Qaterial.Style.rawButton.iconPadding + rightInset
+
+    if(flat && !outlined)
+      return Qaterial.Style.rawButton.spacing + rightInset
+    return Qaterial.Style.rawButton.padding + rightInset
+  }
+
+  //leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + leftInset
+  //rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + rightInset
+
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.rawButton.spacing
 
   property bool outlined: false
 
-  property color foregroundColor: !enabled ? (flat ? Qaterial.Style.disabledTextColor() : Qaterial.Style.disabledTextColor()) :
-      flat && highlighted ? Qaterial.Style.accentColor :
-      colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
-
-  property color backgroundColor: flat ? ((outlined && pressed) ? Qaterial.Style.backgroundColor : "transparent") :
-      !enabled ? (Qaterial.Style.buttonDisabledColor) :
-     (highlighted ? Qaterial.Style.accentColor : Qaterial.Style.buttonColor )
+  property color foregroundColor:
+  {
+    if(!enabled)
+      return flat ? Qaterial.Style.disabledTextColor() : Qaterial.Style.disabledTextColor()
+    if(flat && highlighted)
+      return Qaterial.Style.accentColor
+    return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  }
+  property color backgroundColor:
+  {
+    if(flat)
+      return (outlined && pressed) ? Qaterial.Style.backgroundColor : "transparent"
+    if(!enabled)
+      return Qaterial.Style.buttonDisabledColor
+    return highlighted ? Qaterial.Style.accentColor : Qaterial.Style.buttonColor
+  }
 
   readonly property int flatRippleColor: onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background
   readonly property int rawRippleColor: highlighted ? Qaterial.Style.RippleBackground.Accent : Qaterial.Style.RippleBackground.Primary
 
-  property color rippleColor: Qaterial.Style.rippleColor(accentRipple ? Qaterial.Style.RippleBackground.AccentLight : (flat ? flatRippleColor : rawRippleColor))
+  property color rippleColor:
+  {
+    if(accentRipple)
+      return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.AccentLight)
+    return Qaterial.Style.rippleColor(flat ? flatRippleColor : rawRippleColor)
+  }
 
-  property color outlinedColor: outlined ?
-      (!enabled ? Qaterial.Style.disabledDividersColor() : pressed ? foregroundColor : Qaterial.Style.dividersColor()) :
-      "transparent"
+  property color outlinedColor:
+  {
+    if(!outlined)
+      return "transparent"
+    if(!enabled)
+      return Qaterial.Style.disabledDividersColor()
+    if(pressed)
+      return foregroundColor
+    return Qaterial.Style.dividersColor()
+    //return pressed ? foregroundColor : Qaterial.Style.dividersColor()
+  }
 
   property bool onPrimary: false
-  property bool colorReversed: (flat && onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary) ||
-                              (highlighted && Qaterial.Style.shouldReverseForegroundOnAccent) ||
-                              (!flat && !highlighted && Qaterial.Style.shouldReverseForegroundOnPrimary)
+  property bool colorReversed: (flat && onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary)
+                            || (highlighted && Qaterial.Style.shouldReverseForegroundOnAccent)
+                            || (!flat && !highlighted && Qaterial.Style.shouldReverseForegroundOnPrimary)
 
   property double radius: Qaterial.Style.rawButton.cornerRadius
 
@@ -73,8 +115,12 @@ T.Button
   icon.height: Qaterial.Style.rawButton.iconWidth
   icon.color: foregroundColor
 
-  property double elevation: flat ? ((_control.down || _control.hovered) ? Qaterial.Style.rawButton.flatPressedElevation : Qaterial.Style.rawButton.flatElevation)
-                       : (_control.down ? Qaterial.Style.rawButton.defaultPressedElevation : Qaterial.Style.rawButton.defaultElevation)
+  property double elevation:
+  {
+    if(flat)
+      return (_control.down || _control.hovered) ? Qaterial.Style.rawButton.flatPressedElevation : Qaterial.Style.rawButton.flatElevation
+    return _control.down ? Qaterial.Style.rawButton.defaultPressedElevation : Qaterial.Style.rawButton.defaultElevation
+  }
 
   property bool clipRipple: true
   property bool forceRipple: false
@@ -109,7 +155,12 @@ T.Button
     implicitHeight: _control.backgroundImplicitHeight
     radius: _control.radius
     color: _control.backgroundColor
-    border.width: _control.outlined ? (_control.pressed ? Qaterial.Style.rawButton.outlinedFocusWidth : Qaterial.Style.rawButton.outlinedWidth) : 0
+    border.width:
+    {
+      if(_control.outlined)
+        return _control.pressed ? Qaterial.Style.rawButton.outlinedFocusWidth : Qaterial.Style.rawButton.outlinedWidth
+      return 0
+    }
     border.color: _control.outlinedColor
     // The layer is disabled when the button color is transparent so you can do
     // Material.background: "transparent" and get a proper flat button without needing
