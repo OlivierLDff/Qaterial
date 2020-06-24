@@ -16,6 +16,11 @@ Rectangle
 
   color: "#202225"
 
+  function append(text)
+  {
+    _errorTextArea.append(text)
+  }
+
   Flickable
   {
     id: _flick

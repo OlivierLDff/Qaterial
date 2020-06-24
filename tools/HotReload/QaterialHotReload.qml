@@ -105,7 +105,7 @@ Qaterial.ApplicationWindow
   Connections
   {
     target: Qaterial.HotReload
-    onWatchedFileChanged: () => window.reload()
+    function onWatchedFileChanged() { window.reload() }
   }
 
   header: Qaterial.ToolBar
@@ -351,9 +351,7 @@ Qaterial.ApplicationWindow
 
       function log(msg, color)
       {
-        if(logString != "")
-          logString += `<br>`
-        logString += `<font style='color:${color};'>${msg}</font>`
+        _statusView.append(`<font style='color:${color};'>${msg}</font>`)
       }
     } // StatusView
   } // SplitView
