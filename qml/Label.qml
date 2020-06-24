@@ -15,7 +15,12 @@ T.Label
 {
   id: _control
 
-  color: enabled ? (colorReversed ? Qaterial.Style.textTypeToColorReversed(textType) : Qaterial.Style.textTypeToColor(textType)) : Qaterial.Style.hintTextColor()
+  color:
+  {
+    if(enabled)
+      return colorReversed ? Qaterial.Style.textTypeToColorReversed(textType) : Qaterial.Style.textTypeToColor(textType)
+    return Qaterial.Style.hintTextColor()
+  }
   linkColor: Qaterial.Style.accentColor
 
   property int textType: Qaterial.Style.TextType.Body1
