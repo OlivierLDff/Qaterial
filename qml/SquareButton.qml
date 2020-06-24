@@ -30,8 +30,18 @@ Qaterial.RawMaterialButton
 
   readonly property bool accentColorAuthorized: (onPrimary && Qaterial.Style.preferAccentOnPrimary || !onPrimary)
 
-  foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-                  highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
-                  !highlighted && !accentColorAuthorized || useSecondaryColor ? (colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor()) :
-                  colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  foregroundColor:
+  {
+    if(!enabled)
+    {
+      if(colorReversed)
+        return Qaterial.Style.disabledTextColorReversed()
+      return Qaterial.Style.disabledTextColor()
+    }
+    if(highlighted && accentColorAuthorized)
+      return Qaterial.Style.accentColor
+    if(!highlighted && !accentColorAuthorized || useSecondaryColor)
+      return colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor()
+    return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  }
 } // RawMaterialButton
