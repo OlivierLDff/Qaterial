@@ -9,9 +9,9 @@ title: Rectangle Area Handler
 
 The `RectangleAreaHandler` allow easy manipulation of a `start` and `end` **vector2d**. It can be used as an handler to select a particular area, to crop an image, etc...
 
-`start` and `end` are always normalized for easy manipulation. The real coordinate are available with `realStartX`, `realStartY`, `realEndX`, `realEndY`.
+`start` and `end` are always normalized for easy manipulation (ie value are in between 0 and 1). The real coordinate are available with `realStartX`, `realStartY`, `realEndX`, `realEndY`.
 
-By default the size of the handler is undefined, so it is made to fill another Item.
+By default the size of the handler is undefined. It should fill a parent.
 
 ```js
 import QtQuick 2.0
@@ -24,7 +24,14 @@ Rectangle
 
   Qaterial.RectangleAreaHandler
   {
+    // Selected area will be render in 200x200 parent
     anchors.fill: parent
+    
+    // Default start point will be 50px, 50px
+    start: Qt.vector2d(0.25, 0.25)
+    // Default end point will be 150px, 150px
+    end: Qt.vector2d(0.75, 0.75)
+      
     onMoved: (start, end) => console.log(`moved start: ${start}, end: ${end}`)
   }
 }
@@ -32,13 +39,69 @@ Rectangle
 
 [Try it live](https://tinyurl.com/yb2m7lgh)
 
-## Size, margin
+## Behavior
 
-The size of each handle is determined by `handleSize`. This will determine the **red** area in the following example. For more natural grabbing, a zone inside and inside can be added with `margin`. This in displayed in **pink** in the example.
+The `RectangleAreaHandler` behavior can be customized in many ways.
 
-![RectangleAreaHandlerMargin](https://user-images.githubusercontent.com/17255804/85397999-d2fe8f80-b554-11ea-80b0-06de10aa155c.gif)
+* Grabbing area that can be controlled with `inMargin`, `outMargin`, `handleSize`
+* Allow to reverse the rectangle with `reverseAllowed`, `horizontalReverseAllowed`, `verticalReverseAllowed`.
+* Specify a minimum area with `minSize`. *Note: When using `minSize`, it automatically disable `reverse` behavior*.
 
-[Try it here](https://tinyurl.com/yc5z57e3)
+### Grabbing Area
+
+![AreaGrabbing](https://user-images.githubusercontent.com/17255804/85622001-7ab7b280-b666-11ea-9989-1fc1e2b445c8.gif)
+
+Grabbing Area can be controlled with 3 parameters:
+
+* `handleSize`: Control the visible render size of handles. Rendered in green in example.
+* `outMargin`: Margin to allow easy grab outside of visual handle. Rendered in cyan in example.
+* `inMargin`: Margin inside visual handles before grabbing the full rectangle for move. Rendered in orange in the example.
+
+```js
+import Qaterial 1.0 as Qaterial
+
+Qaterial.RectangleAreaHandler
+{
+  inMargin: 8
+  outMargin: 16
+  handleSize: 32
+}
+```
+
+[QaterialOnline](https://tinyurl.com/y8n9lumf)
+
+### Reverse Allowed
+
+![reverseRectangleArea](https://user-images.githubusercontent.com/17255804/85623093-2281b000-b668-11ea-96d0-adf7a4d7482b.gif)
+
+By default the selection will reversed itself if user try to do a negative rectangle. This can be disabled by settings `reversedAllowed` to false. This can be finer tuned by using `horizontalReverseAllowed` or `verticalReverseAllowed` to only disable on a particular axis.
+
+```js
+import Qaterial 1.0 as Qaterial
+
+Qaterial.RectangleAreaHandler
+{
+  horizontalReverseAllowed: true
+  verticalReverseAllowed: true
+}
+```
+
+[QaterialOnline](https://tinyurl.com/yav7bqgr)
+
+### Minimum Size
+
+By default the minimum size of made with start/end is 0. This behavior can be changed by setting `minSize`.
+
+```js
+import Qaterial 1.0 as Qaterial
+
+Qaterial.RectangleAreaHandler
+{
+  minSize: Qt.vector2d(0.1, 0.1)
+}
+```
+
+> When using `minSize`, it automatically disable `reverse` behavior
 
 ## Customization
 
@@ -101,3 +164,4 @@ Qaterial.RectangleAreaHandler
 }
 ```
 
+[QaterialOnline](https://tinyurl.com/yar7gk2e)

@@ -4,7 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.12
+import QtQuick 2.15
+import QtQml 2.15
 
 // Dependencies
 import Qaterial 1.0 as Qaterial
@@ -19,6 +20,16 @@ Item
   // End point normalized
   property vector2d end: _end
 
+  property vector2d minSize
+
+  property bool reverseAllowed: true
+  property bool horizontalReverseAllowed: reverseAllowed
+  property bool verticalReverseAllowed: reverseAllowed
+
+  // Margin inside and outside handle
+  property real inMargin: Qaterial.Style.card.verticalPadding
+  property real outMargin: Qaterial.Style.card.horizontalPadding
+
   // Implicit values updated when dragged (normalized)
   property vector2d _start: Qt.vector2d(0, 0)
   property vector2d _end: Qt.vector2d(1, 1)
@@ -29,8 +40,9 @@ Item
   readonly property real realEndX: end.x*width
   readonly property real realEndY: end.y*height
 
-  readonly property real realHandleSize: handleSize + margin*2
-  readonly property real realHalfHandleSize: realHandleSize/2
+  readonly property real outHalfHandleSize: handleSize/2 + outMargin
+  readonly property real inHalfHandleSize: handleSize/2 + inMargin
+  readonly property real halfHandleSize: handleSize/2
 
   // Size of handle
   property int handleSize: 32
@@ -74,9 +86,6 @@ Item
   property real handleWidth: 2
   property real handleHoveredWidth: 4
 
-  // Margin around
-  property real margin: 16
-
   // Emitted each time the user is moving the area
   signal moved(vector2d start, vector2d end)
 
@@ -112,11 +121,11 @@ Item
     if(_pressedHandled && pressed && !pressedInside)
       return false
 
-    const startX = realStartX - realHalfHandleSize
-    const startY = realStartY - realHalfHandleSize
+    const startX = realStartX - outHalfHandleSize
+    const startY = realStartY - outHalfHandleSize
 
-    const endX = realEndX + realHalfHandleSize
-    const endY = realEndY + realHalfHandleSize
+    const endX = realEndX + outHalfHandleSize
+    const endY = realEndY + outHalfHandleSize
 
     return isContained(pointerX, pointerY, startX, startY, endX, endY)
   }
@@ -126,28 +135,84 @@ Item
     if(!containsMouse)
       return false
 
-    const startX = realStartX + realHalfHandleSize
-    const startY = realStartY + realHalfHandleSize
+    const startX = realStartX + inHalfHandleSize
+    const startY = realStartY + inHalfHandleSize
+    const endX = realEndX - inHalfHandleSize
+    const endY = realEndY - inHalfHandleSize
 
-    const endX = realEndX - realHalfHandleSize
-    const endY = realEndY - realHalfHandleSize
+    // in margin still a thing
+    if(startX <= endX && startY <= endY)
+      return isContained(pointerX, pointerY, startX, startY, endX, endY)
 
-    return isContained(pointerX, pointerY, startX, startY, endX, endY)
+    const inMarginStartX = realStartX + halfHandleSize
+    const inMarginStartY = realStartY + halfHandleSize
+    const inMarginEndX = realEndX - halfHandleSize
+    const inMarginEndY = realEndY - halfHandleSize
+
+    // handle size still a thing
+    if(inMarginStartX <= inMarginEndX && inMarginStartY <= inMarginEndY)
+      return isContained(pointerX, pointerY, inMarginStartX, inMarginStartY, inMarginEndX, inMarginEndY)
+
+    // Inside start/end
+    return isContained(pointerX, pointerY, realStartX, realStartY, realEndX, realEndY)
   }
 
-  readonly property bool topHovered: isHoveringHandle(realStartX, realStartY, realEndX, realStartY)
-  readonly property bool bottomHovered: isHoveringHandle(realStartX, realEndY, realEndX, realEndY)
-  readonly property bool leftHovered: isHoveringHandle(realStartX, realStartY, realStartX, realEndY)
-  readonly property bool rightHovered: isHoveringHandle(realEndX, realStartY, realEndX, realEndY)
+  readonly property bool topHovered: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realStartY - outHalfHandleSize,
+    realEndX + outHalfHandleSize,
+    realStartY + inHalfHandleSize)
+
+  readonly property bool bottomHovered: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realEndY - inHalfHandleSize,
+    realEndX + outHalfHandleSize,
+    realEndY + outHalfHandleSize)
+
+  readonly property bool leftHovered: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realStartY - outHalfHandleSize,
+    realStartX + inHalfHandleSize,
+    realEndY + outHalfHandleSize)
+
+  readonly property bool rightHovered: isHoveringHandle(
+    realEndX - inHalfHandleSize,
+    realStartY - outHalfHandleSize,
+    realEndX + outHalfHandleSize,
+    realEndY + outHalfHandleSize)
+
+  readonly property bool topHoveredOut: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realStartY - outHalfHandleSize,
+    realEndX + outHalfHandleSize,
+    realStartY)
+
+  readonly property bool bottomHoveredOut: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realEndY,
+    realEndX + outHalfHandleSize,
+    realEndY + outHalfHandleSize)
+
+  readonly property bool leftHoveredOut: isHoveringHandle(
+    realStartX - outHalfHandleSize,
+    realStartY - outHalfHandleSize,
+    realStartX,
+    realEndY + outHalfHandleSize)
+
+  readonly property bool rightHoveredOut: isHoveringHandle(
+    realEndX,
+    realStartY - outHalfHandleSize,
+    realEndX + outHalfHandleSize,
+    realEndY + outHalfHandleSize)
 
   function isHoveringHandle(startX, startY, endX, endY)
   {
     return containsMouse && isContained(pointerX,
       pointerY,
-      startX - realHalfHandleSize,
-      startY - realHalfHandleSize,
-      endX + realHalfHandleSize,
-      endY + realHalfHandleSize)
+      startX,
+      startY,
+      endX,
+      endY)
   }
 
   function isContained(pointerX, pointerY, startX, startY, endX, endY)
@@ -175,26 +240,26 @@ Item
       }
       else
       {
-        if(_dragHandler.translation.x > 0)
+        if(leftHovered && rightHovered)
+        {
+          rightPressed = !leftHoveredOut
+          leftPressed = !rightHoveredOut
+        }
+        else
         {
           rightPressed = rightHovered
-          leftPressed = leftHovered && !rightPressed
-        }
-        else
-        {
           leftPressed = leftHovered
-          rightPressed = rightHovered && !leftPressed
         }
 
-        if(_dragHandler.translation.x > 0)
+        if(topHovered && bottomHovered)
         {
-          bottomPressed = bottomHovered
-          topPressed = topHovered && !bottomPressed
+          bottomPressed = !topHoveredOut
+          topPressed = !bottomHoveredOut
         }
         else
         {
+          bottomPressed = bottomHovered
           topPressed = topHovered
-          bottomPressed = bottomHovered && !topPressed
         }
       }
     }
@@ -227,47 +292,97 @@ Item
       return
 
     // Normalize
-    const normalizedFromX = lastPressedX/root.width
-    const normalizedToX = pressedX/root.width
+    const normalizedFromX = lastPressedX/width
+    const normalizedToX = pressedX/width
     const deltaX = normalizedToX - normalizedFromX
 
-    const normalizedFromY = lastPressedY/root.height
-    const normalizedToY = pressedY/root.height
+    const normalizedFromY = lastPressedY/height
+    const normalizedToY = pressedY/height
     const deltaY = normalizedToY - normalizedFromY
 
-    let currentStart = Qt.vector2d(root.start.x, root.start.y)
-    let currentEnd = Qt.vector2d(root.end.x, root.end.y)
+    let currentStart = Qt.vector2d(start.x, start.y)
+    let currentEnd = Qt.vector2d(end.x, end.y)
+
+    let horizontalReverseNeeded = false
+    let verticalReverseNeeded = false
 
     // Apply delta to temp value, make sure they are not overlaping
-    if(topPressed)
-    {
-      if(root.start.y + deltaY > root.end.y)
-        currentStart.y = root.end.y
-      else
-        currentStart.y += deltaY
-    }
-    if(bottomPressed)
-    {
-      if(root.end.y + deltaY < root.start.y)
-        currentEnd.y = root.start.y
-      else
-        currentEnd.y += deltaY
-    }
-
     if(leftPressed)
     {
-      if(root.start.x + deltaX > root.end.x)
-        currentStart.x = root.end.x
+      const newX = start.x + deltaX
+      const limitX = end.x - minSize.x
+      if(newX > limitX)
+      {
+        currentStart.x = limitX
+        if(!minSize.x && !rightPressed && horizontalReverseAllowed)
+        {
+          horizontalReverseNeeded = true
+          currentEnd.x += newX - currentStart.x
+        }
+      }
       else
+      {
         currentStart.x += deltaX
+      }
     }
+
     if(rightPressed)
     {
-      if(root.end.x + deltaX < root.start.x)
-        currentEnd.x = root.start.x
+      const newX = end.x + deltaX
+      const limitX = start.x + minSize.x
+      if(newX < limitX)
+      {
+        currentEnd.x = limitX
+        if(!minSize.x && !leftPressed && horizontalReverseAllowed)
+        {
+          horizontalReverseNeeded = true
+          currentStart.x += newX - currentEnd.x
+        }
+      }
       else
+      {
         currentEnd.x += deltaX
+      }
     }
+
+    if(topPressed)
+    {
+      const newY = start.y + deltaY
+      const limitY = end.y - minSize.y
+      if(newY > limitY)
+      {
+        currentStart.y = limitY
+        if(!minSize.y && !bottomPressed && verticalReverseAllowed)
+        {
+          verticalReverseNeeded = true
+          currentEnd.y += newY - currentStart.y
+        }
+      }
+      else
+      {
+        currentStart.y += deltaY
+      }
+    }
+
+    if(bottomPressed)
+    {
+      const newY = end.y + deltaY
+      const limitY = start.y + minSize.y
+      if(newY < limitY)
+      {
+        currentEnd.y = limitY
+        if(!minSize.y && !topPressed && verticalReverseAllowed)
+        {
+          verticalReverseNeeded = true
+          currentStart.y += newY - currentEnd.y
+        }
+      }
+      else
+      {
+        currentEnd.y += deltaY
+      }
+    }
+
     // Clamp all values
     currentStart.x = Math.min(Math.max(currentStart.x, 0), 1)
     currentStart.y = Math.min(Math.max(currentStart.y, 0), 1)
@@ -279,30 +394,43 @@ Item
     lastPressedY = pressedY
 
     const hasBeenUpdated = _start.x !== currentStart.x ||
-    _start.y !== currentStart.y ||
-    end.x !== currentEnd.x ||
-    _end.y !== currentEnd.y
+                           _start.y !== currentStart.y ||
+                           end.x !== currentEnd.x ||
+                           _end.y !== currentEnd.y
 
     _start = currentStart
     _end = currentEnd
+
+    if(horizontalReverseNeeded)
+    {
+      leftPressed = !leftPressed
+      rightPressed = !rightPressed
+    }
+    if(verticalReverseNeeded)
+    {
+      topPressed = !topPressed
+      bottomPressed = !bottomPressed
+    }
 
     if(hasBeenUpdated)
       moved(_start, _end)
   }
 
-  onPressedXChanged: () => drag()
-  onPressedYChanged: () => drag()
+  onPressedXChanged: () => Qt.callLater(drag)
+  onPressedYChanged: () => Qt.callLater(drag)
 
   Binding on start
   {
     when: root.pressed
     value: root._start
+    restoreMode: Binding.RestoreBinding
   }
 
   Binding on end
   {
     when: root.pressed
     value: root._end
+    restoreMode: Binding.RestoreBinding
   }
 
   // Repeat handles linker
@@ -321,6 +449,7 @@ Item
         when: item && item.hasOwnProperty(root.horizontalRole)
         property: root.horizontalRole
         value: _handleLinkerLoader.horizontal
+        restoreMode: Binding.RestoreBinding
       }
 
       readonly property bool hovered:
@@ -346,6 +475,7 @@ Item
         when: item && item.hasOwnProperty(root.hoveredRole)
         property: root.hoveredRole
         value: _handleLinkerLoader.hovered
+        restoreMode: Binding.RestoreBinding
       }
 
       readonly property real realStartX: index === 1 ? root.realEndX : root.realStartX
@@ -401,6 +531,7 @@ Item
         when: item && item.hasOwnProperty(root.hoveredRole)
         property: root.hoveredRole
         value: _handleLoader.hovered
+        restoreMode: Binding.RestoreBinding
       }
 
       sourceComponent: root.handle
@@ -419,7 +550,32 @@ Item
   {
     id: _dragHandler
     target: _draggedItem
-    //dragThreshold: root.handleHoveredWidth/2 // todo : enable when upgrading to qt 5.15
+    dragThreshold: 0
+  }
+
+  // Outside Item sized
+  Item
+  {
+    x: root.realStartX - root.outHalfHandleSize
+    y: root.realStartY - root.outHalfHandleSize
+
+    width: root.realEndX - x + root.outHalfHandleSize
+    height: root.realEndY - y + root.outHalfHandleSize
+
+    HoverHandler { cursorShape: Qt.OpenHandCursor }
+    PointHandler { cursorShape: Qt.ClosedHandCursor }
+  }
+
+  // Inside Item sized
+  Item
+  {
+    x: root.realStartX + root.inHalfHandleSize
+    y: root.realStartY + root.inHalfHandleSize
+
+    width: root.realEndX - x - root.inHalfHandleSize
+    height: root.realEndY - y - root.inHalfHandleSize
+
+    HoverHandler { cursorShape: Qt.SizeAllCursor }
   }
 
   Component.onCompleted: function()
