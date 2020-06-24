@@ -8,6 +8,7 @@
 #    include <spdlog/sinks/msvc_sink.h>
 #endif
 #include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/base_sink.h>
 
 // Qt
 #include <QGuiApplication>
