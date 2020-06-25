@@ -16,8 +16,14 @@ Rectangle
   implicitWidth: Qaterial.Style.checkIndicator.implicitWidth
   implicitHeight: Qaterial.Style.checkIndicator.implicitHeight
   color: "transparent"
-  border.color: !control.enabled ? Qaterial.Style.hintTextColor()
-      : checkState !== Qt.Unchecked ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
+  border.color:
+  {
+    if(!control.enabled)
+      return Qaterial.Style.hintTextColor()
+    return (checkState !== Qt.Unchecked) ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
+  }
+  // border.color: !control.enabled ? Qaterial.Style.hintTextColor()
+  //     : checkState !== Qt.Unchecked ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
   border.width: checkState !== Qt.Unchecked ? width / 2 : 2
   radius: Qaterial.Style.checkIndicator.radius
 

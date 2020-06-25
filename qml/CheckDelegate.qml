@@ -105,9 +105,14 @@ T.CheckDelegate
       anchors.fill: parent
       border.color: "cyan"
       visible: _control.drawline
-    } // DEbugRectangle
+    } // DebugRectangle
 
-    x: text || secondaryText || overlineText ? (_control.mirrored ? _control.leftPadding : _control.width - width - _control.rightPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
+    x:
+    {
+      if(text || secondaryText || overlineText)
+        return _control.mirrored ? _control.leftPadding : _control.width - width - _control.rightPadding
+      return _control.leftPadding + (_control.availableWidth - width) / 2
+    }
     y: _control.topPadding + (_control.availableHeight - height) / 2
     control: _control
   } // CheckIndicator
@@ -123,7 +128,8 @@ T.CheckDelegate
     anchors.bottom: _control.bottom
     verticalPadding: 0
     orientation: Qt.Horizontal
-    visible: _control.forceDrawSeparator ||
-        _control.drawSeparator && (_control.ListView.view ? (_control.ListView.view.count > 1 && index < (_control.ListView.view.count-1)) : false)
+    visible: _control.forceDrawSeparator
+          || _control.drawSeparator
+          && (_control.ListView.view ? (_control.ListView.view.count > 1 && index < (_control.ListView.view.count-1)) : false)
   } // ToolSeparator
 } // CheckDelegate

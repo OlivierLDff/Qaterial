@@ -51,28 +51,59 @@ T.Button
   font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Button)
   font.letterSpacing:  Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
 
-  readonly property bool defaultPadding: type === Qaterial.Style.FabType.Default ? Qaterial.Style.fab.padding :
-  	(type === Qaterial.Style.FabType.Mini ? Qaterial.Style.fab.paddingMini : Qaterial.Style.fab.textPadding)
+  readonly property bool defaultPadding:
+  {
+    if(type === Qaterial.Style.FabType.Default)
+      return Qaterial.Style.fab.padding
+    return (type === Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.paddingMini : Qaterial.Style.fab.textPadding
+  }
 
-  leftPadding: (type === Qaterial.Style.FabType.Extended ? (mirrored ? Qaterial.Style.fab.textPadding : Qaterial.Style.fab.iconPadding ) : defaultPadding) + leftInset
-  rightPadding: (type === Qaterial.Style.FabType.Extended ? (mirrored ? Qaterial.Style.fab.iconPadding : Qaterial.Style.fab.textPadding ) : defaultPadding) + rightInset
+  leftPadding:
+  {
+    if(type === Qaterial.Style.FabType.Extended)
+      return (mirrored ? Qaterial.Style.fab.textPadding : Qaterial.Style.fab.iconPadding) + leftInset
+    return defaultPadding + leftInset
+  }
+  rightPadding:
+  {
+    if(type === Qaterial.Style.FabType.Extended)
+      return (mirrored ? Qaterial.Style.fab.iconPadding : Qaterial.Style.fab.textPadding) + rightInset
+    return defaultPadding + rightInset
+  }
 
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.fab.spacing
 
   // Qaterial.Style.FabType.Default | Qaterial.Style.FabType.Mini | Qaterial.Style.FabType.Extended
-  property int type: extendedOnHovered && hovered && text != "" ? Qaterial.Style.FabType.Extended : Qaterial.Style.FabType.Default
+  property int type: (extendedOnHovered && hovered && text != "") ? Qaterial.Style.FabType.Extended : Qaterial.Style.FabType.Default
 
-  property color foregroundColor: !enabled ? (flat ? Qaterial.Style.disabledTextColor() : Qaterial.Style.disabledTextColor()) :
-      flat && highlighted ? Qaterial.Style.buttonAccentColor :
-      flat ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.buttonTextColor
+  property color foregroundColor:
+  {
+    if(!enabled)
+      return flat ? Qaterial.Style.disabledTextColor() : Qaterial.Style.disabledTextColor()
+    if(flat && highlighted)
+      return Qaterial.Style.buttonAccentColor
+    return flat ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.buttonTextColor
+  }
 
-  property color backgroundColor: flat ? ((pressed) ? Qaterial.Style.backgroundColor : Qaterial.Style.backgroundColor) :
-      !enabled ? (Qaterial.Style.buttonDisabledColor) :
-     (highlighted ? Qaterial.Style.buttonAccentColor : Qaterial.Style.buttonColor )
+  property color backgroundColor:
+  {
+    if(flat)
+      return pressed ? Qaterial.Style.backgroundColor : Qaterial.Style.backgroundColor
+    if(!enabled)
+      return Qaterial.Style.buttonDisabledColor
+    return highlighted ? Qaterial.Style.buttonAccentColor : Qaterial.Style.buttonColor
+  }
 
-  property color rippleColor: Qaterial.Style.rippleColor(flat ? Qaterial.Style.RippleBackground.Background : (highlighted ? Qaterial.Style.RippleBackground.Accent : Qaterial.Style.RippleBackground.Primary ))
+  property color rippleColor:
+  {
+    if(flat)
+      return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Background)
+    if(highlighted)
+      return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Accent)
+    return   Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Primary)
+  }
 
   property double radius: height/2
 
@@ -81,7 +112,7 @@ T.Button
   icon.color: foregroundColor
 
   highlighted: true
-  display: type === Qaterial.Style.FabType.Extended ? AbstractButton.TextBesideIcon : AbstractButton.IconOnly
+  display: (type === Qaterial.Style.FabType.Extended) ? AbstractButton.TextBesideIcon : AbstractButton.IconOnly
 
   property double elevation: (down || hovered) ? Qaterial.Style.fab.pressedElevation : Qaterial.Style.fab.elevation
 
@@ -105,10 +136,10 @@ T.Button
 
   background: Rectangle
   {
-    implicitWidth: type === Qaterial.Style.FabType.Extended ? Qaterial.Style.fab.minWidthExtended :
-                   type === Qaterial.Style.FabType.Mini ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth
-    implicitHeight: type === Qaterial.Style.FabType.Extended ? Qaterial.Style.fab.minHeightExtended :
-                   type === Qaterial.Style.FabType.Mini ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth
+    implicitWidth:  (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minWidthExtended :
+                    ((type === Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
+    implicitHeight: (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minHeightExtended :
+                    ((type === Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
 
     Qaterial.DebugRectangle
     {
