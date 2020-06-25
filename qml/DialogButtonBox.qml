@@ -28,14 +28,8 @@ T.DialogButtonBox
   property color foregroundColor: Qaterial.Style.accentColor
   property color backgroundColor: Qaterial.Style.backgroundColor
 
-  /*delegate: Qaterial.FlatButton
-  {
-      foregroundColor: _control.foregroundColor
-      onClicked: _list.positionViewAtBeginning()
-  }*/
-  delegate: Qaterial.FlatButton
-  {
-  }
+  //delegate: Qaterial.FlatButton { foregroundColor: _control.foregroundColor; onClicked: _list.positionViewAtBeginning() }
+  delegate: Qaterial.FlatButton { }
 
   contentItem: ListView
   {

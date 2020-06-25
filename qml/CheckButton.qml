@@ -43,7 +43,12 @@ T.CheckBox
 
   indicator: Qaterial.CheckIndicator
   {
-    x: text ? (_control.mirrored ? _control.width - width - _control.rightPadding : _control.leftPadding) : _control.leftPadding + (_control.availableWidth - width) / 2
+    x:
+    {
+      if(text)
+        return _control.mirrored ? (_control.width - width - _control.rightPadding) : _control.leftPadding
+      return _control.leftPadding + (_control.availableWidth - width) / 2
+    }
     y: _control.topPadding + (_control.availableHeight - height) / 2
     control: _control
 
@@ -72,8 +77,8 @@ T.CheckBox
   contentItem: Qaterial.Label
   {
     id: _label
-    leftPadding: _control.indicator && !_control.mirrored ? _control.indicator.width + _control.spacing : 0
-    rightPadding: _control.indicator && _control.mirrored ? _control.indicator.width + _control.spacing : 0
+    leftPadding: (_control.indicator && !_control.mirrored) ? _control.indicator.width + _control.spacing : 0
+    rightPadding: (_control.indicator && _control.mirrored) ? _control.indicator.width + _control.spacing : 0
 
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed

@@ -19,6 +19,12 @@ Qaterial.RoundButton
   backgroundImplicitWidth: Qaterial.Style.toolButton.appBarButtonWidth
   backgroundImplicitHeight: Qaterial.Style.toolButton.appBarButtonHeight
 
-  foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-      highlighted ? Qaterial.Style.accentColor : (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor())
+  foregroundColor:
+  {
+    if(!enabled)
+      return colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()
+    if(highlighted)
+      return Qaterial.Style.accentColor
+    return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  }
 } // RoundButton

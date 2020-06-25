@@ -15,7 +15,12 @@ Item
 {
   id: _root
 
-  implicitHeight: _root.ListView.view.checkBoxEnabled ? (checkLoader.item ? checkLoader.item.implicitHeight : 0) : (defaultLoader.item ? defaultLoader.item.implicitHeight : 0)
+  implicitHeight:
+  {
+    if(_root.ListView.view.checkBoxEnabled)
+      return checkLoader.item ? checkLoader.item.implicitHeight : 0
+    return defaultLoader.item ? defaultLoader.item.implicitHeight : 0
+  }
 
   signal clicked()
 
