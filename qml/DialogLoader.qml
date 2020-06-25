@@ -19,8 +19,8 @@ Item
     id: _dialogComp
     Qaterial.AlertIconDialog
     {
-      text: _root.settings && _root.settings.text ? _root.settings.text : ""
-      title: _root.settings && _root.settings.title ? _root.settings.title : ""
+      text: (_root.settings && _root.settings.text) ? _root.settings.text : ""
+      title: (_root.settings && _root.settings.title) ? _root.settings.title : ""
 
       Component.onCompleted:
       {
@@ -72,17 +72,17 @@ Item
 
     Qaterial.TextFieldDialog
     {
-      text: _root.settings && _root.settings.text ? _root.settings.text : ""
-      title: _root.settings && _root.settings.title ? _root.settings.title : ""
-      textTitle: _root.settings && _root.settings.textTitle ? _root.settings.textTitle : ""
-      placeholderText: _root.settings && _root.settings.placeholderText ? _root.settings.placeholderText : ""
-      helperText: _root.settings && _root.settings.helperText ? _root.settings.helperText : ""
-      validator: _root.settings && _root.settings.validator ? _root.settings.validator : null
-      inputMethodHints: _root.settings && _root.settings.inputMethodHints ? _root.settings.inputMethodHints : Qt.ImhSensitiveData
-      maximumLengthCount: _root.settings && _root.settings.maximumLengthCount ? _root.settings.maximumLengthCount : 32767
-      selectAllText: _root.settings && _root.settings.selectAllText ? _root.settings.selectAllText : false
-      errorText: _root.settings && _root.settings.errorText ? _root.settings.errorText : false
-      echoMode: _root.settings && _root.settings.echoMode ? _root.settings.echoMode : TextInput.Normal
+      text:                             (_root.settings && _root.settings.text) ? _root.settings.text : ""
+      title:                           (_root.settings && _root.settings.title) ? _root.settings.title : ""
+      textTitle:                   (_root.settings && _root.settings.textTitle) ? _root.settings.textTitle : ""
+      placeholderText:       (_root.settings && _root.settings.placeholderText) ? _root.settings.placeholderText : ""
+      helperText:                 (_root.settings && _root.settings.helperText) ? _root.settings.helperText : ""
+      validator:                   (_root.settings && _root.settings.validator) ? _root.settings.validator : null
+      inputMethodHints:     (_root.settings && _root.settings.inputMethodHints) ? _root.settings.inputMethodHints : Qt.ImhSensitiveData
+      maximumLengthCount: (_root.settings && _root.settings.maximumLengthCount) ? _root.settings.maximumLengthCount : 32767
+      selectAllText:           (_root.settings && _root.settings.selectAllText) ? _root.settings.selectAllText : false
+      errorText:                   (_root.settings && _root.settings.errorText) ? _root.settings.errorText : false
+      echoMode:                     (_root.settings && _root.settings.echoMode) ? _root.settings.echoMode : TextInput.Normal
 
       Component.onCompleted:
       {
@@ -141,10 +141,11 @@ Item
 
     Qaterial.RadioDialog
     {
-      title: _root.settings && _root.settings.title ? _root.settings.title : ""
-      currentIndex: _root.settings && _root.settings.currentIndex !== undefined ? _root.settings.currentIndex : -1
-      model: _root.settings && _root.settings.model ? _root.settings.model : null
-      delegate: _root.settings && _root.settings.delegate ? _root.settings.delegate : defaultDelegate
+      title: (_root.settings && _root.settings.title) ? _root.settings.title : ""
+      currentIndex: (_root.settings && _root.settings.currentIndex !== undefined) ? _root.settings.currentIndex : -1
+
+      model: (_root.settings && _root.settings.model) ? _root.settings.model : null
+      delegate: (_root.settings && _root.settings.delegate) ? _root.settings.delegate : defaultDelegate
 
       Component.onCompleted:
       {
@@ -241,7 +242,7 @@ Item
   function closeBusyIndicator()
   {
     if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
-    _dialogLoader.sourceComponent = undefined
+      _dialogLoader.sourceComponent = undefined
   }
 
   function openRadioListView(radioListViewDialogSettings)
