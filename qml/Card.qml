@@ -23,7 +23,12 @@ Qaterial.Pane
   property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
   property bool outlined: false
 
-  property double elevation: isActive ? Qaterial.Style.card.activeElevation : (outlined ? 0 : Qaterial.Style.card.defaultElevation)
+  property double elevation:
+  {
+    if(isActive)
+      return Qaterial.Style.card.activeElevation
+    return outlined ? 0 : Qaterial.Style.card.defaultElevation
+  }
 
   property bool isActive: (elevationOnHovered && hovered) || pressed || visualFocus
 

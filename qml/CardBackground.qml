@@ -16,7 +16,12 @@ Rectangle
   property bool enabled: true
   property bool outlined: false
   property bool isActive: false
-  property double elevation: isActive ? Qaterial.Style.card.activeElevation : (outlined ? 0 : Qaterial.Style.card.defaultElevation)
+  property double elevation:
+  {
+    if(isActive)
+      return Qaterial.Style.card.activeElevation
+    return outlined ? 0 : Qaterial.Style.card.defaultElevation
+  }
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
