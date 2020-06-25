@@ -21,15 +21,15 @@ T.Drawer
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                            contentHeight + topPadding + bottomPadding)
 
-  topPadding: !dim && edge === Qt.BottomEdge && elevation === 0
-  leftPadding: !dim && edge === Qt.RightEdge && elevation === 0
-  rightPadding: !dim && edge === Qt.LeftEdge && elevation === 0
+  topPadding:    !dim && edge === Qt.BottomEdge && elevation === 0
+  leftPadding:   !dim && edge === Qt.RightEdge && elevation === 0
+  rightPadding:  !dim && edge === Qt.LeftEdge && elevation === 0
   bottomPadding: !dim && edge === Qt.TopEdge && elevation === 0
 
   enter: Transition { SmoothedAnimation { velocity: 5 } }
-  exit: Transition { SmoothedAnimation { velocity: 5 } }
+  exit:  Transition { SmoothedAnimation { velocity: 5 } }
 
-  property double elevation: !interactive && !dim ? 0 : 16
+  property double elevation: (!interactive && !dim) ? 0 : 16
   property color backgroundColor: Qaterial.Style.dialogColor
   property color dividerColor: Qaterial.Style.dividersColor()
   property color overlayColor: Qaterial.Style.overlayColor
@@ -41,11 +41,11 @@ T.Drawer
     Rectangle
     {
       readonly property bool horizontal: _control.edge === Qt.LeftEdge || _control.edge === Qt.RightEdge
-      width: horizontal ? 1 : parent.width
+      width:  horizontal ? 1 : parent.width
       height: horizontal ? parent.height : 1
       color: _control.dividerColor
-      x: _control.edge === Qt.LeftEdge ? parent.width - 1 : 0
-      y: _control.edge === Qt.TopEdge ? parent.height - 1 : 0
+      x: (_control.edge === Qt.LeftEdge) ? parent.width - 1 : 0
+      y: (_control.edge === Qt.TopEdge) ? parent.height - 1 : 0
       visible: !_control.dim && _control.elevation === 0
     } // Rectangle
 
