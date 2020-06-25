@@ -46,10 +46,10 @@ Qaterial.Page
   {
     if(secondPagePushed)
     {
-        secondPagePushed = false
-        console.log("Debug (DoublePage.qml) : Pop Second Page")
-        _localStackView.pop()
-        return true
+      secondPagePushed = false
+      console.log("Debug (DoublePage.qml) : Pop Second Page")
+      _localStackView.pop()
+      return true
     }
     return false
   } // function pressBack()
@@ -59,24 +59,25 @@ Qaterial.Page
   {
     if(_localStackView.depth === 0)
     {
-        console.log("Debug (DoublePage.qml) : Call later push or pop")
-        Qt.callLater(pushOrPop)
-        return
+      console.log("Debug (DoublePage.qml) : Call later push or pop")
+      Qt.callLater(pushOrPop)
+      return
     }
+
     if(useStackView && secondPageActive)
     {
-        if(!secondPagePushed)
-        {
-            secondPagePushed = true
-            console.log("Debug (DoublePage.qml) : Push Second Page, depth: " + _localStackView.depth)
-            _localStackView.push(secondPage)
-        }
+      if(!secondPagePushed)
+      {
+        secondPagePushed = true
+        console.log("Debug (DoublePage.qml) : Push Second Page, depth: " + _localStackView.depth)
+        _localStackView.push(secondPage)
+      }
     }
     else if(secondPagePushed)
     {
-        secondPagePushed = false
-        console.log("Debug (DoublePage.qml) : Pop Second Page")
-        _localStackView.pop()
+      secondPagePushed = false
+      console.log("Debug (DoublePage.qml) : Pop Second Page")
+      _localStackView.pop()
     }
   } // function pushOrPop()
 
