@@ -243,8 +243,9 @@
         <file>RectangleAreaHandler.qml</file>
 
         <!-- ICONS -->
-        <file>Icons/calendar.svg</file>
+        <file>Icons/menu.svg</file>
 
+        <file>Icons/calendar.svg</file>
         <file>Icons/calendar-clock.svg</file>
         <file>Icons/clock-outline.svg</file>
 
