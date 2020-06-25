@@ -60,6 +60,7 @@ find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 # ───── FETCH DEPEDENCIES ─────
 
 include(cmake/FetchSpdlog.cmake)
+include(cmake/FetchQOlm.cmake)
 
 # ───── QML SOURCES ─────
 
@@ -92,10 +93,12 @@ set(QATERIAL_UTILS_SRCS
   include/Qaterial/Version.hpp
   include/Qaterial/Utils.hpp
   include/Qaterial/Logger.hpp
+  include/Qaterial/StepperElement.hpp
 
   src/Version.cpp
   src/Utils.cpp
   src/Logger.cpp
+  src/StepperElement.cpp
   )
 
 set(QATERIAL_SRCS
@@ -120,6 +123,7 @@ target_compile_features(${QATERIAL_TARGET}    PUBLIC cxx_std_11)
 target_include_directories(${QATERIAL_TARGET} PUBLIC include)
 target_link_libraries(${QATERIAL_TARGET}      PUBLIC
   spdlog
+  QOlm
   Qt5::Core
   Qt5::Gui
   Qt5::Svg

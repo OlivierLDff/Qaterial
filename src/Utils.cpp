@@ -6,6 +6,9 @@
 #include <Qaterial/Utils.hpp>
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Logger.hpp>
+#include <Qaterial/StepperElement.hpp>
+
+#include <QOlm/QOlm.hpp>
 
 // Qt Header
 #include <QGuiApplication>
@@ -70,6 +73,9 @@ static void Qaterial_registerTypes()
 
     LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
     qaterial::Logger::registerSingleton(*_uri, _major, _minor);
+
+    qaterial::StepperElement::registerToQml();
+    qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>("Qaterial", 1, 0, "StepperModel");
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
