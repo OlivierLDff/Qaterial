@@ -8,10 +8,14 @@
 #include <Qaterial/Logger.hpp>
 
 // Qt Header
-#include <QCoreApplication>  // Call register type at startup when loaded as a dynamic library
+#include <QGuiApplication>
 #include <QDir>
 #include <QFontDatabase>
 #include <QQuickStyle>
+
+#ifdef Q_OS_WIN
+#include <Windows.h>
+#endif
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
@@ -110,3 +114,18 @@ void Utils::registerTypes(const char* uri, const quint8 major, const quint8 mino
 }
 
 void Utils::loadResources() { ::Qaterial_loadResources(); }
+
+// Fix dpi at application startup
+class HighDpiFix
+{
+    HighDpiFix()
+    {
+#ifdef Q_OS_WIN
+        SetProcessDPIAware();  // call before the main event loop
+#endif  // Q_OS_WIN
+        QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    }
+    static HighDpiFix singleton;
+};
+
+HighDpiFix HighDpiFix::singleton;
