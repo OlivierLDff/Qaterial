@@ -3,6 +3,5 @@ import Qaterial 1.0
 
 FlatButton
 {
-    anchors.centerIn: parent
-    text: "Flat Button"
+  text: "Flat Button"
 }
