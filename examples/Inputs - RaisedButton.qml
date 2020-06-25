@@ -3,6 +3,5 @@ import Qaterial 1.0
 
 RaisedButton
 {
-    anchors.centerIn: parent
-    text: "Raised Button"
+  text: "Raised Button"
 }

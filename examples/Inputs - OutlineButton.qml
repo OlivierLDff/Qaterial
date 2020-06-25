@@ -3,6 +3,5 @@ import Qaterial 1.0
 
 OutlineButton
 {
-    anchors.centerIn: parent
-    text: "Outline Button"
+  text: "Outline Button"
 }
