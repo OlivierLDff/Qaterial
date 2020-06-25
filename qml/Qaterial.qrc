@@ -241,6 +241,7 @@
 
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
+        <file>HorizontalStepper.qml</file>
 
         <!-- ICONS -->
         <file>Icons/menu.svg</file>
@@ -266,6 +267,9 @@
 
         <file>Icons/folder-outline.svg</file>
         <file>Icons/sync.svg</file>
+
+        <file>Icons/check-bold.svg</file>
+        <file>Icons/alert-outline.svg</file>
 
     </qresource>
 </RCC>
