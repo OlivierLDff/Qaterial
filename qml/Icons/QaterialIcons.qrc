@@ -2,7 +2,11 @@
 <RCC>
   <qresource prefix="/Qaterial/Icons">
     <file>alert-circle.svg</file>
+    <file>alert-octagram.svg</file>
     <file>alert-outline.svg</file>
+    <file>alien.svg</file>
+    <file>apps.svg</file>
+    <file>battery-charging-100.svg</file>
     <file>calendar-clock.svg</file>
     <file>calendar.svg</file>
     <file>check-bold.svg</file>

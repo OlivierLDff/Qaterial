@@ -8,7 +8,11 @@ import QtQml 2.0
 QtObject
 {
   readonly property string alertCircle: 'qrc:/Qaterial/Icons/alert-circle.svg'
+  readonly property string alertOctagram: 'qrc:/Qaterial/Icons/alert-octagram.svg'
   readonly property string alertOutline: 'qrc:/Qaterial/Icons/alert-outline.svg'
+  readonly property string alien: 'qrc:/Qaterial/Icons/alien.svg'
+  readonly property string apps: 'qrc:/Qaterial/Icons/apps.svg'
+  readonly property string batteryCharging100: 'qrc:/Qaterial/Icons/battery-charging-100.svg'
   readonly property string calendarClock: 'qrc:/Qaterial/Icons/calendar-clock.svg'
   readonly property string calendar: 'qrc:/Qaterial/Icons/calendar.svg'
   readonly property string checkBold: 'qrc:/Qaterial/Icons/check-bold.svg'

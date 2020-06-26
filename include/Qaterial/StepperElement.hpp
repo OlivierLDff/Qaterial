@@ -27,7 +27,6 @@ class StepperElement : public QObject
 public:
     StepperElement(QObject* parent = nullptr) : QObject(parent) {}
 
-public:
     QATERIAL_PROPERTY(QString, text, Text);
     QATERIAL_PROPERTY(bool, done, Done);
     QATERIAL_PROPERTY(bool, optional, Optional);
