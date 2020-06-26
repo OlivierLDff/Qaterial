@@ -70,7 +70,6 @@ function(generate_qrc_alias_qt_object VAR)
       set(PROPERTY_NAME_LIST ${FILENAME_WE})
       # Create a list
       string(REGEX REPLACE "[_ -]" ";" PROPERTY_NAME_LIST ${FILENAME_WE})
-      message(STATUS "PROPERTY_NAME_LIST : ${PROPERTY_NAME_LIST}")
 
       set(PROPERTY_NAME "")
 
@@ -82,7 +81,6 @@ function(generate_qrc_alias_qt_object VAR)
           string(REGEX REPLACE "^.(.*)" "${FIRST_LETTER}\\1" PROPERTY_WORD "${PROPERTY_WORD}")
         endif()
         set(PROPERTY_NAME "${PROPERTY_NAME}${PROPERTY_WORD}")
-        message(STATUS "PROPERTY_NAME ${PROPERTY_NAME}")
         math(EXPR PROPERTY_WORD_INDEX "${PROPERTY_WORD_INDEX}+1")
       endforeach()
 
