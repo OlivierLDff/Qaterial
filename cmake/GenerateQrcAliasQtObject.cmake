@@ -87,7 +87,7 @@ function(generate_qrc_alias_qt_object VAR)
       endforeach()
 
       file(APPEND ${OUT_FILENAME_ABS} "  "
-        "readonly property string ${PROPERTY_NAME}:"
+        "readonly property string ${PROPERTY_NAME}: "
         "'${QRC_PATH}/${FILENAME}'\n")
     endif()
   endforeach()

@@ -50,11 +50,13 @@ public:
     // ─────── LOGGERS NAME ─────────
 public:
     static const char* const UTILS_NAME;
+    static const char* const FILE_NAME;
     static const char* const QATERIAL_NAME;
 
     // ─────── LOGGERS ─────────
 public:
     static const LogPtr UTILS;
+    static const LogPtr FILE;
     static const LogPtr QATERIAL;
 
     // ─────── LIST OF ALL LOGGERS ─────────

@@ -113,14 +113,15 @@ set(QATERIAL_UTILS_SRCS
   include/Qaterial/Export.hpp
   include/Qaterial/Property.hpp
   include/Qaterial/Version.hpp
-  include/Qaterial/Utils.hpp
-  include/Qaterial/Logger.hpp
-  include/Qaterial/StepperElement.hpp
-
   src/Version.cpp
+  include/Qaterial/Utils.hpp
   src/Utils.cpp
+  include/Qaterial/Logger.hpp
   src/Logger.cpp
+  include/Qaterial/StepperElement.hpp
   src/StepperElement.cpp
+  include/Qaterial/TextFile.hpp
+  src/TextFile.cpp
   )
 
 set(QATERIAL_SRCS

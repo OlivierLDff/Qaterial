@@ -21,12 +21,14 @@ static Logger::LogPtr makeLog(Args&&... args)
 }
 
 const char* const Logger::UTILS_NAME = "qaterial.utils";
+const char* const Logger::FILE_NAME = "qaterial.file";
 const char* const Logger::QATERIAL_NAME = "qaterial";
 
 const Logger::LogPtr Logger::UTILS = makeLog(UTILS_NAME);
+const Logger::LogPtr Logger::FILE = makeLog(FILE_NAME);
 const Logger::LogPtr Logger::QATERIAL = makeLog(QATERIAL_NAME);
 
-const Logger::LogList Logger::LOGGERS = {UTILS, QATERIAL};
+const Logger::LogList Logger::LOGGERS = {UTILS, FILE, QATERIAL};
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS

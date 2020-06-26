@@ -7,6 +7,7 @@
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Logger.hpp>
 #include <Qaterial/StepperElement.hpp>
+#include <Qaterial/TextFile.hpp>
 
 #include <QOlm/QOlm.hpp>
 
@@ -74,8 +75,13 @@ static void Qaterial_registerTypes()
     LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
     qaterial::Logger::registerSingleton(*_uri, _major, _minor);
 
-    qaterial::StepperElement::registerToQml();
-    qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>("Qaterial", 1, 0, "StepperModel");
+    LOG_DEV_INFO("Register {}.StepperElement {}.{} to QML", *_uri, _major, _minor);
+    qaterial::StepperElement::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
+    qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>(*_uri, _major, _minor, "StepperModel");
+
+    LOG_DEV_INFO("Register {}.TextFile {}.{} to QML", *_uri, _major, _minor);
+    qaterial::TextFile::registerToQml(*_uri, _major, _minor);
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
