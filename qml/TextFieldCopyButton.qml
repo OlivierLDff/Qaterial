@@ -11,7 +11,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.TextFieldIconButton
 {
-  icon.source: "qrc:/Qaterial/Images/content-copy.svg"
+  icon.source: Qaterial.Icons.contentCopy
   onClicked:
   {
     if(textField)

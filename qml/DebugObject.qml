@@ -39,7 +39,7 @@ Rectangle
       Qaterial.AppBarButton
       {
         id: _expandButton
-        icon.source: _root.expanded ? "qrc:///Qaterial/Images/menu-down.svg" : "qrc:///Qaterial/Images/menu-right.svg"
+        icon.source: _root.expanded ? Qaterial.Icons.menuDown : Qaterial.Icons.menuRight
         backgroundImplicitWidth: Qaterial.Style.dense ? 12 : 16
         backgroundImplicitHeight: Qaterial.Style.dense ? 12 : 16
         leftPadding: 0

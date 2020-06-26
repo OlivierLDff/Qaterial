@@ -89,10 +89,13 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
 
 static void Qaterial_loadResources()
 {
-    LOG_DEV_INFO("Load Qaterial.qrc v{}", qPrintable(qaterial::Version::version().readable()));
-    Q_INIT_RESOURCE(Qaterial);
+    LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
 
-    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/roboto/");
+    Q_INIT_RESOURCE(Qaterial);
+    Q_INIT_RESOURCE(QaterialIcons);
+    Q_INIT_RESOURCE(QaterialFontsRoboto);
+
+    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/Roboto/");
     const QDir dir(robotoPath);
     for(const auto& file: dir.entryList(QDir::Files))
     {

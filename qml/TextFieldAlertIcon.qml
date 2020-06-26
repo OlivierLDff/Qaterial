@@ -13,8 +13,8 @@ Qaterial.TextFieldIcon
 {
   id: _control
   color: Qaterial.Style.errorColor
-  source: "qrc:/Qaterial/Images/alert-circle.svg"
-  onVisibleChanged:
+  source: Qaterial.Icons.alertCircle
+  onVisibleChanged: function()
   {
     if(visible)
         _anim.start()

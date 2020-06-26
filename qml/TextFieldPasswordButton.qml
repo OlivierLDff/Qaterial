@@ -11,6 +11,6 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.TextFieldIconButton
 {
-  icon.source: "qrc:/Qaterial/Images/eye" + (textField && (textField.echoMode !== TextInput.Password) ? "-off" : "") + ".svg"
+  icon.source: textField && (textField.echoMode !== TextInput.Password) ? Qaterial.Icons.eyeOff : Qaterial.Icons.eye
   onClicked: if(textField) textField.echoMode = (textField.echoMode !== TextInput.Password) ? TextInput.Password : TextInput.Normal
 } // TextFieldIconButton

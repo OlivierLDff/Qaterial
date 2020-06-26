@@ -73,11 +73,33 @@ foreach(SOURCE IN ITEMS ${QATERIAL_QML_SRCS})
   source_group("Qml\\${GROUP_PATH}" FILES "${SOURCE}")
 endforeach()
 
-# Add qml to the qtquick compiler
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc)
+include(cmake/GenerateQrcAliasQtObject.cmake)
+include(cmake/GenerateQrc.cmake)
+
+generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
+  SOURCE_DIR qml/Icons
+  NAME qml/Icons.qml
+  PREFIX "Qaterial/Icons"
+  GLOB_EXPRESSION "*.svg"
+  SINGLETON)
+
+qt_generate_qrc(QATERIAL_QML_ICONS_QRC
+  SOURCE_DIR qml/Icons
+  NAME QaterialIcons.qrc
+  PREFIX "Qaterial/Icons"
+  GLOB_EXPRESSION "*.svg")
+
+qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
+  SOURCE_DIR qml/Fonts/Roboto
+  NAME QaterialFontsRoboto.qrc
+  PREFIX "Qaterial/Fonts/Roboto"
+  GLOB_EXPRESSION "*.ttf")
+
+# Add qml to the qtquick compiler (should only be call once per target)
+qtquick_compiler_add_resources(QATERIAL_QML_RES qml/Qaterial.qrc ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC})
 
 # Trick to rerun cmake each time Qaterial.qrc is updated
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial.qrc
+configure_file(qml/Qaterial.qrc
   ${CMAKE_CURRENT_BINARY_DIR}/Qaterial.qrc.junk)
 
 # Dont Run Moc on cpp file generated from qml

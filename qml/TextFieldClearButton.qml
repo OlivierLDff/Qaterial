@@ -11,8 +11,8 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.TextFieldIconButton
 {
-  icon.source: "qrc:/Qaterial/Images/close-circle.svg"
-  onClicked:
+  icon.source: Qaterial.Icons.closeCircle
+  onClicked: function()
   {
   	if(textField) textField.clear()
   	if(textArea) textArea.clear()

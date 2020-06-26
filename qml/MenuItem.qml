@@ -65,7 +65,7 @@ T.MenuItem
     readonly property double width: Qaterial.Style.menuItem.iconWidth
     readonly property double height: Qaterial.Style.menuItem.iconWidth
     readonly property color color: foregroundColor
-    readonly property url source: "qrc:/Qaterial/Images/check.svg"
+    readonly property url source: Qaterial.Icons.check
   } // QtObject
 
   readonly property var radioIcon: QtObject
@@ -73,13 +73,13 @@ T.MenuItem
       readonly property double width: Qaterial.Style.menuItem.iconWidth
       readonly property double height: Qaterial.Style.menuItem.iconWidth
       readonly property color color: foregroundColor
-      readonly property url source: _control.checked ? "qrc:///Qaterial/Images/radiobox-marked.svg" : "qrc:///Qaterial/Images/radiobox-blank.svg"
+      readonly property url source: _control.checked ? Qaterial.Icons.radioboxMarked : Qaterial.Icons.radioboxBlank
   } // QtObject
 
   icon.width: Qaterial.Style.menuItem.iconWidth
   icon.height: Qaterial.Style.menuItem.iconWidth
   icon.color: foregroundColor
-  icon.source: checkable && checked ? "qrc:/Qaterial/Images/check.svg" : ""
+  icon.source: checkable && checked ? Qaterial.Icons.check : ""
 
   property bool clipRipple: true
   property bool forceRipple: false
@@ -115,7 +115,7 @@ T.MenuItem
     visible: _control.subMenu
     mirror: _control.mirrored
     color: _control.foregroundColor
-    source: "qrc:/Qaterial/Images/menu-right.svg"
+    source: Qaterial.Icons.menuRight
   } // ColorIcon
 
   contentItem: Qaterial.IconLabel

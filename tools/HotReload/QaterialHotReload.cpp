@@ -131,8 +131,6 @@ int main(int argc, char* argv[])
 {
     installLoggers();
 
-    // It's important to set the high dip support before creating the gui app
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
@@ -164,5 +162,5 @@ int main(int argc, char* argv[])
 
     // ──── START EVENT LOOP ────
 
-    return app.exec();
+    return QGuiApplication::exec();
 }

@@ -54,7 +54,7 @@ Rectangle
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     iconSize: Qaterial.Style.checkIndicator.iconWidth
-    source: "qrc:/Qaterial/Images/check.svg"
+    source: Qaterial.Icons.check
     color: "white"
 
     scale: checkState === Qt.Checked ? 1 : 0

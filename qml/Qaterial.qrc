@@ -23,38 +23,10 @@
         <file>SplitView.qml</file>
         <file>StackView.qml</file>
 
-        <!-- FONTS -->
-        <file>Fonts/roboto/Roboto-Black.ttf</file>
-        <file>Fonts/roboto/Roboto-BlackItalic.ttf</file>
-        <file>Fonts/roboto/Roboto-Bold.ttf</file>
-        <file>Fonts/roboto/Roboto-BoldItalic.ttf</file>
-        <file>Fonts/roboto/Roboto-Italic.ttf</file>
-        <file>Fonts/roboto/Roboto-Light.ttf</file>
-        <file>Fonts/roboto/Roboto-LightItalic.ttf</file>
-        <file>Fonts/roboto/Roboto-Medium.ttf</file>
-        <file>Fonts/roboto/Roboto-MediumItalic.ttf</file>
-        <file>Fonts/roboto/Roboto-Regular.ttf</file>
-        <file>Fonts/roboto/Roboto-Thin.ttf</file>
-        <file>Fonts/roboto/Roboto-ThinItalic.ttf</file>
-
         <!-- STYLES -->
         <file>Style.qml</file>
         <file>Icons.qml</file>
         <file>StyleSettingsDialog.qml</file>
-
-        <!-- COMPONENTS -->
-        <file>Images/menu-down.svg</file>
-        <file>Images/menu-left.svg</file>
-        <file>Images/menu-right.svg</file>
-        <file>Images/menu-up.svg</file>
-        <file>Images/check.svg</file>
-        <file>Images/alert-circle.svg</file>
-        <file>Images/close-circle.svg</file>
-        <file>Images/content-copy.svg</file>
-        <file>Images/eye.svg</file>
-        <file>Images/eye-off.svg</file>
-        <file>Images/radiobox-blank.svg</file>
-        <file>Images/radiobox-marked.svg</file>
 
         <!-- COMPONENTS / TIMEPICKER -->
         <file>HandClock.qml</file>
@@ -242,34 +214,6 @@
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
         <file>HorizontalStepper.qml</file>
-
-        <!-- ICONS -->
-        <file>Icons/menu.svg</file>
-
-        <file>Icons/calendar.svg</file>
-        <file>Icons/calendar-clock.svg</file>
-        <file>Icons/clock-outline.svg</file>
-
-        <file>Icons/chevron-down.svg</file>
-        <file>Icons/chevron-left.svg</file>
-        <file>Icons/chevron-right.svg</file>
-        <file>Icons/chevron-up.svg</file>
-
-        <file>Icons/format-horizontal-align-center.svg</file>
-        <file>Icons/format-horizontal-align-left.svg</file>
-        <file>Icons/format-horizontal-align-right.svg</file>
-        <file>Icons/format-vertical-align-bottom.svg</file>
-        <file>Icons/format-vertical-align-center.svg</file>
-        <file>Icons/format-vertical-align-top.svg</file>
-
-        <file>Icons/fullscreen.svg</file>
-        <file>Icons/fullscreen-exit.svg</file>
-
-        <file>Icons/folder-outline.svg</file>
-        <file>Icons/sync.svg</file>
-
-        <file>Icons/check-bold.svg</file>
-        <file>Icons/alert-outline.svg</file>
 
     </qresource>
 </RCC>
