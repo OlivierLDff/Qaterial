@@ -20,7 +20,7 @@ Qaterial.TextFieldIconButton
 
   signal accepted(int hour, int minute, bool am)
 
-  icon.source: Qaterial.Icons.clock
+  icon.source: Qaterial.Icons.clockOutline
   onClicked: Qaterial.DialogManager.openFromComponent(_TimePickerDialog)
 
   Component

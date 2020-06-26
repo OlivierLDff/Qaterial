@@ -5,7 +5,7 @@ Row
 {
   Qaterial.Button
   {
-    text: "aazuodhazd"
+    text: "Text Field Button"
     Binding on text
     {
       when: slider.pressed
