@@ -12,10 +12,7 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls.Material 2.12
 import QtQuick.Controls.Material.impl 2.12
 
-// Qaterial
-//import Qaterial.Style 1.12
-//import Qaterial.Core 1.12
-//import Qaterial.Components 1.12
+import Qaterial 1.0 as Qaterial
 
 T.ComboBox
 {
