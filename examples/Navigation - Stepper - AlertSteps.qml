@@ -3,19 +3,25 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
+  width: stepper.vertical ? stepper.width + 10 + _row.width : stepper.width
+  height: stepper.vertical ? stepper.height : stepper.height + _row.height + 10
   Qaterial.HorizontalStepper
   {
     id: stepper
     width: 600
+    //height: 400 //(for vertical: true)
 
     // Dimension properties
     indicatorWidth: 40
-    indicatorHeight: 40
+    indicatorHeight: indicatorWidth
+
+    contentItemWidth: 100
     contentItemHeight: 20
-    indicatorBottomPadding: 0
 
     // Clickable property which allow the user to click on the step to display it
     clickable: true
+    // Vertical property which display vertically the stepper instead of horizontally
+    vertical: false
 
     model: Qaterial.StepperModel
     {
@@ -59,7 +65,7 @@ Item
         Qaterial.ColorIcon
         {
           anchors.centerIn: parent
-          color: "white"
+          color: Qaterial.Style.primaryTextColor()
           source: Qaterial.Icons.check
         } // ColorIcon
       } // Component
@@ -97,6 +103,9 @@ Item
 
     contentItem: Qaterial.Label
     {
+      width: 100
+      height: 20
+
       property Qaterial.StepperElement element
       property int index
       property bool done: element ? element.done : false
@@ -111,13 +120,13 @@ Item
           return done ? element.text : alertMessage
         return element.text
       }
-      horizontalAlignment: Text.AlignHCenter
+      horizontalAlignment: stepper.vertical ? Text.AlignLeft : Text.AlignHCenter
       font.bold: isCurrent
       color:
       {
         if(isAlertStep)
           return Qaterial.Style.red
-        return isCurrent ? Qaterial.Style.accentColor : "white"
+        return isCurrent ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
       }
     } // Label
   } // HorizontalStepper
@@ -125,8 +134,10 @@ Item
   // Buttons allowing to switch and validate steps
   Row
   {
-    x: stepper.width/2 - width/2
-    y: stepper.height + 10
+    id: _row
+
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
+    y: stepper.vertical ? (stepper.height/2 - height/2) : (stepper.height + 10)
     spacing: 10
 
     Qaterial.OutlineButton
