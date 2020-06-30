@@ -3,25 +3,27 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
+  width: stepper.vertical ? stepper.width + 10 + _row.width : stepper.width
+  height: stepper.vertical ? stepper.height : stepper.height + _row.height + 20
   Qaterial.HorizontalStepper
   {
     id: stepper
-    width: 600
+    //width: 600 //(for vertical: false)
+    height: 400
 
     // Dimension properties
-    indicatorWidth: 40
-    indicatorHeight: 40
-    contentItemHeight: 20
-    indicatorBottomPadding: 0
+    // No need because we use default Components
 
     // Clickable property which allow the user to click on the step to display it
     clickable: true
+    // Vertical property which display vertically the stepper instead of horizontally
+    vertical: true
 
     model: Qaterial.StepperModel
     {
       Qaterial.StepperElement { text: "Point N°1" }
       Qaterial.StepperElement { text: "Point N°2, Optional"; optional: true }
-      Qaterial.StepperElement { text: "Point N°3, Optional"; done: true; optional: true }
+      Qaterial.StepperElement { text: "Point N°3, Optional"; done: false; optional: true }
       Qaterial.StepperElement { text: "Point N°4" }
     } // StepperModel
 
@@ -34,8 +36,10 @@ Item
   // Buttons allowing to switch and validate steps
   Row
   {
-    x: stepper.width/2 - width/2
-    y: stepper.height + 10
+    id: _row
+
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
+    y: stepper.vertical ? (stepper.height/2 - height/2) : (stepper.height + 10)
     spacing: 10
 
     Qaterial.OutlineButton

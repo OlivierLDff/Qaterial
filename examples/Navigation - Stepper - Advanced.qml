@@ -3,24 +3,26 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
-  width: stepper.width
-  height: stepper.height
+  width: stepper.vertical ? stepper.width + 10 + _row.width : stepper.width
+  height: stepper.vertical ? stepper.height : stepper.height + supportingTextLabel.height + _row.height + 20
 
   Qaterial.HorizontalStepper
   {
     id: stepper
     y:10
-    width: 600
 
     readonly property int indicatorSize: 48
 
     // Dimension properties
     indicatorWidth: indicatorSize
     indicatorHeight: indicatorSize
-    contentItemHeight: Qaterial.Style.rawButton.minHeight
-    indicatorBottomPadding: 0
 
+    contentItemWidth: 100
+    contentItemHeight: 20
+
+    // General properties
     clickable: true
+    vertical: false
 
     model: Qaterial.StepperModel
     {
@@ -107,6 +109,9 @@ Item
 
     contentItem: Qaterial.Label
     {
+      width: 100
+      height: 20
+
       property Qaterial.StepperElement element
       property int index
       property bool done: element ? element.done : false
@@ -122,11 +127,12 @@ Item
         return element.text
       }
       font.bold: isCurrent
+      horizontalAlignment: stepper.vertical ? Text.AlignLeft : Text.AlignHCenter
       color:
       {
         if(isAlertStep)
           return Qaterial.Style.red
-        return isCurrent ? Qaterial.Style.accentColor : "white"
+        return isCurrent ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
       }
     } // Label
   } // HorizontalStepper
@@ -135,19 +141,27 @@ Item
   Qaterial.Label
   {
     id: supportingTextLabel
-    width: stepper.width
-    y: stepper.height + 10
+
+    width: stepper.vertical ? _row.width : (stepper.width - 20)
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
+    y: stepper.vertical ? (_row.y  - height) : (stepper.height + 10)
+
     text: stepper.currentElement.supportingText
     textType: Qaterial.Style.TextType.Body2
+    horizontalAlignment: Text.AlignHCenter
+
     wrapMode: Text.Wrap
     elide: Text.ElideRight
-    maximumLineCount: 3
+    maximumLineCount: stepper.vertical ? 10 : 3
   } // Label
 
   // Buttons allowing to switch and validate steps
   Row
   {
-    y: stepper.height + supportingTextLabel.height + 20
+    id: _row
+
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
+    y: stepper.vertical ? (stepper.height/2 - height/2) : (stepper.height + supportingTextLabel.height + 20)
     spacing: 10
 
     Qaterial.OutlineButton
@@ -204,7 +218,6 @@ Item
             stepper.currentElement.done = !stepper.currentElement.done
           }
         }
-
         // When Done is clicked, go to next step
         if(stepper.currentIndex < stepper.count-1 && done)
           stepper.currentIndex ++

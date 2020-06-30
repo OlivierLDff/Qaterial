@@ -3,21 +3,28 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
+  width: stepper.width
+  height: stepper.height
   Qaterial.HorizontalStepper
   {
     id: stepper
 
-    // HorizontalStepper need a width to position his elements but has an implicitHeight
-    width: 600
+    // Stepper has implicitWidth / Height
 
     // Dimension properties
     indicatorWidth: 64
-    indicatorHeight: 64
+    indicatorHeight: indicatorWidth
+
+    contentItemWidth: 150
     contentItemHeight: 32
-    indicatorBottomPadding: 0
+
+    separatorHeight: 10
+    separatorWidth: 10
 
     // Clickable property which allow the user to click on the step to display it
-    clickable: true
+    clickable: false
+    // Vertical property which display vertically the stepper instead of horizontally
+    vertical: false
 
     // HorizontalStepper model is a StepperModel Item which is a list of StepperElement
     // Those StepperElement can have properties like text, done, alertMessage, etc ...
@@ -33,6 +40,7 @@ Item
     {
       color: Qaterial.Style.accentColor
       height: 10
+      width: 10
     }
     indicator: Rectangle
     {
