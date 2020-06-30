@@ -31,7 +31,7 @@ Row
     }
     Qaterial.MiniFabButton
     {
-      icon.source: Qaterial.Icons.clock
+      icon.source: Qaterial.Icons.clockOutline
     }
   }
   Column
@@ -59,7 +59,7 @@ Row
     }
     Qaterial.FabButton
     {
-      icon.source: Qaterial.Icons.clock
+      icon.source: Qaterial.Icons.clockOutline
       flat: true
       highlighted: false
     }
@@ -99,7 +99,7 @@ Row
     Qaterial.ExtendedFabButton
     {
       anchors.horizontalCenter: parent.horizontalCenter
-      icon.source: Qaterial.Icons.clock
+      icon.source: Qaterial.Icons.clockOutline
       flat: true
       highlighted: false
       text: "Extended"
