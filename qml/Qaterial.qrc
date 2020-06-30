@@ -219,7 +219,7 @@
 
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
-        <file>HorizontalStepper.qml</file>
+        <file>Stepper.qml</file>
 
     </qresource>
 </RCC>

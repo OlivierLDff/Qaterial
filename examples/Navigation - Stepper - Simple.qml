@@ -5,7 +5,8 @@ Item
 {
   width: stepper.width
   height: stepper.height
-  Qaterial.HorizontalStepper
+
+  Qaterial.Stepper
   {
     id: stepper
 
