@@ -5,7 +5,8 @@ Item
 {
   width: stepper.vertical ? stepper.width + 10 + _row.width : stepper.width
   height: stepper.vertical ? stepper.height : stepper.height + _row.height + 20
-  Qaterial.HorizontalStepper
+
+  Qaterial.Stepper
   {
     id: stepper
     //width: 600 //(for vertical: false)

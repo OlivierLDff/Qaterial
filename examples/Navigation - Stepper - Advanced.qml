@@ -6,7 +6,7 @@ Item
   width: stepper.vertical ? stepper.width + 10 + _row.width : stepper.width
   height: stepper.vertical ? stepper.height : stepper.height + supportingTextLabel.height + _row.height + 20
 
-  Qaterial.HorizontalStepper
+  Qaterial.Stepper
   {
     id: stepper
     y:10

@@ -226,4 +226,4 @@ SliderHandle                1.0 SliderHandle.qml
 SliderDelegate              1.0 SliderDelegate.qml
 
 RectangleAreaHandler        1.0 RectangleAreaHandler.qml
-HorizontalStepper           1.0 HorizontalStepper.qml
+Stepper                     1.0 Stepper.qml
