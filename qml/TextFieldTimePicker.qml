@@ -77,7 +77,6 @@ Qaterial.TextField
       return
     }
     const characters = match.map(String);
-    console.log(`characters : "${characters}"`)
 
     // Format new text and place cursor
 
