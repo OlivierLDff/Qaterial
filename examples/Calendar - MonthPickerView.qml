@@ -3,7 +3,6 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.CalendarMonthPickerView
 {
-  id: _view
   month: Qaterial.Calendar.Month.April
 
   //Width min : 100; Height min : 35

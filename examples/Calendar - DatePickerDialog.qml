@@ -10,7 +10,7 @@ Qaterial.DatePickerDialog
   onMonthChanged: () => console.log(`Grid Changed : month :${Qaterial.Calendar.monthToString(month)} & year : ${year}`)
   onYearChanged: () => console.log(`Grid Changed : month :${Qaterial.Calendar.monthToString(month)} & year : ${year}`)
 
-  onAccepted: () => console.log(`User picked ${date.toString()}`)
+  onAccepted: (date) => console.log(`User picked ${date.toString()}`)
   onRejected: () => console.log(`Rejected`)
 
   Component.onCompleted: open()
