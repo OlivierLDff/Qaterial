@@ -24,7 +24,7 @@ Qaterial.ModalDialog
   property bool yearGridActive: false
   property bool calendarViewActive: true
 
-  padding : 0
+  padding: 0
 
   standardButtons: Dialog.Ok | Dialog.Cancel
 
@@ -46,12 +46,10 @@ Qaterial.ModalDialog
     width: 500
 
     text: isNaN(root.date) ? `Pick a Date` : printDate()
-  }
+  } // CalendarDateDisplay
 
   contentItem: Item
   {
-    implicitHeight : _calendarView.implicitHeight
-    implicitWidth: _calendarView.implicitWidth
     Loader
     {
       sourceComponent:
@@ -69,13 +67,13 @@ Qaterial.ModalDialog
           return _calendarMonthPicker
         }
       }
-    }
+    } // Loader
     Component
     {
       id: _calendarYearPicker
       Qaterial.CalendarYearPickerView
       {
-       clip : true
+       clip: true
 
        year: root.year
        startYear: root.from.getFullYear()
@@ -97,16 +95,14 @@ Qaterial.ModalDialog
        root.calendarViewActive = true
        root.yearGridActive = false
        }
-      }
-    }
+      } // CalendarYearPickerView
+    } // Component
 
     Component
     {
       id: _calendarMonthPicker
       Qaterial.CalendarMonthPickerView
       {
-        id: _calendarMonthPicker
-
         clip: true
 
         month: root.month
@@ -127,30 +123,28 @@ Qaterial.ModalDialog
           root.calendarViewActive = true
           root.monthGridActive = false
         }
-      }
-    }
+      } // CalendarMonthPickerView
+    } // Component
 
     Component
     {
       id: _calendarView
       Qaterial.CalendarView
       {
-        id: _calendarView
-
         visible: root.calendarViewActive
-        year : root.year
+        year: root.year
         from: root.from
         to: root.to
 
         clip: true
         Binding on year
         {
-          value : root.year
+          value: root.year
         }
         month: root.month
         Binding on month
         {
-          value : root.month
+          value: root.month
         }
         date: root.date
 
@@ -178,9 +172,7 @@ Qaterial.ModalDialog
           root.date  = date
           root.accepted(date)
         }
-      }
-    }
-  }
-}
-
-
+      } // CalendarView
+    } // Component
+  } // Item
+} // ModalDialog

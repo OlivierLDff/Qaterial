@@ -78,7 +78,7 @@ Dialog providing a simple way to pick an Hour. The clock style can be changed fr
 
 ### TextFieldTimePicker
 
-This TextField allows the user to select an EU hour by editing the text in the field or by picking an hour in a TimePickerDialog.
+This TextField allows the user to select an hour by editing the text in the field or by picking an hour in a TimePickerDialog.
 
 **Properties**
 
