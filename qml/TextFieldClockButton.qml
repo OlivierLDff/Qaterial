@@ -18,7 +18,7 @@ Qaterial.TextFieldIconButton
   property bool styleAm
   property bool am
 
-  signal accepted(int hour, int minute, bool am)
+  signal hourAccepted(int hour, int minute, bool am)
 
   icon.source: Qaterial.Icons.clockOutline
   onClicked: Qaterial.DialogManager.openFromComponent(_TimePickerDialog)
@@ -32,7 +32,7 @@ Qaterial.TextFieldIconButton
       minute: root.minute
       styleAm: root.styleAm
       am: root.am
-      onAccepted: () => root.accepted(hour, minute, am)
+      onAccepted: () => root.hourAccepted(hour, minute, am)
       Component.onCompleted: open()
     }
   } // Component
