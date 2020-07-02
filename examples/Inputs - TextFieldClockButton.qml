@@ -13,5 +13,5 @@ Qaterial.TextFieldClockButton
   am: false // Pm
 
   // Listen to user changes
-  onAccepted: (hour, minute, am) => console.log(`User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`)
+  onHourAccepted: (hour, minute, am) => console.log(`User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`)
 }

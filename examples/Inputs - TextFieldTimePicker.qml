@@ -3,7 +3,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.TextFieldTimePicker
 {
-  width: 500
+  width: 250
   // Default time showed when the TextFieldClockButton is clicked
   hour: 15
   minute: 30
