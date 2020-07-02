@@ -1,6 +1,8 @@
 set(QATERIAL_HOTRELOAD QaterialHotReload)
 message(STATUS "Add Example: ${QATERIAL_HOTRELOAD}")
 
+include(cmake/FetchSortFilterProxyModel.cmake)
+
 qtquick_compiler_add_resources(QATERIAL_HOTRELOAD_QML_RES QaterialHotReload.qrc)
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/QaterialHotReload.qrc
@@ -17,7 +19,7 @@ add_executable(${QATERIAL_HOTRELOAD} ${QATERIAL_HOTRELOAD_PLATFORM_TARGET}
   ${QATERIAL_HOTRELOAD_QML_RES}
   ${QATERIAL_HOTRELOAD_PLATFORM_SRC}
 )
-target_link_libraries(${QATERIAL_HOTRELOAD} PRIVATE Qaterial)
+target_link_libraries(${QATERIAL_HOTRELOAD} PRIVATE Qaterial SortFilterProxyModel)
 set_target_properties(${QATERIAL_HOTRELOAD} PROPERTIES
   FOLDER "${QATERIAL_FOLDER_PREFIX}/HotReload"
   AUTORCC TRUE

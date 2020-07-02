@@ -22,6 +22,7 @@ import Qt.labs.platform 1.0
 import Qt.labs.qmlmodels 1.0
 
 import Qaterial 1.0 as Qaterial
+import SortFilterProxyModel 1.0 as SortFilterProxyModel
 
 Qaterial.ApplicationWindow
 {

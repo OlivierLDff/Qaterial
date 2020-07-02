@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Qt.labs.folderlistmodel 2.14
-//import SortFilterProxyModel 0.2
 
+import SortFilterProxyModel 1.0
 import Qaterial 1.0 as Qaterial
 
 Item
@@ -85,6 +85,6 @@ Item
     y: parent.height - 10 - height
     width: 250
     title: "Search Icon"
-    placeholderText: "Type a keyword for what you search"
+    placeholderText: "Keyword"
   }
 }
