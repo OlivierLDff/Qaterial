@@ -2,6 +2,7 @@
 
 // Oliv Qt
 #include <Qaterial/Qaterial.hpp>
+#include <SortFilterProxyModel/SortFilterProxyModel.hpp>
 
 // spdlog
 #ifdef WIN32
@@ -150,6 +151,7 @@ int main(int argc, char* argv[])
     qaterial::Utils::loadResources();
     qaterial::Utils::registerTypes();
     qaterial::HotReload::registerSingleton();
+    qqsfpm::utils::registerTypes();
 
     // Load QaterialHotReload
     Q_INIT_RESOURCE(QaterialHotReload);
