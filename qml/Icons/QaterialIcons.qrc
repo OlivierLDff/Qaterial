@@ -2,12 +2,27 @@
 <RCC>
   <qresource prefix="/Qaterial/Icons">
     <file>account.svg</file>
+    <file>alert-circle-outline.svg</file>
     <file>alert-circle.svg</file>
     <file>alert-octagram.svg</file>
     <file>alert-outline.svg</file>
     <file>alien.svg</file>
+    <file>alphabetical-variant.svg</file>
     <file>apps.svg</file>
+    <file>arrow-collapse.svg</file>
+    <file>arrow-expand.svg</file>
+    <file>battery-charging-0.svg</file>
+    <file>battery-charging-10.svg</file>
     <file>battery-charging-100.svg</file>
+    <file>battery-charging-50.svg</file>
+    <file>bell-cancel.svg</file>
+    <file>bell-off.svg</file>
+    <file>bell.svg</file>
+    <file>bluetooth-connect.svg</file>
+    <file>bluetooth-off.svg</file>
+    <file>bluetooth-settings.svg</file>
+    <file>bluetooth.svg</file>
+    <file>border-color-pen.svg</file>
     <file>calendar-clock.svg</file>
     <file>calendar.svg</file>
     <file>check-bold.svg</file>
@@ -18,12 +33,19 @@
     <file>chevron-up.svg</file>
     <file>clock-outline.svg</file>
     <file>close-circle.svg</file>
+    <file>cloud-download.svg</file>
+    <file>cloud-outline.svg</file>
+    <file>cloud-upload.svg</file>
     <file>content-copy.svg</file>
     <file>content-cut.svg</file>
     <file>content-duplicate.svg</file>
     <file>content-paste.svg</file>
     <file>content-save-alert-outline.svg</file>
     <file>content-save-outline.svg</file>
+    <file>currency-eur-off.svg</file>
+    <file>currency-eur.svg</file>
+    <file>currency-usd-off.svg</file>
+    <file>currency-usd.svg</file>
     <file>email.svg</file>
     <file>eye-off.svg</file>
     <file>eye.svg</file>
@@ -37,14 +59,43 @@
     <file>format-vertical-align-top.svg</file>
     <file>fullscreen-exit.svg</file>
     <file>fullscreen.svg</file>
+    <file>hammer-wrench-tools.svg</file>
+    <file>menu-dots-horizontal.svg</file>
+    <file>menu-dots-vertical.svg</file>
     <file>menu-down.svg</file>
     <file>menu-left.svg</file>
     <file>menu-right.svg</file>
     <file>menu-up.svg</file>
     <file>menu.svg</file>
+    <file>microsoft-windows.svg</file>
+    <file>numeric-0.svg</file>
+    <file>numeric-1.svg</file>
+    <file>numeric-123.svg</file>
+    <file>numeric-2.svg</file>
+    <file>numeric-3.svg</file>
+    <file>numeric-4.svg</file>
+    <file>numeric-5.svg</file>
+    <file>numeric-6.svg</file>
+    <file>numeric-7.svg</file>
+    <file>numeric-8.svg</file>
+    <file>numeric-9-plus.svg</file>
+    <file>numeric-9.svg</file>
+    <file>palette-color.svg</file>
     <file>phone.svg</file>
     <file>radiobox-blank.svg</file>
     <file>radiobox-marked.svg</file>
+    <file>reply-arrow.svg</file>
     <file>sync.svg</file>
+    <file>timer-sand-empty.svg</file>
+    <file>timer-sand.svg</file>
+    <file>tooltip-outline.svg</file>
+    <file>update-clock.svg</file>
+    <file>volume-high.svg</file>
+    <file>volume-low.svg</file>
+    <file>volume-medium.svg</file>
+    <file>volume-minus.svg</file>
+    <file>volume-mute.svg</file>
+    <file>volume-off.svg</file>
+    <file>volume-plus.svg</file>
   </qresource>
 </RCC>

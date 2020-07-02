@@ -65,6 +65,7 @@ find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
 include(cmake/FetchSpdlog.cmake)
 include(cmake/FetchQOlm.cmake)
+#include(cmake/FetchSortFilterProxyModel.cmake)
 
 # ───── QML SOURCES ─────
 
@@ -154,6 +155,7 @@ endif()
 target_link_libraries(${QATERIAL_TARGET}      PUBLIC
   spdlog
   QOlm
+#  SortFilterProxyModel
   Qt5::Core
   Qt5::Gui
   Qt5::Svg
