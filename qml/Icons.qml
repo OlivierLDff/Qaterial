@@ -7,6 +7,7 @@ import QtQml 2.0
 
 QtObject
 {
+  readonly property string account: 'qrc:/Qaterial/Icons/account.svg'
   readonly property string alertCircle: 'qrc:/Qaterial/Icons/alert-circle.svg'
   readonly property string alertOctagram: 'qrc:/Qaterial/Icons/alert-octagram.svg'
   readonly property string alertOutline: 'qrc:/Qaterial/Icons/alert-outline.svg'
@@ -29,6 +30,7 @@ QtObject
   readonly property string contentPaste: 'qrc:/Qaterial/Icons/content-paste.svg'
   readonly property string contentSaveAlertOutline: 'qrc:/Qaterial/Icons/content-save-alert-outline.svg'
   readonly property string contentSaveOutline: 'qrc:/Qaterial/Icons/content-save-outline.svg'
+  readonly property string email: 'qrc:/Qaterial/Icons/email.svg'
   readonly property string eyeOff: 'qrc:/Qaterial/Icons/eye-off.svg'
   readonly property string eye: 'qrc:/Qaterial/Icons/eye.svg'
   readonly property string folderOpenOutline: 'qrc:/Qaterial/Icons/folder-open-outline.svg'
@@ -46,6 +48,7 @@ QtObject
   readonly property string menuRight: 'qrc:/Qaterial/Icons/menu-right.svg'
   readonly property string menuUp: 'qrc:/Qaterial/Icons/menu-up.svg'
   readonly property string menu: 'qrc:/Qaterial/Icons/menu.svg'
+  readonly property string phone: 'qrc:/Qaterial/Icons/phone.svg'
   readonly property string radioboxBlank: 'qrc:/Qaterial/Icons/radiobox-blank.svg'
   readonly property string radioboxMarked: 'qrc:/Qaterial/Icons/radiobox-marked.svg'
   readonly property string sync: 'qrc:/Qaterial/Icons/sync.svg'

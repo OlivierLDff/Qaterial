@@ -53,7 +53,7 @@ Qaterial.TextField
       styleAm: root.styleAm
       am: root.am
 
-      onAccepted: function(hour, minute, am)
+      onHourAccepted: function(hour, minute, am)
       {
         root.hour = hour
         root.minute = minute

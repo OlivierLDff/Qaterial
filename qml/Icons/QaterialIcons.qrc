@@ -1,6 +1,7 @@
 <!-- File auto generated with CMake qt_generate_qrc. Everything written here will be lost. -->
 <RCC>
   <qresource prefix="/Qaterial/Icons">
+    <file>account.svg</file>
     <file>alert-circle.svg</file>
     <file>alert-octagram.svg</file>
     <file>alert-outline.svg</file>
@@ -23,6 +24,7 @@
     <file>content-paste.svg</file>
     <file>content-save-alert-outline.svg</file>
     <file>content-save-outline.svg</file>
+    <file>email.svg</file>
     <file>eye-off.svg</file>
     <file>eye.svg</file>
     <file>folder-open-outline.svg</file>
@@ -40,6 +42,7 @@
     <file>menu-right.svg</file>
     <file>menu-up.svg</file>
     <file>menu.svg</file>
+    <file>phone.svg</file>
     <file>radiobox-blank.svg</file>
     <file>radiobox-marked.svg</file>
     <file>sync.svg</file>

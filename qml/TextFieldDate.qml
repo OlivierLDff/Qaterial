@@ -45,7 +45,6 @@ Qaterial.TextField
       return
     }
     const characters = match.map(String);
-    console.log(`characters : "${characters}"`)
 
     if(characters.length === 1)
     {
@@ -170,7 +169,7 @@ Qaterial.TextField
       }
 
     }
-    if(acceptableInput && dateOutOfBound)
+    if(acceptableInput && !dateOutOfBound)
     {
       date = new Date(characters[2],characters[1]-1,characters[0])
       accepted(date)

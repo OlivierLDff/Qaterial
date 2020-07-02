@@ -9,7 +9,7 @@ Row
   }
   Qaterial.AppBarButton
   {
-    icon.source: Qaterial.Icons.clock
+    icon.source: Qaterial.Icons.clockOutline
     enabled: false
   }
 }
