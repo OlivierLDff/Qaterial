@@ -1,0 +1,52 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  Build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macOS-latest, ubuntu-latest]
+        version: ['5.15.0']
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: lukka/get-cmake@latest
+
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+          key: ${{ runner.os }}-QtCache-${{ matrix.version }}
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: ${{ matrix.version }}
+          dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+
+      - name: Configure
+        run: |
+          mkdir -p build
+          cmake -DQATERIAL_ENABLE_TOOLS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
+        shell: bash
+
+      - name: Build Qaterial
+        run: cmake --build build --target "Qaterial" --config "Release" -j
+
+      - name: Build QaterialHotReload
+        run: cmake --build build --target "QaterialHotReload" --config "Release" -j
+
+      - name: Build QaterialHotReload Installer
+        run: cmake --build build --target "QaterialHotReloadInstallerX64" --config "Release" -j
+        if: contains(matrix.os, 'windows')
+
+      - name: Upload QaterialHotReload Installer
+        uses: actions/upload-artifact@v2
+        with:
+          name: Qaterial HotReloader Installer X64 Windows (${{ matrix.version }})
+          path: build/tools/HotReload/QaterialHotReloadInstallerX64Release.exe
+        if: contains(matrix.os, 'windows')

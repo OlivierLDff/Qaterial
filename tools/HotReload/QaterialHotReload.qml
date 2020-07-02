@@ -1,19 +1,19 @@
 // Qt
 
-import QtQml 2.14
-import QtQml.Models 2.14
-import QtQml.StateMachine 1.14
+import QtQml 2.15
+import QtQml.Models 2.15
+import QtQml.StateMachine 1.15
 
-import QtQuick 2.14
-import QtQuick.Controls 2.14
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Window 2.2
-import QtQuick.Layouts 1.14
-import QtQuick.Extras 1.4
-//import QtQuick.Shapes 1.14
+import QtQuick.Layouts 1.15
+import QtQuick.Extras 1.2
+import QtQuick.Shapes 1.15
 
 import QtQuick.Dialogs 1.3 as QQ1D
 
-import QtGraphicalEffects 1.14
+import QtGraphicalEffects 1.15
 
 import Qt.labs.animation 1.0
 import Qt.labs.calendar 1.0

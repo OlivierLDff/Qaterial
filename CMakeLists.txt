@@ -29,6 +29,10 @@ set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_TOOLS OFF CACHE BOOL "Build Qaterial test executable")
+set(QATERIAL_ENABLE_PCH ON CACHE BOOL
+ "Enable precompile headers support for 'Qaterial'. \"
+ Only work if CMake support 'target_precompile_headers'. \"
+ This can speed up compilation time.")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -144,6 +148,9 @@ endif()
 
 target_compile_features(${QATERIAL_TARGET}    PUBLIC cxx_std_11)
 target_include_directories(${QATERIAL_TARGET} PUBLIC include)
+if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
+  target_precompile_headers(${QATERIAL_TARGET} PRIVATE include/Qaterial/Pch/Pch.hpp)
+endif()
 target_link_libraries(${QATERIAL_TARGET}      PUBLIC
   spdlog
   QOlm
