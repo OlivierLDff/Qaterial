@@ -1,10 +1,11 @@
 import QtQuick 2.0
 import Qt.labs.folderlistmodel 2.14
+import QtQuick.Controls 2.12
 import Qaterial 1.0 as Qaterial
 
 Column
 {
-  width: 500
+  width: 520
 
   GridView
   {
@@ -17,21 +18,29 @@ Column
     cellWidth: 50
     cellHeight: 50
 
+    ScrollBar.vertical: Qaterial.ScrollBar { x: 32; policy: ScrollBar.AlwaysOn }
+
     Timer
     {
+      id: delaySearch
       interval: 100
-      repeat: true
-      running: true
-      onTriggered: folderModel.iconSearch = textField.text
+      onTriggered: function()
+      {
+        const words = textField.text.split(' ')
+        let filter = '*'
+        words.forEach((word) => filter += `${word.toLowerCase()}*`)
+        console.log(`filter: ${filter}`)
+        folderModel.nameFilters = [`${filter}.svg`]
+      }
     } // Timer
 
     model: FolderListModel
     {
       id: folderModel
-      folder: "qrc:/Qaterial/Icons/"
-      nameFilters: [`*${iconSearch}*.svg`]
+      folder: 'qrc:/Qaterial/Icons/'
+      nameFilters: ['*.svg']
 
-      property string iconSearch
+      //property string iconSearch
     } // FolderListModel
 
     delegate: Qaterial.AppBarButton
@@ -78,5 +87,7 @@ Column
     leadingIconSource: Qaterial.Icons.magnify
     leadingIconInline: true
     helperText: "Use * as a wild card"
+
+    onTextEdited: () => delaySearch.start()
   } // TextField
 } // Item
