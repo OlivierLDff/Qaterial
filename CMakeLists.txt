@@ -34,6 +34,8 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
 
+set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
+
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -79,19 +81,20 @@ endforeach()
 
 include(cmake/GenerateQrcAliasQtObject.cmake)
 include(cmake/GenerateQrc.cmake)
+include(cmake/FetchMaterialDesignIcons.cmake)
 
 generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
-  SOURCE_DIR qml/Icons
+  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
   NAME qml/Icons.qml
   PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION "*.svg"
+  GLOB_EXPRESSION ${QATERIAL_ICONS}
   SINGLETON)
 
 qt_generate_qrc(QATERIAL_QML_ICONS_QRC
-  SOURCE_DIR qml/Icons
+  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
   NAME QaterialIcons.qrc
   PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION "*.svg")
+  GLOB_EXPRESSION ${QATERIAL_ICONS})
 
 qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
   SOURCE_DIR qml/Fonts/Roboto

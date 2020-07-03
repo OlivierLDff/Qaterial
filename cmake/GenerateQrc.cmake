@@ -25,9 +25,8 @@ function(qt_generate_qrc VAR)
   set(QT_QRC_ONE_VALUE_ARG PREFIX
     SOURCE_DIR
     NAME
-    GLOB_EXPRESSION
     )
-  set(QT_QRC_MULTI_VALUE_ARG)
+  set(QT_QRC_MULTI_VALUE_ARG GLOB_EXPRESSION)
 
   # parse the macro arguments
   cmake_parse_arguments(ARGGEN "${QT_QRC_OPTIONS}" "${QT_QRC_ONE_VALUE_ARG}" "${QT_QRC_MULTI_VALUE_ARG}" ${ARGN})
@@ -42,7 +41,9 @@ function(qt_generate_qrc VAR)
     set(ARGGEN_GLOB_EXPRESSION "*")
   endif()
 
-  file(GLOB RES_FILES "${ARGGEN_SOURCE_DIR}/${ARGGEN_GLOB_EXPRESSION}")
+  list(TRANSFORM ARGGEN_GLOB_EXPRESSION PREPEND "${ARGGEN_SOURCE_DIR}/")
+
+  file(GLOB RES_FILES ${ARGGEN_GLOB_EXPRESSION})
 
   file(WRITE ${OUT_FILENAME_ABS}
     "<!-- File auto generated with CMake qt_generate_qrc. Everything written here will be lost. -->\n"

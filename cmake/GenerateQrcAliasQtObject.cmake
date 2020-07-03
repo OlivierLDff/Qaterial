@@ -26,9 +26,8 @@ function(generate_qrc_alias_qt_object VAR)
   set(QT_QRC_ONE_VALUE_ARG PREFIX
     SOURCE_DIR
     NAME
-    GLOB_EXPRESSION
     )
-  set(QT_QRC_MULTI_VALUE_ARG)
+  set(QT_QRC_MULTI_VALUE_ARG GLOB_EXPRESSION)
 
   # parse the macro arguments
   cmake_parse_arguments(ARGGEN "${QT_QRC_OPTIONS}" "${QT_QRC_ONE_VALUE_ARG}" "${QT_QRC_MULTI_VALUE_ARG}" ${ARGN})
@@ -43,8 +42,10 @@ function(generate_qrc_alias_qt_object VAR)
     set(ARGGEN_GLOB_EXPRESSION "*")
   endif()
 
+  list(TRANSFORM ARGGEN_GLOB_EXPRESSION PREPEND "${ARGGEN_SOURCE_DIR}/")
+
   # Fetch file that are going to be turned into properties
-  file(GLOB RES_FILES "${ARGGEN_SOURCE_DIR}/${ARGGEN_GLOB_EXPRESSION}")
+  file(GLOB RES_FILES ${ARGGEN_GLOB_EXPRESSION})
 
   # Write Header
   file(WRITE ${OUT_FILENAME_ABS}
@@ -87,6 +88,12 @@ function(generate_qrc_alias_qt_object VAR)
         set(PROPERTY_NAME "${PROPERTY_NAME}${PROPERTY_WORD}")
         math(EXPR PROPERTY_WORD_INDEX "${PROPERTY_WORD_INDEX}+1")
       endforeach()
+
+      set(FORBIDDEN_PROPERTY_WORDS id index model modelData do if in for let new try var case else enum eval null this true void with await break catch class const false super throw while yield delete export import public return static switch typeof default extends finally package private continue debugger function arguments interface protected implements instanceof)
+
+      if (${PROPERTY_NAME} IN_LIST FORBIDDEN_PROPERTY_WORDS)
+        set(PROPERTY_NAME ${PROPERTY_NAME}_)
+      endif()
 
       file(APPEND ${OUT_FILENAME_ABS} "  "
         "readonly property string ${PROPERTY_NAME}: "
