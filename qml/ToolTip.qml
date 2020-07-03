@@ -14,14 +14,14 @@ import Qaterial 1.0 as Qaterial
 T.ToolTip
 {
 
-  id: _control
+  id: control
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
   property double backgroupRadius: Qaterial.Style.toolTip.radius
   property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body1
 
-  x: parent ? (parent.width - implicitWidth) / 2 : 0
-  y: -implicitHeight - margins/2
+  x: parent ? (parent.width - width) / 2 : 0
+  y: -height - margins/2
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                           implicitContentWidth + leftPadding + rightPadding)
@@ -48,19 +48,14 @@ T.ToolTip
 
   contentItem: Qaterial.Label
   {
-    text: _control.text
+    text: control.text
     wrapMode: Text.Wrap
     color: Qaterial.Style.snackbarTextColor()
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
-    textType: _control.textType
+    textType: control.textType
 
-    // Qaterial.DebugRectangle
-    // {
-    //   anchors.fill: parent
-    //   border.color: "green"
-    //   visible: _control.drawline
-    // } // DebugRectangle
+    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green"; visible: control.drawline } // DebugRectangle
   } // Label
 
   background: Rectangle
@@ -68,13 +63,8 @@ T.ToolTip
     implicitHeight: Qaterial.Style.toolTip.implicitHeight
     color: Qaterial.Style.snackbarColor()
     opacity: Qaterial.Style.toolTip.opacity
-    radius: _control.backgroupRadius
+    radius: control.backgroupRadius
 
-    // Qaterial.DebugRectangle
-    // {
-    //   anchors.fill: parent
-    //   border.color: "pink"
-    //   visible: _control.drawline
-    // } // DebugRectangle
+    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink"; visible: control.drawline } // DebugRectangle
   } // Rectangle
 } // ToolTip
