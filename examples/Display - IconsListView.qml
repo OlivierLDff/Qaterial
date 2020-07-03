@@ -6,31 +6,6 @@ Column
 {
   width: 500
 
-  function fileNameToProperty(str)
-  {
-    // snake to camel
-    str = str.replace( /([-_][a-z0-9])/g,
-        (group) => group.toUpperCase()
-                    .replace('-', '')
-                    .replace('_', '')
-    );
-
-    // remove extension
-    str = str.replace(/\.[^/.]+$/, "")
-
-    // append _ to forbidden keywords
-    if(forbiddenKeywords.includes(str))
-      return `${str}_`
-    return str
-  }
-
-  readonly property var forbiddenKeywords: ['id','index','model','modelData','do','if','in','for','let','new','try','var','case','else','enum','eval','null','this','true','void','with','await','break','catch','class','const','false','super','throw','while','yield','delete','export','import','public','return','static','switch','typeof','default','extends','finally','package','private','continue','debugger','function','arguments','interface','protected','implements','instanceof']
-
-  function isAmongString(searchvalue, string)
-  {
-    return string.search(searchvalue) !== -1
-  }
-
   GridView
   {
     id: grid
@@ -66,6 +41,26 @@ Column
       icon.source: `qrc:/Qaterial/Icons/${fileName}`
       Qaterial.ToolTip
       {
+        readonly property var forbiddenKeywords: ['id','index','model','modelData','do','if','in','for','let','new','try','var','case','else','enum','eval','null','this','true','void','with','await','break','catch','class','const','false','super','throw','while','yield','delete','export','import','public','return','static','switch','typeof','default','extends','finally','package','private','continue','debugger','function','arguments','interface','protected','implements','instanceof']
+
+        function fileNameToProperty(str)
+        {
+          // snake to camel
+          str = str.replace( /([-_][a-z0-9])/g,
+              (group) => group.toUpperCase()
+                          .replace('-', '')
+                          .replace('_', '')
+          );
+
+          // remove extension
+          str = str.replace(/\.[^/.]+$/, "")
+
+          // append _ to forbidden keywords
+          if(forbiddenKeywords.includes(str))
+            return `${str}_`
+          return str
+        }
+
         text: `${fileNameToProperty(fileName)}`
         delay: 50
         visible: icon.hovered
