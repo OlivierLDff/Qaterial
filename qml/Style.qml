@@ -197,6 +197,27 @@ QtObject
     return rippleColorLight
   } // function rippleColor(rippleBackground)
 
+  enum Position
+  {
+    TopLeft,
+    TopStart,
+    Top,
+    TopEnd,
+    TopRight,
+    RightStart,
+    Right,
+    RightEnd,
+    BottomRight,
+    BottomEnd,
+    Bottom,
+    BottomStart,
+    BottomLeft,
+    LeftEnd,
+    Left,
+    LeftStart,
+    Center
+  } // Position
+
   enum TextType
   {
     Display3,
