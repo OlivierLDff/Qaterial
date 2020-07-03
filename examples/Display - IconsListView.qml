@@ -9,8 +9,7 @@ Item
   width: grid.cellWidth*10
   height: grid.cellWidth*grid.model.count/10 + 20 + textField.height
 
-  //Qaterial.DebugRectangle { anchors.fill: parent}
-
+  // function to get IconName from fileName
   function snakeToCamel(str)
   {
     return str.replace( /([-_][a-z0-9])/g,
@@ -19,7 +18,6 @@ Item
                     .replace('_', '')
     );
   }
-
   function isAmongString(searchvalue, string)
   {
     return string.search(searchvalue) !== -1
@@ -33,12 +31,36 @@ Item
     cellWidth: 50
     cellHeight: 50
 
+    // Use FolderListModel to get every icons file name
     FolderListModel
     {
       id: folderModel
       folder: "qrc:/Qaterial/Icons/"
       nameFilters: ["*.svg", "*.jpg", "*.png"]
-    }
+    } // FolderListModel
+
+    // Use SortFilterProxyModel library to
+    SortFilterProxyModel
+    {
+      id: personProxyModel
+      sourceModel: folderModel
+      filters: RegExpFilter
+      {
+        id: regExpFilter
+        roleName: "fileName"
+        caseSensitivity: Qt.CaseInsensitive
+      }
+      sorters: StringSorter { roleName: "fileName" }
+    } // SortFilterProxyModel
+
+    // To make QaterialHotReload fluider
+    Timer
+    {
+      interval: 100
+      repeat: true
+      running: true
+      onTriggered: regExpFilter.pattern = textField.text
+    } // Timer
 
     Component
     {
@@ -55,9 +77,7 @@ Item
           when: textField.textChanged
           value: isAmongString(textField.text.toUpperCase(), iconName.toUpperCase())
         }
-        //x: grid.cellWidth/2 - width/2
         icon.source: Qaterial.Icons[iconName]
-        // "qrc:/Qaterial/Icons/" + fileName
         icon.color: Qaterial.Style.accentColor
         visible: searched
 
@@ -66,18 +86,19 @@ Item
           text: `${iconName}`
           delay: 50
           visible: icon.hovered
-        }
+        } // ToolTip
 
         onClicked: console.log(`"Qaterial.Icons.${iconName}" copy to clipboard`)
 
         //Component.onCompleted: () => console.log(`fileBaseName : ${fileBaseName}`)
-      }
-    }
+      } // AppBarButton
+    } // Component
 
-    model: folderModel
+    model: personProxyModel
     delegate: fileDelegate
-  }
+  } // GridView
 
+  // To search icons
   Qaterial.TextField
   {
     id: textField
@@ -86,5 +107,5 @@ Item
     width: 250
     title: "Search Icon"
     placeholderText: "Keyword"
-  }
-}
+  } // TextField
+} // Item
