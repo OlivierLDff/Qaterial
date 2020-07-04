@@ -111,9 +111,9 @@ void qtMsgOutput(QtMsgType type, const QMessageLogContext& context, const QStrin
 #if defined(Q_OS_WIN)
     OutputDebugStringW(reinterpret_cast<const wchar_t*>(msg.utf16()));
 #elif defined(Q_OS_ANDROID)
-    android_default_message_handler(type, context, level.append(" " + msg));
+    android_default_message_handler(type, context, msg);
 #else  // MACX || IOS || LINUX
-    fprintf(stderr, "%s\n", level.append(" " + msg).toLocal8Bit().constData());
+    fprintf(stderr, "%s\n", msg.toLocal8Bit().constData());
 #endif
 }
 
@@ -166,7 +166,7 @@ int main(int argc, char* argv[])
 
     // ──── LOAD QML MAIN ────
 
-    engine.load(QUrl("qrc:/QaterialHotReload.qml"));
+    engine.load(QUrl("qrc:/Qaterial/HotReload/QaterialHotReload.qml"));
     if(engine.rootObjects().isEmpty())
         return -1;
 

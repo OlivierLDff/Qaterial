@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/Qaterial/HotReload">
 
     <file>QaterialHotReload.qml</file>
     <file>StatusView.qml</file>

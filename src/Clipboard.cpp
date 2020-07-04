@@ -6,6 +6,7 @@
 // Dependencies Headers
 
 // Qt Headers
+#include <QGuiApplication>
 #include <QClipboard>
 #include <QMimeData>
 

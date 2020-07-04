@@ -10,6 +10,7 @@
 // Dependencies Headers
 #include <QString>
 #include <QObject>
+class QClipboard;
 
 // Standard Header
 
