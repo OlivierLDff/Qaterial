@@ -77,7 +77,7 @@ bool TextFile::open(QUrl url, int mode)
     if(url.isRelative())
         url = "file:" + url.toString();
     setFileUrl(url);
-    setError("");
+    _error = "";
     const auto localFile = url.toLocalFile();
 
     if(localFile.isEmpty())
@@ -104,7 +104,7 @@ bool TextFile::open(QUrl url, int mode)
 
 void TextFile::close()
 {
-    setError("");
+    _error = "";
     if(!_file())
     {
         LOG_DEV_WARN("File isn't open.");
@@ -118,7 +118,7 @@ void TextFile::close()
 
 bool TextFile::write(const QString& string)
 {
-    setError("");
+    _error = "";
     if(!isOpen())
     {
         setError("File is close");
@@ -137,7 +137,7 @@ bool TextFile::write(const QString& string)
 
 QString TextFile::readAll()
 {
-    setError("");
+    _error = "";
     if(!isOpen())
     {
         setError("File is close");
