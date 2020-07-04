@@ -13,6 +13,8 @@ QtObject
   property var snackBarLoader
   function show(config)
   {
+    if(typeof config === 'string')
+      config = {text: config}
     if(snackBarLoader)
       snackBarLoader.show(config)
   }
