@@ -13,7 +13,7 @@ import Qaterial 1.0 as Qaterial
 
 T.ItemDelegate
 {
-  id: _control
+  id: control
 
   // TEXT
   property alias overlineText:    _content.overlineText
@@ -53,11 +53,11 @@ T.ItemDelegate
                            Math.max(implicitContentHeight,
                                     indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(_control.type, _control.lines) : Qaterial.Style.delegate.rightPadding(_control.type, _control.lines)
-  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(_control.type, _control.lines) : Qaterial.Style.delegate.rightPadding(_control.type, _control.lines)
+  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate.rightPadding(control.type, control.lines)
+  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate.rightPadding(control.type, control.lines)
   topPadding: 0
   bottomPadding: 0
-  spacing: Qaterial.Style.delegate.spacing(_control.type, _control.lines)
+  spacing: Qaterial.Style.delegate.spacing(control.type, control.lines)
   bottomInset: _separator.visible ? 1 : 0
   focusPolicy: Qt.StrongFocus
 
@@ -66,32 +66,32 @@ T.ItemDelegate
   {
     anchors.fill: parent
     border.color: "pink"
-    visible: _control.drawline
+    visible: control.drawline
   } // DebugRectangle
 
   contentItem: Qaterial.ListDelegateContent
   {
     id: _content
-    text: _control.text
-    spacing: _control.spacing
-    enabled: _control.enabled
-    mirrored: _control.mirrored
-    drawline: _control.drawline
-    onPrimary: _control.onPrimary
-    colorReversed: _control.colorReversed
-    iconSource: _control.icon.source
+    text: control.text
+    spacing: control.spacing
+    enabled: control.enabled
+    mirrored: control.mirrored
+    drawline: control.drawline
+    onPrimary: control.onPrimary
+    colorReversed: control.colorReversed
+    iconSource: control.icon.source
   } // ListDelegateContent
 
   background: Qaterial.ListDelegateBackground
   {
     id: _background
-    type: _control.type
-    lines: _control.lines
-    pressed: _control.pressed
-    rippleActive: _control.down || _control.visualFocus || _control.hovered
-    rippleAnchor: _control
-    onPrimary: _control.onPrimary
-    highlighted: _control.highlighted
+    type: control.type
+    lines: control.lines
+    pressed: control.pressed
+    rippleActive: control.down || control.visualFocus || control.hovered
+    rippleAnchor: control
+    onPrimary: control.onPrimary
+    highlighted: control.highlighted
   } // ListDelegateBackground
 
   property alias toolSeparatorLeftPadding: _separator.leftPadding
@@ -100,12 +100,31 @@ T.ItemDelegate
   Qaterial.ToolSeparator
   {
     id: _separator
-    anchors.right: _control.right
-    anchors.left: _control.left
-    anchors.bottom: _control.bottom
+    anchors.right: control.right
+    anchors.left: control.left
+    anchors.bottom: control.bottom
     verticalPadding: 0
     orientation: Qt.Horizontal
-    visible: _control.forceDrawSeparator ||
-        _control.drawSeparator && (_control.ListView.view ? (_control.ListView.view.count > 1 && index < (_control.ListView.view.count-1)) : false)
+    visible:
+    {
+      if(control.forceDrawSeparator)
+        return true
+
+      if(control.drawSeparator)
+      {
+        if(control.ListView.view.verticalLayoutDirection === ListView.TopToBottom)
+        {
+          // No separator for last element (top of the list)
+          return control.ListView.view.count > 1 &&
+            index < (control.ListView.view.count-1)
+        }
+        else
+        {
+          // No separator for first element (bottom of the list)
+          return control.ListView.view.count > 1 && index
+        }
+      }
+      return false
+    }
   } // ToolSeparator
 } // ItemDelegate

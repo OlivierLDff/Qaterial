@@ -5,6 +5,7 @@
 
 // Library Headers
 #include <Qaterial/Export.hpp>
+#include <Qaterial/Property.hpp>
 
 // Dependencies Headers
 
@@ -15,6 +16,17 @@
 namespace qaterial {
 
 // ──── CLASS ────
+
+
+class QATERIAL_API_ _SingletonClass : public QObject
+{
+    Q_OBJECT
+    QATERIAL_SINGLETON_IMPL(_SingletonClass, _singletonClass, _SingletonClass);
+
+    // ──── CONSTRUCTOR ────
+public:
+    _SingletonClass(QObject* parent = nullptr) : QObject(parent) {}
+};
 
 }
 

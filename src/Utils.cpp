@@ -8,6 +8,7 @@
 #include <Qaterial/Logger.hpp>
 #include <Qaterial/StepperElement.hpp>
 #include <Qaterial/TextFile.hpp>
+#include <Qaterial/Clipboard.hpp>
 
 #include <QOlm/QOlm.hpp>
 
@@ -82,6 +83,8 @@ static void Qaterial_registerTypes()
 
     LOG_DEV_INFO("Register {}.TextFile {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextFile::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register Singleton {}.Clipboard {}.{} to QML", *_uri, _major, _minor);
+    qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)

@@ -115,6 +115,18 @@ foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
   source_group("Qml\\QtQuickCompiler Files" FILES ${QATERIAL_CURRENT_QML_FILE})
 endforeach()
 
+set(QATERIAL_IO_SRCS
+  include/Qaterial/TextFile.hpp
+  src/TextFile.cpp
+  include/Qaterial/Clipboard.hpp
+  src/Clipboard.cpp
+  )
+
+set(QATERIAL_NAVIGATION_SRCS
+  include/Qaterial/StepperElement.hpp
+  src/StepperElement.cpp
+  )
+
 set(QATERIAL_UTILS_SRCS
   include/Qaterial/Qaterial.hpp
   include/Qaterial/Export.hpp
@@ -125,18 +137,18 @@ set(QATERIAL_UTILS_SRCS
   src/Utils.cpp
   include/Qaterial/Logger.hpp
   src/Logger.cpp
-  include/Qaterial/StepperElement.hpp
-  src/StepperElement.cpp
-  include/Qaterial/TextFile.hpp
-  src/TextFile.cpp
   )
 
 set(QATERIAL_SRCS
+  ${QATERIAL_IO_SRCS}
+  ${QATERIAL_NAVIGATION_SRCS}
   ${QATERIAL_UTILS_SRCS}
   ${QATERIAL_QML_RES}
   ${QATERIAL_QML_SRCS}
   )
 
+source_group("IO" FILES ${QATERIAL_IO_SRCS})
+source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
 source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
 
 # ───── QATERIAL TARGET ─────

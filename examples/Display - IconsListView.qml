@@ -47,28 +47,37 @@ Column
     {
       id: icon
 
+      readonly property var forbiddenKeywords: ['id','index','model','modelData','do','if','in','for','let','new','try','var','case','else','enum','eval','null','this','true','void','with','await','break','catch','class','const','false','super','throw','while','yield','delete','export','import','public','return','static','switch','typeof','default','extends','finally','package','private','continue','debugger','function','arguments','interface','protected','implements','instanceof']
+
+      function fileNameToProperty(str)
+      {
+        // snake to camel
+        str = str.replace( /([-_][a-z0-9])/g,
+            (group) => group.toUpperCase()
+                        .replace('-', '')
+                        .replace('_', '')
+        );
+
+        // remove extension
+        str = str.replace(/\.[^/.]+$/, "")
+
+        // append _ to forbidden keywords
+        if(forbiddenKeywords.includes(str))
+          return `${str}_`
+        return str
+      }
+
       icon.source: `qrc:/Qaterial/Icons/${fileName}`
+
+      onClicked: function()
+      {
+        const textToCopy = `${fileNameToProperty(fileName)}`
+        Qaterial.Clipboard.text = textToCopy
+        Qaterial.SnackbarManager.show(`Icon Name Copied! \n"${textToCopy}"`)
+      }
+
       Qaterial.ToolTip
       {
-        readonly property var forbiddenKeywords: ['id','index','model','modelData','do','if','in','for','let','new','try','var','case','else','enum','eval','null','this','true','void','with','await','break','catch','class','const','false','super','throw','while','yield','delete','export','import','public','return','static','switch','typeof','default','extends','finally','package','private','continue','debugger','function','arguments','interface','protected','implements','instanceof']
-
-        function fileNameToProperty(str)
-        {
-          // snake to camel
-          str = str.replace( /([-_][a-z0-9])/g,
-              (group) => group.toUpperCase()
-                          .replace('-', '')
-                          .replace('_', '')
-          );
-
-          // remove extension
-          str = str.replace(/\.[^/.]+$/, "")
-
-          // append _ to forbidden keywords
-          if(forbiddenKeywords.includes(str))
-            return `${str}_`
-          return str
-        }
 
         text: `${fileNameToProperty(fileName)}`
         delay: 50
