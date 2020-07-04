@@ -73,6 +73,9 @@ QString TextFile::fileType() const { return QFileInfo(fileName()).suffix(); }
 
 bool TextFile::open(QUrl url, int mode)
 {
+    // Make sure url is valid as a local file
+    if(url.isRelative())
+        url = "file:" + url.toString();
     setFileUrl(url);
     setError("");
     const auto localFile = url.toLocalFile();
