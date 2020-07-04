@@ -3,6 +3,8 @@
 
     <file>QaterialHotReload.qml</file>
     <file>StatusView.qml</file>
+    <file>IconsMenu.qml</file>
+    <file>material-icons-light.svg</file>
 
     </qresource>
 </RCC>

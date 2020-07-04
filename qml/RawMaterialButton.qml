@@ -29,7 +29,7 @@ T.Button
     visible: _control.drawline
   } // DebugRectangle
 
-  property alias textType: _iconLabel.textType
+  property int textType: Qaterial.Style.TextType.Button
   property int elide: Text.ElideNone
 
   topInset: Qaterial.Style.rawButton.topInset
@@ -128,8 +128,7 @@ T.Button
 
   contentItem: Qaterial.IconLabel
   {
-    id: _iconLabel
-    textType: Qaterial.Style.TextType.Button
+    textType: _control.textType
     spacing: _control.spacing
     display: _control.display
     icon: _control.icon

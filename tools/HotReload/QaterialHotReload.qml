@@ -254,6 +254,31 @@ Qaterial.ApplicationWindow
           Qaterial.Style.theme = theme
         }
       }
+
+      Qaterial.SquareButton
+      {
+        contentItem: Item
+        {
+          Image
+          {
+            anchors.centerIn: parent
+            source: 'qrc:Qaterial/HotReload/material-icons-light.svg'
+            sourceSize.width: Qaterial.Style.toolButton.iconWidth
+            sourceSize.height: Qaterial.Style.toolButton.iconWidth
+          }
+        }
+
+        onClicked: () => _iconsMenu.open()
+
+        IconsMenu
+        {
+          id: _iconsMenu
+          y: parent.height
+        }
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Icons Explorer"
+      }
     } // RowLayout
   } // ToolBar
 
