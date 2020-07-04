@@ -42,7 +42,7 @@ QtObject
   property bool shouldReverseForegroundOnAccent:  theme === Style.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
   property bool preferAccentOnPrimary:            theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
-  property color primaryColorLight:               "#f44336"
+  property color primaryColorLight:               "white"
   property color primaryColorDark:                "#202225"//"#212121"
   property color accentColorLight:                "#FFC107"
   property color accentColorDark:                 "#FFB835"

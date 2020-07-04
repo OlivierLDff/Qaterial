@@ -82,6 +82,7 @@ Item
       const screen = Qt.application.screens[i]
       if(screen.name === settings.screen)
       {
+        //console.log(`screen found ${screen.name}`)
         target.screen = Qt.application.screens[i]
         screenFound = true
         break
@@ -99,11 +100,13 @@ Item
     }
     else
     {
+      const previousName = name
       target.screen = Qt.application.screens[0]
       width = target.width
       height = target.height
       target.x = target.screen.width/2 - target.width/2
       target.y = target.screen.height/2 - target.height/2
+      console.warn(`Previous screen ${previousName} not found. Try to restore window to screen ${target.screen.name}, resolution: ${width}x${height}, position: {${target.x},${target.y}}`)
     }
 
     // Make sure width/height are ok
@@ -112,6 +115,7 @@ Item
     if(target.height < target.minimumHeight)
       target.height = target.minimumHeight
 
+    // Turn Window visible only when screen and position have been correctly affected
     if(visible)
       target.visible = true
     feedbackEnabled = true

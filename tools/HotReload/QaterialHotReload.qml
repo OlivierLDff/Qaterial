@@ -34,6 +34,8 @@ Qaterial.ApplicationWindow
 
   property string errorString
 
+  property int theme: Qaterial.Style.theme
+
   width: 1280
   height: 600
   title: `Qaterial Hot Reload - ${currentFilePath}`
@@ -80,6 +82,8 @@ Qaterial.ApplicationWindow
     property alias formatVerticalAlignBottom: formatVerticalAlignBottom.checked
     property alias formatVerticalAlignTop: formatVerticalAlignTop.checked
     property alias fullScreen: fullScreen.checked
+
+    property alias theme: window.theme
   }
 
   Qaterial.WindowLayoutSave { name: "Reloader" }
@@ -113,19 +117,21 @@ Qaterial.ApplicationWindow
   {
     Row
     {
-      Qaterial.AppBarButton
+      Qaterial.SquareButton
       {
         ToolTip.visible: hovered
         ToolTip.text: "Open File to Hot Reload"
         icon.source: Qaterial.Icons.folderOutline
+        useSecondaryColor: true
 
         onClicked: () => fileDialog.open()
       }
-      Qaterial.AppBarButton
+      Qaterial.SquareButton
       {
         ToolTip.visible: hovered
         ToolTip.text: "Reload (F5)"
         icon.source: Qaterial.Icons.sync
+        useSecondaryColor: true
 
         onClicked: () => window.reload()
       }
@@ -232,6 +238,22 @@ Qaterial.ApplicationWindow
         onClicked: () => window.reload()
       }
 
+      Qaterial.ToolSeparator {}
+
+      Qaterial.SquareButton
+      {
+        readonly property bool lightTheme: window.theme === Qaterial.Style.Theme.Light
+        icon.source: lightTheme ? Qaterial.Icons.weatherSunny : Qaterial.Icons.moonWaningCrescent
+        useSecondaryColor: true
+        ToolTip.visible: hovered
+        ToolTip.text: lightTheme ? "Theme Light" : "Theme Dark"
+
+        onClicked: function()
+        {
+          theme = lightTheme ? Qaterial.Style.Theme.Dark : Qaterial.Style.Theme.Light
+          Qaterial.Style.theme = theme
+        }
+      }
     } // RowLayout
   } // ToolBar
 
@@ -356,4 +378,9 @@ Qaterial.ApplicationWindow
       }
     } // StatusView
   } // SplitView
+
+  Component.onCompleted: function()
+  {
+    Qaterial.Style.theme = window.theme
+  }
 } // ApplicationWindow
