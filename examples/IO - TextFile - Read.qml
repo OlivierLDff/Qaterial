@@ -17,6 +17,6 @@ Qaterial.FlatButton
     Qaterial.TextFile
     {
       id: textFile
-      onErrorChanged: () => console.warn('io error : ${error}')
+      onErrorChanged: () => console.warn(`io error : ${error}`)
     }
 }

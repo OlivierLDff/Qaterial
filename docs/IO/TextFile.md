@@ -52,7 +52,7 @@ import Qaterial 1.0 as Qaterial
 Qaterial.FlatButton
 {
   text: "Write text to file"
-  
+
   onClicked: function()
   {
     textFile.open('foo.txt', Qaterial.TextFile.Write)
@@ -63,7 +63,7 @@ Qaterial.FlatButton
   Qaterial.TextFile
   {
     id: textFile
-    onErrorChanged: () => console.warn('io error : ${error}')
+    onErrorChanged: () => console.warn(`io error : ${error}`)
   }
 }
 ```
@@ -98,7 +98,7 @@ Qaterial.FlatButton
   Qaterial.TextFile
   {
     id: textFile
-    onErrorChanged: () => console.warn('io error : ${error}')
+    onErrorChanged: () => console.warn(`io error : ${error}`)
   }
 }
 ```
