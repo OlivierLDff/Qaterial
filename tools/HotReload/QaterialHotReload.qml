@@ -255,6 +255,24 @@ Qaterial.ApplicationWindow
         }
       }
 
+      Qaterial.ToolSeparator {}
+
+      Qaterial.SquareButton
+      {
+        icon.source: Qaterial.Icons.formatLetterCase
+
+        onClicked: () => _typoMenu.open()
+
+        TypoMenu
+        {
+          id: _typoMenu
+          y: parent.height
+        }
+
+        ToolTip.visible: hovered
+        ToolTip.text: "Typography"
+      }
+
       Qaterial.SquareButton
       {
         contentItem: Item

@@ -85,7 +85,7 @@ Qaterial.Menu
 
       onClicked: function()
       {
-        const textToCopy = `${fileNameToProperty(fileName)}`
+        const textToCopy = `Qaterial.Icons.${fileNameToProperty(fileName)}`
         Qaterial.Clipboard.text = textToCopy
         Qaterial.SnackbarManager.show(`Icon Name Copied! \n"${textToCopy}"`)
       }

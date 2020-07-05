@@ -73,7 +73,7 @@ Column
       {
         const textToCopy = `${fileNameToProperty(fileName)}`
         Qaterial.Clipboard.text = textToCopy
-        Qaterial.SnackbarManager.show(`Icon Name Copied! \n"${textToCopy}"`)
+        Qaterial.SnackbarManager.show(`Icon Name Copied! \n'${textToCopy}'`)
       }
 
       Qaterial.ToolTip
