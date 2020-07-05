@@ -1517,7 +1517,7 @@ QtObject
   readonly property string consoleLine: 'qrc:/Qaterial/Icons/console-line.svg'
   readonly property string consoleNetworkOutline: 'qrc:/Qaterial/Icons/console-network-outline.svg'
   readonly property string consoleNetwork: 'qrc:/Qaterial/Icons/console-network.svg'
-  readonly property string console: 'qrc:/Qaterial/Icons/console.svg'
+  readonly property string console_: 'qrc:/Qaterial/Icons/console.svg'
   readonly property string consolidate: 'qrc:/Qaterial/Icons/consolidate.svg'
   readonly property string contactlessPaymentCircleOutline: 'qrc:/Qaterial/Icons/contactless-payment-circle-outline.svg'
   readonly property string contactlessPaymentCircle: 'qrc:/Qaterial/Icons/contactless-payment-circle.svg'

@@ -89,7 +89,7 @@ function(generate_qrc_alias_qt_object VAR)
         math(EXPR PROPERTY_WORD_INDEX "${PROPERTY_WORD_INDEX}+1")
       endforeach()
 
-      set(FORBIDDEN_PROPERTY_WORDS id index model modelData do if in for let new try var case else enum eval null this true void with await break catch class const false super throw while yield delete export import public return static switch typeof default extends finally package private continue debugger function arguments interface protected implements instanceof)
+      set(FORBIDDEN_PROPERTY_WORDS id index model modelData console do if in for let new try var case else enum eval null this true void with await break catch class const false super throw while yield delete export import public return static switch typeof default extends finally package private continue debugger function arguments interface protected implements instanceof)
 
       if (${PROPERTY_NAME} IN_LIST FORBIDDEN_PROPERTY_WORDS)
         set(PROPERTY_NAME ${PROPERTY_NAME}_)
