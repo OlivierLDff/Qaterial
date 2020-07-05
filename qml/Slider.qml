@@ -46,7 +46,6 @@ T.Slider
       const offset = control.horizontal ? horizontalOffset : verticalOffset
       control.topPadding + offset
     }
-    value: control.value
     hasFocus: control.visualFocus
     pressed: control.pressed
     hovered: control.hovered
@@ -59,6 +58,7 @@ T.Slider
   // Grey bar background
   background: Rectangle
   {
+    readonly property int size: 1
     implicitWidth: control.backgroundImplicitWidth
     implicitHeight: control.backgroundImplicitHeight
     x:
@@ -80,12 +80,12 @@ T.Slider
       if(control.horizontal)
         return control.availableWidth - control.handle.width
       else
-       return 1
+       return size
     }
     height:
     {
       if(control.horizontal)
-        return 1
+        return size
       else
         return control.availableHeight - control.handle.height
     }
@@ -124,7 +124,7 @@ T.Slider
         else
           return control.position * parent.height
       }
-      color: control.enabled ? control.accentColor : control.disabledColor
+      color: control.enabled ? control.color : control.disabledColor
     } // Rectangle
   } // Rectangle
 } // Slider
