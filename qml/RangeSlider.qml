@@ -22,7 +22,7 @@ T.RangeSlider
   padding: Qaterial.Style.slider.padding
 
   property color rippleColor: Qaterial.Style.rippleColorTheme
-  property color accentColor: Qaterial.Style.accentColor
+  property color color: Qaterial.Style.accentColor
   property color foregroundColor: Qaterial.Style.hintTextColor()
   property color disabledColor: Qaterial.Style.disabledTextColor()
   property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
@@ -36,7 +36,7 @@ T.RangeSlider
     hovered: control.first.hovered
     pressed: control.first.pressed
     rippleColor: control.rippleColor
-    accentColor: control.accentColor
+    color: control.color
     disabledColor: control.disabledColor
     enabled: control.enabled
   } // SliderHandle
@@ -50,7 +50,7 @@ T.RangeSlider
     hovered: control.second.hovered
     pressed: control.second.pressed
     rippleColor: control.rippleColor
-    accentColor: control.accentColor
+    color: control.color
     disabledColor: control.disabledColor
     enabled: control.enabled
 
