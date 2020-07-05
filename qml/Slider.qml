@@ -47,9 +47,9 @@ T.Slider
       control.topPadding + offset
     }
     value: control.value
-    handleHasFocus: control.visualFocus
-    handlePressed: control.pressed
-    handleHovered: control.hovered
+    hasFocus: control.visualFocus
+    pressed: control.pressed
+    hovered: control.hovered
     rippleColor: control.rippleColor
     accentColor: control.accentColor
     disabledColor: control.disabledColor

@@ -12,7 +12,7 @@ import Qaterial 1.0 as Qaterial
 
 T.RangeSlider
 {
-  id: _control
+  id: control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                           first.implicitHandleWidth + leftPadding + rightPadding)
@@ -29,30 +29,32 @@ T.RangeSlider
 
   first.handle: Qaterial.SliderHandle
   {
-    x: _control.leftPadding + (_control.horizontal ? _control.first.visualPosition * (_control.availableWidth - width) : (_control.availableWidth - width) / 2)
-    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : _control.first.visualPosition * (_control.availableHeight - height))
-    value: _control.first.value
-    handleHasFocus: _control.visualFocus
-    handlePressed: _control.first.pressed
-    handleHovered: _control.first.hovered
-    rippleColor: _control.rippleColor
-    accentColor: _control.accentColor
-    disabledColor: _control.disabledColor
-    enabled: _control.enabled
+    x: control.leftPadding + (control.horizontal ? control.first.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
+    y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.first.visualPosition * (control.availableHeight - height))
+    value: control.first.value
+    hasFocus: control.visualFocus
+    hovered: control.first.hovered
+    pressed: control.first.pressed
+    rippleColor: control.rippleColor
+    accentColor: control.accentColor
+    disabledColor: control.disabledColor
+    enabled: control.enabled
   } // SliderHandle
 
   second.handle: Qaterial.SliderHandle
   {
-    x: _control.leftPadding + (_control.horizontal ? _control.second.visualPosition * (_control.availableWidth - width) : (_control.availableWidth - width) / 2)
-    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : _control.second.visualPosition * (_control.availableHeight - height))
-    value: _control.second.value
-    handleHasFocus: _control.visualFocus
-    handlePressed: _control.second.pressed
-    handleHovered: _control.second.hovered
-    rippleColor: _control.rippleColor
-    accentColor: _control.accentColor
-    disabledColor: _control.disabledColor
-    enabled: _control.enabled
+    x: control.leftPadding + (control.horizontal ? control.second.visualPosition * (control.availableWidth - width) : (control.availableWidth - width) / 2)
+    y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : control.second.visualPosition * (control.availableHeight - height))
+    value: control.second.value
+    hasFocus: control.visualFocus
+    hovered: control.second.hovered
+    pressed: control.second.pressed
+    rippleColor: control.rippleColor
+    accentColor: control.accentColor
+    disabledColor: control.disabledColor
+    enabled: control.enabled
+
+    opacity: 0.5
   } // SliderHandle
 
   property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
@@ -60,22 +62,22 @@ T.RangeSlider
 
   background: Rectangle
   {
-    x: _control.leftPadding + (_control.horizontal ? 0 : (_control.availableWidth - width) / 2)
-    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : 0)
-    implicitWidth: _control.backgroundImplicitWidth
-    implicitHeight: _control.backgroundImplicitHeight
-    width: _control.horizontal ? _control.availableWidth : 1
-    height: _control.horizontal ? 1 : _control.availableHeight
-    color: _control.enabled ? _control.foregroundColor : _control.backgroundDisabledColor
-    scale: _control.horizontal && _control.mirrored ? -1 : 1
+    x: control.leftPadding + (control.horizontal ? 0 : (control.availableWidth - width) / 2)
+    y: control.topPadding + (control.horizontal ? (control.availableHeight - height) / 2 : 0)
+    implicitWidth: control.backgroundImplicitWidth
+    implicitHeight: control.backgroundImplicitHeight
+    width: control.horizontal ? control.availableWidth : 1
+    height: control.horizontal ? 1 : control.availableHeight
+    color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
+    scale: control.horizontal && control.mirrored ? -1 : 1
 
     Rectangle
     {
-      x: _control.horizontal ? _control.first.position * parent.width : (parent.width - width) / 2
-      y: _control.horizontal ? (parent.height - height) / 2 : _control.second.visualPosition * parent.height
-      width: _control.horizontal ? _control.second.position * parent.width - _control.first.position * parent.width : 3
-      height: _control.horizontal ? 3 : _control.second.position * parent.height - _control.first.position * parent.height
-      color: _control.enabled ? _control.accentColor : _control.disabledColor
+      x: control.horizontal ? control.first.position * parent.width : (parent.width - width) / 2
+      y: control.horizontal ? (parent.height - height) / 2 : control.second.visualPosition * parent.height
+      width: control.horizontal ? control.second.position * parent.width - control.first.position * parent.width : 3
+      height: control.horizontal ? 3 : control.second.position * parent.height - control.first.position * parent.height
+      color: control.enabled ? control.accentColor : control.disabledColor
     } // Rectangle
   } // Rectangle
 } // RangeSlider
