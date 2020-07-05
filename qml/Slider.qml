@@ -12,12 +12,7 @@ import Qaterial 1.0 as Qaterial
 
 T.Slider
 {
-  id: _control
-
-  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitHandleWidth + leftPadding + rightPadding)
-  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitHandleHeight + topPadding + bottomPadding)
+  id: control
 
   padding: Qaterial.Style.slider.padding
 
@@ -27,41 +22,109 @@ T.Slider
   property color disabledColor: Qaterial.Style.disabledTextColor()
   property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
 
-  handle: Qaterial.SliderHandle
-  {
-    x: _control.leftPadding + (_control.horizontal ? _control.visualPosition * (_control.availableWidth - width) : (_control.availableWidth - width) / 2)
-    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : _control.visualPosition * (_control.availableHeight - height))
-    value: _control.value
-    handleHasFocus: _control.visualFocus
-    handlePressed: _control.pressed
-    handleHovered: _control.hovered
-    rippleColor: _control.rippleColor
-    accentColor: _control.accentColor
-    disabledColor: _control.disabledColor
-    enabled: _control.enabled
-  } // SliderHandle
-
   property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
   property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider.implicitWidth
 
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                          implicitHandleWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                           implicitHandleHeight + topPadding + bottomPadding)
+
+  handle: Qaterial.SliderHandle
+  {
+    x:
+    {
+      const horizontalOffset = control.visualPosition * (control.availableWidth - width)
+      const verticalOffset = (control.availableWidth - width) / 2
+      const offset = control.horizontal ? horizontalOffset : verticalOffset
+      return offset + control.leftPadding
+    }
+    y:
+    {
+      const horizontalOffset = (control.availableHeight - height) / 2
+      const verticalOffset = control.visualPosition * (control.availableHeight - height)
+      const offset = control.horizontal ? horizontalOffset : verticalOffset
+      control.topPadding + offset
+    }
+    value: control.value
+    handleHasFocus: control.visualFocus
+    handlePressed: control.pressed
+    handleHovered: control.hovered
+    rippleColor: control.rippleColor
+    accentColor: control.accentColor
+    disabledColor: control.disabledColor
+    enabled: control.enabled
+  } // SliderHandle
+
+  // Grey bar background
   background: Rectangle
   {
-    x: _control.leftPadding + (_control.horizontal ? 0 : (_control.availableWidth - width) / 2)
-    y: _control.topPadding + (_control.horizontal ? (_control.availableHeight - height) / 2 : 0)
-    implicitWidth: _control.backgroundImplicitWidth
-    implicitHeight: _control.backgroundImplicitHeight
-    width: _control.horizontal ? _control.availableWidth : 1
-    height: _control.horizontal ? 1 : _control.availableHeight
-    color: _control.enabled ? _control.foregroundColor : _control.backgroundDisabledColor
-    scale: _control.horizontal && _control.mirrored ? -1 : 1
+    implicitWidth: control.backgroundImplicitWidth
+    implicitHeight: control.backgroundImplicitHeight
+    x:
+    {
+      const horizontalOffset = control.handle.width/2
+      const verticalOffset = (control.availableWidth - width) / 2
+      const offset = control.horizontal ? horizontalOffset : verticalOffset
+      return offset + control.leftPadding
+    }
+    y:
+    {
+      const horizontalOffset = (control.availableHeight - height) / 2
+      const verticalOffset = control.handle.height/2
+      const offset = control.horizontal ? horizontalOffset : verticalOffset
+      return control.topPadding + offset
+    }
+    width:
+    {
+      if(control.horizontal)
+        return control.availableWidth - control.handle.width
+      else
+       return 1
+    }
+    height:
+    {
+      if(control.horizontal)
+        return 1
+      else
+        return control.availableHeight - control.handle.height
+    }
+    color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
+    scale: control.horizontal && control.mirrored ? -1 : 1
 
+    // Accent bar going up to value
     Rectangle
     {
-      x: _control.horizontal ? 0 : (parent.width - width) / 2
-      y: _control.horizontal ? (parent.height - height) / 2 : _control.visualPosition * parent.height
-      width: _control.horizontal ? _control.position * parent.width : 3
-      height: _control.horizontal ? 3 : _control.position * parent.height
-      color: _control.enabled ? _control.accentColor : _control.disabledColor
+      readonly property int size: 3
+      x:
+      {
+        if(control.horizontal)
+          return 0
+        else
+          return (parent.width - width) / 2
+      }
+      y:
+      {
+        if(control.horizontal)
+          return (parent.height - height) / 2
+        else
+          return control.visualPosition * parent.height
+      }
+      width:
+      {
+        if(control.horizontal)
+          return control.position * parent.width
+        else
+          return size
+      }
+      height:
+      {
+        if(control.horizontal)
+          return 3
+        else
+          return control.position * parent.height
+      }
+      color: control.enabled ? control.accentColor : control.disabledColor
     } // Rectangle
   } // Rectangle
 } // Slider
