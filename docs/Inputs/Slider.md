@@ -5,6 +5,67 @@ title: Slider
 
 # Slider
 
+![sliderhandleorientation](https://user-images.githubusercontent.com/17255804/86527361-74afa600-be9e-11ea-8c1b-f1ffb4b32b34.gif)
+
+##  Slider
+
+`Slider` is used to select a value by sliding a handle along a track.
+
+In the example below, custom [from](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#from-prop), [value](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#value-prop), and [to](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#to-prop) values are set:
+
+```js
+Slider 
+{
+  from: 1
+  value: 25
+  to: 100
+}
+```
+
+The [position](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#position-prop) property is expressed as a fraction of the control's size, in the range `0.0 - 1.0`. The [visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#visualPosition-prop) property is the same, except that it is reversed in a [right-to-left](https://doc.qt.io/qt-5/qtquick-positioning-righttoleft.html) application. The [visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#visualPosition-prop) is useful for positioning the handle when styling Slider. In the example above, [visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#visualPosition-prop) will be `0.24` in a left-to-right application, and `0.76` in a right-to-left application.
+
+### Continuous Slider
+
+![continousSlider](https://user-images.githubusercontent.com/17255804/86528037-c1967b00-bea4-11ea-8a86-ff618c0739d1.gif)
+
+[QaterialOnline](https://tinyurl.com/y8rklqz8)
+
+### Discrete Slider
+
+### Custom Mark
+
+### ToolTip
+
+### Inverted Track
+
+### Customized Slider
+
+## Range Slider
+
+`RangeSlider` is used to select a range specified by two values, by sliding each handle along a track.
+
+In the example below, custom [from](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#from-prop) and [to](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#to-prop) values are set, and the initial positions of the [first](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#first-prop) and [second](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#second-prop) handles are set:
+
+```js
+RangeSlider 
+{
+  from: 1
+  to: 100
+  first.value: 25
+  second.value: 75
+}
+```
+
+In order to perform an action when the value for a particular handle changes, use the following syntax:
+
+```
+first.onMoved: console.log("first.value changed to " + first.value)
+```
+
+The [first.position](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#first.position-prop) and [second.position](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#second.position-prop) properties are expressed as fractions of the control's size, in the range `0.0 - 1.0`. The [first.visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#first.visualPosition-prop) and [second.visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#second.visualPosition-prop) properties are the same, except that they are reversed in a [right-to-left](https://doc.qt.io/qt-5/qtquick-positioning-righttoleft.html) application. The `visualPosition` is useful for positioning the handles when styling RangeSlider. In the example above, [first.visualPosition](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#first.visualPosition-prop) will be `0.24` in a left-to-right application, and `0.76` in a right-to-left application.
+
+### Inverted Track
+
 ## Slider Handle
 
 ![sliderhandle](https://user-images.githubusercontent.com/17255804/86526728-d4ef1980-be97-11ea-9a27-4cb365c7046e.gif)

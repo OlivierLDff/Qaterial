@@ -7,20 +7,22 @@
 import QtQuick 2.12
 import QtGraphicalEffects 1.12
 
+import Qaterial 1.0 as Qaterial
+
 Item
 {
-	id: _root
+	id: root
 
 	// ICON CONTROL
-	property alias source: _control.source
+	property alias source: _image.source
 	property bool fill: false
 	property bool outlined: false
 	property bool roundIcon: fill || outlined
-	property alias mirror: _control.mirror
+	property alias mirror: _image.mirror
 	property bool roundOpacity: true
 
 	// COLORS
-	property color color
+	property color color: Qaterial.Style.primaryTextColor()
 	property color roundColor
 	property color roundBorderColor: roundColor
 
@@ -34,35 +36,35 @@ Item
 	Rectangle
 	{
 		id: _round
-		width: _root.roundSize
-		height: _root.roundSize
-		color: _root.fill ? _root.roundColor : "transparent"
-		radius: _root.roundSize/2
-		visible: _root.roundIcon
-		border.width: _root.outlined ? 1 : 0
-		border.color: _root.outlined ? _root.roundBorderColor : "transparent"
+		width: root.roundSize
+		height: root.roundSize
+		color: root.fill ? root.roundColor : "transparent"
+		radius: root.roundSize/2
+		visible: root.roundIcon
+		border.width: root.outlined ? 1 : 0
+		border.color: root.outlined ? root.roundBorderColor : "transparent"
 		opacity: roundOpacity ? 0.5 : 1.0
 	} // Rectangle
 
 	Image
 	{
-		id: _control
-		width: _root.iconSize
-		height: _root.iconSize
+		id: _image
+		width: root.iconSize
+		height: root.iconSize
 		visible: false
 		fillMode: Image.PreserveAspectFit
-		sourceSize.height: _root.iconSize
-		sourceSize.width: _root.iconSize
+		sourceSize.height: root.iconSize
+		sourceSize.width: root.iconSize
 		anchors.centerIn: parent
 	} // Image
 
 	ColorOverlay
 	{
-		source: _control
-		anchors.fill: _control
-		color.r: _root.color.r
-		color.g: _root.color.g
-		color.b: _root.color.b
+		source: _image
+		anchors.fill: _image
+		color.r: root.color.r
+		color.g: root.color.g
+		color.b: root.color.b
 		color.a: 1
 		cached : true
 	} // ColorOverlay
