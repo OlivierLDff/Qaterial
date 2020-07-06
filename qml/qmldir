@@ -227,5 +227,26 @@ SliderDelegate              1.0 SliderDelegate.qml
 LargeSlider                 1.0 LargeSlider.qml
 GradientSlider              1.0 GradientSlider.qml
 
+ColorHueSlider              1.0 ColorHueSlider.qml
+ColorSaturationSlider       1.0 ColorSaturationSlider.qml
+ColorValueSlider            1.0 ColorValueSlider.qml
+ColorLightnessSlider        1.0 ColorValueSlider.qml
+
+HsvColorHueSlider           1.0 ColorHueSlider.qml
+HsvColorSaturationSlider    1.0 ColorSaturationSlider.qml
+HsvColorValueSlider         1.0 ColorValueSlider.qml
+
+HslColorHueSlider           1.0 HslColorHueSlider.qml
+HslColorSaturationSlider    1.0 HslColorSaturationSlider.qml
+HslColorLightnessSlider     1.0 HslColorLightnessSlider.qml
+
+ColorRedSlider              1.0 ColorRedSlider.qml
+ColorGreenSlider            1.0 ColorGreenSlider.qml
+ColorBlueSlider             1.0 ColorBlueSlider.qml
+ColorAlphaSlider            1.0 ColorAlphaSlider.qml
+
+ColorButton                 1.0 ColorButton.qml
+ColorMiniButton             1.0 ColorMiniButton.qml
+
 RectangleAreaHandler        1.0 RectangleAreaHandler.qml
 Stepper                     1.0 Stepper.qml
