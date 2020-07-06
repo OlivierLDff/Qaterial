@@ -220,6 +220,22 @@
         <file>LargeSlider.qml</file>
         <file>GradientSlider.qml</file>
 
+        <file>ColorHueSlider.qml</file>
+        <file>ColorSaturationSlider.qml</file>
+        <file>ColorValueSlider.qml</file>
+
+        <file>HslColorHueSlider.qml</file>
+        <file>HslColorSaturationSlider.qml</file>
+        <file>HslColorLightnessSlider.qml</file>
+
+        <file>ColorRedSlider.qml</file>
+        <file>ColorGreenSlider.qml</file>
+        <file>ColorBlueSlider.qml</file>
+        <file>ColorAlphaSlider.qml</file>
+
+        <file>ColorButton.qml</file>
+        <file>ColorMiniButton.qml</file>
+
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
         <file>Stepper.qml</file>

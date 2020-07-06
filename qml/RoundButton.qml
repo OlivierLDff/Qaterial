@@ -20,7 +20,7 @@ Qaterial.RawMaterialButton
   icon.height: Qaterial.Style.fab.iconWidth
 
   leftPadding: Qaterial.Style.fab.iconPadding
-  rightPadding: leftPadding
+  rightPadding: Qaterial.Style.fab.iconPadding
   //topPadding: 0
   //bottomPadding: 0
 

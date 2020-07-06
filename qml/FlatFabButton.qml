@@ -29,6 +29,7 @@ Qaterial.FabButton
   backgroundColor: !enabled ? "transparent" :
       highlighted ?  Qaterial.Style.buttonAccentColor : Qaterial.Style.disabledDividersColor()
   property color borderColor: "transparent"
+  property int borderWidth: _control.outlined ? 1 : 0
   property bool outlined: false
 
   foregroundColor: !enabled ? Qaterial.Style.disabledTextColor() :
@@ -40,7 +41,7 @@ Qaterial.FabButton
 
   property double backgroundImplicitWidth: type === Qaterial.Style.FabType.Extended ? Qaterial.Style.fab.minWidthExtended :
           type === Qaterial.Style.FabType.Mini ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth
-  property double backgroundImplicitHeight: type === Qaterial.Style.FabType.Extended ? Qaterial.Style.fab.minHeightExtended :
+    property double backgroundImplicitHeight: type === Qaterial.Style.FabType.Extended ? Qaterial.Style.fab.minHeightExtended :
           type === Qaterial.Style.FabType.Mini ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth
   property double backgroundScale: 1.0
 
@@ -52,7 +53,7 @@ Qaterial.FabButton
     color: _control.backgroundColor
     scale: _control.backgroundScale
 
-    border.width: _control.outlined ? 1 : 0
+    border.width: _control.borderWidth
     border.color: _control.borderColor
 
     Behavior on implicitWidth { NumberAnimation { easing.type: Easing.InOutQuad; duration: 100 } }
