@@ -16,7 +16,6 @@ T.ToolTip
 
   id: control
 
-  property bool drawline: Qaterial.Style.debug.drawDebugButton
   property double backgroupRadius: Qaterial.Style.toolTip.radius
   property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body1
 
@@ -130,7 +129,7 @@ T.ToolTip
     verticalAlignment: Text.AlignVCenter
     textType: control.textType
 
-    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green"; visible: control.drawline } // DebugRectangle
+    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green" } // DebugRectangle
   } // Label
 
   background: Rectangle
@@ -140,6 +139,6 @@ T.ToolTip
     opacity: Qaterial.Style.toolTip.opacity
     radius: control.backgroupRadius
 
-    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink"; visible: control.drawline } // DebugRectangle
+    // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink" } // DebugRectangle
   } // Rectangle
 } // ToolTip

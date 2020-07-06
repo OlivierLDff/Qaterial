@@ -3,7 +3,7 @@ layout: default
 title: Logger
 ---
 
-# Logger
+# 💬 Logger
 
 ![Logger](https://user-images.githubusercontent.com/17255804/85429934-bc216280-b57f-11ea-9e1c-6ef8ad257722.gif)
 
@@ -49,11 +49,11 @@ int main(int argc, char* argv[])
     const auto stdoutSink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     // Redirect qaterial to stdout
     qaterial::Logger::registerSink(stdoutSink);
-    
+
     // optionnal: Enable debug level
     stdoutSink->set_level(spdlog::level::debug);
     qaterial::Logger::QATERIAL->set_level(spdlog::level::debug);
-    
+
     // ...
 }
 ```

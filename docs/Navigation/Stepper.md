@@ -3,7 +3,7 @@ layout: default
 title: Stepper
 ---
 
-# Stepper
+# 🌀 Stepper
 
 Steppers are Navigation Components used to display progress through a sequence of logical and numbered steps. They may also be used for navigation.
 

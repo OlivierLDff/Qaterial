@@ -3,7 +3,7 @@ layout: default
 title: Typography
 ---
 
-# Typography
+# 📜 Typography
 
 Use typography to present your design and content as clearly and efficiently as possible.
 

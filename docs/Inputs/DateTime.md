@@ -5,7 +5,7 @@ title: Date / Time
 
 # Date / Time
 
-## Date Picker
+## 📅 Date Picker
 
 ### DatePickerDialog
 
@@ -60,7 +60,7 @@ This TextField allows the user to select a date by editing the text field with f
 
 * `accepted(date date)` : Signal emitted when the date entered by the user is valid
 
-## Time Picker
+## ⌚ Time Picker
 
 ### TimePickerDialog
 
@@ -89,7 +89,7 @@ This TextField allows the user to select an hour by editing the text in the fiel
 
 **Signal** : `hourAccepted(hour, minute, am)`, emitted when a correct hour is picked by the user
 
-## Advanced Use
+## ✏️ Advanced Use
 
 ### Date Components
 
