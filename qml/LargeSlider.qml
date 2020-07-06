@@ -5,31 +5,31 @@
 
 // Qt
 import QtQuick 2.12
-import QtQuick.Templates 2.12 as T
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
 
-T.Slider
+Qaterial.Slider
 {
   id: control
 
-  padding: Qaterial.Style.slider.padding
+  //Qaterial.DebugRectangle{ anchors.fill: parent }
 
-  property color rippleColor: Qaterial.Style.rippleColorTheme
-  property color color: Qaterial.Style.accentColor
-  property color foregroundColor: Qaterial.Style.hintTextColor()
-  property color disabledColor: Qaterial.Style.disabledTextColor()
-  property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
-  property color handleBorderColor: Qaterial.Style.primaryTextColor()
+  property int handleSize: 16
 
-  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
-  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider.implicitWidth
+  readonly property int handleWidth: control.horizontal ? handleSize : availableWidth
+  readonly property int handleHeight: control.horizontal ? availableHeight : handleSize
 
-  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitHandleWidth + leftPadding + rightPadding)
-  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitHandleHeight + topPadding + bottomPadding)
+  property int radius: 4
+  property int handleRadius: control.availableWidth/2
+  property int borderWidth: 2
+  property int inlineBorderWidth: borderWidth*2
+
+  property color backgroundColor: "transparent"
+  foregroundColor: hovered ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.hintTextColor()
+
+  implicitWidth: implicitBackgroundWidth + leftInset + rightInset
+  implicitHeight: implicitBackgroundHeight + topInset + bottomInset
 
   handle: Qaterial.SliderHandle
   {
@@ -52,15 +52,22 @@ T.Slider
     hovered: control.hovered
     rippleColor: control.rippleColor
     color: control.color
-    disabledColor: control.disabledColor
     borderColor: control.handleBorderColor
+    disabledColor: control.disabledColor
     enabled: control.enabled
+    clipRipple: true
+    radius: control.handleRadius
+
+    implicitWidth: control.handleWidth
+    implicitHeight: control.handleHeight
+    borderWidth: control.borderWidth
+
+    rippleScaleFactor: 1
+    pressedScaleFactor: 1.05
   } // SliderHandle
 
-  // Grey bar background
   background: Rectangle
   {
-    readonly property int size: 1
     implicitWidth: control.backgroundImplicitWidth
     implicitHeight: control.backgroundImplicitHeight
     x:
@@ -82,26 +89,29 @@ T.Slider
       if(control.horizontal)
         return control.availableWidth - control.handle.width
       else
-       return size
+       return Math.max(control.handleWidth - control.handleHeight, control.handleWidth/2, 8)
     }
     height:
     {
       if(control.horizontal)
-        return size
+        return Math.max(control.handleHeight - control.handleWidth, control.handleHeight/2, 8)
       else
         return control.availableHeight - control.handle.height
     }
-    color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
-    scale: control.horizontal && control.mirrored ? -1 : 1
 
-    // Accent bar going up to value
+    color: control.enabled ? control.backgroundColor : control.backgroundDisabledColor
+    border.color: control.foregroundColor
+    border.width: control.borderWidth
+
+    radius: control.radius
+
+    // Indicate where the value is
     Rectangle
     {
-      readonly property int size: 3
       x:
       {
         if(control.horizontal)
-          return 0
+          return control.borderWidth + control.inlineBorderWidth
         else
           return (parent.width - width) / 2
       }
@@ -110,23 +120,27 @@ T.Slider
         if(control.horizontal)
           return (parent.height - height) / 2
         else
-          return control.visualPosition * parent.height
+          return control.visualPosition * parent.height + control.borderWidth + control.inlineBorderWidth
       }
+
       width:
       {
         if(control.horizontal)
-          return control.position * parent.width
+          return control.position * parent.width - control.borderWidth*2 - control.inlineBorderWidth*2
         else
-          return size
+          return parent.width - control.borderWidth*2 - control.inlineBorderWidth*2
       }
+
       height:
       {
         if(control.horizontal)
-          return 3
+          return parent.height - control.borderWidth*2 - control.inlineBorderWidth*2
         else
-          return control.position * parent.height
+          return control.position * parent.height - control.borderWidth*2 - control.inlineBorderWidth*2
       }
       color: control.enabled ? control.color : control.disabledColor
+
+      radius: control.radius/2
     } // Rectangle
   } // Rectangle
 } // Slider

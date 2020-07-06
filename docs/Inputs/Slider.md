@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Slider
+title: 🎚️ Slider
 ---
 
-# Slider
+# 🎚️ Slider
 
 ![sliderhandleorientation](https://user-images.githubusercontent.com/17255804/86527361-74afa600-be9e-11ea-8c1b-f1ffb4b32b34.gif)
 
@@ -19,6 +19,7 @@ Slider
   from: 1
   value: 25
   to: 100
+  orientation: Qt.Vertical // or Qt.Horizontal
 }
 ```
 
@@ -32,13 +33,51 @@ The [position](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#position
 
 ### Discrete Slider
 
+*todo*
+
 ### Custom Mark
+
+*todo*
 
 ### ToolTip
 
+*todo*
+
 ### Inverted Track
 
+*todo*
+
 ### Customized Slider
+
+#### Large Slider
+
+`LargeSlider` is a built in `Slider` variant. The Large slider background scale to the height/width of the Slider. The handle also scale to follow the height/width.
+
+![largeSlider](https://user-images.githubusercontent.com/17255804/86570596-73e74480-bf70-11ea-9bd7-8eed399da591.gif)
+
+* `radius`: Radius of the background
+* `handleSize`: control the width of the handle in `Qt.Vertical` or height of the handle in `Qt.Horizontal`
+* `handleRadius`: Radius of the handle
+* `handleBorderColor`: Border color of the handle
+* `inlineBorderWidth`: Width between external and inline rectangle (then one that indicate where value is.
+
+```js
+LargeSlider
+{
+  from: 1
+  value: 25
+  to: 100
+  orientation: Qt.Vertical // or Qt.Horizontal
+}
+```
+
+#### Gradient Slider
+
+*todo*
+
+#### Flat Slider
+
+*todo*
 
 ## Range Slider
 
