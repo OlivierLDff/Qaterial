@@ -8,12 +8,7 @@ configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/QaterialHotReload.qrc
   ${CMAKE_CURRENT_BINARY_DIR}/QaterialHotReload.qrc.junk
 )
-#[[
-if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
-  set(QATERIAL_HOTRELOAD_PLATFORM_SRC platform/windows/icon.rc)
-  set(QATERIAL_HOTRELOAD_PLATFORM_TARGET WIN32)
-endif()
-]]
+
 add_executable(${QATERIAL_HOTRELOAD} ${QATERIAL_HOTRELOAD_PLATFORM_TARGET}
   QaterialHotReload.cpp
   ${QATERIAL_HOTRELOAD_QML_RES}
