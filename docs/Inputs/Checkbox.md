@@ -3,4 +3,4 @@ layout: default
 title: Checkbox
 ---
 
-# Checkbox
+# ✔️ Checkbox

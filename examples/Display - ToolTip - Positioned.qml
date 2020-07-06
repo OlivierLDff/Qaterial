@@ -41,7 +41,7 @@ Item
       Qaterial.ToolTip
       {
         text: "TopLeft"
-        visible: topLeft.hovered
+        visible: topLeft.hovered || topLeft.pressed
         position: Qaterial.Style.Position.TopLeft
       } // ToolTip
     } // FlatButton
@@ -58,7 +58,7 @@ Item
       Qaterial.ToolTip
       {
         text: "TopStart"
-        visible: topStart.hovered
+        visible: topStart.hovered || topStart.pressed
         position: Qaterial.Style.Position.TopStart
       } // ToolTip
     } // FlatButton
@@ -75,7 +75,7 @@ Item
       Qaterial.ToolTip
       {
         text: "Top"
-        visible: top.hovered
+        visible: top.hovered || top.pressed
         position: Qaterial.Style.Position.Top
       } // ToolTip
     } // FlatButton
@@ -92,7 +92,7 @@ Item
       Qaterial.ToolTip
       {
         text: "TopEnd"
-        visible: topEnd.hovered
+        visible: topEnd.hovered || topEnd.pressed
         position: Qaterial.Style.Position.TopEnd
       } // ToolTip
     } // FlatButton
@@ -109,7 +109,7 @@ Item
       Qaterial.ToolTip
       {
         text: "TopRight"
-        visible: topRight.hovered
+        visible: topRight.hovered || topRight.pressed
         position: Qaterial.Style.Position.TopRight
       } // ToolTip
     } // FlatButton
@@ -126,7 +126,7 @@ Item
       Qaterial.ToolTip
       {
         text: "RightStart"
-        visible: rightStart.hovered
+        visible: rightStart.hovered || rightStart.pressed
         position: Qaterial.Style.Position.RightStart
       } // ToolTip
     } // FlatButton
@@ -143,7 +143,7 @@ Item
       Qaterial.ToolTip
       {
         text: "Right"
-        visible: right.hovered
+        visible: right.hovered || right.pressed
         position: Qaterial.Style.Position.Right
       } // ToolTip
     } // FlatButton
@@ -160,7 +160,7 @@ Item
       Qaterial.ToolTip
       {
         text: "RightEnd"
-        visible: rightEnd.hovered
+        visible: rightEnd.hovered || rightEnd.pressed
         position: Qaterial.Style.Position.RightEnd
       } // ToolTip
     } // FlatButton
@@ -177,7 +177,7 @@ Item
       Qaterial.ToolTip
       {
         text: "BottomRight"
-        visible: bottomRight.hovered
+        visible: bottomRight.hovered || bottomRight.pressed
         position: Qaterial.Style.Position.BottomRight
       } // ToolTip
     } // FlatButton
@@ -194,7 +194,7 @@ Item
       Qaterial.ToolTip
       {
         text: "BottomEnd"
-        visible: bottomEnd.hovered
+        visible: bottomEnd.hovered || bottomEnd.pressed
         position: Qaterial.Style.Position.BottomEnd
       } // ToolTip
     } // FlatButton
@@ -211,7 +211,7 @@ Item
       Qaterial.ToolTip
       {
         text: "Bottom"
-        visible: bottom.hovered
+        visible: bottom.hovered || bottom.pressed
         position: Qaterial.Style.Position.Bottom
       } // ToolTip
     } // FlatButton
@@ -228,7 +228,7 @@ Item
       Qaterial.ToolTip
       {
         text: "BottomStart"
-        visible: bottomStart.hovered
+        visible: bottomStart.hovered || bottomStart.pressed
         position: Qaterial.Style.Position.BottomStart
       } // ToolTip
     } // FlatButton
@@ -245,7 +245,7 @@ Item
       Qaterial.ToolTip
       {
         text: "BottomLeft"
-        visible: bottomLeft.hovered
+        visible: bottomLeft.hovered || bottomLeft.pressed
         position: Qaterial.Style.Position.BottomLeft
       } // ToolTip
     } // FlatButton
@@ -262,7 +262,7 @@ Item
       Qaterial.ToolTip
       {
         text: "LeftEnd"
-        visible: leftEnd.hovered
+        visible: leftEnd.hovered || leftEnd.pressed
         position: Qaterial.Style.Position.LeftEnd
       } // ToolTip
     } // FlatButton
@@ -279,7 +279,7 @@ Item
       Qaterial.ToolTip
       {
         text: "Left"
-        visible: left.hovered
+        visible: left.hovered || left.pressed
         position: Qaterial.Style.Position.Left
       } // ToolTip
     } // FlatButton
@@ -296,7 +296,7 @@ Item
       Qaterial.ToolTip
       {
         text: "LeftStart"
-        visible: leftStart.hovered
+        visible: leftStart.hovered || leftStart.pressed
         position: Qaterial.Style.Position.LeftStart
       } // ToolTip
     } // FlatButton
@@ -313,9 +313,9 @@ Item
       Qaterial.ToolTip
       {
         text: "Center"
-        visible: center.hovered
+        visible: center.hovered || center.pressed
         position: Qaterial.Style.Position.Center
       } // ToolTip
     } // FlatButton
-  } // Row
+  } // Rectangle
 } // Item
