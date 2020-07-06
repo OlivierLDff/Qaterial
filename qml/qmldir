@@ -225,6 +225,7 @@ Slider                      1.0 Slider.qml
 SliderHandle                1.0 SliderHandle.qml
 SliderDelegate              1.0 SliderDelegate.qml
 LargeSlider                 1.0 LargeSlider.qml
+GradientSlider              1.0 GradientSlider.qml
 
 RectangleAreaHandler        1.0 RectangleAreaHandler.qml
 Stepper                     1.0 Stepper.qml

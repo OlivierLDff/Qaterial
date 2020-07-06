@@ -18,6 +18,7 @@ T.Slider
 
   property color rippleColor: Qaterial.Style.rippleColorTheme
   property color color: Qaterial.Style.accentColor
+  property color handleColor: color
   property color foregroundColor: Qaterial.Style.hintTextColor()
   property color disabledColor: Qaterial.Style.disabledTextColor()
   property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
@@ -51,7 +52,7 @@ T.Slider
     pressed: control.pressed
     hovered: control.hovered
     rippleColor: control.rippleColor
-    color: control.color
+    color: control.handleColor
     disabledColor: control.disabledColor
     borderColor: control.handleBorderColor
     enabled: control.enabled

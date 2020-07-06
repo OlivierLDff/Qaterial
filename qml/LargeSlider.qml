@@ -26,7 +26,7 @@ Qaterial.Slider
   property int inlineBorderWidth: borderWidth*2
 
   property color backgroundColor: "transparent"
-  foregroundColor: hovered ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.hintTextColor()
+  foregroundColor: hovered || pressed ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.hintTextColor()
 
   implicitWidth: implicitBackgroundWidth + leftInset + rightInset
   implicitHeight: implicitBackgroundHeight + topInset + bottomInset
@@ -51,7 +51,7 @@ Qaterial.Slider
     pressed: control.pressed
     hovered: control.hovered
     rippleColor: control.rippleColor
-    color: control.color
+    color: control.handleColor
     borderColor: control.handleBorderColor
     disabledColor: control.disabledColor
     enabled: control.enabled
