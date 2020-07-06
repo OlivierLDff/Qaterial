@@ -14,7 +14,7 @@ title: 🎚️ Slider
 In the example below, custom [from](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#from-prop), [value](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#value-prop), and [to](https://doc.qt.io/qt-5/qml-qtquick-controls2-slider.html#to-prop) values are set:
 
 ```js
-Slider 
+Slider
 {
   from: 1
   value: 25
@@ -73,9 +73,64 @@ LargeSlider
 
 #### Gradient Slider
 
-*todo*
+`GradientSlider` is based on `LargeSlider`. It have an additional `gradient` property the will come on the fader. By default the background is `transparent`.
+
+![gradientSlider](https://user-images.githubusercontent.com/17255804/86573433-b0b53a80-bf74-11ea-9dad-c26485381bc8.gif)
+
+The gradient will be embedded inside a [LinearGradient](https://doc.qt.io/qt-5/qml-qtgraphicaleffects-lineargradient.html).
+
+```js
+
+Qaterial.GradientSlider
+{
+  // color of the handle
+  color: Qaterial.Style.teal
+
+  from: 1
+  value: 25
+  to: 100
+  orientation: Qt.Vertical // or Qt.Horizontal
+
+  // Rainbow Gradient
+  gradient: Gradient
+  {
+    GradientStop {
+       position: 0.000
+       color: Qt.rgba(1, 0, 0, 1)
+    }
+    GradientStop {
+       position: 0.167
+       color: Qt.rgba(1, 1, 0, 1)
+    }
+    GradientStop {
+       position: 0.333
+       color: Qt.rgba(0, 1, 0, 1)
+    }
+    GradientStop {
+       position: 0.500
+       color: Qt.rgba(0, 1, 1, 1)
+    }
+    GradientStop {
+       position: 0.667
+       color: Qt.rgba(0, 0, 1, 1)
+    }
+    GradientStop {
+       position: 0.833
+       color: Qt.rgba(1, 0, 1, 1)
+    }
+    GradientStop {
+       position: 1.000
+       color: Qt.rgba(1, 0, 0, 1)
+    }
+  }
+}
+```
 
 #### Flat Slider
+
+*todo*
+
+#### Flat Gradient Slider
 
 *todo*
 
@@ -86,7 +141,7 @@ LargeSlider
 In the example below, custom [from](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#from-prop) and [to](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#to-prop) values are set, and the initial positions of the [first](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#first-prop) and [second](https://doc.qt.io/qt-5/qml-qtquick-controls2-rangeslider.html#second-prop) handles are set:
 
 ```js
-RangeSlider 
+RangeSlider
 {
   from: 1
   to: 100

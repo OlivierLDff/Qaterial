@@ -218,6 +218,7 @@
         <file>RangeSliderDelegate.qml</file>
 
         <file>LargeSlider.qml</file>
+        <file>GradientSlider.qml</file>
 
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
