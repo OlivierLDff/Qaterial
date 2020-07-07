@@ -1,7 +1,6 @@
-import QtQuick 2.0
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-OutlineButton
+Qaterial.OutlineButton
 {
   text: "Outline Button"
 }

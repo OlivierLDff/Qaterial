@@ -22,12 +22,7 @@ T.Button
                            implicitContentHeight + topPadding + bottomPadding)
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
-  Qaterial.DebugRectangle
-  {
-    anchors.fill: parent
-    border.color: "pink"
-    visible: _control.drawline
-  } // DebugRectangle
+  Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink"; visible: _control.drawline } // DebugRectangle
 
   property int textType: Qaterial.Style.TextType.Button
   property int elide: Text.ElideNone
@@ -56,9 +51,6 @@ T.Button
     return Qaterial.Style.rawButton.padding + rightInset
   }
 
-  //leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + leftInset
-  //rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.rawButton.iconPadding : (flat && !outlined) ? Qaterial.Style.rawButton.spacing : Qaterial.Style.rawButton.padding) + rightInset
-
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.rawButton.spacing
@@ -68,7 +60,7 @@ T.Button
   property color foregroundColor:
   {
     if(!enabled)
-      return flat ? Qaterial.Style.disabledTextColor() : Qaterial.Style.disabledTextColor()
+      return Qaterial.Style.disabledTextColor()
     if(flat && highlighted)
       return Qaterial.Style.accentColor
     return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
@@ -101,7 +93,6 @@ T.Button
     if(pressed)
       return foregroundColor
     return Qaterial.Style.dividersColor()
-    //return pressed ? foregroundColor : Qaterial.Style.dividersColor()
   }
 
   property bool onPrimary: false
@@ -143,12 +134,7 @@ T.Button
 
   background: Rectangle
   {
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "aquamarine"
-      visible: _control.drawline
-    } // DebugRectangle
+    Qaterial.DebugRectangle { anchors.fill: parent; border.color: "aquamarine"; visible: _control.drawline } // DebugRectangle
 
     implicitWidth: _control.backgroundImplicitWidth
     implicitHeight: _control.backgroundImplicitHeight
@@ -160,6 +146,7 @@ T.Button
         return _control.pressed ? Qaterial.Style.rawButton.outlinedFocusWidth : Qaterial.Style.rawButton.outlinedWidth
       return 0
     }
+
     border.color: _control.outlinedColor
     // The layer is disabled when the button color is transparent so you can do
     // Material.background: "transparent" and get a proper flat button without needing
@@ -173,13 +160,16 @@ T.Button
     Qaterial.Ripple
     {
       id: _ripple
+
       width: parent.width + (_control.outlined ? -2 : 0)
       height: parent.height + (_control.outlined ? -2 : 0)
       anchors.centerIn: parent
+
       pressed: _control.pressed
       anchor: _control
       active: _control.down || _control.visualFocus || _control.hovered || _control.forceRipple
       color: _control.rippleColor
+
       // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
       layer.enabled: _control.clipRipple
       layer.effect: OpacityMask
