@@ -21,7 +21,7 @@ include(CMakeParseArguments)
 #
 function(qt_generate_qrc VAR)
 
-  set(QT_QRC_OPTIONS)
+  set(QT_QRC_OPTIONS VERBOSE)
   set(QT_QRC_ONE_VALUE_ARG PREFIX
     SOURCE_DIR
     NAME
@@ -56,7 +56,9 @@ function(qt_generate_qrc VAR)
 
     if(NOT ${FILENAME_EXT} STREQUAL "qrc")
       file(APPEND ${OUT_FILENAME_ABS} "    <file>${FILENAME}</file>\n")
-      message(STATUS "Add ${FILENAME} in ${ARGGEN_NAME}")
+      if(ARGGEN_VERBOSE)
+        message(STATUS "Add ${FILENAME} in ${ARGGEN_NAME}")
+      endif()
     endif()
   endforeach()
 
