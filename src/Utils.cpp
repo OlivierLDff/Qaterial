@@ -139,7 +139,9 @@ class HighDpiFix
     HighDpiFix()
     {
 #ifdef Q_OS_WIN
-        SetProcessDPIAware();  // call before the main event loop
+    #if _WIN32_WINNT >= 0x0600
+        ::SetProcessDPIAware();
+    #endif
 #endif  // Q_OS_WIN
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     }
