@@ -13,7 +13,7 @@ Row
     Qaterial.ToolTip
     {
       text: "Simple ToolTip"
-      visible: button1.hovered
+      visible: button1.hovered || button1.pressed
     } // ToolTip
   } // FlatButton
   Qaterial.FlatButton
@@ -26,7 +26,7 @@ Row
     {
       text: "ToolTip Delayed"
       delay: 300
-      visible: button2.hovered
+      visible: button2.hovered || button2.pressed
     } // ToolTip
   } // FlatButton
   Qaterial.FlatButton
@@ -38,7 +38,7 @@ Row
     Qaterial.ToolTip
     {
       text: "ToolTip Timeout"
-      visible: button3.hovered
+      visible: button3.hovered || button3.pressed
       timeout: 800
     } // ToolTip
   } // FlatButton
@@ -51,7 +51,7 @@ Row
     Qaterial.ToolTip
     {
       text: "Customized ToolTip"
-      visible: button4.hovered
+      visible: button4.hovered || button4.pressed
       backgroupRadius: height/2
       textType: Qaterial.Style.TextType.Display1
     } // ToolTip
