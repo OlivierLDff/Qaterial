@@ -18,8 +18,8 @@ QtObject
 
   enum Theme
   {
-      Light,
-      Dark
+    Light,
+    Dark
   }
 
   property int theme: Style.Theme.Dark

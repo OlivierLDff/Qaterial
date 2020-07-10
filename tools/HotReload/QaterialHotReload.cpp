@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 
     // ──── REGISTER APPLICATION ────
 
-    QGuiApplication::setOrganizationName("Oliv");
+    QGuiApplication::setOrganizationName("Qaterial");
     QGuiApplication::setApplicationName("Qaterial Hot Reload");
     QGuiApplication::setOrganizationDomain("https://olivierldff.github.io/Qaterial/");
     QGuiApplication::setApplicationVersion(qaterial::Version::version().readable());

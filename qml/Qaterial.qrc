@@ -238,6 +238,7 @@
         <!-- COMPONENTS / UTILS -->
         <file>RectangleAreaHandler.qml</file>
         <file>Stepper.qml</file>
+        <file>Expandable.qml</file>
 
     </qresource>
 </RCC>

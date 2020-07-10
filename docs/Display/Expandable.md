@@ -1,0 +1,160 @@
+---
+layout: default
+title: Expandable
+---
+# Expandable
+
+![expandablesimple](https://user-images.githubusercontent.com/17255804/87765343-f8ab4b80-c817-11ea-8473-887a95a706e4.gif)
+
+`Expandable` is a lightweight item that display a `header` and a `delegate`. The delegate is shown with an `animation` when `expanded` is set to true.
+
+```js
+import QtQuick 2.0
+import Qaterial 1.0 as Qaterial
+
+Qaterial.Expandable
+{
+  id: root
+
+  header: Qaterial.ItemDelegate
+  {
+    id: _header
+    text: "Header"
+    onClicked: () => root.expanded = !root.expanded
+
+    contentItem: Qaterial.Label
+    {
+      text: parent.text
+      textType: Qaterial.Style.TextType.Title
+      horizontalAlignment: Text.AlignHCenter
+      verticalAlignment: Text.AlignVCenter
+    }
+
+    Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Style.green }
+  }
+
+  delegate: Qaterial.Label
+  {
+    text: "Delegate"
+    textType: Qaterial.Style.TextType.Title
+    horizontalAlignment: Text.AlignHCenter
+    verticalAlignment: Text.AlignVCenter
+    height: 100
+
+    Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Style.amber }
+  }
+}
+```
+
+[QaterialOnline](https://tinyurl.com/yxwxorvu)
+
+## Customization
+
+By it's own the `Expandable` doesn't provide any appearance. It need to be customized.
+
+- `header`: `Component` display on top of the Expandable.
+- `delegate`: `Component` display when `expanded` is **true** with `animation`.
+- `animation`: Behavior on `delegate` height. There is a default implementation for that.
+
+## Properties
+
+- `expanded`: **true** to expand the **Expandable**. *Default: false.*
+
+## Examples
+
+### Animation
+
+![expandableanimation](https://user-images.githubusercontent.com/17255804/87765347-f943e200-c817-11ea-9923-f83f1a900362.gif)
+
+This example shows how to customize the `animation`.
+
+```js
+import QtQuick 2.0
+import Qaterial 1.0 as Qaterial
+
+Qaterial.Expandable
+{
+  id: root
+
+  header: Qaterial.ItemDelegate
+  {
+    height: 32
+    backgroundColor: Qaterial.Style.orange
+    onClicked: () => root.expanded = !root.expanded
+  }
+
+  delegate: Rectangle
+  {
+    height: 64
+    color: Qaterial.Style.teal
+  }
+
+  animation: NumberAnimation
+  {
+    duration: 500
+    easing.type: Easing.OutCirc
+  }
+}
+```
+
+[QaterialOnline](https://tinyurl.com/y5p3f27n)
+
+### Advanced
+
+![expandableadvanced](https://user-images.githubusercontent.com/17255804/87765349-f9dc7880-c817-11ea-83fd-c9537a1f460a.gif)
+
+This example shows how to create a complex `delegate`.
+
+```js
+import QtQuick 2.0
+import Qaterial 1.0 as Qaterial
+
+Qaterial.Expandable
+{
+  id: root
+  width: parent.width
+
+  header: Qaterial.ItemDelegate
+  {
+    id: _header
+    width: root.width
+
+    icon.source: Qaterial.Icons.account
+    text: "Header"
+    secondaryText: `expanded: ${root.expanded}`
+
+    onClicked: () => root.expanded = !root.expanded
+
+    Qaterial.DebugRectangle { anchors.fill: parent; border.color: "#E91E63"}
+  } // Rectangle
+
+  delegate: Column
+  {
+    Repeater
+    {
+      id: _repeater
+
+      model: ListModel
+      {
+        ListElement { icon: "numeric-1-circle-outline"; color: "#2196F3" }
+        ListElement { icon: "numeric-2-circle-outline"; color: "#4CAF50" }
+        ListElement { icon: "numeric-3-circle-outline"; color: "#f44336" }
+      } // ListModel
+
+      delegate: Qaterial.ItemDelegate
+      {
+        width: root.width
+
+        text: `Delegate ${index}`
+        icon.source: `qrc:/Qaterial/Icons/${model.icon}.svg`
+
+        Qaterial.DebugRectangle { anchors.fill: parent; border.color: model.color }
+
+        onClicked: () => Qaterial.Logger.debug(`Element ${index+1} clicked`)
+      } // ItemDelegate
+    } // Repeater
+  } // Item
+} // Expandable
+```
+
+[QaterialOnline](https://tinyurl.com/y6nwwy5d)
