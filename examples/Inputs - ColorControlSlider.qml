@@ -31,6 +31,7 @@ Column
     Qaterial.Label
     {
       anchors.verticalCenter: parent.verticalCenter
+      width: 200
       textType: Qaterial.Style.TextType.Heading
       text: `Color: ${root.color.toString().toUpperCase()}`
     }
