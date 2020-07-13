@@ -193,7 +193,6 @@ DialogManagerSettings       1.0 DialogManagerSettings.qml
 singleton DialogManager     1.0 DialogManager.qml
 
 singleton Calendar          1.0 Calendar.qml
-Calendar                    1.0 Calendar.qml
 CalendarDateButton          1.0 CalendarDateButton.qml
 CalendarDayGrid             1.0 CalendarDayGrid.qml
 CalendarWeekDayRow          1.0 CalendarWeekDayRow.qml
