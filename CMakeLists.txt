@@ -120,12 +120,12 @@ set(QATERIAL_IO_SRCS
   src/TextFile.cpp
   include/Qaterial/Clipboard.hpp
   src/Clipboard.cpp
-  )
+)
 
 set(QATERIAL_NAVIGATION_SRCS
   include/Qaterial/StepperElement.hpp
   src/StepperElement.cpp
-  )
+)
 
 set(QATERIAL_UTILS_SRCS
   include/Qaterial/Qaterial.hpp
@@ -137,7 +137,7 @@ set(QATERIAL_UTILS_SRCS
   src/Utils.cpp
   include/Qaterial/Logger.hpp
   src/Logger.cpp
-  )
+)
 
 set(QATERIAL_SRCS
   ${QATERIAL_IO_SRCS}
@@ -145,7 +145,7 @@ set(QATERIAL_SRCS
   ${QATERIAL_UTILS_SRCS}
   ${QATERIAL_QML_RES}
   ${QATERIAL_QML_SRCS}
-  )
+)
 
 source_group("IO" FILES ${QATERIAL_IO_SRCS})
 source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
@@ -176,7 +176,7 @@ target_link_libraries(${QATERIAL_TARGET}      PUBLIC
   Qt5::Qml
   Qt5::Quick
   Qt5::QuickControls2
-  )
+)
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
 
@@ -203,7 +203,7 @@ if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
       QtQuickVirtualKeyboardStylesPlugin
       QmlFolderListModelPlugin
     VERBOSE
-    )
+  )
   qt_generate_plugin_import(${QATERIAL_TARGET} VERBOSE)
 endif()
 
