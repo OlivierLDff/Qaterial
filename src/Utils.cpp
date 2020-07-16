@@ -102,6 +102,7 @@ static void Qaterial_loadResources()
 
     Q_INIT_RESOURCE(Qaterial);
     Q_INIT_RESOURCE(QaterialIcons);
+    Q_INIT_RESOURCE(QaterialIconsAliases);
     Q_INIT_RESOURCE(QaterialFontsRoboto);
 
     const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/Roboto/");
