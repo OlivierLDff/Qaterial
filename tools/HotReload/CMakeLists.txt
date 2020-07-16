@@ -52,8 +52,8 @@ if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
     PUBLISHER "Qaterial"
     PRODUCT_URL "https://olivierldff.github.io/Qaterial"
     PACKAGE "com.qaterial.hotreloader"
-    ICON platform/windows/icon.ico
-    ICON_RC platform/windows/icon.rc
+    ICON "${CMAKE_CURRENT_SOURCE_DIR}/platform/windows/icon.ico"
+    ICON_RC "${CMAKE_CURRENT_SOURCE_DIR}/platform/windows/icon.rc"
     QML_DIR ${CMAKE_CURRENT_SOURCE_DIR}
     VERBOSE_LEVEL_DEPLOY 1
     VERBOSE_INSTALLER
