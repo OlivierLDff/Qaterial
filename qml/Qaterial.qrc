@@ -25,7 +25,6 @@
 
         <!-- STYLES -->
         <file>Style.qml</file>
-        <file>Icons.qml</file>
         <file>StyleSettingsDialog.qml</file>
 
         <!-- COMPONENTS / TIMEPICKER -->

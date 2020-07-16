@@ -83,13 +83,6 @@ include(cmake/GenerateQrcAliasQtObject.cmake)
 include(cmake/GenerateQrc.cmake)
 include(cmake/FetchMaterialDesignIcons.cmake)
 
-generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
-  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
-  NAME qml/Icons.qml
-  PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION ${QATERIAL_ICONS}
-  SINGLETON)
-
 qt_generate_qrc(QATERIAL_QML_ICONS_QRC
   SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
   NAME QaterialIcons.qrc
@@ -102,8 +95,21 @@ qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
   PREFIX "Qaterial/Fonts/Roboto"
   GLOB_EXPRESSION "*.ttf")
 
+generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
+  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
+  NAME "${CMAKE_CURRENT_BINARY_DIR}/QmlGenerated/Icons.qml"
+  PREFIX "Qaterial/Icons"
+  GLOB_EXPRESSION ${QATERIAL_ICONS}
+  SINGLETON)
+
+qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
+  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/QmlGenerated"
+  NAME QaterialIconsAliases.qrc
+  PREFIX "Qaterial/"
+  GLOB_EXPRESSION "*.qml")
+
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES qml/Qaterial.qrc ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC})
+qtquick_compiler_add_resources(QATERIAL_QML_RES qml/Qaterial.qrc ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
 
 # Trick to rerun cmake each time Qaterial.qrc is updated
 configure_file(qml/Qaterial.qrc
