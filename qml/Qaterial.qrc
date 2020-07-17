@@ -14,7 +14,10 @@
         <file>DebugObject.qml</file>
         <file>RoundImage.qml</file>
         <file>ErrorSequentialAnimation.qml</file>
+
         <file>LineChart.qml</file>
+        <file>GridLabelsX.qml</file>
+        <file>GridLabelsY.qml</file>
 
         <!-- CONTAINERS -->
         <file>ScrollablePage.qml</file>
