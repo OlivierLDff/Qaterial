@@ -13,6 +13,7 @@
         <file>DebugObject.qml</file>
         <file>RoundImage.qml</file>
         <file>ErrorSequentialAnimation.qml</file>
+        <file>LineChart.qml</file>
 
         <!-- CONTAINERS -->
         <file>ScrollablePage.qml</file>
