@@ -97,16 +97,20 @@ qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
 
 generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
   SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
-  NAME "${CMAKE_CURRENT_BINARY_DIR}/QmlGenerated/Icons.qml"
+  NAME "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/Icons.qml"
   PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION ${QATERIAL_ICONS}
-  SINGLETON)
+  GLOB_EXPRESSION ${QATERIAL_ICONS})
+
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/qmldir
+  "module Qaterial.Impl.Icons\n"
+  "Icons 1.0 Icons.qml\n"
+)
 
 qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
-  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/QmlGenerated"
+  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated"
   NAME QaterialIconsAliases.qrc
-  PREFIX "Qaterial/"
-  GLOB_EXPRESSION "*.qml")
+  PREFIX "Qaterial/Impl/Icons"
+  GLOB_EXPRESSION "*.qml;qmldir")
 
 # Add qml to the qtquick compiler (should only be call once per target)
 qtquick_compiler_add_resources(QATERIAL_QML_RES qml/Qaterial.qrc ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
