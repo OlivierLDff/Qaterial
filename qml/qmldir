@@ -214,6 +214,8 @@ VerticalLineSeparator       1.0 VerticalLineSeparator.qml
 
 Drawer                      1.0 Drawer.qml
 LineChart                   1.0 LineChart.qml
+GridLabelsX                 1.0 GridLabelsX.qml
+GridLabelsY                 1.0 GridLabelsY.qml
 
 BusyIndicator               1.0 BusyIndicator.qml
 ProgressBar                 1.0 ProgressBar.qml
