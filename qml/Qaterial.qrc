@@ -3,6 +3,7 @@
 
         <!-- QMLDIR -->
         <file>qmldir</file>
+        <file>Icons.qml</file>
 
         <!-- CORE -->
         <file>ColorIcon.qml</file>

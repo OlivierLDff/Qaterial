@@ -54,7 +54,7 @@ function(qt_generate_qrc VAR)
     get_filename_component(FILENAME ${RES_FILE} NAME)
     get_filename_component(FILENAME_EXT ${RES_FILE} LAST_EXT)
 
-    if(NOT ${FILENAME_EXT} STREQUAL "qrc")
+    if(NOT DEFINED FILENAME_EXT OR NOT ${FILENAME_EXT} STREQUAL ".qrc")
       file(APPEND ${OUT_FILENAME_ABS} "    <file>${FILENAME}</file>\n")
       if(ARGGEN_VERBOSE)
         message(STATUS "Add ${FILENAME} in ${ARGGEN_NAME}")
