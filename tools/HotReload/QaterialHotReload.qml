@@ -329,20 +329,23 @@ Qaterial.ApplicationWindow
         {
           loadedObject = component.createObject(loader)
 
-          if(fullScreen.checked)
-            loadedObject.anchors.fill = loader
-          if(formatHorizontalAlignCenter.checked)
-            loadedObject.anchors.horizontalCenter = loader.horizontalCenter
-          if(formatVerticalAlignCenter.checked)
-            loadedObject.anchors.verticalCenter = loader.verticalCenter
-          if(formatHorizontalAlignLeft.checked)
-            loadedObject.anchors.left = loader.left
-          if(formatHorizontalAlignRight.checked)
-            loadedObject.anchors.right = loader.right
-          if(formatVerticalAlignBottom.checked)
-            loadedObject.anchors.bottom = loader.bottom
-          if(formatVerticalAlignTop.checked)
-            loadedObject.anchors.top = loader.top
+          if(loadedObject.anchors)
+          {
+            if(fullScreen.checked)
+              loadedObject.anchors.fill = loader
+            if(formatHorizontalAlignCenter.checked)
+              loadedObject.anchors.horizontalCenter = loader.horizontalCenter
+            if(formatVerticalAlignCenter.checked)
+              loadedObject.anchors.verticalCenter = loader.verticalCenter
+            if(formatHorizontalAlignLeft.checked)
+              loadedObject.anchors.left = loader.left
+            if(formatHorizontalAlignRight.checked)
+              loadedObject.anchors.right = loader.right
+            if(formatVerticalAlignBottom.checked)
+              loadedObject.anchors.bottom = loader.bottom
+            if(formatVerticalAlignTop.checked)
+              loadedObject.anchors.top = loader.top
+          }
 
           window.errorString = ""
         }
