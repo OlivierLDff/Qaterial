@@ -5,7 +5,21 @@ import Qaterial 1.0 as Qaterial
 Item
 {
   width: 2*bottomLeft.width + rectangle.width  + 2*bottomRight.width
-  height: 2*top.height + rectangle.height + 2*bottom.height
+  height: 2*top.height + rectangle.height + 2*bottom.height + label.height + 20
+
+  Qaterial.Label
+  {
+  id: label
+    x: (parent.width - width)/2
+    y: 5
+    width: parent.width
+    horizontalAlignment: Text.AlignHCenter
+
+    wrapMode: Text.Wrap
+    elide: Text.ElideRight
+    text: "ToolTip are displayed spaced apart by \"margins/2\" pixels from their parent's border (default: margins = 12)"
+    textType: Qaterial.Style.TextType.Caption
+  }
 
   Rectangle
   {
@@ -14,20 +28,8 @@ Item
     width: 370
     height: 150
     color: "transparent"
-    border.color: Qaterial.Style.accentColor
-
-    Qaterial.Label
-    {
-      x: (parent.width - width)/2
-      y: 10
-      width: parent.width
-      horizontalAlignment: Text.AlignHCenter
-
-      wrapMode: Text.Wrap
-      elide: Text.ElideRight
-      text: "ToolTip are displayed spaced apart by \"margins/2\" pixels from their parent's border (default: margins = 12)"
-      color: Qaterial.Style.accentColor
-    }
+    border.color: Qaterial.Style.dividersColor()
+    radius: 4
 
     Qaterial.FlatButton
     {
