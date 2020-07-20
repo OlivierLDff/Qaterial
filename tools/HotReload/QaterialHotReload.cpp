@@ -159,7 +159,7 @@ int main(int argc, char* argv[])
     qaterial::loadQmlResources();
     qaterial::registerQmlTypes();
     qaterial::HotReload::registerSingleton();
-    qqsfpm::utils::registerTypes();
+    qqsfpm::registerQmlTypes();
 
     // Load QaterialHotReload
     Q_INIT_RESOURCE(QaterialHotReload);
