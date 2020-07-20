@@ -1,25 +1,13 @@
 // Qt
 
 import QtQml 2.14
-import QtQml.Models 2.14
-import QtQml.StateMachine 1.14
 
 import QtQuick 2.14
 import QtQuick.Controls 2.14
-import QtQuick.Window 2.2
-import QtQuick.Layouts 1.14
-import QtQuick.Extras 1.2
-import QtQuick.Shapes 1.14
 
 import QtQuick.Dialogs 1.3 as QQ1D
-
-import QtGraphicalEffects 1.14
-
-import Qt.labs.animation 1.0
-import Qt.labs.calendar 1.0
 import Qt.labs.settings 1.0 as QLab
 import Qt.labs.platform 1.0
-import Qt.labs.qmlmodels 1.0
 
 import Qaterial 1.0 as Qaterial
 import SortFilterProxyModel 1.0 as SortFilterProxyModel

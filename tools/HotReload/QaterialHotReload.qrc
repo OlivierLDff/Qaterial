@@ -5,6 +5,7 @@
         <file>StatusView.qml</file>
         <file>IconsMenu.qml</file>
         <file>TypoMenu.qml</file>
+        <file>Imports.qml</file>
         <file>material-icons-light.svg</file>
 
     </qresource>

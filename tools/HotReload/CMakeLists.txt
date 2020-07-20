@@ -3,6 +3,27 @@ message(STATUS "Add Example: ${QATERIAL_HOTRELOAD}")
 
 include(cmake/FetchSortFilterProxyModel.cmake)
 
+find_package(Qt5 QUIET COMPONENTS
+  Charts
+  DataVisualization
+  VirtualKeyboard
+  WebChannel
+  WebSockets
+
+  3DCore
+  3DRender
+  3DInput
+  3DLogic
+  3DExtras
+  3DAnimation
+
+  Quick3D
+  Quick3DAssetImport
+  Quick3DRender
+  Quick3DRuntimeRender
+  Quick3DUtils
+)
+
 qtquick_compiler_add_resources(QATERIAL_HOTRELOAD_QML_RES QaterialHotReload.qrc)
 configure_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/QaterialHotReload.qrc
@@ -14,6 +35,7 @@ add_executable(${QATERIAL_HOTRELOAD} ${QATERIAL_HOTRELOAD_PLATFORM_TARGET}
   ${QATERIAL_HOTRELOAD_QML_RES}
   ${QATERIAL_HOTRELOAD_PLATFORM_SRC}
 )
+
 target_link_libraries(${QATERIAL_HOTRELOAD} PRIVATE Qaterial SortFilterProxyModel)
 set_target_properties(${QATERIAL_HOTRELOAD} PROPERTIES
   FOLDER "${QATERIAL_FOLDER_PREFIX}/HotReload"
