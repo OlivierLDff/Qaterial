@@ -156,8 +156,8 @@ int main(int argc, char* argv[])
     engine.addImportPath("qrc:///");
 
     // Load Qaterial
-    qaterial::Utils::loadResources();
-    qaterial::Utils::registerTypes();
+    qaterial::loadQmlResources();
+    qaterial::registerQmlTypes();
     qaterial::HotReload::registerSingleton();
     qqsfpm::utils::registerTypes();
 

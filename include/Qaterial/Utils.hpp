@@ -31,10 +31,13 @@ public:
      * Registered types are:
      * -
      */
-    static void registerTypes(
+    Q_DECL_DEPRECATED static void registerTypes(
         const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
-    static void loadResources();
+    Q_DECL_DEPRECATED static void loadResources();
 };
+
+void registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+void loadQmlResources();
 
 }
 

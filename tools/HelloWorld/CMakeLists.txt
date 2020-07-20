@@ -20,7 +20,7 @@ add_executable(${QATERIAL_HELLOWORLD}
 target_link_libraries(${QATERIAL_HELLOWORLD} PRIVATE Qaterial)
 
 # AUTOMOC isn't necessary here, but it's a hello world
-# AUTORCC
+# AUTORCC is to compile the .qrc files
 set_target_properties(${QATERIAL_HELLOWORLD} PROPERTIES
   FOLDER "${QATERIAL_FOLDER_PREFIX}/HelloWorld"
   AUTORCC TRUE

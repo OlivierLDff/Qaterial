@@ -134,6 +134,13 @@ void Utils::registerTypes(const char* uri, const quint8 major, const quint8 mino
 
 void Utils::loadResources() { ::Qaterial_loadResources(); }
 
+void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
+{
+    ::Qaterial_registerTypes(uri, major, minor);
+}
+
+void qaterial::loadQmlResources() { ::Qaterial_loadResources(); }
+
 // Fix dpi at application startup
 class HighDpiFix
 {
