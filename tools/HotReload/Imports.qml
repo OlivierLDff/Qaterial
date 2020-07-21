@@ -42,5 +42,6 @@ import QtQuick.VirtualKeyboard.Settings 2.15
 
 import QtWebChannel 1.15
 import QtWebSockets 1.15
+import QtWebEngine 1.10
 
 Item { }

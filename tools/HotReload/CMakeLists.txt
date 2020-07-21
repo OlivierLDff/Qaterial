@@ -9,6 +9,7 @@ find_package(Qt5 QUIET COMPONENTS
   VirtualKeyboard
   WebChannel
   WebSockets
+  WebEngine
 
   3DCore
   3DRender

@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-          key: ${{ runner.os }}-QtCache-${{ matrix.version }}
+          key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
@@ -35,6 +35,7 @@ jobs:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          modules: 'qtcharts qtdatavis3d qtvirtualkeyboard qtwebengine qtquick3d'
 
       - name: Configure
         run: |
