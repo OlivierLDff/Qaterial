@@ -1,4 +1,4 @@
-// Qt
+// Copyright Olivier Le Doeuff 2020 (C)
 
 import QtQml 2.14
 
@@ -12,9 +12,9 @@ import Qt.labs.platform 1.0
 import Qaterial 1.0 as Qaterial
 import SortFilterProxyModel 1.0 as SortFilterProxyModel
 
-Qaterial.ApplicationWindow
+Qaterial.Page
 {
-  id: window
+  id: root
 
   property string currentFilePath
   property string currentFileUrl
@@ -24,12 +24,8 @@ Qaterial.ApplicationWindow
 
   property int theme: Qaterial.Style.theme
 
-  width: 1280
-  height: 600
-  title: `Qaterial Hot Reload - ${currentFilePath}`
-
-  minimumWidth: 200
-  minimumHeight: 200
+  implicitWidth: 1280
+  implicitHeight: 600
 
   function loadFileInLoader(source)
   {
@@ -44,24 +40,24 @@ Qaterial.ApplicationWindow
 
   function loadFile(path)
   {
-    Qaterial.HotReload.unWatchFile(window.currentFilePath)
+    Qaterial.HotReload.unWatchFile(root.currentFilePath)
     currentFileUrl = path
     // remove prefixed "file:///"
-    if(Qt.platform.os === "windows")
+    if(Qt.platform.os === "roots")
         path = path.replace(/^(file:\/{3})/,"");
     else
         path = path.replace(/^(file:\/{2})/,"");
     // unescape html codes like '%23' for '#'
     currentFilePath = decodeURIComponent(path);
-    Qaterial.HotReload.watchFile(window.currentFilePath)
+    Qaterial.HotReload.watchFile(root.currentFilePath)
 
-    loadFileInLoader(window.currentFileUrl)
+    loadFileInLoader(root.currentFileUrl)
   }
 
   QLab.Settings
   {
-    property alias currentFilePath: window.currentFilePath
-    property alias currentFileUrl: window.currentFileUrl
+    property alias currentFilePath: root.currentFilePath
+    property alias currentFileUrl: root.currentFileUrl
 
     property alias formatHorizontalAlignCenter: formatHorizontalAlignCenter.checked
     property alias formatVerticalAlignCenter: formatVerticalAlignCenter.checked
@@ -71,15 +67,13 @@ Qaterial.ApplicationWindow
     property alias formatVerticalAlignTop: formatVerticalAlignTop.checked
     property alias fullScreen: fullScreen.checked
 
-    property alias theme: window.theme
+    property alias theme: root.theme
   }
-
-  Qaterial.WindowLayoutSave { name: "Reloader" }
 
   Shortcut
   {
       sequence: "F5"
-      onActivated: () => window.reload()
+      onActivated: () => root.reload()
   }
 
   Shortcut
@@ -92,13 +86,13 @@ Qaterial.ApplicationWindow
   {
       id: fileDialog
       title: "Please choose a file"
-      onAccepted: () => window.loadFile(fileDialog.fileUrl.toString())
+      onAccepted: () => root.loadFile(fileDialog.fileUrl.toString())
   }
 
   Connections
   {
     target: Qaterial.HotReload
-    function onWatchedFileChanged() { window.reload() }
+    function onWatchedFileChanged() { root.reload() }
   }
 
   header: Qaterial.ToolBar
@@ -121,7 +115,7 @@ Qaterial.ApplicationWindow
         icon.source: Qaterial.Icons.sync
         useSecondaryColor: true
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolSeparator {}
@@ -136,7 +130,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Horizontal Center"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolButton
@@ -149,7 +143,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Vertical Center"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolSeparator {}
@@ -164,7 +158,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Left"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolButton
@@ -177,7 +171,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Right"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolButton
@@ -190,7 +184,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Bottom"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolButton
@@ -203,7 +197,7 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: "Align Top"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolSeparator {}
@@ -223,14 +217,14 @@ Qaterial.ApplicationWindow
         ToolTip.visible: hovered
         ToolTip.text: checked ? "Fullscreen" : "Fullscreen Exit"
 
-        onClicked: () => window.reload()
+        onClicked: () => root.reload()
       }
 
       Qaterial.ToolSeparator {}
 
       Qaterial.SquareButton
       {
-        readonly property bool lightTheme: window.theme === Qaterial.Style.Theme.Light
+        readonly property bool lightTheme: root.theme === Qaterial.Style.Theme.Light
         icon.source: lightTheme ? Qaterial.Icons.weatherSunny : Qaterial.Icons.moonWaningCrescent
         useSecondaryColor: true
         ToolTip.visible: hovered
@@ -335,21 +329,21 @@ Qaterial.ApplicationWindow
               loadedObject.anchors.top = loader.top
           }
 
-          window.errorString = ""
+          root.errorString = ""
         }
         else
         {
-          window.errorString = component.errorString()
-          Qaterial.Logger.error(`Fail to load with error ${window.errorString}`)
+          root.errorString = component.errorString()
+          Qaterial.Logger.error(`Fail to load with error ${root.errorString}`)
         }
       }
 
       Component.onCompleted: function()
       {
-        if(window.currentFileUrl)
+        if(root.currentFileUrl)
         {
-          loader.create(window.currentFileUrl)
-          Qaterial.HotReload.watchFile(window.currentFilePath)
+          loader.create(root.currentFileUrl)
+          Qaterial.HotReload.watchFile(root.currentFilePath)
         }
       }
 
@@ -357,7 +351,7 @@ Qaterial.ApplicationWindow
       {
         anchors.centerIn: parent
         spacing: 16
-        visible: !window.currentFilePath
+        visible: !root.currentFilePath
         Qaterial.Label
         {
           anchors.horizontalCenter: parent.horizontalCenter
@@ -381,8 +375,8 @@ Qaterial.ApplicationWindow
       width: parent.width
       SplitView.minimumHeight: 40
 
-      errorString: window.errorString
-      file: window.currentFileName
+      errorString: root.errorString
+      file: root.currentFileName
 
       Connections
       {
@@ -415,6 +409,6 @@ Qaterial.ApplicationWindow
 
   Component.onCompleted: function()
   {
-    Qaterial.Style.theme = window.theme
+    Qaterial.Style.theme = root.theme
   }
 } // ApplicationWindow
