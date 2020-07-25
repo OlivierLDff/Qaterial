@@ -10,12 +10,14 @@ FetchContent_Declare(
   QtWindowsCMake
   GIT_REPOSITORY ${QTWINDOWSCMAKE_REPOSITORY}
   GIT_TAG        ${QTWINDOWSCMAKE_TAG}
+  GIT_SHALLOW    1
 )
 
 FetchContent_Declare(
   Qbc
   GIT_REPOSITORY ${QBC_REPOSITORY}
   GIT_TAG        ${QBC_TAG}
+  GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(QtWindowsCMake)

@@ -40,7 +40,7 @@ jobs:
       - name: Configure
         run: |
           mkdir -p build
-          cmake -DQATERIAL_ENABLE_TOOLS=ON -DQATERIAL_ENABLE_TESTS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
+          cmake -DQATERIAL_ENABLE_HOTRELOAD=ON -DQATERIAL_ENABLE_TOOLS=ON -DQATERIAL_ENABLE_TESTS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
         shell: bash
 
       - name: Build Qaterial
