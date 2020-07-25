@@ -10,7 +10,6 @@ import Qt.labs.settings 1.0 as QLab
 import Qt.labs.platform 1.0
 
 import Qaterial 1.0 as Qaterial
-import SortFilterProxyModel 1.0 as SortFilterProxyModel
 
 Qaterial.Page
 {
