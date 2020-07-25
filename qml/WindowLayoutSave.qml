@@ -115,9 +115,15 @@ Item
     if(target.height < target.minimumHeight)
       target.height = target.minimumHeight
 
+    Qt.callLater(delayVisible)
+  }
+
+  function delayVisible()
+  {
     // Turn Window visible only when screen and position have been correctly affected
     if(visible)
       target.visible = true
+
     feedbackEnabled = true
   }
 
