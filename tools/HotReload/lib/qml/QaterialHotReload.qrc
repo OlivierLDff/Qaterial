@@ -1,11 +1,14 @@
 <RCC>
     <qresource prefix="/Qaterial/HotReload">
 
-        <file>QaterialHotReload.qml</file>
+        <file>qmldir</file>
+        <file>HotReload.qml</file>
         <file>StatusView.qml</file>
         <file>IconsMenu.qml</file>
         <file>TypoMenu.qml</file>
         <file>Imports.qml</file>
+        <file>SplashScreenWindow.qml</file>
+        <file>HotReloadWindow.qml</file>
         <file>material-icons-light.svg</file>
 
     </qresource>

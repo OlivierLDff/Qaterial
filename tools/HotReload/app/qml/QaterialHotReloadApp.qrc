@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/Qaterial/HotReload">
+
+        <file>Main.qml</file>
+        <file>qaterial-hotreload-white.png</file>
+        <file>qaterial-hotreload-black.png</file>
+
+    </qresource>
+</RCC>

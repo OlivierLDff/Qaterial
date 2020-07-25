@@ -87,11 +87,12 @@ int main(int argc, char* argv[])
     qaterial::loadQmlResources();
     qaterial::registerQmlTypes();
     qaterial::HotReload::registerSingleton();
+    Q_INIT_RESOURCE(QaterialHotReloadApp);
     qqsfpm::registerQmlTypes();
 
     // ──── LOAD QML MAIN ────
 
-    engine.load(QUrl("qrc:/Qaterial/HotReload/QaterialHotReload.qml"));
+    engine.load(QUrl("qrc:/Qaterial/HotReload/Main.qml"));
     if(engine.rootObjects().isEmpty())
         return -1;
 
