@@ -57,7 +57,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Qaterial HotReloader Installer X64 Windows (${{ matrix.version }})
-          path: build/tools/HotReload/QaterialHotReloadInstallerX64Release.exe
+          path: build/tools/HotReload/app/QaterialHotReloadInstallerX64Release.exe
         if: contains(matrix.os, 'windows')
 
       - name: Build QaterialTestLoader
