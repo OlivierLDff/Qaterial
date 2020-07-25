@@ -220,7 +220,6 @@ GridLabelsY                 1.0 GridLabelsY.qml
 BusyIndicator               1.0 BusyIndicator.qml
 ProgressBar                 1.0 ProgressBar.qml
 
-Fader                       1.0 Fader.qml
 RangeSlider                 1.0 RangeSlider.qml
 RangeSliderDelegate         1.0 RangeSliderDelegate.qml
 Slider                      1.0 Slider.qml

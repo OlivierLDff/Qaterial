@@ -3,6 +3,7 @@
 
 // Qt
 import QtQuick 2.12
+import QtQuick.Controls 2.12
 
 // Qaterial
 //import Qaterial 1.0 as Qaterial
@@ -40,8 +41,8 @@ Item
   property bool interactive: true
   property bool pinched: false
 
-  property var verticalScrollIndicator
-  property var horizontalScrollIndicator
+  property var verticalScrollIndicator: null
+  property var horizontalScrollIndicator: null
 
   function cancelFlick()
   {
