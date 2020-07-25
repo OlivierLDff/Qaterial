@@ -130,6 +130,8 @@ GroupBox                    1.0 GroupBox.qml
 ScrollBar                   1.0 ScrollBar.qml
 ScrollIndicator             1.0 ScrollIndicator.qml
 DoublePage                  1.0 DoublePage.qml
+SplashScreen                1.0 SplashScreen.qml
+SplashScreenWindow          1.0 SplashScreenWindow.qml
 
 Card                        1.0 Card.qml
 ElevatedCard                1.0 ElevatedCard.qml

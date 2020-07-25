@@ -76,6 +76,8 @@
         <file>ScrollView.qml</file>
         <file>SwipeView.qml</file>
         <file>DoublePage.qml</file>
+        <file>SplashScreen.qml</file>
+        <file>SplashScreenWindow.qml</file>
 
         <!-- COMPONENTS / CARDS -->
         <file>Card.qml</file>
