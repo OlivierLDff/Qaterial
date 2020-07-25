@@ -28,11 +28,7 @@ class HotReload : public QObject
     Q_OBJECT
 
 public:
-    HotReload(QQmlEngine* engine, QObject* parent) : QObject(parent), _engine(engine)
-    {
-        connect(&_watcher, &QFileSystemWatcher::fileChanged, this, &HotReload::watchedFileChanged);
-        Q_INIT_RESOURCE(QaterialHotReload);
-    }
+    HotReload(QQmlEngine* engine, QObject* parent);
 
 private:
     QQmlEngine* _engine;
