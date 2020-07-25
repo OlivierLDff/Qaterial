@@ -69,8 +69,10 @@ function(generate_qrc_alias_qt_object VAR)
     if(NOT ${FILENAME_EXT} STREQUAL "qrc")
 
       set(PROPERTY_NAME_LIST ${FILENAME_WE})
+      # Make sure all letters are lower
+      string(TOLOWER ${PROPERTY_NAME_LIST} PROPERTY_NAME_LIST)
       # Create a list
-      string(REGEX REPLACE "[_ -]" ";" PROPERTY_NAME_LIST ${FILENAME_WE})
+      string(REGEX REPLACE "[_ -]" ";" PROPERTY_NAME_LIST ${PROPERTY_NAME_LIST})
 
       set(PROPERTY_NAME "")
 
