@@ -211,9 +211,6 @@
         <file>BusyIndicator.qml</file>
         <file>ProgressBar.qml</file>
 
-        <!-- COMPONENTS / FADER -->
-        <file>Fader.qml</file>
-
         <!-- COMPONENTS / SLIDERS -->
         <file>Slider.qml</file>
         <file>RangeSlider.qml</file>

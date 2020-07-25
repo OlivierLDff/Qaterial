@@ -40,7 +40,7 @@ jobs:
       - name: Configure
         run: |
           mkdir -p build
-          cmake -DQATERIAL_ENABLE_TOOLS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
+          cmake -DQATERIAL_ENABLE_TOOLS=ON -DQATERIAL_ENABLE_TESTS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
         shell: bash
 
       - name: Build Qaterial
@@ -59,3 +59,17 @@ jobs:
           name: Qaterial HotReloader Installer X64 Windows (${{ matrix.version }})
           path: build/tools/HotReload/QaterialHotReloadInstallerX64Release.exe
         if: contains(matrix.os, 'windows')
+
+      - name: Build QaterialTestLoader
+        run: cmake --build build --target "QaterialTestLoader" --config "Release" -j
+
+      - name: Run Unit tests
+        run: cd build && ctest --build-config "Release" --progress --verbose --parallel 12
+        if: "!contains(matrix.os, 'ubuntu')"
+
+      - name: Run Unit tests
+        run: |
+          sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-xinerama0 libxcb-keysyms1 libxcb1 libxcb-render-util0
+          cd build
+          xvfb-run ctest --build-config "Release" --progress --verbose --parallel 12
+        if: contains(matrix.os, 'ubuntu')

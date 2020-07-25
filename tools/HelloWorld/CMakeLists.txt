@@ -28,7 +28,7 @@ set_target_properties(${QATERIAL_HELLOWORLD} PROPERTIES
 
 # Fix gcc7 bug major/minor
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIAL_HELLOWORLD} PRIVATE ../../include/Qaterial/Pch/Pch.hpp)
+  target_precompile_headers(${QATERIAL_HELLOWORLD} PRIVATE ${PROJECT_SOURCE_DIR}/include/Qaterial/Pch/Pch.hpp)
 endif()
 
 # Support Static Qt (this will be no longer necessary with qt6)

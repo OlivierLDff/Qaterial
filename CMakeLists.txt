@@ -29,6 +29,7 @@ set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_TOOLS OFF CACHE BOOL "Build Qaterial test executable")
+set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
  Only work if CMake support 'target_precompile_headers'. \"
@@ -47,6 +48,7 @@ message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
 message(STATUS "QATERIAL_ENABLE_TOOLS           : ${QATERIAL_ENABLE_TOOLS}")
+message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
 # ───── QT DEPENDENCIES ─────
@@ -223,8 +225,15 @@ if(TARGET Qt5::QmlWorkerScript)
   target_link_libraries(${QATERIAL_TARGET} PUBLIC Qt5::QmlWorkerScript)
 endif()
 
-# ───── QATERIAL TESTS ─────
+# ───── QATERIAL TOOLS ─────
 
 if(QATERIAL_ENABLE_TOOLS)
   add_subdirectory(tools)
+endif()
+
+# ───── QATERIAL TESTS ─────
+
+if(QATERIAL_ENABLE_TESTS)
+  enable_testing()
+  add_subdirectory(tests)
 endif()
