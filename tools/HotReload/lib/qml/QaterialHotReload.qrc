@@ -10,6 +10,7 @@
         <file>SplashScreenWindow.qml</file>
         <file>HotReloadWindow.qml</file>
         <file>material-icons-light.svg</file>
+        <file>code.svg</file>
 
     </qresource>
 </RCC>

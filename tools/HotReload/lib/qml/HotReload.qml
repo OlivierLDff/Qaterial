@@ -351,18 +351,40 @@ Qaterial.Page
         anchors.centerIn: parent
         spacing: 16
         visible: !root.currentFilePath
+
+        Image
+        {
+          anchors.horizontalCenter: parent.horizontalCenter
+          width: 128
+          height: 128
+          source: "qrc:/Qaterial/HotReload/code.svg"
+        }
+
         Qaterial.Label
         {
           anchors.horizontalCenter: parent.horizontalCenter
-          text: "Please Pick a qml file to get started"
+          text: "Please Pick a qml file or folder to get started"
         }
-        Qaterial.RaisedButton
+
+        Row
         {
           anchors.horizontalCenter: parent.horizontalCenter
-          text: "Open File"
-          icon.source: Qaterial.Icons.folderOutline
 
-          onClicked: () => fileDialog.open()
+          Qaterial.RaisedButton
+          {
+            text: "Open File"
+            icon.source: Qaterial.Icons.fileOutline
+
+            onClicked: () => fileDialog.open()
+          }
+
+          Qaterial.OutlineButton
+          {
+            text: "Open Folder"
+            icon.source: Qaterial.Icons.folderOutline
+
+            onClicked: () => fileDialog.open()
+          }
         }
       }
     }
