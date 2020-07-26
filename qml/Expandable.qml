@@ -62,22 +62,22 @@ Item
     }
 
     // Delay the resize, to be sure that every property binded to expanded are already evaluated
-    Qt.callLater(_evaluateDelegateClipperHeight)
+    _evaluateDelegateClipperHeight.start()
   }
 
   onDelegateChanged: function()
   {
     if(root.expanded && _delegateLoader.item)
-      _evaluateDelegateClipperHeight()
+      _evaluateDelegateClipperHeight.start()
   }
 
   // This function is called once every binding on expanded have been reevaluated.
   // It allow to change the height of the object when for example the animation duration is correctly set
-  function _evaluateDelegateClipperHeight()
+  Timer
   {
-
-    // Then resize to trigger the animation
-    _delegateClipper.height = (root.expanded && _delegateLoader.item) ? _delegateLoader.item.height : 0
+    id: _evaluateDelegateClipperHeight
+    interval: 0
+    onTriggered: () => _delegateClipper.height = (root.expanded && _delegateLoader.item) ? _delegateLoader.item.height : 0
   }
 
   // Always load the header
@@ -109,6 +109,7 @@ Item
     Loader
     {
       id: _delegateLoader
+      active: false
       width: _delegateClipper.width
       sourceComponent: root.delegate
 
