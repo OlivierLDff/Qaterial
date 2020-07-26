@@ -56,6 +56,10 @@ By it's own the `Expandable` doesn't provide any appearance. It need to be custo
 - `delegate`: `Component` display when `expanded` is **true** with `animation`.
 - `animation`: Behavior on `delegate` height. There is a default implementation for that.
 
+When `header` component is loaded, the loaded item can be accessed thru `headerItem`.
+
+When `delegate` component is loaded, the loaded item can be accessed thru `delegateItem`.
+
 ## Properties
 
 - `expanded`: **true** to expand the **Expandable**. *Default: false.*
