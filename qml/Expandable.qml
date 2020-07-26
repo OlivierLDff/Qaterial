@@ -47,6 +47,12 @@ Item
 
   property bool animationOnDelegateHeight
 
+  // Access to the loaded header item
+  readonly property Item headerItem: _headerLoader.item
+
+  // Access to the loaded delegateItem
+  readonly property Item delegateItem: _delegateLoader.item
+
   implicitWidth: Qaterial.Style.delegate.implicitWidth
   implicitHeight: _headerLoader.height + _delegateClipper.height
 
