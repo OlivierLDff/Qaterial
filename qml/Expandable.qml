@@ -12,6 +12,7 @@
 //
 // CONTROL
 // - expanded
+// - animationOnDelegateHeight
 //
 // CUSTOMIZATION
 // - header
@@ -44,6 +45,8 @@ Item
     easing.type: Easing.OutQuart
   }
 
+  property bool animationOnDelegateHeight
+
   implicitWidth: Qaterial.Style.delegate.implicitWidth
   implicitHeight: _headerLoader.height + _delegateClipper.height
 
@@ -53,12 +56,12 @@ Item
     // animation finishes
     if(expanded && !_delayDestroyTimer.isRunning)
     {
-      _delayDestroyTimer.stop(root.animation.duration)
+      _delayDestroyTimer.stop()
       _delegateLoader.active = true
     }
     else
     {
-      _delayDestroyTimer.start(root.animation.duration)
+      _delayDestroyTimer.start(root.animation.duration + 100)
     }
 
     // Delay the resize, to be sure that every property binded to expanded are already evaluated
@@ -71,13 +74,43 @@ Item
       _evaluateDelegateClipperHeight.start()
   }
 
+  function evaluateDelegateClipperHeight()
+  {
+    _delegateClipper.height = (root.expanded && _delegateLoader.item) ? _delegateLoader.item.height : 0
+  }
+
   // This function is called once every binding on expanded have been reevaluated.
   // It allow to change the height of the object when for example the animation duration is correctly set
   Timer
   {
     id: _evaluateDelegateClipperHeight
     interval: 0
-    onTriggered: () => _delegateClipper.height = (root.expanded && _delegateLoader.item) ? _delegateLoader.item.height : 0
+    onTriggered: () => root.evaluateDelegateClipperHeight()
+  }
+
+  Connections
+  {
+    target: _delegateLoader.item
+    function onHeightChanged()
+    {
+      if(animationOnDelegateHeight)
+      {
+        _evaluateDelegateClipperHeight.start()
+      }
+      else
+      {
+        _delegateClipper.animationEnabled = false
+        root.evaluateDelegateClipperHeight()
+        _delayEnableAnimation.start()
+      }
+    }
+  }
+
+  Timer
+  {
+    id: _delayEnableAnimation
+    interval: 0
+    onTriggered: () => _delegateClipper.animationEnabled = true
   }
 
   // Always load the header
@@ -93,11 +126,13 @@ Item
   {
     id: _delegateClipper
 
+    property bool animationEnabled: true
+
     y: _headerLoader.height
     width: root.width
     clip: true
 
-    Behavior on height { animation: root.animation }
+    Behavior on height { animation: root.animation; enabled: _delegateClipper.animationEnabled }
 
     Timer
     {
