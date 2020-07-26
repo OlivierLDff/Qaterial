@@ -59,6 +59,7 @@ By it's own the `Expandable` doesn't provide any appearance. It need to be custo
 ## Properties
 
 - `expanded`: **true** to expand the **Expandable**. *Default: false.*
+- `animationOnDelegateHeight`: **true** to enable animation on delegate height changed. *Default: false*.
 
 ## Examples
 
@@ -158,3 +159,13 @@ Qaterial.Expandable
 ```
 
 [QaterialOnline](https://tinyurl.com/y6nwwy5d)
+
+### Dynamic Height
+
+![expandableanimation](https://user-images.githubusercontent.com/17255804/88485962-8e627b80-cf7a-11ea-9ba2-c009687dc20b.gif)
+
+By default if the height of the delegate is changing, the expandable is immediately replicating the change without animation. This is very useful for example an expandable is inside an expandable.
+
+This behavior can be enabled with `animationOnDelegateHeight`.
+
+[QaterialOnline](https://tinyurl.com/y2d6gdka)
