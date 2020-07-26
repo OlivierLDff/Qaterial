@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Logger
+title: 💬 Logger
 ---
 
 # 💬 Logger

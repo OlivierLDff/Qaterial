@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ToolTip
+title: 💬 ToolTip
 ---
 
 # 💬 ToolTip

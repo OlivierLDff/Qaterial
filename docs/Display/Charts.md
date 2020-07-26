@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Charts
+title: 🗠 Charts
 ---
 
 # Charts
@@ -21,7 +21,7 @@ Qaterial.LineChart
   thickness: 3
   color: "cyan"
 
-  series: 
+  series:
   [
     Qt.vector2d(-10,-20),
     Qt.vector2d(10,12),

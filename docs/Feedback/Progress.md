@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Progress
+title: 🔄 Progress
 ---
 
-# Progress
+# 🔄 Progress

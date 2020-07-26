@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Stepper
+title: 🌀 Stepper
 ---
 
 # 🌀 Stepper

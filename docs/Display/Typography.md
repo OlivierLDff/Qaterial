@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Typography
+title: 📜 Typography
 ---
 
 # 📜 Typography

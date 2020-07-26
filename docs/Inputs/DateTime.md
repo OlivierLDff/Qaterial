@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Date / Time
+title: 📅 Date / Time ⌚
 ---
 
 # Date / Time

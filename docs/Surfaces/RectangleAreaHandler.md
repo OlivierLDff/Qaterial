@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Rectangle Area Handler
+title: 🔲 Rectangle Area Handler
 ---
 
 # 🔲 Rectangle Area Handler

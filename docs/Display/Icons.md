@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Icons
+title: ⭐ Icons
 ---
 
 # ⭐ Icons
 
-Qaterial automatically package all svg icons from [MaterialDesignIcons](https://github.com/Templarian/MaterialDesign). 
+Qaterial automatically package all svg icons from [MaterialDesignIcons](https://github.com/Templarian/MaterialDesign).
 
 Path is `qrc:/Qaterial/Icons/<icon>.svg`.
 For easy access, Qaterial also comes with a singleton `Icons` that provide a property for each svg files.
