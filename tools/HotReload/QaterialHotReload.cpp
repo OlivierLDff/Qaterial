@@ -109,7 +109,7 @@ void qtMsgOutput(QtMsgType type, const QMessageLogContext& context, const QStrin
     }
 
 #if defined(Q_OS_WIN)
-    OutputDebugStringW(reinterpret_cast<const wchar_t*>(msg.utf16()));
+    //OutputDebugStringW(reinterpret_cast<const wchar_t*>(msg.utf16()));
 #elif defined(Q_OS_ANDROID)
     android_default_message_handler(type, context, msg);
 #else  // MACX || IOS || LINUX
