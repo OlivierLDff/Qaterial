@@ -1,6 +1,6 @@
 ---
-layout: 🎨
-title: Color
+layout: default
+title: 🎨 Color
 ---
 
 # 🎨 Color
