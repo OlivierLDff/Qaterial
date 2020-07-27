@@ -42,7 +42,7 @@ Qaterial.Page
     Qaterial.HotReload.unWatchFile(root.currentFilePath)
     currentFileUrl = path
     // remove prefixed "file:///"
-    if(Qt.platform.os === "roots")
+    if(Qt.platform.os === "windows")
         path = path.replace(/^(file:\/{3})/,"");
     else
         path = path.replace(/^(file:\/{2})/,"");

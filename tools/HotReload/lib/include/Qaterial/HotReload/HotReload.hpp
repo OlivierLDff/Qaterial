@@ -36,29 +36,19 @@ private:
     static const std::shared_ptr<HotReloadSink> _sink;
 
 public Q_SLOTS:
-    void clearCache() const { _engine->clearComponentCache(); }
+    void clearCache() const;
 
-    void watchFile(const QString& path) { _watcher.addPath(path); }
-    void unWatchFile(const QString& path) { _watcher.removePath(path); }
+    void watchFile(const QString& path);
+    void unWatchFile(const QString& path);
 Q_SIGNALS:
     void watchedFileChanged();
     void newLog(QString s);
 
 public:
-    static std::shared_ptr<HotReloadSink> sink() { return _sink; }
+    static std::shared_ptr<HotReloadSink> sink();
 
 public:
-    static void registerSingleton()
-    {
-        qmlRegisterSingletonType<qaterial::HotReload>("Qaterial", 1, 0, "HotReload",
-            [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject*
-            {
-                Q_UNUSED(scriptEngine);
-                const auto hotReload = new qaterial::HotReload(engine, engine);
-                _sink->_hotReload = hotReload;
-                return hotReload;
-            });
-    }
+    static void registerSingleton();
 };
 
 }

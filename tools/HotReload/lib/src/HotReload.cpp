@@ -31,3 +31,23 @@ HotReload::HotReload(QQmlEngine* engine, QObject* parent) : QObject(parent), _en
     connect(&_watcher, &QFileSystemWatcher::fileChanged, this, &HotReload::watchedFileChanged);
     HotReload_loadResources();
 }
+
+void HotReload::clearCache() const { _engine->clearComponentCache(); }
+
+std::shared_ptr<HotReloadSink> HotReload::sink() { return _sink; }
+
+void HotReload::registerSingleton()
+{
+    qmlRegisterSingletonType<qaterial::HotReload>("Qaterial", 1, 0, "HotReload",
+        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject*
+        {
+            Q_UNUSED(scriptEngine);
+            const auto hotReload = new qaterial::HotReload(engine, engine);
+            _sink->_hotReload = hotReload;
+            return hotReload;
+        });
+}
+
+void HotReload::watchFile(const QString& path) { _watcher.addPath(path); }
+
+void HotReload::unWatchFile(const QString& path) { _watcher.removePath(path); }
