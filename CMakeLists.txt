@@ -141,6 +141,8 @@ set(QATERIAL_IO_SRCS
 set(QATERIAL_NAVIGATION_SRCS
   include/Qaterial/StepperElement.hpp
   src/StepperElement.cpp
+  include/Qaterial/TreeElement.hpp
+  src/TreeElement.cpp
 )
 
 set(QATERIAL_UTILS_SRCS

@@ -7,6 +7,7 @@
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Logger.hpp>
 #include <Qaterial/StepperElement.hpp>
+#include <Qaterial/TreeElement.hpp>
 #include <Qaterial/TextFile.hpp>
 #include <Qaterial/Clipboard.hpp>
 
@@ -80,6 +81,11 @@ static void Qaterial_registerTypes()
     qaterial::StepperElement::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
     qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>(*_uri, _major, _minor, "StepperModel");
+
+    LOG_DEV_INFO("Register {}.TreeElement {}.{} to QML", *_uri, _major, _minor);
+    qaterial::TreeElement::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
+    qmlRegisterType<qaterial::TreeModel>(*_uri, _major, _minor, "TreeModel");
 
     LOG_DEV_INFO("Register {}.TextFile {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextFile::registerToQml(*_uri, _major, _minor);

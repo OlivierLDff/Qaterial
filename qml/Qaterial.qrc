@@ -27,6 +27,8 @@
 
         <file>SplitView.qml</file>
         <file>StackView.qml</file>
+        <file>TreeViewItem.qml</file>
+        <file>TreeView.qml</file>
 
         <!-- STYLES -->
         <file>Style.qml</file>
