@@ -56,7 +56,7 @@ FolderTreeModel::FolderTreeModel(QObject* parent) : qolm::QOlm<FolderTreeModel>(
     const auto fileInfo = QFileInfo(QDir::currentPath());
 
     _fileName = fileInfo.fileName();
-    _filePath = fileInfo.filePath();
+    _filePath = fileInfo.absoluteFilePath();
     _fileBaseName = fileInfo.baseName();
     _fileCompleteBaseName = fileInfo.completeBaseName();
     _fileSuffix = fileInfo.suffix();
@@ -136,11 +136,48 @@ void FolderTreeModel::initializeBindings()
 
 FolderTreeModel* FolderTreeModel::children() { return this; }
 
+QUrl FolderTreeModel::path() const
+{
+    return _path;
+}
+
+bool FolderTreeModel::setPath(const QUrl& value)
+{
+    if (value != _path)
+    {
+        _path = value;
+        auto pathString = _path.path();
+        if(pathString.isEmpty())
+            pathString = QDir::currentPath();
+        const auto fileInfo = QFileInfo(pathString);
+
+        setFileName(fileInfo.fileName());
+        setFilePath(fileInfo.absoluteFilePath());
+        setFileBaseName(fileInfo.baseName());
+        setFileCompleteBaseName(fileInfo.completeBaseName());
+        setFileSuffix(fileInfo.suffix());
+        setFileCompleteSuffix(fileInfo.completeSuffix());
+        setFileSize(fileInfo.size());
+        setFileModified(fileInfo.lastModified());
+        setFileAccessed(fileInfo.lastRead());
+        setFileIsDir(fileInfo.isDir());
+
+        Q_EMIT pathChanged(value);
+        return true;
+    }
+    return false;
+}
+
+void FolderTreeModel::resetPath()
+{
+    setPath({});
+}
+
 void FolderTreeModel::fetch()
 {
     if(!fileIsDir())
     {
-        LOG_WARN("Can't fetch folders of a file.");
+        LOG_WARN("Can't fetch folders of a file {}.", path().path().toStdString());
         return;
     }
 
@@ -154,8 +191,6 @@ void FolderTreeModel::fetch()
         filters.setFlag(QDir::CaseSensitive);
     if(showDirs())
         filters.setFlag(QDir::Dirs);
-    if(showFiles())
-        filters.setFlag(QDir::Files);
     if(showHidden())
         filters.setFlag(QDir::Hidden);
     if(showOnlyReadable())
@@ -164,6 +199,9 @@ void FolderTreeModel::fetch()
         filters.setFlag(QDir::NoDot);
     if(!showDotDot())
         filters.setFlag(QDir::NoDotDot);
+    const auto folderFilter = filters;
+    if(showFiles())
+        filters.setFlag(QDir::Files);
 
     QDir::SortFlags sortFlags;
     if(showDirsFirst())
@@ -182,13 +220,16 @@ void FolderTreeModel::fetch()
     }
 
     // Fetch all entries and append in one operation
-    const auto fileInfoList = currentDirectory.entryInfoList(nameFilters(), filters, sortFlags);
+    auto fileInfoList = currentDirectory.entryInfoList(nameFilters(), filters, sortFlags);
+    if(!nameFilters().empty() && showDirs())
+        fileInfoList += currentDirectory.entryInfoList(folderFilter, sortFlags);
+
     QList<FolderTreeModel*> folders;
 
     for(const auto& fileInfo: fileInfoList)
     {
         folders.append(
-            new FolderTreeModel(path().path() + '/' + fileInfo.fileName(), fileInfo.fileName(), fileInfo.filePath(),
+            new FolderTreeModel(path().path() + '/' + fileInfo.fileName(), fileInfo.fileName(), fileInfo.absoluteFilePath(),
                 fileInfo.baseName(), fileInfo.completeBaseName(), fileInfo.suffix(), fileInfo.completeSuffix(),
                 fileInfo.size(), fileInfo.lastModified(), fileInfo.lastRead(), fileInfo.isDir(), this));
     }

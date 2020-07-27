@@ -19,9 +19,9 @@ T.SplitView
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                            implicitContentHeight + topPadding + bottomPadding)
 
-  property color handleColor: T.SplitHandle.pressed ? Qaterial.Style.backgroundColor
-          : Qt.lighter(Qaterial.Style.backgroundColor, T.SplitHandle.hovered ? 1.2 : 1.1)
-  property color handleBackgroundColor: Qaterial.Style.secondaryTextColor()
+  property color handleColor: T.SplitHandle.pressed ? Qaterial.Style.primaryTextColor()
+          : Qt.lighter(Qaterial.Style.secondaryTextColor(), T.SplitHandle.hovered ? 1.2 : 1.1)
+  property color handleBackgroundColor: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#24262A" : "white"
 
   handle: Rectangle
   {

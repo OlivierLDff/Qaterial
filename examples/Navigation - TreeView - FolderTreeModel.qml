@@ -7,7 +7,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.TreeView
 {
-  id: root
+  id: treeView
 
   width: 300
   height: parent ? Math.min(contentHeight, parent.height) : contentHeight
@@ -46,7 +46,7 @@ Qaterial.TreeView
     height: 24
     leftPadding: depth*20
 
-    readonly property bool selected: model && model === root.selectedElement
+    readonly property bool selected: model && model === treeView.selectedElement
 
     contentItem: RowLayout
     {

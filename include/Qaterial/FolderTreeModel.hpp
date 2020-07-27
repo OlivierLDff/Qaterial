@@ -32,8 +32,7 @@ public:
     FolderTreeModel(QObject* parent = nullptr);
 
 private:
-    FolderTreeModel(
-        const QUrl& path, const QString& fileName, const QString& filePath, const QString& fileBaseName,
+    FolderTreeModel(const QUrl& path, const QString& fileName, const QString& filePath, const QString& fileBaseName,
         const QString& fileCompleteBaseName, const QString& fileSuffix, const QString& fileCompleteSuffix,
         qint64 fileSize, const QDateTime& fileModified, const QDateTime& fileAccessed, bool fileIsDir,
         QObject* parent = nullptr);
@@ -42,19 +41,19 @@ private:
 public:
     enum Status
     {
-        Null, // no folder has been set
-        Ready, // the folder has been loaded
-        Loading // the folder is currently being loaded
+        Null,  // no folder has been set
+        Ready,  // the folder has been loaded
+        Loading  // the folder is currently being loaded
     };
     Q_ENUM(Status);
 
     enum SortField
     {
-        Unsorted, // no sorting is applied
-        Name, // sort by filename
-        Time, // sort by time modified
-        Size, // sort by file size
-        Type // sort by file type(extension)
+        Unsorted,  // no sorting is applied
+        Name,  // sort by filename
+        Time,  // sort by time modified
+        Size,  // sort by file size
+        Type  // sort by file type(extension)
     };
     Q_ENUM(SortField);
 
@@ -68,8 +67,20 @@ protected:
     QATERIAL_PROPERTY(bool, expanded, Expanded);
 
     // The path property holds a URL for the folder that the model currently provides.
-    QATERIAL_PROPERTY(QUrl, path, Path);
+protected:
+    Q_PROPERTY(QUrl path READ path WRITE setPath NOTIFY pathChanged RESET resetPath)
+private:
+    QUrl _path = {};
 
+public:
+    QUrl path() const;
+    virtual bool setPath(const QUrl& value);
+    void resetPath();
+
+Q_SIGNALS:
+    void pathChanged(QUrl path);
+
+private:
     // The nameFilters property contains a list of file name filters. The filters may include the ? and * wildcards.
     // The example below filters on PNG and JPEG files :
     // ```js
@@ -120,7 +131,7 @@ protected:
     // Returns the name of the file, excluding the path.
     QATERIAL_PROPERTY_RO(QString, fileName, FileName);
 
-    // Returns the file name, including the path (which may be absolute or relative).
+    // Returns the file name, including the path (which is absolute).
     QATERIAL_PROPERTY_RO(QString, filePath, FilePath);
 
     // Returns the base name of the file without the path.

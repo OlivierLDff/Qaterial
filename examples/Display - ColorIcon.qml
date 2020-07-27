@@ -6,7 +6,7 @@ Column
   spacing: 10
   Qaterial.ColorIcon
   {
-    source: Qaterial.Icons.alertOctagram
+    source: Qaterial.Icons.rocketLaunchOutline
     outlined: false
     fill: false
     color: Qaterial.Style.accentColor
@@ -14,7 +14,7 @@ Column
   }
   Qaterial.ColorIcon
   {
-    source: Qaterial.Icons.alertOctagram
+    source: Qaterial.Icons.rocketLaunchOutline
     outlined: true
     fill: false
     color: Qaterial.Style.accentColor
@@ -23,7 +23,7 @@ Column
   }
   Qaterial.ColorIcon
   {
-    source: Qaterial.Icons.alertOctagram
+    source: Qaterial.Icons.rocketLaunchOutline
     outlined: false
     fill: true
     color: Qaterial.Style.accentColor
@@ -32,7 +32,7 @@ Column
   }
   Qaterial.ColorIcon
   {
-    source: Qaterial.Icons.alertOctagram
+    source: Qaterial.Icons.rocketLaunchOutline
     outlined: true
     fill: true
     color: Qaterial.Style.accentColor

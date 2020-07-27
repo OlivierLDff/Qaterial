@@ -3,11 +3,11 @@
 import QtQml 2.14
 
 import QtQuick 2.14
+import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.14
 
-import QtQuick.Dialogs 1.3 as QQ1D
-import Qt.labs.settings 1.0 as QLab
-import Qt.labs.platform 1.0
+import Qt.labs.settings 1.1 as QLab
+import Qt.labs.platform 1.1 as QLab
 
 import Qaterial 1.0 as Qaterial
 
@@ -15,6 +15,7 @@ Qaterial.Page
 {
   id: root
 
+  property string currentFolderPath
   property string currentFilePath
   property string currentFileUrl
   property string currentFileName: currentFilePath.substring(currentFilePath.lastIndexOf('/')+1)
@@ -55,6 +56,7 @@ Qaterial.Page
 
   QLab.Settings
   {
+    property alias currentFolderPath: root.currentFolderPath
     property alias currentFilePath: root.currentFilePath
     property alias currentFileUrl: root.currentFileUrl
 
@@ -71,21 +73,39 @@ Qaterial.Page
 
   Shortcut
   {
-      sequence: "F5"
-      onActivated: () => root.reload()
+    sequence: "F5"
+    onActivated: () => root.reload()
   }
 
   Shortcut
   {
-      sequence: "Ctrl+O"
-      onActivated: () => fileDialog.open()
+    sequence: "Ctrl+O"
+    onActivated: () => fileDialog.open()
   }
 
-  QQ1D.FileDialog
+  QLab.FileDialog
   {
-      id: fileDialog
-      title: "Please choose a file"
-      onAccepted: () => root.loadFile(fileDialog.fileUrl.toString())
+    id: fileDialog
+    title: "Please choose a file"
+    onAccepted: () => root.loadFile(fileDialog.file.toString())
+  }
+
+  QLab.FolderDialog
+  {
+    id: folderDialog
+    title: "Please choose a folder"
+    onAccepted: function()
+    {
+      let path = folderDialog.folder.toString()
+
+      // remove prefixed "file:///"
+      if(Qt.platform.os === "windows")
+          path = path.replace(/^(file:\/{3})/,"");
+      else
+          path = path.replace(/^(file:\/{2})/,"");
+      // unescape html codes like '%23' for '#'
+      root.currentFolderPath = decodeURIComponent(path);
+    }
   }
 
   Connections
@@ -102,11 +122,24 @@ Qaterial.Page
       {
         ToolTip.visible: hovered
         ToolTip.text: "Open File to Hot Reload"
-        icon.source: Qaterial.Icons.folderOutline
+        icon.source: Qaterial.Icons.fileOutline
         useSecondaryColor: true
 
         onClicked: () => fileDialog.open()
       }
+
+      Qaterial.SquareButton
+      {
+        ToolTip.visible: hovered
+        ToolTip.text: "Open Folder to Hot Reload"
+        icon.source: Qaterial.Icons.folderOutline
+        useSecondaryColor: true
+
+        onClicked: () => folderDialog.open()
+      }
+
+      Qaterial.ToolSeparator {}
+
       Qaterial.SquareButton
       {
         ToolTip.visible: hovered
@@ -281,109 +314,252 @@ Qaterial.Page
     } // RowLayout
   } // ToolBar
 
+
   SplitView
   {
     anchors.fill: parent
     orientation: Qt.Vertical
+    SplitView.fillWidth: true
 
-    Item
+    SplitView
     {
-      id: loader
-      width: parent.width
+      orientation: Qt.Horizontal
       SplitView.fillHeight: true
-      property var loadedObject: null
 
-      function create(url)
+
+      Rectangle
       {
-        Qaterial.Logger.info(`Load from ${url}`)
-        // Destroy previous item
-        if(loadedObject)
+        color: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#2A2C30" : "white"
+
+        SplitView.preferredWidth: 200
+        SplitView.minimumWidth: 50
+
+        Qaterial.TreeView
         {
-          loadedObject.destroy()
-          loadedObject = null
-        }
+          id: treeView
+          anchors.fill: parent
 
-        Qaterial.HotReload.clearCache()
-        let component = Qt.createComponent(url)
-
-        if (component.status === Component.Ready)
-        {
-          loadedObject = component.createObject(loader)
-
-          if(loadedObject.anchors)
+          header: Qaterial.Label
           {
-            if(fullScreen.checked)
-              loadedObject.anchors.fill = loader
-            if(formatHorizontalAlignCenter.checked)
-              loadedObject.anchors.horizontalCenter = loader.horizontalCenter
-            if(formatVerticalAlignCenter.checked)
-              loadedObject.anchors.verticalCenter = loader.verticalCenter
-            if(formatHorizontalAlignLeft.checked)
-              loadedObject.anchors.left = loader.left
-            if(formatHorizontalAlignRight.checked)
-              loadedObject.anchors.right = loader.right
-            if(formatVerticalAlignBottom.checked)
-              loadedObject.anchors.bottom = loader.bottom
-            if(formatVerticalAlignTop.checked)
-              loadedObject.anchors.top = loader.top
+            text: treeView.model.fileName
+            textType: Qaterial.Style.TextType.Button
+            padding: 8
           }
 
-          root.errorString = ""
-        }
-        else
-        {
-          root.errorString = component.errorString()
-          Qaterial.Logger.error(`Fail to load with error ${root.errorString}`)
-        }
-      }
+          ScrollIndicator.vertical: Qaterial.ScrollIndicator {}
 
-      Component.onCompleted: function()
-      {
-        if(root.currentFileUrl)
-        {
-          loader.create(root.currentFileUrl)
-          Qaterial.HotReload.watchFile(root.currentFilePath)
-        }
-      }
+          property QtObject selectedElement
 
-      Column
-      {
-        anchors.centerIn: parent
-        spacing: 16
-        visible: !root.currentFilePath
-
-        Image
-        {
-          anchors.horizontalCenter: parent.horizontalCenter
-          width: 128
-          height: 128
-          source: "qrc:/Qaterial/HotReload/code.svg"
-        }
-
-        Qaterial.Label
-        {
-          anchors.horizontalCenter: parent.horizontalCenter
-          text: "Please Pick a qml file or folder to get started"
-        }
-
-        Row
-        {
-          anchors.horizontalCenter: parent.horizontalCenter
-
-          Qaterial.RaisedButton
+          model: Qaterial.FolderTreeModel
           {
-            text: "Open File"
-            icon.source: Qaterial.Icons.fileOutline
-
-            onClicked: () => fileDialog.open()
+            nameFilters: [ "*.qml" ]
+            path: `file:${root.currentFolderPath}`
+            onPathChanged: () => fetch()
+            Component.onCompleted: () => fetch()
           }
 
-          Qaterial.OutlineButton
+          itemDelegate: Qaterial.ItemDelegate
           {
-            text: "Open Folder"
-            icon.source: Qaterial.Icons.folderOutline
+            id: control
 
-            onClicked: () => fileDialog.open()
+            property QtObject model
+            property Qaterial.FolderTreeModel folderTreeModel: model ? model.qtObject : null
+            property int depth
+            property int index
+
+            readonly property bool selected: model && model.filePath === root.currentFilePath
+
+            height: 24
+            leftPadding: depth*20 + 4
+
+            contentItem: RowLayout
+            {
+              Qaterial.ColorIcon
+              {
+                source:
+                {
+                  if(!model)
+                    return ""
+
+                  if(model.fileIsDir)
+                    return control.model.expanded ? Qaterial.Icons.folderOutline : Qaterial.Icons.folder
+                  return Qaterial.Icons.codeTags
+                }
+                color:
+                {
+                  if(control.selected|| control.hovered)
+                    return Qaterial.Style.accentColor
+                  Qaterial.Style.hintTextColor()
+                }
+                Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
+              }
+              Qaterial.Label
+              {
+                Layout.fillWidth: true
+                text: (control.model ? control.model.fileName : "")
+                textType: Qaterial.Style.TextType.Caption
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+
+                color:
+                {
+                  if(control.selected)
+                      return Qaterial.Style.accentColor
+                  if(control.hovered)
+                      return Qaterial.Style.primaryTextColor()
+                  return Qaterial.Style.hintTextColor()
+                }
+              }
+            }
+
+            Rectangle
+            {
+              visible: control.selected
+              color: Qaterial.Style.accentColor
+              height: control.height - 4
+              width: 2
+              x: 2
+              y: 2
+            }
+
+            onClicked: function()
+            {
+              if(!model)
+                return
+              if(model.fileIsDir)
+              {
+                // fetch content of folder if expand is about to happen
+                if(!model.expanded)
+                  folderTreeModel.fetch()
+
+                // Then expand or retract
+                model.expanded = !model.expanded
+              }
+              else
+              {
+                root.loadFile(`file:///${model.filePath}`)
+              }
+            }
+          }
+        } // TreeView
+      } // Pane
+
+      Item
+      {
+        id: loader
+        width: parent.width
+        property var loadedObject: null
+        property url createUrl
+
+        function create(url)
+        {
+          createUrl = url
+          Qaterial.DialogManager.openBusyIndicator({text: `Loading ${root.currentFileName}`})
+          createLaterTimer.start()
+        }
+
+        Timer
+        {
+          id: createLaterTimer
+          interval: 200
+          onTriggered: () => loader.createLater(loader.createUrl)
+        }
+
+        function createLater(url)
+        {
+          Qaterial.Logger.info(`Load from ${url}`)
+
+          // Destroy previous item
+          if(loadedObject)
+          {
+            loadedObject.destroy()
+            loadedObject = null
+          }
+
+          Qaterial.HotReload.clearCache()
+          let component = Qt.createComponent(url)
+
+          if (component.status === Component.Ready)
+          {
+            loadedObject = component.createObject(loader)
+
+            if(loadedObject.anchors)
+            {
+              if(fullScreen.checked)
+                loadedObject.anchors.fill = loader
+              if(formatHorizontalAlignCenter.checked)
+                loadedObject.anchors.horizontalCenter = loader.horizontalCenter
+              if(formatVerticalAlignCenter.checked)
+                loadedObject.anchors.verticalCenter = loader.verticalCenter
+              if(formatHorizontalAlignLeft.checked)
+                loadedObject.anchors.left = loader.left
+              if(formatHorizontalAlignRight.checked)
+                loadedObject.anchors.right = loader.right
+              if(formatVerticalAlignBottom.checked)
+                loadedObject.anchors.bottom = loader.bottom
+              if(formatVerticalAlignTop.checked)
+                loadedObject.anchors.top = loader.top
+            }
+
+            root.errorString = ""
+          }
+          else
+          {
+            root.errorString = component.errorString()
+            Qaterial.Logger.error(`Fail to load with error ${root.errorString}`)
+          }
+
+          Qaterial.DialogManager.closeBusyIndicator()
+        }
+
+        Component.onCompleted: function()
+        {
+          if(root.currentFileUrl)
+          {
+            loader.create(root.currentFileUrl)
+            Qaterial.HotReload.watchFile(root.currentFilePath)
+          }
+        }
+
+        Column
+        {
+          anchors.centerIn: parent
+          spacing: 16
+          visible: !root.currentFilePath
+
+          Image
+          {
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: 128
+            height: 128
+            source: "qrc:/Qaterial/HotReload/code.svg"
+          }
+
+          Qaterial.Label
+          {
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Please Pick a qml file or folder to get started"
+          }
+
+          Row
+          {
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            Qaterial.RaisedButton
+            {
+              text: "Open File"
+              icon.source: Qaterial.Icons.fileOutline
+
+              onClicked: () => fileDialog.open()
+            }
+
+            Qaterial.OutlineButton
+            {
+              text: "Open Folder"
+              icon.source: Qaterial.Icons.folderOutline
+
+              onClicked: () => folderDialog.open()
+            }
           }
         }
       }
