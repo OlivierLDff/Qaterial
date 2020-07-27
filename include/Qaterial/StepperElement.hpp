@@ -19,7 +19,7 @@ namespace qaterial {
 
 // ──── CLASS ────
 
-class StepperElement : public QObject
+class QATERIAL_API_ StepperElement : public QObject
 {
     Q_OBJECT
     QATERIAL_REGISTER_TO_QML(StepperElement)
