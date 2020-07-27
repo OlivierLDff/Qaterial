@@ -49,6 +49,8 @@ SwipeView                   1.0 SwipeView.qml
 ScrollView                  1.0 ScrollView.qml
 StackView                   1.0 StackView.qml
 SplitView                   1.0 SplitView.qml
+TreeViewItem                1.0 TreeViewItem.qml
+TreeView                    1.0 TreeView.qml
 
 ###############
 #  COMPONENT  #
