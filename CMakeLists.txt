@@ -136,6 +136,8 @@ set(QATERIAL_IO_SRCS
   src/TextFile.cpp
   include/Qaterial/Clipboard.hpp
   src/Clipboard.cpp
+  include/Qaterial/FolderTreeModel.hpp
+  src/FolderTreeModel.cpp
 )
 
 set(QATERIAL_NAVIGATION_SRCS

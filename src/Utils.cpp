@@ -10,13 +10,16 @@
 #include <Qaterial/TreeElement.hpp>
 #include <Qaterial/TextFile.hpp>
 #include <Qaterial/Clipboard.hpp>
+#include <Qaterial/FolderTreeModel.hpp>
 
-#include <QOlm/QOlm.hpp>
-
-// Qt Header
-#include <QGuiApplication>
+// Qt Core
 #include <QDir>
+
+// Qt Gui
+#include <QGuiApplication>
 #include <QFontDatabase>
+
+// Qt Quick Controls 2
 #include <QQuickStyle>
 
 #ifdef Q_OS_WIN
@@ -77,6 +80,8 @@ static void Qaterial_registerTypes()
     LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
     qaterial::Logger::registerSingleton(*_uri, _major, _minor);
 
+    // NAVIGATION
+
     LOG_DEV_INFO("Register {}.StepperElement {}.{} to QML", *_uri, _major, _minor);
     qaterial::StepperElement::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
@@ -87,10 +92,14 @@ static void Qaterial_registerTypes()
     LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
     qmlRegisterType<qaterial::TreeModel>(*_uri, _major, _minor, "TreeModel");
 
+    // IO
+
     LOG_DEV_INFO("Register {}.TextFile {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextFile::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register Singleton {}.Clipboard {}.{} to QML", *_uri, _major, _minor);
     qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.FolderTreeModel {}.{} to QML", *_uri, _major, _minor);
+    qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
