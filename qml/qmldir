@@ -1,258 +1,196 @@
-#
-# Copyright (C) Olivier Le Doeuff 2019
-# Contact: olivier.ldff@gmail.com
-#
-
-###############
-#  QATERIAL   #
-###############
+# File auto generated with CMake qt_generate_qmldir. Run CMake to regenerate if files changed.
 
 module Qaterial
 
-###############
-#   DEPENDS   #
-###############
-
-depends QtQuick.Controls 2.12
-depends QtGraphicalEffects 2.12
-
-###############
-#    STYLE    #
-###############
-
-singleton Style             1.0 Style.qml
-singleton Icons             1.0 Icons.qml
-StyleSettingsDialog         1.0 StyleSettingsDialog.qml
-
-###############
-#    CORE     #
-###############
-
-ColorIcon                   1.0 ColorIcon.qml
-IconLabel                   1.0 IconLabel.qml
-Ripple                      1.0 Ripple.qml
-ElevationEffect             1.0 ElevationEffect.qml
-DebugRectangle              1.0 DebugRectangle.qml
-DebugObject                 1.0 DebugObject.qml
-RoundImage                  1.0 RoundImage.qml
-ErrorSequentialAnimation    1.0 ErrorSequentialAnimation.qml
-
-###############
-# CONTAINERS  #
-###############
-
-ScrollablePage              1.0 ScrollablePage.qml
-ZoomableFlickable           1.0 ZoomableFlickable.qml
-CheckableListView           1.0 CheckableListView.qml
-CheckableListViewDelegate   1.0 CheckableListViewDelegate.qml
-SwipeView                   1.0 SwipeView.qml
-ScrollView                  1.0 ScrollView.qml
-StackView                   1.0 StackView.qml
-SplitView                   1.0 SplitView.qml
-TreeViewItem                1.0 TreeViewItem.qml
-TreeView                    1.0 TreeView.qml
-
-###############
-#  COMPONENT  #
-###############
-
-ToolBar                     1.0 ToolBar.qml
-AppBar                      1.0 ToolBar.qml
-
-RoundColorIcon              1.0 RoundColorIcon.qml
-
-ButtonGroup.qml             1.0 ButtonGroup.qml
-FlatButton                  1.0 FlatButton.qml
-OutlineButton               1.0 OutlineButton.qml
-RaisedButton                1.0 RaisedButton.qml
-Button                      1.0 Button.qml
-RawMaterialButton           1.0 RawMaterialButton.qml
-
-FabIconLabel                1.0 FabIconLabel.qml
-FabButton                   1.0 FabButton.qml
-ScalableFlatFabButton       1.0 ScalableFlatFabButton.qml
-MiniFabButton               1.0 MiniFabButton.qml
-ExtendedFabButton           1.0 ExtendedFabButton.qml
-FlatFabButton               1.0 FlatFabButton.qml
-MiniFlatFabButton           1.0 MiniFlatFabButton.qml
-OutlinedFabButton           1.0 OutlinedFabButton.qml
-MiniOutlinedFabButton       1.0 MiniOutlinedFabButton.qml
-ScalableOutlinedFabButton   1.0 ScalableOutlinedFabButton.qml
-
-ToolButton                  1.0 ToolButton.qml
-RoundButton                 1.0 RoundButton.qml
-AppBarButton                1.0 AppBarButton.qml
-SquareButton                1.0 SquareButton.qml
-ToggleButton                1.0 ToggleButton.qml
-ToolSeparator               1.0 ToolSeparator.qml
-ToggleSeparator             1.0 ToggleSeparator.qml
-
-RadioButton                 1.0 RadioButton.qml
-SwitchButton                1.0 SwitchButton.qml
-CheckButton                 1.0 CheckButton.qml
-
-Label                       1.0 Label.qml
-LabelPixelSize              1.0 LabelPixelSize.qml
-
-TabBar                      1.0 TabBar.qml
-TabButton                   1.0 TabButton.qml
-FixedTabBar                 1.0 FixedTabBar.qml
-ScrollableTabBar            1.0 ScrollableTabBar.qml
-ClusturedTabBar             1.0 ClusturedTabBar.qml
-
-ListDelegateBackground      1.0 ListDelegateBackground.qml
-ListDelegateText            1.0 ListDelegateText.qml
-ListDelegateContent         1.0 ListDelegateContent.qml
-ListSectionTitle            1.0 ListSectionTitle.qml
-
-ItemDelegate                1.0 ItemDelegate.qml
-
-SwitchDelegate              1.0 SwitchDelegate.qml
-SwitchIndicator             1.0 SwitchIndicator.qml
-CheckDelegate               1.0 CheckDelegate.qml
-CheckIndicator              1.0 CheckIndicator.qml
-RadioDelegate               1.0 RadioDelegate.qml
-RadioIndicator              1.0 RadioIndicator.qml
-SwipeDelegate               1.0 SwipeDelegate.qml
-EnumDelegate                1.0 EnumDelegate.qml
-
-Menu                        1.0 Menu.qml
-MenuBar                     1.0 MenuBar.qml
-MenuBarItem                 1.0 MenuBarItem.qml
-MenuItem                    1.0 MenuItem.qml
-MenuSeparator               1.0 MenuSeparator.qml
-RadioMenuItem               1.0 RadioMenuItem.qml
-
-WindowLayoutSave            1.0 WindowLayoutSave.qml
-ApplicationWindow           1.0 ApplicationWindow.qml
-Page                        1.0 Page.qml
-Pane                        1.0 Pane.qml
-Frame                       1.0 Frame.qml
-GroupBox                    1.0 GroupBox.qml
-ScrollBar                   1.0 ScrollBar.qml
-ScrollIndicator             1.0 ScrollIndicator.qml
-DoublePage                  1.0 DoublePage.qml
-SplashScreen                1.0 SplashScreen.qml
-SplashScreenWindow          1.0 SplashScreenWindow.qml
-
-Card                        1.0 Card.qml
-ElevatedCard                1.0 ElevatedCard.qml
-OutlinedCard                1.0 OutlinedCard.qml
-CardBackground              1.0 CardBackground.qml
-CardRippleBackground        1.0 CardRippleBackground.qml
-CardMedia                   1.0 CardMedia.qml
-CardTitle                   1.0 CardTitle.qml
-CardSupportingText          1.0 CardSupportingText.qml
-CardRoundThumbnailTitle     1.0 CardRoundThumbnailTitle.qml
-
-Banner                      1.0 Banner.qml
-Snackbar                    1.0 Snackbar.qml
-SnackbarLoader              1.0 SnackbarLoader.qml
-singleton SnackbarManager   1.0 SnackbarManager.qml
-
-CursorDelegate              1.0 CursorDelegate.qml
-PlaceholderText             1.0 PlaceholderText.qml
-TextField                   1.0 TextField.qml
-TextFieldButtonContainer    1.0 TextFieldButtonContainer.qml
-TextFieldIconButton         1.0 TextFieldIconButton.qml
-TextFieldClearButton        1.0 TextFieldClearButton.qml
-TextFieldCopyButton         1.0 TextFieldCopyButton.qml
-TextFieldPasswordButton     1.0 TextFieldPasswordButton.qml
-TextFieldIcon               1.0 TextFieldIcon.qml
-TextFieldAlertIcon          1.0 TextFieldAlertIcon.qml
-TextArea                    1.0 TextArea.qml
-TextAreaContent             1.0 TextAreaContent.qml
-TextAreaScrollView          1.0 TextAreaScrollView.qml
-TextAreaScrollBar           1.0 TextAreaScrollBar.qml
-ScrollableTextArea          1.0 ScrollableTextArea.qml
-ComboBox                    1.0 ComboBox.qml
-
-Dialog                      1.0 Dialog.qml
-DialogButtonBox             1.0 DialogButtonBox.qml
-ModalDialog                 1.0 ModalDialog.qml
-AlertDialog                 1.0 AlertDialog.qml
-AlertIconDialog             1.0 AlertIconDialog.qml
-TextFieldDialog             1.0 TextFieldDialog.qml
-RadioDialog                 1.0 RadioDialog.qml
-RadioDialogDelegate         1.0 RadioDialogDelegate.qml
-ToolTip                     1.0 ToolTip.qml
-
-HandClock                   1.0 HandClock.qml
-CircularPathLabel           1.0 CircularPathLabel.qml
-EuCircularHour              1.0 EuCircularHour.qml
-EuCircularHourPicker        1.0 EuCircularHourPicker.qml
-AmCircularHour              1.0 AmCircularHour.qml
-AmCircularHourPicker        1.0 AmCircularHourPicker.qml
-CircularMinutePicker        1.0 CircularMinutePicker.qml
-CircularMinute              1.0 CircularMinute.qml
-TimePickerDialog            1.0 TimePickerDialog.qml
-TextFieldTimePicker         1.0 TextFieldTimePicker.qml
-TextFieldClockButton        1.0 TextFieldClockButton.qml
-
-BusyIndicatorDialog         1.0 BusyIndicatorDialog.qml
-ProgressBarDialog           1.0 ProgressBarDialog.qml
-DoubleProgressBarDialog     1.0 DoubleProgressBarDialog.qml
-DialogLoader                1.0 DialogLoader.qml
-DialogManagerSettings       1.0 DialogManagerSettings.qml
-singleton DialogManager     1.0 DialogManager.qml
-
-singleton Calendar          1.0 Calendar.qml
-CalendarDateButton          1.0 CalendarDateButton.qml
-CalendarDayGrid             1.0 CalendarDayGrid.qml
-CalendarWeekDayRow          1.0 CalendarWeekDayRow.qml
-CalendarDayPicker           1.0 CalendarDayPicker.qml
-CalendarDayPickerView       1.0 CalendarDayPickerView.qml
-CalendarMonthPickerView     1.0 CalendarMonthPickerView.qml
-CalendarYearPickerView      1.0 CalendarYearPickerView.qml
-CalendarNavigationBar       1.0 CalendarNavigationBar.qml
-CalendarView                1.0 CalendarView.qml
-CalendarDateDisplay         1.0 CalendarDateDisplay.qml
-DatePickerDialog            1.0 DatePickerDialog.qml
-TextFieldDate               1.0 TextFieldDate.qml
-TextFieldDatePicker         1.0 TextFieldDatePicker.qml
-
-TextFieldDelegate           1.0 TextFieldDelegate.qml
-
-HorizontalLineSeparator     1.0 HorizontalLineSeparator.qml
-VerticalLineSeparator       1.0 VerticalLineSeparator.qml
-
-Drawer                      1.0 Drawer.qml
-LineChart                   1.0 LineChart.qml
-GridLabelsX                 1.0 GridLabelsX.qml
-GridLabelsY                 1.0 GridLabelsY.qml
-
-BusyIndicator               1.0 BusyIndicator.qml
-ProgressBar                 1.0 ProgressBar.qml
-
-RangeSlider                 1.0 RangeSlider.qml
-RangeSliderDelegate         1.0 RangeSliderDelegate.qml
-Slider                      1.0 Slider.qml
-SliderHandle                1.0 SliderHandle.qml
-SliderDelegate              1.0 SliderDelegate.qml
-LargeSlider                 1.0 LargeSlider.qml
-GradientSlider              1.0 GradientSlider.qml
-
-ColorHueSlider              1.0 ColorHueSlider.qml
-ColorSaturationSlider       1.0 ColorSaturationSlider.qml
-ColorValueSlider            1.0 ColorValueSlider.qml
-ColorLightnessSlider        1.0 ColorValueSlider.qml
-
-HsvColorHueSlider           1.0 ColorHueSlider.qml
-HsvColorSaturationSlider    1.0 ColorSaturationSlider.qml
-HsvColorValueSlider         1.0 ColorValueSlider.qml
-
-HslColorHueSlider           1.0 HslColorHueSlider.qml
-HslColorSaturationSlider    1.0 HslColorSaturationSlider.qml
-HslColorLightnessSlider     1.0 HslColorLightnessSlider.qml
-
-ColorRedSlider              1.0 ColorRedSlider.qml
-ColorGreenSlider            1.0 ColorGreenSlider.qml
-ColorBlueSlider             1.0 ColorBlueSlider.qml
-ColorAlphaSlider            1.0 ColorAlphaSlider.qml
-
-ColorButton                 1.0 ColorButton.qml
-ColorMiniButton             1.0 ColorMiniButton.qml
-
-RectangleAreaHandler        1.0 RectangleAreaHandler.qml
-Stepper                     1.0 Stepper.qml
-Expandable                  1.0 Expandable.qml
+AlertDialog 1.0 AlertDialog.qml
+AlertIconDialog 1.0 AlertIconDialog.qml
+AmCircularHour 1.0 AmCircularHour.qml
+AmCircularHourPicker 1.0 AmCircularHourPicker.qml
+AppBarButton 1.0 AppBarButton.qml
+ApplicationWindow 1.0 ApplicationWindow.qml
+Banner 1.0 Banner.qml
+BusyIndicator 1.0 BusyIndicator.qml
+BusyIndicatorDialog 1.0 BusyIndicatorDialog.qml
+Button 1.0 Button.qml
+ButtonGroup 1.0 ButtonGroup.qml
+singleton Calendar 1.0 Calendar.qml
+CalendarDateButton 1.0 CalendarDateButton.qml
+CalendarDateDisplay 1.0 CalendarDateDisplay.qml
+CalendarDayGrid 1.0 CalendarDayGrid.qml
+CalendarDayPicker 1.0 CalendarDayPicker.qml
+CalendarDayPickerView 1.0 CalendarDayPickerView.qml
+CalendarMonthPickerView 1.0 CalendarMonthPickerView.qml
+CalendarNavigationBar 1.0 CalendarNavigationBar.qml
+CalendarView 1.0 CalendarView.qml
+CalendarWeekDayRow 1.0 CalendarWeekDayRow.qml
+CalendarYearPickerView 1.0 CalendarYearPickerView.qml
+Card 1.0 Card.qml
+CardBackground 1.0 CardBackground.qml
+CardMedia 1.0 CardMedia.qml
+CardRippleBackground 1.0 CardRippleBackground.qml
+CardRoundThumbnailTitle 1.0 CardRoundThumbnailTitle.qml
+CardSupportingText 1.0 CardSupportingText.qml
+CardTitle 1.0 CardTitle.qml
+CheckButton 1.0 CheckButton.qml
+CheckDelegate 1.0 CheckDelegate.qml
+CheckIndicator 1.0 CheckIndicator.qml
+CheckableListView 1.0 CheckableListView.qml
+CheckableListViewDelegate 1.0 CheckableListViewDelegate.qml
+CircularMinute 1.0 CircularMinute.qml
+CircularMinutePicker 1.0 CircularMinutePicker.qml
+CircularPathLabel 1.0 CircularPathLabel.qml
+ClusturedTabBar 1.0 ClusturedTabBar.qml
+ColorAlphaSlider 1.0 ColorAlphaSlider.qml
+ColorBlueSlider 1.0 ColorBlueSlider.qml
+ColorButton 1.0 ColorButton.qml
+ColorCyanSlider 1.0 ColorCyanSlider.qml
+ColorGreenSlider 1.0 ColorGreenSlider.qml
+ColorHueSlider 1.0 ColorHueSlider.qml
+ColorIcon 1.0 ColorIcon.qml
+ColorMagentaSlider 1.0 ColorMagentaSlider.qml
+ColorMiniButton 1.0 ColorMiniButton.qml
+ColorRedSlider 1.0 ColorRedSlider.qml
+ColorSaturationSlider 1.0 ColorSaturationSlider.qml
+ColorValueSlider 1.0 ColorValueSlider.qml
+ColorYellowSlider 1.0 ColorYellowSlider.qml
+ComboBox 1.0 ComboBox.qml
+CursorDelegate 1.0 CursorDelegate.qml
+DatePickerDialog 1.0 DatePickerDialog.qml
+DebugObject 1.0 DebugObject.qml
+DebugRectangle 1.0 DebugRectangle.qml
+Dialog 1.0 Dialog.qml
+DialogButtonBox 1.0 DialogButtonBox.qml
+DialogLoader 1.0 DialogLoader.qml
+singleton DialogManager 1.0 DialogManager.qml
+DialogManagerSettings 1.0 DialogManagerSettings.qml
+DoublePage 1.0 DoublePage.qml
+DoubleProgressBarDialog 1.0 DoubleProgressBarDialog.qml
+Drawer 1.0 Drawer.qml
+ElevatedCard 1.0 ElevatedCard.qml
+ElevationEffect 1.0 ElevationEffect.qml
+EnumDelegate 1.0 EnumDelegate.qml
+ErrorSequentialAnimation 1.0 ErrorSequentialAnimation.qml
+EuCircularHour 1.0 EuCircularHour.qml
+EuCircularHourPicker 1.0 EuCircularHourPicker.qml
+Expandable 1.0 Expandable.qml
+ExtendedFabButton 1.0 ExtendedFabButton.qml
+FabButton 1.0 FabButton.qml
+FabIconLabel 1.0 FabIconLabel.qml
+FixedTabBar 1.0 FixedTabBar.qml
+FlatButton 1.0 FlatButton.qml
+FlatFabButton 1.0 FlatFabButton.qml
+Frame 1.0 Frame.qml
+GradientSlider 1.0 GradientSlider.qml
+GridLabelsX 1.0 GridLabelsX.qml
+GridLabelsY 1.0 GridLabelsY.qml
+GroupBox 1.0 GroupBox.qml
+HandClock 1.0 HandClock.qml
+HorizontalLineSeparator 1.0 HorizontalLineSeparator.qml
+HslColorHueSlider 1.0 HslColorHueSlider.qml
+HslColorLightnessSlider 1.0 HslColorLightnessSlider.qml
+HslColorSaturationSlider 1.0 HslColorSaturationSlider.qml
+HsvColorHueSlider 1.0 HsvColorHueSlider.qml
+HsvColorSaturationSlider 1.0 HsvColorSaturationSlider.qml
+HsvColorValueSlider 1.0 HsvColorValueSlider.qml
+IconLabel 1.0 IconLabel.qml
+singleton Icons 1.0 Icons.qml
+ItemDelegate 1.0 ItemDelegate.qml
+Label 1.0 Label.qml
+LargeSlider 1.0 LargeSlider.qml
+LineChart 1.0 LineChart.qml
+ListDelegateBackground 1.0 ListDelegateBackground.qml
+ListDelegateContent 1.0 ListDelegateContent.qml
+ListDelegateText 1.0 ListDelegateText.qml
+ListSectionTitle 1.0 ListSectionTitle.qml
+Menu 1.0 Menu.qml
+MenuBar 1.0 MenuBar.qml
+MenuBarItem 1.0 MenuBarItem.qml
+MenuItem 1.0 MenuItem.qml
+MenuSeparator 1.0 MenuSeparator.qml
+MiniFabButton 1.0 MiniFabButton.qml
+MiniFlatFabButton 1.0 MiniFlatFabButton.qml
+MiniOutlinedFabButton 1.0 MiniOutlinedFabButton.qml
+ModalDialog 1.0 ModalDialog.qml
+OutlineButton 1.0 OutlineButton.qml
+OutlinedCard 1.0 OutlinedCard.qml
+OutlinedFabButton 1.0 OutlinedFabButton.qml
+Page 1.0 Page.qml
+Pane 1.0 Pane.qml
+PlaceholderText 1.0 PlaceholderText.qml
+ProgressBar 1.0 ProgressBar.qml
+ProgressBarDialog 1.0 ProgressBarDialog.qml
+RadioButton 1.0 RadioButton.qml
+RadioDelegate 1.0 RadioDelegate.qml
+RadioDialog 1.0 RadioDialog.qml
+RadioDialogDelegate 1.0 RadioDialogDelegate.qml
+RadioIndicator 1.0 RadioIndicator.qml
+RadioMenuItem 1.0 RadioMenuItem.qml
+RaisedButton 1.0 RaisedButton.qml
+RangeSlider 1.0 RangeSlider.qml
+RangeSliderDelegate 1.0 RangeSliderDelegate.qml
+RawMaterialButton 1.0 RawMaterialButton.qml
+RectangleAreaHandler 1.0 RectangleAreaHandler.qml
+Ripple 1.0 Ripple.qml
+RoundButton 1.0 RoundButton.qml
+RoundColorIcon 1.0 RoundColorIcon.qml
+RoundImage 1.0 RoundImage.qml
+ScalableFlatFabButton 1.0 ScalableFlatFabButton.qml
+ScalableOutlinedFabButton 1.0 ScalableOutlinedFabButton.qml
+ScrollBar 1.0 ScrollBar.qml
+ScrollIndicator 1.0 ScrollIndicator.qml
+ScrollView 1.0 ScrollView.qml
+ScrollablePage 1.0 ScrollablePage.qml
+ScrollableTabBar 1.0 ScrollableTabBar.qml
+ScrollableTextArea 1.0 ScrollableTextArea.qml
+Slider 1.0 Slider.qml
+SliderDelegate 1.0 SliderDelegate.qml
+SliderHandle 1.0 SliderHandle.qml
+Snackbar 1.0 Snackbar.qml
+SnackbarLoader 1.0 SnackbarLoader.qml
+singleton SnackbarManager 1.0 SnackbarManager.qml
+SplashScreen 1.0 SplashScreen.qml
+SplashScreenApplication 1.0 SplashScreenApplication.qml
+SplashScreenWindow 1.0 SplashScreenWindow.qml
+SplitView 1.0 SplitView.qml
+SquareButton 1.0 SquareButton.qml
+StackView 1.0 StackView.qml
+Stepper 1.0 Stepper.qml
+singleton Style 1.0 Style.qml
+StyleSettingsDialog 1.0 StyleSettingsDialog.qml
+SwipeDelegate 1.0 SwipeDelegate.qml
+SwipeView 1.0 SwipeView.qml
+SwitchButton 1.0 SwitchButton.qml
+SwitchDelegate 1.0 SwitchDelegate.qml
+SwitchIndicator 1.0 SwitchIndicator.qml
+TabBar 1.0 TabBar.qml
+TabButton 1.0 TabButton.qml
+TextArea 1.0 TextArea.qml
+TextAreaContent 1.0 TextAreaContent.qml
+TextAreaScrollBar 1.0 TextAreaScrollBar.qml
+TextAreaScrollView 1.0 TextAreaScrollView.qml
+TextField 1.0 TextField.qml
+TextFieldAlertIcon 1.0 TextFieldAlertIcon.qml
+TextFieldButtonContainer 1.0 TextFieldButtonContainer.qml
+TextFieldClearButton 1.0 TextFieldClearButton.qml
+TextFieldClockButton 1.0 TextFieldClockButton.qml
+TextFieldCopyButton 1.0 TextFieldCopyButton.qml
+TextFieldDate 1.0 TextFieldDate.qml
+TextFieldDatePicker 1.0 TextFieldDatePicker.qml
+TextFieldDelegate 1.0 TextFieldDelegate.qml
+TextFieldDialog 1.0 TextFieldDialog.qml
+TextFieldIcon 1.0 TextFieldIcon.qml
+TextFieldIconButton 1.0 TextFieldIconButton.qml
+TextFieldPasswordButton 1.0 TextFieldPasswordButton.qml
+TextFieldTimePicker 1.0 TextFieldTimePicker.qml
+TimePickerDialog 1.0 TimePickerDialog.qml
+ToggleButton 1.0 ToggleButton.qml
+ToggleSeparator 1.0 ToggleSeparator.qml
+ToolBar 1.0 ToolBar.qml
+ToolButton 1.0 ToolButton.qml
+ToolSeparator 1.0 ToolSeparator.qml
+ToolTip 1.0 ToolTip.qml
+TreeView 1.0 TreeView.qml
+TreeViewItem 1.0 TreeViewItem.qml
+VerticalLineSeparator 1.0 VerticalLineSeparator.qml
+WindowLayoutSave 1.0 WindowLayoutSave.qml
+ZoomableFlickable 1.0 ZoomableFlickable.qml

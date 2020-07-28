@@ -1,250 +1,199 @@
+<!-- File auto generated with CMake qt_generate_qrc. Everything written here will be lost. -->
 <RCC>
-    <qresource prefix="/Qaterial">
-
-        <!-- QMLDIR -->
-        <file>qmldir</file>
-        <file>Icons.qml</file>
-
-        <!-- CORE -->
-        <file>ColorIcon.qml</file>
-        <file>IconLabel.qml</file>
-        <file>Ripple.qml</file>
-        <file>ElevationEffect.qml</file>
-        <file>DebugRectangle.qml</file>
-        <file>DebugObject.qml</file>
-        <file>RoundImage.qml</file>
-        <file>ErrorSequentialAnimation.qml</file>
-
-        <file>LineChart.qml</file>
-        <file>GridLabelsX.qml</file>
-        <file>GridLabelsY.qml</file>
-
-        <!-- CONTAINERS -->
-        <file>ScrollablePage.qml</file>
-        <file>ZoomableFlickable.qml</file>
-        <file>CheckableListView.qml</file>
-        <file>CheckableListViewDelegate.qml</file>
-
-        <file>SplitView.qml</file>
-        <file>StackView.qml</file>
-        <file>TreeViewItem.qml</file>
-        <file>TreeView.qml</file>
-
-        <!-- STYLES -->
-        <file>Style.qml</file>
-        <file>StyleSettingsDialog.qml</file>
-
-        <!-- COMPONENTS / TIMEPICKER -->
-        <file>HandClock.qml</file>
-        <file>CircularPathLabel.qml</file>
-        <file>EuCircularHour.qml</file>
-        <file>EuCircularHourPicker.qml</file>
-        <file>AmCircularHour.qml</file>
-        <file>AmCircularHourPicker.qml</file>
-        <file>CircularMinutePicker.qml</file>
-        <file>CircularMinute.qml</file>
-        <file>TimePickerDialog.qml</file>
-        <file>TextFieldTimePicker.qml</file>
-        <file>TextFieldClockButton.qml</file>
-
-        <!-- COMPONENTS / CALENDAR -->
-        <file>Calendar.qml</file>
-        <file>CalendarDateButton.qml</file>
-        <file>CalendarDayGrid.qml</file>
-        <file>CalendarWeekDayRow.qml</file>
-        <file>CalendarDayPicker.qml</file>
-        <file>CalendarDayPickerView.qml</file>
-        <file>CalendarMonthPickerView.qml</file>
-        <file>CalendarYearPickerView.qml</file>
-        <file>CalendarNavigationBar.qml</file>
-        <file>CalendarView.qml</file>
-        <file>CalendarDateDisplay.qml</file>
-        <file>DatePickerDialog.qml</file>
-        <file>TextFieldDate.qml</file>
-        <file>TextFieldDatePicker.qml</file>
-
-        <!-- COMPONENTS / CORE -->
-        <file>RoundColorIcon.qml</file>
-
-        <!-- COMPONENTS / CONTAINERS -->
-        <file>WindowLayoutSave.qml</file>
-        <file>ApplicationWindow.qml</file>
-        <file>Page.qml</file>
-        <file>Pane.qml</file>
-        <file>Frame.qml</file>
-        <file>GroupBox.qml</file>
-        <file>ScrollBar.qml</file>
-        <file>ScrollIndicator.qml</file>
-        <file>ScrollView.qml</file>
-        <file>SwipeView.qml</file>
-        <file>DoublePage.qml</file>
-        <file>SplashScreen.qml</file>
-        <file>SplashScreenWindow.qml</file>
-
-        <!-- COMPONENTS / CARDS -->
-        <file>Card.qml</file>
-        <file>ElevatedCard.qml</file>
-        <file>OutlinedCard.qml</file>
-        <file>CardBackground.qml</file>
-        <file>CardRippleBackground.qml</file>
-        <file>CardMedia.qml</file>
-        <file>CardSupportingText.qml</file>
-        <file>CardTitle.qml</file>
-        <file>CardRoundThumbnailTitle.qml</file>
-
-        <!-- COMPONENTS / BANNERS -->
-        <file>Banner.qml</file>
-        <file>Snackbar.qml</file>
-        <file>SnackbarLoader.qml</file>
-        <file>SnackbarManager.qml</file>
-
-        <!-- COMPONENTS / APP BAR -->
-        <file>ToolBar.qml</file>
-
-        <!-- COMPONENTS / MENU -->
-        <file>Menu.qml</file>
-        <file>MenuBar.qml</file>
-        <file>MenuBarItem.qml</file>
-        <file>MenuItem.qml</file>
-        <file>MenuSeparator.qml</file>
-        <file>RadioMenuItem.qml</file>
-
-        <!-- COMPONENTS / BUTTONS -->
-        <file>ButtonGroup.qml</file>
-        <file>FlatButton.qml</file>
-        <file>OutlineButton.qml</file>
-        <file>RaisedButton.qml</file>
-        <file>Button.qml</file>
-        <file>RawMaterialButton.qml</file>
-
-        <!-- COMPONENTS / CONTROL BUTTONS -->
-        <file>SwitchButton.qml</file>
-        <file>CheckButton.qml</file>
-        <file>RadioButton.qml</file>
-
-        <!-- COMPONENTS / FAB -->
-        <file>FabIconLabel.qml</file>
-        <file>FabButton.qml</file>
-        <file>ExtendedFabButton.qml</file>
-        <file>MiniFabButton.qml</file>
-        <file>FlatFabButton.qml</file>
-        <file>MiniFlatFabButton.qml</file>
-        <file>ScalableFlatFabButton.qml</file>
-        <file>OutlinedFabButton.qml</file>
-        <file>MiniOutlinedFabButton.qml</file>
-        <file>ScalableOutlinedFabButton.qml</file>
-
-        <!-- COMPONENTS / ICON BUTONS -->
-        <file>ToolButton.qml</file>
-        <file>AppBarButton.qml</file>
-        <file>RoundButton.qml</file>
-        <file>SquareButton.qml</file>
-        <file>ToggleButton.qml</file>
-        <file>ToolSeparator.qml</file>
-        <file>ToggleSeparator.qml</file>
-
-        <!-- COMPONENTS / TEXT -->
-        <file>Label.qml</file>
-
-        <!-- COMPONENTS / TAB -->
-        <file>TabBar.qml</file>
-        <file>TabButton.qml</file>
-        <file>FixedTabBar.qml</file>
-        <file>ScrollableTabBar.qml</file>
-        <file>ClusturedTabBar.qml</file>
-
-        <!-- COMPONENTS / DELEGATES -->
-        <file>ListDelegateText.qml</file>
-        <file>ListDelegateContent.qml</file>
-        <file>ListDelegateBackground.qml</file>
-        <file>ListSectionTitle.qml</file>
-        <file>ItemDelegate.qml</file>
-        <file>SwitchDelegate.qml</file>
-        <file>SwitchIndicator.qml</file>
-        <file>CheckDelegate.qml</file>
-        <file>CheckIndicator.qml</file>
-        <file>RadioDelegate.qml</file>
-        <file>RadioIndicator.qml</file>
-        <file>SwipeDelegate.qml</file>
-        <file>TextFieldDelegate.qml</file>
-        <file>EnumDelegate.qml</file>
-
-        <!-- COMPONENTS / DIALOG -->
-        <file>Dialog.qml</file>
-        <file>DialogButtonBox.qml</file>
-        <file>ModalDialog.qml</file>
-        <file>AlertDialog.qml</file>
-        <file>AlertIconDialog.qml</file>
-        <file>TextFieldDialog.qml</file>
-        <file>RadioDialog.qml</file>
-        <file>RadioDialogDelegate.qml</file>
-        <file>DialogLoader.qml</file>
-        <file>DialogManager.qml</file>
-        <file>DialogManagerSettings.qml</file>
-        <file>BusyIndicatorDialog.qml</file>
-        <file>ProgressBarDialog.qml</file>
-        <file>DoubleProgressBarDialog.qml</file>
-        <file>ToolTip.qml</file>
-
-        <!-- COMPONENTS / TEXT FIELD -->
-        <file>CursorDelegate.qml</file>
-        <file>PlaceholderText.qml</file>
-        <file>TextField.qml</file>
-        <file>TextFieldButtonContainer.qml</file>
-        <file>TextFieldIconButton.qml</file>
-        <file>TextFieldClearButton.qml</file>
-        <file>TextFieldCopyButton.qml</file>
-        <file>TextFieldPasswordButton.qml</file>
-        <file>TextFieldIcon.qml</file>
-        <file>TextFieldAlertIcon.qml</file>
-        <file>TextArea.qml</file>
-        <file>TextAreaContent.qml</file>
-        <file>TextAreaScrollView.qml</file>
-        <file>TextAreaScrollBar.qml</file>
-        <file>ScrollableTextArea.qml</file>
-        <file>ComboBox.qml</file>
-
-        <!-- COMPONENTS / SEPARATOR -->
-        <file>HorizontalLineSeparator.qml</file>
-        <file>VerticalLineSeparator.qml</file>
-
-        <!-- COMPONENTS / NAVIGATION -->
-        <file>Drawer.qml</file>
-
-        <!-- COMPONENTS / LOADING -->
-        <file>BusyIndicator.qml</file>
-        <file>ProgressBar.qml</file>
-
-        <!-- COMPONENTS / SLIDERS -->
-        <file>Slider.qml</file>
-        <file>RangeSlider.qml</file>
-        <file>SliderHandle.qml</file>
-        <file>SliderDelegate.qml</file>
-        <file>RangeSliderDelegate.qml</file>
-
-        <file>LargeSlider.qml</file>
-        <file>GradientSlider.qml</file>
-
-        <file>ColorHueSlider.qml</file>
-        <file>ColorSaturationSlider.qml</file>
-        <file>ColorValueSlider.qml</file>
-
-        <file>HslColorHueSlider.qml</file>
-        <file>HslColorSaturationSlider.qml</file>
-        <file>HslColorLightnessSlider.qml</file>
-
-        <file>ColorRedSlider.qml</file>
-        <file>ColorGreenSlider.qml</file>
-        <file>ColorBlueSlider.qml</file>
-        <file>ColorAlphaSlider.qml</file>
-
-        <file>ColorButton.qml</file>
-        <file>ColorMiniButton.qml</file>
-
-        <!-- COMPONENTS / UTILS -->
-        <file>RectangleAreaHandler.qml</file>
-        <file>Stepper.qml</file>
-        <file>Expandable.qml</file>
-
-    </qresource>
+  <qresource prefix="/Qaterial">
+    <file>AlertDialog.qml</file>
+    <file>AlertIconDialog.qml</file>
+    <file>AmCircularHour.qml</file>
+    <file>AmCircularHourPicker.qml</file>
+    <file>AppBarButton.qml</file>
+    <file>ApplicationWindow.qml</file>
+    <file>Banner.qml</file>
+    <file>BusyIndicator.qml</file>
+    <file>BusyIndicatorDialog.qml</file>
+    <file>Button.qml</file>
+    <file>ButtonGroup.qml</file>
+    <file>Calendar.qml</file>
+    <file>CalendarDateButton.qml</file>
+    <file>CalendarDateDisplay.qml</file>
+    <file>CalendarDayGrid.qml</file>
+    <file>CalendarDayPicker.qml</file>
+    <file>CalendarDayPickerView.qml</file>
+    <file>CalendarMonthPickerView.qml</file>
+    <file>CalendarNavigationBar.qml</file>
+    <file>CalendarView.qml</file>
+    <file>CalendarWeekDayRow.qml</file>
+    <file>CalendarYearPickerView.qml</file>
+    <file>Card.qml</file>
+    <file>CardBackground.qml</file>
+    <file>CardMedia.qml</file>
+    <file>CardRippleBackground.qml</file>
+    <file>CardRoundThumbnailTitle.qml</file>
+    <file>CardSupportingText.qml</file>
+    <file>CardTitle.qml</file>
+    <file>CheckButton.qml</file>
+    <file>CheckDelegate.qml</file>
+    <file>CheckIndicator.qml</file>
+    <file>CheckableListView.qml</file>
+    <file>CheckableListViewDelegate.qml</file>
+    <file>CircularMinute.qml</file>
+    <file>CircularMinutePicker.qml</file>
+    <file>CircularPathLabel.qml</file>
+    <file>ClusturedTabBar.qml</file>
+    <file>ColorAlphaSlider.qml</file>
+    <file>ColorBlueSlider.qml</file>
+    <file>ColorButton.qml</file>
+    <file>ColorCyanSlider.qml</file>
+    <file>ColorGreenSlider.qml</file>
+    <file>ColorHueSlider.qml</file>
+    <file>ColorIcon.qml</file>
+    <file>ColorMagentaSlider.qml</file>
+    <file>ColorMiniButton.qml</file>
+    <file>ColorRedSlider.qml</file>
+    <file>ColorSaturationSlider.qml</file>
+    <file>ColorValueSlider.qml</file>
+    <file>ColorYellowSlider.qml</file>
+    <file>ComboBox.qml</file>
+    <file>CursorDelegate.qml</file>
+    <file>DatePickerDialog.qml</file>
+    <file>DebugObject.qml</file>
+    <file>DebugRectangle.qml</file>
+    <file>Dialog.qml</file>
+    <file>DialogButtonBox.qml</file>
+    <file>DialogLoader.qml</file>
+    <file>DialogManager.qml</file>
+    <file>DialogManagerSettings.qml</file>
+    <file>DoublePage.qml</file>
+    <file>DoubleProgressBarDialog.qml</file>
+    <file>Drawer.qml</file>
+    <file>ElevatedCard.qml</file>
+    <file>ElevationEffect.qml</file>
+    <file>EnumDelegate.qml</file>
+    <file>ErrorSequentialAnimation.qml</file>
+    <file>EuCircularHour.qml</file>
+    <file>EuCircularHourPicker.qml</file>
+    <file>Expandable.qml</file>
+    <file>ExtendedFabButton.qml</file>
+    <file>FabButton.qml</file>
+    <file>FabIconLabel.qml</file>
+    <file>FixedTabBar.qml</file>
+    <file>FlatButton.qml</file>
+    <file>FlatFabButton.qml</file>
+    <file>Fonts</file>
+    <file>Frame.qml</file>
+    <file>GradientSlider.qml</file>
+    <file>GridLabelsX.qml</file>
+    <file>GridLabelsY.qml</file>
+    <file>GroupBox.qml</file>
+    <file>HandClock.qml</file>
+    <file>HorizontalLineSeparator.qml</file>
+    <file>HslColorHueSlider.qml</file>
+    <file>HslColorLightnessSlider.qml</file>
+    <file>HslColorSaturationSlider.qml</file>
+    <file>HsvColorHueSlider.qml</file>
+    <file>HsvColorSaturationSlider.qml</file>
+    <file>HsvColorValueSlider.qml</file>
+    <file>IconLabel.qml</file>
+    <file>Icons.qml</file>
+    <file>ItemDelegate.qml</file>
+    <file>Label.qml</file>
+    <file>LargeSlider.qml</file>
+    <file>LineChart.qml</file>
+    <file>ListDelegateBackground.qml</file>
+    <file>ListDelegateContent.qml</file>
+    <file>ListDelegateText.qml</file>
+    <file>ListSectionTitle.qml</file>
+    <file>Menu.qml</file>
+    <file>MenuBar.qml</file>
+    <file>MenuBarItem.qml</file>
+    <file>MenuItem.qml</file>
+    <file>MenuSeparator.qml</file>
+    <file>MiniFabButton.qml</file>
+    <file>MiniFlatFabButton.qml</file>
+    <file>MiniOutlinedFabButton.qml</file>
+    <file>ModalDialog.qml</file>
+    <file>OutlineButton.qml</file>
+    <file>OutlinedCard.qml</file>
+    <file>OutlinedFabButton.qml</file>
+    <file>Page.qml</file>
+    <file>Pane.qml</file>
+    <file>PlaceholderText.qml</file>
+    <file>ProgressBar.qml</file>
+    <file>ProgressBarDialog.qml</file>
+    <file>RadioButton.qml</file>
+    <file>RadioDelegate.qml</file>
+    <file>RadioDialog.qml</file>
+    <file>RadioDialogDelegate.qml</file>
+    <file>RadioIndicator.qml</file>
+    <file>RadioMenuItem.qml</file>
+    <file>RaisedButton.qml</file>
+    <file>RangeSlider.qml</file>
+    <file>RangeSliderDelegate.qml</file>
+    <file>RawMaterialButton.qml</file>
+    <file>RectangleAreaHandler.qml</file>
+    <file>Ripple.qml</file>
+    <file>RoundButton.qml</file>
+    <file>RoundColorIcon.qml</file>
+    <file>RoundImage.qml</file>
+    <file>ScalableFlatFabButton.qml</file>
+    <file>ScalableOutlinedFabButton.qml</file>
+    <file>ScrollBar.qml</file>
+    <file>ScrollIndicator.qml</file>
+    <file>ScrollView.qml</file>
+    <file>ScrollablePage.qml</file>
+    <file>ScrollableTabBar.qml</file>
+    <file>ScrollableTextArea.qml</file>
+    <file>Slider.qml</file>
+    <file>SliderDelegate.qml</file>
+    <file>SliderHandle.qml</file>
+    <file>Snackbar.qml</file>
+    <file>SnackbarLoader.qml</file>
+    <file>SnackbarManager.qml</file>
+    <file>SplashScreen.qml</file>
+    <file>SplashScreenApplication.qml</file>
+    <file>SplashScreenWindow.qml</file>
+    <file>SplitView.qml</file>
+    <file>SquareButton.qml</file>
+    <file>StackView.qml</file>
+    <file>Stepper.qml</file>
+    <file>Style.qml</file>
+    <file>StyleSettingsDialog.qml</file>
+    <file>SwipeDelegate.qml</file>
+    <file>SwipeView.qml</file>
+    <file>SwitchButton.qml</file>
+    <file>SwitchDelegate.qml</file>
+    <file>SwitchIndicator.qml</file>
+    <file>TabBar.qml</file>
+    <file>TabButton.qml</file>
+    <file>TextArea.qml</file>
+    <file>TextAreaContent.qml</file>
+    <file>TextAreaScrollBar.qml</file>
+    <file>TextAreaScrollView.qml</file>
+    <file>TextField.qml</file>
+    <file>TextFieldAlertIcon.qml</file>
+    <file>TextFieldButtonContainer.qml</file>
+    <file>TextFieldClearButton.qml</file>
+    <file>TextFieldClockButton.qml</file>
+    <file>TextFieldCopyButton.qml</file>
+    <file>TextFieldDate.qml</file>
+    <file>TextFieldDatePicker.qml</file>
+    <file>TextFieldDelegate.qml</file>
+    <file>TextFieldDialog.qml</file>
+    <file>TextFieldIcon.qml</file>
+    <file>TextFieldIconButton.qml</file>
+    <file>TextFieldPasswordButton.qml</file>
+    <file>TextFieldTimePicker.qml</file>
+    <file>TimePickerDialog.qml</file>
+    <file>ToggleButton.qml</file>
+    <file>ToggleSeparator.qml</file>
+    <file>ToolBar.qml</file>
+    <file>ToolButton.qml</file>
+    <file>ToolSeparator.qml</file>
+    <file>ToolTip.qml</file>
+    <file>TreeView.qml</file>
+    <file>TreeViewItem.qml</file>
+    <file>VerticalLineSeparator.qml</file>
+    <file>WindowLayoutSave.qml</file>
+    <file>ZoomableFlickable.qml</file>
+    <file>qmldir</file>
+  </qresource>
 </RCC>
