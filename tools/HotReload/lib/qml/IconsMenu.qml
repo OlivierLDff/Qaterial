@@ -41,10 +41,19 @@ Qaterial.Menu
       onTriggered: function()
       {
         const words = textField.text.split(' ')
-        let filter = '*'
-        words.forEach((word) => filter += `${word.toLowerCase()}*`)
-        console.log(`filter: ${filter}`)
-        folderModel.nameFilters = [`${filter}.svg`]
+        let filter1 = ''
+        let filter2 = '*'
+        let filter3 = ''
+        words.forEach(
+          function(word)
+          {
+            const lowerCaseWord = word.toLowerCase()
+            filter1 += `${lowerCaseWord}*`
+            filter2 += `${lowerCaseWord}*`
+            filter3 += `*${lowerCaseWord}`
+          })
+        //console.log(`filter: ${filter}`)
+        folderModel.nameFilters = [`${filter1}.svg`, `${filter2}.svg`, `${filter3}.svg`]
       }
     } // Timer
 
