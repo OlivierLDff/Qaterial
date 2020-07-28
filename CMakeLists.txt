@@ -117,12 +117,18 @@ qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
   PREFIX "Qaterial/Impl/Icons"
   GLOB_EXPRESSION "*.qml;qmldir")
 
-# Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES qml/Qaterial.qrc ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
+qt_generate_qmldir(QATERIAL_QMLDIR_FILE
+ SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml
+ MODULE "Qaterial")
 
-# Trick to rerun cmake each time Qaterial.qrc is updated
-configure_file(qml/Qaterial.qrc
-  ${CMAKE_CURRENT_BINARY_DIR}/Qaterial.qrc.junk)
+qt_generate_qrc(QATERIAL_QML_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml
+  NAME Qaterial.qrc
+  PREFIX "Qaterial"
+  GLOB_EXPRESSION "*")
+
+# Add qml to the qtquick compiler (should only be call once per target)
+qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
