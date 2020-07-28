@@ -7,7 +7,9 @@ Qaterial.ApplicationWindow
 {
   id: window
 
-  title: `Qaterial Hot Reload - ${hr.currentFilePath}`
+  title: `Qaterial Hot Reload - ${currentFilePath}`
+
+  property alias currentFilePath: hr.currentFilePath
 
   width: 1280
   height: 600
