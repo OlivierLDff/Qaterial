@@ -344,6 +344,8 @@ Qaterial.Page
             text: treeView.model.fileName
             textType: Qaterial.Style.TextType.Button
             padding: 8
+            elide: Text.ElideRight
+            width: treeView.width
           }
 
           ScrollIndicator.vertical: Qaterial.ScrollIndicator {}
@@ -352,7 +354,7 @@ Qaterial.Page
 
           model: Qaterial.FolderTreeModel
           {
-            nameFilters: [ "*.qml" ]
+            nameFilters: [ "*.qml", "*.hpp", "*.cpp", "*.qrc", "qmldir" ]
             path: `file:${root.currentFolderPath}`
             onPathChanged: () => fetch()
             Component.onCompleted: () => fetch()
@@ -370,7 +372,7 @@ Qaterial.Page
             readonly property bool selected: model && model.filePath === root.currentFilePath
 
             height: 24
-            leftPadding: depth*20 + 4
+            leftPadding: depth*Qaterial.Style.card.horizontalPadding + 4
 
             contentItem: RowLayout
             {
@@ -378,17 +380,21 @@ Qaterial.Page
               {
                 source:
                 {
-                  if(!model)
+                  if(!control.model)
                     return ""
 
-                  if(model.fileIsDir)
+                  if(control.model.isDir)
                     return control.model.expanded ? Qaterial.Icons.folderOutline : Qaterial.Icons.folder
                   return Qaterial.Icons.codeTags
                 }
                 color:
                 {
-                  if(control.selected|| control.hovered)
+                  if(control.selected || control.hovered)
                     return Qaterial.Style.accentColor
+
+                   if(control.model && control.model.isDir && control.model.expanded)
+                    return Qaterial.Style.accentColor
+
                   Qaterial.Style.hintTextColor()
                 }
                 Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
@@ -403,6 +409,9 @@ Qaterial.Page
 
                 color:
                 {
+                   if(control.model && control.model.isDir && control.model.expanded)
+                    return Qaterial.Style.accentColor
+
                   if(control.selected)
                       return Qaterial.Style.accentColor
                   if(control.hovered)
@@ -426,7 +435,7 @@ Qaterial.Page
             {
               if(!model)
                 return
-              if(model.fileIsDir)
+              if(model.isDir)
               {
                 // fetch content of folder if expand is about to happen
                 if(!model.expanded)
