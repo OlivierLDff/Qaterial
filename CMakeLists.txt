@@ -85,8 +85,7 @@ foreach(SOURCE IN ITEMS ${QATERIAL_QML_SRCS})
   source_group("Qml\\${GROUP_PATH}" FILES "${SOURCE}")
 endforeach()
 
-include(cmake/GenerateQrcAliasQtObject.cmake)
-include(cmake/GenerateQrc.cmake)
+include(cmake/FetchQtGeneratorCMake.cmake)
 include(cmake/FetchMaterialDesignIcons.cmake)
 
 qt_generate_qrc(QATERIAL_QML_ICONS_QRC
@@ -101,7 +100,7 @@ qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
   PREFIX "Qaterial/Fonts/Roboto"
   GLOB_EXPRESSION "*.ttf")
 
-generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
+qt_generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
   SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
   NAME "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/Icons.qml"
   PREFIX "Qaterial/Icons"
