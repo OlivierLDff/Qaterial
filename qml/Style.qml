@@ -24,6 +24,7 @@ QtObject
 
   property int theme: Style.Theme.Dark
   property bool dense: false
+  readonly property bool isDark: Style.theme === Style.Theme.Dark
 
   property bool foregroundReversedOnPrimaryLight: true
   property bool foregroundReversedOnPrimaryDark: false
