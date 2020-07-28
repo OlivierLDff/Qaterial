@@ -20,6 +20,8 @@ Qaterial.Page
   property string currentFileUrl
   property string currentFileName: currentFilePath.substring(currentFilePath.lastIndexOf('/')+1)
 
+  property bool showFolderExplorer: true
+
   property string errorString
 
   property int theme: Qaterial.Style.theme
@@ -56,9 +58,13 @@ Qaterial.Page
 
   QLab.Settings
   {
+    id: settings
     property alias currentFolderPath: root.currentFolderPath
     property alias currentFilePath: root.currentFilePath
     property alias currentFileUrl: root.currentFileUrl
+
+    property alias showFolderExplorer: root.showFolderExplorer
+    property var folderSplitView
 
     property alias formatHorizontalAlignCenter: formatHorizontalAlignCenter.checked
     property alias formatVerticalAlignCenter: formatVerticalAlignCenter.checked
@@ -105,6 +111,8 @@ Qaterial.Page
           path = path.replace(/^(file:\/{2})/,"");
       // unescape html codes like '%23' for '#'
       root.currentFolderPath = decodeURIComponent(path);
+
+      root.showFolderExplorer = true
     }
   }
 
@@ -136,6 +144,18 @@ Qaterial.Page
         useSecondaryColor: true
 
         onClicked: () => folderDialog.open()
+      }
+
+      Qaterial.SquareButton
+      {
+        ToolTip.visible: hovered
+        ToolTip.text: checked ? "Hide folder explorer" : "Show folder explorer"
+        icon.source: Qaterial.Icons.pageLayoutSidebarLeft
+        useSecondaryColor: true
+
+        checked: root.showFolderExplorer
+
+        onReleased: () => root.showFolderExplorer = checked
       }
 
       Qaterial.ToolSeparator {}
@@ -323,16 +343,17 @@ Qaterial.Page
 
     SplitView
     {
+      id: folderSplitView
       orientation: Qt.Horizontal
       SplitView.fillHeight: true
 
-
       Rectangle
       {
+        visible: root.showFolderExplorer
         color: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#2A2C30" : "white"
 
         SplitView.preferredWidth: 200
-        SplitView.minimumWidth: 50
+        SplitView.minimumWidth: 0
 
         Qaterial.TreeView
         {
@@ -378,6 +399,7 @@ Qaterial.Page
             {
               Qaterial.ColorIcon
               {
+                visible: parent.width > (width + control.leftPadding)
                 source:
                 {
                   if(!control.model)
@@ -615,6 +637,12 @@ Qaterial.Page
 
   Component.onCompleted: function()
   {
+    folderSplitView.restoreState(settings.folderSplitView)
     Qaterial.Style.theme = root.theme
+  }
+
+  Component.onDestruction: function()
+  {
+    settings.folderSplitView = folderSplitView.saveState()
   }
 } // ApplicationWindow
