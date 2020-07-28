@@ -32,6 +32,27 @@ A convenient example `IconsListView` is also available to filter and search in t
 
 [QaterialOnline](https://tinyurl.com/yb7tlx5n)
 
+## Icon Component
+
+A Simple `Icon` component display an icon with a color. 
+
+```js
+import Qaterial 1.0 as Qaterial
+
+Qaterial.Icon
+{
+	icon: Qaterial.Icons.rocketLaunchOutline
+    size: 32
+    color: "#FF9800"
+}
+```
+
+**Properties**
+
+* `icon`: Path to the icon.
+* `size`: Size of the icon, automatically set width & height. *Width & height can be set to different value is required.*
+* `color`: Color of the icon. Default to primary text color.
+
 ## How to filter icons
 
 By default all svg from MaterialDesignIcons are package in Qaterial (take 3-4Mb).

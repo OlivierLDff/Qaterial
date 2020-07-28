@@ -92,6 +92,7 @@ HslColorSaturationSlider 1.0 HslColorSaturationSlider.qml
 HsvColorHueSlider 1.0 HsvColorHueSlider.qml
 HsvColorSaturationSlider 1.0 HsvColorSaturationSlider.qml
 HsvColorValueSlider 1.0 HsvColorValueSlider.qml
+Icon 1.0 Icon.qml
 IconLabel 1.0 IconLabel.qml
 singleton Icons 1.0 Icons.qml
 ItemDelegate 1.0 ItemDelegate.qml

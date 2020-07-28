@@ -92,6 +92,7 @@
     <file>HsvColorHueSlider.qml</file>
     <file>HsvColorSaturationSlider.qml</file>
     <file>HsvColorValueSlider.qml</file>
+    <file>Icon.qml</file>
     <file>IconLabel.qml</file>
     <file>Icons.qml</file>
     <file>ItemDelegate.qml</file>
