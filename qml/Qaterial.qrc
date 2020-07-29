@@ -78,6 +78,8 @@
     <file>FixedTabBar.qml</file>
     <file>FlatButton.qml</file>
     <file>FlatFabButton.qml</file>
+    <file>FolderTreeView.qml</file>
+    <file>FolderTreeViewItem.qml</file>
     <file>Fonts</file>
     <file>Frame.qml</file>
     <file>GradientSlider.qml</file>
