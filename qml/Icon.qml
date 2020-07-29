@@ -17,8 +17,8 @@ Item
   property url icon
   property real size: 24
 
-  width: size
-  height: size
+  implicitWidth: size
+  implicitHeight: size
 
   Image
   {
