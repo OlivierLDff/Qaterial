@@ -355,7 +355,7 @@ Qaterial.Page
         SplitView.preferredWidth: 200
         SplitView.minimumWidth: 0
 
-        Qaterial.TreeView
+        Qaterial.FolderTreeView
         {
           id: treeView
           anchors.fill: parent
@@ -373,103 +373,16 @@ Qaterial.Page
 
           property QtObject selectedElement
 
-          model: Qaterial.FolderTreeModel
-          {
-            nameFilters: [ "*.qml", "*.hpp", "*.cpp", "*.qrc", "qmldir" ]
-            path: `file:${root.currentFolderPath}`
-            onPathChanged: () => fetch()
-            Component.onCompleted: () => fetch()
-          }
+          nameFilters: [ "*.qml" ]
+          path: `file:${root.currentFolderPath}`
 
-          itemDelegate: Qaterial.ItemDelegate
+          itemDelegate: Qaterial.FolderTreeViewItem
           {
             id: control
-
-            property QtObject model
-            property Qaterial.FolderTreeModel folderTreeModel: model ? model.qtObject : null
-            property int depth
-            property int index
-
-            readonly property bool selected: model && model.filePath === root.currentFilePath
-
-            height: 24
-            leftPadding: depth*Qaterial.Style.card.horizontalPadding + 4
-
-            contentItem: RowLayout
+            highlighted: model && model.filePath === window.currentFilePath
+            onAccepted: function(path)
             {
-              Qaterial.ColorIcon
-              {
-                visible: parent.width > (width + control.leftPadding)
-                source:
-                {
-                  if(!control.model)
-                    return ""
-
-                  if(control.model.isDir)
-                    return control.model.expanded ? Qaterial.Icons.folderOutline : Qaterial.Icons.folder
-                  return Qaterial.Icons.codeTags
-                }
-                color:
-                {
-                  if(control.selected || control.hovered)
-                    return Qaterial.Style.accentColor
-
-                   if(control.model && control.model.isDir && control.model.expanded)
-                    return Qaterial.Style.accentColor
-
-                  Qaterial.Style.hintTextColor()
-                }
-                Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
-              }
-              Qaterial.Label
-              {
-                Layout.fillWidth: true
-                text: (control.model ? control.model.fileName : "")
-                textType: Qaterial.Style.TextType.Caption
-                elide: Text.ElideRight
-                verticalAlignment: Text.AlignVCenter
-
-                color:
-                {
-                   if(control.model && control.model.isDir && control.model.expanded)
-                    return Qaterial.Style.accentColor
-
-                  if(control.selected)
-                      return Qaterial.Style.accentColor
-                  if(control.hovered)
-                      return Qaterial.Style.primaryTextColor()
-                  return Qaterial.Style.hintTextColor()
-                }
-              }
-            }
-
-            Rectangle
-            {
-              visible: control.selected
-              color: Qaterial.Style.accentColor
-              height: control.height - 4
-              width: 2
-              x: 2
-              y: 2
-            }
-
-            onClicked: function()
-            {
-              if(!model)
-                return
-              if(model.isDir)
-              {
-                // fetch content of folder if expand is about to happen
-                if(!model.expanded)
-                  folderTreeModel.fetch()
-
-                // Then expand or retract
-                model.expanded = !model.expanded
-              }
-              else
-              {
-                root.loadFile(`file:///${model.filePath}`)
-              }
+              root.loadFile(path)
             }
           }
         } // TreeView
