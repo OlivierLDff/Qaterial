@@ -11,7 +11,7 @@ A **splash screen** is a [graphical control element](https://en.wikipedia.org/wi
 
 ## SplashScreen
 
-The `SplashScreen` component contain an `image`, a `text` and a `version` string. Loading is shown with a `ProgressBar`, and can be controlled with `from`, `to`, `value`, `indeterminate`. 
+The `SplashScreen` component contain an `image`, a `text` and a `version` string. Loading is shown with a `ProgressBar`, and can be controlled with `from`, `to`, `value`, `indeterminate`.
 
 It is based on `Rectangle`.
 
@@ -37,43 +37,17 @@ The `SplashScreenWindow`  turn visible as soon as the window finished to load.
 
 ## How to show SplashScreen then ApplicationWindow
 
-The easiest way to show a SplashScreen then your main application is to use `Loader`.
+The easiest way to show a SplashScreen then your main application is to use `SplashScreenApplication`.
 
 ```js
 import QtQuick 2.0
 import Qaterial 1.0 as Qaterial
 
-Item
+Qaterial.SplashScreenApplication
 {
-  Loader
-  {
-    id: splashScreenLoader
-    active: false
-    sourceComponent: Qaterial.SplashScreenWindow { }
-     
-    // Start to load application as soon as splash screen is visible
-    Component.onCompleted: () => applicationLoader.active = true
-  } // Loader
-
-  Loader
-  {
-    id: applicationLoader
-    active: false
-    sourceComponent: Qaterial.ApplicationWindow
-    {
-      // Kill the splash screen when main window is visible
-      Component.onCompleted: () => splashScreenLoader.active = false
-    }
-  } // Loader
-
-  Component.onCompleted: (function())
-  {
-    // Setup the app ...
-                          
-    // Show splash screen
-    splashScreenLoader.active = true
-  }
+  splashScreen: Qaterial.SplashScreenWindow { }
+  window: Qaterial.ApplicationWindow { Component.onCompleted: () => visible = true }
 }
 ```
 
-A more advance example can be found in `Main.qml` of `QaterialHotReload`.
+A more advance example can be found in `Main.qml` of `tools/HotReload/app/qml/Main.qml`.
