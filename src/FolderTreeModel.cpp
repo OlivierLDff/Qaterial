@@ -136,14 +136,11 @@ void FolderTreeModel::initializeBindings()
 
 FolderTreeModel* FolderTreeModel::children() { return this; }
 
-QUrl FolderTreeModel::path() const
-{
-    return _path;
-}
+QUrl FolderTreeModel::path() const { return _path; }
 
 bool FolderTreeModel::setPath(const QUrl& value)
 {
-    if (value != _path)
+    if(value != _path)
     {
         _path = value;
         auto pathString = _path.path();
@@ -168,10 +165,7 @@ bool FolderTreeModel::setPath(const QUrl& value)
     return false;
 }
 
-void FolderTreeModel::resetPath()
-{
-    setPath({});
-}
+void FolderTreeModel::resetPath() { setPath({}); }
 
 void FolderTreeModel::fetch()
 {
@@ -219,19 +213,28 @@ void FolderTreeModel::fetch()
     default:;
     }
 
+    const auto appendFolder = [&](QFileInfoList& list)
+    { list += currentDirectory.entryInfoList(folderFilter, sortFlags); };
+    const auto secondFetchForFolderIsRequired = !nameFilters().empty() && showDirs();
+
     // Fetch all entries and append in one operation
-    auto fileInfoList = currentDirectory.entryInfoList(nameFilters(), filters, sortFlags);
-    if(!nameFilters().empty() && showDirs())
-        fileInfoList += currentDirectory.entryInfoList(folderFilter, sortFlags);
+    QFileInfoList fileInfoList;
+    if(secondFetchForFolderIsRequired && showDirsFirst())
+        appendFolder(fileInfoList);
+
+    fileInfoList += currentDirectory.entryInfoList(nameFilters(), filters, sortFlags);
+
+    if(secondFetchForFolderIsRequired && !showDirsFirst())
+        appendFolder(fileInfoList);
 
     QList<FolderTreeModel*> folders;
 
     for(const auto& fileInfo: fileInfoList)
     {
-        folders.append(
-            new FolderTreeModel(path().path() + '/' + fileInfo.fileName(), fileInfo.fileName(), fileInfo.absoluteFilePath(),
-                fileInfo.baseName(), fileInfo.completeBaseName(), fileInfo.suffix(), fileInfo.completeSuffix(),
-                fileInfo.size(), fileInfo.lastModified(), fileInfo.lastRead(), fileInfo.isDir(), this));
+        folders.append(new FolderTreeModel(path().path() + '/' + fileInfo.fileName(), fileInfo.fileName(),
+            fileInfo.absoluteFilePath(), fileInfo.baseName(), fileInfo.completeBaseName(), fileInfo.suffix(),
+            fileInfo.completeSuffix(), fileInfo.size(), fileInfo.lastModified(), fileInfo.lastRead(), fileInfo.isDir(),
+            this));
     }
 
     if(!folders.empty())
