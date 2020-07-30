@@ -2,10 +2,12 @@
 
 import QtQml 2.14
 import QtQuick 2.14
+import QtQuick.Templates 2.12 as T
+import QtQuick.Controls 2.12
 
 import Qaterial 1.0 as Qaterial
 
-Qaterial.ItemDelegate
+T.ItemDelegate
 {
   id: control
 
@@ -103,9 +105,14 @@ Qaterial.ItemDelegate
     return Qaterial.Icons.codeTags
   }
 
-  height: 24
+  implicitWidth: Math.max(background ? implicitBackgroundWidth : 0,
+                          implicitContentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(background ? implicitBackgroundHeight : 0,
+                           Math.max(implicitContentHeight,
+                                    indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
+
   spacing: 8
-  leftPadding: depth*Qaterial.Style.card.horizontalPadding + 4
+  leftPadding: depth*Qaterial.Style.card.horizontalPadding + 12
 
   text: model ? model.fileName : ""
   property color color:
@@ -203,4 +210,13 @@ Qaterial.ItemDelegate
     x: 2
     y: 2
   }
+
+  background: Qaterial.ListDelegateBackground
+  {
+    implicitHeight: 24
+    color: control.highlighted ? Qaterial.Style.backgroundColor : "transparent"
+    pressed: control.pressed
+    rippleActive: control.down || control.visualFocus || control.hovered
+    rippleAnchor: control
+  } // ListDelegateBackground
 }

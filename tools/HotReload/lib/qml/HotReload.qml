@@ -379,7 +379,7 @@ Qaterial.Page
           itemDelegate: Qaterial.FolderTreeViewItem
           {
             id: control
-            highlighted: model && model.filePath === window.currentFilePath
+            highlighted: model && model.filePath === root.currentFilePath
             onAccepted: function(path)
             {
               root.loadFile(path)
