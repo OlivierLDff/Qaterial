@@ -7,10 +7,33 @@ pragma Singleton
 
 // Qt
 import QtQuick 2.12
+import Qt.labs.platform 1.1 as QLab
 
 QtObject
 {
-  property var dialogLoader
+  property Item dialogLoader
+
+  // New API
+
+  function showDialog(dialogSettings)
+  {
+    if(dialogLoader)
+      dialogLoader.showDialog(dialogSettings)
+  }
+
+  function showFileDialog(dialogSettings)
+  {
+    if(dialogLoader)
+      dialogLoader.showFileDialog(dialogSettings)
+  }
+
+  function showFolderDialog(dialogSettings)
+  {
+    if(dialogLoader)
+      dialogLoader.showFolderDialog(dialogSettings)
+  }
+
+  // Deprecated API
 
   function closeIfAlreadyOpened()
   {
