@@ -106,9 +106,9 @@ Qaterial.Page
 
       // remove prefixed "file:///"
       if(Qt.platform.os === "windows")
-          path = path.replace(/^(file:\/{3})/,"");
+        path = path.replace(/^(file:\/{3})/,"");
       else
-          path = path.replace(/^(file:\/{2})/,"");
+        path = path.replace(/^(file:\/{2})/,"");
       // unescape html codes like '%23' for '#'
       root.currentFolderPath = decodeURIComponent(path);
 

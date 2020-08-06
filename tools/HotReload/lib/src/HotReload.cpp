@@ -50,4 +50,4 @@ void HotReload::registerSingleton()
 
 void HotReload::watchFile(const QString& path) { _watcher.addPath(path); }
 
-void HotReload::unWatchFile(const QString& path) { _watcher.removePath(path); }
+void HotReload::unWatchFile(const QString& path) { if(!path.isEmpty()) _watcher.removePath(path); }
