@@ -11,19 +11,19 @@ import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-  id: _cursor
+  id: root
 
   color: Qaterial.Style.accentColor
-  width: Qaterial.Style.textField._cursorWidth
+  width: Qaterial.Style.textField.cursorWidth
   visible: parent.activeFocus && !parent.readOnly && parent.selectionStart === parent.selectionEnd
 
   Connections
   {
-    target: _cursor.parent
+    target: root.parent
     function onCursorPositionChanged()
     {
       // keep a moving cursor visible
-      _cursor.opacity = 1
+      root.opacity = 1
       _timer.restart()
     }
   } // Connections
@@ -31,11 +31,11 @@ Rectangle
   Timer
   {
     id: _timer
-    running: _cursor.parent.activeFocus && !_cursor.parent.readOnly
+    running: root.parent.activeFocus && !root.parent.readOnly
     repeat: true
-    interval: Qt.styleHints._cursorFlashTime / 2
-    onTriggered: _cursor.opacity = !_cursor.opacity ? 1 : 0
+    interval: Qt.styleHints.cursorFlashTime / 2
+    onTriggered: root.opacity = !root.opacity ? 1 : 0
     // force the cursor visible when gaining focus
-    onRunningChanged: _cursor.opacity = 1
+    onRunningChanged: root.opacity = 1
   } // Timer
 } // Rectangle
