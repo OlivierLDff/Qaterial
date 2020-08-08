@@ -24,6 +24,20 @@ T.Popup
 
   property color backgroundColor: Qaterial.Style.dialogColor
 
+  enter: Transition
+  {
+    // grow_fade_in
+    NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 } // NumberAnimation
+    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 } // NumberAnimation
+  } // Transition
+
+  exit: Transition
+  {
+    // shrink_fade_out
+    NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 } // NumberAnimation
+    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 } // NumberAnimation
+  } // Transition
+
   background: Rectangle
   {
     implicitWidth: Qaterial.Style.menu.implicitWidth
