@@ -120,6 +120,7 @@
     <file>Page.qml</file>
     <file>Pane.qml</file>
     <file>PlaceholderText.qml</file>
+    <file>Popup.qml</file>
     <file>ProgressBar.qml</file>
     <file>ProgressBarDialog.qml</file>
     <file>RadioButton.qml</file>
