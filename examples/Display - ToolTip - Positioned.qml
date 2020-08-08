@@ -4,12 +4,20 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
+  id: root
+
+  function copy(textToCopy)
+  {
+    Qaterial.Clipboard.text = textToCopy
+    Qaterial.SnackbarManager.show(`ToolTip Position Copied! \n'${textToCopy}'`)
+  }
+
   width: 2*bottomLeft.width + rectangle.width  + 2*bottomRight.width
   height: 2*top.height + rectangle.height + 2*bottom.height + label.height + 20
 
   Qaterial.Label
   {
-  id: label
+    id: label
     x: (parent.width - width)/2
     y: 5
     width: parent.width
@@ -46,6 +54,8 @@ Item
         visible: topLeft.hovered || topLeft.pressed
         position: Qaterial.Style.Position.TopLeft
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.TopLeft")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -63,6 +73,8 @@ Item
         visible: topStart.hovered || topStart.pressed
         position: Qaterial.Style.Position.TopStart
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.TopStart")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -80,6 +92,8 @@ Item
         visible: top.hovered || top.pressed
         position: Qaterial.Style.Position.Top
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.Top")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -97,6 +111,8 @@ Item
         visible: topEnd.hovered || topEnd.pressed
         position: Qaterial.Style.Position.TopEnd
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.TopEnd")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -114,6 +130,8 @@ Item
         visible: topRight.hovered || topRight.pressed
         position: Qaterial.Style.Position.TopRight
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.TopRight")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -131,6 +149,8 @@ Item
         visible: rightStart.hovered || rightStart.pressed
         position: Qaterial.Style.Position.RightStart
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.RightStart")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -148,6 +168,8 @@ Item
         visible: right.hovered || right.pressed
         position: Qaterial.Style.Position.Right
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.Right")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -165,6 +187,8 @@ Item
         visible: rightEnd.hovered || rightEnd.pressed
         position: Qaterial.Style.Position.RightEnd
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.RightEnd")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -182,6 +206,8 @@ Item
         visible: bottomRight.hovered || bottomRight.pressed
         position: Qaterial.Style.Position.BottomRight
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.BottomRight")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -199,6 +225,8 @@ Item
         visible: bottomEnd.hovered || bottomEnd.pressed
         position: Qaterial.Style.Position.BottomEnd
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.BottomEnd")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -216,6 +244,8 @@ Item
         visible: bottom.hovered || bottom.pressed
         position: Qaterial.Style.Position.Bottom
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.Bottom")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -233,6 +263,8 @@ Item
         visible: bottomStart.hovered || bottomStart.pressed
         position: Qaterial.Style.Position.BottomStart
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.BottomStart")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -250,6 +282,8 @@ Item
         visible: bottomLeft.hovered || bottomLeft.pressed
         position: Qaterial.Style.Position.BottomLeft
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.BottomLeft")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -267,6 +301,8 @@ Item
         visible: leftEnd.hovered || leftEnd.pressed
         position: Qaterial.Style.Position.LeftEnd
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.LeftEnd")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -284,6 +320,8 @@ Item
         visible: left.hovered || left.pressed
         position: Qaterial.Style.Position.Left
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.Left")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -301,6 +339,8 @@ Item
         visible: leftStart.hovered || leftStart.pressed
         position: Qaterial.Style.Position.LeftStart
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.LeftStart")
     } // FlatButton
 
     Qaterial.FlatButton
@@ -318,6 +358,8 @@ Item
         visible: center.hovered || center.pressed
         position: Qaterial.Style.Position.Center
       } // ToolTip
+
+      onClicked: root.copy("Qaterial.Style.Position.Center")
     } // FlatButton
   } // Rectangle
 } // Item
