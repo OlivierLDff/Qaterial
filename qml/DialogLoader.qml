@@ -20,6 +20,14 @@ Item
 
   onContextChanged: function() { if(!context) close() }
 
+  function urlToLocalFile(url)
+  {
+    let path = url.toString()
+    const isWindows = Qt.platform.os === "windows"
+    path = isWindows ? path.replace(/^(file:\/{3})/, "") : path.replace(/^(file:\/{2})/, "")
+    return decodeURIComponent(path)
+  }
+
   Component
   {
     id: _dialogComp
@@ -119,39 +127,40 @@ Item
       errorText:                   (root.settings && root.settings.errorText) ? root.settings.errorText : false
       echoMode:                     (root.settings && root.settings.echoMode) ? root.settings.echoMode : TextInput.Normal
 
-      Component.onCompleted:
-      {
-        if(root.settings && root.settings.standardButtons)
-        standardButtons = root.settings.standardButtons
-
-        open()
-      }
-
-      onAccepted:
+      onAccepted: function()
       {
         if(root.settings && root.settings.acceptedCallback)
         root.settings.acceptedCallback(text, acceptableInput && !error)
       }
 
-      onApplied:
+      onApplied: function()
       {
         if(root.settings && root.settings.appliedCallback)
         root.settings.appliedCallback()
       }
 
-      onHelpRequested:
+      onHelpRequested: function()
       {
         if(root.settings && root.settings.helpRequestedCallback)
         root.settings.helpRequestedCallback()
       }
 
-      onRejected:
+      onRejected: function()
       {
         if(root.settings && root.settings.rejectedCallback)
         root.settings.rejectedCallback()
       }
 
       onClosed: () => root.close()
+
+      Component.onCompleted: function()
+      {
+        if(root.settings && root.settings.standardButtons)
+        standardButtons = root.settings.standardButtons
+
+        open()
+      }
+      Component.onDestruction: () => close()
     } // TextFieldDialog
   } // Component
 
@@ -163,6 +172,7 @@ Item
     {
       text: root.settings && root.settings.text ? root.settings.text : ""
       Component.onCompleted: open()
+      Component.onDestruction: () => close()
     } // BusyIndicatorDliaog
   } // Component
 
@@ -178,6 +188,32 @@ Item
       model: (root.settings && root.settings.model) ? root.settings.model : null
       delegate: (root.settings && root.settings.delegate) ? root.settings.delegate : defaultDelegate
 
+      onAccepted: function()
+      {
+        if(root.settings && root.settings.acceptedCallback)
+        root.settings.acceptedCallback(currentIndex)
+      }
+
+      onApplied: function()
+      {
+        if(root.settings && root.settings.appliedCallback)
+        root.settings.appliedCallback()
+      }
+
+      onHelpRequested: function()
+      {
+        if(root.settings && root.settings.helpRequestedCallback)
+        root.settings.helpRequestedCallback()
+      }
+
+      onRejected: function()
+      {
+        if(root.settings && root.settings.rejectedCallback)
+        root.settings.rejectedCallback()
+      }
+
+      onClosed: () => root.close()
+
       Component.onCompleted:
       {
         if(root.settings && root.settings.standardButtons)
@@ -188,32 +224,7 @@ Item
 
         open()
       }
-
-      onAccepted:
-      {
-        if(root.settings && root.settings.acceptedCallback)
-        root.settings.acceptedCallback(currentIndex)
-      }
-
-      onApplied:
-      {
-        if(root.settings && root.settings.appliedCallback)
-        root.settings.appliedCallback()
-      }
-
-      onHelpRequested:
-      {
-        if(root.settings && root.settings.helpRequestedCallback)
-        root.settings.helpRequestedCallback()
-      }
-
-      onRejected:
-      {
-        if(root.settings && root.settings.rejectedCallback)
-        root.settings.rejectedCallback()
-      }
-
-      onClosed: () => root.close()
+      Component.onDestruction: () => close()
     } // RadioDialog
   } // Component
 
@@ -233,26 +244,18 @@ Item
 
       onAccepted: function()
       {
-        function urlToLocalFile(url)
-        {
-          let path = url.toString()
-          const isWindows = Qt.platform.os === "windows"
-          path = isWindows ? path.replace(/^(file:\/{3})/, "") : path.replace(/^(file:\/{2})/, "")
-          return decodeURIComponent(path)
-        }
-
         if(fileDialog.fileMode === QLab.FileDialog.OpenFiles)
         {
           if(root.settings && root.settings.onAccepted)
           {
             let filePaths = []
-            fileDialog.files.forEach((element) => filePaths.push(urlToLocalFile(element)))
+            fileDialog.files.forEach((element) => filePaths.push(root.urlToLocalFile(element)))
             root.settings.onAccepted(filePaths)
           }
         }
         else if(root.settings && root.settings.onAccepted)
         {
-          root.settings.onAccepted(urlToLocalFile(fileDialog.file.toString()))
+          root.settings.onAccepted(root.urlToLocalFile(fileDialog.file.toString()))
         }
       }
 
@@ -263,6 +266,37 @@ Item
       }
 
       Component.onCompleted: () => open()
+      Component.onDestruction: () => close()
+    }
+  }
+
+  Component
+  {
+    id: _folderDialogComp
+    QLab.FolderDialog
+    {
+      id: folderDialog
+
+      title: (root.settings && root.settings.title) ? root.settings.title : ""
+      folder: (root.settings && root.settings.folder) ? root.settings.folder : ""
+      options: (root.settings && root.settings.options) ? root.settings.options : 0
+
+      onAccepted: function()
+      {
+        if(root.settings && root.settings.onAccepted)
+        {
+          root.settings.onAccepted(root.urlToLocalFile(folderDialog.folder.toString()))
+        }
+      }
+
+      onRejected: function()
+      {
+        if(root.settings && root.settings.onRejected)
+          root.settings.onRejected()
+      }
+
+      Component.onCompleted: () => open()
+      Component.onDestruction: () => close()
     }
   }
 
@@ -304,16 +338,40 @@ Item
     context = null
   }
 
-  function showDialog(dialogSettings)
+  function showDialog(settings)
   {
-    _init(dialogSettings)
+    _init(settings)
     _dialogLoader.sourceComponent = _dialogComp
   }
 
-  function showFileDialog(dialogSettings)
+  function showFileDialog(settings)
   {
-    _init(dialogSettings)
+    _init(settings)
     _dialogLoader.sourceComponent = _fileDialogComp
+  }
+
+  function showSaveFileDialog(settings)
+  {
+    settings.fileMode = QLab.FileDialog.SaveFile
+    showFileDialog(settings)
+  }
+
+  function showOpenFileDialog(settings)
+  {
+    settings.fileMode = QLab.FileDialog.OpenFile
+    showFileDialog(settings)
+  }
+
+  function showOpenFilesDialog(settings)
+  {
+    settings.fileMode = QLab.FileDialog.OpenFiles
+    showFileDialog(settings)
+  }
+
+  function showFolderDialog(settings)
+  {
+    _init(settings)
+    _dialogLoader.sourceComponent = _folderDialogComp
   }
 
   function openWithSettings(dialogManagerSettings)

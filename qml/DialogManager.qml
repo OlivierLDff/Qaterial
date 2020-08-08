@@ -7,7 +7,6 @@ pragma Singleton
 
 // Qt
 import QtQuick 2.12
-import Qt.labs.platform 1.1 as QLab
 
 QtObject
 {
@@ -15,22 +14,34 @@ QtObject
 
   // New API
 
-  function showDialog(dialogSettings)
+  function showDialog(settings)
   {
     if(dialogLoader)
-      dialogLoader.showDialog(dialogSettings)
+      dialogLoader.showDialog(settings)
   }
 
-  function showFileDialog(dialogSettings)
+  function showSaveFileDialog(settings)
   {
     if(dialogLoader)
-      dialogLoader.showFileDialog(dialogSettings)
+      dialogLoader.showSaveFileDialog(settings)
   }
 
-  function showFolderDialog(dialogSettings)
+  function showOpenFileDialog(settings)
   {
     if(dialogLoader)
-      dialogLoader.showFolderDialog(dialogSettings)
+      dialogLoader.showOpenFileDialog(settings)
+  }
+
+  function showOpenFilesDialog(settings)
+  {
+    if(dialogLoader)
+      dialogLoader.showOpenFileDialog(settings)
+  }
+
+  function showFolderDialog(settings)
+  {
+    if(dialogLoader)
+      dialogLoader.showFolderDialog(settings)
   }
 
   // Deprecated API
