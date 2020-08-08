@@ -22,6 +22,7 @@ Qaterial.Button
       errorText: "Text is too long",
       echoMode: TextInput.Normal,
       standardButtons: Dialog.Ok | Dialog.Cancel,
+      width: 400,
       onAccepted: function(text, acceptable)
       {
         if(acceptable)
