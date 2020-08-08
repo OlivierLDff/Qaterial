@@ -22,6 +22,8 @@ Qaterial.Page
 
   property bool showFolderExplorer: true
 
+  property var currentImportPath: []
+
   property string errorString
 
   property int theme: Qaterial.Style.theme
@@ -37,7 +39,7 @@ Qaterial.Page
 
   function reload()
   {
-    loadFileInLoader(currentFileUrl)
+    root.loadFileInLoader(currentFileUrl)
   }
 
   function loadFile(path)
@@ -62,6 +64,7 @@ Qaterial.Page
     property alias currentFolderPath: root.currentFolderPath
     property alias currentFilePath: root.currentFilePath
     property alias currentFileUrl: root.currentFileUrl
+    property alias currentImportPath: root.currentImportPath
 
     property alias showFolderExplorer: root.showFolderExplorer
     property var folderSplitView
@@ -128,7 +131,7 @@ Qaterial.Page
     {
       Qaterial.SquareButton
       {
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Open File to Hot Reload"
         icon.source: Qaterial.Icons.fileOutline
         useSecondaryColor: true
@@ -138,7 +141,7 @@ Qaterial.Page
 
       Qaterial.SquareButton
       {
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Open Folder to Hot Reload"
         icon.source: Qaterial.Icons.folderOutline
         useSecondaryColor: true
@@ -148,7 +151,7 @@ Qaterial.Page
 
       Qaterial.SquareButton
       {
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: checked ? "Hide folder explorer" : "Show folder explorer"
         icon.source: Qaterial.Icons.pageLayoutSidebarLeft
         useSecondaryColor: true
@@ -162,12 +165,96 @@ Qaterial.Page
 
       Qaterial.SquareButton
       {
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Reload (F5)"
         icon.source: Qaterial.Icons.sync
         useSecondaryColor: true
 
         onClicked: () => root.reload()
+      }
+
+      Qaterial.SquareButton
+      {
+        ToolTip.visible: hovered || pressed
+        ToolTip.text: "Qml Import Path"
+        icon.source: Qaterial.Icons.fileTree
+        useSecondaryColor: true
+
+        onClicked: () => _importPathMenu.open()
+
+        ImportPathMenu
+        {
+          id: _importPathMenu
+          y: parent.height
+
+          model: Qaterial.HotReload.importPaths
+
+          onResetPathEntries: function()
+          {
+            Qaterial.HotReload.importPaths = undefined
+            Qaterial.Logger.info(`Reset Path Entries to ${Qaterial.HotReload.importPaths}`)
+            currentImportPath = Qaterial.HotReload.importPaths.toString().split(',')
+            root.reload()
+          }
+
+          onAddPathEntry: function()
+          {
+            Qaterial.DialogManager.showTextFieldDialog({
+              context: root,
+              width: 800,
+              title: "Enter Qml import path",
+              textTitle: "Path",
+              validator: null,
+              inputMethodHints: Qt.ImhSensitiveData,
+              standardButtons: Dialog.Ok | Dialog.Cancel,
+              onAccepted: function(text, acceptable)
+              {
+                Qaterial.Logger.info(`Append Path ${text}`)
+                let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                tempPaths.unshift(text)
+                Qaterial.Logger.info(`tempPaths ${tempPaths}`)
+                Qaterial.HotReload.importPaths = tempPaths
+                currentImportPath = tempPaths
+                root.reload()
+              },
+            })
+          }
+
+          onEditPathEntry: function(index)
+          {
+            Qaterial.DialogManager.showTextFieldDialog({
+              context: root,
+              width: 800,
+              title: "Edit Qml import path",
+              textTitle: "Path",
+              text: Qaterial.HotReload.importPaths[index],
+              validator: null,
+              inputMethodHints: Qt.ImhSensitiveData,
+              standardButtons: Dialog.Ok | Dialog.Cancel,
+              onAccepted: function(text, acceptable)
+              {
+                let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                tempPaths.splice(index, 1, text)
+                Qaterial.HotReload.importPaths = tempPaths
+                currentImportPath = tempPaths
+                root.reload()
+              },
+            })
+          }
+
+          onDeletePathEntry: function(index)
+          {
+            if(index >= 0 && index < Qaterial.HotReload.importPaths.length)
+            {
+              Qaterial.Logger.info(`Remove Path ${Qaterial.HotReload.importPaths[index]}`)
+              let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+              tempPaths.splice(index, 1)
+              Qaterial.HotReload.importPaths = tempPaths
+              currentImportPath = tempPaths
+              root.reload()
+            }
+          }
+        }
       }
 
       Qaterial.ToolSeparator {}
@@ -179,7 +266,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatHorizontalAlignLeft.checked && !formatHorizontalAlignRight.checked
         icon.source: Qaterial.Icons.formatHorizontalAlignCenter
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Horizontal Center"
 
         onClicked: () => root.reload()
@@ -192,7 +279,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatVerticalAlignBottom.checked && !formatVerticalAlignTop.checked
         icon.source: Qaterial.Icons.formatVerticalAlignCenter
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Vertical Center"
 
         onClicked: () => root.reload()
@@ -207,7 +294,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatHorizontalAlignCenter.checked
         icon.source: Qaterial.Icons.formatHorizontalAlignLeft
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Left"
 
         onClicked: () => root.reload()
@@ -220,7 +307,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatHorizontalAlignCenter.checked
         icon.source: Qaterial.Icons.formatHorizontalAlignRight
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Right"
 
         onClicked: () => root.reload()
@@ -233,7 +320,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatVerticalAlignCenter.checked
         icon.source: Qaterial.Icons.formatVerticalAlignBottom
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Bottom"
 
         onClicked: () => root.reload()
@@ -246,7 +333,7 @@ Qaterial.Page
         enabled: !fullScreen.checked && !formatVerticalAlignCenter.checked
         icon.source: Qaterial.Icons.formatVerticalAlignTop
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Align Top"
 
         onClicked: () => root.reload()
@@ -266,7 +353,7 @@ Qaterial.Page
                  !formatVerticalAlignTop.checked
         icon.source: checked ? Qaterial.Icons.fullscreen : Qaterial.Icons.fullscreenExit
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: checked ? "Fullscreen" : "Fullscreen Exit"
 
         onClicked: () => root.reload()
@@ -279,7 +366,7 @@ Qaterial.Page
         readonly property bool lightTheme: root.theme === Qaterial.Style.Theme.Light
         icon.source: lightTheme ? Qaterial.Icons.weatherSunny : Qaterial.Icons.moonWaningCrescent
         useSecondaryColor: true
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: lightTheme ? "Theme Light" : "Theme Dark"
 
         onClicked: function()
@@ -303,7 +390,7 @@ Qaterial.Page
           y: parent.height
         }
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Typography"
       }
 
@@ -328,7 +415,7 @@ Qaterial.Page
           y: parent.height
         }
 
-        ToolTip.visible: hovered
+        ToolTip.visible: hovered || pressed
         ToolTip.text: "Icons Explorer"
       }
     } // RowLayout
@@ -405,8 +492,29 @@ Qaterial.Page
         Timer
         {
           id: createLaterTimer
-          interval: 200
+          interval: 230
           onTriggered: () => loader.createLater(loader.createUrl)
+        }
+
+        function assignAnchors()
+        {
+          if(loadedObject.anchors)
+          {
+            if(fullScreen.checked)
+              loadedObject.anchors.fill = loader
+            if(formatHorizontalAlignCenter.checked)
+              loadedObject.anchors.horizontalCenter = loader.horizontalCenter
+            if(formatVerticalAlignCenter.checked)
+              loadedObject.anchors.verticalCenter = loader.verticalCenter
+            if(formatHorizontalAlignLeft.checked)
+              loadedObject.anchors.left = loader.left
+            if(formatHorizontalAlignRight.checked)
+              loadedObject.anchors.right = loader.right
+            if(formatVerticalAlignBottom.checked)
+              loadedObject.anchors.bottom = loader.bottom
+            if(formatVerticalAlignTop.checked)
+              loadedObject.anchors.top = loader.top
+          }
         }
 
         function createLater(url)
@@ -423,26 +531,29 @@ Qaterial.Page
           Qaterial.HotReload.clearCache()
           let component = Qt.createComponent(url)
 
-          if (component.status === Component.Ready)
+          if(component.status === Component.Ready)
           {
-            loadedObject = component.createObject(loader)
+            //loadedObject = component.createObject(loader)
 
-            if(loadedObject.anchors)
+            var incubator = component.incubateObject(loader, { x: 10, y: 10 });
+            if (incubator.status != Component.Ready)
             {
-              if(fullScreen.checked)
-                loadedObject.anchors.fill = loader
-              if(formatHorizontalAlignCenter.checked)
-                loadedObject.anchors.horizontalCenter = loader.horizontalCenter
-              if(formatVerticalAlignCenter.checked)
-                loadedObject.anchors.verticalCenter = loader.verticalCenter
-              if(formatHorizontalAlignLeft.checked)
-                loadedObject.anchors.left = loader.left
-              if(formatHorizontalAlignRight.checked)
-                loadedObject.anchors.right = loader.right
-              if(formatVerticalAlignBottom.checked)
-                loadedObject.anchors.bottom = loader.bottom
-              if(formatVerticalAlignTop.checked)
-                loadedObject.anchors.top = loader.top
+              incubator.onStatusChanged = function(status) {
+                if(status == Component.Ready)
+                {
+                  console.log("Async load done")
+                  loadedObject = incubator.object
+                  assignAnchors()
+                  Qaterial.DialogManager.close()
+                }
+              }
+            }
+            else
+            {
+              console.log("Sync load done")
+              loadedObject = incubator.object
+              assignAnchors()
+              Qaterial.DialogManager.close()
             }
 
             root.errorString = ""
@@ -451,17 +562,7 @@ Qaterial.Page
           {
             root.errorString = component.errorString()
             Qaterial.Logger.error(`Fail to load with error ${root.errorString}`)
-          }
-
-          Qaterial.DialogManager.closeBusyIndicator()
-        }
-
-        Component.onCompleted: function()
-        {
-          if(root.currentFileUrl)
-          {
-            loader.create(root.currentFileUrl)
-            Qaterial.HotReload.watchFile(root.currentFilePath)
+            Qaterial.DialogManager.close()
           }
         }
 
@@ -552,6 +653,16 @@ Qaterial.Page
   {
     folderSplitView.restoreState(settings.folderSplitView)
     Qaterial.Style.theme = root.theme
+    if(root.currentImportPath.length)
+      Qaterial.HotReload.importPaths = root.currentImportPath
+    else
+      root.currentImportPath = Qaterial.HotReload.importPaths
+
+    if(root.currentFileUrl)
+    {
+      loader.create(root.currentFileUrl)
+      Qaterial.HotReload.watchFile(root.currentFilePath)
+    }
   }
 
   Component.onDestruction: function()

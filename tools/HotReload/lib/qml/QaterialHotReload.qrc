@@ -3,6 +3,7 @@
 
         <file>qmldir</file>
         <file>HotReload.qml</file>
+        <file>ImportPathMenu.qml</file>
         <file>StatusView.qml</file>
         <file>IconsMenu.qml</file>
         <file>TypoMenu.qml</file>

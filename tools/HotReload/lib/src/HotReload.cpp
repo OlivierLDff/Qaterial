@@ -44,10 +44,15 @@ void HotReload::registerSingleton()
             Q_UNUSED(scriptEngine);
             const auto hotReload = new qaterial::HotReload(engine, engine);
             _sink->_hotReload = hotReload;
+            hotReload->_defaultImportPaths = engine->importPathList();
             return hotReload;
         });
 }
 
 void HotReload::watchFile(const QString& path) { _watcher.addPath(path); }
 
-void HotReload::unWatchFile(const QString& path) { if(!path.isEmpty()) _watcher.removePath(path); }
+void HotReload::unWatchFile(const QString& path)
+{
+    if(!path.isEmpty())
+        _watcher.removePath(path);
+}

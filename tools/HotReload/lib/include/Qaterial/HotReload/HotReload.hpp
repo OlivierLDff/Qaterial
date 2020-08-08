@@ -34,6 +34,22 @@ private:
     QQmlEngine* _engine;
     QFileSystemWatcher _watcher;
     static const std::shared_ptr<HotReloadSink> _sink;
+    QStringList _defaultImportPaths;
+
+    Q_PROPERTY(
+        QStringList importPaths READ importPaths WRITE setImportPaths RESET resetImportPaths NOTIFY importPathsChanged)
+
+public:
+    QStringList importPaths() const { return _engine->importPathList(); }
+    void setImportPaths(const QStringList& paths)
+    {
+        _engine->setImportPathList(paths);
+        Q_EMIT importPathsChanged();
+    }
+    void resetImportPaths() { setImportPaths(_defaultImportPaths); }
+
+Q_SIGNALS:
+    void importPathsChanged();
 
 public Q_SLOTS:
     void clearCache() const;
