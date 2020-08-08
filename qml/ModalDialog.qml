@@ -20,5 +20,6 @@ Qaterial.Dialog
   y: Math.floor((parent.height-(Qt.inputMethod && Qt.inputMethod.visible ? (Qt.inputMethod.keyboardRectangle.height/Screen.devicePixelRatio ) : 0) - height) / 2)
 
   parent: Overlay.overlay
-  width: Math.floor(Math.min(parent.width - 2*Qaterial.Style.card.horizontalPadding, Qaterial.Style.dialog.implicitWidth))
+  property int dialogImplicitWidth: Qaterial.Style.dialog.implicitWidth
+  implicitWidth: Math.floor(Math.min(parent.width - 2*Qaterial.Style.card.horizontalPadding, dialogImplicitWidth))
 } // Dialog
