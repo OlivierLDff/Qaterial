@@ -172,7 +172,7 @@ Item
     {
       text: root.settings && root.settings.text ? root.settings.text : ""
       Component.onCompleted: open()
-      Component.onDestruction: () => close()
+      onClosed: () => root.close()
     } // BusyIndicatorDliaog
   } // Component
 
@@ -396,7 +396,16 @@ Item
   {
     // this is too yolo, showBusyIndicator should returned a pointer or a handle
     if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
-      _dialogLoader.sourceComponent = undefined
+    {
+      if(_dialogLoader.item)
+      {
+        _dialogLoader.item.close()
+      }
+      else
+      {
+        _dialogLoader.sourceComponent = undefined
+      }
+    }
   }
 
   function openRadioListView(radioListViewDialogSettings)
