@@ -123,11 +123,10 @@ T.ToolTip
   contentItem: Qaterial.Label
   {
     text: control.text
-    wrapMode: Text.Wrap
+    textType: control.textType
     color: Qaterial.Style.snackbarTextColor()
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
-    textType: control.textType
 
     // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "green" } // DebugRectangle
   } // Label
