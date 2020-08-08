@@ -34,27 +34,38 @@ Item
 
     Qaterial.AlertIconDialog
     {
-      text: (root.settings && root.settings.text) ? root.settings.text : ""
-      title: (root.settings && root.settings.title) ? root.settings.title : ""
-
-      Component.onCompleted:
+      Binding on text
       {
-        if(root.settings)
+        when: root.settings && root.settings.text
+        value: root.settings.text
+      }
+
+      Binding on title
+      {
+        when: root.settings && root.settings.title
+        value: root.settings.title
+      }
+
+      Binding on iconColor
+      {
+        when: root.settings && root.settings.icon
+        value: root.settings.icon
+      }
+
+      Binding on iconSource
+      {
+        when: root.settings && root.settings.iconSource
+        value:
         {
-          if(root.settings.iconSource)
-            iconSource = root.settings.iconSource
-
-          if(root.settings.icon)
-            iconSource = root.settings.icon
-
-          if(root.settings.iconColor)
-            iconColor = root.settings.iconColor
-
-          if(root.settings.standardButtons)
-            standardButtons = root.settings.standardButtons
+          Qaterial.Logger.warn('\'iconSource\' is deprecated, use \'icon\'')
+          return root.settings.iconSource
         }
+      }
 
-        open()
+      Binding on standardButtons
+      {
+        when: root.settings && (root.settings.standardButtons !== undefined)
+        value: root.settings.standardButtons
       }
 
       onAccepted: function()
@@ -104,8 +115,6 @@ Item
           root.settings.rejectedCallback()
         }
       }
-
-      onClosed: () => root.close()
     } // AlertIconDialog
   } // Component
 
@@ -115,52 +124,125 @@ Item
 
     Qaterial.TextFieldDialog
     {
-      text:                             (root.settings && root.settings.text) ? root.settings.text : ""
-      title:                           (root.settings && root.settings.title) ? root.settings.title : ""
-      textTitle:                   (root.settings && root.settings.textTitle) ? root.settings.textTitle : ""
-      placeholderText:       (root.settings && root.settings.placeholderText) ? root.settings.placeholderText : ""
-      helperText:                 (root.settings && root.settings.helperText) ? root.settings.helperText : ""
-      validator:                   (root.settings && root.settings.validator) ? root.settings.validator : null
-      inputMethodHints:     (root.settings && root.settings.inputMethodHints) ? root.settings.inputMethodHints : Qt.ImhSensitiveData
-      maximumLengthCount: (root.settings && root.settings.maximumLengthCount) ? root.settings.maximumLengthCount : 32767
-      selectAllText:           (root.settings && root.settings.selectAllText) ? root.settings.selectAllText : false
-      errorText:                   (root.settings && root.settings.errorText) ? root.settings.errorText : false
-      echoMode:                     (root.settings && root.settings.echoMode) ? root.settings.echoMode : TextInput.Normal
+      Binding on text
+      {
+        when: root.settings && root.settings.text
+        value: root.settings.text
+      }
+
+      Binding on title
+      {
+        when: root.settings && root.settings.title
+        value: root.settings.title
+      }
+
+      Binding on textTitle
+      {
+        when: root.settings && root.settings.textTitle
+        value: root.settings.textTitle
+      }
+
+      Binding on placeholderText
+      {
+        when: root.settings && root.settings.placeholderText
+        value: root.settings.placeholderText
+      }
+
+      Binding on helperText
+      {
+        when: root.settings && root.settings.helperText
+        value: root.settings.helperText
+      }
+
+      Binding on validator
+      {
+        when: root.settings && root.settings.validator
+        value: root.settings.validator
+      }
+
+      Binding on inputMethodHints
+      {
+        when: root.settings && root.settings.inputMethodHints
+        value: root.settings.inputMethodHints
+      }
+
+      Binding on maximumLengthCount
+      {
+        when: root.settings && root.settings.maximumLengthCount
+        value: root.settings.maximumLengthCount
+      }
+
+      Binding on selectAllText
+      {
+        when: root.settings && root.settings.selectAllText
+        value: root.settings.selectAllText
+      }
+
+      Binding on errorText
+      {
+        when: root.settings && root.settings.errorText
+        value: root.settings.errorText
+      }
+
+      Binding on echoMode
+      {
+        when: root.settings && root.settings.echoMode
+        value: root.settings.echoMode
+      }
+
+      Binding on standardButtons
+      {
+        when: root.settings && (root.settings.standardButtons !== undefined)
+        value: root.settings.standardButtons
+      }
 
       onAccepted: function()
       {
+        if(root.settings && root.settings.onAccepted)
+          root.settings.onAccepted(text, acceptableInput && !error)
+
         if(root.settings && root.settings.acceptedCallback)
-        root.settings.acceptedCallback(text, acceptableInput && !error)
+        {
+          Qaterial.Logger.warn("You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
+          root.settings.acceptedCallback(text, acceptableInput && !error)
+        }
       }
 
       onApplied: function()
       {
+        if(root.settings && root.settings.onApplied)
+          root.settings.onApplied()
+
         if(root.settings && root.settings.appliedCallback)
-        root.settings.appliedCallback()
+        {
+          Qaterial.Logger.warn("You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
+          root.settings.appliedCallback()
+        }
       }
 
       onHelpRequested: function()
       {
+        if(root.settings && root.settings.onHelpRequested)
+          root.settings.onHelpRequested()
+
         if(root.settings && root.settings.helpRequestedCallback)
-        root.settings.helpRequestedCallback()
+        {
+          Qaterial.Logger.warn("You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
+          root.settings.helpRequestedCallback()
+        }
       }
 
       onRejected: function()
       {
+        if(root.settings && root.settings.onRejected)
+          root.settings.onRejected()
+
         if(root.settings && root.settings.rejectedCallback)
-        root.settings.rejectedCallback()
+        {
+          Qaterial.Logger.warn("You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
+          root.settings.rejectedCallback()
+        }
       }
-
-      onClosed: () => root.close()
-
-      Component.onCompleted: function()
-      {
-        if(root.settings && root.settings.standardButtons)
-        standardButtons = root.settings.standardButtons
-
-        open()
-      }
-      Component.onDestruction: () => close()
     } // TextFieldDialog
   } // Component
 
@@ -170,9 +252,65 @@ Item
 
     Qaterial.BusyIndicatorDialog
     {
-      text: root.settings && root.settings.text ? root.settings.text : ""
-      Component.onCompleted: open()
-      onClosed: () => root.close()
+      Binding on text
+      {
+        when: root.settings && root.settings.text
+        value: root.settings.text
+      }
+
+      Binding on standardButtons
+      {
+        when: root.settings && (root.settings.standardButtons !== undefined)
+        value: root.settings.standardButtons
+      }
+
+      onAccepted: function()
+      {
+        if(root.settings && root.settings.onAccepted)
+          root.settings.onAccepted()
+
+        if(root.settings && root.settings.acceptedCallback)
+        {
+          Qaterial.Logger.warn("You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
+          root.settings.acceptedCallback()
+        }
+      }
+
+      onApplied: function()
+      {
+        if(root.settings && root.settings.onApplied)
+          root.settings.onApplied()
+
+        if(root.settings && root.settings.appliedCallback)
+        {
+          Qaterial.Logger.warn("You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
+          root.settings.appliedCallback()
+        }
+      }
+
+      onHelpRequested: function()
+      {
+        if(root.settings && root.settings.onHelpRequested)
+          root.settings.onHelpRequested()
+
+        if(root.settings && root.settings.helpRequestedCallback)
+        {
+          Qaterial.Logger.warn("You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
+          root.settings.helpRequestedCallback()
+        }
+      }
+
+      onRejected: function()
+      {
+        if(root.settings && root.settings.onRejected)
+          root.settings.onRejected()
+
+        if(root.settings && root.settings.rejectedCallback)
+        {
+          Qaterial.Logger.warn("You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
+          root.settings.rejectedCallback()
+        }
+      }
     } // BusyIndicatorDliaog
   } // Component
 
@@ -216,13 +354,11 @@ Item
 
       Component.onCompleted:
       {
-        if(root.settings && root.settings.standardButtons)
-        standardButtons = root.settings.standardButtons
+        if(root.settings && (root.settings.standardButtons !== undefined))
+          standardButtons = root.settings.standardButtons
 
         if(!model)
-        console.log("Error : RadioListViewDialog : model is null on open")
-
-        open()
+          console.log("Error : RadioListViewDialog : model is null on open")
       }
       Component.onDestruction: () => close()
     } // RadioDialog
@@ -265,7 +401,6 @@ Item
           root.settings.onRejected()
       }
 
-      Component.onCompleted: () => open()
       Component.onDestruction: () => close()
     }
   }
@@ -295,7 +430,6 @@ Item
           root.settings.onRejected()
       }
 
-      Component.onCompleted: () => open()
       Component.onDestruction: () => close()
     }
   }
@@ -303,7 +437,25 @@ Item
   Loader
   {
     id: _dialogLoader
+    asynchronous: true
+    visible: status == Loader.Ready
+
+    onStatusChanged: function()
+    {
+      if (_dialogLoader.status == Loader.Ready)
+      {
+        if(item && item.open)
+          item.open()
+      }
+    }
   } // Loader
+
+  Connections
+  {
+    ignoreUnknownSignals: true
+    target: _dialogLoader.item
+    function onClosed() { Qt.callLater(root.close) }
+  }
 
   function _init(dialogSettings = null)
   {
@@ -329,6 +481,7 @@ Item
 
   function close()
   {
+    console.log("tolo")
     // 1) Close if already open
     if(_dialogLoader.sourceComponent)
       _dialogLoader.sourceComponent = undefined
@@ -372,6 +525,12 @@ Item
   {
     _init(settings)
     _dialogLoader.sourceComponent = _folderDialogComp
+  }
+
+  function showTextFieldDialog(settings)
+  {
+    _init(settings)
+    _dialogLoader.sourceComponent = _textFieldDialogComp
   }
 
   function openWithSettings(dialogManagerSettings)

@@ -44,6 +44,12 @@ QtObject
       dialogLoader.showFolderDialog(settings)
   }
 
+  function showTextFieldDialog(settings)
+  {
+    if(dialogLoader)
+      dialogLoader.showTextFieldDialog(settings)
+  }
+
   // Deprecated API
 
   function closeIfAlreadyOpened()
