@@ -95,7 +95,7 @@ qt_generate_qrc(QATERIAL_QML_ICONS_QRC
   GLOB_EXPRESSION ${QATERIAL_ICONS})
 
 qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
-  SOURCE_DIR qml/Fonts/Roboto
+  SOURCE_DIR qml/Qaterial/Fonts/Roboto
   NAME QaterialFontsRoboto.qrc
   PREFIX "Qaterial/Fonts/Roboto"
   GLOB_EXPRESSION "*.ttf")
@@ -118,11 +118,11 @@ qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
   GLOB_EXPRESSION "*.qml;qmldir")
 
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
- SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml
+ SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
  MODULE "Qaterial")
 
 qt_generate_qrc(QATERIAL_QML_QRC
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
   NAME Qaterial.qrc
   PREFIX "Qaterial"
   GLOB_EXPRESSION "*")

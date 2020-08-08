@@ -535,7 +535,7 @@ Qaterial.Page
           {
             //loadedObject = component.createObject(loader)
 
-            var incubator = component.incubateObject(loader, { x: 10, y: 10 });
+            var incubator = component.incubateObject(loader, { visible: false });
             if (incubator.status != Component.Ready)
             {
               incubator.onStatusChanged = function(status) {
@@ -544,6 +544,7 @@ Qaterial.Page
                   console.log("Async load done")
                   loadedObject = incubator.object
                   assignAnchors()
+                  loadedObject.visible = true
                   Qaterial.DialogManager.close()
                 }
               }
@@ -553,6 +554,7 @@ Qaterial.Page
               console.log("Sync load done")
               loadedObject = incubator.object
               assignAnchors()
+              loadedObject.visible = true
               Qaterial.DialogManager.close()
             }
 
