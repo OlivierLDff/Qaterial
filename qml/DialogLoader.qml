@@ -5,7 +5,7 @@
 
 // Qt
 import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls 2.14
 import QtQml 2.12
 import Qt.labs.platform 1.1 as QLab
 // Qaterial
@@ -17,8 +17,17 @@ Item
 
   property var settings: null
   property QtObject context
+  onContextChanged: function()
+  {
+    if(_protectPopStack)
+      return
 
-  onContextChanged: function() { if(!context) close() }
+    if(!context)
+      _popStack()
+  }
+  property bool _protectPopStack
+  property var stackSettings: null
+  property Component stackComponent
 
   function urlToLocalFile(url)
   {
@@ -34,39 +43,11 @@ Item
 
     Qaterial.AlertIconDialog
     {
-      Binding on text
-      {
-        when: root.settings && root.settings.text
-        value: root.settings.text
-      }
-
-      Binding on title
-      {
-        when: root.settings && root.settings.title
-        value: root.settings.title
-      }
-
-      Binding on iconColor
-      {
-        when: root.settings && root.settings.icon
-        value: root.settings.icon
-      }
-
-      Binding on iconSource
-      {
-        when: root.settings && root.settings.iconSource
-        value:
-        {
-          Qaterial.Logger.warn('\'iconSource\' is deprecated, use \'icon\'')
-          return root.settings.iconSource
-        }
-      }
-
-      Binding on standardButtons
-      {
-        when: root.settings && (root.settings.standardButtons !== undefined)
-        value: root.settings.standardButtons
-      }
+      text: root.settings && root.settings.text ? root.settings.text : ""
+      title: root.settings && root.settings.title ? root.settings.title : ""
+      iconSource: root.settings && root.settings.iconSource ? root.settings.iconSource : ""
+      iconColor: root.settings && root.settings.iconColor ? root.settings.iconColor : Qaterial.Style.accentColor
+      standardButtons: root.settings && root.settings.standardButtons ? root.settings.standardButtons : Dialog.NoButton
 
       onAccepted: function()
       {
@@ -124,77 +105,20 @@ Item
 
     Qaterial.TextFieldDialog
     {
-      Binding on text
-      {
-        when: root.settings && root.settings.text
-        value: root.settings.text
-      }
-
-      Binding on title
-      {
-        when: root.settings && root.settings.title
-        value: root.settings.title
-      }
-
-      Binding on textTitle
-      {
-        when: root.settings && root.settings.textTitle
-        value: root.settings.textTitle
-      }
-
-      Binding on placeholderText
-      {
-        when: root.settings && root.settings.placeholderText
-        value: root.settings.placeholderText
-      }
-
-      Binding on helperText
-      {
-        when: root.settings && root.settings.helperText
-        value: root.settings.helperText
-      }
-
-      Binding on validator
-      {
-        when: root.settings && root.settings.validator
-        value: root.settings.validator
-      }
-
-      Binding on inputMethodHints
-      {
-        when: root.settings && root.settings.inputMethodHints
-        value: root.settings.inputMethodHints
-      }
-
-      Binding on maximumLengthCount
-      {
-        when: root.settings && root.settings.maximumLengthCount
-        value: root.settings.maximumLengthCount
-      }
-
-      Binding on selectAllText
-      {
-        when: root.settings && root.settings.selectAllText
-        value: root.settings.selectAllText
-      }
-
-      Binding on errorText
-      {
-        when: root.settings && root.settings.errorText
-        value: root.settings.errorText
-      }
-
-      Binding on echoMode
-      {
-        when: root.settings && root.settings.echoMode
-        value: root.settings.echoMode
-      }
-
-      Binding on standardButtons
-      {
-        when: root.settings && (root.settings.standardButtons !== undefined)
-        value: root.settings.standardButtons
-      }
+      id: textFieldDialog
+      text: root.settings && root.settings.text ? root.settings.text : ""
+      title: root.settings && root.settings.title ? root.settings.title : ""
+      textTitle: root.settings && root.settings.textTitle ? root.settings.textTitle : ""
+      placeholderText: root.settings && root.settings.placeholderText ? root.settings.placeholderText : ""
+      helperText: root.settings && root.settings.helperText ? root.settings.helperText : ""
+      validator: root.settings && root.settings.validator ? root.settings.validator : null
+      inputMethodHints: root.settings && root.settings.inputMethodHints ? root.settings.inputMethodHints : 0
+      maximumLengthCount: root.settings && root.settings.maximumLengthCount ? root.settings.maximumLengthCount : 32767
+      selectAllText: root.settings && root.settings.selectAllText ? root.settings.selectAllText : false
+      errorText: root.settings && root.settings.errorText ? root.settings.errorText : ""
+      echoMode: root.settings && root.settings.echoMode ? root.settings.echoMode : TextInput.Normal
+      standardButtons: root.settings && root.settings.standardButtons ? root.settings.standardButtons : Dialog.NoButton
+      dialogImplicitWidth: root.settings && root.settings.width ? root.settings.width : Qaterial.Style.dialog.implicitWidth
 
       onAccepted: function()
       {
@@ -252,17 +176,8 @@ Item
 
     Qaterial.BusyIndicatorDialog
     {
-      Binding on text
-      {
-        when: root.settings && root.settings.text
-        value: root.settings.text
-      }
-
-      Binding on standardButtons
-      {
-        when: root.settings && (root.settings.standardButtons !== undefined)
-        value: root.settings.standardButtons
-      }
+      text: root.settings && root.settings.text ? root.settings.text : ""
+      standardButtons: root.settings && root.settings.standardButtons ? root.settings.standardButtons : Dialog.NoButton
 
       onAccepted: function()
       {
@@ -350,8 +265,6 @@ Item
         root.settings.rejectedCallback()
       }
 
-      onClosed: () => root.close()
-
       Component.onCompleted:
       {
         if(root.settings && (root.settings.standardButtons !== undefined))
@@ -360,7 +273,6 @@ Item
         if(!model)
           console.log("Error : RadioListViewDialog : model is null on open")
       }
-      Component.onDestruction: () => close()
     } // RadioDialog
   } // Component
 
@@ -454,53 +366,97 @@ Item
   {
     ignoreUnknownSignals: true
     target: _dialogLoader.item
-    function onClosed() { Qt.callLater(root.close) }
+    function onClosed()
+    {
+      Qt.callLater(root._popStack)
+    }
   }
 
-  function _init(dialogSettings = null)
+  function show(settings, comp)
   {
     close()
 
-    // Assign settings
-    if(dialogSettings)
-      settings = dialogSettings
-
-    // Assign context
-    if(dialogSettings && dialogSettings.context)
+    if(_dialogLoader.sourceComponent)
     {
-      if(dialogSettings.context instanceof QtObject)
-      {
-        root.context = dialogSettings.context
-      }
-      else
-      {
-        Qaterial.Logger.warn(`${dialogSettings.context} isn't an instance of QtObject. It can't be used as a dialog context.`)
-      }
+      root.stackComponent = comp
+      root.stackSettings = settings
+    }
+    else
+    {
+      root._show(settings, comp)
     }
   }
 
   function close()
   {
-    console.log("tolo")
-    // 1) Close if already open
-    if(_dialogLoader.sourceComponent)
-      _dialogLoader.sourceComponent = undefined
+    root.stackComponent = null
+    root.stackSettings = null
 
-    // 2) Keep settings in memory
-    settings = null
-    context = null
+    if(_dialogLoader.item)
+    {
+      // Try to properly close the item if a 'close' function is available (and a closed signal)
+      // Otherwise destroy the component
+      if(_dialogLoader.item.close && _dialogLoader.item.closed)
+        _dialogLoader.item.close()
+      else
+        forceClose()
+    }
+    else if(_dialogLoader.sourceComponent)
+    {
+      forceClose()
+    }
+  }
+
+  function forceClose()
+  {
+    // SourceComponent is still in incubation, delete it now
+    _dialogLoader.sourceComponent = undefined
+  }
+
+  function _show(settings, comp)
+  {
+    // Assign setttings
+    root.settings = settings
+
+    _protectPopStack = true
+    // Assign context
+    if(settings && settings.context)
+    {
+      if(settings.context instanceof QtObject)
+      {
+        root.context = settings.context
+      }
+      else
+      {
+        Qaterial.Logger.warn(`${settings.context} isn't an instance of QtObject. It can't be used as a dialog context.`)
+        root.context = null
+      }
+    }
+    else
+    {
+      root.context = null
+    }
+    _protectPopStack = false
+
+    _dialogLoader.sourceComponent = comp
+  }
+
+  function _popStack()
+  {
+    console.log("Pop Stack")
+    root._show(root.stackSettings, root.stackComponent)
+    root.stackComponent = null
+    root.stackSettings = null
   }
 
   function showDialog(settings)
   {
-    _init(settings)
-    _dialogLoader.sourceComponent = _dialogComp
+    show(settings, _dialogComp)
   }
 
   function showFileDialog(settings)
   {
-    _init(settings)
-    _dialogLoader.sourceComponent = _fileDialogComp
+    show(settings, _fileDialogComp)
   }
 
   function showSaveFileDialog(settings)
@@ -523,32 +479,29 @@ Item
 
   function showFolderDialog(settings)
   {
-    _init(settings)
-    _dialogLoader.sourceComponent = _folderDialogComp
+    show(settings, _folderDialogComp)
   }
 
   function showTextFieldDialog(settings)
   {
-    _init(settings)
-    _dialogLoader.sourceComponent = _textFieldDialogComp
+    show(settings, _textFieldDialogComp)
   }
 
-  function openWithSettings(dialogManagerSettings)
+  function openWithSettings(settings)
   {
     Qaterial.Logger.warn("'DialogLoader.openWithSettings' is deprecated, consider moving to 'showDialog'")
-    showDialog(dialogManagerSettings)
+    showDialog(settings)
   }
 
-  function openTextField(textFieldDialogSettings)
+  function openTextField(settings)
   {
-    _init(textFieldDialogSettings)
-    _dialogLoader.sourceComponent = _textFieldDialogComp
+    showTextFieldDialog(settings)
   }
 
-  function openBusyIndicator(busyIndicatorDialogSettings)
+  function openBusyIndicator(settings)
   {
-    _init(busyIndicatorDialogSettings)
-    _dialogLoader.sourceComponent = _busyIndicatorDialogComp
+    console.log("Show Busy indicator")
+    show(settings, _busyIndicatorDialogComp)
   }
 
   function closeBusyIndicator()
@@ -556,26 +509,24 @@ Item
     // this is too yolo, showBusyIndicator should returned a pointer or a handle
     if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
     {
-      if(_dialogLoader.item)
-      {
-        _dialogLoader.item.close()
-      }
-      else
-      {
-        _dialogLoader.sourceComponent = undefined
-      }
+      console.log("close busy indicator")
+      root.close()
+    }
+    else
+    {
+      console.log("Fail to close busy indicator")
+      console.log(`Fail to close busy indicator ${_dialogLoader.sourceComponent}`)
+      console.log(`Fail to close busy indicator ${_busyIndicatorDialogComp}`)
     }
   }
 
-  function openRadioListView(radioListViewDialogSettings)
+  function openRadioListView(settings)
   {
-    _init(radioListViewDialogSettings)
-    _dialogLoader.sourceComponent = _radioListViewComp
+    show(settings, _radioListViewComp)
   }
 
-  function openFromComponent(component)
+  function openFromComponent(comp)
   {
-    _init()
-    _dialogLoader.sourceComponent = component
+    show(null, comp)
   }
 } // Item
