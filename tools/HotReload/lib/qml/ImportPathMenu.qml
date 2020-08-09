@@ -4,19 +4,20 @@ import QtQuick.Controls 2.12
 
 import Qaterial 1.0 as Qaterial
 
-Qaterial.Popup
+Qaterial.Menu
 {
   id: control
 
   signal resetPathEntries()
-  signal addPathEntry()
+  signal addPathEntry(int index)
   signal editPathEntry(int index)
   signal deletePathEntry(int index)
+  signal movePathUp(int index)
+  signal movePathDown(int index)
 
   property var model: []
 
-  implicitWidth: 500
-  padding: 0
+  implicitWidth: 600
 
   contentItem: Column
   {
@@ -25,7 +26,7 @@ Qaterial.Popup
     Rectangle
     {
       color: Qaterial.Style.dialogColor
-      width: parent.width
+      width: control.width
       implicitHeight: title.implicitHeight
       z: 1
 
@@ -37,7 +38,6 @@ Qaterial.Popup
         textType: Qaterial.Style.TextType.Title
         elide: Text.ElideRight
         leftPadding: 16
-        topPadding: 8
         bottomPadding: 8
       }
 
@@ -79,7 +79,10 @@ Qaterial.Popup
 
           onDoubleClicked: () => control.editPathEntry(index)
 
-          onClicked: listView.currentIndex = index
+          onClicked: function()
+          {
+            listView.currentIndex = listView.currentIndex === index ? -1 : index
+          }
 
           contentItem: Qaterial.Label
           {
@@ -138,7 +141,12 @@ Qaterial.Popup
           topInset: 1
           bottomInset: 1
 
-          onClicked: () => control.addPathEntry()
+          onClicked: function()
+          {
+            const index = listView.currentIndex
+            control.addPathEntry(index)
+            listView.currentIndex = -1
+          }
 
           Qaterial.ToolTip
           {
@@ -186,34 +194,67 @@ Qaterial.Popup
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton
-      } // ButtonColumn
-    } // Content
 
-    Rectangle
-    {
-      color: Qaterial.Style.dialogColor
-      width: parent.width
-      implicitHeight: buttonRow.implicitHeight
-
-      Row
-      {
-        id: buttonRow
-        anchors.right: parent.right
-
-        Qaterial.FlatButton
+        Qaterial.SquareButton
         {
-          text: "Reset"
+          icon.source: Qaterial.Icons.chevronUp
+          topInset: 1
+          bottomInset: 1
+          enabled: (listView.currentIndex !== -1) && (listView.currentIndex > 0)
+
+          onClicked: function()
+          {
+            const tempCurrentIndex = listView.currentIndex
+            control.movePathUp(listView.currentIndex)
+            listView.currentIndex = tempCurrentIndex - 1
+          }
+
+          Qaterial.ToolTip
+          {
+            text: `Move ${listView.model[listView.currentIndex]} Up`
+            visible:  parent.hovered || parent.pressed
+            position: Qaterial.Style.Position.BottomStart
+          }
+        } // SquareButton
+
+        Qaterial.SquareButton
+        {
+          icon.source: Qaterial.Icons.chevronDown
+          topInset: 1
+          bottomInset: 1
+          enabled: (listView.currentIndex !== -1) && ((listView.model.length-1) > listView.currentIndex)
+
+          onClicked: function()
+          {
+            const tempCurrentIndex = listView.currentIndex
+            control.movePathDown(listView.currentIndex)
+            listView.currentIndex = tempCurrentIndex + 1
+          }
+
+          Qaterial.ToolTip
+          {
+            text: `Move ${listView.model[listView.currentIndex]} Down`
+            visible:  parent.hovered || parent.pressed
+            position: Qaterial.Style.Position.BottomStart
+          }
+        } // SquareButton
+
+        Qaterial.SquareButton
+        {
           icon.source: Qaterial.Icons.restore
+          topInset: 1
+          bottomInset: 1
 
           onClicked: () => control.resetPathEntries()
-        }
-      } // Row
 
-      Qaterial.HorizontalLineSeparator
-      {
-        anchors.horizontalCenter: parent.horizontalCenter
-        implicitWidth: control.width
-      } // HorizontalLineSeparator
-    } // Footer
+          Qaterial.ToolTip
+          {
+            text: `Reset import path`
+            visible:  parent.hovered || parent.pressed
+            position: Qaterial.Style.Position.BottomStart
+          }
+        } // SquareButton
+      } // ButtonColumn
+    } // Content
   }
 }

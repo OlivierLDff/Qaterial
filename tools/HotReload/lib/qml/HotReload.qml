@@ -61,6 +61,9 @@ Qaterial.Page
   QLab.Settings
   {
     id: settings
+
+    category: "General"
+
     property alias currentFolderPath: root.currentFolderPath
     property alias currentFilePath: root.currentFilePath
     property alias currentFileUrl: root.currentFileUrl
@@ -189,15 +192,22 @@ Qaterial.Page
 
           model: Qaterial.HotReload.importPaths
 
+          function setImportPathsAndReload(paths)
+          {
+            Qaterial.HotReload.importPaths = paths
+            root.currentImportPath = paths
+            root.reload()
+          }
+
           onResetPathEntries: function()
           {
             Qaterial.HotReload.importPaths = undefined
             Qaterial.Logger.info(`Reset Path Entries to ${Qaterial.HotReload.importPaths}`)
-            currentImportPath = Qaterial.HotReload.importPaths.toString().split(',')
+            root.currentImportPath = Qaterial.HotReload.importPaths.toString().split(',')
             root.reload()
           }
 
-          onAddPathEntry: function()
+          onAddPathEntry: function(index)
           {
             Qaterial.DialogManager.showTextFieldDialog({
               context: root,
@@ -209,13 +219,12 @@ Qaterial.Page
               standardButtons: Dialog.Ok | Dialog.Cancel,
               onAccepted: function(text, acceptable)
               {
-                Qaterial.Logger.info(`Append Path ${text}`)
+                if(index <= -1)
+                  index = Qaterial.HotReload.importPaths.length
+                Qaterial.Logger.info(`Append Path ${text} at ${index}`)
                 let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
-                tempPaths.unshift(text)
-                Qaterial.Logger.info(`tempPaths ${tempPaths}`)
-                Qaterial.HotReload.importPaths = tempPaths
-                currentImportPath = tempPaths
-                root.reload()
+                tempPaths.splice(index, 0, text)
+                _importPathMenu.setImportPathsAndReload(tempPaths)
               },
             })
           }
@@ -233,11 +242,10 @@ Qaterial.Page
               standardButtons: Dialog.Ok | Dialog.Cancel,
               onAccepted: function(text, acceptable)
               {
+                Qaterial.Logger.info(`Edit Path ${index} to ${text}`)
                 let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
                 tempPaths.splice(index, 1, text)
-                Qaterial.HotReload.importPaths = tempPaths
-                currentImportPath = tempPaths
-                root.reload()
+                _importPathMenu.setImportPathsAndReload(tempPaths)
               },
             })
           }
@@ -246,13 +254,36 @@ Qaterial.Page
           {
             if(index >= 0 && index < Qaterial.HotReload.importPaths.length)
             {
-              Qaterial.Logger.info(`Remove Path ${Qaterial.HotReload.importPaths[index]}`)
-              let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
-              tempPaths.splice(index, 1)
-              Qaterial.HotReload.importPaths = tempPaths
-              currentImportPath = tempPaths
-              root.reload()
+              Qaterial.DialogManager.showDialog({
+                context: root,
+                width: 500,
+                title: "Warning",
+                text: `Are you sure to delete "${Qaterial.HotReload.importPaths[index]}"`,
+                iconSource: Qaterial.Icons.alertOutline,
+                standardButtons: Dialog.Ok | Dialog.Cancel,
+                onAccepted: function()
+                {
+                  Qaterial.Logger.info(`Remove Path ${Qaterial.HotReload.importPaths[index]}`)
+                  let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                  tempPaths.splice(index, 1)
+                  _importPathMenu.setImportPathsAndReload(tempPaths)
+                }
+              })
             }
+          }
+
+          onMovePathUp: function(index)
+          {
+            let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+            tempPaths.splice(index, 0, tempPaths.splice(index-1, 1)[0])
+            _importPathMenu.setImportPathsAndReload(tempPaths)
+          }
+
+          onMovePathDown: function(index)
+          {
+            let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+            tempPaths.splice(index, 0, tempPaths.splice(index+1, 1)[0])
+            _importPathMenu.setImportPathsAndReload(tempPaths)
           }
         }
       }
@@ -541,7 +572,6 @@ Qaterial.Page
               incubator.onStatusChanged = function(status) {
                 if(status == Component.Ready)
                 {
-                  console.log("Async load done")
                   loadedObject = incubator.object
                   assignAnchors()
                   loadedObject.visible = true
@@ -551,7 +581,6 @@ Qaterial.Page
             }
             else
             {
-              console.log("Sync load done")
               loadedObject = incubator.object
               assignAnchors()
               loadedObject.visible = true
@@ -653,6 +682,7 @@ Qaterial.Page
 
   Component.onCompleted: function()
   {
+    Qaterial.Logger.info(`Load configuration from ${settings.fileName}`)
     folderSplitView.restoreState(settings.folderSplitView)
     Qaterial.Style.theme = root.theme
     if(root.currentImportPath.length)

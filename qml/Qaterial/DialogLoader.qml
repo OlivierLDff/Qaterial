@@ -443,7 +443,6 @@ Item
 
   function _popStack()
   {
-    console.log("Pop Stack")
     root._show(root.stackSettings, root.stackComponent)
     root.stackComponent = null
     root.stackSettings = null
@@ -500,7 +499,6 @@ Item
 
   function openBusyIndicator(settings)
   {
-    console.log("Show Busy indicator")
     show(settings, _busyIndicatorDialogComp)
   }
 
@@ -508,16 +506,7 @@ Item
   {
     // this is too yolo, showBusyIndicator should returned a pointer or a handle
     if(_dialogLoader.sourceComponent && _dialogLoader.sourceComponent === _busyIndicatorDialogComp)
-    {
-      console.log("close busy indicator")
       root.close()
-    }
-    else
-    {
-      console.log("Fail to close busy indicator")
-      console.log(`Fail to close busy indicator ${_dialogLoader.sourceComponent}`)
-      console.log(`Fail to close busy indicator ${_busyIndicatorDialogComp}`)
-    }
   }
 
   function openRadioListView(settings)
