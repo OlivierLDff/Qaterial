@@ -94,12 +94,6 @@ qt_generate_qrc(QATERIAL_QML_ICONS_QRC
   PREFIX "Qaterial/Icons"
   GLOB_EXPRESSION ${QATERIAL_ICONS})
 
-qt_generate_qrc(QATERIAL_QML_FONTS_ROBOTO_QRC
-  SOURCE_DIR qml/Qaterial/Fonts/Roboto
-  NAME QaterialFontsRoboto.qrc
-  PREFIX "Qaterial/Fonts/Roboto"
-  GLOB_EXPRESSION "*.ttf")
-
 qt_generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
   SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
   NAME "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/Icons.qml"
@@ -115,7 +109,7 @@ qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated"
   NAME QaterialIconsAliases.qrc
   PREFIX "Qaterial/Impl/Icons"
-  GLOB_EXPRESSION "*.qml;qmldir")
+  GLOB_EXPRESSION "*.qml;qmldir;")
 
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
@@ -123,12 +117,14 @@ qt_generate_qmldir(QATERIAL_QMLDIR_FILE
 
 qt_generate_qrc(QATERIAL_QML_QRC
   SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/QaterialGenerated
   NAME Qaterial.qrc
   PREFIX "Qaterial"
-  GLOB_EXPRESSION "*")
+  GLOB_EXPRESSION "*.qml;*.ttf;qmldir"
+  RECURSE)
 
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_FONTS_ROBOTO_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
+qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
