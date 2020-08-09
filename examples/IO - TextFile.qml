@@ -1,51 +1,8 @@
 import QtQuick 2.12
-import Qt.labs.platform 1.1
 import Qaterial 1.0 as Qaterial
 
 Column
 {
-  FileDialog
-  {
-    id: openDialog
-    folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-    nameFilters: ["Text files (*.txt)"]
-    fileMode: FileDialog.OpenFile
-    defaultSuffix: "txt"
-    onAccepted: function()
-    {
-      if(!textFile.open(openDialog.file, Qaterial.TextFile.Read))
-        Qaterial.SnackbarManager.show({text: `${textFile.error}`})
-
-      _textArea.text = textFile.readAll()
-
-      if(textFile.error)
-        Qaterial.SnackbarManager.show({text: `${textFile.error}`})
-
-      textFile.close()
-      Qaterial.SnackbarManager.show({text: `Success open file ${textFile.fileName}`})
-    }
-  }
-
-  FileDialog
-  {
-    id: saveDialog
-    folder: StandardPaths.writableLocation(StandardPaths.DocumentsLocation)
-    nameFilters: ["Text files (*.txt)"]
-    fileMode: FileDialog.SaveFile
-    defaultSuffix: "txt"
-    onAccepted: function()
-    {
-      if(!textFile.open(saveDialog.file, Qaterial.TextFile.Write))
-        Qaterial.SnackbarManager.show({text: `${textFile.error}`})
-
-      if(!textFile.write(_textArea.text))
-        Qaterial.SnackbarManager.show({text: `${textFile.error}`})
-
-      textFile.close()
-      Qaterial.SnackbarManager.show({text: `Success save file ${textFile.fileName}`})
-    }
-  }
-
   Qaterial.TextFile
   {
     id: textFile
@@ -77,14 +34,44 @@ Column
     {
       text: "Open"
       icon.source: Qaterial.Icons.folderOutline
-      onClicked: () => openDialog.open()
+      onClicked: () => Qaterial.DialogManager.showOpenFileDialog({
+        nameFilters: ["Text files (*.txt)"],
+        defaultSuffix: "txt",
+        onAccepted: function(path)
+        {
+          if(!textFile.open(`file:/${path}`, Qaterial.TextFile.Read))
+            Qaterial.SnackbarManager.show({text: `${textFile.error}`})
+
+          _textArea.text = textFile.readAll()
+
+          if(textFile.error)
+            Qaterial.SnackbarManager.show({text: `${textFile.error}`})
+
+          textFile.close()
+          Qaterial.SnackbarManager.show({text: `Success open file ${textFile.fileName}`})
+        }
+      })
     } // Qaterial.FlatButton
 
     Qaterial.FlatButton
     {
       text: "Save"
       icon.source: Qaterial.Icons.contentSaveOutline
-      onClicked: () => saveDialog.open()
+      onClicked: () => Qaterial.DialogManager.showSaveFileDialog({
+        nameFilters: ["Text files (*.txt)"],
+        defaultSuffix: "txt",
+        onAccepted: function(path)
+        {
+          if(!textFile.open(`file:/${path}`, Qaterial.TextFile.Write))
+            Qaterial.SnackbarManager.show({text: `${textFile.error}`})
+
+          if(!textFile.write(_textArea.text))
+            Qaterial.SnackbarManager.show({text: `${textFile.error}`})
+
+          textFile.close()
+          Qaterial.SnackbarManager.show({text: `Success save file ${textFile.fileName}`})
+        }
+      })
     } // Qaterial.FlatButton
   } // Row
 } // Column
