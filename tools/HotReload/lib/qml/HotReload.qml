@@ -7,7 +7,6 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.14
 
 import Qt.labs.settings 1.1 as QLab
-import Qt.labs.platform 1.1 as QLab
 
 import Qaterial 1.0 as Qaterial
 
@@ -45,14 +44,8 @@ Qaterial.Page
   function loadFile(path)
   {
     Qaterial.HotReload.unWatchFile(root.currentFilePath)
-    currentFileUrl = path
-    // remove prefixed "file:///"
-    if(Qt.platform.os === "windows")
-        path = path.replace(/^(file:\/{3})/,"");
-    else
-        path = path.replace(/^(file:\/{2})/,"");
-    // unescape html codes like '%23' for '#'
-    currentFilePath = decodeURIComponent(path);
+    currentFileUrl = `file:/${path}`
+    currentFilePath = path
     Qaterial.HotReload.watchFile(root.currentFilePath)
 
     loadFileInLoader(root.currentFileUrl)
@@ -92,34 +85,31 @@ Qaterial.Page
   Shortcut
   {
     sequence: "Ctrl+O"
-    onActivated: () => fileDialog.open()
+    onActivated: () => root.openFilePicker()
   }
 
-  QLab.FileDialog
+  function openFilePicker()
   {
-    id: fileDialog
-    title: "Please choose a file"
-    onAccepted: () => root.loadFile(fileDialog.file.toString())
+    Qaterial.DialogManager.showOpenFileDialog({
+      title: "Please choose a file",
+      nameFilters: ["Qml Files (*.qml)"],
+      onAccepted: function(path)
+      {
+        root.loadFile(path)
+      }
+    })
   }
 
-  QLab.FolderDialog
+  function openFolderPicker()
   {
-    id: folderDialog
-    title: "Please choose a folder"
-    onAccepted: function()
-    {
-      let path = folderDialog.folder.toString()
-
-      // remove prefixed "file:///"
-      if(Qt.platform.os === "windows")
-        path = path.replace(/^(file:\/{3})/,"");
-      else
-        path = path.replace(/^(file:\/{2})/,"");
-      // unescape html codes like '%23' for '#'
-      root.currentFolderPath = decodeURIComponent(path);
-
-      root.showFolderExplorer = true
-    }
+    Qaterial.DialogManager.showFolderDialog({
+      title: "Please choose a folder",
+      onAccepted: function(path)
+      {
+        root.currentFolderPath = path
+        root.showFolderExplorer = true
+      }
+    })
   }
 
   Connections
@@ -139,7 +129,7 @@ Qaterial.Page
         icon.source: Qaterial.Icons.fileOutline
         useSecondaryColor: true
 
-        onClicked: () => fileDialog.open()
+        onClicked: () => root.openFilePicker()
       }
 
       Qaterial.SquareButton
@@ -149,7 +139,7 @@ Qaterial.Page
         icon.source: Qaterial.Icons.folderOutline
         useSecondaryColor: true
 
-        onClicked: () => folderDialog.open()
+        onClicked: () => root.openFolderPicker()
       }
 
       Qaterial.SquareButton
@@ -500,7 +490,14 @@ Qaterial.Page
             highlighted: model && model.filePath === root.currentFilePath
             onAccepted: function(path)
             {
-              root.loadFile(path)
+              function urlToLocalFile(url)
+              {
+                let path = url.toString()
+                const isWindows = Qt.platform.os === "windows"
+                path = isWindows ? path.replace(/^(file:\/{3})/, "") : path.replace(/^(file:\/{2})/, "")
+                return decodeURIComponent(path)
+              }
+              root.loadFile(urlToLocalFile(path))
             }
           }
         } // TreeView
@@ -626,7 +623,7 @@ Qaterial.Page
               text: "Open File"
               icon.source: Qaterial.Icons.fileOutline
 
-              onClicked: () => fileDialog.open()
+              onClicked: () => root.openFilePicker()
             }
 
             Qaterial.OutlineButton
@@ -634,7 +631,7 @@ Qaterial.Page
               text: "Open Folder"
               icon.source: Qaterial.Icons.folderOutline
 
-              onClicked: () => folderDialog.open()
+              onClicked: () => root.openFolderPicker()
             }
           }
         }
