@@ -120,8 +120,9 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
-    Row
+    Flow
     {
+      width: parent.width
       Qaterial.SquareButton
       {
         ToolTip.visible: hovered || pressed
@@ -459,6 +460,7 @@ Qaterial.Page
       {
         visible: root.showFolderExplorer
         color: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#2A2C30" : "white"
+        z: 10
 
         SplitView.preferredWidth: 200
         SplitView.minimumWidth: 0
