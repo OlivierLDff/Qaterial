@@ -492,6 +492,7 @@ Qaterial.Page
       id: folderSplitView
       orientation: Qt.Horizontal
       SplitView.fillHeight: true
+      SplitView.minimumHeight: 100
 
       Rectangle
       {
