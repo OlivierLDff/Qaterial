@@ -120,9 +120,11 @@ Qaterial.Page
 
   header: Qaterial.ToolBar
   {
+    implicitHeight: flow.implicitHeight
     Flow
     {
-      width: parent.width
+      id: flow
+      width: parent.width - menuButton.implicitWidth
       Qaterial.SquareButton
       {
         ToolTip.visible: hovered || pressed
@@ -278,8 +280,6 @@ Qaterial.Page
           }
         }
       }
-
-      Qaterial.ToolSeparator {}
 
       Qaterial.ToolButton
       {
@@ -440,7 +440,44 @@ Qaterial.Page
         ToolTip.visible: hovered || pressed
         ToolTip.text: "Icons Explorer"
       }
-    } // RowLayout
+
+    } // Flow
+
+    Qaterial.AppBarButton
+    {
+      id: menuButton
+      x: parent.width - width
+      icon.source: Qaterial.Icons.dotsVertical
+
+      onClicked: () => menu.open()
+
+      Qaterial.Menu
+      {
+        id: menu
+        y: parent.height
+
+        Qaterial.MenuItem
+        {
+          icon.source: Qaterial.Icons.earth
+          text: "Qaterial Online"
+          onClicked: () => Qt.openUrlExternally("https://olivierldff.github.io/QaterialOnline/")
+        }
+
+        Qaterial.MenuItem
+        {
+          icon.source: Qaterial.Icons.helpCircle
+          text: "Documentation"
+          onClicked: () => Qt.openUrlExternally("https://olivierldff.github.io/Qaterial/")
+        }
+
+        Qaterial.MenuItem
+        {
+          icon.source: Qaterial.Icons.github
+          text: "Qaterial on Github"
+          onClicked: () => Qt.openUrlExternally("https://github.com/OlivierLDff/Qaterial")
+        }
+      }
+    }
   } // ToolBar
 
 
