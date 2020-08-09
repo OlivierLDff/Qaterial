@@ -18,6 +18,7 @@ Qaterial.Menu
   property var model: []
 
   implicitWidth: 600
+  bottomPadding: 0
 
   contentItem: Column
   {
