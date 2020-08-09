@@ -12,7 +12,7 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 
 // Qt
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QtQml>
 
@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
 {
     installLoggers();
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
     // ──── REGISTER APPLICATION ────
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
     // ──── LOAD AND REGISTER QML ────
 
     // Important to find 'import Qaterial 1.0'
-    engine.addImportPath("qrc:///");
+    engine.addImportPath("qrc:/");
 
     // Load Qaterial
     qaterial::loadQmlResources();
