@@ -55,6 +55,8 @@ ColorValueSlider 1.0 ColorValueSlider.qml
 ColorYellowSlider 1.0 ColorYellowSlider.qml
 ComboBox 1.0 ComboBox.qml
 CursorDelegate 1.0 CursorDelegate.qml
+singleton Data 1.0 Data.qml
+singleton Date 1.0 Date.qml
 DatePickerDialog 1.0 DatePickerDialog.qml
 DebugObject 1.0 DebugObject.qml
 DebugRectangle 1.0 DebugRectangle.qml
