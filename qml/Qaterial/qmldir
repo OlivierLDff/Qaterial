@@ -8,6 +8,7 @@ AmCircularHour 1.0 AmCircularHour.qml
 AmCircularHourPicker 1.0 AmCircularHourPicker.qml
 AppBarButton 1.0 AppBarButton.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
+Arrow 1.0 Arrow.qml
 Banner 1.0 Banner.qml
 BusyIndicator 1.0 BusyIndicator.qml
 BusyIndicatorDialog 1.0 BusyIndicatorDialog.qml

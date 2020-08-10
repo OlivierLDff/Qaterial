@@ -10,5 +10,5 @@ Rectangle
 {
   color: "transparent"
   border.width: 1
-  border.color: "green"
+  border.color: "#E91E63"
 } // Rectangle
