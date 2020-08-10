@@ -175,7 +175,7 @@ T.ItemDelegate
 
       anchors.verticalCenter: parent.verticalCenter
 
-      visible: parent.width > (width + control.leftPadding)
+      visible: parent.width >= width
       size: parent.height - 4
 
       icon: control.icon.source
