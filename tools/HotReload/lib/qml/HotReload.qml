@@ -27,6 +27,8 @@ Qaterial.Page
 
   property int theme: Qaterial.Style.theme
 
+  signal newObjectLoaded()
+
   implicitWidth: 1280
   implicitHeight: 600
 
@@ -613,6 +615,8 @@ Qaterial.Page
                   assignAnchors()
                   loadedObject.visible = true
                   Qaterial.DialogManager.close()
+
+                  root.newObjectLoaded()
                 }
               }
             }
@@ -622,6 +626,8 @@ Qaterial.Page
               assignAnchors()
               loadedObject.visible = true
               Qaterial.DialogManager.close()
+
+              root.newObjectLoaded()
             }
 
             root.errorString = ""
@@ -631,6 +637,7 @@ Qaterial.Page
             root.errorString = component.errorString()
             Qaterial.Logger.error(`Fail to load with error ${root.errorString}`)
             Qaterial.DialogManager.close()
+            root.newObjectLoaded()
           }
         }
 
@@ -722,10 +729,19 @@ Qaterial.Page
     Qaterial.Logger.info(`Load configuration from ${settings.fileName}`)
     folderSplitView.restoreState(settings.folderSplitView)
     Qaterial.Style.theme = root.theme
-    if(root.currentImportPath.length)
-      Qaterial.HotReload.importPaths = root.currentImportPath
-    else
-      root.currentImportPath = Qaterial.HotReload.importPaths
+
+    if(Qaterial.HotReload.importPaths !== root.currentImportPath)
+    {
+      if(root.currentImportPath.length)
+      {
+        Qaterial.Logger.info(`Set qml import path to Qaterial.HotReload.importPaths`)
+        Qaterial.HotReload.importPaths = root.currentImportPath
+      }
+      else
+      {
+        root.currentImportPath = Qaterial.HotReload.importPaths
+      }
+    }
 
     if(root.currentFileUrl)
     {

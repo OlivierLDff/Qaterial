@@ -7,9 +7,11 @@ Qaterial.ApplicationWindow
 {
   id: window
 
-  title: `Qaterial Hot Reload - ${currentFilePath}`
-
   property alias currentFilePath: hr.currentFilePath
+
+  signal newObjectLoaded()
+
+  title: `Qaterial Hot Reload - ${currentFilePath}`
 
   width: 1280
   height: 600
@@ -21,6 +23,8 @@ Qaterial.ApplicationWindow
   {
     id: hr
     anchors.fill: parent
+
+    onNewObjectLoaded: window.newObjectLoaded()
   }
 
   Qaterial.WindowLayoutSave { name: "Reloader" }
