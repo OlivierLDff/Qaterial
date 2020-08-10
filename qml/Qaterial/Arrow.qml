@@ -15,6 +15,7 @@ Item
   property vector2d end: Qt.vector2d(0, 0)
 
   property color color
+  property Gradient gradient
   property int thickness: 1
   property int headLength: 10
 
@@ -42,7 +43,20 @@ Item
 
     function drawLine(ctx, fromx, fromy, tox, toy)
     {
-      ctx.strokeStyle = root.color
+      if(root.gradient)
+      {
+        let grd = ctx.createLinearGradient(fromx, fromy, tox, toy)
+        for (let i = 0; i < root.gradient.stops.length; i++)
+        {
+          const stop = root.gradient.stops[i]
+          grd.addColorStop(stop.position, stop.color)
+        }
+        ctx.strokeStyle = grd
+      }
+      else
+      {
+        ctx.strokeStyle = root.color
+      }
       ctx.lineWidth = root.thickness
 
       ctx.beginPath()
@@ -52,9 +66,9 @@ Item
       ctx.closePath()
     }
 
-    function drawFilledTriangle(ctx, x, y, angle, headlen)
+    function drawFilledTriangle(ctx, x, y, angle, headlen, color)
     {
-      ctx.strokeStyle = root.color
+      ctx.strokeStyle = color
       ctx.lineWidth = root.thickness
       ctx.fillStyle = root.color
 
@@ -76,9 +90,9 @@ Item
       ctx.closePath()
     }
 
-    function drawArrow(ctx, x, y, angle, headlen)
+    function drawArrow(ctx, x, y, angle, headlen, color)
     {
-      ctx.strokeStyle = root.color
+      ctx.strokeStyle = color
       ctx.lineWidth = root.thickness
 
       //starting a new path from the head of the arrow to one of the sides of the point
@@ -111,17 +125,26 @@ Item
 
       drawLine(ctx, fromx, fromy, tox, toy)
 
+      let startColor = root.color
+      let endColor = root.color
+
+      if(root.gradient && root.gradient.stops.length)
+      {
+        startColor = root.gradient.stops[0].color
+        endColor = root.gradient.stops[root.gradient.stops.length-1].color
+      }
+
       if(root.startTail === Arrow.Tail.FilledArrow)
-        drawFilledTriangle(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength)
+        drawFilledTriangle(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength, startColor)
 
       if(root.endTail === Arrow.Tail.FilledArrow)
-        drawFilledTriangle(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength)
+        drawFilledTriangle(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength, endColor)
 
       if(root.startTail === Arrow.Tail.Arrow)
-        drawArrow(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength)
+        drawArrow(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength, startColor)
 
       if(root.endTail === Arrow.Tail.Arrow)
-        drawArrow(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength)
+        drawArrow(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength, endColor)
     }
   }
 }

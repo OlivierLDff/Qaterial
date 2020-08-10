@@ -189,7 +189,12 @@ Item
     start: Qt.vector2d(450, 120)
     end: Qt.vector2d(350 + root.value, 220)
 
-    color: Qaterial.Style.teal
+    gradient: Gradient
+    {
+      GradientStop { position: 0.0; color: "red" }
+      GradientStop { position: 0.33; color: "yellow" }
+      GradientStop { position: 1.0; color: "green" }
+    }
     startTail: Qaterial.Arrow.Tail.Arrow
     endTail: Qaterial.Arrow.Tail.Arrow
   }
