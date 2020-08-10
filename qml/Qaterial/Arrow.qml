@@ -70,7 +70,7 @@ Item
     {
       ctx.strokeStyle = color
       ctx.lineWidth = root.thickness
-      ctx.fillStyle = root.color
+      ctx.fillStyle = color
 
       //starting a new path from the head of the arrow to one of the sides of the point
       ctx.beginPath()
