@@ -116,19 +116,26 @@ static void Qaterial_loadResources()
     LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
 
     Q_INIT_RESOURCE(Qaterial);
+    Q_INIT_RESOURCE(QaterialFonts);
     Q_INIT_RESOURCE(QaterialIcons);
     Q_INIT_RESOURCE(QaterialIconsAliases);
 
-    const QString robotoPath = QStringLiteral(":/Qaterial/Fonts/Roboto/");
-    const QDir dir(robotoPath);
-    for(const auto& file: dir.entryList(QDir::Files))
+    const auto loadFont = [](const QString& fontFolderPath)
     {
-        const auto fileUrl = robotoPath + file;
-        if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
-            LOG_INFO("Load font {}", fileUrl.toStdString());
-        else
-            LOG_ERR("Fail to load font {}", fileUrl.toStdString());
-    }
+        const QDir dir(fontFolderPath);
+        for(const auto& file: dir.entryList(QDir::Files))
+        {
+            const auto fileUrl = fontFolderPath + file;
+            if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
+                LOG_INFO("Load font {}", fileUrl.toStdString());
+            else
+                LOG_ERR("Fail to load font {}", fileUrl.toStdString());
+        }
+    };
+
+    loadFont(":/Qaterial/Fonts/Roboto/");
+    loadFont(":/Qaterial/Fonts/Lato/");
+    loadFont(":/Qaterial/Fonts/OpenSans/");
 
     QQuickStyle::setStyle(QStringLiteral("Qaterial"));
     QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
