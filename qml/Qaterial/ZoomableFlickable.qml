@@ -123,7 +123,7 @@ Item
     //contentX:
     //contentY:
 
-    interactive: _root.interactive && _root.zoom > 1
+    interactive: _root.interactive// && _root.zoom > 1
 
     Behavior on zoom
     {
