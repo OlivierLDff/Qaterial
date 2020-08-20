@@ -73,6 +73,7 @@ QString TextFile::fileType() const { return QFileInfo(fileName()).suffix(); }
 
 bool TextFile::open(QUrl url, int mode)
 {
+    LOG_DEV_INFO("open url : {}", url.toString().toStdString());
     // Make sure url is valid as a local file
     if(url.isRelative())
         url = "file:" + url.toString();
@@ -82,7 +83,10 @@ bool TextFile::open(QUrl url, int mode)
 
     if(localFile.isEmpty())
     {
-        setError("filename is empty");
+        if(url.isEmpty())
+            setError("filename is empty");
+        else
+            setError(QString("Filename ") + url.toString() + "isn't a valid file url");
         return false;
     }
 
