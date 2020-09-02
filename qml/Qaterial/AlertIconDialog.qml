@@ -28,12 +28,13 @@ Qaterial.ModalDialog
   property alias iconhighlighted: _icon.highlighted
   property alias iconReverseHighlight: _icon.reverseHighlight
 
-  width: undefined
-
   contentItem: Item
   {
-    implicitHeight: Math.floor(Math.max(_icon.implicitHeight, _text.implicitHeight))
-    implicitWidth: Qaterial.Style.dialog.implicitWidth - 2*Qaterial.Style.card.horizontalPadding
+    Binding on implicitHeight
+    {
+      value: Math.floor(Math.max(_icon.implicitHeight, _text.implicitHeight))
+      delayed: true  // Prevent intermediary values from being assigned
+    }
 
     Qaterial.RoundColorIcon
     {
