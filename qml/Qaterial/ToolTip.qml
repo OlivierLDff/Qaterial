@@ -16,7 +16,7 @@ T.ToolTip
 
   id: control
 
-  property double backgroupRadius: Qaterial.Style.toolTip.radius
+  property double backgroundRadius: Qaterial.Style.toolTip.radius
   property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body1
 
   property int position: Qaterial.Style.Position.Top
@@ -136,7 +136,7 @@ T.ToolTip
     implicitHeight: Qaterial.Style.toolTip.implicitHeight
     color: Qaterial.Style.snackbarColor()
     opacity: Qaterial.Style.toolTip.opacity
-    radius: control.backgroupRadius
+    radius: control.backgroundRadius
 
     // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink" } // DebugRectangle
   } // Rectangle
