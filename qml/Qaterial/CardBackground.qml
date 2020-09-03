@@ -12,7 +12,7 @@ import Qaterial 1.0 as Qaterial
 
 Rectangle
 {
-  id: _control
+  id: control
   property bool enabled: true
   property bool outlined: false
   property bool isActive: false
@@ -50,10 +50,6 @@ Rectangle
     } // NumberAnimation
   } // Behavior
 
-  layer.enabled: _control.enabled && _control.elevation > 0
-
-  layer.effect: Qaterial.ElevationEffect
-  {
-    elevation: _control.elevation
-  } // ElevationEffect
+  layer.enabled: control.enabled && control.elevation > 0
+  layer.effect: Qaterial.ElevationEffect { elevation: control.elevation }
 } // Rectangle
