@@ -54,6 +54,7 @@ ColorRedSlider 1.0 ColorRedSlider.qml
 ColorSaturationSlider 1.0 ColorSaturationSlider.qml
 ColorValueSlider 1.0 ColorValueSlider.qml
 ColorYellowSlider 1.0 ColorYellowSlider.qml
+singleton Colors 1.0 Colors.qml
 ComboBox 1.0 ComboBox.qml
 CursorDelegate 1.0 CursorDelegate.qml
 singleton DataFormat 1.0 DataFormat.qml
