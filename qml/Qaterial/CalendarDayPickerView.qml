@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQml 2.15
 
 import Qaterial 1.0 as Qaterial
 
@@ -39,6 +40,7 @@ ListView
   {
     when: !_monthAndYearPendingEvaluate
     value: indexFromMonthYear(from, to, month, year)
+    restoreMode: Binding.RestoreBinding
   }
   highlightMoveDuration: 5
   highlightRangeMode: ListView.StrictlyEnforceRange
