@@ -126,6 +126,7 @@ Pane 1.0 Pane.qml
 PlaceholderText 1.0 PlaceholderText.qml
 Popup 1.0 Popup.qml
 PopupMenu 1.0 PopupMenu.qml
+PopupMenuItem 1.0 PopupMenuItem.qml
 ProgressBar 1.0 ProgressBar.qml
 ProgressBarDialog 1.0 ProgressBarDialog.qml
 RadioButton 1.0 RadioButton.qml
