@@ -37,7 +37,16 @@ public:
 };
 
 void registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
-void loadQmlResources();
+
+/**
+ * @brief      Load qrc content in qrc:/Qaterial/*
+ *
+ * @param[in]  autoRegisterStyle  Register Qaterial as default QQuickStyle.
+ * When true, every Controls from QtQuick.Controls will be Qaterial Control's.
+ * If you are not using Qaterial as your main qt quick control style. Set autoRegisterStyle to false.
+ * It is true by default to be as plug and play as possible to use Qaterial.
+ */
+void loadQmlResources(bool autoRegisterStyle = true);
 
 }
 

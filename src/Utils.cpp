@@ -111,7 +111,7 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
     Qaterial_registerTypes();
 }
 
-static void Qaterial_loadResources()
+static void Qaterial_loadResources(bool autoRegisterStyle = true)
 {
     LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
 
@@ -137,8 +137,11 @@ static void Qaterial_loadResources()
     loadFont(":/Qaterial/Fonts/Lato/");
     loadFont(":/Qaterial/Fonts/OpenSans/");
 
-    QQuickStyle::setStyle(QStringLiteral("Qaterial"));
-    QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
+    if(autoRegisterStyle)
+    {
+        QQuickStyle::setStyle(QStringLiteral("Qaterial"));
+        QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
+    }
 }
 
 #ifndef QATERIAL_STATIC
@@ -160,7 +163,7 @@ void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint
     ::Qaterial_registerTypes(uri, major, minor);
 }
 
-void qaterial::loadQmlResources() { ::Qaterial_loadResources(); }
+void qaterial::loadQmlResources(bool autoRegisterStyle) { ::Qaterial_loadResources(autoRegisterStyle); }
 
 // Fix dpi at application startup
 class HighDpiFix

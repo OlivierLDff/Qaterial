@@ -16,6 +16,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Button
 {
+  id: root
   text: "Save File Dialog"
   onClicked: function()
   {
@@ -38,6 +39,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Button
 {
+  id: root
   text: "Open File Dialog"
   onClicked: function()
   {
@@ -60,6 +62,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Button
 {
+  id: root
   text: "Open Files Dialog"
   onClicked: function()
   {
@@ -82,6 +85,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Button
 {
+  id: root
   text: "Open Folder Dialog"
   onClicked: function()
   {
