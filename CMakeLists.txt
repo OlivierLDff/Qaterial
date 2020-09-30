@@ -140,6 +140,11 @@ foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
   source_group("Qml\\QtQuickCompiler Files" FILES ${QATERIAL_CURRENT_QML_FILE})
 endforeach()
 
+set(QATERIAL_LAYOUT_SRCS
+  include/Qaterial/Layout.hpp
+  src/Layout.cpp
+)
+
 set(QATERIAL_IO_SRCS
   include/Qaterial/TextFile.hpp
   src/TextFile.cpp
@@ -169,6 +174,7 @@ set(QATERIAL_UTILS_SRCS
 )
 
 set(QATERIAL_SRCS
+  ${QATERIAL_LAYOUT_SRCS}
   ${QATERIAL_IO_SRCS}
   ${QATERIAL_NAVIGATION_SRCS}
   ${QATERIAL_UTILS_SRCS}
@@ -176,6 +182,7 @@ set(QATERIAL_SRCS
   ${QATERIAL_QML_SRCS}
 )
 
+source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
 source_group("IO" FILES ${QATERIAL_IO_SRCS})
 source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
 source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
