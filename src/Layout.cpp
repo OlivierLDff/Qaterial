@@ -26,7 +26,7 @@ LayoutAttached::LayoutAttached(QObject* object) :
 Layout::Layout(QObject* parent) : QObject(parent)
 {
     // Reevaluate no matter if horizontal or vertical layout
-    connect(this, &Layout::itemsChanged, this, &Layout::computeChildItemsSize);
+    connect(this, &Layout::itemsChanged, this, &Layout::computeChildItemsSize, Qt::QueuedConnection);
     connect(this, &Layout::spacingChanged, this, &Layout::computeChildItemsSize);
     connect(this, &Layout::layoutDirectionChanged, this, &Layout::computeChildItemsSize);
     connect(this, &Layout::flowChanged, this,
