@@ -171,28 +171,9 @@ public:
     void setItems(QQmlListReference value);
 
     int columns() const { return _columns; }
-    bool setColumns(int value)
-    {
-        if(value <= 0)
-            return false;
-
-        if(_columns == value)
-            return false;
-
-        _columns = value;
-        Q_EMIT columnsChanged();
-        return true;
-    }
-
-    void setUserColumns(int value)
-    {
-        if(setColumns(value))
-            _userSetColumns = true;
-    }
-
-    void resetUserColumns() { _userSetColumns = false;
-        computeColumnsFromType();
-    }
+    bool setColumns(int value);
+    void setUserColumns(int value);
+    void resetUserColumns();
 
 Q_SIGNALS:
     void itemsChanged();
@@ -237,10 +218,11 @@ private:
     qreal paddingLessSize() const { return flowIsLeftToRight() ? paddingLessWidth() : paddingLessHeight(); }
 
     void doForeachItem(const std::function<void(QQuickItem*)>& callback);
+
     LayoutFill getPreferredFill(QQuickItem* item) const;
     LayoutFill defaultPreferredFill() const;
-    qreal fillToRealBlockCount(LayoutFill fill) const;
 
+    int fillToRealBlockCount(LayoutFill fill) const;
     qreal getPreferredSize(QQuickItem* item) const;
 
     void computeColumnsFromType();

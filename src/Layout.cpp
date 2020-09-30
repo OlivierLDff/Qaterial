@@ -71,6 +71,31 @@ void Layout::setItems(QQmlListReference value)
     Q_EMIT itemsChanged();
 }
 
+bool Layout::setColumns(int value)
+{
+    if (value <= 0)
+        return false;
+
+    if (_columns == value)
+        return false;
+
+    _columns = value;
+    Q_EMIT columnsChanged();
+    return true;
+}
+
+void Layout::setUserColumns(int value)
+{
+    if (setColumns(value))
+        _userSetColumns = true;
+}
+
+void Layout::resetUserColumns()
+{
+    _userSetColumns = false;
+    computeColumnsFromType();
+}
+
 void Layout::forceUpdate() { computeChildItemsSize(); }
 
 void Layout::triggerHorizontalReevaluate()
@@ -187,11 +212,11 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
 
 Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferredFill(type()); }
 
-qreal Layout::fillToRealBlockCount(LayoutFill fill) const { return qreal(columns()) / qreal(fill); }
+int Layout::fillToRealBlockCount(LayoutFill fill) const {return std::ceil(qreal(columns()) / qreal(fill)); }
 
 qreal Layout::getPreferredSize(QQuickItem* item) const
 {
-    const auto consumedSpace = std::ceil(fillToRealBlockCount(getPreferredFill(item)));
+    const auto consumedSpace = fillToRealBlockCount(getPreferredFill(item));
     if(consumedSpace <= 0)
         return 0;
 
