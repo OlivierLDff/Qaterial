@@ -48,6 +48,13 @@ Column
     textType: Qaterial.Style.TextType.Caption
   }
 
+  Qaterial.Label
+  {
+    anchors.horizontalCenter: parent.horizontalCenter
+    text: `Columns : ${grid.columns}`
+    textType: Qaterial.Style.TextType.Hint
+  }
+
   Item
   {
     width: parent.width
@@ -113,20 +120,33 @@ Column
   {
     anchors.horizontalCenter: parent.horizontalCenter
 
-    implicitHeight: grid.implicitHeight
+    implicitHeight: 600
     width: parent.width
+
+    Qaterial.DebugGridOverlay
+    {
+      anchors.fill: parent
+
+      leftPadding: grid.leftPadding
+      rightPadding: grid.rightPadding
+      topPadding: grid.topPadding
+      bottomPadding: grid.bottomPadding
+
+      spacing: grid.spacing
+      columns: grid.columns
+
+      flow: grid.flow
+    }
 
     Qaterial.Grid
     {
       id: grid
 
-      width: parent.width
+      //columns: 2
 
-      spacing: 8
-      leftPadding: 4
-      rightPadding: 4
-      topPadding: 4
-      bottomPadding: 4
+      width: parent.width
+      topPadding: 8
+      bottomPadding: 8
 
       Qaterial.DebugRectangle
       {
@@ -134,11 +154,10 @@ Column
         Qaterial.Layout.large: Qaterial.Layout.FillQuarter
         Qaterial.Layout.medium: Qaterial.Layout.FillQuarter
         Qaterial.Layout.small: Qaterial.Layout.FillQuarter
-        Qaterial.Layout.extraSmall: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraSmall: Qaterial.Layout.FillParent
 
         implicitHeight: 50
       }
-
 
       Qaterial.DebugRectangle
       {
@@ -146,7 +165,7 @@ Column
         Qaterial.Layout.large: Qaterial.Layout.FillHalf
         Qaterial.Layout.medium: Qaterial.Layout.FillHalf
         Qaterial.Layout.small: Qaterial.Layout.FillHalf
-        Qaterial.Layout.extraSmall: Qaterial.Layout.FillHalf
+        Qaterial.Layout.extraSmall: Qaterial.Layout.FillParent
 
         implicitHeight: 50
       }
@@ -157,7 +176,7 @@ Column
         Qaterial.Layout.large: Qaterial.Layout.FillQuarter
         Qaterial.Layout.medium: Qaterial.Layout.FillQuarter
         Qaterial.Layout.small: Qaterial.Layout.FillQuarter
-        Qaterial.Layout.extraSmall: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraSmall: Qaterial.Layout.FillParent
 
         implicitHeight: 50
       }
@@ -166,41 +185,47 @@ Column
       {
         implicitHeight: 50
 
-        border.color: Qaterial.Colors.green
+        border.color: Qaterial.Colors.blue
+        Qaterial.Layout.large: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraLarge: Qaterial.Layout.FillSixth
       }
 
       Qaterial.DebugRectangle
       {
         implicitHeight: 50
 
-        border.color: Qaterial.Colors.green
+        border.color: Qaterial.Colors.blue
+        Qaterial.Layout.large: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraLarge: Qaterial.Layout.FillSixth
       }
 
       Qaterial.DebugRectangle
       {
         implicitHeight: 50
 
-        border.color: Qaterial.Colors.green
+        border.color: Qaterial.Colors.blue
+        Qaterial.Layout.large: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraLarge: Qaterial.Layout.FillSixth
       }
 
       Qaterial.DebugRectangle
       {
         implicitHeight: 50
 
-        border.color: Qaterial.Colors.green
+        border.color: Qaterial.Colors.blue
+        Qaterial.Layout.large: Qaterial.Layout.FillQuarter
+        Qaterial.Layout.extraLarge: Qaterial.Layout.FillSixth
       }
 
       Qaterial.DebugRectangle
       {
-        implicitHeight: 50
+        Qaterial.Layout.extraLarge: Qaterial.Layout.FillThird
+        Qaterial.Layout.large: Qaterial.Layout.FillParent
+        Qaterial.Layout.medium: Qaterial.Layout.FillHalf
+        Qaterial.Layout.small: Qaterial.Layout.FillParent
+        Qaterial.Layout.extraSmall: Qaterial.Layout.FillParent
 
-        border.color: Qaterial.Colors.green
-      }
-
-      Qaterial.DebugRectangle
-      {
         implicitHeight: 50
-        Qaterial.Layout.extraLarge: Qaterial.Layout.FillHalf + Qaterial.Layout.FillTwelfth
 
         border.color: Qaterial.Colors.green
       }
@@ -215,9 +240,9 @@ Column
 
         implicitHeight: 50
 
-        border.color: Qaterial.Colors.blue
+        border.color: Qaterial.Colors.green
       }
-    }
-  }
+    } // Grid
+  } // DebugRectangle
 }
 

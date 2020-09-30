@@ -6,7 +6,14 @@ Flow
   id: root
 
   property alias type: _layout.type
+  property alias columns: _layout.columns
   property alias layout: _layout
+
+  spacing: 16
+  leftPadding: flow === Flow.LeftToRight ? 16 : 0
+  rightPadding: flow === Flow.LeftToRight ? 16 : 0
+  topPadding: flow === Flow.TopToBottom ? 16 : 0
+  bottomPadding: flow === Flow.TopToBottom ? 16 : 0
 
   Qaterial.Layout
   {
