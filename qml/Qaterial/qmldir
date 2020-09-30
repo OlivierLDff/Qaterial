@@ -60,6 +60,9 @@ CursorDelegate 1.0 CursorDelegate.qml
 singleton DataFormat 1.0 DataFormat.qml
 singleton DateFormat 1.0 DateFormat.qml
 DatePickerDialog 1.0 DatePickerDialog.qml
+DebugGridOverlay 1.0 DebugGridOverlay.qml
+DebugGridOverlayHorizontal 1.0 DebugGridOverlayHorizontal.qml
+DebugGridOverlayVertical 1.0 DebugGridOverlayVertical.qml
 DebugObject 1.0 DebugObject.qml
 DebugRectangle 1.0 DebugRectangle.qml
 Dialog 1.0 Dialog.qml

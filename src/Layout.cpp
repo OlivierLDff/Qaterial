@@ -8,6 +8,7 @@
 // Qt Headers
 
 // Stl Headers
+#include <cmath>
 
 // ──── DECLARATION ────
 
@@ -92,6 +93,9 @@ void Layout::computeChildItemsSize()
     // Compute layout type based on width/height depending on flow
     evaluateType();
 
+    // Should be called after type evaluation, since it depends on it
+    computeColumnsFromType();
+
     // Resize every item, in 'layoutDirection' order
     doForeachItem(
         [this](QQuickItem* item)
@@ -170,7 +174,7 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
     if(!attached)
         return defaultPreferredFill();
 
-    switch(LayoutType(type()))
+    switch(LayoutBreakpoint(type()))
     {
     case ExtraLarge: return LayoutFill(attached->extraLarge());
     case Large: return LayoutFill(attached->large());
@@ -183,16 +187,36 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
 
 Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferredFill(type()); }
 
+qreal Layout::fillToRealBlockCount(LayoutFill fill) const { return qreal(columns()) / qreal(fill); }
+
 qreal Layout::getPreferredSize(QQuickItem* item) const
 {
-    const auto consumedSpace = getPreferredFill(item);
+    const auto consumedSpace = std::ceil(fillToRealBlockCount(getPreferredFill(item)));
     if(consumedSpace <= 0)
         return 0;
 
-    const auto allSpacingSize = qreal(GRID_SIZE() - 1) * spacing();
-    const auto oneBlockSize = std::floor(paddingLessSize() - allSpacingSize) / qreal(GRID_SIZE());
+    Q_ASSERT(columns() > 0);
+
+    const auto allSpacingSize = qreal(columns() - 1) * spacing();
+    const auto oneBlockSize = std::floor(paddingLessSize() - allSpacingSize) / qreal(columns());
     const auto blockSize = oneBlockSize * consumedSpace;
     const auto overlappedSpacingSize = (consumedSpace - 1) * spacing();
 
     return std::floor(blockSize + overlappedSpacingSize);
+}
+
+void Layout::computeColumnsFromType()
+{
+    if(_userSetColumns)
+        return;
+
+    switch(LayoutBreakpoint(type()))
+    {
+    case ExtraLarge:
+    case Large: setColumns(12); break;
+    case Medium: setColumns(8); break;
+    case Small:
+    case ExtraSmall: setColumns(4); break;
+    default: setColumns(12);
+    }
 }

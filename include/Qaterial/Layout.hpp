@@ -78,7 +78,7 @@ public:
 
     // ──── CONSTANTS ────
 public:
-    enum LayoutType
+    enum LayoutBreakpoint
     {
         ExtraLarge,
         Large,
@@ -86,43 +86,46 @@ public:
         Small,
         ExtraSmall,
     };
-    Q_ENUM(LayoutType);
-
-    static constexpr int GRID_SIZE() { return 12; }
+    Q_ENUM(LayoutBreakpoint);
 
     enum LayoutFill
     {
-        FillParent = 12,
+        FillParent = 1,
+        FillHalf = 2,
+        FillThird = 3,
+        FillQuarter = 4,
+        FillFifth = 5,
+        FillSixth = 6,
+        FillSeventh = 7,
+        FillEighth = 8,
         FillNinth = 9,
-        FillHalf = 6,
-        FillThird = 4,
-        FillQuarter = 3,
-        FillSixth = 2,
-        FillTwelfth = 1,
+        FillTenth = 10,
+        FillEleventh = 11,
+        FillTwelfth = 12,
     };
     Q_ENUM(LayoutFill);
 
 public:
-    static constexpr qreal EXTRA_SIZE() { return 1280.f; }
-    static constexpr qreal LARGE_SIZE() { return 960.f; }
-    static constexpr qreal MEDIUM_SIZE() { return 600.f; }
-    static constexpr qreal SMALL_SIZE() { return 360.f; }
+    static constexpr qreal EXTRA_BREAKPOINT() { return 1280.f; }
+    static constexpr qreal LARGE_BREAKPOINT() { return 960.f; }
+    static constexpr qreal MEDIUM_BREAKPOINT() { return 600.f; }
+    static constexpr qreal SMALL_BREAKPOINT() { return 360.f; }
 
     static constexpr int sizeToType(qreal size)
     {
-        if(size >= EXTRA_SIZE())
-            return LayoutType::ExtraLarge;
-        if(size >= LARGE_SIZE())
-            return LayoutType::Large;
-        if(size >= MEDIUM_SIZE())
-            return LayoutType::Medium;
-        if(size >= SMALL_SIZE())
-            return LayoutType::Small;
-        return LayoutType::ExtraSmall;
+        if(size >= EXTRA_BREAKPOINT())
+            return LayoutBreakpoint::ExtraLarge;
+        if(size >= LARGE_BREAKPOINT())
+            return LayoutBreakpoint::Large;
+        if(size >= MEDIUM_BREAKPOINT())
+            return LayoutBreakpoint::Medium;
+        if(size >= SMALL_BREAKPOINT())
+            return LayoutBreakpoint::Small;
+        return LayoutBreakpoint::ExtraSmall;
     }
     static constexpr LayoutFill defaultPreferredFill(int type)
     {
-        switch(LayoutType(type))
+        switch(LayoutBreakpoint(type))
         {
         case ExtraLarge: return FillTwelfth;
         case Large: return FillSixth;
@@ -161,13 +164,39 @@ private:
     QATERIAL_PROPERTY(int, flow, Flow);
 
     Q_PROPERTY(QQmlListReference items READ items WRITE setItems);
+    Q_PROPERTY(int columns READ columns WRITE setUserColumns RESET resetUserColumns NOTIFY columnsChanged)
 
 public:
     QQmlListReference items() const { return _itemListRef; }
     void setItems(QQmlListReference value);
 
+    int columns() const { return _columns; }
+    bool setColumns(int value)
+    {
+        if(value <= 0)
+            return false;
+
+        if(_columns == value)
+            return false;
+
+        _columns = value;
+        Q_EMIT columnsChanged();
+        return true;
+    }
+
+    void setUserColumns(int value)
+    {
+        if(setColumns(value))
+            _userSetColumns = true;
+    }
+
+    void resetUserColumns() { _userSetColumns = false;
+        computeColumnsFromType();
+    }
+
 Q_SIGNALS:
     void itemsChanged();
+    void columnsChanged();
 
 public:
     static LayoutAttached* qmlAttachedProperties(QObject* parent) { return new LayoutAttached(parent); }
@@ -175,9 +204,10 @@ public:
 private:
     QQmlListReference _itemListRef;
     std::vector<QQuickItem*> _items;
-    QQuickItem* _previousTarget = nullptr;
     bool _widthForcedOnce = false;
     bool _heightForcedOnce = false;
+    int _columns = 0;
+    bool _userSetColumns = false;
     bool _flowChanged = false;
 
     // ──── PUBLIC API ────
@@ -209,8 +239,11 @@ private:
     void doForeachItem(const std::function<void(QQuickItem*)>& callback);
     LayoutFill getPreferredFill(QQuickItem* item) const;
     LayoutFill defaultPreferredFill() const;
+    qreal fillToRealBlockCount(LayoutFill fill) const;
 
     qreal getPreferredSize(QQuickItem* item) const;
+
+    void computeColumnsFromType();
 };
 
 }
