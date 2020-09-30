@@ -10,10 +10,24 @@ Flow
   property alias layout: _layout
 
   spacing: 16
-  leftPadding: flow === Flow.LeftToRight ? 16 : 0
-  rightPadding: flow === Flow.LeftToRight ? 16 : 0
-  topPadding: flow === Flow.TopToBottom ? 16 : 0
-  bottomPadding: flow === Flow.TopToBottom ? 16 : 0
+
+  readonly property real preferredPadding:
+  {
+
+    switch(type)
+    {
+      case Qaterial.Layout.ExtraLarge: return 24
+      case Qaterial.Layout.Large: return 24
+      case Qaterial.Layout.Medium: return 16
+      case Qaterial.Layout.Small: return 16
+      case Qaterial.Layout.ExtraSmall: return 8
+    }
+  }
+
+  leftPadding: flow === Flow.LeftToRight ? preferredPadding : 0
+  rightPadding: flow === Flow.LeftToRight ? preferredPadding : 0
+  topPadding: flow === Flow.TopToBottom ? preferredPadding : 0
+  bottomPadding: flow === Flow.TopToBottom ? preferredPadding : 0
 
   Qaterial.Layout
   {
