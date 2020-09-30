@@ -87,6 +87,7 @@ FolderTreeView 1.0 FolderTreeView.qml
 FolderTreeViewItem 1.0 FolderTreeViewItem.qml
 Frame 1.0 Frame.qml
 GradientSlider 1.0 GradientSlider.qml
+Grid 1.0 Grid.qml
 GridLabelsX 1.0 GridLabelsX.qml
 GridLabelsY 1.0 GridLabelsY.qml
 GroupBox 1.0 GroupBox.qml
