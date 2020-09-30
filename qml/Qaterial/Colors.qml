@@ -9,8 +9,30 @@ import QtQuick 2.0
 
 QtObject
 {
+  id: root
+
   readonly property string black: "#000000"
   readonly property string white: "#FFFFFF"
+
+  property alias amber: root.amber500
+  property alias brown: root.brown500
+  property alias blue: root.blue500
+  property alias blueGray: root.blueGray500
+  property alias lightBlue: root.lightBlue500
+  property alias cyan: root.cyan500
+  property alias deepOrange: root.deepOrange500
+  property alias gray: root.gray500
+  property alias green: root.green500
+  property alias indigo: root.indigo500
+  property alias lightGreen: root.lightGreen500
+  property alias lime: root.lime500
+  property alias orange: root.orange500
+  property alias pink: root.pink500
+  property alias purple: root.purple500
+  property alias deepPurple: root.deepPurple500
+  property alias red: root.red500
+  property alias teal: root.teal500
+  property alias yellow: root.yellow500
 
   readonly property string amber50: "#FFF8E1"
   readonly property string amber100: "#FFECB3"
