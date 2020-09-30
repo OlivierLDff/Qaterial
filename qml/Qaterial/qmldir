@@ -86,6 +86,7 @@ FabIconLabel 1.0 FabIconLabel.qml
 FixedTabBar 1.0 FixedTabBar.qml
 FlatButton 1.0 FlatButton.qml
 FlatFabButton 1.0 FlatFabButton.qml
+FluidGrid 1.0 FluidGrid.qml
 FolderTreeView 1.0 FolderTreeView.qml
 FolderTreeViewItem 1.0 FolderTreeViewItem.qml
 Frame 1.0 Frame.qml
