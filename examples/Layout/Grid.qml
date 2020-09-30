@@ -15,19 +15,6 @@ Column
     color: Qaterial.Colors.pink
   }
 
-  function widthToLayout(width)
-  {
-    if(width < 360)
-      return "Extra Small"
-    if(width < 600)
-      return "Small"
-    if(width < 840)
-      return "Medium"
-    if(width < 1280)
-      return "Large"
-    return "Extra Large"
-  }
-
   function layoutTypeToString(type)
   {
     switch(type)
@@ -142,9 +129,14 @@ Column
     {
       id: grid
 
+      // Columns can be override by user
+      // Otherwise it is breakpoint dependant
       //columns: 2
 
       width: parent.width
+
+      leftPadding: 16
+      rightPadding: 16
       topPadding: 8
       bottomPadding: 8
 
