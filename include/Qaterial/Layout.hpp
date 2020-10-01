@@ -106,14 +106,14 @@ public:
     Q_ENUM(LayoutFill);
 
 public:
-    static constexpr qreal EXTRA_BREAKPOINT() { return 1280.f; }
+    static constexpr qreal EXTRA_LARGE_BREAKPOINT() { return 1280.f; }
     static constexpr qreal LARGE_BREAKPOINT() { return 960.f; }
     static constexpr qreal MEDIUM_BREAKPOINT() { return 600.f; }
     static constexpr qreal SMALL_BREAKPOINT() { return 360.f; }
 
     static constexpr int sizeToType(qreal size)
     {
-        if(size >= EXTRA_BREAKPOINT())
+        if(size >= EXTRA_LARGE_BREAKPOINT())
             return LayoutBreakpoint::ExtraLarge;
         if(size >= LARGE_BREAKPOINT())
             return LayoutBreakpoint::Large;
@@ -166,6 +166,11 @@ private:
     Q_PROPERTY(QQmlListReference items READ items WRITE setItems);
     Q_PROPERTY(int columns READ columns WRITE setUserColumns RESET resetUserColumns NOTIFY columnsChanged)
 
+    Q_PROPERTY(qreal smallBreakpoint READ smallBreakpoint CONSTANT)
+    Q_PROPERTY(qreal mediumBreakpoint READ mediumBreakpoint CONSTANT)
+    Q_PROPERTY(qreal largeBreakpoint READ largeBreakpoint CONSTANT)
+    Q_PROPERTY(qreal extraLargeBreakpoint READ extraLargeBreakpoint CONSTANT)
+
 public:
     QQmlListReference items() const { return _itemListRef; }
     void setItems(QQmlListReference value);
@@ -174,6 +179,11 @@ public:
     bool setColumns(int value);
     void setUserColumns(int value);
     void resetUserColumns();
+
+    static qreal smallBreakpoint() { return SMALL_BREAKPOINT(); }
+    static qreal mediumBreakpoint() { return MEDIUM_BREAKPOINT(); }
+    static qreal largeBreakpoint() { return LARGE_BREAKPOINT(); }
+    static qreal extraLargeBreakpoint() { return EXTRA_LARGE_BREAKPOINT(); }
 
 Q_SIGNALS:
     void itemsChanged();
