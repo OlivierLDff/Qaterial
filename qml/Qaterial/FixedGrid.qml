@@ -17,19 +17,7 @@ Qaterial.Grid
     }
   }
 
-  readonly property real idealSizePaddingLess: idealSize - preferredPadding*2
-
-  readonly property real preferredPadding:
-  {
-    switch(type)
-    {
-      case Qaterial.Layout.ExtraLarge: return 24
-      case Qaterial.Layout.Large: return 24
-      case Qaterial.Layout.Medium: return 16
-      case Qaterial.Layout.Small: return 16
-      case Qaterial.Layout.ExtraSmall: return 8
-    }
-  }
+  readonly property real idealSizePaddingLess: idealSize - padding*2
 
   readonly property real fixedPadding: Math.floor(((flow === Flow.LeftToRight ? width : height) - idealSizePaddingLess)/2)
 
