@@ -21,7 +21,6 @@ Qaterial.Grid
 
   readonly property real preferredPadding:
   {
-
     switch(type)
     {
       case Qaterial.Layout.ExtraLarge: return 24
