@@ -13,7 +13,25 @@ Flow
   property alias extraLargeBreakpoint: _layout.extraLargeBreakpoint
   property alias layout: _layout
 
+  property alias gutter: root.spacing
+  property alias leftMargin: root.leftPadding
+  property alias rightMargin: root.rightPadding
+  property alias topMargin: root.topPadding
+  property alias bottomMargin: root.bottomPadding
+
   spacing: 16
+
+  padding:
+  {
+    switch(type)
+    {
+      case Qaterial.Layout.ExtraLarge: return 24
+      case Qaterial.Layout.Large: return 24
+      case Qaterial.Layout.Medium: return 16
+      case Qaterial.Layout.Small: return 16
+      case Qaterial.Layout.ExtraSmall: return 8
+    }
+  }
 
   Qaterial.Layout
   {
