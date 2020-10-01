@@ -83,6 +83,7 @@ Expandable 1.0 Expandable.qml
 ExtendedFabButton 1.0 ExtendedFabButton.qml
 FabButton 1.0 FabButton.qml
 FabIconLabel 1.0 FabIconLabel.qml
+FixedGrid 1.0 FixedGrid.qml
 FixedTabBar 1.0 FixedTabBar.qml
 FlatButton 1.0 FlatButton.qml
 FlatFabButton 1.0 FlatFabButton.qml

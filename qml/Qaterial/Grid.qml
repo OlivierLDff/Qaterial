@@ -7,6 +7,10 @@ Flow
 
   property alias type: _layout.type
   property alias columns: _layout.columns
+  property alias smallBreakpoint: _layout.smallBreakpoint
+  property alias mediumBreakpoint: _layout.mediumBreakpoint
+  property alias largeBreakpoint: _layout.largeBreakpoint
+  property alias extraLargeBreakpoint: _layout.extraLargeBreakpoint
   property alias layout: _layout
 
   spacing: 16
