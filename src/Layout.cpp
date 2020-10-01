@@ -73,10 +73,10 @@ void Layout::setItems(QQmlListReference value)
 
 bool Layout::setColumns(int value)
 {
-    if (value <= 0)
+    if(value <= 0)
         return false;
 
-    if (_columns == value)
+    if(_columns == value)
         return false;
 
     _columns = value;
@@ -86,7 +86,7 @@ bool Layout::setColumns(int value)
 
 void Layout::setUserColumns(int value)
 {
-    if (setColumns(value))
+    if(setColumns(value))
         _userSetColumns = true;
 }
 
@@ -212,7 +212,7 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
 
 Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferredFill(type()); }
 
-int Layout::fillToRealBlockCount(LayoutFill fill) const {return std::ceil(qreal(columns()) / qreal(fill)); }
+int Layout::fillToRealBlockCount(LayoutFill fill) const { return std::ceil(qreal(columns()) / qreal(fill)); }
 
 qreal Layout::getPreferredSize(QQuickItem* item) const
 {
