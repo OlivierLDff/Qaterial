@@ -33,6 +33,8 @@ Flow
     }
   }
 
+  function forceUpdate() { _layout.forceUpdate() }
+
   Qaterial.Layout
   {
     id: _layout
