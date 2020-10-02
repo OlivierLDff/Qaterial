@@ -37,13 +37,7 @@ For each element in the `Grid`, the occupied space taken by the item must be spe
 * `Qaterial.Layout.FillHalf`
 * `Qaterial.Layout.FillThird`
 * `Qaterial.Layout.FillQuarter`
-* `Qaterial.Layout.FillFifth`
 * `Qaterial.Layout.FillSixth`
-* `Qaterial.Layout.FillSeventh`
-* `Qaterial.Layout.FillEighth`
-* `Qaterial.Layout.FillNinth`
-* `Qaterial.Layout.FillTenth`
-* `Qaterial.Layout.FillEleventh`
 * `Qaterial.Layout.FillTwelfth`
 
 ## Grid Behavior

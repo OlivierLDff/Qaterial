@@ -90,18 +90,12 @@ public:
 
     enum LayoutFill
     {
-        FillParent = 1,
-        FillHalf = 2,
-        FillThird = 3,
-        FillQuarter = 4,
-        FillFifth = 5,
-        FillSixth = 6,
-        FillSeventh = 7,
-        FillEighth = 8,
-        FillNinth = 9,
-        FillTenth = 10,
-        FillEleventh = 11,
-        FillTwelfth = 12,
+        FillParent = 12,
+        FillHalf = 6,
+        FillThird = 4,
+        FillQuarter = 3,
+        FillSixth = 2,
+        FillTwelfth = 1,
     };
     Q_ENUM(LayoutFill);
 

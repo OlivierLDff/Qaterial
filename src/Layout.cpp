@@ -212,7 +212,11 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
 
 Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferredFill(type()); }
 
-int Layout::fillToRealBlockCount(LayoutFill fill) const { return std::ceil(qreal(columns()) / qreal(fill)); }
+int Layout::fillToRealBlockCount(LayoutFill fill) const
+{
+    const auto ratio = qreal(fill)/12.f;
+    return std::ceil(qreal(columns())*ratio);
+}
 
 qreal Layout::getPreferredSize(QQuickItem* item) const
 {
