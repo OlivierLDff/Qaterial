@@ -76,7 +76,8 @@ Column
 
   Item
   {
-    width: parent.width
+    anchors.horizontalCenter: parent.horizontalCenter
+    width: parent.width - parent.width%2
     implicitHeight: page.height
 
     Qaterial.Page
@@ -166,7 +167,10 @@ Column
     {
       id: debugOverlay
 
-      anchors.fill: parent
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      width: parent.width - parent.width%2
 
       leftPadding: grid.leftPadding
       rightPadding: grid.rightPadding
@@ -184,7 +188,8 @@ Column
 
   Item
   {
-    width: parent.width
+    anchors.horizontalCenter: parent.horizontalCenter
+    width: parent.width - parent.width%2
     height: 24
 
     Repeater
