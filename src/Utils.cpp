@@ -122,7 +122,7 @@ static void Qaterial_loadResources(bool autoRegisterStyle = true)
     Q_INIT_RESOURCE(Qaterial);
     Q_INIT_RESOURCE(QaterialFonts);
     Q_INIT_RESOURCE(QaterialIcons);
-    Q_INIT_RESOURCE(QaterialIconsAliases);
+    Q_INIT_RESOURCE(QaterialIconsImpl);
 
     const auto loadFont = [](const QString& fontFolderPath)
     {

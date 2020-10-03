@@ -10,4 +10,5 @@ FetchContent_Declare(
   GIT_SHALLOW    1
 )
 
+set(QOLM_FOLDER_PREFIX "Dependencies" CACHE STRING "Prefix folder for all QOlm generated targets in generated project (only decorative)")
 FetchContent_MakeAvailable(QOlm)
