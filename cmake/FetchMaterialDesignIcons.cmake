@@ -1,6 +1,6 @@
 include(FetchContent)
 
-set(MATERIALDESIGNICONS_REPOSITORY "https://github.com/Templarian/MaterialDesign.git" CACHE STRING "MaterialDesignIcons repository url")
+set(MATERIALDESIGNICONS_REPOSITORY "https://github.com/OlivierLDff/MaterialDesignSvgo" CACHE STRING "MaterialDesignIcons repository url")
 set(MATERIALDESIGNICONS_TAG master CACHE STRING "MaterialDesignIcons git tag")
 
 FetchContent_Declare(
@@ -10,6 +10,7 @@ FetchContent_Declare(
   GIT_SHALLOW    1
 )
 
+message(STATUS "Download MaterialDesignIcons from ${MATERIALDESIGNICONS_REPOSITORY}")
 FetchContent_MakeAvailable(MaterialDesignIcons)
 
 set(MATERIALDESIGNICONS_ICONS_DIR "${materialdesignicons_SOURCE_DIR}/svg")

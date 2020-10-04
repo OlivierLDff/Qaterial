@@ -60,6 +60,9 @@ CursorDelegate 1.0 CursorDelegate.qml
 singleton DataFormat 1.0 DataFormat.qml
 singleton DateFormat 1.0 DateFormat.qml
 DatePickerDialog 1.0 DatePickerDialog.qml
+DebugGridOverlay 1.0 DebugGridOverlay.qml
+DebugGridOverlayHorizontal 1.0 DebugGridOverlayHorizontal.qml
+DebugGridOverlayVertical 1.0 DebugGridOverlayVertical.qml
 DebugObject 1.0 DebugObject.qml
 DebugRectangle 1.0 DebugRectangle.qml
 Dialog 1.0 Dialog.qml
@@ -80,13 +83,16 @@ Expandable 1.0 Expandable.qml
 ExtendedFabButton 1.0 ExtendedFabButton.qml
 FabButton 1.0 FabButton.qml
 FabIconLabel 1.0 FabIconLabel.qml
+FixedGrid 1.0 FixedGrid.qml
 FixedTabBar 1.0 FixedTabBar.qml
 FlatButton 1.0 FlatButton.qml
 FlatFabButton 1.0 FlatFabButton.qml
+FluidGrid 1.0 FluidGrid.qml
 FolderTreeView 1.0 FolderTreeView.qml
 FolderTreeViewItem 1.0 FolderTreeViewItem.qml
 Frame 1.0 Frame.qml
 GradientSlider 1.0 GradientSlider.qml
+Grid 1.0 Grid.qml
 GridLabelsX 1.0 GridLabelsX.qml
 GridLabelsY 1.0 GridLabelsY.qml
 GroupBox 1.0 GroupBox.qml

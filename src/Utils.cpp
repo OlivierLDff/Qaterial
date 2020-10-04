@@ -11,6 +11,7 @@
 #include <Qaterial/TextFile.hpp>
 #include <Qaterial/Clipboard.hpp>
 #include <Qaterial/FolderTreeModel.hpp>
+#include <Qaterial/Layout.hpp>
 
 // Qt Core
 #include <QDir>
@@ -100,6 +101,9 @@ static void Qaterial_registerTypes()
     qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.FolderTreeModel {}.{} to QML", *_uri, _major, _minor);
     qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
+
+    qmlRegisterAnonymousType<qaterial::LayoutAttached>(*_uri, _major);
+    qaterial::Layout::registerToQml();
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
@@ -118,7 +122,7 @@ static void Qaterial_loadResources(bool autoRegisterStyle = true)
     Q_INIT_RESOURCE(Qaterial);
     Q_INIT_RESOURCE(QaterialFonts);
     Q_INIT_RESOURCE(QaterialIcons);
-    Q_INIT_RESOURCE(QaterialIconsAliases);
+    Q_INIT_RESOURCE(QaterialIconsImpl);
 
     const auto loadFont = [](const QString& fontFolderPath)
     {

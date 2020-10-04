@@ -9,8 +9,30 @@ import QtQuick 2.0
 
 QtObject
 {
+  id: root
+
   readonly property string black: "#000000"
   readonly property string white: "#FFFFFF"
+
+  property alias amber: root.amber500
+  property alias brown: root.brown500
+  property alias blue: root.blue500
+  property alias blueGray: root.blueGray500
+  property alias lightBlue: root.lightBlue500
+  property alias cyan: root.cyan500
+  property alias deepOrange: root.deepOrange500
+  property alias gray: root.gray500
+  property alias green: root.green500
+  property alias indigo: root.indigo500
+  property alias lightGreen: root.lightGreen500
+  property alias lime: root.lime500
+  property alias orange: root.orange500
+  property alias pink: root.pink500
+  property alias purple: root.purple500
+  property alias deepPurple: root.deepPurple500
+  property alias red: root.red500
+  property alias teal: root.teal500
+  property alias yellow: root.yellow500
 
   readonly property string amber50: "#FFF8E1"
   readonly property string amber100: "#FFECB3"
@@ -225,20 +247,20 @@ QtObject
   readonly property string purpleA400: "#D500F9"
   readonly property string purpleA700: "#AA00FF"
 
-  readonly property string deeppurple50: "#EDE7F6"
-  readonly property string deeppurple100: "#D1C4E9"
-  readonly property string deeppurple200: "#B39DDB"
-  readonly property string deeppurple300: "#9575CD"
-  readonly property string deeppurple400: "#7E57C2"
-  readonly property string deeppurple500: "#673AB7"
-  readonly property string deeppurple600: "#5E35B1"
-  readonly property string deeppurple700: "#512DA8"
-  readonly property string deeppurple800: "#4527A"
-  readonly property string deeppurple900: "#311B92"
-  readonly property string deeppurpleA100: "#B388FF"
-  readonly property string deeppurpleA200: "#7C4DFF"
-  readonly property string deeppurpleA400: "#651FFF"
-  readonly property string deeppurpleA700: "#6200EA"
+  readonly property string deepPurple50: "#EDE7F6"
+  readonly property string deepPurple100: "#D1C4E9"
+  readonly property string deepPurple200: "#B39DDB"
+  readonly property string deepPurple300: "#9575CD"
+  readonly property string deepPurple400: "#7E57C2"
+  readonly property string deepPurple500: "#673AB7"
+  readonly property string deepPurple600: "#5E35B1"
+  readonly property string deepPurple700: "#512DA8"
+  readonly property string deepPurple800: "#4527A"
+  readonly property string deepPurple900: "#311B92"
+  readonly property string deepPurpleA100: "#B388FF"
+  readonly property string deepPurpleA200: "#7C4DFF"
+  readonly property string deepPurpleA400: "#651FFF"
+  readonly property string deepPurpleA700: "#6200EA"
 
   readonly property string red50: "#FFEBEE"
   readonly property string red100: "#FFCDD2"

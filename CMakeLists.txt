@@ -6,30 +6,18 @@ cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
 # ───── PROJECT OPTIONS ─────
 
-set(QATERIAL_VERSION_MAJOR 1)
-set(QATERIAL_VERSION_MINOR 2)
-set(QATERIAL_VERSION_PATCH 1)
-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/.git")
-  execute_process(
-    COMMAND git rev-parse --short HEAD
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    OUTPUT_VARIABLE QATERIAL_VERSION_TAG
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-)
-endif()
-if(NOT QATERIAL_VERSION_TAG)
-  set(QATERIAL_VERSION_TAG 00000000)
-endif()
-set(QATERIAL_VERSION_TAG_HEX 0x${QATERIAL_VERSION_TAG})
-set(QATERIAL_VERSION ${QATERIAL_VERSION_MAJOR}.${QATERIAL_VERSION_MINOR}.${QATERIAL_VERSION_PATCH} CACHE STRING "Version of Qaterial")
+include(cmake/Version.cmake)
 
-# Options
 set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_HOTRELOAD OFF CACHE BOOL "Build Qaterial HotReload executable")
-set(QATERIAL_ENABLE_HOTRELOAD_LIB ${QATERIAL_ENABLE_HOTRELOAD} CACHE BOOL "Build Qaterial HotReload executable")
+if(QATERIAL_ENABLE_HOTRELOAD)
+  set(QATERIAL_ENABLE_HOTRELOAD_LIB ${QATERIAL_ENABLE_HOTRELOAD} CACHE BOOL "Build Qaterial HotReload executable" FORCE)
+else()
+  set(QATERIAL_ENABLE_HOTRELOAD_LIB ${QATERIAL_ENABLE_HOTRELOAD} CACHE BOOL "Build Qaterial HotReload executable")
+endif()
 set(QATERIAL_ENABLE_HELLOWORLD OFF CACHE BOOL "Build Qaterial HelloWorld executable")
 set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
@@ -37,22 +25,29 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
 
+set(QATERIAL_ENABLE_ICONS ON CACHE BOOL "Embed Mdi Icons in Qaterial.Icons (MATERIALDESIGNICONS_REPOSITORY)")
 set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 message(STATUS "------ ${QATERIAL_TARGET} Configuration ------")
+
 message(STATUS "QATERIAL_PROJECT                : ${QATERIAL_PROJECT}")
 message(STATUS "QATERIAL_TARGET                 : ${QATERIAL_TARGET}")
 message(STATUS "QATERIAL_VERSION                : ${QATERIAL_VERSION}")
 message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
+
+message(STATUS "QATERIAL_ENABLE_ICONS           : ${QATERIAL_ENABLE_ICONS}")
+message(STATUS "QATERIAL_ICONS                  : ${QATERIAL_ICONS}")
+
 message(STATUS "QATERIAL_ENABLE_HOTRELOAD       : ${QATERIAL_ENABLE_HOTRELOAD}")
 message(STATUS "QATERIAL_ENABLE_HOTRELOAD_LIB   : ${QATERIAL_ENABLE_HOTRELOAD_LIB}")
 message(STATUS "QATERIAL_ENABLE_HELLOWORLD      : ${QATERIAL_ENABLE_HELLOWORLD}")
 message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
+
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
 # ───── QT DEPENDENCIES ─────
@@ -71,8 +66,14 @@ find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
 # ───── FETCH DEPEDENCIES ─────
 
+include(cmake/Dependencies.cmake)
 include(cmake/FetchSpdlog.cmake)
 include(cmake/FetchQOlm.cmake)
+include(cmake/FetchQtGeneratorCMake.cmake)
+
+# ───── RESSOURCES ─────
+
+add_subdirectory(res)
 
 # ───── QML SOURCES ─────
 
@@ -84,32 +85,6 @@ foreach(SOURCE IN ITEMS ${QATERIAL_QML_SRCS})
   string(REPLACE "/" "\\" GROUP_PATH "${SOURCE_PATH_REL}")
   source_group("Qml\\${GROUP_PATH}" FILES "${SOURCE}")
 endforeach()
-
-include(cmake/FetchQtGeneratorCMake.cmake)
-include(cmake/FetchMaterialDesignIcons.cmake)
-
-qt_generate_qrc(QATERIAL_QML_ICONS_QRC
-  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
-  NAME QaterialIcons.qrc
-  PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION ${QATERIAL_ICONS})
-
-qt_generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
-  SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
-  NAME "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/Icons.qml"
-  PREFIX "Qaterial/Icons"
-  GLOB_EXPRESSION ${QATERIAL_ICONS})
-
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated/qmldir
-  "module Qaterial.Impl.Icons\n"
-  "Icons 1.0 Icons.qml\n"
-)
-
-qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
-  SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/QaterialImplIconsGenerated"
-  NAME QaterialIconsAliases.qrc
-  PREFIX "Qaterial/Impl/Icons"
-  GLOB_EXPRESSION "*.qml;qmldir;")
 
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
@@ -132,13 +107,18 @@ qt_generate_qrc(QATERIAL_FONTS_QML_QRC
   RECURSE)
 
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_FONTS_QML_QRC} ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_QML_ICONS_ALIAS_QRC})
+qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_FONTS_QML_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
   set_property(SOURCE ${QATERIAL_CURRENT_QML_FILE} PROPERTY SKIP_AUTOMOC ON)
   source_group("Qml\\QtQuickCompiler Files" FILES ${QATERIAL_CURRENT_QML_FILE})
 endforeach()
+
+set(QATERIAL_LAYOUT_SRCS
+  include/Qaterial/Layout.hpp
+  src/Layout.cpp
+)
 
 set(QATERIAL_IO_SRCS
   include/Qaterial/TextFile.hpp
@@ -169,6 +149,7 @@ set(QATERIAL_UTILS_SRCS
 )
 
 set(QATERIAL_SRCS
+  ${QATERIAL_LAYOUT_SRCS}
   ${QATERIAL_IO_SRCS}
   ${QATERIAL_NAVIGATION_SRCS}
   ${QATERIAL_UTILS_SRCS}
@@ -176,6 +157,7 @@ set(QATERIAL_SRCS
   ${QATERIAL_QML_SRCS}
 )
 
+source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
 source_group("IO" FILES ${QATERIAL_IO_SRCS})
 source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
 source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
@@ -195,6 +177,11 @@ target_include_directories(${QATERIAL_TARGET} PUBLIC include)
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE include/Qaterial/Pch/Pch.hpp)
 endif()
+
+target_link_libraries(${QATERIAL_TARGET} PRIVATE
+  ${QATERIAL_TARGET}Icons
+)
+
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
   spdlog
   QOlm
@@ -206,6 +193,7 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
   Qt5::Quick
   Qt5::QuickControls2
 )
+
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
 
@@ -244,9 +232,7 @@ endif()
 
 # ───── QATERIAL TOOLS ─────
 
-if(QATERIAL_ENABLE_HOTRELOAD OR QATERIAL_ENABLE_HOTRELOAD_LIB OR QATERIAL_ENABLE_HELLOWORLD)
-  add_subdirectory(tools)
-endif()
+add_subdirectory(tools)
 
 # ───── QATERIAL TESTS ─────
 
