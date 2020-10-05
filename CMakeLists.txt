@@ -28,6 +28,10 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
 set(QATERIAL_ENABLE_ICONS ON CACHE BOOL "Embed Mdi Icons in Qaterial.Icons (MATERIALDESIGNICONS_REPOSITORY)")
 set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
 
+set(QATERIAL_ENABLE_ROBOTO ON CACHE BOOL "Embed to qrc Roboto Regular & Medium")
+set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
+set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
+
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -42,6 +46,10 @@ message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
 
 message(STATUS "QATERIAL_ENABLE_ICONS           : ${QATERIAL_ENABLE_ICONS}")
 message(STATUS "QATERIAL_ICONS                  : ${QATERIAL_ICONS}")
+
+message(STATUS "QATERIAL_ENABLE_ROBOTO          : ${QATERIAL_ENABLE_ROBOTO}")
+message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}")
+message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
 
 message(STATUS "QATERIAL_ENABLE_HOTRELOAD       : ${QATERIAL_ENABLE_HOTRELOAD}")
 message(STATUS "QATERIAL_ENABLE_HOTRELOAD_LIB   : ${QATERIAL_ENABLE_HOTRELOAD_LIB}")
@@ -98,16 +106,8 @@ qt_generate_qrc(QATERIAL_QML_QRC
   GLOB_EXPRESSION "*.qml;qmldir"
   RECURSE)
 
-qt_generate_qrc(QATERIAL_FONTS_QML_QRC
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
-  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/QaterialGenerated
-  NAME QaterialFonts.qrc
-  PREFIX "Qaterial"
-  GLOB_EXPRESSION "*.ttf"
-  RECURSE)
-
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_FONTS_QML_QRC})
+qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
@@ -180,6 +180,7 @@ endif()
 
 target_link_libraries(${QATERIAL_TARGET} PRIVATE
   ${QATERIAL_TARGET}Icons
+  ${QATERIAL_TARGET}Fonts
 )
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
