@@ -3,7 +3,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.MaterialColorPalette
 {
-  cellWidth: 72
+  cellWidth: 48
   cellHeight: 48
 
   function camelize(str)
