@@ -2,6 +2,7 @@
 
 module Qaterial
 
+AMaterialColorPaletteGrid 1.0 AMaterialColorPaletteGrid.qml
 AlertDialog 1.0 AlertDialog.qml
 AlertIconDialog 1.0 AlertIconDialog.qml
 AmCircularHour 1.0 AmCircularHour.qml
@@ -10,6 +11,7 @@ AppBarButton 1.0 AppBarButton.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
 Arrow 1.0 Arrow.qml
 Banner 1.0 Banner.qml
+BaseMaterialColorPaletteGrid 1.0 BaseMaterialColorPaletteGrid.qml
 BusyIndicator 1.0 BusyIndicator.qml
 BusyIndicatorDialog 1.0 BusyIndicatorDialog.qml
 Button 1.0 Button.qml
@@ -117,6 +119,7 @@ ListDelegateBackground 1.0 ListDelegateBackground.qml
 ListDelegateContent 1.0 ListDelegateContent.qml
 ListDelegateText 1.0 ListDelegateText.qml
 ListSectionTitle 1.0 ListSectionTitle.qml
+MaterialColorPalette 1.0 MaterialColorPalette.qml
 Menu 1.0 Menu.qml
 MenuBar 1.0 MenuBar.qml
 MenuBarItem 1.0 MenuBarItem.qml
