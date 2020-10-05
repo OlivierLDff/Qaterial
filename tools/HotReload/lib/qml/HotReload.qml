@@ -443,6 +443,29 @@ Qaterial.Page
         ToolTip.text: "Icons Explorer"
       }
 
+      Qaterial.SquareButton
+      {
+        contentItem: Item
+        {
+          Image
+          {
+            anchors.centerIn: parent
+            source: 'qrc:Qaterial/HotReload/material-palette.png'
+          }
+        }
+
+        onClicked: () => _paletteMenu.open()
+
+        MaterialPaletteMenu
+        {
+          id: _paletteMenu
+          y: parent.height
+        }
+
+        ToolTip.visible: hovered || pressed
+        ToolTip.text: "Material Color Palette"
+      }
+
     } // Flow
 
     Qaterial.AppBarButton
