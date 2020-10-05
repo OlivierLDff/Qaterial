@@ -114,6 +114,8 @@ singleton Icons 1.0 Icons.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Label 1.0 Label.qml
 LargeSlider 1.0 LargeSlider.qml
+LatoTabBar 1.0 LatoTabBar.qml
+LatoTabButton 1.0 LatoTabButton.qml
 LineChart 1.0 LineChart.qml
 ListDelegateBackground 1.0 ListDelegateBackground.qml
 ListDelegateContent 1.0 ListDelegateContent.qml
@@ -163,6 +165,7 @@ ScrollView 1.0 ScrollView.qml
 ScrollablePage 1.0 ScrollablePage.qml
 ScrollableTabBar 1.0 ScrollableTabBar.qml
 ScrollableTextArea 1.0 ScrollableTextArea.qml
+SideSelectIndicator 1.0 SideSelectIndicator.qml
 Slider 1.0 Slider.qml
 SliderDelegate 1.0 SliderDelegate.qml
 SliderHandle 1.0 SliderHandle.qml
