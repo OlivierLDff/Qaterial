@@ -50,6 +50,8 @@ ColorHueSlider 1.0 ColorHueSlider.qml
 ColorIcon 1.0 ColorIcon.qml
 ColorMagentaSlider 1.0 ColorMagentaSlider.qml
 ColorMiniButton 1.0 ColorMiniButton.qml
+ColorPaletteButton 1.0 ColorPaletteButton.qml
+ColorPaletteGrid 1.0 ColorPaletteGrid.qml
 ColorRedSlider 1.0 ColorRedSlider.qml
 ColorSaturationSlider 1.0 ColorSaturationSlider.qml
 ColorValueSlider 1.0 ColorValueSlider.qml
