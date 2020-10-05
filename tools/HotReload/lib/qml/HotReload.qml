@@ -178,7 +178,11 @@ Qaterial.Page
         icon.source: Qaterial.Icons.fileTree
         useSecondaryColor: true
 
-        onClicked: () => _importPathMenu.open()
+        onClicked: function()
+        {
+          if(!_importPathMenu.visible)
+            _importPathMenu.open()
+        }
 
         ImportPathMenu
         {
@@ -406,7 +410,11 @@ Qaterial.Page
       {
         icon.source: Qaterial.Icons.formatLetterCase
 
-        onClicked: () => _typoMenu.open()
+        onClicked: function()
+        {
+          if(!_typoMenu.visible)
+            _typoMenu.open()
+        }
 
         TypoMenu
         {
@@ -431,7 +439,11 @@ Qaterial.Page
           }
         }
 
-        onClicked: () => _iconsMenu.open()
+        onClicked: function()
+        {
+          if(!_iconsMenu.visible)
+            _iconsMenu.open()
+        }
 
         IconsMenu
         {
@@ -454,7 +466,11 @@ Qaterial.Page
           }
         }
 
-        onClicked: () => _paletteMenu.open()
+        onClicked: function()
+        {
+          if(!_paletteMenu.visible)
+            _paletteMenu.open()
+        }
 
         MaterialPaletteMenu
         {
@@ -474,7 +490,11 @@ Qaterial.Page
       x: parent.width - width
       icon.source: Qaterial.Icons.dotsVertical
 
-      onClicked: () => menu.open()
+      onClicked: function()
+      {
+        if(!menu.visible)
+          menu.open()
+      }
 
       Qaterial.Menu
       {
