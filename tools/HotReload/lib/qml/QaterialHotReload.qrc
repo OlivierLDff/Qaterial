@@ -6,11 +6,13 @@
         <file>ImportPathMenu.qml</file>
         <file>StatusView.qml</file>
         <file>IconsMenu.qml</file>
+        <file>MaterialPaletteMenu.qml</file>
         <file>TypoMenu.qml</file>
         <file>Imports.qml</file>
         <file>SplashScreenWindow.qml</file>
         <file>HotReloadWindow.qml</file>
         <file>material-icons-light.svg</file>
+        <file>material-palette.png</file>
         <file>code.svg</file>
 
     </qresource>

@@ -178,7 +178,11 @@ Qaterial.Page
         icon.source: Qaterial.Icons.fileTree
         useSecondaryColor: true
 
-        onClicked: () => _importPathMenu.open()
+        onClicked: function()
+        {
+          if(!_importPathMenu.visible)
+            _importPathMenu.open()
+        }
 
         ImportPathMenu
         {
@@ -406,7 +410,11 @@ Qaterial.Page
       {
         icon.source: Qaterial.Icons.formatLetterCase
 
-        onClicked: () => _typoMenu.open()
+        onClicked: function()
+        {
+          if(!_typoMenu.visible)
+            _typoMenu.open()
+        }
 
         TypoMenu
         {
@@ -431,7 +439,11 @@ Qaterial.Page
           }
         }
 
-        onClicked: () => _iconsMenu.open()
+        onClicked: function()
+        {
+          if(!_iconsMenu.visible)
+            _iconsMenu.open()
+        }
 
         IconsMenu
         {
@@ -443,6 +455,33 @@ Qaterial.Page
         ToolTip.text: "Icons Explorer"
       }
 
+      Qaterial.SquareButton
+      {
+        contentItem: Item
+        {
+          Image
+          {
+            anchors.centerIn: parent
+            source: 'qrc:Qaterial/HotReload/material-palette.png'
+          }
+        }
+
+        onClicked: function()
+        {
+          if(!_paletteMenu.visible)
+            _paletteMenu.open()
+        }
+
+        MaterialPaletteMenu
+        {
+          id: _paletteMenu
+          y: parent.height
+        }
+
+        ToolTip.visible: hovered || pressed
+        ToolTip.text: "Material Color Palette"
+      }
+
     } // Flow
 
     Qaterial.AppBarButton
@@ -451,7 +490,11 @@ Qaterial.Page
       x: parent.width - width
       icon.source: Qaterial.Icons.dotsVertical
 
-      onClicked: () => menu.open()
+      onClicked: function()
+      {
+        if(!menu.visible)
+          menu.open()
+      }
 
       Qaterial.Menu
       {

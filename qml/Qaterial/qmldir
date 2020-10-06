@@ -2,6 +2,7 @@
 
 module Qaterial
 
+AMaterialColorPaletteGrid 1.0 AMaterialColorPaletteGrid.qml
 AlertDialog 1.0 AlertDialog.qml
 AlertIconDialog 1.0 AlertIconDialog.qml
 AmCircularHour 1.0 AmCircularHour.qml
@@ -10,6 +11,7 @@ AppBarButton 1.0 AppBarButton.qml
 ApplicationWindow 1.0 ApplicationWindow.qml
 Arrow 1.0 Arrow.qml
 Banner 1.0 Banner.qml
+BaseMaterialColorPaletteGrid 1.0 BaseMaterialColorPaletteGrid.qml
 BusyIndicator 1.0 BusyIndicator.qml
 BusyIndicatorDialog 1.0 BusyIndicatorDialog.qml
 Button 1.0 Button.qml
@@ -50,6 +52,8 @@ ColorHueSlider 1.0 ColorHueSlider.qml
 ColorIcon 1.0 ColorIcon.qml
 ColorMagentaSlider 1.0 ColorMagentaSlider.qml
 ColorMiniButton 1.0 ColorMiniButton.qml
+ColorPaletteButton 1.0 ColorPaletteButton.qml
+ColorPaletteGrid 1.0 ColorPaletteGrid.qml
 ColorRedSlider 1.0 ColorRedSlider.qml
 ColorSaturationSlider 1.0 ColorSaturationSlider.qml
 ColorValueSlider 1.0 ColorValueSlider.qml
@@ -110,11 +114,14 @@ singleton Icons 1.0 Icons.qml
 ItemDelegate 1.0 ItemDelegate.qml
 Label 1.0 Label.qml
 LargeSlider 1.0 LargeSlider.qml
+LatoTabBar 1.0 LatoTabBar.qml
+LatoTabButton 1.0 LatoTabButton.qml
 LineChart 1.0 LineChart.qml
 ListDelegateBackground 1.0 ListDelegateBackground.qml
 ListDelegateContent 1.0 ListDelegateContent.qml
 ListDelegateText 1.0 ListDelegateText.qml
 ListSectionTitle 1.0 ListSectionTitle.qml
+MaterialColorPalette 1.0 MaterialColorPalette.qml
 Menu 1.0 Menu.qml
 MenuBar 1.0 MenuBar.qml
 MenuBarItem 1.0 MenuBarItem.qml
@@ -158,6 +165,9 @@ ScrollView 1.0 ScrollView.qml
 ScrollablePage 1.0 ScrollablePage.qml
 ScrollableTabBar 1.0 ScrollableTabBar.qml
 ScrollableTextArea 1.0 ScrollableTextArea.qml
+SideSelectIndicator 1.0 SideSelectIndicator.qml
+SideSquacleButton 1.0 SideSquacleButton.qml
+SideSquacleImageButton 1.0 SideSquacleImageButton.qml
 Slider 1.0 Slider.qml
 SliderDelegate 1.0 SliderDelegate.qml
 SliderHandle 1.0 SliderHandle.qml
@@ -168,6 +178,8 @@ SplashScreen 1.0 SplashScreen.qml
 SplashScreenApplication 1.0 SplashScreenApplication.qml
 SplashScreenWindow 1.0 SplashScreenWindow.qml
 SplitView 1.0 SplitView.qml
+SquacleButton 1.0 SquacleButton.qml
+SquacleImageButton 1.0 SquacleImageButton.qml
 SquareButton 1.0 SquareButton.qml
 StackView 1.0 StackView.qml
 Stepper 1.0 Stepper.qml

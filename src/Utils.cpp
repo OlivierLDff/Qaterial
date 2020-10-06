@@ -115,21 +115,14 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
     Qaterial_registerTypes();
 }
 
-static void Qaterial_loadResources(bool autoRegisterStyle = true)
+static void Qaterial_loadFonts()
 {
-    LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
-
-    Q_INIT_RESOURCE(Qaterial);
-    Q_INIT_RESOURCE(QaterialFonts);
-    Q_INIT_RESOURCE(QaterialIcons);
-    Q_INIT_RESOURCE(QaterialIconsImpl);
-
     const auto loadFont = [](const QString& fontFolderPath)
     {
         const QDir dir(fontFolderPath);
         for(const auto& file: dir.entryList(QDir::Files))
         {
-            const auto fileUrl = fontFolderPath + file;
+            const auto fileUrl = fontFolderPath + "/" + file;
             if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
                 LOG_INFO("Load font {}", fileUrl.toStdString());
             else
@@ -137,10 +130,30 @@ static void Qaterial_loadResources(bool autoRegisterStyle = true)
         }
     };
 
-    loadFont(":/Qaterial/Fonts/Roboto/");
-    loadFont(":/Qaterial/Fonts/Lato/");
-    loadFont(":/Qaterial/Fonts/OpenSans/");
+    const QDir fontsDirectory(":/Qaterial/Fonts");
+    for(const auto& fontDir: fontsDirectory.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
+    {
+        const auto fontDirPath = fontsDirectory.path() + "/" + fontDir;
+        loadFont(fontDirPath);
+    }    
+}
 
+static void Qaterial_loadResources(bool autoRegisterStyle = true)
+{
+    LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
+
+    // Force load qrc resources
+    // This is mandatory when used as a static library
+    Q_INIT_RESOURCE(Qaterial);
+    Q_INIT_RESOURCE(QaterialFonts);
+    Q_INIT_RESOURCE(QaterialIcons);
+    Q_INIT_RESOURCE(QaterialIconsImpl);
+
+    // Load all fonts embedded in QaterialFonts
+    Qaterial_loadFonts();
+
+    // By default Qaterial is set as qt quick controls 2 style.
+    // It can be disabled for people not using Qaterial as Style, but just using some components.
     if(autoRegisterStyle)
     {
         QQuickStyle::setStyle(QStringLiteral("Qaterial"));
