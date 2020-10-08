@@ -32,28 +32,36 @@ public:
     FolderTreeModel(QObject* parent = nullptr);
 
 private:
-    FolderTreeModel(const QUrl& path, const QString& fileName, const QString& filePath, const QString& fileBaseName,
-        const QString& fileCompleteBaseName, const QString& fileSuffix, const QString& fileCompleteSuffix,
-        qint64 fileSize, const QDateTime& fileModified, const QDateTime& fileAccessed, bool fileIsDir,
+    FolderTreeModel(const QUrl& path,
+        const QString& fileName,
+        const QString& filePath,
+        const QString& fileBaseName,
+        const QString& fileCompleteBaseName,
+        const QString& fileSuffix,
+        const QString& fileCompleteSuffix,
+        qint64 fileSize,
+        const QDateTime& fileModified,
+        const QDateTime& fileAccessed,
+        bool fileIsDir,
         QObject* parent = nullptr);
     void initializeBindings();
 
 public:
     enum Status
     {
-        Null,  // no folder has been set
-        Ready,  // the folder has been loaded
-        Loading  // the folder is currently being loaded
+        Null, // no folder has been set
+        Ready, // the folder has been loaded
+        Loading // the folder is currently being loaded
     };
     Q_ENUM(Status);
 
     enum SortField
     {
-        Unsorted,  // no sorting is applied
-        Name,  // sort by filename
-        Time,  // sort by time modified
-        Size,  // sort by file size
-        Type  // sort by file type(extension)
+        Unsorted, // no sorting is applied
+        Name, // sort by filename
+        Time, // sort by time modified
+        Size, // sort by file size
+        Type // sort by file type(extension)
     };
     Q_ENUM(SortField);
 

@@ -36,8 +36,7 @@ private:
     static const std::shared_ptr<HotReloadSink> _sink;
     QStringList _defaultImportPaths;
 
-    Q_PROPERTY(
-        QStringList importPaths READ importPaths WRITE setImportPaths RESET resetImportPaths NOTIFY importPathsChanged)
+    Q_PROPERTY(QStringList importPaths READ importPaths WRITE setImportPaths RESET resetImportPaths NOTIFY importPathsChanged)
 
 public:
     QStringList importPaths() const { return _engine->importPathList(); }

@@ -1,6 +1,5 @@
 ---
-BasedOnStyle: Google
-IndentWidth: 4
+BasedOnStyle: Microsoft
 AccessModifierOffset: -4
 Language: Cpp
 AlignAfterOpenBracket: DontAlign
@@ -9,12 +8,12 @@ AlignConsecutiveDeclarations: false
 AlignConsecutiveMacros: false
 AlignEscapedNewlines: Right
 AlignOperands: true
-ColumnLimit: 120
+ColumnLimit: 140
 AlignTrailingComments: false
 AllowAllArgumentsOnNextLine: false
-AllowAllConstructorInitializersOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
-AllowShortBlocksOnASingleLine: Always
+AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: Never
@@ -22,8 +21,8 @@ AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AllowShortCaseLabelsOnASingleLine: true
 AlwaysBreakTemplateDeclarations: true
-BinPackArguments: true
-BinPackParameters: true
+BinPackArguments: false
+BinPackParameters: false
 
 BreakBeforeBraces: Custom
 BraceWrapping:
@@ -49,10 +48,10 @@ BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakStringLiterals: true
 CompactNamespaces: false
-ConstructorInitializerAllOnOneLineOrOnePerLine: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
 Cpp11BracedListStyle: true
 DeriveLineEnding: true
-DerivePointerAlignment: true
+DerivePointerAlignment: false
 IncludeBlocks: Regroup
 IndentCaseBlocks: false
 IndentCaseLabels: false

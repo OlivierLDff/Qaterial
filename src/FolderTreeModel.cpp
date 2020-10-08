@@ -69,14 +69,30 @@ FolderTreeModel::FolderTreeModel(QObject* parent) : qolm::QOlm<FolderTreeModel>(
     initializeBindings();
 }
 
-FolderTreeModel::FolderTreeModel(const QUrl& path, const QString& fileName, const QString& filePath,
-    const QString& fileBaseName, const QString& fileCompleteBaseName, const QString& fileSuffix,
-    const QString& fileCompleteSuffix, qint64 fileSize, const QDateTime& fileModified, const QDateTime& fileAccessed,
-    bool fileIsDir, QObject* parent) :
+FolderTreeModel::FolderTreeModel(const QUrl& path,
+    const QString& fileName,
+    const QString& filePath,
+    const QString& fileBaseName,
+    const QString& fileCompleteBaseName,
+    const QString& fileSuffix,
+    const QString& fileCompleteSuffix,
+    qint64 fileSize,
+    const QDateTime& fileModified,
+    const QDateTime& fileAccessed,
+    bool fileIsDir,
+    QObject* parent) :
     QOlm<FolderTreeModel>(parent),
-    _path(path), _fileName(fileName), _filePath(filePath), _fileBaseName(fileBaseName),
-    _fileCompleteBaseName(fileCompleteBaseName), _fileSuffix(fileSuffix), _fileCompleteSuffix(fileCompleteSuffix),
-    _fileSize(fileSize), _fileModified(fileModified), _fileAccessed(fileAccessed), _fileIsDir(fileIsDir)
+    _path(path),
+    _fileName(fileName),
+    _filePath(filePath),
+    _fileBaseName(fileBaseName),
+    _fileCompleteBaseName(fileCompleteBaseName),
+    _fileSuffix(fileSuffix),
+    _fileCompleteSuffix(fileCompleteSuffix),
+    _fileSize(fileSize),
+    _fileModified(fileModified),
+    _fileAccessed(fileAccessed),
+    _fileIsDir(fileIsDir)
 {
     initializeBindings();
 }
@@ -84,7 +100,8 @@ FolderTreeModel::FolderTreeModel(const QUrl& path, const QString& fileName, cons
 void FolderTreeModel::initializeBindings()
 {
     // Bind dot dot dot dot dot dot
-    connect(this, &FolderTreeModel::showDotChanged,
+    connect(this,
+        &FolderTreeModel::showDotChanged,
         [this]()
         {
             if(_dotEvaluation)
@@ -94,7 +111,8 @@ void FolderTreeModel::initializeBindings()
             _dotEvaluation = false;
         });
 
-    connect(this, &FolderTreeModel::showDotDotChanged,
+    connect(this,
+        &FolderTreeModel::showDotDotChanged,
         [this]()
         {
             if(_dotEvaluation)
@@ -104,7 +122,8 @@ void FolderTreeModel::initializeBindings()
             _dotEvaluation = false;
         });
 
-    connect(this, &FolderTreeModel::showDotAndDotDotChanged,
+    connect(this,
+        &FolderTreeModel::showDotAndDotDotChanged,
         [this]()
         {
             if(_dotEvaluation)
@@ -213,8 +232,7 @@ void FolderTreeModel::fetch()
     default:;
     }
 
-    const auto appendFolder = [&](QFileInfoList& list)
-    { list += currentDirectory.entryInfoList(folderFilter, sortFlags); };
+    const auto appendFolder = [&](QFileInfoList& list) { list += currentDirectory.entryInfoList(folderFilter, sortFlags); };
     const auto secondFetchForFolderIsRequired = !nameFilters().empty() && showDirs();
 
     // Fetch all entries and append in one operation
@@ -231,9 +249,17 @@ void FolderTreeModel::fetch()
 
     for(const auto& fileInfo: fileInfoList)
     {
-        folders.append(new FolderTreeModel(path().path() + '/' + fileInfo.fileName(), fileInfo.fileName(),
-            fileInfo.absoluteFilePath(), fileInfo.baseName(), fileInfo.completeBaseName(), fileInfo.suffix(),
-            fileInfo.completeSuffix(), fileInfo.size(), fileInfo.lastModified(), fileInfo.lastRead(), fileInfo.isDir(),
+        folders.append(new FolderTreeModel(path().path() + '/' + fileInfo.fileName(),
+            fileInfo.fileName(),
+            fileInfo.absoluteFilePath(),
+            fileInfo.baseName(),
+            fileInfo.completeBaseName(),
+            fileInfo.suffix(),
+            fileInfo.completeSuffix(),
+            fileInfo.size(),
+            fileInfo.lastModified(),
+            fileInfo.lastRead(),
+            fileInfo.isDir(),
             this));
     }
 

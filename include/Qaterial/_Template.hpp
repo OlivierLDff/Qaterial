@@ -17,7 +17,6 @@ namespace qaterial {
 
 // ──── CLASS ────
 
-
 class QATERIAL_API_ _SingletonClass : public QObject
 {
     Q_OBJECT

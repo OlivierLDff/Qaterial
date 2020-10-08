@@ -19,6 +19,7 @@ T.TabButton
   property color textColor: Qaterial.Style.primaryTextColor()
   property color textSecondaryColor: Qaterial.Style.secondaryTextColor()
   property color indicatorColor: Qaterial.Style.accentColor
+  property color disabledTextColor: Qaterial.Style.disabledTextColor()
   property color rippleColor: Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Background)
   property bool highlighted: ListView.isCurrentItem
 
@@ -48,7 +49,14 @@ T.TabButton
     textType: Qaterial.Style.TextType.ListText
     text: control.text
     font: control.font
-    color: (control.hovered || control.pressed || control.visualFocus || control.highlighted) ? control.textColor : control.textSecondaryColor
+    color:
+    {
+      if(!control.enabled)
+        return control.disabledTextColor
+      if(control.hovered || control.pressed || control.visualFocus || control.highlighted)
+        return control.textColor
+      return control.textSecondaryColor
+    }
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
   } // IconLabel
@@ -75,7 +83,7 @@ T.TabButton
     pressed: control.pressed || control.highlighted
     hovered: control.hovered
 
-    color: control.indicatorColor
+    color: control.enabled ? control.indicatorColor : control.disabledTextColor
 
     indicatorClip: Qaterial.Style.Position.Bottom
 
