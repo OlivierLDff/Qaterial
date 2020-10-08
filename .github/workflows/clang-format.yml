@@ -1,0 +1,26 @@
+name: Run clang-format Linter
+
+on: [push]
+
+jobs:
+  clang-format:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '🎨')"
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: DoozyX/clang-format-lint-action@v0.10
+      name: "Run clang-format"
+      with:
+        source: '.'
+        extensions: 'hpp,cpp'
+        clangFormatVersion: 11
+        inplace: True
+    - uses: EndBug/add-and-commit@v4
+      name: "Commit clang-format Change"
+      with:
+        author_name: Clang Robot
+        author_email: robot@clang-format.com
+        message: '🎨 Run clang-format'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
