@@ -24,7 +24,7 @@
 #include <QQuickStyle>
 
 #ifdef Q_OS_WIN
-#include <Windows.h>
+#    include <Windows.h>
 #endif
 
 // ─────────────────────────────────────────────────────────────
@@ -135,7 +135,7 @@ static void Qaterial_loadFonts()
     {
         const auto fontDirPath = fontsDirectory.path() + "/" + fontDir;
         loadFont(fontDirPath);
-    }    
+    }
 }
 
 static void Qaterial_loadResources(bool autoRegisterStyle = true)
@@ -168,17 +168,11 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 
 using namespace qaterial;
 
-void Utils::registerTypes(const char* uri, const quint8 major, const quint8 minor)
-{
-    ::Qaterial_registerTypes(uri, major, minor);
-}
+void Utils::registerTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
 
 void Utils::loadResources() { ::Qaterial_loadResources(); }
 
-void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
-{
-    ::Qaterial_registerTypes(uri, major, minor);
-}
+void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
 
 void qaterial::loadQmlResources(bool autoRegisterStyle) { ::Qaterial_loadResources(autoRegisterStyle); }
 
@@ -188,10 +182,10 @@ class HighDpiFix
     HighDpiFix()
     {
 #ifdef Q_OS_WIN
-    #if _WIN32_WINNT >= 0x0600
+#    if _WIN32_WINNT >= 0x0600
         ::SetProcessDPIAware();
-    #endif
-#endif  // Q_OS_WIN
+#    endif
+#endif // Q_OS_WIN
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     }
     static HighDpiFix singleton;

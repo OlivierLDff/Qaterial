@@ -17,8 +17,10 @@ using namespace qaterial;
 // ──── FUNCTIONS ────
 
 LayoutAttached::LayoutAttached(QObject* object) :
-    _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge)), _large(Layout::defaultPreferredFill(Layout::Large)),
-    _medium(Layout::defaultPreferredFill(Layout::Medium)), _small(Layout::defaultPreferredFill(Layout::Small)),
+    _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge)),
+    _large(Layout::defaultPreferredFill(Layout::Large)),
+    _medium(Layout::defaultPreferredFill(Layout::Medium)),
+    _small(Layout::defaultPreferredFill(Layout::Small)),
     _extraSmall(Layout::defaultPreferredFill(Layout::ExtraSmall))
 {
 }
@@ -29,7 +31,9 @@ Layout::Layout(QObject* parent) : QObject(parent)
     connect(this, &Layout::itemsChanged, this, &Layout::computeChildItemsSize, Qt::QueuedConnection);
     connect(this, &Layout::spacingChanged, this, &Layout::computeChildItemsSize);
     connect(this, &Layout::layoutDirectionChanged, this, &Layout::computeChildItemsSize);
-    connect(this, &Layout::flowChanged, this,
+    connect(this,
+        &Layout::flowChanged,
+        this,
         [this]()
         {
             _flowChanged = true;
@@ -214,8 +218,8 @@ Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferre
 
 int Layout::fillToRealBlockCount(LayoutFill fill) const
 {
-    const auto ratio = qreal(fill)/12.f;
-    return std::ceil(qreal(columns())*ratio);
+    const auto ratio = qreal(fill) / 12.f;
+    return std::ceil(qreal(columns()) * ratio);
 }
 
 qreal Layout::getPreferredSize(QQuickItem* item) const

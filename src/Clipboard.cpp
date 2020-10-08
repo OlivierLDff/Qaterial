@@ -23,7 +23,9 @@ Clipboard::Clipboard(QObject* parent) : QObject(parent), _clipboard(QGuiApplicat
     // If assert here it mean Clipboard have been instantiated in a non QGuiApplication context
     Q_ASSERT(_clipboard);
 
-    connect(_clipboard, &QClipboard::dataChanged, this,
+    connect(_clipboard,
+        &QClipboard::dataChanged,
+        this,
         [this]()
         {
             QClipboard* clipboard = QGuiApplication::clipboard();

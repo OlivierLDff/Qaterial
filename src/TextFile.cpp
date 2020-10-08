@@ -50,9 +50,11 @@ using namespace qaterial;
 
 // ──── FUNCTIONS ────
 
-TextFile::TextFile(QObject* parent): QObject(parent)
+TextFile::TextFile(QObject* parent) : QObject(parent)
 {
-    connect(this, &TextFile::errorChanged, this,
+    connect(this,
+        &TextFile::errorChanged,
+        this,
         [this](const auto& value)
         {
             if(!value.isEmpty())

@@ -23,21 +23,11 @@ void qtMsgOutput(QtMsgType type, const QMessageLogContext& context, const QStrin
     const auto localMsg = msg.toLocal8Bit();
     switch(type)
     {
-    case QtDebugMsg:
-        qaterial::Logger::QATERIAL->debug(localMsg.constData());
-        break;
-    case QtInfoMsg:
-        qaterial::Logger::QATERIAL->info(localMsg.constData());
-        break;
-    case QtWarningMsg:
-        qaterial::Logger::QATERIAL->warn(localMsg.constData());
-        break;
-    case QtCriticalMsg:
-        qaterial::Logger::QATERIAL->error(localMsg.constData());
-        break;
-    case QtFatalMsg:
-        qaterial::Logger::QATERIAL->error(localMsg.constData());
-        abort();
+    case QtDebugMsg: qaterial::Logger::QATERIAL->debug(localMsg.constData()); break;
+    case QtInfoMsg: qaterial::Logger::QATERIAL->info(localMsg.constData()); break;
+    case QtWarningMsg: qaterial::Logger::QATERIAL->warn(localMsg.constData()); break;
+    case QtCriticalMsg: qaterial::Logger::QATERIAL->error(localMsg.constData()); break;
+    case QtFatalMsg: qaterial::Logger::QATERIAL->error(localMsg.constData()); abort();
     }
 
 #if defined(Q_OS_WIN)

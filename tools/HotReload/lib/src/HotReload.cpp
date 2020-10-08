@@ -38,7 +38,10 @@ std::shared_ptr<HotReloadSink> HotReload::sink() { return _sink; }
 
 void HotReload::registerSingleton()
 {
-    qmlRegisterSingletonType<qaterial::HotReload>("Qaterial", 1, 0, "HotReload",
+    qmlRegisterSingletonType<qaterial::HotReload>("Qaterial",
+        1,
+        0,
+        "HotReload",
         [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject*
         {
             Q_UNUSED(scriptEngine);
