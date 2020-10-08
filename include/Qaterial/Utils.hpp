@@ -31,8 +31,7 @@ public:
      * Registered types are:
      * -
      */
-    Q_DECL_DEPRECATED static void registerTypes(
-        const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+    Q_DECL_DEPRECATED static void registerTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
     Q_DECL_DEPRECATED static void loadResources();
 };
 
@@ -50,4 +49,4 @@ void loadQmlResources(bool autoRegisterStyle = true);
 
 }
 
-#endif  // __QATERIAL_UTILS_HPP__
+#endif // __QATERIAL_UTILS_HPP__
