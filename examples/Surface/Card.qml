@@ -21,7 +21,7 @@ Qaterial.Card
     width: parent.width
     spacing: Qaterial.Style.card.horizontalPadding
 
-    Qaterial.CardMedia { source: root.media }
+    Qaterial.CardMedia { source: root.media; clipTop: true; Layout.preferredWidth: 300; Layout.preferredHeight: 200 }
 
     Qaterial.CardTitle
     {
@@ -37,11 +37,10 @@ Qaterial.Card
       Layout.fillWidth: true
     }
 
-    Item
+    Row
     {
-      implicitHeight: _button1.implicitHeight
-      Qaterial.FlatButton { id: _button1; anchors.left: parent.left }
-      Qaterial.FlatButton { id: _button2; anchors.left: _button1.right }
+      Qaterial.FlatButton { id: _button1 }
+      Qaterial.FlatButton { id: _button2 }
     }
   }
 }
