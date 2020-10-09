@@ -6,6 +6,7 @@ set(QATERIAL_FONT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Generated/Qaterial)
 file(MAKE_DIRECTORY ${QATERIAL_FONT_DIRECTORY})
 
 if(QATERIAL_ENABLE_ROBOTO)
+  message(STATUS "Fetch Roboto Medium/Regular")
   fetch_google_font(
     URL ${GOOGLEFONTS_REPOSITORY}
     TAG ${GOOGLEFONTS_TAG}
@@ -17,6 +18,7 @@ if(QATERIAL_ENABLE_ROBOTO)
 endif()
 
 if(QATERIAL_ENABLE_ROBOTOMONO)
+  message(STATUS "Fetch RobotoMono Regular")
   fetch_google_font(
     URL ${GOOGLEFONTS_REPOSITORY}
     TAG ${GOOGLEFONTS_TAG}
@@ -28,6 +30,7 @@ if(QATERIAL_ENABLE_ROBOTOMONO)
 endif()
 
 if(QATERIAL_ENABLE_LATO)
+  message(STATUS "Fetch Lato Regular")
   fetch_google_font(
     URL ${GOOGLEFONTS_REPOSITORY}
     TAG ${GOOGLEFONTS_TAG}
@@ -38,6 +41,8 @@ if(QATERIAL_ENABLE_LATO)
     VERBOSE
   )
 endif()
+
+message(STATUS "Generate QaterialFonts.qrc")
 
 # Always generate a qrc, even if no font exist
 qt_generate_qrc(QATERIAL_FONTS_QML_QRC
