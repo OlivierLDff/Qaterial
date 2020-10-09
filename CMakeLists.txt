@@ -172,7 +172,7 @@ else()
   target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
 endif()
 
-target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_11)
+target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PUBLIC include)
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE include/Qaterial/Pch/Pch.hpp)
