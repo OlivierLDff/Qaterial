@@ -12,6 +12,7 @@ if(QATERIAL_ENABLE_ICONS)
   include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
 
   # Generate qrc to embed svgs files
+  message(STATUS "Generate QaterialIcons.qrc")
   qt_generate_qrc(QATERIAL_QML_ICONS_QRC
     SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
     NAME QaterialIcons.qrc
@@ -19,6 +20,7 @@ if(QATERIAL_ENABLE_ICONS)
     GLOB_EXPRESSION ${QATERIAL_ICONS})
 
   # Generate Qaterial.Impl.Icons.Icons.qml
+  message(STATUS "Generate Qaterial.Impl.Icons.Icons.qml")
   qt_generate_qrc_alias_qt_object(QATERIAL_ICONS_QML
     SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
     NAME "${CMAKE_CURRENT_BINARY_DIR}/Generated/Icons.qml"
@@ -28,6 +30,7 @@ if(QATERIAL_ENABLE_ICONS)
 else()
 
   # Generate fake qrc to embed svgs files
+  message(STATUS "Generate Fake QaterialIcons.qrc")
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/Generated/QaterialIcons.qrc
    "<!-- File auto with CMake to mock the absence of Mdi icons. Everything written here will be lost. -->\n"
     "<RCC>\n"
@@ -37,6 +40,7 @@ else()
   )
 
   # Generate fake Qaterial.Impl.Icons.Icons.qml
+  message(STATUS "Generate Fake Qaterial.Impl.Icons.Icons.qml")
   file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/Generated/Icons.qml
     "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
     "// Everything written here will be lost.\n\n"
@@ -48,6 +52,7 @@ else()
 
 endif()
 
+message(STATUS "Generate QaterialIconsImpl.qrc")
 qt_generate_qrc(QATERIAL_QML_ICONS_ALIAS_QRC
   SOURCE_DIR "${CMAKE_CURRENT_BINARY_DIR}/Generated"
   NAME QaterialIconsImpl.qrc
