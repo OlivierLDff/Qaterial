@@ -38,7 +38,7 @@ public:
 void registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
 
 /**
- * @brief      Load qrc content in qrc:/Qaterial/*
+ * @brief      Load qrc content in qrc:/Qaterial/
  *
  * @param[in]  autoRegisterStyle  Register Qaterial as default QQuickStyle.
  * When true, every Controls from QtQuick.Controls will be Qaterial Control's.
