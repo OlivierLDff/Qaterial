@@ -60,7 +60,7 @@ T.MenuItem
   property double radius: Qaterial.Style.menuItem.cornerRadius
 
 
-  readonly property var checkedIcon: QtObject
+  property var checkedIcon: QtObject
   {
     readonly property double width: Qaterial.Style.menuItem.iconWidth
     readonly property double height: Qaterial.Style.menuItem.iconWidth
@@ -68,7 +68,7 @@ T.MenuItem
     readonly property url source: Qaterial.Icons.check
   } // QtObject
 
-  readonly property var radioIcon: QtObject
+  property var radioIcon: QtObject
   {
       readonly property double width: Qaterial.Style.menuItem.iconWidth
       readonly property double height: Qaterial.Style.menuItem.iconWidth
