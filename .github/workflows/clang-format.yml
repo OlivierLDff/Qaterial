@@ -1,4 +1,4 @@
-name: Run clang-format Linter
+name: 🎨 Run Linter
 
 on: [push]
 
