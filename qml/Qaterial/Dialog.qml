@@ -16,13 +16,13 @@ T.Dialog
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding,
-                          implicitHeaderWidth,
-                          implicitFooterWidth)
+    contentWidth + leftPadding + rightPadding,
+    implicitHeaderWidth,
+    implicitFooterWidth)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding
-                           + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
-                           + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
+    contentHeight + topPadding + bottomPadding +
+    (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0) +
+    (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
   padding: Qaterial.Style.dialog.horizontalPadding
   topPadding: Qaterial.Style.dialog.topPadding //+ (drawSeparator ? 1 : 0)
@@ -31,15 +31,15 @@ T.Dialog
   enter: Transition
   {
     // grow_fade_in
-    NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
-    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 }
+    NumberAnimation { property: "scale";from: 0.9;to: 1.0;easing.type: Easing.OutQuint;duration: 220 }
+    NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing.OutCubic;duration: 150 }
   } // Transition
 
   exit: Transition
   {
     // shrink_fade_out
-    NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
-    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
+    NumberAnimation { property: "scale";from: 1.0;to: 0.9;easing.type: Easing.OutQuint;duration: 220 }
+    NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing.OutCubic;duration: 150 }
   } // Transition
 
   property double elevation: Qaterial.Style.dialog.elevation

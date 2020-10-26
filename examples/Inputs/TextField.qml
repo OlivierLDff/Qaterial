@@ -6,7 +6,7 @@ Column
   id: _column
   width: 400
 
-  Qaterial.TextField  // Demonstrate required
+  Qaterial.TextField // Demonstrate required
   {
     id: _nameInput
     width: _column.width
@@ -72,10 +72,10 @@ Column
     maximumLengthCount: 16
     inputMethodHints: Qt.ImhSensitiveData
     trailingVisible: errorState
-    trailingContent: Qaterial.TextFieldAlertIcon { } // TextFieldAlertIcon
+    trailingContent: Qaterial.TextFieldAlertIcon {} // TextFieldAlertIcon
   } // TextField
 
-  Qaterial.TextField// Demonstrate show hidden
+  Qaterial.TextField // Demonstrate show hidden
   {
     width: _column.width
     title: "Password *"
@@ -84,6 +84,6 @@ Column
     validator: RegExpValidator { regExp: /.{8,}/ }
     echoMode: TextInput.Password
     inputMethodHints: Qt.ImhSensitiveData
-    trailingContent: Qaterial.TextFieldPasswordButton { } // TextFieldPasswordButton
+    trailingContent: Qaterial.TextFieldPasswordButton {} // TextFieldPasswordButton
   } // TextField
 }

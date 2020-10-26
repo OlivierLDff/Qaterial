@@ -23,13 +23,18 @@ Flow
 
   padding:
   {
-    switch(type)
+    switch (type)
     {
-      case Qaterial.Layout.ExtraLarge: return 24
-      case Qaterial.Layout.Large: return 24
-      case Qaterial.Layout.Medium: return 16
-      case Qaterial.Layout.Small: return 16
-      case Qaterial.Layout.ExtraSmall: return 8
+      case Qaterial.Layout.ExtraLarge:
+        return 24
+      case Qaterial.Layout.Large:
+        return 24
+      case Qaterial.Layout.Medium:
+        return 16
+      case Qaterial.Layout.Small:
+        return 16
+      case Qaterial.Layout.ExtraSmall:
+        return 8
     }
   }
 

@@ -17,21 +17,22 @@ Qaterial.ModalDialog
 
   width: undefined
 
-  property alias from:        _progressBar.from
-  property alias to:          _progressBar.to
-  property alias value:       _progressBar.value
+  property alias from: _progressBar.from
+  property alias to: _progressBar.to
+  property alias value: _progressBar.value
 
-  property alias text:        _text.text
-  property alias textType:    _text.textType
-  property alias textColor:   _text.color
-  property alias textElide:   _text.elide
+  property alias text: _text.text
+  property alias textType: _text.textType
+  property alias textColor: _text.color
+  property alias textElide: _text.elide
 
   title: "Exporting Frames"
 
   contentItem: Item
   {
-    implicitWidth: Qaterial.Style.dialog.implicitWidth - 2*Qaterial.Style.card.horizontalPadding
-    implicitHeight: Math.floor(_progressBar.implicitHeight + _text.implicitHeight + Qaterial.Style.card.verticalPadding)
+    implicitWidth: Qaterial.Style.dialog.implicitWidth - 2 * Qaterial.Style.card.horizontalPadding
+    implicitHeight: Math.floor(_progressBar.implicitHeight + _text.implicitHeight + Qaterial.Style.card
+      .verticalPadding)
 
     Qaterial.ProgressBar
     {

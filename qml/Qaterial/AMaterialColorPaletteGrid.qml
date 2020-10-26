@@ -449,15 +449,15 @@ Qaterial.ColorPaletteGrid
       shade: "A200"
       light: true
     }
-      ListElement
-      {
+    ListElement
+    {
       color: "#FF3D00"
       name: "Deep Orange"
       shade: "A400"
       light: false
     }
-      ListElement
-      {
+    ListElement
+    {
       color: "#DD2C00"
       name: "Deep Orange"
       shade: "A700"

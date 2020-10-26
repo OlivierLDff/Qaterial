@@ -75,7 +75,8 @@ T.TextField
   property int hintTextType: Qaterial.Style.TextType.Hint
 
   property bool titleUp: _control.activeFocus || _control.length || _control.preeditText
-  readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel.visible
+  readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel
+    .visible
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
@@ -117,18 +118,20 @@ T.TextField
   } // DebugRectangle
 
   // SIZE
-  implicitWidth: implicitBackgroundWidth + leftInset + rightInset
-                 || Math.max(contentWidth, placeholder.implicitWidth) + _control.virtualLeftPadding + _control.virtualRightPadding
+  implicitWidth: implicitBackgroundWidth + leftInset + rightInset ||
+    Math.max(contentWidth, placeholder.implicitWidth) + _control.virtualLeftPadding + _control.virtualRightPadding
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding,
-                           placeholder.implicitHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding,
+    placeholder.implicitHeight + topPadding + bottomPadding)
 
   topPadding: _control.title != "" ? Qaterial.Style.textField.topPaddingTitle : Qaterial.Style.textField.topPadding
   bottomPadding: anyHintVisible ? Qaterial.Style.textField.bottomPaddingHint : Qaterial.Style.textField.bottomPadding
 
-  property double virtualLeftPadding: ((leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0) + ((leadingIconVisible && !leadingIconInline) ?Qaterial.Style.textField.horizontalPadding : 0)
+  property double virtualLeftPadding: ((leadingIconVisible) ? _leadingIcon.width + leadingSpacing : 0) + ((
+    leadingIconVisible && !leadingIconInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
-  property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((trailingVisible && !trailingInline) ? Qaterial.Style.textField.horizontalPadding : 0)
+  property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((
+    trailingVisible && !trailingInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
   leftPadding: virtualLeftPadding + (prefixText != "" ? _prefixLabel.contentWidth + textSpacing : 0)
   rightPadding: virtualRightPadding + (suffixText != "" ? _suffixLabel.contentWidth + textSpacing : 0)
@@ -143,7 +146,7 @@ T.TextField
   {
     NumberAnimation
     {
-      easing.type:Easing.OutCubic
+      easing.type: Easing.OutCubic
       duration: 200
     } // NumberAnimation
   } // Behavior
@@ -152,21 +155,25 @@ T.TextField
   property alias textColor: _control.color
   color: enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.hintTextColor()
   selectionColor: Qaterial.Style.accentColor
-  selectedTextColor: Qaterial.Style.shouldReverseForegroundOnAccent ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
+  selectedTextColor: Qaterial.Style.shouldReverseForegroundOnAccent ? Qaterial.Style.primaryTextColorReversed() :
+    Qaterial.Style.primaryTextColor()
   placeholderTextColor: Qaterial.Style.hintTextColor()
   verticalAlignment: TextInput.AlignVCenter
 
-  property color titleTextColor: enabled ? (errorState && titleUp ? Qaterial.Style.errorColor : Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
-  property color helperTextColor: enabled ? (errorState ? Qaterial.Style.errorColor : Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
+  property color titleTextColor: enabled ? (errorState && titleUp ? Qaterial.Style.errorColor : Qaterial.Style
+    .hintTextColor()) : Qaterial.Style.dividersColor()
+  property color helperTextColor: enabled ? (errorState ? Qaterial.Style.errorColor : Qaterial.Style
+  .hintTextColor()) : Qaterial.Style.dividersColor()
   property color prefixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
   property color suffixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
-  property color leadingIconColor: enabled ? (activeFocus ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()) : Qaterial.Style.disabledTextColor()
+  property color leadingIconColor: enabled ? (activeFocus ? Qaterial.Style.accentColor : Qaterial.Style
+    .secondaryTextColor()) : Qaterial.Style.disabledTextColor()
 
   // BEHAVIOR
   selectByMouse: true
 
   // CURSOR
-  cursorDelegate: Qaterial.CursorDelegate { }
+  cursorDelegate: Qaterial.CursorDelegate {}
 
   // LEADING ICON
   Qaterial.ColorIcon
@@ -243,16 +250,19 @@ T.TextField
 
     Behavior on y
     {
-      NumberAnimation { easing.type:Easing.OutCubic; duration: 200 } // NumberAnimation
+      NumberAnimation { easing.type: Easing.OutCubic;
+        duration: 200 } // NumberAnimation
     } // Behavior y
     font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
     Behavior on font.pixelSize
     {
-      NumberAnimation { easing.type:Easing.OutCubic; duration: 200 } // NumberAnimation
+      NumberAnimation { easing.type: Easing.OutCubic;
+        duration: 200 } // NumberAnimation
     } // Behavior pixelsize
     Behavior on color
     {
-      ColorAnimation { easing.type:Easing.OutCubic; duration: 200 } // ColorAnimation
+      ColorAnimation { easing.type: Easing.OutCubic;
+        duration: 200 } // ColorAnimation
     } // Behavior color
   } // Label
 
@@ -268,23 +278,23 @@ T.TextField
   {
     editedAtLeastOnce = true
     if(autoSubmit)
-        Qt.callLater(submitInput)
+      Qt.callLater(submitInput)
   }
-  ErrorSequentialAnimation { id: _errorAnimation; target: _titleLabel; x: _control.virtualLeftPadding }
-  ErrorSequentialAnimation { id: _errorLeadingAnimation; target: _leadingIcon; x: _control.width - _leadingIcon.width }
+  ErrorSequentialAnimation { id: _errorAnimation;target: _titleLabel;x: _control.virtualLeftPadding }
+  ErrorSequentialAnimation { id: _errorLeadingAnimation;target: _leadingIcon;x: _control.width - _leadingIcon.width }
 
   function submitInput()
   {
     if(!error)
-        clearError()
+      clearError()
     else
-        setError(errorText)
+      setError(errorText)
   } // function submitInput()
 
   function clearError()
   {
     if(errorState)
-        _errorText = ""
+      _errorText = ""
   } // function clearError()
 
   function setError(s)
@@ -292,19 +302,20 @@ T.TextField
     if(!errorState)
     {
       if(titleUp)
-          _errorAnimation.start()
+        _errorAnimation.start()
       if(leadingIconErrorAnimation)
-           _errorLeadingAnimation.start()
+        _errorLeadingAnimation.start()
       _errorText = s ? s : " "
       if(!s)
-          console.log("Error: No Error text provided, please provide errorText property to guide your user")
+        console.log("Error: No Error text provided, please provide errorText property to guide your user")
     }
   } // function setError(s)
 
   Qaterial.Label // Hint
   {
     opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
-    Behavior on opacity { NumberAnimation { easing.type:Easing.OutCubic; duration: 100 } }
+    Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic;
+        duration: 100 } }
     text: _control.errorState ? _control._errorText : _control.helperText
 
     Qaterial.DebugRectangle
@@ -423,7 +434,8 @@ T.TextField
     verticalAlignment: _control.verticalAlignment
     elide: Text.ElideRight
     renderType: _control.renderType
-    readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !_control.preeditText && (!_control.activeFocus || _control.horizontalAlignment !== Qt.AlignHCenter)
+    readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !
+      _control.preeditText && (!_control.activeFocus || _control.horizontalAlignment !== Qt.AlignHCenter)
     opacity: shouldBeVisible ? 1.0 : 0.0
 
     Behavior on opacity
@@ -459,20 +471,22 @@ T.TextField
     Rectangle
     {
       height: _control.backgroundBorderHeight
-      color:  _control.backgroundHighlightColor
-      width:  _control.activeFocus ? parent.width : 0
-      x:      _control.activeFocus ? 0 : parent.width/2
+      color: _control.backgroundHighlightColor
+      width: _control.activeFocus ? parent.width : 0
+      x: _control.activeFocus ? 0 : parent.width / 2
 
       Behavior on width
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type:Easing.OutCubic; duration: 300 } // NumberAnimation
+        NumberAnimation { easing.type: Easing.OutCubic;
+          duration: 300 } // NumberAnimation
       } // Behavior
 
       Behavior on x
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type:Easing.OutCubic; duration: 300 } // NumberAnimation
+        NumberAnimation { easing.type: Easing.OutCubic;
+          duration: 300 } // NumberAnimation
       } // Behavior
 
       Qaterial.DebugRectangle

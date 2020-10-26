@@ -91,8 +91,8 @@ Item
 
     if(screenFound)
     {
-      const savedScreenLayout = (settings.desktopAvailableWidth === Screen.desktopAvailableWidth)
-              && (settings.desktopAvailableHeight === Screen.desktopAvailableHeight)
+      const savedScreenLayout = (settings.desktopAvailableWidth === Screen.desktopAvailableWidth) &&
+        (settings.desktopAvailableHeight === Screen.desktopAvailableHeight)
       target.x = (savedScreenLayout) ? settings.x : Screen.width / 2 - target.width / 2
       target.y = (savedScreenLayout) ? settings.y : Screen.height / 2 - target.height / 2
       target.width = width
@@ -104,9 +104,11 @@ Item
       target.screen = Qt.application.screens[0]
       width = target.width
       height = target.height
-      target.x = target.screen.width/2 - target.width/2
-      target.y = target.screen.height/2 - target.height/2
-      console.warn(`Previous screen ${previousName} not found. Try to restore window to screen ${target.screen.name}, resolution: ${width}x${height}, position: {${target.x},${target.y}}`)
+      target.x = target.screen.width / 2 - target.width / 2
+      target.y = target.screen.height / 2 - target.height / 2
+      console.warn(
+        `Previous screen ${previousName} not found. Try to restore window to screen ${target.screen.name}, resolution: ${width}x${height}, position: {${target.x},${target.y}}`
+        )
     }
 
     // Make sure width/height are ok
@@ -162,14 +164,17 @@ Item
     property alias x: root.x
     property alias y: root.y
 
-    property var screen
-    property var desktopAvailableWidth
-    property var desktopAvailableHeight
+    property
+    var screen
+    property
+    var desktopAvailableWidth
+    property
+    var desktopAvailableHeight
   }
 
   Timer
   {
-    interval: 1000; running: root.enabled; repeat: true
+    interval: 1000;running: root.enabled;repeat: true
     onTriggered: saveScreenLayout()
   }
 

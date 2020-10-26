@@ -16,7 +16,7 @@ Qaterial.SplashScreenWindow
 
   Timer
   {
-    interval: 1000; running: true; repeat: true
+    interval: 1000;running: true;repeat: true
     onTriggered: function()
     {
       ++window.dots

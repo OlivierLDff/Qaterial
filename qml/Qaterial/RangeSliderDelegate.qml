@@ -24,10 +24,15 @@ Control
   signal secondMoved()
 
   function firstDecrease() { _rangeSlider.first.decrease() }
+
   function secondDecrease() { _rangeSlider.second.decrease() }
+
   function firstIncrease() { _rangeSlider.first.increase() }
+
   function secondIncrease() { _rangeSlider.second.increase() }
+
   function firstValueAt(position) { return _rangeSlider.valueAt(firstPosition) }
+
   function secondValueAt(position) { return _rangeSlider.valueAt(secondPosition) }
 
   property alias first: _rangeSlider.first
@@ -35,7 +40,7 @@ Control
   property alias from: _rangeSlider.from
   property alias to: _rangeSlider.to
   property alias snapMode: _rangeSlider.snapMode
-  property alias live : _rangeSlider.live
+  property alias live: _rangeSlider.live
   property alias stepSize: _rangeSlider.stepSize
 
   spacing: 8

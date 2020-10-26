@@ -19,8 +19,8 @@ GridView
 
   signal accepted(color color, string name, string shade)
 
-  implicitWidth: columns*cellWidth
-  implicitHeight: rows*cellHeight
+  implicitWidth: columns * cellWidth
+  implicitHeight: rows * cellHeight
 
   interactive: false
 

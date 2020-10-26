@@ -15,9 +15,9 @@ T.ScrollBar
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   padding: 0
   visible: _control.policy !== T.ScrollBar.AlwaysOff
@@ -26,19 +26,23 @@ T.ScrollBar
 
   contentItem: Rectangle
   {
-    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidth : Qaterial.Style.scroll.implicitWidthInactive
-    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidth : Qaterial.Style.scroll.implicitWidthInactive
+    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidth : Qaterial.Style.scroll
+      .implicitWidthInactive
+    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidth : Qaterial.Style.scroll
+      .implicitWidthInactive
     radius: Qaterial.Style.scroll.radius
 
-    color: _control.pressed ? Qaterial.Style.secondaryTextColor() :
-           _control.interactive && _control.hovered ? Qaterial.Style.helperTextColor() : Qaterial.Style.dividersColor()
+    color: _control.pressed ? Qaterial.Style.secondaryTextColor() : _control.interactive && _control.hovered ?
+      Qaterial.Style.helperTextColor() : Qaterial.Style.dividersColor()
     opacity: 0.0
   } // Rectangle
 
   background: Rectangle
   {
-    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
-    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
+    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll
+      .implicitWidthInactive
+    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll
+      .implicitWidthInactive
     color: "#30000000"
     opacity: 0.0
     visible: _control.interactive
@@ -50,23 +54,22 @@ T.ScrollBar
     when: _control.policy === T.ScrollBar.AlwaysOn || (_control.active && _control.size < 1.0)
   } // State
 
-  transitions:
-  [
+  transitions: [
     Transition
     {
-        to: "active"
-        NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 1.0 } // NumberAnimation
+      to: "active"
+      NumberAnimation { targets: [contentItem, background];property: "opacity";to: 1.0 } // NumberAnimation
     }, // Transition
 
     Transition
     {
-        from: "active"
-        SequentialAnimation
-        {
-            PropertyAction{ targets: [contentItem, background]; property: "opacity"; value: 1.0 } // PropertyAction
-            PauseAnimation { duration: 2450 } // PauseAnimation
-            NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 0 } // NumberAnimation
-        } // SequentialAnimation
+      from: "active"
+      SequentialAnimation
+      {
+        PropertyAction { targets: [contentItem, background];property: "opacity";value: 1.0 } // PropertyAction
+        PauseAnimation { duration: 2450 } // PauseAnimation
+        NumberAnimation { targets: [contentItem, background];property: "opacity";to: 0 } // NumberAnimation
+      } // SequentialAnimation
     } // Transition
   ] // transitions
 } // ScrollBar

@@ -16,7 +16,7 @@ Qaterial.ColorIcon
   property Qaterial.TextArea textArea
   property Qaterial.ComboBox comboBox
   iconSize: Qaterial.Style.textField.iconSize
-  width: visible ? Qaterial.Style.textField.iconWidth : 0//width: Qaterial.Style.textField.iconWidth
+  width: visible ? Qaterial.Style.textField.iconWidth : 0 //width: Qaterial.Style.textField.iconWidth
   height: Qaterial.Style.textField.iconWidth
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton

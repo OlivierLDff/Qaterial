@@ -15,9 +15,9 @@ T.RangeSlider
   id: control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          first.implicitHandleWidth + leftPadding + rightPadding)
+    first.implicitHandleWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           first.implicitHandleHeight + topPadding + bottomPadding)
+    first.implicitHandleHeight + topPadding + bottomPadding)
 
   padding: Qaterial.Style.slider.padding
 
@@ -77,8 +77,10 @@ T.RangeSlider
     enabled: control.enabled
   } // SliderHandle
 
-  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
-  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider.implicitWidth
+  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider
+    .implicitHeight
+  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider
+    .implicitWidth
 
   background: Rectangle
   {
@@ -87,7 +89,7 @@ T.RangeSlider
     implicitHeight: control.backgroundImplicitHeight
     x:
     {
-      const horizontalOffset = control.first.handle.width/2
+      const horizontalOffset = control.first.handle.width / 2
       const verticalOffset = (control.availableWidth - width) / 2
       const offset = control.horizontal ? horizontalOffset : verticalOffset
       return control.leftPadding + offset
@@ -95,7 +97,7 @@ T.RangeSlider
     y:
     {
       const horizontalOffset = (control.availableHeight - height) / 2
-      const verticalOffset = control.first.handle.height/2
+      const verticalOffset = control.first.handle.height / 2
       const offset = control.horizontal ? horizontalOffset : verticalOffset
       return control.topPadding + offset
     }
@@ -103,13 +105,13 @@ T.RangeSlider
     {
       if(!control.horizontal)
         return size
-      return control.availableWidth - control.first.handle.width/2 - control.second.handle.width/2
+      return control.availableWidth - control.first.handle.width / 2 - control.second.handle.width / 2
     }
     height:
     {
       if(control.horizontal)
         return size
-      return control.availableHeight - control.first.handle.height/2 - control.second.handle.height/2
+      return control.availableHeight - control.first.handle.height / 2 - control.second.handle.height / 2
     }
     color: control.enabled ? control.foregroundColor : control.backgroundDisabledColor
     scale: control.horizontal && control.mirrored ? -1 : 1

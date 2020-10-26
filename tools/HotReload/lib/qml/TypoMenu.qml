@@ -11,7 +11,7 @@ Qaterial.Menu
 
   Repeater
   {
-    model: ListModel { }
+    model: ListModel {}
 
     delegate: Qaterial.ItemDelegate
     {

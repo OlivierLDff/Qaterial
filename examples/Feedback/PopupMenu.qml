@@ -18,28 +18,28 @@ Item
     {
       width: 200
       text: "Show Top"
-      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width/2, 0), Item.Bottom)
+      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width / 2, 0), Item.Bottom)
     }
 
     Qaterial.RaisedButton
     {
       width: 200
       text: "Show Left"
-      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width, height/2), Item.Left)
+      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width, height / 2), Item.Left)
     }
 
     Qaterial.RaisedButton
     {
       width: 200
       text: "Show Right"
-      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, 0, height/2), Item.Right)
+      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, 0, height / 2), Item.Right)
     }
 
     Qaterial.RaisedButton
     {
       width: 200
       text: "Show Bottom"
-      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width/2, height), Item.Top)
+      onClicked: () => popup.openAt(mapToItem(Overlay.overlay, width / 2, height), Item.Top)
     }
   }
 
@@ -63,4 +63,3 @@ Item
     }
   }
 }
-

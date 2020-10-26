@@ -30,7 +30,7 @@ Qaterial.TreeView
   implicitHeight: contentHeight
 
   model: folderTreeModel
-  itemDelegate: Qaterial.FolderTreeViewItem { }
+  itemDelegate: Qaterial.FolderTreeViewItem {}
 
   Qaterial.FolderTreeModel
   {

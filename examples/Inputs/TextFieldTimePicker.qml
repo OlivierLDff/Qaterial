@@ -17,5 +17,6 @@ Qaterial.TextFieldTimePicker
   onHourChanged: () => console.log(`Hour Changed : ${hour}`)
   onMinuteChanged: () => console.log(`Minute Changed : ${minute}`)
 
-  onHourAccepted: (hour, minute, am) => console.log(`User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`)
+  onHourAccepted: (hour, minute, am) => console.log(
+    `User picked ${hour}:${minute} ${styleAm ? (am ? "AM" : "PM") : ""}`)
 }

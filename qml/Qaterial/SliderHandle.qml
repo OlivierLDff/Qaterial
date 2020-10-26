@@ -52,7 +52,7 @@ Item
     id: _handleRect
     width: root.width
     height: root.height
-    radius: width/2
+    radius: width / 2
     color: root.enabled ? root.color : root.disabledColor
 
     border.color: root.borderColor
@@ -78,8 +78,8 @@ Item
     visible: root.enabled
     x: (root.width - width) / 2
     y: (root.height - height) / 2
-    width: root.clipRipple ? _handleRect.width : root.width*root.rippleScaleFactor
-    height: root.clipRipple ? _handleRect.height : root.height*root.rippleScaleFactor
+    width: root.clipRipple ? _handleRect.width : root.width * root.rippleScaleFactor
+    height: root.clipRipple ? _handleRect.height : root.height * root.rippleScaleFactor
     scale: root.clipRipple ? _handleRect.scale : 1
     pressed: root.pressed
     active: root.pressed || root.hasFocus || root.hovered

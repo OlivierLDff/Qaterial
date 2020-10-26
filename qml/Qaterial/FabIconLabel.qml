@@ -14,7 +14,8 @@ Item
 {
   id: _control
 
-  property var icon: QtObject
+  property
+  var icon: QtObject
   {
     property double width: 24
     property double height: width

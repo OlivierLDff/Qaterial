@@ -29,7 +29,7 @@ T.Button
   contentItem: Item
   {
     visible: (width > 32) &&
-             (height > 24) && (root.showName || root.showShade)
+      (height > 24) && (root.showName || root.showShade)
 
     Column
     {

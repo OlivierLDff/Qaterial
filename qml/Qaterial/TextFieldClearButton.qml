@@ -14,7 +14,7 @@ Qaterial.TextFieldIconButton
   icon.source: Qaterial.Icons.closeCircle
   onClicked: function()
   {
-  	if(textField) textField.clear()
-  	if(textArea) textArea.clear()
+    if(textField) textField.clear()
+    if(textArea) textArea.clear()
   }
 } // TextFieldIconButton

@@ -33,7 +33,7 @@ Image
       {
         width: parent.width
         y: _control.radius
-        height: parent.height-radius
+        height: parent.height - radius
       } // Rectangle
     } // Rectangle
   } // OpacityMask

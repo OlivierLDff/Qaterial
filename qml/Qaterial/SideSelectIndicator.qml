@@ -58,8 +58,8 @@ Item
     }
   }
 
-  Behavior on width { NumberAnimation { duration: 150; easing.type: Easing.InOutQuad } }
-  Behavior on height { NumberAnimation { duration: 150; easing.type: Easing.InOutQuad } }
+  Behavior on width { NumberAnimation { duration: 150;easing.type: Easing.InOutQuad } }
+  Behavior on height { NumberAnimation { duration: 150;easing.type: Easing.InOutQuad } }
 
   Item
   {
@@ -69,16 +69,18 @@ Item
 
     width:
     {
-      if(!clip || (control.indicatorClip !== Qaterial.Style.Position.Left) &&  control.indicatorClip !== Qaterial.Style.Position.Right)
+      if(!clip || (control.indicatorClip !== Qaterial.Style.Position.Left) && control.indicatorClip !== Qaterial.Style
+        .Position.Right)
         return control.width
-      return control.width/2
+      return control.width / 2
     }
 
     height:
     {
-      if(!clip || (control.indicatorClip !== Qaterial.Style.Position.Top) &&  control.indicatorClip !== Qaterial.Style.Position.Bottom)
+      if(!clip || (control.indicatorClip !== Qaterial.Style.Position.Top) && control.indicatorClip !== Qaterial.Style
+        .Position.Bottom)
         return control.height
-      return control.height/2
+      return control.height / 2
     }
 
     Rectangle
@@ -88,21 +90,21 @@ Item
       x:
       {
         if(control.indicatorClip === Qaterial.Style.Position.Right)
-          return -width/2
+          return -width / 2
         return 0
       }
 
       y:
       {
         if(control.indicatorClip === Qaterial.Style.Position.Top)
-          return -height/2
+          return -height / 2
         return 0
       }
 
       width: control.width
       height: control.height
 
-      radius: width/2
+      radius: width / 2
     }
   }
 

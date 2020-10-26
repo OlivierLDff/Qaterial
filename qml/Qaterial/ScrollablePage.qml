@@ -21,7 +21,8 @@ Qaterial.Page
   Flickable
   {
     anchors.fill: parent
-    contentHeight: _pane.implicitHeight + (Qt.inputMethod && Qt.inputMethod.visible ? (Qt.inputMethod.keyboardRectangle.height/Screen.devicePixelRatio ) : 0)
+    contentHeight: _pane.implicitHeight + (Qt.inputMethod && Qt.inputMethod.visible ? (Qt.inputMethod
+      .keyboardRectangle.height / Screen.devicePixelRatio) : 0)
     flickableDirection: Flickable.AutoFlickIfNeeded
 
     Qaterial.Pane
@@ -30,6 +31,6 @@ Qaterial.Page
       width: parent.width
     } // Pane
 
-    ScrollIndicator.vertical: Qaterial.ScrollIndicator { }
+    ScrollIndicator.vertical: Qaterial.ScrollIndicator {}
   } // Flickable
 } // Page

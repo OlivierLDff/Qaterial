@@ -11,63 +11,63 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
-	id: root
+  id: root
 
-	// ICON CONTROL
-	property alias source: _image.source
-	property bool fill: false
-	property bool outlined: false
-	property bool roundIcon: fill || outlined
-	property alias mirror: _image.mirror
-	property bool roundOpacity: true
+  // ICON CONTROL
+  property alias source: _image.source
+  property bool fill: false
+  property bool outlined: false
+  property bool roundIcon: fill || outlined
+  property alias mirror: _image.mirror
+  property bool roundOpacity: true
 
-	// COLORS
-	property color color: Qaterial.Style.primaryTextColor()
-	property color roundColor
-	property color roundBorderColor: roundColor
+  // COLORS
+  property color color: Qaterial.Style.primaryTextColor()
+  property color roundColor
+  property color roundBorderColor: roundColor
 
-	// SIZE
-	width: roundIcon ? roundSize : iconSize
-	height: roundIcon ? roundSize : iconSize
+  // SIZE
+  width: roundIcon ? roundSize : iconSize
+  height: roundIcon ? roundSize : iconSize
 
-	property double iconSize: 24
-	property double roundSize: 40
+  property double iconSize: 24
+  property double roundSize: 40
 
-	Rectangle
-	{
-		id: _round
-		width: root.roundSize
-		height: root.roundSize
-		color: root.fill ? root.roundColor : "transparent"
-		radius: root.roundSize/2
-		visible: root.roundIcon
-		border.width: root.outlined ? 1 : 0
-		border.color: root.outlined ? root.roundBorderColor : "transparent"
-		opacity: roundOpacity ? 0.5 : 1.0
-	} // Rectangle
+  Rectangle
+  {
+    id: _round
+    width: root.roundSize
+    height: root.roundSize
+    color: root.fill ? root.roundColor : "transparent"
+    radius: root.roundSize / 2
+    visible: root.roundIcon
+    border.width: root.outlined ? 1 : 0
+    border.color: root.outlined ? root.roundBorderColor : "transparent"
+    opacity: roundOpacity ? 0.5 : 1.0
+  } // Rectangle
 
-	Image
-	{
-		id: _image
-		width: root.iconSize
-		height: root.iconSize
-		visible: false
-		fillMode: Image.PreserveAspectFit
-		sourceSize.height: root.iconSize
-		sourceSize.width: root.iconSize
-		anchors.centerIn: parent
-	} // Image
+  Image
+  {
+    id: _image
+    width: root.iconSize
+    height: root.iconSize
+    visible: false
+    fillMode: Image.PreserveAspectFit
+    sourceSize.height: root.iconSize
+    sourceSize.width: root.iconSize
+    anchors.centerIn: parent
+  } // Image
 
-	ColorOverlay
-	{
-		source: _image
-		anchors.fill: _image
-		color.r: root.color.r
-		color.g: root.color.g
-		color.b: root.color.b
-		color.a: 1
-		cached : true
-	} // ColorOverlay
+  ColorOverlay
+  {
+    source: _image
+    anchors.fill: _image
+    color.r: root.color.r
+    color.g: root.color.g
+    color.b: root.color.b
+    color.a: 1
+    cached: true
+  } // ColorOverlay
 
-	opacity: color.a
+  opacity: color.a
 } // Item

@@ -15,223 +15,216 @@ Qaterial.TreeView
   {
     Component.onCompleted: function()
     {
-      const data =
-      [
+      const data = [
+      {
+        "expanded": false,
+        "children": [
         {
-          "expanded":false,
-          "children":[
-            {
-              "expanded":false,
-              "children":[
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+          "expanded": false,
+          "children": [
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"101 (ubuntu-xenial)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "101 (ubuntu-xenial)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"100 (pvetest-stretch)",
-                  "type":"qemu"
-                }
-              ],
-              "label":"debianpro",
-              "type":"node",
-              "depth":0
-            }
-          ],
-          "label":"debianpro",
-          "type":"remote",
-          "depth":0
-        },
+            ],
+            "label": "100 (pvetest-stretch)",
+            "type": "qemu"
+          }],
+          "label": "debianpro",
+          "type": "node",
+          "depth": 0
+        }],
+        "label": "debianpro",
+        "type": "remote",
+        "depth": 0
+      },
+      {
+        "expanded": false,
+        "children": [
         {
-          "expanded":false,
-          "children":[
-            {
-              "expanded":false,
-              "children":[
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+          "expanded": false,
+          "children": [
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"103 (stretch01)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "103 (stretch01)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"104 (ubuntu18-ct)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "104 (ubuntu18-ct)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"107 (no-ipv4)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "107 (no-ipv4)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"100 (Win10MSEdge)",
-                  "type":"qemu"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "100 (Win10MSEdge)",
+            "type": "qemu"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"101 (Win7IE8)",
-                  "type":"qemu"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "101 (Win7IE8)",
+            "type": "qemu"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"102 (stretchdocker)",
-                  "type":"qemu"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "102 (stretchdocker)",
+            "type": "qemu"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"106 (ubuntu18-vm)",
-                  "type":"qemu"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "106 (ubuntu18-vm)",
+            "type": "qemu"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"108 (pve5.2)",
-                  "type":"qemu"
-                }
-              ],
-              "label":"nena",
-              "type":"node",
-              "depth":0
-            }
-          ],
-          "label":"nena",
-          "type":"remote",
-          "depth":0
-        },
+            ],
+            "label": "108 (pve5.2)",
+            "type": "qemu"
+          }],
+          "label": "nena",
+          "type": "node",
+          "depth": 0
+        }],
+        "label": "nena",
+        "type": "remote",
+        "depth": 0
+      },
+      {
+        "expanded": false,
+        "children": [
         {
-          "expanded":false,
-          "children":[
-            {
-              "expanded":false,
-              "children":[
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+          "expanded": false,
+          "children": [
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"101 (saltmaster)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "101 (saltmaster)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"102 (gitlab)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "102 (gitlab)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"103 (aptcacher)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "103 (aptcacher)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"104 (psql1)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "104 (psql1)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"105 (monitor1)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "105 (monitor1)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"106 (spads01)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "106 (spads01)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"111 (file01)",
-                  "type":"lxc"
-                },
-                {
-                  "expanded":false,
-                  "depth":0,
-                  "children":[
+            ],
+            "label": "111 (file01)",
+            "type": "lxc"
+          },
+          {
+            "expanded": false,
+            "depth": 0,
+            "children": [
 
-                  ],
-                  "label":"100 (win10)",
-                  "type":"qemu"
-                }
-              ],
-              "label":"srv01",
-              "type":"node",
-              "depth":0
-            }
-          ],
-          "label":"srv01",
-          "type":"remote",
-          "depth":0
-        }
-      ]
+            ],
+            "label": "100 (win10)",
+            "type": "qemu"
+          }],
+          "label": "srv01",
+          "type": "node",
+          "depth": 0
+        }],
+        "label": "srv01",
+        "type": "remote",
+        "depth": 0
+      }]
 
       root.model.clear()
-      data.forEach(function(row) {
-          root.model.append(row);
+      data.forEach(function(row)
+      {
+        root.model.append(row);
       })
     }
   }
@@ -245,7 +238,7 @@ Qaterial.TreeView
     property int index
 
     height: 24
-    leftPadding: depth*20
+    leftPadding: depth * 20
 
     contentItem: RowLayout
     {
@@ -260,7 +253,7 @@ Qaterial.TreeView
           value: 90
           restoreMode: Binding.RestoreBindingOrValue
         }
-        Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
+        Behavior on rotation { NumberAnimation { duration: 200;easing.type: Easing.OutQuart } }
       }
       Qaterial.Label
       {

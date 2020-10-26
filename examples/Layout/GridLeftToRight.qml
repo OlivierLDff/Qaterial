@@ -17,13 +17,18 @@ Column
 
   function layoutTypeToString(type)
   {
-    switch(type)
+    switch (type)
     {
-      case Qaterial.Layout.ExtraLarge: return "Extra Large"
-      case Qaterial.Layout.Large: return "Large"
-      case Qaterial.Layout.Medium: return "Medium"
-      case Qaterial.Layout.Small: return "Small"
-      case Qaterial.Layout.ExtraSmall: return "Extra Small"
+      case Qaterial.Layout.ExtraLarge:
+        return "Extra Large"
+      case Qaterial.Layout.Large:
+        return "Large"
+      case Qaterial.Layout.Medium:
+        return "Medium"
+      case Qaterial.Layout.Small:
+        return "Small"
+      case Qaterial.Layout.ExtraSmall:
+        return "Extra Small"
     }
     return "Unknown"
   }
@@ -83,17 +88,17 @@ Column
   {
     running: true
     loops: Animation.Infinite
-    NumberAnimation { target: root; property: "width"; to: 100; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 100;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 360; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 360;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 600; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 600;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 960; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 960;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 1280; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 1280;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 1600; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 1600;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
   }
 
@@ -237,4 +242,3 @@ Column
     } // Grid
   } // DebugRectangle
 }
-

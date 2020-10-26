@@ -11,16 +11,15 @@ import QtQuick.Controls 2.12
 // Qaterial
 import Qaterial 1.0 as Qaterial
 
-
 T.CheckBox
 {
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding + implicitIndicatorWidth)
+    implicitContentWidth + leftPadding + rightPadding + implicitIndicatorWidth)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding,
-                           implicitIndicatorHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding,
+    implicitIndicatorHeight + topPadding + bottomPadding)
 
   spacing: Qaterial.Style.checkButton.spacing
   horizontalPadding: Qaterial.Style.checkButton.horizontalPadding
@@ -63,7 +62,8 @@ T.CheckBox
       anchor: _control
       pressed: _control.pressed
       active: _control.down || _control.visualFocus || _control.hovered
-      color: Qaterial.Style.rippleColor(_control.checked ? Qaterial.Style.RippleBackground.AccentLight : Qaterial.Style.RippleBackground.Background)
+      color: Qaterial.Style.rippleColor(_control.checked ? Qaterial.Style.RippleBackground.AccentLight : Qaterial
+        .Style.RippleBackground.Background)
     } // Ripple
 
     Qaterial.DebugRectangle

@@ -15,12 +15,14 @@ Qaterial.ToolSeparator
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
-  horizontalPadding: vertical ? Qaterial.Style.toolButton.separatorLargePadding : Qaterial.Style.toolButton.separatorSmallPadding
-  verticalPadding: vertical ? Qaterial.Style.toolButton.separatorSmallPadding : Qaterial.Style.toolButton.separatorLargePadding
+  horizontalPadding: vertical ? Qaterial.Style.toolButton.separatorLargePadding : Qaterial.Style.toolButton
+    .separatorSmallPadding
+  verticalPadding: vertical ? Qaterial.Style.toolButton.separatorSmallPadding : Qaterial.Style.toolButton
+    .separatorLargePadding
 
   property bool highlighted: false
 

@@ -44,7 +44,7 @@ Qaterial.TreeView
     property int index
 
     height: 24
-    leftPadding: depth*20
+    leftPadding: depth * 20
 
     readonly property bool selected: model && model === treeView.selectedElement
 
@@ -71,11 +71,11 @@ Qaterial.TreeView
         }
         color:
         {
-          if(control.selected|| control.hovered)
+          if(control.selected || control.hovered)
             return Qaterial.Style.accentColor
           Qaterial.Style.hintTextColor()
         }
-        Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
+        Behavior on rotation { NumberAnimation { duration: 200;easing.type: Easing.OutQuart } }
       }
       Qaterial.Label
       {
@@ -88,9 +88,9 @@ Qaterial.TreeView
         color:
         {
           if(control.selected)
-              return Qaterial.Style.accentColor
+            return Qaterial.Style.accentColor
           if(control.hovered)
-              return Qaterial.Style.primaryTextColor()
+            return Qaterial.Style.primaryTextColor()
           return Qaterial.Style.hintTextColor()
         }
       }

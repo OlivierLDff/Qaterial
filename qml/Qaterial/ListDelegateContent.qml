@@ -62,16 +62,16 @@ Rectangle
 
   // Qaterial.Style.DelegateType.Default | Qaterial.Style.DelegateType.Overline | Qaterial.Style.DelegateType.Icon
   // Qaterial.Style.DelegateType.Round | Qaterial.Style.DelegateType.Square | Qaterial.Style.DelegateType.Large
-  readonly property int type: (icon.source != "") ? (roundIcon ? Qaterial.Style.DelegateType.RoundIcon : Qaterial.Style.DelegateType.Icon) :
-      overlineText != "" ? Qaterial.Style.DelegateType.Overline :
-      (roundSourceSet || squareSourceSet) ? (largeThumbnail ? Qaterial.Style.DelegateType.Square : Qaterial.Style.DelegateType.Round) :
-      largeSourceSet ? Qaterial.Style.DelegateType.Large : Qaterial.Style.DelegateType.Default
+  readonly property int type: (icon.source != "") ? (roundIcon ? Qaterial.Style.DelegateType.RoundIcon : Qaterial.Style
+      .DelegateType.Icon) : overlineText != "" ? Qaterial.Style.DelegateType.Overline : (roundSourceSet ||
+      squareSourceSet) ? (largeThumbnail ? Qaterial.Style.DelegateType.Square : Qaterial.Style.DelegateType.Round) :
+    largeSourceSet ? Qaterial.Style.DelegateType.Large : Qaterial.Style.DelegateType.Default
 
   property alias imageSourceSize: _image.sourceSize
 
   color: "transparent"
   implicitWidth: _icon.implicitWidth
-  implicitHeight:  _text.implicitHeight
+  implicitHeight: _text.implicitHeight
 
   function reanchors()
   {
@@ -104,9 +104,9 @@ Rectangle
       anchors.left = undefined
       anchors.right = undefined
       if(mirrored)
-          anchors.right = _control.right
+        anchors.right = _control.right
       else
-          anchors.left = _control.left
+        anchors.left = _control.left
     } // function reanchors()
 
     Qaterial.DebugRectangle
@@ -122,12 +122,12 @@ Rectangle
     id: _virtualImage
     enabled: _control.enabled
     visible: _control.roundSourceSet || _control.squareSourceSet || _control.largeSourceSet
-    width: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) :
-        _control.squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) :
-        _control.largeSourceSet ? Qaterial.Style.delegate.largeWidth() : 0
-    height: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) :
-        _control.squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) :
-        _control.largeSourceSet ? Qaterial.Style.delegate.largeHeight() : 0
+    width: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
+      .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
+      Qaterial.Style.delegate.largeWidth() : 0
+    height: _control.roundSourceSet ? Qaterial.Style.delegate.roundWidth(_control.largeThumbnail) : _control
+      .squareSourceSet ? Qaterial.Style.delegate.squareWidth(_control.largeThumbnail) : _control.largeSourceSet ?
+      Qaterial.Style.delegate.largeHeight() : 0
 
     anchors.top: _control.top
     anchors.topMargin: Qaterial.Style.delegate.topPadding(_control.type, _control.lines)
@@ -138,9 +138,9 @@ Rectangle
       anchors.left = undefined
       anchors.right = undefined
       if(mirrored)
-          anchors.right = _control.right
+        anchors.right = _control.right
       else
-          anchors.left = _control.left
+        anchors.left = _control.left
     } //function reanchors()
 
     Image
@@ -150,9 +150,8 @@ Rectangle
       width: parent.width
       height: parent.height
       anchors.centerIn: parent
-      source: _control.roundSourceSet ? _control.roundSource :
-          _control.squareSourceSet ? _control.squareSource :
-          _control.largeSource
+      source: _control.roundSourceSet ? _control.roundSource : _control.squareSourceSet ? _control.squareSource :
+        _control.largeSource
 
       sourceSize.width: width
       sourceSize.height: height
@@ -164,16 +163,16 @@ Rectangle
         {
           width: _image.width
           height: _image.height
-          radius: _image.width/2
+          radius: _image.width / 2
         } // Rectangle
       } // OpacityMask
     } // Image
 
     Qaterial.DebugRectangle
     {
-        anchors.fill: parent
-        border.color: "orange"
-        visible: _control.drawline
+      anchors.fill: parent
+      border.color: "orange"
+      visible: _control.drawline
     } // DebugRectangle
   } // Item
 
@@ -188,8 +187,10 @@ Rectangle
     colorReversed: _control.colorReversed
     anchors.top: _control.top
     anchors.bottom: _control.bottom
-    anchors.left: mirrored ? _control.left : (_icon.source != "" ? _icon.right : _image.source != "" ? _virtualImage.right : _control.left)
-    anchors.right: mirrored ? (_icon.source != "" ? _icon.left : _image.source != "" ? _virtualImage.left : _control.right) : _control.right
+    anchors.left: mirrored ? _control.left : (_icon.source != "" ? _icon.right : _image.source != "" ? _virtualImage
+      .right : _control.left)
+    anchors.right: mirrored ? (_icon.source != "" ? _icon.left : _image.source != "" ? _virtualImage.left : _control
+      .right) : _control.right
     anchors.leftMargin: !mirrored ? _control.spacing : _control.leftPadding
     anchors.rightMargin: mirrored ? _control.spacing : _control.rightPadding
     mirrored: _control.mirrored

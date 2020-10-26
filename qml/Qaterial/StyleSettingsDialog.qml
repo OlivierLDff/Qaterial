@@ -35,7 +35,7 @@ Qaterial.Dialog
   contentItem: Flickable
   {
     //width: _themeDialog.width
-    implicitHeight: 400//_settingsColumn.implicitHeight
+    implicitHeight: 400 //_settingsColumn.implicitHeight
     contentWidth: width
     contentHeight: _settingsColumn.implicitHeight
 
@@ -87,7 +87,7 @@ Qaterial.Dialog
         {
           Qaterial.Style.theme = checked ? Qaterial.Style.Theme.Dark : Qaterial.Style.Theme.Light
         }
-        Component.onCompleted: checked = Qaterial.Style.theme===Qaterial.Style.Theme.Dark
+        Component.onCompleted: checked = Qaterial.Style.theme === Qaterial.Style.Theme.Dark
       } // SwitchDelegate
 
       Qaterial.SwitchDelegate
@@ -190,39 +190,39 @@ Qaterial.Dialog
 
       Qaterial.Label
       {
-          text: "Primary Color"
-          horizontalAlignment: Label.AlignHCenter
-          verticalAlignment: Label.AlignVCenter
-          width: parent.width
+        text: "Primary Color"
+        horizontalAlignment: Label.AlignHCenter
+        verticalAlignment: Label.AlignVCenter
+        width: parent.width
       } // Label
 
       ListModel
       {
         id: _colorModel
-        ListElement { color: "#f44336"; materialColor: true }
-        ListElement { color: "#E91E63"; materialColor: true }
-        ListElement { color: "#9C27B0"; materialColor: true }
-        ListElement { color: "#673AB7"; materialColor: true }
-        ListElement { color: "#3F51B5"; materialColor: true }
-        ListElement { color: "#2196F3"; materialColor: true }
-        ListElement { color: "#03A9F4"; materialColor: true }
-        ListElement { color: "#00BCD4"; materialColor: true }
-        ListElement { color: "#009688"; materialColor: true }
-        ListElement { color: "#4CAF50"; materialColor: true }
-        ListElement { color: "#8BC34A"; materialColor: true }
-        ListElement { color: "#CDDC39"; materialColor: true }
-        ListElement { color: "#FFEB3B"; materialColor: true }
-        ListElement { color: "#FFC107"; materialColor: true }
-        ListElement { color: "#FF9800"; materialColor: true }
-        ListElement { color: "#FF5722"; materialColor: true }
-        ListElement { color: "0"; materialColor: false; colorString: "#303030" }
-        ListElement { color: "0"; materialColor: false; colorString: "#212121" }
+        ListElement { color: "#f44336";materialColor: true }
+        ListElement { color: "#E91E63";materialColor: true }
+        ListElement { color: "#9C27B0";materialColor: true }
+        ListElement { color: "#673AB7";materialColor: true }
+        ListElement { color: "#3F51B5";materialColor: true }
+        ListElement { color: "#2196F3";materialColor: true }
+        ListElement { color: "#03A9F4";materialColor: true }
+        ListElement { color: "#00BCD4";materialColor: true }
+        ListElement { color: "#009688";materialColor: true }
+        ListElement { color: "#4CAF50";materialColor: true }
+        ListElement { color: "#8BC34A";materialColor: true }
+        ListElement { color: "#CDDC39";materialColor: true }
+        ListElement { color: "#FFEB3B";materialColor: true }
+        ListElement { color: "#FFC107";materialColor: true }
+        ListElement { color: "#FF9800";materialColor: true }
+        ListElement { color: "#FF5722";materialColor: true }
+        ListElement { color: "0";materialColor: false;colorString: "#303030" }
+        ListElement { color: "0";materialColor: false;colorString: "#212121" }
       } // ListModel
 
       GridLayout
       {
         //width: parent.width
-        columns: parent.width/45
+        columns: parent.width / 45
         width: parent.width
         Repeater
         {
@@ -231,7 +231,7 @@ Qaterial.Dialog
           delegate: Rectangle
           {
             id: _icon
-            width: 40; height: 40
+            width: 40;height: 40
             color: model.materialColor ? model.color : model.colorString
             radius: 3
             MouseArea
@@ -263,7 +263,7 @@ Qaterial.Dialog
       GridLayout
       {
         //width: parent.width
-        columns: parent.width/45
+        columns: parent.width / 45
         width: parent.width
         Repeater
         {
@@ -272,7 +272,7 @@ Qaterial.Dialog
           delegate: Rectangle
           {
             id: _icon
-            width: 40; height: 40
+            width: 40;height: 40
             color: model.materialColor ? model.color : model.colorString
             radius: 3
             MouseArea

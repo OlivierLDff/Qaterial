@@ -44,7 +44,7 @@ Item
     {
       var newChecked = _root.ListView.view.isChecked(index)
       if(newChecked !== _root.checked)
-          _root.checked = newChecked
+        _root.checked = newChecked
     }
   } // function updateCheckFromList()
 
@@ -55,7 +55,7 @@ Item
     function onCheckBoxEnabledChanged()
     {
       if(!_root.ListView.view.checkBoxEnabled && _root.checked)
-          _root.checked = false
+        _root.checked = false
     }
 
     onCheckedItemCounterChanged: updateCheckFromList()

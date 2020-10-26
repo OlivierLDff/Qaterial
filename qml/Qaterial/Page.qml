@@ -16,13 +16,13 @@ T.Page
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding,
-                          implicitHeaderWidth,
-                          implicitFooterWidth)
+    contentWidth + leftPadding + rightPadding,
+    implicitHeaderWidth,
+    implicitFooterWidth)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding
-                           + (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0)
-                           + (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
+    contentHeight + topPadding + bottomPadding +
+    (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0) +
+    (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
   property color backgroundColor: Qaterial.Style.backgroundColor
 

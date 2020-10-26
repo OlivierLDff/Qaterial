@@ -25,9 +25,9 @@ Window
 
   // Ugly trick for now : todo remove
   Material.theme: Qaterial.Style.theme
-  Material.primary : Qaterial.Style.primaryColor
-  Material.background : Qaterial.Style.backgroundColor
-  Material.accent : Qaterial.Style.accentColor
+  Material.primary: Qaterial.Style.primaryColor
+  Material.background: Qaterial.Style.backgroundColor
+  Material.accent: Qaterial.Style.accentColor
   Material.foreground: Qaterial.Style.foregroundColor
 
   Qaterial.SplashScreen

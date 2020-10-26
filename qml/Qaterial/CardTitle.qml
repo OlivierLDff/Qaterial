@@ -13,7 +13,7 @@ Item
 {
   id: _control
   implicitHeight: _column.implicitHeight
-  implicitWidth: 200//_column.implicitWidth
+  implicitWidth: 200 //_column.implicitWidth
 
   property alias headerText: _title.text
   property alias subHeaderText: _text.text
@@ -26,7 +26,7 @@ Item
 
   property alias padding: _column.padding
   property alias leftPadding: _column.leftPadding
-  property alias rightPadding : _column.rightPadding
+  property alias rightPadding: _column.rightPadding
   property alias topPadding: _column.topPadding
   property alias bottomPadding: _column.bottomPadding
 
@@ -55,9 +55,9 @@ Item
 
       Qaterial.DebugRectangle
       {
-          anchors.fill: parent
-          border.color: "pink"
-          visible: _control.drawline
+        anchors.fill: parent
+        border.color: "pink"
+        visible: _control.drawline
       } // DebugRectangle
     } // Label
 

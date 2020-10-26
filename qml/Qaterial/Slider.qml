@@ -24,13 +24,15 @@ T.Slider
   property color backgroundDisabledColor: Qaterial.Style.disabledDividersColor()
   property color handleBorderColor: Qaterial.Style.primaryTextColor()
 
-  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider.implicitHeight
-  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider.implicitWidth
+  property int backgroundImplicitWidth: horizontal ? Qaterial.Style.slider.implicitWidth : Qaterial.Style.slider
+    .implicitHeight
+  property int backgroundImplicitHeight: horizontal ? Qaterial.Style.slider.implicitHeight : Qaterial.Style.slider
+    .implicitWidth
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitHandleWidth + leftPadding + rightPadding)
+    implicitHandleWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitHandleHeight + topPadding + bottomPadding)
+    implicitHandleHeight + topPadding + bottomPadding)
 
   handle: Qaterial.SliderHandle
   {
@@ -66,7 +68,7 @@ T.Slider
     implicitHeight: control.backgroundImplicitHeight
     x:
     {
-      const horizontalOffset = control.handle.width/2
+      const horizontalOffset = control.handle.width / 2
       const verticalOffset = (control.availableWidth - width) / 2
       const offset = control.horizontal ? horizontalOffset : verticalOffset
       return offset + control.leftPadding
@@ -74,7 +76,7 @@ T.Slider
     y:
     {
       const horizontalOffset = (control.availableHeight - height) / 2
-      const verticalOffset = control.handle.height/2
+      const verticalOffset = control.handle.height / 2
       const offset = control.horizontal ? horizontalOffset : verticalOffset
       return control.topPadding + offset
     }
@@ -83,7 +85,7 @@ T.Slider
       if(control.horizontal)
         return control.availableWidth - control.handle.width
       else
-       return size
+        return size
     }
     height:
     {

@@ -16,15 +16,16 @@ T.GroupBox
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
   spacing: Qaterial.Style.card.spacing
   horizontalPadding: Qaterial.Style.card.horizontalPadding
   verticalPadding: Qaterial.Style.card.verticalPadding
 
-  topPadding: verticalPadding + (inlineTitle ? (implicitLabelWidth > 0 ? implicitLabelHeight/2 + spacing : 0) : (implicitLabelWidth > 0 ? implicitLabelHeight + spacing : 0))
+  topPadding: verticalPadding + (inlineTitle ? (implicitLabelWidth > 0 ? implicitLabelHeight / 2 + spacing : 0) : (
+    implicitLabelWidth > 0 ? implicitLabelHeight + spacing : 0))
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
@@ -40,7 +41,7 @@ T.GroupBox
   label: Qaterial.Label
   {
     id: _label
-    x: _control.leftPadding + (_control.inlineTitle ? (_control.verticalPadding) : 0 )
+    x: _control.leftPadding + (_control.inlineTitle ? (_control.verticalPadding) : 0)
     width: _control.availableWidth - x
 
     text: _control.title
@@ -56,10 +57,11 @@ T.GroupBox
   background: Rectangle
   {
     id: _rect
-    y: _control.inlineTitle ? label.implicitHeight/2 : (_control.topPadding - _control.bottomPadding)
+    y: _control.inlineTitle ? label.implicitHeight / 2 : (_control.topPadding - _control.bottomPadding)
     implicitWidth: 200
     width: parent.width
-    height: parent.height + (_control.inlineTitle ? (-label.implicitHeight/2) : (-_control.topPadding + _control.bottomPadding))
+    height: parent.height + (_control.inlineTitle ? (-label.implicitHeight / 2) : (-_control.topPadding + _control
+      .bottomPadding))
     radius: Qaterial.Style.card.radius
     color: _control.inlineTitle ? "transparent" : _control.color
     border.color: _control.borderColor
@@ -75,10 +77,10 @@ T.GroupBox
         height: _rect.height
         Rectangle
         {
-          width: label.contentWidth + _control.verticalPadding*2
+          width: label.contentWidth + _control.verticalPadding * 2
           height: label.implicitHeight
           x: _control.leftPadding
-          y: -height/2
+          y: -height / 2
         } // Rectangle
       } // Rectangle
     } // OpacityMask

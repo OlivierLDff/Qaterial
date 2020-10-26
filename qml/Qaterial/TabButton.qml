@@ -17,14 +17,14 @@ T.TabButton
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   leftPadding: ((icon.source != "" && !mirrored) ? Qaterial.Style.tabButton.iconPadding :
-                                                 Qaterial.Style.tabButton.padding) + leftInset
+    Qaterial.Style.tabButton.padding) + leftInset
   rightPadding: ((icon.source != "" && mirrored) ? Qaterial.Style.tabButton.iconPadding :
-                                                   Qaterial.Style.tabButton.padding) + rightInset
+    Qaterial.Style.tabButton.padding) + rightInset
 
   topInset: Qaterial.Style.tabButton.topInset
   bottomInset: Qaterial.Style.tabButton.bottomInset
@@ -33,25 +33,30 @@ T.TabButton
 
   topPadding: useSmallFont ? Qaterial.Style.tabButton.smallTopPadding : Qaterial.Style.tabButton.topPadding
   bottomPadding: topPadding
-  spacing: display === AbstractButton.TextUnderIcon ? (useSmallFont ? Qaterial.Style.tabButton.smallSpacingVertical : Qaterial.Style.tabButton.spacingVertical ) : (useSmallFont ? Qaterial.Style.tabButton.smallSpacing : Qaterial.Style.tabButton.spacing)
+  spacing: display === AbstractButton.TextUnderIcon ? (useSmallFont ? Qaterial.Style.tabButton.smallSpacingVertical :
+    Qaterial.Style.tabButton.spacingVertical) : (useSmallFont ? Qaterial.Style.tabButton.smallSpacing : Qaterial
+    .Style.tabButton.spacing)
 
   font.family: Qaterial.Style.textTypeToFontFamily(Qaterial.Style.TextType.Button)
   font.styleName: Qaterial.Style.textTypeToStyleName(Qaterial.Style.TextType.Button)
-  font.pixelSize: useSmallFont ? Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Hint) : Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Button)
+  font.pixelSize: useSmallFont ? Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Hint) : Qaterial.Style
+    .textTypeToPixelSize(Qaterial.Style.TextType.Button)
   font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Button)
-  font.letterSpacing:  Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
+  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
 
   icon.width: Qaterial.Style.tabButton.iconWidth
   icon.height: Qaterial.Style.tabButton.iconWidth
   icon.color: foregroundColor
 
-  property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-                                  (down || checked) ? (highlighted ? Qaterial.Style.buttonAccentColor : (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor())) :
-                                      highlighted ? (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()) :
-                                                    (colorReversed ? Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor())
+  property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial
+      .Style.disabledTextColor()) : (down || checked) ? (highlighted ? Qaterial.Style.buttonAccentColor : (
+      colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor())) : highlighted ?
+    (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()) : (colorReversed ?
+      Qaterial.Style.secondaryTextColorReversed() : Qaterial.Style.secondaryTextColor())
 
   property color backgroundColor: pressed ? Qaterial.Style.backgroundColor :
-      !enabled ? (Qaterial.Style.buttonDisabledColor) : (highlighted ? Qaterial.Style.buttonAccentColor : Qaterial.Style.buttonColor )
+    !enabled ? (Qaterial.Style.buttonDisabledColor) : (highlighted ? Qaterial.Style.buttonAccentColor : Qaterial.Style
+      .buttonColor)
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
@@ -61,7 +66,8 @@ T.TabButton
 
   property alias elide: _iconLabel.elide
 
-  property color rippleColor: Qaterial.Style.rippleColor(onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background)
+  property color rippleColor: Qaterial.Style.rippleColor(onPrimary ? Qaterial.Style.RippleBackground.Primary :
+    Qaterial.Style.RippleBackground.Background)
 
   display: hintText && !checked ? AbstractButton.IconOnly : AbstractButton.TextUnderIcon
 
@@ -81,12 +87,11 @@ T.TabButton
   background: Qaterial.Ripple
   {
     implicitHeight: (_control.icon.source != "" &&
-                    _control.text != "" &&
-                    _control.display === AbstractButton.TextUnderIcon &&
-                    !_control.useSmallFont) ?
-                        Qaterial.Style.tabButton.minHeightWithIcon :
-                        _control.useSmallFont ? Qaterial.Style.tabButton.minHeightWithSmallIcon :
-                            Qaterial.Style.tabButton.minHeight
+        _control.text != "" &&
+        _control.display === AbstractButton.TextUnderIcon &&
+        !_control.useSmallFont) ?
+      Qaterial.Style.tabButton.minHeightWithIcon : _control.useSmallFont ? Qaterial.Style.tabButton
+      .minHeightWithSmallIcon : Qaterial.Style.tabButton.minHeight
 
     implicitWidth: Qaterial.Style.tabButton.minWidth
     clip: true

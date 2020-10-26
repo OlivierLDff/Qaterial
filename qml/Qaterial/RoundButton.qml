@@ -29,8 +29,10 @@ Qaterial.RawMaterialButton
   //leftInset: Qaterial.Style.fab.iconPadding
   //rightInset: Qaterial.Style.fab.iconPadding
 
-  backgroundImplicitWidth: Qaterial.Style.toolButton.minWidth /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
-  backgroundImplicitHeight: Qaterial.Style.toolButton.minHeight /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
+  backgroundImplicitWidth: Qaterial.Style.toolButton
+    .minWidth /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
+  backgroundImplicitHeight: Qaterial.Style.toolButton
+    .minHeight /*- Math.max(leftInset + rightInset, topInset + bottomInset)*/
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary

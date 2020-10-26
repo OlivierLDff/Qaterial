@@ -24,9 +24,9 @@ T.TabButton
   property bool highlighted: ListView.isCurrentItem
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   leftPadding: Qaterial.Style.tabButton.padding + leftInset
   rightPadding: Qaterial.Style.tabButton.padding + rightInset
@@ -74,8 +74,8 @@ T.TabButton
 
   indicator: Qaterial.SideSelectIndicator
   {
-    x: (parent.width - width)/2
-    y: parent.height - thickness/2
+    x: (parent.width - width) / 2
+    y: parent.height - thickness / 2
 
     horizontal: true
 

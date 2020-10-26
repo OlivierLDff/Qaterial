@@ -24,13 +24,14 @@ Qaterial.CardBackground
   Qaterial.Ripple
   {
     id: _ripple
-    width: parent.width - parent.border.width*2
-    height: parent.height - parent.border.width*2
+    width: parent.width - parent.border.width * 2
+    height: parent.height - parent.border.width * 2
     x: parent.border.width
     y: parent.border.width
 
     clip: visible
-    color: Qaterial.Style.rippleColor(parent.onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background)
+    color: Qaterial.Style.rippleColor(parent.onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style
+      .RippleBackground.Background)
 
     // trick because clipRadius isn't working in ripple private implementation (QTBUG-51894)
     layer.enabled: true

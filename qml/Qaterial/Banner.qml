@@ -50,7 +50,7 @@ Qaterial.Pane
   contentItem: Item
   {
     id: _content
-    implicitWidth:  Qaterial.Style.banner.minimumWidth
+    implicitWidth: Qaterial.Style.banner.minimumWidth
     implicitHeight: Qaterial.Style.banner.implicitHeight1Line
 
     Qaterial.DebugRectangle
@@ -60,7 +60,8 @@ Qaterial.Pane
       visible: _control.drawline
     } // DebugRectangle
 
-    readonly property bool displaySmallText: (((_action2.text == "" && _action1.text != "") || (_action2.text != "" && _action1.text == "")) && _smallLabel.contentWidth < _smallLabel.width)
+    readonly property bool displaySmallText: (((_action2.text == "" && _action1.text != "") || (_action2.text !=
+      "" && _action1.text == "")) && _smallLabel.contentWidth < _smallLabel.width)
 
     readonly property bool useSmallText: _control.mobileOrientation ? _content.displaySmallText : true
 
@@ -75,9 +76,13 @@ Qaterial.Pane
 
     function reanchors()
     {
-      var mobileImplicitHeight = (_medLabel.lineCount === 2 || _medLabel.visible) ? (thumbnailVisible ? Qaterial.Style.banner.implicitHeightThumb : Qaterial.Style.banner.implicitHeight2Line) : Qaterial.Style.banner.implicitHeight1Line
+      var mobileImplicitHeight = (_medLabel.lineCount === 2 || _medLabel.visible) ? (thumbnailVisible ? Qaterial
+          .Style.banner.implicitHeightThumb : Qaterial.Style.banner.implicitHeight2Line) : Qaterial.Style.banner
+        .implicitHeight1Line
 
-      var desktopImplicitHeight = _smallLabel.lineCount === 3 ? Qaterial.Style.banner.implicitHeight3LineDesk :  _smallLabel.lineCount === 2 ? Qaterial.Style.banner.implicitHeight2LineDesk : Qaterial.Style.banner.implicitHeight1LineDesk
+      var desktopImplicitHeight = _smallLabel.lineCount === 3 ? Qaterial.Style.banner.implicitHeight3LineDesk :
+        _smallLabel.lineCount === 2 ? Qaterial.Style.banner.implicitHeight2LineDesk : Qaterial.Style.banner
+        .implicitHeight1LineDesk
 
       implicitHeight = (_control.mobileOrientation ? mobileImplicitHeight : desktopImplicitHeight)
       _thumbnail.reanchors()
@@ -119,9 +124,9 @@ Qaterial.Pane
         anchors.top = undefined
         anchors.verticalCenter = undefined
         if((_smallLabel.lineCount === 1 && !_medLabel.visible))
-            anchors.verticalCenter = _content.verticalCenter
+          anchors.verticalCenter = _content.verticalCenter
         else
-            anchors.top = _smallLabel.visible ? _smallLabel.top : _medLabel.top
+          anchors.top = _smallLabel.visible ? _smallLabel.top : _medLabel.top
       } // function reanchors()
     } // Item
 
@@ -134,7 +139,8 @@ Qaterial.Pane
       anchors.left: _thumbnail.visible ? _thumbnail.right : _content.left
       anchors.leftMargin: Qaterial.Style.card.horizontalPadding
       anchors.right: _actionRow.left
-      anchors.rightMargin: _control.mobileOrientation ? (Qaterial.Style.banner.smallTextPadding) : Qaterial.Style.banner.smallTextPaddingDesktop
+      anchors.rightMargin: _control.mobileOrientation ? (Qaterial.Style.banner.smallTextPadding) : Qaterial.Style
+        .banner.smallTextPaddingDesktop
       maximumLineCount: _control.mobileOrientation ? 1 : 3
       wrapMode: _control.mobileOrientation ? Text.NoWrap : Text.WordWrap
       elide: _control.mobileOrientation ? Text.ElideNone : Text.ElideRight
@@ -157,7 +163,8 @@ Qaterial.Pane
       anchors.right: _content.right
       anchors.rightMargin: Qaterial.Style.card.horizontalPadding
       anchors.top: _content.top
-      anchors.topMargin: Qaterial.Style.card.horizontalPadding + (_thumbnail.visible ? Qaterial.Style.card.verticalPadding : 0)
+      anchors.topMargin: Qaterial.Style.card.horizontalPadding + (_thumbnail.visible ? Qaterial.Style.card
+        .verticalPadding : 0)
       maximumLineCount: 2
       wrapMode: Text.WordWrap
       elide: Text.ElideRight
@@ -174,8 +181,8 @@ Qaterial.Pane
         anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
-            _control.actionClicked()
-            _control.action1Clicked()
+          _control.actionClicked()
+          _control.action1Clicked()
         }
       } // FlatButton
 
@@ -186,7 +193,7 @@ Qaterial.Pane
         anchors.verticalCenter: parent.verticalCenter
         onClicked:
         {
-            _control.action2Clicked()
+          _control.action2Clicked()
         }
       } // FlatButton
 
@@ -199,9 +206,9 @@ Qaterial.Pane
         anchors.bottom = undefined
         anchors.verticalCenter = undefined
         if(_smallLabel.lineCount === 1 && !_medLabel.visible)
-            anchors.verticalCenter = _content.verticalCenter
+          anchors.verticalCenter = _content.verticalCenter
         else
-            anchors.bottom = _content.bottom
+          anchors.bottom = _content.bottom
       } // function reanchors()
     } // Row
 

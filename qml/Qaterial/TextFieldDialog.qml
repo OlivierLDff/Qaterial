@@ -45,5 +45,5 @@ Qaterial.ModalDialog
     onAccepted: _root.accept()
   } // TextField
 
-  onOpened : if(_root.selectAllText) _textField.selectAll()
+  onOpened: if(_root.selectAllText) _textField.selectAll()
 } // ModalDialog

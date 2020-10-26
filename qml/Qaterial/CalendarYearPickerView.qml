@@ -7,7 +7,8 @@ GridView
 {
   id: root
 
-  property int year: new Date().getFullYear()
+  property int year: new Date()
+    .getFullYear()
   property int startYear: 1900
   property int endYear: 2100
 
@@ -18,9 +19,9 @@ GridView
   function getYears(startYear, endYear)
   {
     var years = new Array()
-    for(let i=0; i<=(endYear-startYear); ++i)
+    for(let i = 0; i <= (endYear - startYear); ++i)
     {
-      var year = startYear+i;
+      var year = startYear + i;
       years[i] = year
       //console.log(years[i])
     }
@@ -30,8 +31,8 @@ GridView
   implicitWidth: 280
   implicitHeight: 280
 
-  cellWidth: Math.min(width/(Math.floor(width/60)), width)
-  cellHeight: Math.min(height/(Math.floor(height/40)), height)
+  cellWidth: Math.min(width / (Math.floor(width / 60)), width)
+  cellHeight: Math.min(height / (Math.floor(height / 40)), height)
 
   model: getYears(startYear, endYear)
 
@@ -47,7 +48,7 @@ GridView
       id: _yearButton
 
       width: root.cellWidth
-      height:root.cellHeight
+      height: root.cellHeight
       zoomLabelOnHovered: false
       readonly property int year: root.startYear + index
 
@@ -64,6 +65,6 @@ GridView
 
       ToolTip.text: "Selected Year"
       ToolTip.visible: hovered && checked
-      }
     }
   }
+}

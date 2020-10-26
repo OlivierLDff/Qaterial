@@ -15,9 +15,9 @@ T.ScrollIndicator
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   padding: 2
 
@@ -33,20 +33,20 @@ T.ScrollIndicator
 
     states: State
     {
-        name: "active"
-        when: _control.active
-        PropertyChanges { target: _control.contentItem; opacity: 0.75 }
+      name: "active"
+      when: _control.active
+      PropertyChanges { target: _control.contentItem;opacity: 0.75 }
     } // State
 
-    transitions:
-    [
+    transitions: [
       Transition
       {
         from: "active"
         SequentialAnimation
         {
           PauseAnimation { duration: 450 } // PauseAnimation
-          NumberAnimation { target: _control.contentItem; duration: 200; property: "opacity"; to: 0.0 } // NumberAnimation
+          NumberAnimation { target: _control
+      .contentItem;duration: 200;property: "opacity";to: 0.0 } // NumberAnimation
         } // SequentialAnimation
       } // Transition
     ] // transitions

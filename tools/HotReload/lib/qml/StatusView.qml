@@ -44,7 +44,7 @@ Rectangle
       readOnly: true
       wrapMode: Text.WordWrap
       selectByMouse: true
-      padding:  Qaterial.Style.card.horizontalPadding
+      padding: Qaterial.Style.card.horizontalPadding
       selectionColor: Qaterial.Style.accentColor
 
       color: Qaterial.Style.textTypeToColor(Qaterial.Style.TextType.Body1)
@@ -56,13 +56,12 @@ Rectangle
 
       onTextChanged: function()
       {
-        cursorPosition = text.length-1
+        cursorPosition = text.length - 1
         if(height > _flick.height)
           _flick.contentY = height - _flick.height
       }
     }
   }
-
 
   Rectangle
   {

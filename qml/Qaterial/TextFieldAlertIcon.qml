@@ -17,7 +17,7 @@ Qaterial.TextFieldIcon
   onVisibleChanged: function()
   {
     if(visible)
-        _anim.start()
+      _anim.start()
   }
-  ErrorSequentialAnimation { id: _anim; target: _control; }
+  ErrorSequentialAnimation { id: _anim;target: _control; }
 } // TextFieldIcon

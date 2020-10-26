@@ -16,7 +16,7 @@ Column
   signal yearClicked()
   signal monthClicked()
   signal moved(int month, int year)
-  signal accepted (date date)
+  signal accepted(date date)
 
   Qaterial.CalendarNavigationBar
   {
@@ -27,7 +27,7 @@ Column
     {
       if(root.month)
       {
-        if(Qaterial.Calendar.isMonthYearValid(from, to, root.month -1, root.year))
+        if(Qaterial.Calendar.isMonthYearValid(from, to, root.month - 1, root.year))
           --root.month
       }
       else
@@ -35,7 +35,7 @@ Column
         if(Qaterial.Calendar.isMonthYearValid(from, to, 11, root.year - 1))
         {
           root.month = 11
-          --root.year
+            --root.year
         }
       }
     }
@@ -52,7 +52,7 @@ Column
         if(Qaterial.Calendar.isMonthYearValid(from, to, 0, root.year + 1))
         {
           root.month = 0
-          ++root.year
+            ++root.year
         }
       }
     }
@@ -88,5 +88,3 @@ Column
     }
   }
 }
-
-

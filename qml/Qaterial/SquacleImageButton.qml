@@ -16,8 +16,8 @@ Qaterial.SquacleButton
   {
     id: _imageClipper
 
-    property real radius: control.squared ? 16 : width/2
-    Behavior on radius { NumberAnimation { duration: 150; easing.type: Easing.InOutQuad } }
+    property real radius: control.squared ? 16 : width / 2
+    Behavior on radius { NumberAnimation { duration: 150;easing.type: Easing.InOutQuad } }
 
     layer.enabled: true
     layer.effect: OpacityMask
