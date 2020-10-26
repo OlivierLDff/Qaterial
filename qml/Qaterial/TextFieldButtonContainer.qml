@@ -30,29 +30,29 @@ Container
   {
     if(textField)
     {
-      for (var i = 0; i < count; i++)
+      for(var i = 0; i < count; i++)
       {
-          var item = itemAt(i)
-          if(item && ((typeof item.textField) == "object"))
-              item.textField = _container.textField
+        var item = itemAt(i)
+        if(item && ((typeof item.textField) == "object"))
+          item.textField = _container.textField
       }
     }
     if(textArea)
     {
-      for (var i = 0; i < count; i++)
+      for(var i = 0; i < count; i++)
       {
-          var item = itemAt(i)
-          if(item && ((typeof item.textArea) == "object"))
-              item.textArea = _container.textArea
+        var item = itemAt(i)
+        if(item && ((typeof item.textArea) == "object"))
+          item.textArea = _container.textArea
       }
     }
     if(comboBox)
     {
-      for (var i = 0; i < count; i++)
+      for(var i = 0; i < count; i++)
       {
-          var item = itemAt(i)
-          if(item && ((typeof item.comboBox) == "object"))
-              item.comboBox = _container.comboBox
+        var item = itemAt(i)
+        if(item && ((typeof item.comboBox) == "object"))
+          item.comboBox = _container.comboBox
       }
     }
   } // function assignTextFieldToContentItem()

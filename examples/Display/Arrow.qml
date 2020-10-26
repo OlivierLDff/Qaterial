@@ -13,7 +13,7 @@ Item
 
   Timer
   {
-    interval: 1500; running: true; repeat: true
+    interval: 1500;running: true;repeat: true
     onTriggered: () => value = value ? 0 : 200
   }
 
@@ -101,11 +101,6 @@ Item
     endTail: Qaterial.Arrow.Tail.FilledArrow
   }
 
-
-
-
-
-
   Qaterial.Arrow
   {
     anchors.fill: parent
@@ -191,9 +186,9 @@ Item
 
     gradient: Gradient
     {
-      GradientStop { position: 0.0; color: "red" }
-      GradientStop { position: 0.33; color: "yellow" }
-      GradientStop { position: 1.0; color: "green" }
+      GradientStop { position: 0.0;color: "red" }
+      GradientStop { position: 0.33;color: "yellow" }
+      GradientStop { position: 1.0;color: "green" }
     }
     startTail: Qaterial.Arrow.Tail.Arrow
     endTail: Qaterial.Arrow.Tail.Arrow

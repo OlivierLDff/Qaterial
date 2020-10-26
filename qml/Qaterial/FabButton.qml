@@ -17,19 +17,21 @@ T.Button
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   Behavior on implicitWidth
   {
-    NumberAnimation { easing.type: Easing.InOutQuad; duration: 200 } // NumberAnimation
+    NumberAnimation { easing.type: Easing.InOutQuad;
+      duration: 200 } // NumberAnimation
   } // Behavior
 
   Behavior on implicitHeight
   {
-    NumberAnimation { easing.type: Easing.InOutQuad; duration: 200 } // NumberAnimation
-    } // Behavior
+    NumberAnimation { easing.type: Easing.InOutQuad;
+      duration: 200 } // NumberAnimation
+  } // Behavior
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
@@ -49,7 +51,7 @@ T.Button
   font.styleName: Qaterial.Style.textTypeToStyleName(Qaterial.Style.TextType.Button)
   font.pixelSize: Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Button)
   font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Button)
-  font.letterSpacing:  Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
+  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
 
   readonly property bool defaultPadding:
   {
@@ -76,7 +78,8 @@ T.Button
   spacing: Qaterial.Style.fab.spacing
 
   // Qaterial.Style.FabType.Default | Qaterial.Style.FabType.Mini | Qaterial.Style.FabType.Extended
-  property int type: (extendedOnHovered && hovered && text != "") ? Qaterial.Style.FabType.Extended : Qaterial.Style.FabType.Default
+  property int type: (extendedOnHovered && hovered && text != "") ? Qaterial.Style.FabType.Extended : Qaterial.Style
+    .FabType.Default
 
   property color foregroundColor:
   {
@@ -102,10 +105,10 @@ T.Button
       return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Background)
     if(highlighted)
       return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Accent)
-    return   Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Primary)
+    return Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Primary)
   }
 
-  property double radius: height/2
+  property double radius: height / 2
 
   icon.width: Qaterial.Style.fab.iconWidth
   icon.height: Qaterial.Style.fab.iconWidth
@@ -118,7 +121,8 @@ T.Button
 
   scale: enabledScale ? (enabled ? 1 : 0.0) : 1
   property double scaleDuration: 200
-  Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad; duration: _control.scaleDuration } }
+  Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad;
+      duration: _control.scaleDuration } }
 
   property bool enabledScale: true
   property bool extendedOnHovered: false
@@ -136,10 +140,10 @@ T.Button
 
   background: Rectangle
   {
-    implicitWidth:  (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minWidthExtended :
-                    ((type === Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
-    implicitHeight: (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minHeightExtended :
-                    ((type === Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
+    implicitWidth: (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minWidthExtended : ((type ===
+      Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
+    implicitHeight: (type === Qaterial.Style.FabType.Extended) ? Qaterial.Style.fab.minHeightExtended : ((type ===
+      Qaterial.Style.FabType.Mini) ? Qaterial.Style.fab.minWidthMini : Qaterial.Style.fab.minWidth)
 
     Qaterial.DebugRectangle
     {

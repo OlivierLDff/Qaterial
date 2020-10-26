@@ -14,9 +14,9 @@ Rectangle
   implicitWidth: Qaterial.Style.menu.separatorImplicitWidth
   implicitHeight: 1
   property bool enabled: true
-  color: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() : Qaterial.Style.disabledDividersColor()) :
-              highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
-              colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
+  color: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() : Qaterial.Style
+      .disabledDividersColor()) : highlighted && accentColorAuthorized ? Qaterial.Style.accentColor : colorReversed ?
+    Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
 
   property bool highlighted: false
   property bool onPrimary: false

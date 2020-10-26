@@ -20,8 +20,8 @@ Item
     {
       rightPadding: 10
       leftPadding: 10
-      y: index*root.height/root.numberOfLabels - height/2
-      text: root.axisMaxY - index*(root.axisMaxY - root.axisMinY)/root.  numberOfLabels
+      y: index * root.height / root.numberOfLabels - height / 2
+      text: root.axisMaxY - index * (root.axisMaxY - root.axisMinY) / root.numberOfLabels
       color: root.color
     }
   }

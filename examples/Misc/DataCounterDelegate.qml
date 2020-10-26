@@ -15,7 +15,7 @@ Qaterial.ItemDelegate
       Qaterial.ColorIcon
       {
         source: Qaterial.Icons.rocketLaunchOutline
-        y: parent.height/2 - height/2
+        y: parent.height / 2 - height / 2
       }
     }
     Column

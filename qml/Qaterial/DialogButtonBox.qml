@@ -16,9 +16,9 @@ T.DialogButtonBox
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
   spacing: Qaterial.Style.dialog.spacing
   padding: Qaterial.Style.dialog.padding
@@ -29,7 +29,7 @@ T.DialogButtonBox
   property color backgroundColor: Qaterial.Style.backgroundColor
 
   //delegate: Qaterial.FlatButton { foregroundColor: _control.foregroundColor; onClicked: _list.positionViewAtBeginning() }
-  delegate: Qaterial.FlatButton { }
+  delegate: Qaterial.FlatButton {}
 
   contentItem: ListView
   {

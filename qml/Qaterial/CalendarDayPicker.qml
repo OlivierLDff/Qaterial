@@ -16,7 +16,7 @@ Column
 
   signal accepted(date date)
 
-  Qaterial.CalendarWeekDayRow {  }
+  Qaterial.CalendarWeekDayRow {}
 
   Qaterial.CalendarDayGrid
   {

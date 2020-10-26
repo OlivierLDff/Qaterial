@@ -16,8 +16,8 @@ Column
 
     // Choose intervall of dates
 
-    from : new Date(2020, 0, 1)
-    to : new Date(2020,3,1)
+    from: new Date(2020, 0, 1)
+    to: new Date(2020, 3, 1)
 
     // Can be required in order to show only current CalendarDayPicker
     clip: true

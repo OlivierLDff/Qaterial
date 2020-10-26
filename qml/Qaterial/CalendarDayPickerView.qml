@@ -49,11 +49,11 @@ ListView
   function monthSinceDate(from, to)
   {
     const yearDelta = to.getFullYear() - from.getFullYear()
-    const monthDelta = to.getMonth()+1 - from.getMonth()
+    const monthDelta = to.getMonth() + 1 - from.getMonth()
 
-    if((yearDelta*12 + monthDelta)>0)
+    if((yearDelta * 12 + monthDelta) > 0)
     {
-      return yearDelta*12 + monthDelta
+      return yearDelta * 12 + monthDelta
     }
     else
     {
@@ -69,11 +69,13 @@ ListView
 
     if(Qaterial.Calendar.isMonthYearValid(from, to, month, year))
     {
-      return yearDelta*12 + monthDelta
+      return yearDelta * 12 + monthDelta
     }
     else
     {
-      console.warn(`Year ${year} and Month ${month} not in the interval [${from}, ${to}]. Make sure 'month' & 'year' are in between 'from' and 'to'. Or increase 'from' and 'to' to match your needs`)
+      console.warn(
+        `Year ${year} and Month ${month} not in the interval [${from}, ${to}]. Make sure 'month' & 'year' are in between 'from' and 'to'. Or increase 'from' and 'to' to match your needs`
+        )
       month = from.getMonth()
       year = from.getFullYear()
 
@@ -83,18 +85,18 @@ ListView
       yearDelta = year - from.getFullYear()
       monthDelta = month - from.getMonth()
 
-      return yearDelta*12 + monthDelta
+      return yearDelta * 12 + monthDelta
     }
   }
 
   function getMonthFromIndex(index)
   {
-    return ((index - Math.floor(index/12)*12) + from.getMonth())%12
+    return ((index - Math.floor(index / 12) * 12) + from.getMonth()) % 12
   }
 
   function getYearFromIndex(index)
   {
-    return from.getFullYear() + Math.floor((index + from.getMonth())/12)
+    return from.getFullYear() + Math.floor((index + from.getMonth()) / 12)
   }
 
   delegate: Qaterial.CalendarDayPicker

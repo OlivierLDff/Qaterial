@@ -71,9 +71,9 @@ Item
       anchors.right = undefined
       anchors.left = undefined
       if(_control.mirrored)
-          anchors.right = _control.right
+        anchors.right = _control.right
       else
-          anchors.left = _control.left
+        anchors.left = _control.left
     } // function reanchors()
   } // RoundImage
 

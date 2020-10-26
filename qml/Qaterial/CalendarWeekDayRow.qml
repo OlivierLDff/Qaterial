@@ -5,9 +5,10 @@ Row
 {
   id: root
 
-  property int textType:  Qaterial.Style.TextType.Caption
+  property int textType: Qaterial.Style.TextType.Caption
   property int size: Qaterial.Style.roundIcon.size
-  property var model: ["M", "T", "W", "T", "F", "S", "S"]
+  property
+  var model: ["M", "T", "W", "T", "F", "S", "S"]
 
   Repeater
   {
@@ -15,7 +16,7 @@ Row
     delegate: Qaterial.Label
     {
       text: modelData
-      textType:root.textType
+      textType: root.textType
 
       width: root.size
       height: root.size

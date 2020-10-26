@@ -16,14 +16,14 @@ T.ItemDelegate
   id: control
 
   // TEXT
-  property alias overlineText:    _content.overlineText
-  property alias secondaryText:   _content.secondaryText
+  property alias overlineText: _content.overlineText
+  property alias secondaryText: _content.secondaryText
 
   // THUMBNAIL
-  property alias roundSource:     _content.roundSource
-  property alias squareSource:    _content.squareSource
-  property alias largeSource:     _content.largeSource
-  property alias largeThumbnail:  _content.largeThumbnail
+  property alias roundSource: _content.roundSource
+  property alias squareSource: _content.squareSource
+  property alias largeSource: _content.largeSource
+  property alias largeThumbnail: _content.largeThumbnail
 
   // ICON
   property alias roundColor: _content.roundColor
@@ -34,9 +34,9 @@ T.ItemDelegate
   property alias iconColor: _content.iconColor
 
   // ALIGNMENT
-  property alias alignTextRight : _content.alignTextRight
+  property alias alignTextRight: _content.alignTextRight
   readonly property int lines: _content.lines
-  readonly property int type:  _content.type
+  readonly property int type: _content.type
 
   // COLOR
   property alias backgroundColor: _background.color
@@ -48,13 +48,15 @@ T.ItemDelegate
   property bool forceDrawSeparator: false
 
   implicitWidth: Math.max(background ? implicitBackgroundWidth : 0,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(background ? implicitBackgroundHeight : 0,
-                           Math.max(implicitContentHeight,
-                                    indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
+    Math.max(implicitContentHeight,
+      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate.rightPadding(control.type, control.lines)
-  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate.rightPadding(control.type, control.lines)
+  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate
+    .rightPadding(control.type, control.lines)
+  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(control.type, control.lines) : Qaterial.Style.delegate
+    .rightPadding(control.type, control.lines)
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.delegate.spacing(control.type, control.lines)
@@ -116,7 +118,7 @@ T.ItemDelegate
         {
           // No separator for last element (top of the list)
           return control.ListView.view.count > 1 &&
-            index < (control.ListView.view.count-1)
+            index < (control.ListView.view.count - 1)
         }
         else
         {

@@ -23,7 +23,7 @@ Qaterial.ModalDialog
   {
     implicitHeight: Math.floor(_busy.implicitHeight + _text.implicitHeight + Qaterial.Style.card.verticalPadding)
 
-    implicitWidth: Qaterial.Style.dialog.implicitWidth - 2*Qaterial.Style.card.horizontalPadding
+    implicitWidth: Qaterial.Style.dialog.implicitWidth - 2 * Qaterial.Style.card.horizontalPadding
 
     Qaterial.BusyIndicator
     {

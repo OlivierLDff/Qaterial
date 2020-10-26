@@ -65,7 +65,8 @@ Column
     {
       indicatorPosition: Qaterial.Style.Position.Bottom
 
-      icon.source: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/langfr-1280px-Qt_logo_2016.svg.png"
+      icon
+      .source: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/langfr-1280px-Qt_logo_2016.svg.png"
       icon.width: 68
       icon.height: 68
 

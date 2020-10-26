@@ -33,7 +33,8 @@ Rectangle
 
   readonly property int lines: (secondaryText != "" ? _info.lineCount : 0) + 1
   property int elide: mirrored ? Text.ElideLeft : Text.ElideRight
-  property int textAligment: mirrored ? alignTextRight ? Text.AlignLeft : Text.AlignRight : alignTextRight ? Text.AlignRight : Text.AlignLeft
+  property int textAligment: mirrored ? alignTextRight ? Text.AlignLeft : Text.AlignRight : alignTextRight ? Text
+    .AlignRight : Text.AlignLeft
 
   Qaterial.DebugRectangle
   {
@@ -64,7 +65,7 @@ Rectangle
   Qaterial.Label
   {
     id: _overline
-    visible : text != ""
+    visible: text != ""
     enabled: _control.enabled
     textType: Qaterial.Style.TextType.Overline
     elide: _control.elide
@@ -91,7 +92,7 @@ Rectangle
   Qaterial.Label
   {
     id: _text
-    visible : text != ""
+    visible: text != ""
     enabled: _control.enabled
     textType: Qaterial.Style.TextType.ListText
     elide: _control.elide
@@ -103,7 +104,8 @@ Rectangle
     readonly property bool centerBaseline: _control.secondaryText != "" || _control.overlineText != ""
 
     anchors.verticalCenter: _control.verticalCenter
-    anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) : 0
+    anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) :
+      0
     anchors.left: _control.left
     anchors.right: _control.right
     anchors.leftMargin: _control.leftPadding
@@ -115,9 +117,9 @@ Rectangle
       anchors.verticalCenter = undefined
 
       if(centerBaseline)
-          anchors.baseline = _control.top
+        anchors.baseline = _control.top
       else
-          anchors.verticalCenter = _control.verticalCenter
+        anchors.verticalCenter = _control.verticalCenter
     } // function reanchors()
 
     Qaterial.DebugRectangle
@@ -131,7 +133,7 @@ Rectangle
   Qaterial.Label
   {
     id: _info
-    visible : text != ""
+    visible: text != ""
     enabled: _control.enabled
     textType: Qaterial.Style.TextType.ListSecText
     elide: _control.elide

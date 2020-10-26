@@ -16,11 +16,11 @@ T.MenuBar
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
-  delegate: Qaterial.MenuBarItem { onPrimary: _control.onPrimary; colorReversed: _control.colorReversed }
+  delegate: Qaterial.MenuBarItem { onPrimary: _control.onPrimary;colorReversed: _control.colorReversed }
 
   contentItem: Row
   {

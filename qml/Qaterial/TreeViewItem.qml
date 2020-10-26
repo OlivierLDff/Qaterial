@@ -15,7 +15,7 @@ Qaterial.Expandable
   property Component treeViewItem
 
   readonly property QtObject modelChildren: model[root.childrenRole]
-  readonly property int depth: ListView.view.depth+1
+  readonly property int depth: ListView.view.depth + 1
 
   expanded: model.expanded
   delegate: modelChildren && modelChildren.count ? listViewComponent : null

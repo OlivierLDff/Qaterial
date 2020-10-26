@@ -16,7 +16,7 @@ Item
   signal nextMonth()
   signal previousMonth()
 
-  implicitWidth:280
+  implicitWidth: 280
   implicitHeight: _previousMonthButton.implicitHeight
 
   Qaterial.AppBarButton

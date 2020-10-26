@@ -39,11 +39,11 @@ Qaterial.RectangleAreaHandler
   // Inside Handler
   Qaterial.DebugRectangle
   {
-    x: root.realStartX + root.handleSize/2
-    y: root.realStartY + root.handleSize/2
+    x: root.realStartX + root.handleSize / 2
+    y: root.realStartY + root.handleSize / 2
 
-    width: root.realEndX - x - root.handleSize/2
-    height: root.realEndY - y - root.handleSize/2
+    width: root.realEndX - x - root.handleSize / 2
+    height: root.realEndY - y - root.handleSize / 2
 
     border.color: "red"
   }
@@ -51,11 +51,11 @@ Qaterial.RectangleAreaHandler
   // Outside Handler
   Qaterial.DebugRectangle
   {
-    x: root.realStartX - root.handleSize/2
-    y: root.realStartY - root.handleSize/2
+    x: root.realStartX - root.handleSize / 2
+    y: root.realStartY - root.handleSize / 2
 
-    width: root.realEndX - x + root.handleSize/2
-    height: root.realEndY - y + root.handleSize/2
+    width: root.realEndX - x + root.handleSize / 2
+    height: root.realEndY - y + root.handleSize / 2
 
     border.color: "red"
   }

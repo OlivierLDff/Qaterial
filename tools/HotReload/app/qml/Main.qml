@@ -12,8 +12,8 @@ Qaterial.SplashScreenApplication
 
   property int appTheme: Qaterial.Style.theme
 
-  splashScreen: HR.SplashScreenWindow { }
-  window: HR.HotReloadWindow { }
+  splashScreen: HR.SplashScreenWindow {}
+  window: HR.HotReloadWindow {}
 
   QLab.Settings { property alias appTheme: root.appTheme }
 

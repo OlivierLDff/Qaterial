@@ -34,11 +34,11 @@ Qaterial.RectangleAreaHandler
   // Outside Handler
   Rectangle
   {
-    x: root.realStartX - root.handleSize/2
-    y: root.realStartY - root.handleSize/2
+    x: root.realStartX - root.handleSize / 2
+    y: root.realStartY - root.handleSize / 2
 
-    width: root.realEndX - x + root.handleSize/2
-    height: root.realEndY - y + root.handleSize/2
+    width: root.realEndX - x + root.handleSize / 2
+    height: root.realEndY - y + root.handleSize / 2
 
     color: Qaterial.Style.lime
     z: -1
@@ -47,11 +47,11 @@ Qaterial.RectangleAreaHandler
   // Inside Handler
   Rectangle
   {
-    x: root.realStartX + root.handleSize/2
-    y: root.realStartY + root.handleSize/2
+    x: root.realStartX + root.handleSize / 2
+    y: root.realStartY + root.handleSize / 2
 
-    width: root.realEndX - x - root.handleSize/2
-    height: root.realEndY - y - root.handleSize/2
+    width: root.realEndX - x - root.handleSize / 2
+    height: root.realEndY - y - root.handleSize / 2
 
     color: Qaterial.Style.orange
     z: -1

@@ -15,7 +15,8 @@ Qaterial.Menu
   signal movePathUp(int index)
   signal movePathDown(int index)
 
-  property var model: []
+  property
+  var model: []
 
   implicitWidth: 600
   bottomPadding: 0
@@ -63,7 +64,7 @@ Qaterial.Menu
         width: parent.width - modifierColumn.width
         interactive: height < contentHeight
 
-        ScrollBar.vertical: Qaterial.ScrollBar { policy: ScrollBar.AsNeeded; width: 12; active: true }
+        ScrollBar.vertical: Qaterial.ScrollBar { policy: ScrollBar.AsNeeded;width: 12;active: true }
 
         model: control.model
 
@@ -106,7 +107,7 @@ Qaterial.Menu
 
           background: Rectangle
           {
-            color: Qt.darker(Qaterial.Style.dialogColor, (index%2===0) ? 1 : 1.2 )
+            color: Qt.darker(Qaterial.Style.dialogColor, (index % 2 === 0) ? 1 : 1.2)
             Qaterial.Ripple
             {
               id: _ripple
@@ -152,7 +153,7 @@ Qaterial.Menu
           Qaterial.ToolTip
           {
             text: `Add Path Entry`
-            visible:  parent.hovered || parent.pressed
+            visible: parent.hovered || parent.pressed
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton
@@ -191,7 +192,7 @@ Qaterial.Menu
           Qaterial.ToolTip
           {
             text: `Edit ${listView.model[listView.currentIndex]}`
-            visible:  parent.hovered || parent.pressed
+            visible: parent.hovered || parent.pressed
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton
@@ -213,7 +214,7 @@ Qaterial.Menu
           Qaterial.ToolTip
           {
             text: `Move ${listView.model[listView.currentIndex]} Up`
-            visible:  parent.hovered || parent.pressed
+            visible: parent.hovered || parent.pressed
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton
@@ -223,7 +224,7 @@ Qaterial.Menu
           icon.source: Qaterial.Icons.chevronDown
           topInset: 1
           bottomInset: 1
-          enabled: (listView.currentIndex !== -1) && ((listView.model.length-1) > listView.currentIndex)
+          enabled: (listView.currentIndex !== -1) && ((listView.model.length - 1) > listView.currentIndex)
 
           onClicked: function()
           {
@@ -235,7 +236,7 @@ Qaterial.Menu
           Qaterial.ToolTip
           {
             text: `Move ${listView.model[listView.currentIndex]} Down`
-            visible:  parent.hovered || parent.pressed
+            visible: parent.hovered || parent.pressed
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton
@@ -251,7 +252,7 @@ Qaterial.Menu
           Qaterial.ToolTip
           {
             text: `Reset import path`
-            visible:  parent.hovered || parent.pressed
+            visible: parent.hovered || parent.pressed
             position: Qaterial.Style.Position.BottomStart
           }
         } // SquareButton

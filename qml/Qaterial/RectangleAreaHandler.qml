@@ -34,15 +34,15 @@ Item
   property vector2d _start: Qt.vector2d(0, 0)
   property vector2d _end: Qt.vector2d(1, 1)
 
-  readonly property real realStartX: start.x*width
-  readonly property real realStartY: start.y*height
+  readonly property real realStartX: start.x * width
+  readonly property real realStartY: start.y * height
 
-  readonly property real realEndX: end.x*width
-  readonly property real realEndY: end.y*height
+  readonly property real realEndX: end.x * width
+  readonly property real realEndY: end.y * height
 
-  readonly property real outHalfHandleSize: handleSize/2 + outMargin
-  readonly property real inHalfHandleSize: handleSize/2 + inMargin
-  readonly property real halfHandleSize: handleSize/2
+  readonly property real outHalfHandleSize: handleSize / 2 + outMargin
+  readonly property real inHalfHandleSize: handleSize / 2 + inMargin
+  readonly property real halfHandleSize: handleSize / 2
 
   // Size of handle
   property int handleSize: 32
@@ -56,7 +56,7 @@ Item
 
     width: root.handleSize
     height: root.handleSize
-    radius: root.handleSize/2
+    radius: root.handleSize / 2
 
     color: "transparent"
     border.color: root.handleColor
@@ -73,11 +73,11 @@ Item
       property real handleWidth: parent.hovered ? root.handleHoveredWidth : root.handleWidth
       Behavior on handleWidth { NumberAnimation { duration: 50 } }
 
-      x: parent.horizontal ? root.handleSize/2 - handleWidth/2 : -width/2
-      y: parent.horizontal ? -height/2 : root.handleSize/2 - handleWidth/2
+      x: parent.horizontal ? root.handleSize / 2 - handleWidth / 2 : -width / 2
+      y: parent.horizontal ? -height / 2 : root.handleSize / 2 - handleWidth / 2
 
-      width: parent.horizontal ? parent.width - x -root.handleSize/2 + handleWidth/2 : handleWidth
-      height: parent.horizontal ? handleWidth : parent.height -y -root.handleSize/2 + handleWidth/2
+      width: parent.horizontal ? parent.width - x - root.handleSize / 2 + handleWidth / 2 : handleWidth
+      height: parent.horizontal ? handleWidth : parent.height - y - root.handleSize / 2 + handleWidth / 2
 
       color: root.handleColor
     } // Rectangle
@@ -292,12 +292,12 @@ Item
       return
 
     // Normalize
-    const normalizedFromX = lastPressedX/width
-    const normalizedToX = pressedX/width
+    const normalizedFromX = lastPressedX / width
+    const normalizedToX = pressedX / width
     const deltaX = normalizedToX - normalizedFromX
 
-    const normalizedFromY = lastPressedY/height
-    const normalizedToY = pressedY/height
+    const normalizedFromY = lastPressedY / height
+    const normalizedToY = pressedY / height
     const deltaY = normalizedToY - normalizedFromY
 
     let currentStart = Qt.vector2d(start.x, start.y)
@@ -394,9 +394,9 @@ Item
     lastPressedY = pressedY
 
     const hasBeenUpdated = _start.x !== currentStart.x ||
-                           _start.y !== currentStart.y ||
-                           end.x !== currentEnd.x ||
-                           _end.y !== currentEnd.y
+      _start.y !== currentStart.y ||
+      end.x !== currentEnd.x ||
+      _end.y !== currentEnd.y
 
     _start = currentStart
     _end = currentEnd
@@ -441,7 +441,7 @@ Item
     delegate: Loader
     {
       id: _handleLinkerLoader
-      readonly property bool horizontal: index%2 === 0
+      readonly property bool horizontal: index % 2 === 0
 
       Binding
       {
@@ -460,12 +460,16 @@ Item
         if(root.containsMouseInsideHandle)
           return true
 
-        switch(index)
+        switch (index)
         {
-          case 0: return root.topHovered
-          case 1: return root.rightHovered
-          case 2: return root.bottomHovered
-          case 3: return root.leftHovered
+          case 0:
+            return root.topHovered
+          case 1:
+            return root.rightHovered
+          case 2:
+            return root.bottomHovered
+          case 3:
+            return root.leftHovered
         }
       }
 
@@ -508,20 +512,24 @@ Item
       readonly property real realX: index === 1 || index === 2 ? root.realEndX : root.realStartX
       readonly property real realY: index === 0 || index === 1 ? root.realStartY : root.realEndY
 
-      x: realX - width/2
-      y: realY - height/2
+      x: realX - width / 2
+      y: realY - height / 2
 
       readonly property bool hovered:
       {
         if(root.containsMouseInsideHandle)
           return true
 
-        switch(index)
+        switch (index)
         {
-          case 0: return root.topHovered || root.leftHovered
-          case 1: return root.topHovered || root.rightHovered
-          case 2: return root.bottomHovered || root.rightHovered
-          case 3: return root.bottomHovered || root.leftHovered
+          case 0:
+            return root.topHovered || root.leftHovered
+          case 1:
+            return root.topHovered || root.rightHovered
+          case 2:
+            return root.bottomHovered || root.rightHovered
+          case 3:
+            return root.bottomHovered || root.leftHovered
         }
       }
 

@@ -44,4 +44,4 @@ import QtWebChannel 1.15
 import QtWebSockets 1.15
 import QtWebEngine 1.10
 
-Item { }
+Item {}

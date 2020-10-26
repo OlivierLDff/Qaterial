@@ -16,21 +16,23 @@ T.ToolSeparator
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
-  horizontalPadding: vertical ? Qaterial.Style.toolButton.separatorLargePadding : Qaterial.Style.toolButton.separatorSmallPadding
-  verticalPadding: vertical ? Qaterial.Style.toolButton.separatorSmallPadding : Qaterial.Style.toolButton.separatorLargePadding
+  horizontalPadding: vertical ? Qaterial.Style.toolButton.separatorLargePadding : Qaterial.Style.toolButton
+    .separatorSmallPadding
+  verticalPadding: vertical ? Qaterial.Style.toolButton.separatorSmallPadding : Qaterial.Style.toolButton
+    .separatorLargePadding
 
   property bool highlighted: false
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-  property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() : Qaterial.Style.disabledDividersColor()) :
-                  highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
-                  colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
+  property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() :
+      Qaterial.Style.disabledDividersColor()) : highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
+    colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 

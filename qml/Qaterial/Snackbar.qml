@@ -34,8 +34,11 @@ Qaterial.Pane
   contentItem: Item
   {
     id: _content
-    implicitWidth: _control.expandable ? (Math.max(Qaterial.Style.snackbar.implicitWidth, _label.implicitWidth + _action.implicitWidth) + Qaterial.Style.card.horizontalPadding*(_control.action != "" ? 3 : 2)) : Qaterial.Style.snackbar.implicitWidth
-    implicitHeight: (_label.lineCount > 1) ? Qaterial.Style.snackbar.implicitHeight2 : Qaterial.Style.snackbar.implicitHeight
+    implicitWidth: _control.expandable ? (Math.max(Qaterial.Style.snackbar.implicitWidth, _label.implicitWidth +
+        _action.implicitWidth) + Qaterial.Style.card.horizontalPadding * (_control.action != "" ? 3 : 2)) : Qaterial
+      .Style.snackbar.implicitWidth
+    implicitHeight: (_label.lineCount > 1) ? Qaterial.Style.snackbar.implicitHeight2 : Qaterial.Style.snackbar
+      .implicitHeight
 
     Qaterial.DebugRectangle
     {
@@ -52,7 +55,8 @@ Qaterial.Pane
       anchors.left: parent.left
       anchors.leftMargin: Qaterial.Style.card.horizontalPadding
       anchors.right: (_control.action != "") ? _action.left : parent.right
-      anchors.rightMargin: (_control.action != "") ? Qaterial.Style.card.horizontalPadding : Qaterial.Style.card.verticalPadding
+      anchors.rightMargin: (_control.action != "") ? Qaterial.Style.card.horizontalPadding : Qaterial.Style.card
+        .verticalPadding
       maximumLineCount: _control.expandable ? 1 : 2
       wrapMode: _control.expandable ? Text.NoWrap : Text.WordWrap
       elide: (_control.mirrored ? Text.ElideLeft : Text.ElideRight)
@@ -75,7 +79,7 @@ Qaterial.Pane
       anchors.right: parent.right
       anchors.rightMargin: 2
       anchors.verticalCenter: _content.verticalCenter
-      anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight/6 : 0
+      anchors.verticalCenterOffset: _label.lineCount > 1 ? implicitHeight / 6 : 0
       onPrimary: true
       rippleColor: Qaterial.Style.snackbarRippleColor()
     } // FlatButton

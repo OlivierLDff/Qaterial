@@ -20,9 +20,9 @@ T.Menu
   property double elevation: Qaterial.Style.menu.elevation
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
   margins: 0
   verticalPadding: Qaterial.Style.menu.verticalPadding
@@ -32,20 +32,24 @@ T.Menu
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-  delegate: Qaterial.MenuItem { onPrimary: _control.onPrimary; colorReversed: _control.colorReversed }
+  delegate: Qaterial.MenuItem { onPrimary: _control.onPrimary;colorReversed: _control.colorReversed }
 
   enter: Transition
   {
     // grow_fade_in
-    NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 } // NumberAnimation
-    NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 } // NumberAnimation
+    NumberAnimation { property: "scale";from: 0.9;to: 1.0;easing.type: Easing
+    .OutQuint;duration: 220 } // NumberAnimation
+    NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing
+    .OutCubic;duration: 150 } // NumberAnimation
   } // Transition
 
   exit: Transition
   {
     // shrink_fade_out
-    NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 } // NumberAnimation
-    NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 } // NumberAnimation
+    NumberAnimation { property: "scale";from: 1.0;to: 0.9;easing.type: Easing
+    .OutQuint;duration: 220 } // NumberAnimation
+    NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing
+    .OutCubic;duration: 150 } // NumberAnimation
   } // Transition
 
   contentItem: ListView

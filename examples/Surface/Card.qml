@@ -21,7 +21,7 @@ Qaterial.Card
     width: parent.width
     spacing: Qaterial.Style.card.horizontalPadding
 
-    Qaterial.CardMedia { source: root.media; clipTop: true; Layout.preferredWidth: 300; Layout.preferredHeight: 200 }
+    Qaterial.CardMedia { source: root.media;clipTop: true;Layout.preferredWidth: 300;Layout.preferredHeight: 200 }
 
     Qaterial.CardTitle
     {

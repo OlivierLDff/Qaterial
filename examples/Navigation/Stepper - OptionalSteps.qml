@@ -23,8 +23,8 @@ Item
     model: Qaterial.StepperModel
     {
       Qaterial.StepperElement { text: "Point N°1" }
-      Qaterial.StepperElement { text: "Point N°2, Optional"; optional: true }
-      Qaterial.StepperElement { text: "Point N°3, Optional"; done: false; optional: true }
+      Qaterial.StepperElement { text: "Point N°2, Optional";optional: true }
+      Qaterial.StepperElement { text: "Point N°3, Optional";done: false;optional: true }
       Qaterial.StepperElement { text: "Point N°4" }
     } // StepperModel
 
@@ -39,26 +39,26 @@ Item
   {
     id: _row
 
-    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
-    y: stepper.vertical ? (stepper.height/2 - height/2) : (stepper.height + 10)
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width / 2 - width / 2)
+    y: stepper.vertical ? (stepper.height / 2 - height / 2) : (stepper.height + 10)
     spacing: 10
 
     Qaterial.OutlineButton
     {
       id: _backButton
       text: "Back"
-      onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex -- : console.log(`currentIndex min`)
+      onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex-- : console.log(`currentIndex min`)
     } // OutlineButton
     Qaterial.RaisedButton
     {
       text: "Next"
-      onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+      onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(`currentIndex max`)
     } // RaisedButton
     Qaterial.OutlineButton
     {
       visible: stepper.currentElement.optional
       text: "Skip"
-      onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+      onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(`currentIndex max`)
     } // OutlineButton
 
     Qaterial.RaisedButton
@@ -67,7 +67,7 @@ Item
 
       text:
       {
-        if(stepper.currentIndex === stepper.count-1)
+        if(stepper.currentIndex === stepper.count - 1)
           return done ? "Cancel" : "Finish"
         return done ? "Cancel" : "Done"
       }
@@ -76,17 +76,20 @@ Item
         stepper.currentElement.done = !stepper.currentElement.done
 
         // If this is the last Steps you want to know it
-        if(stepper.currentIndex === stepper.count-1 && done)
+        if(stepper.currentIndex === stepper.count - 1 && done)
         {
           let finished = true
           let unfinishedStep = -1
 
           // Check if every steps are done if they aren't optional
-          for (let i = 0; i <= stepper.count-1; i++)
+          for(let i = 0; i <= stepper.count - 1; i++)
           {
-            if(!stepper.model.get(i).done && !stepper.model.get(i).optional)
+            if(!stepper.model.get(i)
+              .done && !stepper.model.get(i)
+              .optional)
             {
-              finished = false; unfinishedStep = i+1
+              finished = false;
+              unfinishedStep = i + 1
             }
           }
           if(finished)
@@ -103,8 +106,8 @@ Item
         }
 
         // When Done is clicked, go to next step
-        if(stepper.currentIndex < stepper.count-1 && done)
-          stepper.currentIndex ++
+        if(stepper.currentIndex < stepper.count - 1 && done)
+          stepper.currentIndex++
       }
     } // RaisedButton
   } // Row

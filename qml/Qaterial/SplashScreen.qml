@@ -24,7 +24,7 @@ Rectangle
   {
     id: logo
     source: root.image
-    width: parent.width - root.padding*2
+    width: parent.width - root.padding * 2
     anchors.centerIn: parent
     fillMode: Image.PreserveAspectFit
   }

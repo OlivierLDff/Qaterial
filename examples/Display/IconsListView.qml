@@ -18,7 +18,7 @@ Column
     cellWidth: 50
     cellHeight: 50
 
-    ScrollBar.vertical: Qaterial.ScrollBar { x: 32; policy: ScrollBar.AlwaysOn }
+    ScrollBar.vertical: Qaterial.ScrollBar { x: 32;policy: ScrollBar.AlwaysOn }
 
     Timer
     {
@@ -47,15 +47,21 @@ Column
     {
       id: icon
 
-      readonly property var forbiddenKeywords: ['id','index','model','modelData', 'console','do','if','in','for','let','new','try','var','case','else','enum','eval','null','this','true','void','with','await','break','catch','class','const','false','super','throw','while','yield','delete','export','import','public','return','static','switch','typeof','default','extends','finally','package','private','continue','debugger','function','arguments','interface','protected','implements','instanceof']
+      readonly property
+      var forbiddenKeywords: ['id', 'index', 'model', 'modelData', 'console', 'do', 'if', 'in', 'for', 'let', 'new',
+        'try', 'var', 'case', 'else', 'enum', 'eval', 'null', 'this', 'true', 'void', 'with', 'await', 'break',
+        'catch', 'class', 'const', 'false', 'super', 'throw', 'while', 'yield', 'delete', 'export', 'import',
+        'public', 'return', 'static', 'switch', 'typeof', 'default', 'extends', 'finally', 'package', 'private',
+        'continue', 'debugger', 'function', 'arguments', 'interface', 'protected', 'implements', 'instanceof'
+      ]
 
       function fileNameToProperty(str)
       {
         // snake to camel
-        str = str.replace( /([-_][a-z0-9])/g,
-            (group) => group.toUpperCase()
-                        .replace('-', '')
-                        .replace('_', '')
+        str = str.replace(/([-_][a-z0-9])/g,
+          (group) => group.toUpperCase()
+          .replace('-', '')
+          .replace('_', '')
         );
 
         // remove extension

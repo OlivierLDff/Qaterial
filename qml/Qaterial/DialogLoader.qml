@@ -15,7 +15,8 @@ Item
 {
   id: root
 
-  property var settings: null
+  property
+  var settings: null
   property QtObject context
   onContextChanged: function()
   {
@@ -26,7 +27,8 @@ Item
       _popStack()
   }
   property bool _protectPopStack
-  property var stackSettings: null
+  property
+  var stackSettings: null
   property Component stackComponent
 
   function urlToLocalFile(url)
@@ -56,7 +58,8 @@ Item
 
         if(root.settings && root.settings.acceptedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
           root.settings.acceptedCallback()
         }
       }
@@ -68,7 +71,8 @@ Item
 
         if(root.settings && root.settings.appliedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
           root.settings.appliedCallback()
         }
       }
@@ -80,7 +84,8 @@ Item
 
         if(root.settings && root.settings.helpRequestedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
           root.settings.helpRequestedCallback()
         }
       }
@@ -92,7 +97,8 @@ Item
 
         if(root.settings && root.settings.rejectedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
           root.settings.rejectedCallback()
         }
       }
@@ -118,7 +124,8 @@ Item
       errorText: root.settings && root.settings.errorText ? root.settings.errorText : ""
       echoMode: root.settings && root.settings.echoMode ? root.settings.echoMode : TextInput.Normal
       standardButtons: root.settings && root.settings.standardButtons ? root.settings.standardButtons : Dialog.NoButton
-      dialogImplicitWidth: root.settings && root.settings.width ? root.settings.width : Qaterial.Style.dialog.implicitWidth
+      dialogImplicitWidth: root.settings && root.settings.width ? root.settings.width : Qaterial.Style.dialog
+        .implicitWidth
 
       onAccepted: function()
       {
@@ -127,7 +134,8 @@ Item
 
         if(root.settings && root.settings.acceptedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
           root.settings.acceptedCallback(text, acceptableInput && !error)
         }
       }
@@ -139,7 +147,8 @@ Item
 
         if(root.settings && root.settings.appliedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
           root.settings.appliedCallback()
         }
       }
@@ -151,7 +160,8 @@ Item
 
         if(root.settings && root.settings.helpRequestedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
           root.settings.helpRequestedCallback()
         }
       }
@@ -163,7 +173,8 @@ Item
 
         if(root.settings && root.settings.rejectedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
           root.settings.rejectedCallback()
         }
       }
@@ -186,7 +197,8 @@ Item
 
         if(root.settings && root.settings.acceptedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'acceptedCallback'. You should consider moving to 'onAccepted'")
           root.settings.acceptedCallback()
         }
       }
@@ -198,7 +210,8 @@ Item
 
         if(root.settings && root.settings.appliedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'appliedCallback'. You should consider moving to 'onApplied'")
           root.settings.appliedCallback()
         }
       }
@@ -210,7 +223,8 @@ Item
 
         if(root.settings && root.settings.helpRequestedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'helpRequestedCallback'. You should consider moving to 'onHelpRequested'")
           root.settings.helpRequestedCallback()
         }
       }
@@ -222,7 +236,8 @@ Item
 
         if(root.settings && root.settings.rejectedCallback)
         {
-          Qaterial.Logger.warn("You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
+          Qaterial.Logger.warn(
+            "You are using deprecated 'rejectedCallback'. You should consider moving to 'onRejected'")
           root.settings.rejectedCallback()
         }
       }
@@ -244,25 +259,25 @@ Item
       onAccepted: function()
       {
         if(root.settings && root.settings.acceptedCallback)
-        root.settings.acceptedCallback(currentIndex)
+          root.settings.acceptedCallback(currentIndex)
       }
 
       onApplied: function()
       {
         if(root.settings && root.settings.appliedCallback)
-        root.settings.appliedCallback()
+          root.settings.appliedCallback()
       }
 
       onHelpRequested: function()
       {
         if(root.settings && root.settings.helpRequestedCallback)
-        root.settings.helpRequestedCallback()
+          root.settings.helpRequestedCallback()
       }
 
       onRejected: function()
       {
         if(root.settings && root.settings.rejectedCallback)
-        root.settings.rejectedCallback()
+          root.settings.rejectedCallback()
       }
 
       Component.onCompleted:
@@ -354,7 +369,7 @@ Item
 
     onStatusChanged: function()
     {
-      if (_dialogLoader.status == Loader.Ready)
+      if(_dialogLoader.status == Loader.Ready)
       {
         if(item && item.open)
           item.open()

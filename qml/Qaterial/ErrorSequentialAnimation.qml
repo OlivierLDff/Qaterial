@@ -13,10 +13,11 @@ import Qaterial 1.0 as Qaterial
 SequentialAnimation
 {
   id: _root
-  property var target
+  property
+  var target
   property double x: 0
   running: false
-  NumberAnimation { target: _root.target; property: "x"; to: _root.x+4; duration: 50 } // NumberAnimation
-  NumberAnimation { target: _root.target; property: "x"; to: _root.x-4; duration: 50 } // NumberAnimation
-  NumberAnimation { target: _root.target; property: "x"; to: _root.x; duration: 50 } // NumberAnimation
+  NumberAnimation { target: _root.target;property: "x";to: _root.x + 4;duration: 50 } // NumberAnimation
+  NumberAnimation { target: _root.target;property: "x";to: _root.x - 4;duration: 50 } // NumberAnimation
+  NumberAnimation { target: _root.target;property: "x";to: _root.x;duration: 50 } // NumberAnimation
 } // SequentialAnimation

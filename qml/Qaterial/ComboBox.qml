@@ -19,10 +19,10 @@ T.ComboBox
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding,
-                           implicitIndicatorHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding,
+    implicitIndicatorHeight + topPadding + bottomPadding)
 
   topInset: 6
   bottomInset: 6
@@ -31,13 +31,14 @@ T.ComboBox
   rightPadding: padding + (_control.mirrored || !indicator || !indicator.visible ? 0 : indicator.width + spacing)
 
   property double elevation: flat ? _control.pressed || _control.hovered ? 2 : 0 : _control.pressed ? 8 : 2
-                                Material.background: flat ? "transparent" : undefined
+  Material.background: flat ? "transparent" : undefined
   property color foregroundColor: flat ? undefined : Material.primaryTextColor
 
   delegate: MenuItem
   {
     width: parent.width
-    text: _control.textRole ? (Array.isArray(_control.model) ? modelData[_control.textRole] : model[_control.textRole]) : modelData
+    text: _control.textRole ? (Array.isArray(_control.model) ? modelData[_control.textRole] : model[_control
+      .textRole]) : modelData
     Material.foreground: _control.currentIndex === index ? parent.Material.accent : parent.Material.foreground
     highlighted: _control.highlightedIndex === index
     hoverEnabled: _control.hoverEnabled
@@ -71,7 +72,7 @@ T.ComboBox
     selectedTextColor: _control.Material.primaryHighlightedTextColor
     verticalAlignment: Text.AlignVCenter
 
-    cursorDelegate: CursorDelegate { }
+    cursorDelegate: CursorDelegate {}
   } // TextField
 
   background: Rectangle
@@ -94,7 +95,8 @@ T.ComboBox
       y: parent.y + _control.baselineOffset
       width: parent.width
       height: _control.activeFocus ? 2 : 1
-      color: _control.editable && _control.activeFocus ? _control.Material.accentColor : _control.Material.hintTextColor
+      color: _control.editable && _control.activeFocus ? _control.Material.accentColor : _control.Material
+        .hintTextColor
     } // Rectangle
 
     Rectangle
@@ -102,18 +104,20 @@ T.ComboBox
       height: 2 //_control.backgroundBorderHeight
       color: "red" //_control.backgroundHighlightColor
       width: _control.activeFocus ? parent.width : 0
-      x: _control.activeFocus ? 0 : parent.width/2
+      x: _control.activeFocus ? 0 : parent.width / 2
 
       Behavior on width
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type:Easing.OutCubic; duration: 300 } // NumberAnimation
+        NumberAnimation { easing.type: Easing.OutCubic;
+          duration: 300 } // NumberAnimation
       } // Behavior
 
       Behavior on x
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type:Easing.OutCubic; duration: 300 } // NumberAnimation
+        NumberAnimation { easing.type: Easing.OutCubic;
+          duration: 300 } // NumberAnimation
       } // Behavior
     } // Rectangle
 
@@ -147,15 +151,15 @@ T.ComboBox
     enter: Transition
     {
       // grow_fade_in
-      NumberAnimation { property: "scale"; from: 0.9; to: 1.0; easing.type: Easing.OutQuint; duration: 220 }
-      NumberAnimation { property: "opacity"; from: 0.0; to: 1.0; easing.type: Easing.OutCubic; duration: 150 }
+      NumberAnimation { property: "scale";from: 0.9;to: 1.0;easing.type: Easing.OutQuint;duration: 220 }
+      NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing.OutCubic;duration: 150 }
     } // Transition
 
     exit: Transition
     {
       // shrink_fade_out
-      NumberAnimation { property: "scale"; from: 1.0; to: 0.9; easing.type: Easing.OutQuint; duration: 220 }
-      NumberAnimation { property: "opacity"; from: 1.0; to: 0.0; easing.type: Easing.OutCubic; duration: 150 }
+      NumberAnimation { property: "scale";from: 1.0;to: 0.9;easing.type: Easing.OutQuint;duration: 220 }
+      NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing.OutCubic;duration: 150 }
     } // Transition
 
     contentItem: ListView
@@ -166,7 +170,7 @@ T.ComboBox
       currentIndex: _control.highlightedIndex
       highlightMoveDuration: 0
 
-      T.ScrollIndicator.vertical: ScrollIndicator { }
+      T.ScrollIndicator.vertical: ScrollIndicator {}
     } // ListView
 
     background: Rectangle

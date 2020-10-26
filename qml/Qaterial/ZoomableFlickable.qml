@@ -41,8 +41,10 @@ Item
   property bool interactive: true
   property bool pinched: false
 
-  property var verticalScrollIndicator: null
-  property var horizontalScrollIndicator: null
+  property
+  var verticalScrollIndicator: null
+  property
+  var horizontalScrollIndicator: null
 
   function cancelFlick()
   {
@@ -62,25 +64,25 @@ Item
   function isXOutsideLeft(value)
   {
     return value < _flickable.contentX &&
-        _flickable.contentX > 0
+      _flickable.contentX > 0
   } // function isXOutsideLeft(value)
 
   function isXOutsideRight(value)
   {
     return value > (_flickable.contentX + _flickable.width) &&
-        (_flickable.contentX + _flickable.width) < _flickable.contentWidth
+      (_flickable.contentX + _flickable.width) < _flickable.contentWidth
   } // function isXOutsideRight(value)
 
   function isYOutsideTop(value)
   {
     return value < _flickable.contentY &&
-        _flickable.contentY > 0
+      _flickable.contentY > 0
   } // function isYOutsideTop(value)
 
   function isYOutsideBottom(value)
   {
     return value > (_flickable.contentY + _flickable.height) &&
-        (_flickable.contentY + _flickable.height) < _flickable.contentHeight
+      (_flickable.contentY + _flickable.height) < _flickable.contentHeight
   } // function isYOutsideBottom(value)
 
   signal flickEnded()
@@ -92,7 +94,7 @@ Item
   {
     id: _flickable
 
-    readonly property real contentRatio: _root.contentWidth/_root.contentHeight
+    readonly property real contentRatio: _root.contentWidth / _root.contentHeight
 
     width: Math.min(parent.width, contentWidth)
     height: Math.min(parent.height, contentHeight)
@@ -100,17 +102,18 @@ Item
     // Always centered in parent
     anchors.centerIn: parent
 
-    contentWidth: _root.contentWidth*zoom
-    contentHeight: _root.contentHeight*zoom
+    contentWidth: _root.contentWidth * zoom
+    contentHeight: _root.contentHeight * zoom
 
     // Default zoom always fit entirely the loaded item inside the flickable
-    readonly property real defaultZoom: contentRatio < 1 ? _root.width/_root.contentWidth : _root.height/_root.contentHeight
-    property real zoom: defaultZoom*_root.zoom
+    readonly property real defaultZoom: contentRatio < 1 ? _root.width / _root.contentWidth : _root.height / _root
+      .contentHeight
+    property real zoom: defaultZoom * _root.zoom
 
     // Remap minzoom with default zoom, because the loaded item can be bigger than the flickable by default
-    readonly property real minZoom: defaultZoom*_root.minZoom
+    readonly property real minZoom: defaultZoom * _root.minZoom
     // Remap maxzoom with default zoom, because the loaded item can be bigger than the flickable by default
-    readonly property real maxZoom: defaultZoom*_root.maxZoom
+    readonly property real maxZoom: defaultZoom * _root.maxZoom
 
     readonly property real unZoomLatency: 220
     readonly property real wheelZoomLatency: 150
@@ -123,23 +126,23 @@ Item
     //contentX:
     //contentY:
 
-    interactive: _root.interactive// && _root.zoom > 1
+    interactive: _root.interactive // && _root.zoom > 1
 
     Behavior on zoom
     {
-      NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint } // NumberAnimation
+      NumberAnimation { duration: _flickable.zoomLatency;easing.type: Easing.OutQuint } // NumberAnimation
       enabled: _flickable.zoomAnimation
     } // Behavior
 
     Behavior on contentX
     {
-      NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint } // NumberAnimation
+      NumberAnimation { duration: _flickable.zoomLatency;easing.type: Easing.OutQuint } // NumberAnimation
       enabled: _flickable.zoomAnimation
     } // Behavior
 
     Behavior on contentY
     {
-      NumberAnimation { duration: _flickable.zoomLatency; easing.type: Easing.OutQuint } // NumberAnimation
+      NumberAnimation { duration: _flickable.zoomLatency;easing.type: Easing.OutQuint } // NumberAnimation
       enabled: _flickable.zoomAnimation
     } // Behavior
 
@@ -156,19 +159,19 @@ Item
 
       // Bound scale
       if(newScale < _flickable.minZoom)
-          newScale = _flickable.minZoom
+        newScale = _flickable.minZoom
       else if(newScale > _flickable.maxZoom)
-          newScale = _flickable.maxZoom
+        newScale = _flickable.maxZoom
 
-      const scaleRatio = newScale/previousScale
+      const scaleRatio = newScale / previousScale
 
       // Make sure center stay at center after scale
-      _flickable.contentX += (zoomX*scaleRatio - zoomX)
-      _flickable.contentY += (zoomY*scaleRatio - zoomY)
+      _flickable.contentX += (zoomX * scaleRatio - zoomX)
+      _flickable.contentY += (zoomY * scaleRatio - zoomY)
 
       // Update content scale
       //_flickable.zoom = newScale
-      _root.zoom = newScale/defaultZoom
+      _root.zoom = newScale / defaultZoom
     } // function zoomToPoint(deltaZoom, zoomX, zoomY)
 
     PinchArea
@@ -191,7 +194,7 @@ Item
       onPinchUpdated:
       {
         // Get delta scale and apply zoom factor to it
-        const deltaZoom = (pinch.scale-pinch.previousScale)*zoomFactor
+        const deltaZoom = (pinch.scale - pinch.previousScale) * zoomFactor
 
         // Apply the zoom
         _flickable.zoomToPoint(deltaZoom, pinch.center.x, pinch.center.y)
@@ -223,7 +226,7 @@ Item
         active: _root.interactive
         sourceComponent: MouseArea
         {
-          scrollGestureEnabled: false  // 2-finger-flick gesture should passs through to the Flickable
+          scrollGestureEnabled: false // 2-finger-flick gesture should passs through to the Flickable
           onWheel:
           {
             // Reset animation to fast because user know what he is doing
@@ -239,13 +242,13 @@ Item
             _flickable.zoomLatency = _flickable.unZoomLatency
             if(_flickable.zoom !== _flickable.defaultZoom)
             {
-              _root.zoom = 1//1/_flickable.defaultZoom
+              _root.zoom = 1 //1/_flickable.defaultZoom
               _flickable.contentX = 0
               _flickable.contentY = 0
             }
             else
             {
-              _flickable.zoomToPoint(_flickable.defaultZoom < 0.7 ? 1 : _flickable.defaultZoom*2, mouse.x, mouse.y)
+              _flickable.zoomToPoint(_flickable.defaultZoom < 0.7 ? 1 : _flickable.defaultZoom * 2, mouse.x, mouse.y)
             }
           } // onDoubleClicked
 
@@ -261,8 +264,8 @@ Item
     // The loader scale it's content size
     Loader
     {
-      id:     _loader
-      width:  _flickable.contentWidth
+      id: _loader
+      width: _flickable.contentWidth
       height: _flickable.contentHeight
     } // Loader
   } // Flickable

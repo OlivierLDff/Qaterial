@@ -12,7 +12,7 @@ import Qaterial 1.0 as Qaterial
 
 Item
 {
-  implicitHeight: _label.font.pixelSize*3
+  implicitHeight: _label.font.pixelSize * 3
   implicitWidth: 200
   property alias supportingText: _label.text
 

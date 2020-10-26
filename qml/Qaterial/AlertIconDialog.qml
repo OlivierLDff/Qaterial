@@ -33,7 +33,7 @@ Qaterial.ModalDialog
     Binding on implicitHeight
     {
       value: Math.floor(Math.max(_icon.implicitHeight, _text.implicitHeight))
-      delayed: true  // Prevent intermediary values from being assigned
+      delayed: true // Prevent intermediary values from being assigned
     }
 
     Qaterial.RoundColorIcon

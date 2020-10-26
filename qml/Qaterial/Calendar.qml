@@ -7,20 +7,21 @@ QtObject
   enum Month
   {
     January = 0,
-    February,
-    March,
-    April,
-    May,
-    June,
-    July,
-    August,
-    September,
-    October,
-    November,
-    December
+      February,
+      March,
+      April,
+      May,
+      June,
+      July,
+      August,
+      September,
+      October,
+      November,
+      December
   }
 
-  property var months: [
+  property
+  var months: [
     qsTr("January"),
     qsTr("February"),
     qsTr("March"),
@@ -38,15 +39,16 @@ QtObject
   enum Day
   {
     Sunday = 0,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday
+      Monday,
+      Tuesday,
+      Wednesday,
+      Thursday,
+      Friday,
+      Saturday
   }
 
-  property var days: [
+  property
+  var days: [
     qsTr("Sunday"),
     qsTr("Monday"),
     qsTr("Tuesday"),
@@ -74,8 +76,10 @@ QtObject
     if(isNaN(from))
       return new Date(year, month, 1) <= to
     if(isNaN(to))
-      return from <= new Date(year, month, new Date(year, month+1,0).getDate())
-    return (from <= new Date(year, month, new Date(year, month+1,0).getDate())) && (new Date(year, month, 1) <= to)
+      return from <= new Date(year, month, new Date(year, month + 1, 0)
+        .getDate())
+    return (from <= new Date(year, month, new Date(year, month + 1, 0)
+      .getDate())) && (new Date(year, month, 1) <= to)
   }
 
   function monthToString(month)

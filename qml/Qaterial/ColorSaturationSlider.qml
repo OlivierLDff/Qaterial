@@ -18,7 +18,7 @@ Qaterial.GradientSlider
   function getNewColor()
   {
     return hsv ? Qt.hsva(color.hsvHue, value, color.hsvValue, color.a) :
-                 Qt.hsla(color.hslHue, value, color.hslLightness, color.a)
+      Qt.hsla(color.hslHue, value, color.hslLightness, color.a)
   }
 
   value: hsv ? color.hsvSaturation : color.hslSaturation
@@ -37,8 +37,8 @@ Qaterial.GradientSlider
     GradientStop
     {
       position: 1.000
-      color: control.hsv ? Qt.hsva(control.color.hsvHue, 1, control.color.hsvValue, control.color.a) :
-                           Qt.hsla(control.color.hslHue, 1, control.color.hslLightness, control.color.a)
+      color: control.hsv ? Qt.hsva(control.color.hsvHue, 1, control.color.hsvValue, control.color.a) : Qt.hsla(
+        control.color.hslHue, 1, control.color.hslLightness, control.color.a)
     }
   }
 } // Slider

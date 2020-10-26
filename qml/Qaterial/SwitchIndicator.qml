@@ -28,8 +28,9 @@ Item
     height: Qaterial.Style.switchIndicator.trackHeight
     radius: height / 2
     y: parent.height / 2 - height / 2
-    color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedTrackColor : Qaterial.Style.switchIndicator.switchUncheckedTrackColor)
-                           : Qaterial.Style.switchIndicator.switchDisabledTrackColor
+    color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedTrackColor : Qaterial.Style
+        .switchIndicator.switchUncheckedTrackColor) :
+      Qaterial.Style.switchIndicator.switchDisabledTrackColor
   } // Rectangle
 
   Rectangle
@@ -40,13 +41,14 @@ Item
     width: Qaterial.Style.switchIndicator.handleRadius
     height: Qaterial.Style.switchIndicator.handleRadius
     radius: width / 2
-    color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedHandleColor : Qaterial.Style.switchIndicator.switchUncheckedHandleColor)
-                           : Qaterial.Style.switchIndicator.switchDisabledHandleColor
+    color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedHandleColor : Qaterial.Style
+        .switchIndicator.switchUncheckedHandleColor) :
+      Qaterial.Style.switchIndicator.switchDisabledHandleColor
 
     Behavior on x
     {
-        enabled: !control.pressed
-        SmoothedAnimation { duration: 300 }
+      enabled: !control.pressed
+      SmoothedAnimation { duration: 300 }
     } // Behavior
 
     layer.enabled: _indicator.elevation > 0

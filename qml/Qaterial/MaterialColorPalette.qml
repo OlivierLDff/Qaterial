@@ -46,8 +46,8 @@ Column
     {
       Qaterial.ColorPaletteButton
       {
-        width: root.cellWidth*3
-        height: root.cellHeight*2
+        width: root.cellWidth * 3
+        height: root.cellHeight * 2
 
         showName: root.showName
         showShade: root.showShade
@@ -59,8 +59,8 @@ Column
       }
       Qaterial.ColorPaletteButton
       {
-        width: root.cellWidth*3
-        height: root.cellHeight*2
+        width: root.cellWidth * 3
+        height: root.cellHeight * 2
 
         showName: root.showName
         showShade: root.showShade

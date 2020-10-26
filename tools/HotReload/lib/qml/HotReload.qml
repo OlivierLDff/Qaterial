@@ -17,11 +17,12 @@ Qaterial.Page
   property string currentFolderPath
   property string currentFilePath
   property string currentFileUrl
-  property string currentFileName: currentFilePath.substring(currentFilePath.lastIndexOf('/')+1)
+  property string currentFileName: currentFilePath.substring(currentFilePath.lastIndexOf('/') + 1)
 
   property bool showFolderExplorer: true
 
-  property var currentImportPath: []
+  property
+  var currentImportPath: []
 
   property string errorString
 
@@ -65,7 +66,8 @@ Qaterial.Page
     property alias currentImportPath: root.currentImportPath
 
     property alias showFolderExplorer: root.showFolderExplorer
-    property var folderSplitView
+    property
+    var folderSplitView
 
     property alias formatHorizontalAlignCenter: formatHorizontalAlignCenter.checked
     property alias formatVerticalAlignCenter: formatVerticalAlignCenter.checked
@@ -92,7 +94,8 @@ Qaterial.Page
 
   function openFilePicker()
   {
-    Qaterial.DialogManager.showOpenFileDialog({
+    Qaterial.DialogManager.showOpenFileDialog(
+    {
       title: "Please choose a file",
       nameFilters: ["Qml Files (*.qml)"],
       onAccepted: function(path)
@@ -104,7 +107,8 @@ Qaterial.Page
 
   function openFolderPicker()
   {
-    Qaterial.DialogManager.showFolderDialog({
+    Qaterial.DialogManager.showFolderDialog(
+    {
       title: "Please choose a folder",
       onAccepted: function(path)
       {
@@ -202,13 +206,15 @@ Qaterial.Page
           {
             Qaterial.HotReload.importPaths = undefined
             Qaterial.Logger.info(`Reset Path Entries to ${Qaterial.HotReload.importPaths}`)
-            root.currentImportPath = Qaterial.HotReload.importPaths.toString().split(',')
+            root.currentImportPath = Qaterial.HotReload.importPaths.toString()
+              .split(',')
             root.reload()
           }
 
           onAddPathEntry: function(index)
           {
-            Qaterial.DialogManager.showTextFieldDialog({
+            Qaterial.DialogManager.showTextFieldDialog(
+            {
               context: root,
               width: 800,
               title: "Enter Qml import path",
@@ -221,7 +227,8 @@ Qaterial.Page
                 if(index <= -1)
                   index = Qaterial.HotReload.importPaths.length
                 Qaterial.Logger.info(`Append Path ${text} at ${index}`)
-                let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                let tempPaths = Qaterial.HotReload.importPaths.toString()
+                  .split(',')
                 tempPaths.splice(index, 0, text)
                 _importPathMenu.setImportPathsAndReload(tempPaths)
               },
@@ -230,7 +237,8 @@ Qaterial.Page
 
           onEditPathEntry: function(index)
           {
-            Qaterial.DialogManager.showTextFieldDialog({
+            Qaterial.DialogManager.showTextFieldDialog(
+            {
               context: root,
               width: 800,
               title: "Edit Qml import path",
@@ -242,7 +250,8 @@ Qaterial.Page
               onAccepted: function(text, acceptable)
               {
                 Qaterial.Logger.info(`Edit Path ${index} to ${text}`)
-                let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                let tempPaths = Qaterial.HotReload.importPaths.toString()
+                  .split(',')
                 tempPaths.splice(index, 1, text)
                 _importPathMenu.setImportPathsAndReload(tempPaths)
               },
@@ -253,7 +262,8 @@ Qaterial.Page
           {
             if(index >= 0 && index < Qaterial.HotReload.importPaths.length)
             {
-              Qaterial.DialogManager.showDialog({
+              Qaterial.DialogManager.showDialog(
+              {
                 context: root,
                 width: 500,
                 title: "Warning",
@@ -263,7 +273,8 @@ Qaterial.Page
                 onAccepted: function()
                 {
                   Qaterial.Logger.info(`Remove Path ${Qaterial.HotReload.importPaths[index]}`)
-                  let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
+                  let tempPaths = Qaterial.HotReload.importPaths.toString()
+                    .split(',')
                   tempPaths.splice(index, 1)
                   _importPathMenu.setImportPathsAndReload(tempPaths)
                 }
@@ -273,15 +284,17 @@ Qaterial.Page
 
           onMovePathUp: function(index)
           {
-            let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
-            tempPaths.splice(index, 0, tempPaths.splice(index-1, 1)[0])
+            let tempPaths = Qaterial.HotReload.importPaths.toString()
+              .split(',')
+            tempPaths.splice(index, 0, tempPaths.splice(index - 1, 1)[0])
             _importPathMenu.setImportPathsAndReload(tempPaths)
           }
 
           onMovePathDown: function(index)
           {
-            let tempPaths = Qaterial.HotReload.importPaths.toString().split(',')
-            tempPaths.splice(index, 0, tempPaths.splice(index+1, 1)[0])
+            let tempPaths = Qaterial.HotReload.importPaths.toString()
+              .split(',')
+            tempPaths.splice(index, 0, tempPaths.splice(index + 1, 1)[0])
             _importPathMenu.setImportPathsAndReload(tempPaths)
           }
         }
@@ -374,11 +387,11 @@ Qaterial.Page
         id: fullScreen
 
         enabled: !formatHorizontalAlignCenter.checked &&
-                 !formatVerticalAlignCenter.checked &&
-                 !formatHorizontalAlignLeft.checked &&
-                 !formatHorizontalAlignRight.checked &&
-                 !formatVerticalAlignBottom.checked &&
-                 !formatVerticalAlignTop.checked
+          !formatVerticalAlignCenter.checked &&
+          !formatHorizontalAlignLeft.checked &&
+          !formatHorizontalAlignRight.checked &&
+          !formatVerticalAlignBottom.checked &&
+          !formatVerticalAlignTop.checked
         icon.source: checked ? Qaterial.Icons.fullscreen : Qaterial.Icons.fullscreenExit
 
         ToolTip.visible: hovered || pressed
@@ -525,7 +538,6 @@ Qaterial.Page
     }
   } // ToolBar
 
-
   SplitView
   {
     anchors.fill: parent
@@ -566,7 +578,7 @@ Qaterial.Page
 
           property QtObject selectedElement
 
-          nameFilters: [ "*.qml" ]
+          nameFilters: ["*.qml"]
           path: `file:${root.currentFolderPath}`
 
           itemDelegate: Qaterial.FolderTreeViewItem
@@ -592,13 +604,14 @@ Qaterial.Page
       {
         id: loader
         width: parent.width
-        property var loadedObject: null
+        property
+        var loadedObject: null
         property url createUrl
 
         function create(url)
         {
           createUrl = url
-          Qaterial.DialogManager.openBusyIndicator({text: `Loading ${root.currentFileName}`})
+          Qaterial.DialogManager.openBusyIndicator({ text: `Loading ${root.currentFileName}` })
           createLaterTimer.start()
         }
 
@@ -649,9 +662,10 @@ Qaterial.Page
             //loadedObject = component.createObject(loader)
 
             var incubator = component.incubateObject(loader, { visible: false });
-            if (incubator.status != Component.Ready)
+            if(incubator.status != Component.Ready)
             {
-              incubator.onStatusChanged = function(status) {
+              incubator.onStatusChanged = function(status)
+              {
                 if(status == Component.Ready)
                 {
                   loadedObject = incubator.object

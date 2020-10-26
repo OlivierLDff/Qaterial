@@ -15,17 +15,19 @@ Qaterial.ScrollBar
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   padding: 2
   policy: ScrollBar.AlwaysOn
 
   background: Rectangle
   {
-    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
-    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll.implicitWidthInactive
+    implicitWidth: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll
+      .implicitWidthInactive
+    implicitHeight: _control.interactive ? Qaterial.Style.scroll.implicitWidthBackground : Qaterial.Style.scroll
+      .implicitWidthInactive
     color: "transparent"
   } // Rectangle
 
@@ -43,15 +45,14 @@ Qaterial.ScrollBar
     {
       name: "active"
       when: _control.active
-      PropertyChanges { target: _control.contentItem; opacity: 0.75 }
+      PropertyChanges { target: _control.contentItem;opacity: 0.75 }
     } // State
 
-    transitions:
-    [
+    transitions: [
       Transition
       {
         to: "active"
-        NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 1.0 } // NumberAnimation
+        NumberAnimation { targets: [contentItem, background];property: "opacity";to: 1.0 } // NumberAnimation
       }, // Transition
 
       Transition
@@ -59,9 +60,9 @@ Qaterial.ScrollBar
         from: "active"
         SequentialAnimation
         {
-            PropertyAction { targets: [contentItem, background]; property: "opacity"; value: 1.0 } // NumberAnimation
-            PauseAnimation { duration: 2450 } // PauseAnimation
-            NumberAnimation { targets: [contentItem, background]; property: "opacity"; to: 0.5 } // NumberAnimation
+          PropertyAction { targets: [contentItem, background];property: "opacity";value: 1.0 } // NumberAnimation
+          PauseAnimation { duration: 2450 } // PauseAnimation
+          NumberAnimation { targets: [contentItem, background];property: "opacity";to: 0.5 } // NumberAnimation
         }
       } // Transition
     ] // transitions

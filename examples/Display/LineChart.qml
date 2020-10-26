@@ -10,16 +10,15 @@ Qaterial.LineChart
   thickness: 3
   color: Qaterial.Style.green
 
-  series:
-  [
-    Qt.vector2d(-10,-20),
-    Qt.vector2d(10,12),
-    Qt.vector2d(20,24),
-    Qt.vector2d(30,15),
-    Qt.vector2d(40,-26),
-    Qt.vector2d(50,25),
-    Qt.vector2d(60,87),
-    Qt.vector2d(70,32)
+  series: [
+    Qt.vector2d(-10, -20),
+    Qt.vector2d(10, 12),
+    Qt.vector2d(20, 24),
+    Qt.vector2d(30, 15),
+    Qt.vector2d(40, -26),
+    Qt.vector2d(50, 25),
+    Qt.vector2d(60, 87),
+    Qt.vector2d(70, 32)
   ]
 
   Qaterial.Label
