@@ -44,25 +44,25 @@ find_package(Qt5 QUIET COMPONENTS
   Quick3DUtils)
 
 target_link_quiet_libraries(${QATERIAL_HOTRELOAD_LIB}
-  Qt5::Charts
-  Qt5::DataVisualization
-  Qt5::VirtualKeyboard
-  Qt5::WebChannel
-  Qt5::WebSockets
-  Qt5::WebEngine
+  Qt::Charts
+  Qt::DataVisualization
+  Qt::VirtualKeyboard
+  Qt::WebChannel
+  Qt::WebSockets
+  Qt::WebEngine
 
-  Qt5::3DCore
-  Qt5::3DRender
-  Qt5::3DInput
-  Qt5::3DLogic
-  Qt5::3DExtras
-  Qt5::3DAnimation
+  Qt::3DCore
+  Qt::3DRender
+  Qt::3DInput
+  Qt::3DLogic
+  Qt::3DExtras
+  Qt::3DAnimation
 
-  Qt5::Quick3D
-  Qt5::Quick3DAssetImport
-  Qt5::Quick3DRender
-  Qt5::Quick3DRuntimeRender
-  Qt5::Quick3DUtils)
+  Qt::Quick3D
+  Qt::Quick3DAssetImport
+  Qt::Quick3DRender
+  Qt::Quick3DRuntimeRender
+  Qt::Quick3DUtils)
 
 set_target_properties(${QATERIAL_HOTRELOAD_LIB} PROPERTIES
   FOLDER "${QATERIAL_FOLDER_PREFIX}/HotReload"

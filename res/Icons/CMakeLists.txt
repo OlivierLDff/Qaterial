@@ -64,11 +64,11 @@ add_library(${QATERIAL_TARGET}Icons STATIC ${QATERIAL_QML_ICONS_QRC} ${QATERIAL_
 set_target_properties(${QATERIAL_TARGET}Icons PROPERTIES AUTORCC TRUE)
 
 target_link_libraries(${QATERIAL_TARGET}Icons PRIVATE
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Svg
-  Qt5::Xml
-  Qt5::Qml
+  Qt::Core
+  Qt::Gui
+  Qt::Svg
+  Qt::Xml
+  Qt::Qml
 )
 
 if(QATERIAL_FOLDER_PREFIX)
