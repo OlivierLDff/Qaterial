@@ -186,13 +186,13 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
   spdlog
   QOlm
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Svg
-  Qt5::Xml
-  Qt5::Qml
-  Qt5::Quick
-  Qt5::QuickControls2
+  Qt::Core
+  Qt::Gui
+  Qt::Svg
+  Qt::Xml
+  Qt::Qml
+  Qt::Quick
+  Qt::QuickControls2
 )
 
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)

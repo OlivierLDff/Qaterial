@@ -57,11 +57,11 @@ add_library(${QATERIAL_TARGET}Fonts STATIC ${QATERIAL_FONTS_QML_QRC})
 set_target_properties(${QATERIAL_TARGET}Fonts PROPERTIES AUTORCC TRUE)
 
 target_link_libraries(${QATERIAL_TARGET}Fonts PRIVATE
-  Qt5::Core
-  Qt5::Gui
-  Qt5::Svg
-  Qt5::Xml
-  Qt5::Qml
+  Qt::Core
+  Qt::Gui
+  Qt::Svg
+  Qt::Xml
+  Qt::Qml
 )
 
 if(QATERIAL_FOLDER_PREFIX)
