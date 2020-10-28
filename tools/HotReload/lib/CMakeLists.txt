@@ -74,7 +74,7 @@ if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_HOTRELOAD_LIB} PRIVATE ${PROJECT_SOURCE_DIR}/include/Qaterial/Pch/Pch.hpp)
 endif()
 
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   qt_generate_qml_plugin_import(${QATERIAL_HOTRELOAD_LIB}
     QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}
