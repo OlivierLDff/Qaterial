@@ -16,9 +16,9 @@ T.ScrollView
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
   ScrollBar.vertical: Qaterial.ScrollBar
   {

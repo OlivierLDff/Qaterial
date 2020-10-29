@@ -95,7 +95,6 @@ T.ItemDelegate
     if(ext == 'json')
       return Qaterial.Icons.text
 
-
     if(ext.includes('vcxproj') || ext == 'sln')
       return Qaterial.Icons.microsoftVisualStudioCode
 
@@ -106,25 +105,25 @@ T.ItemDelegate
   }
 
   implicitWidth: Math.max(background ? implicitBackgroundWidth : 0,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(background ? implicitBackgroundHeight : 0,
-                           Math.max(implicitContentHeight,
-                                    indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
+    Math.max(implicitContentHeight,
+      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
   spacing: 8
-  leftPadding: depth*Qaterial.Style.card.horizontalPadding + 12
+  leftPadding: depth * Qaterial.Style.card.horizontalPadding + 12
 
   text: model ? model.fileName : ""
   property color color:
   {
-     if(model && model.isDir && model.expanded)
+    if(model && model.isDir && model.expanded)
       return Qaterial.Style.accentColor
 
     if(highlighted)
-        return Qaterial.Style.accentColor
+      return Qaterial.Style.accentColor
 
     if(hovered)
-        return Qaterial.Style.primaryTextColor()
+      return Qaterial.Style.primaryTextColor()
 
     return Qaterial.Style.hintTextColor()
   }
@@ -135,7 +134,7 @@ T.ItemDelegate
     if(highlighted || hovered)
       return Qaterial.Style.accentColor
 
-     if(model && model.isDir && model.expanded)
+    if(model && model.isDir && model.expanded)
       return Qaterial.Style.accentColor
 
     Qaterial.Style.hintTextColor()

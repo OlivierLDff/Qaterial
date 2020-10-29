@@ -13,7 +13,8 @@ import Qaterial 1.0 as Qaterial
 Item
 {
   id: _control
-  property var icon: QtObject
+  property
+  var icon: QtObject
   {
     property double width: 24
     property double height: width
@@ -36,10 +37,8 @@ Item
   readonly property double labelWidth: (_label.visible ? _label.contentWidth : 0)
   readonly property double labelHeight: (_label.visible ? _label.contentHeight : 0)
 
-  implicitWidth: iconOnTop ? Math.max(iconWidth, labelWidth) :
-                  iconWidth + labelWidth + spacing
-  implicitHeight: iconOnTop ? iconHeight + labelHeight :
-                  Math.max(iconHeight, labelHeight)
+  implicitWidth: iconOnTop ? Math.max(iconWidth, labelWidth) : iconWidth + labelWidth + spacing
+  implicitHeight: iconOnTop ? iconHeight + labelHeight : Math.max(iconHeight, labelHeight)
 
   property bool drawline: Qaterial.Style.debug.drawDebugIconLabel
 
@@ -89,21 +88,23 @@ Item
       anchors.left = undefined
       anchors.right = undefined
 
-      var textOnLeft = !_control.iconOnTop && _control.mirrored && ((_control.display != AbstractButton.IconOnly) && _label.text != "")
-      var textOnRight = !_control.iconOnTop && !_control.mirrored && ((_control.display != AbstractButton.IconOnly) && _label.text != "")
+      var textOnLeft = !_control.iconOnTop && _control.mirrored && ((_control.display != AbstractButton.IconOnly) &&
+        _label.text != "")
+      var textOnRight = !_control.iconOnTop && !_control.mirrored && ((_control.display != AbstractButton.IconOnly) &&
+        _label.text != "")
 
       if((!textOnLeft && !_control.iconOnTop) || _control.iconOnTop)
-          anchors.left = _control.left
+        anchors.left = _control.left
 
       if((!textOnRight && !_control.iconOnTop) || _control.iconOnTop)
-          anchors.right = _control.right
+        anchors.right = _control.right
 
       anchors.verticalCenter = undefined
       anchors.top = undefined
       if(_control.iconOnTop)
-          anchors.top = _control.top
+        anchors.top = _control.top
       else
-          anchors.verticalCenter = _control.verticalCenter
+        anchors.verticalCenter = _control.verticalCenter
     } // function reanchors()
     //Component.onCompleted: reanchors()
   } // Item
@@ -132,10 +133,10 @@ Item
       anchors.baseline = undefined
       if(_control.iconOnTop)
       {
-          anchors.baseline = _control.verticalCenter
+        anchors.baseline = _control.verticalCenter
       }
       else
-          anchors.verticalCenter = _control.verticalCenter
+        anchors.verticalCenter = _control.verticalCenter
     } // function reanchors()
 
     Qaterial.DebugRectangle
@@ -148,8 +149,8 @@ Item
 
   function reanchors()
   {
-      _label.reanchors()
-      _iconItem.reanchors()
+    _label.reanchors()
+    _iconItem.reanchors()
   } // function reanchors()
 
   Component.onCompleted: reanchors()

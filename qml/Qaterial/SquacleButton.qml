@@ -21,7 +21,7 @@ T.Button
   implicitHeight: implicitBackgroundHeight + topInset + bottomInset
 
   icon.color: active ? foregroundColor : color
-  padding: width/4
+  padding: width / 4
 
   topInset: 8
   bottomInset: 8
@@ -33,7 +33,7 @@ T.Button
     icon: control.icon.source
     color: control.icon.color
 
-    Behavior on color { ColorAnimation { duration: 150; easing.type: Easing.InOutQuad } }
+    Behavior on color { ColorAnimation { duration: 150;easing.type: Easing.InOutQuad } }
   }
 
   background: Rectangle
@@ -43,11 +43,11 @@ T.Button
     implicitWidth: 48
     implicitHeight: 48
 
-    radius: control.squared ? 16 : width/2
+    radius: control.squared ? 16 : width / 2
     color: control.active ? control.color : control.backgroundColor
 
-    Behavior on color { ColorAnimation { duration: 150; easing.type: Easing.InOutQuad } }
-    Behavior on radius { NumberAnimation { duration: 150; easing.type: Easing.InOutQuad } }
+    Behavior on color { ColorAnimation { duration: 150;easing.type: Easing.InOutQuad } }
+    Behavior on radius { NumberAnimation { duration: 150;easing.type: Easing.InOutQuad } }
 
     Qaterial.Ripple
     {

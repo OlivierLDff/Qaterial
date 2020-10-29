@@ -31,11 +31,13 @@ Qaterial.Page
   onSecondPageActiveChanged: Qt.callLater(pushOrPop)
 
   /// Hold the first page component. This component is either full screen or is firstPageWidth
-  property var firstPage: null
+  property
+  var firstPage: null
 
   /// Component that hold the second page. It's either loaded inside _secondPageLoader or pushed on top of the
   /// first page
-  property var secondPage: null
+  property
+  var secondPage: null
 
   property bool secondPagePushed: false
 

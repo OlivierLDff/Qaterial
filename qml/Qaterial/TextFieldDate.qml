@@ -17,15 +17,15 @@ Qaterial.TextField
 
   property date date
 
-  property date from: new Date(1900,0,1)
-  property date to: new Date(2100,0,1)
+  property date from: new Date(1900, 0, 1)
+  property date to: new Date(2100, 0, 1)
 
   signal accepted(date date)
 
   implicitWidth: 150
 
   title: "Date"
-  validator: RegExpValidator { regExp: /([1-9]|0[1-9]|[12][0-9]|3[01])[/](0[1-9]|[1-9]|1[0-2])[/]\d{4}/}
+  validator: RegExpValidator { regExp: /([1-9]|0[1-9]|[12][0-9]|3[01])[/](0[1-9]|[1-9]|1[0-2])[/]\d{4}/ }
   errorText: dateOutOfBound ? "Date is Out of Bound" : "Invalid Date Format"
   readonly property bool dateOutOfBound: !Qaterial.Calendar.isDateValid(from, to, date)
   error: !acceptableInput || dateOutOfBound
@@ -89,7 +89,8 @@ Qaterial.TextField
       }
       else if(characters[1].length === 5)
       {
-        text = `${characters[0]}/${characters[1][0]}${characters[1][1]}/${characters[1][2]}${characters[1][3]}${characters[1][4]}_`
+        text =
+          `${characters[0]}/${characters[1][0]}${characters[1][1]}/${characters[1][2]}${characters[1][3]}${characters[1][4]}_`
         cursorPosition = 9
       }
       else
@@ -107,8 +108,8 @@ Qaterial.TextField
         }
         else if(characters[1].length === 2)
         {
-        text = `0${characters[0][0]}/${characters[1]}/____`
-        cursorPosition = 6
+          text = `0${characters[0][0]}/${characters[1]}/____`
+          cursorPosition = 6
         }
       }
     }
@@ -119,40 +120,40 @@ Qaterial.TextField
         text = `${characters[0]}/${characters[1]}/${characters[2]}___`
         cursorPosition = 7
         if(characters[1].length === 1)
-          {
-            text = `${characters[0]}/${characters[1]}/${characters[2]}___`
-            cursorPosition = 6
-          }
+        {
+          text = `${characters[0]}/${characters[1]}/${characters[2]}___`
+          cursorPosition = 6
+        }
       }
       else if(characters[2].length === 2)
       {
         text = `${characters[0]}/${characters[1]}/${characters[2][0]}${characters[2][1]}__`
         cursorPosition = 8
         if(characters[1].length === 1)
-          {
-            text = `${characters[0]}/${characters[1]}/${characters[2]}__`
-            cursorPosition = 7
-          }
+        {
+          text = `${characters[0]}/${characters[1]}/${characters[2]}__`
+          cursorPosition = 7
+        }
       }
       else if(characters[2].length === 3)
       {
         text = `${characters[0]}/${characters[1]}/${characters[2][0]}${characters[2][1]}${characters[2][2]}_`
         cursorPosition = 9
         if(characters[1].length === 1)
-          {
-            text = `${characters[0]}/${characters[1]}/${characters[2]}_`
-            cursorPosition = 8
-          }
+        {
+          text = `${characters[0]}/${characters[1]}/${characters[2]}_`
+          cursorPosition = 8
+        }
       }
       else if(characters[2].length === 4)
       {
         text = `${characters[0]}/${characters[1]}/${characters[2]}`
         cursorPosition = 10
         if(characters[1].length === 1)
-          {
-            text = `${characters[0]}/${characters[1]}/${characters[2]}`
-            cursorPosition = 9
-          }
+        {
+          text = `${characters[0]}/${characters[1]}/${characters[2]}`
+          cursorPosition = 9
+        }
       }
       if(characters[0].length === 1)
       {
@@ -163,15 +164,15 @@ Qaterial.TextField
         }
         else if(characters[1].length === 2)
         {
-        text = `0${characters[0][0]}/${characters[1]}`
-        cursorPosition = 5
+          text = `0${characters[0][0]}/${characters[1]}`
+          cursorPosition = 5
         }
       }
 
     }
     if(acceptableInput && !dateOutOfBound)
     {
-      date = new Date(characters[2],characters[1]-1,characters[0])
+      date = new Date(characters[2], characters[1] - 1, characters[0])
       accepted(date)
     }
 

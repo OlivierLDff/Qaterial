@@ -7,7 +7,8 @@ Qaterial.DatePickerDialog
   month: Qaterial.Calendar.Month.January
   year: 2015
 
-  onMonthChanged: () => console.log(`Grid Changed : month :${Qaterial.Calendar.monthToString(month)} & year : ${year}`)
+  onMonthChanged: () => console.log(
+    `Grid Changed : month :${Qaterial.Calendar.monthToString(month)} & year : ${year}`)
   onYearChanged: () => console.log(`Grid Changed : month :${Qaterial.Calendar.monthToString(month)} & year : ${year}`)
 
   onAccepted: (date) => console.log(`User picked ${date.toString()}`)

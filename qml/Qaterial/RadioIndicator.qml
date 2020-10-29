@@ -17,8 +17,8 @@ Rectangle
   implicitHeight: Qaterial.Style.radioIndicator.implicitHeight
   radius: width / 2
   border.width: 2
-  border.color: !control.enabled ? Qaterial.Style.hintTextColor()
-      : control.checked || control.down ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
+  border.color: !control.enabled ? Qaterial.Style.hintTextColor() :
+    control.checked || control.down ? Qaterial.Style.accentColor : Qaterial.Style.secondaryTextColor()
   color: "transparent"
 
   Behavior on border.color
@@ -37,8 +37,8 @@ Rectangle
     x: (parent.width - width) / 2
     y: (parent.height - height) / 2
     readonly property bool shouldBeVisible: control.checked || control.down
-    width: shouldBeVisible ? Qaterial.Style.radioIndicator.implicitWidth/2 : 0
-    height: shouldBeVisible ? Qaterial.Style.radioIndicator.implicitHeight/2 : 0
+    width: shouldBeVisible ? Qaterial.Style.radioIndicator.implicitWidth / 2 : 0
+    height: shouldBeVisible ? Qaterial.Style.radioIndicator.implicitHeight / 2 : 0
     radius: width / 2
     color: parent.border.color
     //visible: control.checked || control.down

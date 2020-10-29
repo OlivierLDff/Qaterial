@@ -19,13 +19,18 @@ Column
 
   function layoutTypeToString(type)
   {
-    switch(type)
+    switch (type)
     {
-      case Qaterial.Layout.ExtraLarge: return "Extra Large"
-      case Qaterial.Layout.Large: return "Large"
-      case Qaterial.Layout.Medium: return "Medium"
-      case Qaterial.Layout.Small: return "Small"
-      case Qaterial.Layout.ExtraSmall: return "Extra Small"
+      case Qaterial.Layout.ExtraLarge:
+        return "Extra Large"
+      case Qaterial.Layout.Large:
+        return "Large"
+      case Qaterial.Layout.Medium:
+        return "Medium"
+      case Qaterial.Layout.Small:
+        return "Small"
+      case Qaterial.Layout.ExtraSmall:
+        return "Extra Small"
     }
     return "Unknown"
   }
@@ -77,7 +82,7 @@ Column
   Item
   {
     anchors.horizontalCenter: parent.horizontalCenter
-    width: parent.width - parent.width%2
+    width: parent.width - parent.width % 2
     implicitHeight: page.height
 
     Qaterial.Page
@@ -156,7 +161,8 @@ Column
               model = [Qaterial.Layout.FillParent,
                 Qaterial.Layout.FillHalf, Qaterial.Layout.FillHalf,
                 Qaterial.Layout.FillQuarter, Qaterial.Layout.FillQuarter,
-                Qaterial.Layout.FillQuarter, Qaterial.Layout.FillQuarter]
+                Qaterial.Layout.FillQuarter, Qaterial.Layout.FillQuarter
+              ]
             }
           }
         } // FluidGrid
@@ -170,7 +176,7 @@ Column
       anchors.horizontalCenter: parent.horizontalCenter
       anchors.top: parent.top
       anchors.bottom: parent.bottom
-      width: parent.width - parent.width%2
+      width: parent.width - parent.width % 2
 
       leftPadding: grid.leftPadding
       rightPadding: grid.rightPadding
@@ -189,7 +195,7 @@ Column
   Item
   {
     anchors.horizontalCenter: parent.horizontalCenter
-    width: parent.width - parent.width%2
+    width: parent.width - parent.width % 2
     height: 24
 
     Repeater
@@ -199,10 +205,11 @@ Column
       {
         width: oneBlockSize
         height: parent.height
-        x: grid.leftPadding + oneBlockSize*(index) + grid.spacing*index
+        x: grid.leftPadding + oneBlockSize * (index) + grid.spacing * index
 
         readonly property int paddingLessWidth: grid.width - grid.leftPadding - grid.rightPadding
-        readonly property real oneBlockSize: Math.floor(paddingLessWidth-(grid.columns-1)*grid.spacing)/grid.columns
+        readonly property real oneBlockSize: Math.floor(paddingLessWidth - (grid.columns - 1) * grid.spacing) / grid
+          .columns
 
         Rectangle
         {
@@ -243,17 +250,17 @@ Column
     running: true
     loops: Animation.Infinite
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: debugOverlay; property: "opacity"; to: 0.1; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: debugOverlay;property: "opacity";to: 0.1;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 600; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 600;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 1280; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 1280;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: debugOverlay; property: "opacity"; to: 0; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: debugOverlay;property: "opacity";to: 0;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "width"; to: 400; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: root;property: "width";to: 400;duration: 1000;easing.type: Easing.OutQuad }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: debugOverlay; property: "opacity"; to: 0; duration: 1000; easing.type: Easing.OutQuad }
+    NumberAnimation { target: debugOverlay;property: "opacity";to: 0;duration: 1000;easing.type: Easing.OutQuad }
   }
 
 }

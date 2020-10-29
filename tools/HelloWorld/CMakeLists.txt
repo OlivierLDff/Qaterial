@@ -32,7 +32,7 @@ if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
 endif()
 
 # Support Static Qt (this will be no longer necessary with qt6)
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   qt_generate_qml_plugin_import(${QATERIAL_HELLOWORLD}
     QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}

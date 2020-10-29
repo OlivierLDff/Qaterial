@@ -27,6 +27,8 @@ Qaterial.MenuItem
     id: _indicatorIcon
     x: parent.width - width - Qaterial.Style.card.horizontalPadding
     anchors.verticalCenter: parent.verticalCenter
-    color: _control.enabled ? (_control.colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()) : (_control.colorReversed ? Qaterial.Style.hintTextColorReversed() : Qaterial.Style.hintTextColor())
+    color: _control.enabled ? (_control.colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style
+      .primaryTextColor()) : (_control.colorReversed ? Qaterial.Style.hintTextColorReversed() : Qaterial.Style
+      .hintTextColor())
   } // ColorIcon
 } // MenuItem

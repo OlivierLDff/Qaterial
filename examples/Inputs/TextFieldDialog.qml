@@ -9,7 +9,8 @@ Qaterial.Button
 
   onClicked: function()
   {
-    Qaterial.DialogManager.showTextFieldDialog({
+    Qaterial.DialogManager.showTextFieldDialog(
+    {
       title: "title",
       textTitle: "textTitle",
       text: "text",

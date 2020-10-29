@@ -30,7 +30,7 @@ Item
     radius: root.radius - ((root.hour === 0 || root.hour > 12) ? root.labelSize : 0)
     color: Qaterial.Style.accentColor
     renderDot: false
-    rotation: 360*(hour%12)/12
+    rotation: 360 * (hour % 12) / 12
   }
 
   EuCircularHour
@@ -49,21 +49,21 @@ Item
       // Compute mouse angle compared to 12h from mouse.x and mouse.y
 
       const rad = Math.atan2(x, y)
-      let deg = rad*(180/Math.PI)
+      let deg = rad * (180 / Math.PI)
       if(deg < 0) deg += 360
 
       // Compute an angle to remove (if your mouse is beetween 1am or 2am HandClock will go on the nearest)
 
-      const angleToRemove = deg%30
+      const angleToRemove = deg % 30
       let finalAngle = Math.round(deg - angleToRemove)
       if(angleToRemove > 15) finalAngle += 30
 
       // Deduce Hour from finalAngle and manage every particular cases (midnight and midday)
       // Also compute radius of internal circle (PM hour) with vector2d length
 
-      let finalHour = finalAngle/30
+      let finalHour = finalAngle / 30
       let vect = Qt.vector2d(x, y);
-      const onAmHour = vect.length() > ((root.radius - root.labelSize) / root.radius)/2
+      const onAmHour = vect.length() > ((root.radius - root.labelSize) / root.radius) / 2
 
       if(!onAmHour)
       {
@@ -77,11 +77,11 @@ Item
 
     function computeHour(mouse)
     {
-      computeAngle(mouse.x/width - 1/2, -(mouse.y/height - 1/2))
+      computeAngle(mouse.x / width - 1 / 2, -(mouse.y / height - 1 / 2))
       root.accepted(root.currentHour)
     }
 
-    onPressed:         (mouse) => computeHour(mouse)
+    onPressed: (mouse) => computeHour(mouse)
     onPositionChanged: (mouse) => computeHour(mouse)
   }
 }

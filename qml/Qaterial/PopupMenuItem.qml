@@ -3,7 +3,7 @@
  * Contact: olivier.ldff@gmail.com
  */
 
- // Qt
+// Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
@@ -22,9 +22,9 @@ T.Button
   }
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   topInset: Qaterial.Style.toolButton.padding
   bottomInset: Qaterial.Style.toolButton.padding
@@ -46,7 +46,7 @@ T.Button
       id: _icon
 
       anchors.centerIn: parent
-      anchors.verticalCenterOffset: -height/4
+      anchors.verticalCenterOffset: -height / 4
 
       width: root.icon.width
       height: root.icon.height

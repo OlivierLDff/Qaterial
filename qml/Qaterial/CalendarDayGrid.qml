@@ -18,8 +18,8 @@ Grid
   property date date
   Binding on date
   {
-      when: _selectedDatePressed
-      value: root._selectedDate
+    when: _selectedDatePressed
+    value: root._selectedDate
   }
   property date _selectedDate
 
@@ -27,7 +27,7 @@ Grid
   readonly property int _selectedYear: date.getFullYear()
 
   readonly property bool _selectedDayIsCurrentMonth: (month === _selectedMonth) && (year === _selectedYear)
-  readonly property int _indexSelectedDay: _selectedDayIsCurrentMonth ? _indexFirstDateMonth - 2 + date.getDate(): -1
+  readonly property int _indexSelectedDay: _selectedDayIsCurrentMonth ? _indexFirstDateMonth - 2 + date.getDate() : -1
 
   property bool _selectedDatePressed
 
@@ -40,7 +40,7 @@ Grid
 
   // Is today a day of the month controlled by 'month' and 'year' set by user
   readonly property bool _todayIsCurrentMonth: (month === _todayMonth) && (year === _todayYear)
-  readonly property int _indexToday: _todayIsCurrentMonth ? _indexFirstDateMonth -2 + today.getDate(): -1
+  readonly property int _indexToday: _todayIsCurrentMonth ? _indexFirstDateMonth - 2 + today.getDate() : -1
 
   // ---- CURRENT MONTH / YEAR ----
 
@@ -52,15 +52,18 @@ Grid
   // date object of the first day of the month controlled by 'month' and 'year' set by user
   readonly property date _firstDateMonth: new Date(year, month, 1)
   // Offset in the grid of the first day in current month controlled by 'month' and 'year' set by user
-  readonly property int _indexFirstDateMonth: _firstDateMonth.getDay() ? _firstDateMonth.getDay(): 7
+  readonly property int _indexFirstDateMonth: _firstDateMonth.getDay() ? _firstDateMonth.getDay() : 7
 
   // Number of day in month controlled by property 'month' and 'year' set by user
   //warning: add 1 to get the true number of days of the Month
-  readonly property int _numberOfDays: new Date(year, month + 1, 0).getDate();
+  readonly property int _numberOfDays: new Date(year, month + 1, 0)
+    .getDate();
 
   // Number of day in month previous month controlled by property 'month' and 'year' set by user
   //warning: add 1 to get the true number of days of the Month
-  readonly property int _numberOfDaysPreviousMonth: month ? (new Date(year, month, 0)).getDate(): (new Date(year-1, 12, 0)).getDate()
+  readonly property int _numberOfDaysPreviousMonth: month ? (new Date(year, month, 0))
+    .getDate() : (new Date(year - 1, 12, 0))
+    .getDate()
 
   readonly property bool showLastRow: ((_numberOfDays + _indexFirstDateMonth) > 36)
 
@@ -71,8 +74,8 @@ Grid
   function _getPreviousMonthDate(index)
   {
     if(month)
-      return new Date(year, month-1 , _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
-    return new Date(year-1, 11, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
+      return new Date(year, month - 1, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
+    return new Date(year - 1, 11, _numberOfDaysPreviousMonth + index - _indexFirstDateMonth + 2);
   }
 
   columns: 7
@@ -80,15 +83,17 @@ Grid
   Repeater
   {
     id: repeater
-    model: root.showLastRow? 42 : 35
+    model: root.showLastRow ? 42 : 35
     delegate: Qaterial.CalendarDateButton
     {
       id: dateButton
 
-      readonly property date date: dateInTheMonth ? new Date(root.year, root.month, index + 2 - root._indexFirstDateMonth): root._getPreviousMonthDate(index)
+      readonly property date date: dateInTheMonth ? new Date(root.year, root.month, index + 2 - root
+        ._indexFirstDateMonth) : root._getPreviousMonthDate(index)
       text: date.getDate()
 
-      readonly property bool dateInTheMonth: ((index + 1) >= root._indexFirstDateMonth) && (index < (root._indexFirstDateMonth + root._numberOfDays - 1))
+      readonly property bool dateInTheMonth: ((index + 1) >= root._indexFirstDateMonth) && (index < (root
+        ._indexFirstDateMonth + root._numberOfDays - 1))
 
       enabled: dateInTheMonth && root.enabled && Qaterial.Calendar.isDateValid(root.from, root.to, date)
 
@@ -110,7 +115,7 @@ Grid
       //  visible: dateButton.hovered && (dateButton.checked || dateButton.highlighted)
       //}
 
-      ToolTip.text: checked ? "Selected date": "Current day"
+      ToolTip.text: checked ? "Selected date" : "Current day"
       ToolTip.visible: hovered && (checked || highlighted)
     }
   }

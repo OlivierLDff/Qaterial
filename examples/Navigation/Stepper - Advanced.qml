@@ -9,7 +9,7 @@ Item
   Qaterial.Stepper
   {
     id: stepper
-    y:10
+    y: 10
 
     readonly property int indicatorSize: 48
 
@@ -79,7 +79,8 @@ Item
         return previous.done && newNextElementRole.done
       }
       color: highlighted ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()
-      height: 8; radius: 4
+      height: 8;
+      radius: 4
     } // Rectangle
 
     indicator: Qaterial.ColorIcon
@@ -143,8 +144,8 @@ Item
     id: supportingTextLabel
 
     width: stepper.vertical ? _row.width : (stepper.width - 20)
-    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
-    y: stepper.vertical ? (_row.y  - height) : (stepper.height + 10)
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width / 2 - width / 2)
+    y: stepper.vertical ? (_row.y - height) : (stepper.height + 10)
 
     text: stepper.currentElement.supportingText
     textType: Qaterial.Style.TextType.Body2
@@ -160,26 +161,26 @@ Item
   {
     id: _row
 
-    x: stepper.vertical ? (stepper.width + 10) : (stepper.width/2 - width/2)
-    y: stepper.vertical ? (stepper.height/2 - height/2) : (stepper.height + supportingTextLabel.height + 20)
+    x: stepper.vertical ? (stepper.width + 10) : (stepper.width / 2 - width / 2)
+    y: stepper.vertical ? (stepper.height / 2 - height / 2) : (stepper.height + supportingTextLabel.height + 20)
     spacing: 10
 
     Qaterial.OutlineButton
     {
       id: _backButton
       text: "Back"
-      onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex -- : console.log(`currentIndex min`)
+      onClicked: stepper.currentIndex >= 1 ? stepper.currentIndex-- : console.log(`currentIndex min`)
     } // OutlineButton
     Qaterial.RaisedButton
     {
       text: "Next"
-      onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+      onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(`currentIndex max`)
     } // RaisedButton
     Qaterial.OutlineButton
     {
       visible: stepper.currentElement.optional
       text: "Skip"
-      onClicked: stepper.currentIndex < stepper.count-1 ? stepper.currentIndex ++ : console.log(`currentIndex max`)
+      onClicked: stepper.currentIndex < stepper.count - 1 ? stepper.currentIndex++ : console.log(`currentIndex max`)
     } // OutlineButton
 
     Qaterial.RaisedButton
@@ -188,7 +189,7 @@ Item
 
       text:
       {
-        if(stepper.currentIndex === stepper.count-1)
+        if(stepper.currentIndex === stepper.count - 1)
           return done ? "Cancel" : "Finish"
         return done ? "Cancel" : "Done"
       }
@@ -197,17 +198,20 @@ Item
         stepper.currentElement.done = !stepper.currentElement.done
 
         // If this is the last Steps you want to know it
-        if(stepper.currentIndex === stepper.count-1 && done)
+        if(stepper.currentIndex === stepper.count - 1 && done)
         {
           let finished = true
           let unfinishedStep = -1
 
           /// Check if every steps are done if they aren't optional
-          for (let i = 0; i <= stepper.count-1; i++)
+          for(let i = 0; i <= stepper.count - 1; i++)
           {
-            if(!stepper.model.get(i).done && !stepper.model.get(i).optional)
+            if(!stepper.model.get(i)
+              .done && !stepper.model.get(i)
+              .optional)
             {
-              finished = false; unfinishedStep = i+1
+              finished = false;
+              unfinishedStep = i + 1
             }
           }
           if(finished)
@@ -219,8 +223,8 @@ Item
           }
         }
         // When Done is clicked, go to next step
-        if(stepper.currentIndex < stepper.count-1 && done)
-          stepper.currentIndex ++
+        if(stepper.currentIndex < stepper.count - 1 && done)
+          stepper.currentIndex++
       }
     } // RaisedButton
   } // Row

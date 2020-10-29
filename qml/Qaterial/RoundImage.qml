@@ -27,7 +27,7 @@ Image
     {
       width: _root.width
       height: _root.height
-      radius: _root.width/2
+      radius: _root.width / 2
     } // Rectangle
   } // OpacityMask
 } // Image

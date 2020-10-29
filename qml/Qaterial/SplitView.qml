@@ -15,13 +15,14 @@ T.SplitView
 {
   id: _control
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
-  property color handleColor: T.SplitHandle.pressed ? Qaterial.Style.primaryTextColor()
-          : Qt.lighter(Qaterial.Style.secondaryTextColor(), T.SplitHandle.hovered ? 1.2 : 1.1)
-  property color handleBackgroundColor: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#24262A" : Qaterial.Style.disabledDividersColor()
+  property color handleColor: T.SplitHandle.pressed ? Qaterial.Style.primaryTextColor() :
+    Qt.lighter(Qaterial.Style.secondaryTextColor(), T.SplitHandle.hovered ? 1.2 : 1.1)
+  property color handleBackgroundColor: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "#24262A" : Qaterial
+    .Style.disabledDividersColor()
 
   handle: Rectangle
   {

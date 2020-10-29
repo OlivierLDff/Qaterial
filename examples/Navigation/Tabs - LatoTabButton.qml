@@ -15,7 +15,7 @@ Item
     width: contentWidth
     height: contentHeight
 
-    contentWidth: contentItem.childrenRect.width; contentHeight: contentItem.childrenRect.height
+    contentWidth: contentItem.childrenRect.width;contentHeight: contentItem.childrenRect.height
 
     model: ["Overview", "Guides", "Reference", "Docs"]
 

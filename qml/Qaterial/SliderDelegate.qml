@@ -23,14 +23,16 @@ Control
   signal moved()
 
   function decrease() { _slider.decrease() }
+
   function increase() { _slider.increase() }
+
   function valueAt(position) { return _slider.valueAt(position) }
 
   property alias value: _slider.value
   property alias from: _slider.from
   property alias to: _slider.to
   property alias snapMode: _slider.snapMode
-  property alias live : _slider.live
+  property alias live: _slider.live
   property alias position: _slider.position
   property alias pressed: _slider.pressed
   property alias stepSize: _slider.stepSize

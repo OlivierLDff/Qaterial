@@ -41,7 +41,7 @@ Qaterial.RectangleAreaHandler
         Behavior on strokeWidth { NumberAnimation { duration: 50 } }
         strokeColor: "#FF9800"
         strokeStyle: ShapePath.DashLine
-        dashPattern: [ 1, 4 ]
+        dashPattern: [1, 4]
         PathLine
         {
           x: horizontal ? _linker.width : 0

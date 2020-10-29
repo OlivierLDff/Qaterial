@@ -73,8 +73,7 @@ Rectangle
     Behavior on scale { NumberAnimation { duration: 100 } }
   } // Rectangle
 
-  states:
-  [
+  states: [
     State
     {
       name: "checked"

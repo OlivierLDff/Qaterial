@@ -10,14 +10,17 @@ import QtQuick 2.12
 
 QtObject
 {
-  property var snackBarLoader
+  property
+  var snackBarLoader
+
   function show(config)
   {
     if(typeof config === 'string')
-      config = {text: config}
+      config = { text: config }
     if(snackBarLoader)
       snackBarLoader.show(config)
   }
+
   function popSnackBar()
   {
     if(snackBarLoader)

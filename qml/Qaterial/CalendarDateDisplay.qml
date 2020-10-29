@@ -18,7 +18,7 @@ Rectangle
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     anchors.right: parent.right
-    height: parent.height/2
+    height: parent.height / 2
     color: parent.color
   }
 

@@ -17,17 +17,16 @@ T.TabBar
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          contentWidth + leftPadding + rightPadding)
+    contentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           contentHeight + topPadding + bottomPadding)
+    contentHeight + topPadding + bottomPadding)
 
   spacing: 1
 
   property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.backgroundColor
-  property color accentColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style.disabledTextColor()) :
-                              highlighted ? Qaterial.Style.accentColor :
-                              colorReversed ? Qaterial.Style.primaryTextColorReversed() :
-                                              Qaterial.Style.primaryTextColor()
+  property color accentColor: !enabled ? (colorReversed ? Qaterial.Style.disabledTextColorReversed() : Qaterial.Style
+      .disabledTextColor()) : highlighted ? Qaterial.Style.accentColor : colorReversed ? Qaterial.Style
+    .primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
 
   property bool highlighted: onPrimary ? Qaterial.Style.preferAccentOnPrimary : true
 

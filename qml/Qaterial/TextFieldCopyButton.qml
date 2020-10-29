@@ -16,8 +16,8 @@ Qaterial.TextFieldIconButton
   {
     if(textField)
     {
-      if(textField.length>0)
-          textField.select(0, textField.length)
+      if(textField.length > 0)
+        textField.select(0, textField.length)
       textField.copy()
       textField.deselect()
     } // if

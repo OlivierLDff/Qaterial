@@ -7,19 +7,25 @@ Qaterial.Grid
 
   readonly property real idealSize:
   {
-    switch(type)
+    switch (type)
     {
-      case Qaterial.Layout.ExtraLarge: return extraLargeBreakpoint
-      case Qaterial.Layout.Large: return largeBreakpoint
-      case Qaterial.Layout.Medium: return mediumBreakpoint
-      case Qaterial.Layout.Small: return smallBreakpoint
-      case Qaterial.Layout.ExtraSmall: return smallBreakpoint
+      case Qaterial.Layout.ExtraLarge:
+        return extraLargeBreakpoint
+      case Qaterial.Layout.Large:
+        return largeBreakpoint
+      case Qaterial.Layout.Medium:
+        return mediumBreakpoint
+      case Qaterial.Layout.Small:
+        return smallBreakpoint
+      case Qaterial.Layout.ExtraSmall:
+        return smallBreakpoint
     }
   }
 
-  readonly property real idealSizePaddingLess: idealSize - padding*2
+  readonly property real idealSizePaddingLess: idealSize - padding * 2
 
-  readonly property real fixedPadding: Math.floor(((flow === Flow.LeftToRight ? width : height) - idealSizePaddingLess)/2)
+  readonly property real fixedPadding: Math.floor(((flow === Flow.LeftToRight ? width : height) -
+    idealSizePaddingLess) / 2)
 
   leftPadding: flow === Flow.LeftToRight ? fixedPadding : 0
   rightPadding: flow === Flow.LeftToRight ? fixedPadding : 0

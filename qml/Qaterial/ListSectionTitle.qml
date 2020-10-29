@@ -19,7 +19,7 @@ Qaterial.Label
   {
     id: _separator
     width: parent.width
-    y: Math.floor(Qaterial.Style.card.horizontalPadding/2)
+    y: Math.floor(Qaterial.Style.card.horizontalPadding / 2)
     verticalPadding: 0
     orientation: Qt.Horizontal
     visible: _control.separatorVisible

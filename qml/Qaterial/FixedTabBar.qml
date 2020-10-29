@@ -26,7 +26,7 @@ Qaterial.TabBar
     delegate: Qaterial.TabButton
     {
       elide: Text.ElideRight
-      width: _root.width/model.count
+      width: _root.width / model.count
       implicitWidth: width
       display: hintText ? (!checked ? AbstractButton.IconOnly : AbstractButton.TextUnderIcon) : _root.display
       text: model.text ? model.text : ""

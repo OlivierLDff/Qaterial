@@ -15,9 +15,10 @@ Qaterial.FlatFabButton
   id: _control
 
   backgroundColor: "transparent"
-  borderColor: enabled ? (highlighted ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()) : Qaterial.Style.disabledDividersColor()
+  borderColor: enabled ? (highlighted ? Qaterial.Style.accentColor : Qaterial.Style.dividersColor()) : Qaterial.Style
+    .disabledDividersColor()
   outlined: true
 
-  foregroundColor: !enabled ? Qaterial.Style.disabledTextColor() :
-      highlighted ? Qaterial.Style.accentColor : Qaterial.Style.primaryTextColor()
+  foregroundColor: !enabled ? Qaterial.Style.disabledTextColor() : highlighted ? Qaterial.Style.accentColor : Qaterial
+    .Style.primaryTextColor()
 } // FlatFabButton

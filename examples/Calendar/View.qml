@@ -14,6 +14,6 @@ Qaterial.CalendarView
   // Called when user pick a year
   onAccepted: (date) => console.log(`Accepted date ${date}`)
   onMoved: (month, year) => console.log(`Year ${year} And Month ${month}`)
-  onYearClicked : () => console.log(`YearButton clicked`)
-  onMonthClicked : () => console.log(`MonthButton clicked`)
+  onYearClicked: () => console.log(`YearButton clicked`)
+  onMonthClicked: () => console.log(`MonthButton clicked`)
 }

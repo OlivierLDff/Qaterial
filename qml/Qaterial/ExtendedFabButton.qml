@@ -8,7 +8,7 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.FabButton
 {
-	id: _control
+  id: _control
   flat: false
   highlighted: true
 

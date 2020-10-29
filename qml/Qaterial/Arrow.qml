@@ -46,7 +46,7 @@ Item
       if(root.gradient)
       {
         let grd = ctx.createLinearGradient(fromx, fromy, tox, toy)
-        for (let i = 0; i < root.gradient.stops.length; i++)
+        for(let i = 0; i < root.gradient.stops.length; i++)
         {
           const stop = root.gradient.stops[i]
           grd.addColorStop(stop.position, stop.color)
@@ -75,14 +75,14 @@ Item
       //starting a new path from the head of the arrow to one of the sides of the point
       ctx.beginPath()
       ctx.moveTo(x, y)
-      ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/7), y-headlen*Math.sin(angle-Math.PI/7))
+      ctx.lineTo(x - headlen * Math.cos(angle - Math.PI / 7), y - headlen * Math.sin(angle - Math.PI / 7))
 
       //path from the side point of the arrow, to the other side point
-      ctx.lineTo(x-headlen*Math.cos(angle+Math.PI/7), y-headlen*Math.sin(angle+Math.PI/7))
+      ctx.lineTo(x - headlen * Math.cos(angle + Math.PI / 7), y - headlen * Math.sin(angle + Math.PI / 7))
 
       //path from the side point back to the tip of the arrow, and then again to the opposite side point
       ctx.lineTo(x, y)
-      ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/7), y-headlen*Math.sin(angle-Math.PI/7))
+      ctx.lineTo(x - headlen * Math.cos(angle - Math.PI / 7), y - headlen * Math.sin(angle - Math.PI / 7))
 
       //draws the paths created above
       ctx.stroke()
@@ -98,14 +98,14 @@ Item
       //starting a new path from the head of the arrow to one of the sides of the point
       ctx.beginPath()
       ctx.moveTo(x, y)
-      ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/7), y-headlen*Math.sin(angle-Math.PI/7))
+      ctx.lineTo(x - headlen * Math.cos(angle - Math.PI / 7), y - headlen * Math.sin(angle - Math.PI / 7))
 
       //path from the side point of the arrow, to the other side point
-      ctx.moveTo(x-headlen*Math.cos(angle+Math.PI/7), y-headlen*Math.sin(angle+Math.PI/7))
+      ctx.moveTo(x - headlen * Math.cos(angle + Math.PI / 7), y - headlen * Math.sin(angle + Math.PI / 7))
 
       //path from the side point back to the tip of the arrow, and then again to the opposite side point
       ctx.lineTo(x, y)
-      ctx.lineTo(x-headlen*Math.cos(angle-Math.PI/7), y-headlen*Math.sin(angle-Math.PI/7))
+      ctx.lineTo(x - headlen * Math.cos(angle - Math.PI / 7), y - headlen * Math.sin(angle - Math.PI / 7))
 
       //draws the paths created above
       ctx.stroke()
@@ -131,20 +131,20 @@ Item
       if(root.gradient && root.gradient.stops.length)
       {
         startColor = root.gradient.stops[0].color
-        endColor = root.gradient.stops[root.gradient.stops.length-1].color
+        endColor = root.gradient.stops[root.gradient.stops.length - 1].color
       }
 
       if(root.startTail === Arrow.Tail.FilledArrow)
-        drawFilledTriangle(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength, startColor)
+        drawFilledTriangle(ctx, fromx, fromy, Math.atan2(fromy - toy, fromx - tox), root.headLength, startColor)
 
       if(root.endTail === Arrow.Tail.FilledArrow)
-        drawFilledTriangle(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength, endColor)
+        drawFilledTriangle(ctx, tox, toy, Math.atan2(toy - fromy, tox - fromx), root.headLength, endColor)
 
       if(root.startTail === Arrow.Tail.Arrow)
-        drawArrow(ctx, fromx, fromy, Math.atan2(fromy-toy, fromx-tox), root.headLength, startColor)
+        drawArrow(ctx, fromx, fromy, Math.atan2(fromy - toy, fromx - tox), root.headLength, startColor)
 
       if(root.endTail === Arrow.Tail.Arrow)
-        drawArrow(ctx, tox, toy, Math.atan2(toy-fromy, tox-fromx), root.headLength, endColor)
+        drawArrow(ctx, tox, toy, Math.atan2(toy - fromy, tox - fromx), root.headLength, endColor)
     }
   }
 }

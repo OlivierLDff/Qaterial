@@ -8,7 +8,8 @@ GridView
   id: root
 
   // Current selected month
-  property int month: new Date().getMonth()
+  property int month: new Date()
+    .getMonth()
 
   // Emitted when a month is clicked
   signal accepted(int month)
@@ -16,8 +17,8 @@ GridView
   implicitWidth: 280
   implicitHeight: 330
 
-  cellHeight: Math.min(height/(Math.floor(height/35)), height)
-  cellWidth: Math.min(width/(Math.floor(width/100)), width)
+  cellHeight: Math.min(height / (Math.floor(height / 35)), height)
+  cellWidth: Math.min(width / (Math.floor(width / 100)), width)
 
   model: Qaterial.Calendar.months
 
@@ -33,7 +34,7 @@ GridView
       anchors.fill: parent
 
       zoomLabelOnHovered: false
-      horizontalPadding: Qaterial.Style.roundIcon.size/3
+      horizontalPadding: Qaterial.Style.roundIcon.size / 3
 
       readonly property int month: index
 
@@ -42,8 +43,8 @@ GridView
       checked: root.month === index
       onClicked: function()
       {
-          root.month = month
-          root.accepted(month)
+        root.month = month
+        root.accepted(month)
       }
 
       ToolTip.text: qsTr("Selected Month")

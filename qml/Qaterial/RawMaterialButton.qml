@@ -3,7 +3,7 @@
  * Contact: olivier.ldff@gmail.com
  */
 
- // Qt
+// Qt
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Templates 2.12 as T
@@ -17,12 +17,14 @@ T.Button
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
-  Qaterial.DebugRectangle { anchors.fill: parent; border.color: "pink"; visible: _control.drawline } // DebugRectangle
+  Qaterial.DebugRectangle { anchors.fill: parent;
+    border.color: "pink";
+    visible: _control.drawline } // DebugRectangle
 
   property int textType: Qaterial.Style.TextType.Button
   property int elide: Text.ElideNone
@@ -74,8 +76,10 @@ T.Button
     return highlighted ? Qaterial.Style.accentColor : Qaterial.Style.buttonColor
   }
 
-  readonly property int flatRippleColor: onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background
-  readonly property int rawRippleColor: highlighted ? Qaterial.Style.RippleBackground.Accent : Qaterial.Style.RippleBackground.Primary
+  readonly property int flatRippleColor: onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style
+    .RippleBackground.Background
+  readonly property int rawRippleColor: highlighted ? Qaterial.Style.RippleBackground.Accent : Qaterial.Style
+    .RippleBackground.Primary
 
   property color rippleColor:
   {
@@ -96,9 +100,9 @@ T.Button
   }
 
   property bool onPrimary: false
-  property bool colorReversed: (flat && onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary)
-                            || (highlighted && Qaterial.Style.shouldReverseForegroundOnAccent)
-                            || (!flat && !highlighted && Qaterial.Style.shouldReverseForegroundOnPrimary)
+  property bool colorReversed: (flat && onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary) ||
+    (highlighted && Qaterial.Style.shouldReverseForegroundOnAccent) ||
+    (!flat && !highlighted && Qaterial.Style.shouldReverseForegroundOnPrimary)
 
   property double radius: Qaterial.Style.rawButton.cornerRadius
 
@@ -109,8 +113,10 @@ T.Button
   property double elevation:
   {
     if(flat)
-      return (_control.down || _control.hovered) ? Qaterial.Style.rawButton.flatPressedElevation : Qaterial.Style.rawButton.flatElevation
-    return _control.down ? Qaterial.Style.rawButton.defaultPressedElevation : Qaterial.Style.rawButton.defaultElevation
+      return (_control.down || _control.hovered) ? Qaterial.Style.rawButton.flatPressedElevation : Qaterial.Style
+      .rawButton.flatElevation
+    return _control.down ? Qaterial.Style.rawButton.defaultPressedElevation : Qaterial.Style.rawButton
+      .defaultElevation
   }
 
   property bool clipRipple: true
@@ -134,7 +140,9 @@ T.Button
 
   background: Rectangle
   {
-    Qaterial.DebugRectangle { anchors.fill: parent; border.color: "aquamarine"; visible: _control.drawline } // DebugRectangle
+    Qaterial.DebugRectangle { anchors.fill: parent;
+      border.color: "aquamarine";
+      visible: _control.drawline } // DebugRectangle
 
     implicitWidth: _control.backgroundImplicitWidth
     implicitHeight: _control.backgroundImplicitHeight
@@ -143,7 +151,8 @@ T.Button
     border.width:
     {
       if(_control.outlined)
-        return _control.pressed ? Qaterial.Style.rawButton.outlinedFocusWidth : Qaterial.Style.rawButton.outlinedWidth
+        return _control.pressed ? Qaterial.Style.rawButton.outlinedFocusWidth : Qaterial.Style.rawButton
+        .outlinedWidth
       return 0
     }
 

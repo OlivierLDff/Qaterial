@@ -54,7 +54,7 @@ Qaterial.TreeView
     property int index
 
     height: 24
-    leftPadding: depth*20
+    leftPadding: depth * 20
 
     contentItem: RowLayout
     {
@@ -69,7 +69,7 @@ Qaterial.TreeView
           value: 90
           restoreMode: Binding.RestoreBindingOrValue
         }
-        Behavior on rotation { NumberAnimation { duration: 200; easing.type: Easing.OutQuart } }
+        Behavior on rotation { NumberAnimation { duration: 200;easing.type: Easing.OutQuart } }
       }
       Qaterial.Label
       {

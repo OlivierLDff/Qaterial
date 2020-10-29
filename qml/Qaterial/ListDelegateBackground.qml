@@ -19,7 +19,8 @@ Rectangle
   property alias rippleX: _ripple.x
   property alias rippleY: _ripple.y
 
-  color: highlighted ? Qt.rgba(Qaterial.Style.accentColor.r, Qaterial.Style.accentColor.g, Qaterial.Style.accentColor.b, 0.2) : (transparentBackground ? "transparent" : Qaterial.Style.backgroundColor)
+  color: highlighted ? Qt.rgba(Qaterial.Style.accentColor.r, Qaterial.Style.accentColor.g, Qaterial.Style.accentColor.b,
+    0.2) : (transparentBackground ? "transparent" : Qaterial.Style.backgroundColor)
 
   property alias pressed: _ripple.pressed
   property alias rippleActive: _ripple.active
@@ -34,11 +35,12 @@ Rectangle
 
   Qaterial.Ripple
   {
-      id: _ripple
-      width: parent.width
-      height: parent.height
+    id: _ripple
+    width: parent.width
+    height: parent.height
 
-      clip: visible
-      color: Qaterial.Style.rippleColor(parent.onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background)
+    clip: visible
+    color: Qaterial.Style.rippleColor(parent.onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style
+      .RippleBackground.Background)
   } // Ripple
 } // Rectangle

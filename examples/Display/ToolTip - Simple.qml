@@ -52,7 +52,7 @@ Row
     {
       text: "Customized ToolTip"
       visible: button4.hovered || button4.pressed
-      backgroupRadius: height/2
+      backgroupRadius: height / 2
       textType: Qaterial.Style.TextType.Display1
     } // ToolTip
   } // FlatButton

@@ -11,15 +11,15 @@ Item
   property int columns
 
   readonly property int paddingLessWidth: root.width - root.leftPadding - root.rightPadding
-  readonly property real oneBlockSize: Math.floor(paddingLessWidth-(root.columns-1)*root.spacing)/root.columns
+  readonly property real oneBlockSize: Math.floor(paddingLessWidth - (root.columns - 1) * root.spacing) / root.columns
 
   Repeater
   {
     anchors.fill: parent
-    model: root.columns > 0 ? root.columns-1 : 0
+    model: root.columns > 0 ? root.columns - 1 : 0
     delegate: Rectangle
     {
-      x: root.leftPadding + root.oneBlockSize*(index+1) + root.spacing*index
+      x: root.leftPadding + root.oneBlockSize * (index + 1) + root.spacing * index
       height: parent.height
       width: root.spacing
       color: Qaterial.Colors.cyan
@@ -32,7 +32,7 @@ Item
     model: root.columns > 0 ? root.columns : 0
     delegate: Rectangle
     {
-      x: root.leftPadding + root.oneBlockSize*(index) + root.spacing*index
+      x: root.leftPadding + root.oneBlockSize * (index) + root.spacing * index
       height: parent.height
       width: root.oneBlockSize
       color: Qaterial.Colors.red

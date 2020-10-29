@@ -13,8 +13,10 @@ Qaterial.ModalDialog
 {
   id: root
 
-  property int month: new Date().getMonth()
-  property int year: new Date().getFullYear()
+  property int month: new Date()
+    .getMonth()
+  property int year: new Date()
+    .getFullYear()
 
   property date from: new Date(1900, 0, 1)
   property date to: new Date(2099, 11, 31)
@@ -28,7 +30,7 @@ Qaterial.ModalDialog
 
   standardButtons: Dialog.Ok | Dialog.Cancel
 
-  signal accepted (date date)
+  signal accepted(date date)
 
   header: Qaterial.CalendarDateDisplay
   {
@@ -73,28 +75,28 @@ Qaterial.ModalDialog
       id: _calendarYearPicker
       Qaterial.CalendarYearPickerView
       {
-       clip: true
+        clip: true
 
-       year: root.year
-       startYear: root.from.getFullYear()
-       endYear: root.to.getFullYear()
-       Binding on year
-       {
-         value: root.year
-       }
-       onAccepted: function(year)
-       {
-         if(Qaterial.Calendar.isMonthYearValid(root.from, root.to, month, year))
-         {
-           root.year = year
-         }
-         else
-         {
-           console.warn(`Select a year in the interval : [${root.from.toString()} ; ${root.to.toString()}]`)
-         }
-       root.calendarViewActive = true
-       root.yearGridActive = false
-       }
+        year: root.year
+        startYear: root.from.getFullYear()
+        endYear: root.to.getFullYear()
+        Binding on year
+        {
+          value: root.year
+        }
+        onAccepted: function(year)
+        {
+          if(Qaterial.Calendar.isMonthYearValid(root.from, root.to, month, year))
+          {
+            root.year = year
+          }
+          else
+          {
+            console.warn(`Select a year in the interval : [${root.from.toString()} ; ${root.to.toString()}]`)
+          }
+          root.calendarViewActive = true
+          root.yearGridActive = false
+        }
       } // CalendarYearPickerView
     } // Component
 
@@ -163,13 +165,13 @@ Qaterial.ModalDialog
         onYearClicked: function()
         {
           root.yearGridActive = true
-          root.calendarViewActive =  false
+          root.calendarViewActive = false
         }
 
         onAccepted: function(date)
         {
           console.log(`dateView : ${date}`)
-          root.date  = date
+          root.date = date
           root.accepted(date)
         }
       } // CalendarView

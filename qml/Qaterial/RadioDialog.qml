@@ -14,11 +14,14 @@ Qaterial.ModalDialog
 {
   id: _root
 
-  property var model: null
+  property
+  var model: null
   property int currentIndex: 0
 
-  property var delegate: defaultDelegate
-  readonly property var defaultDelegate: _defaultDelegate
+  property
+  var delegate: defaultDelegate
+  readonly property
+  var defaultDelegate: _defaultDelegate
 
   Component
   {
@@ -51,7 +54,7 @@ Qaterial.ModalDialog
     onCurrentIndexChanged:
     {
       if(_root.currentIndex !== currentIndex)
-          _root.currentIndex = currentIndex
+        _root.currentIndex = currentIndex
     }
   } // ListView
 } // ModelDialog

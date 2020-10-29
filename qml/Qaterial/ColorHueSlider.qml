@@ -18,7 +18,7 @@ Qaterial.GradientSlider
   function getNewColor()
   {
     return hsv ? Qt.hsva(value, color.hsvSaturation, color.hsvValue, color.a) :
-                 Qt.hsla(value, color.hslSaturation, color.hslLightness, color.a)
+      Qt.hsla(value, color.hslSaturation, color.hslLightness, color.a)
   }
 
   value: hsv ? color.hsvHue : color.hslHue
@@ -29,12 +29,12 @@ Qaterial.GradientSlider
 
   gradient: Gradient
   {
-    GradientStop { position: 0.000; color: Qt.rgba(1, 0, 0, 1) }
-    GradientStop { position: 0.167; color: Qt.rgba(1, 1, 0, 1) }
-    GradientStop { position: 0.333; color: Qt.rgba(0, 1, 0, 1) }
-    GradientStop { position: 0.500; color: Qt.rgba(0, 1, 1, 1) }
-    GradientStop { position: 0.667; color: Qt.rgba(0, 0, 1, 1) }
-    GradientStop { position: 0.833; color: Qt.rgba(1, 0, 1, 1) }
-    GradientStop { position: 1.000; color: Qt.rgba(1, 0, 0, 1) }
+    GradientStop { position: 0.000;color: Qt.rgba(1, 0, 0, 1) }
+    GradientStop { position: 0.167;color: Qt.rgba(1, 1, 0, 1) }
+    GradientStop { position: 0.333;color: Qt.rgba(0, 1, 0, 1) }
+    GradientStop { position: 0.500;color: Qt.rgba(0, 1, 1, 1) }
+    GradientStop { position: 0.667;color: Qt.rgba(0, 0, 1, 1) }
+    GradientStop { position: 0.833;color: Qt.rgba(1, 0, 1, 1) }
+    GradientStop { position: 1.000;color: Qt.rgba(1, 0, 0, 1) }
   }
 } // Slider

@@ -16,14 +16,14 @@ T.SwipeDelegate
   id: _control
 
   // TEXT
-  property alias overlineText :   _content.overlineText
-  property alias secondaryText :  _content.secondaryText
+  property alias overlineText: _content.overlineText
+  property alias secondaryText: _content.secondaryText
 
   // THUMBNAIL
-  property alias roundSource :    _content.roundSource
-  property alias squareSource :   _content.squareSource
-  property alias largeSource :    _content.largeSource
-  property alias largeThumbnail:  _content.largeThumbnail
+  property alias roundSource: _content.roundSource
+  property alias squareSource: _content.squareSource
+  property alias largeSource: _content.largeSource
+  property alias largeThumbnail: _content.largeThumbnail
 
   // ICON
   property alias roundColor: _content.roundColor
@@ -34,9 +34,9 @@ T.SwipeDelegate
   property alias iconColor: _content.iconColor
 
   // ALIGNMENT
-  property alias alignTextRight : _content.alignTextRight
+  property alias alignTextRight: _content.alignTextRight
   readonly property alias lines: _content.lines
-  readonly property alias type:  _content.type
+  readonly property alias type: _content.type
 
   // COLOR
   property alias backgroundColor: _background.color
@@ -48,20 +48,22 @@ T.SwipeDelegate
   property bool forceDrawSeparator: false
 
   implicitWidth: Math.max(background ? implicitBackgroundWidth : 0,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(background ? implicitBackgroundHeight : 0,
-                           Math.max(implicitContentHeight,
-                                    indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
+    Math.max(implicitContentHeight,
+      indicator ? indicator.implicitHeight : 0) + topPadding + bottomPadding) + bottomInset
 
-  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(type, lines) : Qaterial.Style.delegate.rightPadding(type, lines)
-  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(type, lines) : Qaterial.Style.delegate.rightPadding(type, lines)
+  leftPadding: !mirrored ? Qaterial.Style.delegate.leftPadding(type, lines) : Qaterial.Style.delegate.rightPadding(
+    type, lines)
+  rightPadding: mirrored ? Qaterial.Style.delegate.leftPadding(type, lines) : Qaterial.Style.delegate.rightPadding(
+    type, lines)
   spacing: Qaterial.Style.delegate.spacing(type, lines)
   topPadding: 0
   bottomPadding: 0
   bottomInset: _separator.visible ? 1 : 0
   focusPolicy: Qt.StrongFocus
 
-  swipe.transition: Transition { SmoothedAnimation { velocity: 3; easing.type: Easing.InOutCubic } }
+  swipe.transition: Transition { SmoothedAnimation { velocity: 3;easing.type: Easing.InOutCubic } }
 
   property bool drawline: Qaterial.Style.debug.drawDebugDelegate
 
@@ -116,6 +118,7 @@ T.SwipeDelegate
     verticalPadding: 0
     orientation: Qt.Horizontal
     visible: _control.forceDrawSeparator ||
-        _control.drawSeparator && (_control.ListView.view ? (_control.ListView.view.count > 1 && index < (_control.ListView.view.count-1)) : false)
+      _control.drawSeparator && (_control.ListView.view ? (_control.ListView.view.count > 1 && index < (_control
+        .ListView.view.count - 1)) : false)
   } // ToolSeparator
 } // SwipeDelegate

@@ -18,7 +18,8 @@ T.Label
   color:
   {
     if(enabled)
-      return colorReversed ? Qaterial.Style.textTypeToColorReversed(textType) : Qaterial.Style.textTypeToColor(textType)
+      return colorReversed ? Qaterial.Style.textTypeToColorReversed(textType) : Qaterial.Style.textTypeToColor(
+        textType)
     return Qaterial.Style.hintTextColor()
   }
   linkColor: Qaterial.Style.accentColor
@@ -39,8 +40,8 @@ T.Label
 
   Binding on font.pointSize
   {
-      when: !_control.usePixelSize
-      value: _control.pointSize
+    when: !_control.usePixelSize
+    value: _control.pointSize
   } // Biding
 
   font.family: Qaterial.Style.textTypeToFontFamily(textType)

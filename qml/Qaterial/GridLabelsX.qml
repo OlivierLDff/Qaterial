@@ -20,8 +20,8 @@ Item
     {
       topPadding: 6
       bottomPadding: 6
-      x: (index + 1)*root.width/root.numberOfLabels
-      text: root.axisMinX + index*(root.axisMaxX - root.axisMinX)/root.numberOfLabels
+      x: (index + 1) * root.width / root.numberOfLabels
+      text: root.axisMinX + index * (root.axisMaxX - root.axisMinX) / root.numberOfLabels
       color: root.color
     }
   }

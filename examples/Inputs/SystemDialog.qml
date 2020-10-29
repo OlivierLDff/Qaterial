@@ -9,7 +9,8 @@ Column
 
   function showSaveFile()
   {
-    Qaterial.DialogManager.showSaveFileDialog({
+    Qaterial.DialogManager.showSaveFileDialog(
+    {
       context: root,
       title: qsTr("Save File ..."),
       folder: "file://",
@@ -21,7 +22,8 @@ Column
 
   function showOpenFile()
   {
-    Qaterial.DialogManager.showOpenFileDialog({
+    Qaterial.DialogManager.showOpenFileDialog(
+    {
       context: root,
       title: qsTr("Load File ..."),
       folder: "file://",
@@ -33,7 +35,8 @@ Column
 
   function showOpenFiles()
   {
-    Qaterial.DialogManager.showOpenFilesDialog({
+    Qaterial.DialogManager.showOpenFilesDialog(
+    {
       context: root,
       title: qsTr("Load Files ..."),
       folder: "file://",
@@ -45,7 +48,8 @@ Column
 
   function showOpenFolder()
   {
-    Qaterial.DialogManager.showFolderDialog({
+    Qaterial.DialogManager.showFolderDialog(
+    {
       context: root,
       title: qsTr("Pick Folder ..."),
       folder: "file://",

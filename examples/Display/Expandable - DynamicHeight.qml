@@ -24,7 +24,8 @@ Row
         verticalAlignment: Text.AlignVCenter
       }
 
-      Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Style.green }
+      Qaterial.DebugRectangle { anchors.fill: parent;
+        border.color: Qaterial.Style.green }
     }
   }
 
@@ -43,25 +44,26 @@ Row
 
       SequentialAnimation
       {
-          running: true
-          loops: Animation.Infinite
-          PauseAnimation { duration: 1000 }
-          NumberAnimation { target: delegate; property: "height"; to: 200; duration: 1000 }
-          PauseAnimation { duration: 1000 }
-          NumberAnimation { target: delegate; property: "height"; to: 50; duration: 500 }
-          PauseAnimation { duration: 500 }
-          NumberAnimation { target: delegate; property: "height"; to: 100; duration: 0 }
-          PauseAnimation { duration: 500 }
-          NumberAnimation { target: delegate; property: "height"; to: 150; duration: 0 }
-          PauseAnimation { duration: 500 }
-          NumberAnimation { target: delegate; property: "height"; to: 200; duration: 0 }
-          PauseAnimation { duration: 500 }
-          NumberAnimation { target: delegate; property: "height"; to: 150; duration: 0 }
-          PauseAnimation { duration: 500 }
-          NumberAnimation { target: delegate; property: "height"; to: 100; duration: 0 }
+        running: true
+        loops: Animation.Infinite
+        PauseAnimation { duration: 1000 }
+        NumberAnimation { target: delegate;property: "height";to: 200;duration: 1000 }
+        PauseAnimation { duration: 1000 }
+        NumberAnimation { target: delegate;property: "height";to: 50;duration: 500 }
+        PauseAnimation { duration: 500 }
+        NumberAnimation { target: delegate;property: "height";to: 100;duration: 0 }
+        PauseAnimation { duration: 500 }
+        NumberAnimation { target: delegate;property: "height";to: 150;duration: 0 }
+        PauseAnimation { duration: 500 }
+        NumberAnimation { target: delegate;property: "height";to: 200;duration: 0 }
+        PauseAnimation { duration: 500 }
+        NumberAnimation { target: delegate;property: "height";to: 150;duration: 0 }
+        PauseAnimation { duration: 500 }
+        NumberAnimation { target: delegate;property: "height";to: 100;duration: 0 }
       }
 
-      Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Style.amber }
+      Qaterial.DebugRectangle { anchors.fill: parent;
+        border.color: Qaterial.Style.amber }
     }
   }
 
@@ -80,4 +82,3 @@ Row
     animationOnDelegateHeight: true
   } // Expandable
 }
-

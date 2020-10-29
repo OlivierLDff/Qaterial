@@ -22,8 +22,10 @@ Qaterial.TextFieldDate
         Qaterial.DatePickerDialog
         {
           date: root.date
-          month: isNaN(date) ? new Date().getMonth() : root.date.getMonth()
-          year: isNaN(date) ? new Date().getFullYear() : root.date.getFullYear()
+          month: isNaN(date) ? new Date()
+            .getMonth() : root.date.getMonth()
+          year: isNaN(date) ? new Date()
+            .getFullYear() : root.date.getFullYear()
 
           from: root.from
           to: root.to

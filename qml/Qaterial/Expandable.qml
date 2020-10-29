@@ -138,7 +138,7 @@ Item
     width: root.width
     clip: true
 
-    Behavior on height { animation: root.animation; enabled: _delegateClipper.animationEnabled }
+    Behavior on height { animation: root.animation;enabled: _delegateClipper.animationEnabled }
 
     Timer
     {

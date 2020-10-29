@@ -17,9 +17,9 @@ T.MenuBarItem
   id: _control
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                           implicitContentHeight + topPadding + bottomPadding)
+    implicitContentHeight + topPadding + bottomPadding)
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
@@ -37,20 +37,24 @@ T.MenuBarItem
 
   property alias textType: _iconLabel.textType
 
-  leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style.menuBarItem.padding) + leftInset
-  rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style.menuBarItem.padding) + rightInset
+  leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
+    .menuBarItem.padding) + leftInset
+  rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
+    .menuBarItem.padding) + rightInset
   topPadding: 0
   bottomPadding: 0
   spacing: Qaterial.Style.menuBarItem.spacing
 
   property bool outlined: false
 
-  property color foregroundColor: enabled ? (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()) :
-                                  (colorReversed ? Qaterial.Style.hintTextColorReversed() : hintTextColor.primaryTextColor())
+  property color foregroundColor: enabled ? (colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial
+    .Style.primaryTextColor()) : (colorReversed ? Qaterial.Style.hintTextColorReversed() : hintTextColor
+    .primaryTextColor())
 
   property color backgroundColor: "transparent"
 
-  property color rippleColor: Qaterial.Style.rippleColor(onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style.RippleBackground.Background)
+  property color rippleColor: Qaterial.Style.rippleColor(onPrimary ? Qaterial.Style.RippleBackground.Primary :
+    Qaterial.Style.RippleBackground.Background)
 
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
