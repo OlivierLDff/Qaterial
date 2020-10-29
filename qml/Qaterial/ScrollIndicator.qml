@@ -45,8 +45,11 @@ T.ScrollIndicator
         SequentialAnimation
         {
           PauseAnimation { duration: 450 } // PauseAnimation
-          NumberAnimation { target: _control
-      .contentItem;duration: 200;property: "opacity";to: 0.0 } // NumberAnimation
+          NumberAnimation
+          {
+            target: _control
+              .contentItem;duration: 200;property: "opacity";to: 0.0
+          } // NumberAnimation
         } // SequentialAnimation
       } // Transition
     ] // transitions

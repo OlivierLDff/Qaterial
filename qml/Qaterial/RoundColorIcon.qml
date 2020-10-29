@@ -29,7 +29,7 @@ Qaterial.ColorIcon
   color: enabled ? (fill && highlighted && reverseHighlight ? (Qaterial.Style.shouldReverseForegroundOnAccent ?
     Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()) : (highlighted ? Qaterial.Style
     .accentColor : Qaterial.Style.primaryTextColor())) : (colorReversed ? Qaterial.Style
-  .disabledTextColorReversed() : Qaterial.Style.disabledTextColor())
+    .disabledTextColorReversed() : Qaterial.Style.disabledTextColor())
 
   roundColor: !fill ? "transparent" : enabled ?
     (highlighted && reverseHighlight ? Qaterial.Style.accentColor : (colorReversed ? Qaterial.Style

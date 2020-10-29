@@ -243,7 +243,7 @@ Item
 
       y: root.vertical ?
         (root._stepperHeight / 2 + root.indicatorHeight / 2 + root.indicatorTopPadding + index * root
-        ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
+          ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
 
       width: root.vertical ?
         root.separatorWidth : (root._stepperWidth - root.indicatorWidth - root.indicatorLeftPadding - root

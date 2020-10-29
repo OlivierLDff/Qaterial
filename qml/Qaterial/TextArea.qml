@@ -173,19 +173,28 @@ Control
     elide: Text.ElideRight
     Behavior on y
     {
-      NumberAnimation { easing.type: Easing.OutCubic;
-        duration: 200 } // NumberAnimation
+      NumberAnimation
+      {
+        easing.type: Easing.OutCubic;
+        duration: 200
+      } // NumberAnimation
     } // Behavior y
     font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
     Behavior on font.pixelSize
     {
-      NumberAnimation { easing.type: Easing.OutCubic;
-        duration: 200 } // NumberAnimation
+      NumberAnimation
+      {
+        easing.type: Easing.OutCubic;
+        duration: 200
+      } // NumberAnimation
     } // Behavior pixelsize
     Behavior on color
     {
-      ColorAnimation { easing.type: Easing.OutCubic;
-        duration: 200 } // ColorAnimation
+      ColorAnimation
+      {
+        easing.type: Easing.OutCubic;
+        duration: 200
+      } // ColorAnimation
     } // Behavior color
   } // Label
 
@@ -239,8 +248,14 @@ Control
   Qaterial.Label // Hint
   {
     opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
-    Behavior on opacity { NumberAnimation { easing.type: Easing.OutCubic;
-        duration: 100 } }
+    Behavior on opacity
+    {
+      NumberAnimation
+      {
+        easing.type: Easing.OutCubic;
+        duration: 100
+      }
+    }
     text: _control.errorState ? _control._errorText : _control.helperText
 
     Qaterial.DebugRectangle
@@ -345,8 +360,14 @@ Control
     } // Behavior
   } // Label
 
-  Behavior on bottomPadding { NumberAnimation { easing.type: Easing.OutCubic;
-      duration: 200 } }
+  Behavior on bottomPadding
+  {
+    NumberAnimation
+    {
+      easing.type: Easing.OutCubic;
+      duration: 200
+    }
+  }
 
   property
   var textArea: _textArea
@@ -418,15 +439,21 @@ Control
       Behavior on width
       {
         enabled: !textAreaActiveFocus
-        NumberAnimation { easing.type: Easing.OutCubic;
-          duration: 300 } // NumberAnimation
+        NumberAnimation
+        {
+          easing.type: Easing.OutCubic;
+          duration: 300
+        } // NumberAnimation
       } // Behavior
 
       Behavior on x
       {
         enabled: !textAreaActiveFocus
-        NumberAnimation { easing.type: Easing.OutCubic;
-          duration: 300 } // NumberAnimation
+        NumberAnimation
+        {
+          easing.type: Easing.OutCubic;
+          duration: 300
+        } // NumberAnimation
       } // Behavior
 
       Qaterial.DebugRectangle

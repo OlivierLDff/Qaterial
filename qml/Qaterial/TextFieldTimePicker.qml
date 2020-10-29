@@ -31,8 +31,10 @@ Qaterial.TextField
 
   title: "Time"
   placeholderText: "_ _ : _ _"
-  validator: RegExpValidator { regExp: root.styleAm ? /(0[1-9]|1[0-2]):[0-5][0-9]/ :
-      /([01]?[0-9]|2[0-3]):[0-5][0-9]/ }
+  validator: RegExpValidator
+  {
+    regExp: root.styleAm ? /(0[1-9]|1[0-2]):[0-5][0-9]/ : /([01]?[0-9]|2[0-3]):[0-5][0-9]/
+  }
   errorText: "Invalid Time Format"
 
   trailingVisible: true

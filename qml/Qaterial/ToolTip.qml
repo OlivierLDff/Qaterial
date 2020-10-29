@@ -110,15 +110,21 @@ T.ToolTip
   enter: Transition
   {
     // toast_enter
-    NumberAnimation { property: "opacity";from: 0.0;to: 1.0;easing.type: Easing
-    .OutQuad;duration: 100 } // NumberAnimation
+    NumberAnimation
+    {
+      property: "opacity";from: 0.0;to: 1.0;easing.type: Easing
+        .OutQuad;duration: 100
+    } // NumberAnimation
   } // Transition
 
   exit: Transition
   {
     // toast_exit
-    NumberAnimation { property: "opacity";from: 1.0;to: 0.0;easing.type: Easing
-    .InQuad;duration: 200 } // NumberAnimation
+    NumberAnimation
+    {
+      property: "opacity";from: 1.0;to: 0.0;easing.type: Easing
+        .InQuad;duration: 200
+    } // NumberAnimation
   } // Transition
 
   contentItem: Qaterial.Label
