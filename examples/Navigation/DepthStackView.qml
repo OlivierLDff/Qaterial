@@ -6,8 +6,8 @@ Item
 {
   id: root
 
-  readonly property var colors:
-  [
+  readonly property
+  var colors: [
     Qaterial.Colors.red,
     Qaterial.Colors.pink,
     Qaterial.Colors.purple,
@@ -78,8 +78,8 @@ Item
 
     anchors.centerIn: parent
 
-    width: parent.width/2
-    height: parent.height/2 - 100
+    width: parent.width / 2
+    height: parent.height / 2 - 100
 
     initialItem: root.stackItem
   }

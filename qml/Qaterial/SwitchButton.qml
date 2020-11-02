@@ -71,10 +71,8 @@ T.Switch
   contentItem: Qaterial.Label
   {
     id: _label
-    leftPadding: (text && _control.indicator && !_control.mirrored) ? _control.indicator.width + _control.spacing :
-      0
-    rightPadding: (text && _control.indicator && _control.mirrored) ? _control.indicator.width + _control.spacing :
-      0
+    leftPadding: (text && _control.indicator && !_control.mirrored) ? _control.indicator.width + _control.spacing : 0
+    rightPadding: (text && _control.indicator && _control.mirrored) ? _control.indicator.width + _control.spacing : 0
 
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed

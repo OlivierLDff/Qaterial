@@ -40,8 +40,7 @@ Item
       opacity: 0
 
       // The actual time we are using that can be override by the user
-      property real snackbarTimeout: _root.settings.timeout === undefined ? Qaterial.Style.snackbar.shortDisplayTime :
-        _root.settings.timeout
+      property real snackbarTimeout: _root.settings.timeout === undefined ? Qaterial.Style.snackbar.shortDisplayTime : _root.settings.timeout
       // Used to call the onAccept callback or the onClose.
       property bool actionCalled
       // Indicate that the snackbar is about to be destroyed (and fade out animation is playing)

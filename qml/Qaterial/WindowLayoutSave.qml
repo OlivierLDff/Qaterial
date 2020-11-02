@@ -108,7 +108,7 @@ Item
       target.y = target.screen.height / 2 - target.height / 2
       console.warn(
         `Previous screen ${previousName} not found. Try to restore window to screen ${target.screen.name}, resolution: ${width}x${height}, position: {${target.x},${target.y}}`
-        )
+      )
     }
 
     // Make sure width/height are ok

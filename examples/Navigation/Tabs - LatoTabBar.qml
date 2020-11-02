@@ -45,6 +45,9 @@ Item
   }
 
   Qaterial.DebugRectangle { width: tabBar.width;height: tabBar.height;x: tabBar.x;y: tabBar.y }
-  Qaterial.DebugRectangle { width: tabBarScroll.width;height: tabBarScroll.height;x: tabBarScroll.x;y: tabBarScroll
-    .y;border.color: Qaterial.Style.orange }
+  Qaterial.DebugRectangle
+  {
+    width: tabBarScroll.width;height: tabBarScroll.height;x: tabBarScroll.x;y: tabBarScroll
+      .y;border.color: Qaterial.Style.orange
+  }
 }

@@ -75,7 +75,7 @@ ListView
     {
       console.warn(
         `Year ${year} and Month ${month} not in the interval [${from}, ${to}]. Make sure 'month' & 'year' are in between 'from' and 'to'. Or increase 'from' and 'to' to match your needs`
-        )
+      )
       month = from.getMonth()
       year = from.getFullYear()
 
