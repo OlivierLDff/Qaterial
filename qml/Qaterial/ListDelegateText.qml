@@ -104,8 +104,7 @@ Rectangle
     readonly property bool centerBaseline: _control.secondaryText != "" || _control.overlineText != ""
 
     anchors.verticalCenter: _control.verticalCenter
-    anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) :
-      0
+    anchors.baselineOffset: centerBaseline ? Qaterial.Style.delegate.baselineOffsetText(_control.type, _control.lines) : 0
     anchors.left: _control.left
     anchors.right: _control.right
     anchors.leftMargin: _control.leftPadding

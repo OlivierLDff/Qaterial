@@ -23,8 +23,7 @@ Row
     {
       spacing: 20
 
-      Qaterial.SliderHandle
-      {}
+      Qaterial.SliderHandle {}
 
       Qaterial.SliderHandle
       {

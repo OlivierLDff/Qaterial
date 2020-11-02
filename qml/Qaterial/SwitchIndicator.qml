@@ -29,8 +29,7 @@ Item
     radius: height / 2
     y: parent.height / 2 - height / 2
     color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedTrackColor : Qaterial.Style
-        .switchIndicator.switchUncheckedTrackColor) :
-      Qaterial.Style.switchIndicator.switchDisabledTrackColor
+      .switchIndicator.switchUncheckedTrackColor) : Qaterial.Style.switchIndicator.switchDisabledTrackColor
   } // Rectangle
 
   Rectangle
@@ -42,8 +41,7 @@ Item
     height: Qaterial.Style.switchIndicator.handleRadius
     radius: width / 2
     color: control.enabled ? (control.checked ? Qaterial.Style.switchIndicator.switchCheckedHandleColor : Qaterial.Style
-        .switchIndicator.switchUncheckedHandleColor) :
-      Qaterial.Style.switchIndicator.switchDisabledHandleColor
+      .switchIndicator.switchUncheckedHandleColor) : Qaterial.Style.switchIndicator.switchDisabledHandleColor
 
     Behavior on x
     {

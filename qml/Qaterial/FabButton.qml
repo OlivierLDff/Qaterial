@@ -23,14 +23,20 @@ T.Button
 
   Behavior on implicitWidth
   {
-    NumberAnimation { easing.type: Easing.InOutQuad;
-      duration: 200 } // NumberAnimation
+    NumberAnimation
+    {
+      easing.type: Easing.InOutQuad;
+      duration: 200
+    } // NumberAnimation
   } // Behavior
 
   Behavior on implicitHeight
   {
-    NumberAnimation { easing.type: Easing.InOutQuad;
-      duration: 200 } // NumberAnimation
+    NumberAnimation
+    {
+      easing.type: Easing.InOutQuad;
+      duration: 200
+    } // NumberAnimation
   } // Behavior
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
@@ -121,8 +127,14 @@ T.Button
 
   scale: enabledScale ? (enabled ? 1 : 0.0) : 1
   property double scaleDuration: 200
-  Behavior on scale { NumberAnimation { easing.type: Easing.InOutQuad;
-      duration: _control.scaleDuration } }
+  Behavior on scale
+  {
+    NumberAnimation
+    {
+      easing.type: Easing.InOutQuad;
+      duration: _control.scaleDuration
+    }
+  }
 
   property bool enabledScale: true
   property bool extendedOnHovered: false

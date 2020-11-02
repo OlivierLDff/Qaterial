@@ -7,8 +7,7 @@ Qaterial.SplashScreenWindow
 {
   id: splash
 
-  image: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "qrc:/Qaterial/HotReload/qaterial-hotreload-white.png" :
-    "qrc:/Qaterial/HotReload/qaterial-hotreload-black.png"
+  image: Qaterial.Style.theme === Qaterial.Style.Theme.Dark ? "qrc:/Qaterial/HotReload/qaterial-hotreload-white.png" : "qrc:/Qaterial/HotReload/qaterial-hotreload-black.png"
   padding: Qaterial.Style.card.horizontalPadding
 
   text: "Loading ..."

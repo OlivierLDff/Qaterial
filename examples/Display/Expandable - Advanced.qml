@@ -16,8 +16,11 @@ Qaterial.Expandable
 
     onClicked: () => root.expanded = !root.expanded
 
-    Qaterial.DebugRectangle { anchors.fill: parent;
-      border.color: "#E91E63" }
+    Qaterial.DebugRectangle
+    {
+      anchors.fill: parent;
+      border.color: "#E91E63"
+    }
   } // Rectangle
 
   delegate: Column
@@ -40,8 +43,11 @@ Qaterial.Expandable
         text: `Delegate ${index}`
         icon.source: `qrc:/Qaterial/Icons/${model.icon}.svg`
 
-        Qaterial.DebugRectangle { anchors.fill: parent;
-          border.color: model.color }
+        Qaterial.DebugRectangle
+        {
+          anchors.fill: parent;
+          border.color: model.color
+        }
 
         onClicked: () => Qaterial.Logger.debug(`Element ${index+1} clicked`)
       } // ItemDelegate

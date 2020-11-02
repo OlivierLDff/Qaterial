@@ -31,8 +31,7 @@ T.ToolSeparator
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
   property color foregroundColor: !enabled ? (colorReversed ? Qaterial.Style.disabledDividersColorReversed() :
-      Qaterial.Style.disabledDividersColor()) : highlighted && accentColorAuthorized ? Qaterial.Style.accentColor :
-    colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
+    Qaterial.Style.disabledDividersColor()) : highlighted && accentColorAuthorized ? Qaterial.Style.accentColor : colorReversed ? Qaterial.Style.dividersColorReversed() : Qaterial.Style.dividersColor()
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 

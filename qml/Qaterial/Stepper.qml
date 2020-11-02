@@ -15,8 +15,7 @@ Item
   id: root
 
   implicitWidth: vertical ?
-    (indicatorLeftPadding + indicatorWidth + indicatorRightPadding + contentItemWidth + contentItemHorizontalPadding) :
-    (count * (contentItemWidth + 2 * contentItemHorizontalPadding))
+    (indicatorLeftPadding + indicatorWidth + indicatorRightPadding + contentItemWidth + contentItemHorizontalPadding) : (count * (contentItemWidth + 2 * contentItemHorizontalPadding))
   implicitHeight: vertical ?
     (count * (indicatorTopPadding + indicatorHeight + indicatorBottomPadding + separatorHeight / 2)) : (
       indicatorTopPadding + indicatorHeight + indicatorBottomPadding + contentItemHeight + 2 *
@@ -243,7 +242,7 @@ Item
 
       y: root.vertical ?
         (root._stepperHeight / 2 + root.indicatorHeight / 2 + root.indicatorTopPadding + index * root
-        ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
+          ._stepperHeight) : (root.indicatorTopPadding + root.indicatorHeight / 2 - root.separatorHeight / 2)
 
       width: root.vertical ?
         root.separatorWidth : (root._stepperWidth - root.indicatorWidth - root.indicatorLeftPadding - root

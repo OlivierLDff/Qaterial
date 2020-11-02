@@ -24,8 +24,11 @@ Row
         verticalAlignment: Text.AlignVCenter
       }
 
-      Qaterial.DebugRectangle { anchors.fill: parent;
-        border.color: Qaterial.Style.green }
+      Qaterial.DebugRectangle
+      {
+        anchors.fill: parent;
+        border.color: Qaterial.Style.green
+      }
     }
   }
 
@@ -62,8 +65,11 @@ Row
         NumberAnimation { target: delegate;property: "height";to: 100;duration: 0 }
       }
 
-      Qaterial.DebugRectangle { anchors.fill: parent;
-        border.color: Qaterial.Style.amber }
+      Qaterial.DebugRectangle
+      {
+        anchors.fill: parent;
+        border.color: Qaterial.Style.amber
+      }
     }
   }
 

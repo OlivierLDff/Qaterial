@@ -22,9 +22,12 @@ T.Button
     implicitContentHeight + topPadding + bottomPadding)
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
-  Qaterial.DebugRectangle { anchors.fill: parent;
+  Qaterial.DebugRectangle
+  {
+    anchors.fill: parent;
     border.color: "pink";
-    visible: _control.drawline } // DebugRectangle
+    visible: _control.drawline
+  } // DebugRectangle
 
   property int textType: Qaterial.Style.TextType.Button
   property int elide: Text.ElideNone
@@ -140,9 +143,12 @@ T.Button
 
   background: Rectangle
   {
-    Qaterial.DebugRectangle { anchors.fill: parent;
+    Qaterial.DebugRectangle
+    {
+      anchors.fill: parent;
       border.color: "aquamarine";
-      visible: _control.drawline } // DebugRectangle
+      visible: _control.drawline
+    } // DebugRectangle
 
     implicitWidth: _control.backgroundImplicitWidth
     implicitHeight: _control.backgroundImplicitHeight

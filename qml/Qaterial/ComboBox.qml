@@ -109,15 +109,21 @@ T.ComboBox
       Behavior on width
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type: Easing.OutCubic;
-          duration: 300 } // NumberAnimation
+        NumberAnimation
+        {
+          easing.type: Easing.OutCubic;
+          duration: 300
+        } // NumberAnimation
       } // Behavior
 
       Behavior on x
       {
         enabled: !_control.activeFocus
-        NumberAnimation { easing.type: Easing.OutCubic;
-          duration: 300 } // NumberAnimation
+        NumberAnimation
+        {
+          easing.type: Easing.OutCubic;
+          duration: 300
+        } // NumberAnimation
       } // Behavior
     } // Rectangle
 

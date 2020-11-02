@@ -34,7 +34,7 @@ Qaterial.FabButton
 
   foregroundColor: !enabled ? Qaterial.Style.disabledTextColor() : highlighted ? (Qaterial.Style
       .shouldReverseForegroundOnAccent ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
-      ) : Qaterial.Style.theme === Qaterial.Style.Theme.Light ? Qaterial.Style.primaryTextColor() : Qaterial.Style
+    ) : Qaterial.Style.theme === Qaterial.Style.Theme.Light ? Qaterial.Style.primaryTextColor() : Qaterial.Style
     .secondaryTextColor()
   enabledScale: false
 
@@ -59,10 +59,22 @@ Qaterial.FabButton
     border.width: _control.borderWidth
     border.color: _control.borderColor
 
-    Behavior on implicitWidth { NumberAnimation { easing.type: Easing.InOutQuad;
-        duration: 100 } }
-    Behavior on implicitHeight { NumberAnimation { easing.type: Easing.InOutQuad;
-        duration: 100 } }
+    Behavior on implicitWidth
+    {
+      NumberAnimation
+      {
+        easing.type: Easing.InOutQuad;
+        duration: 100
+      }
+    }
+    Behavior on implicitHeight
+    {
+      NumberAnimation
+      {
+        easing.type: Easing.InOutQuad;
+        duration: 100
+      }
+    }
 
     Qaterial.DebugRectangle
     {
