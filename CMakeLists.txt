@@ -104,6 +104,7 @@ qt_generate_qrc(QATERIAL_QML_QRC
   NAME Qaterial.qrc
   PREFIX "Qaterial"
   GLOB_EXPRESSION "*.qml;qmldir"
+  ALWAYS_OVERWRITE
   RECURSE)
 
 # Add qml to the qtquick compiler (should only be call once per target)
