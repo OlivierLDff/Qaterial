@@ -70,29 +70,47 @@ Row
     Qaterial.RangeSlider
     {
       id: rangeSlider1
-      Binding on first.value { when: !rangeSlider1.pressed;value: root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
-      Binding on second.value { when: !rangeSlider1.pressed;value: 1 - root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
+      Binding on first.value
+      {
+        when: !rangeSlider1.pressed;value: root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
+      Binding on second.value
+      {
+        when: !rangeSlider1.pressed;value: 1 - root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
       color: Qaterial.Style.yellow
     }
     Qaterial.RangeSlider
     {
       id: rangeSlider2
-      Binding on first.value { when: !rangeSlider2.pressed;value: root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
-      Binding on second.value { when: !rangeSlider2.pressed;value: 1 - root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
+      Binding on first.value
+      {
+        when: !rangeSlider2.pressed;value: root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
+      Binding on second.value
+      {
+        when: !rangeSlider2.pressed;value: 1 - root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
       width: 300
       color: Qaterial.Style.lime
     }
     Qaterial.RangeSlider
     {
       id: rangeSlider3
-      Binding on first.value { when: !rangeSlider3.pressed;value: root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
-      Binding on second.value { when: !rangeSlider3.pressed;value: 1 - root.value / 2;restoreMode: Binding
-          .RestoreBindingOrValue }
+      Binding on first.value
+      {
+        when: !rangeSlider3.pressed;value: root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
+      Binding on second.value
+      {
+        when: !rangeSlider3.pressed;value: 1 - root.value / 2;restoreMode: Binding
+          .RestoreBindingOrValue
+      }
       width: 400
       color: Qaterial.Style.green
     }
@@ -100,10 +118,16 @@ Row
   Qaterial.RangeSlider
   {
     id: rangeSlider4
-    Binding on first.value { when: !rangeSlider3.pressed;value: root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
-    Binding on second.value { when: !rangeSlider3.pressed;value: 1 - root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
+    Binding on first.value
+    {
+      when: !rangeSlider3.pressed;value: root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
+    Binding on second.value
+    {
+      when: !rangeSlider3.pressed;value: 1 - root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
     orientation: Qt.Vertical
     height: 300
     color: Qaterial.Style.blue
@@ -111,10 +135,16 @@ Row
   Qaterial.RangeSlider
   {
     id: rangeSlider5
-    Binding on first.value { when: !rangeSlider5.pressed;value: root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
-    Binding on second.value { when: !rangeSlider5.pressed;value: 1 - root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
+    Binding on first.value
+    {
+      when: !rangeSlider5.pressed;value: root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
+    Binding on second.value
+    {
+      when: !rangeSlider5.pressed;value: 1 - root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
     orientation: Qt.Vertical
     height: 250
     color: Qaterial.Style.indigo
@@ -122,10 +152,16 @@ Row
   Qaterial.RangeSlider
   {
     id: rangeSlider6
-    Binding on first.value { when: !rangeSlider6.pressed;value: root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
-    Binding on second.value { when: !rangeSlider6.pressed;value: 1 - root.value / 2;restoreMode: Binding
-        .RestoreBindingOrValue }
+    Binding on first.value
+    {
+      when: !rangeSlider6.pressed;value: root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
+    Binding on second.value
+    {
+      when: !rangeSlider6.pressed;value: 1 - root.value / 2;restoreMode: Binding
+        .RestoreBindingOrValue
+    }
     orientation: Qt.Vertical
     color: Qaterial.Style.deepPurple
   }

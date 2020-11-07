@@ -38,14 +38,10 @@ QtObject
   property bool preferAccentOnPrimaryLight: false
   property bool preferAccentOnPrimaryDark: true
 
-  property bool shouldReverseForegroundOnPrimary: theme === Style.Theme.Light ? foregroundReversedOnPrimaryLight :
-    foregroundReversedOnPrimaryDark
-  property bool shouldReverseRippleOnPrimary: theme === Style.Theme.Light ? rippleReversedOnPrimaryLight :
-    rippleReversedOnPrimaryDark
-  property bool shouldReverseForegroundOnAccent: theme === Style.Theme.Light ? foregroundReversedOnAccentLight :
-    foregroundReversedOnAccentDark
-  property bool preferAccentOnPrimary: theme === Style.Theme.Light ? preferAccentOnPrimaryLight :
-    preferAccentOnPrimaryDark
+  property bool shouldReverseForegroundOnPrimary: theme === Style.Theme.Light ? foregroundReversedOnPrimaryLight : foregroundReversedOnPrimaryDark
+  property bool shouldReverseRippleOnPrimary: theme === Style.Theme.Light ? rippleReversedOnPrimaryLight : rippleReversedOnPrimaryDark
+  property bool shouldReverseForegroundOnAccent: theme === Style.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
+  property bool preferAccentOnPrimary: theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"
@@ -147,8 +143,11 @@ QtObject
 
   function displayTextColor() { return theme === Style.Theme.Light ? displayTextColorLight : displayTextColorDark }
 
-  function secondaryTextColor() { return theme === Style.Theme.Light ? secondaryTextColorLight :
-    secondaryTextColorDark }
+  function secondaryTextColor()
+  {
+    return theme === Style.Theme.Light ? secondaryTextColorLight :
+      secondaryTextColorDark
+  }
 
   function disabledTextColor() { return theme === Style.Theme.Light ? disabledTextColorLight : disabledTextColorDark }
 
@@ -160,22 +159,37 @@ QtObject
 
   function dividersColor() { return theme === Style.Theme.Light ? dividersColorLight : dividersColorDark }
 
-  function disabledDividersColor() { return theme === Style.Theme.Light ? disabledDividersColorLight :
-      disabledDividersColorDark }
+  function disabledDividersColor()
+  {
+    return theme === Style.Theme.Light ? disabledDividersColorLight :
+      disabledDividersColorDark
+  }
 
   function errorTextColor() { return theme === Style.Theme.Light ? errorTextColorLight : errorTextColorDark }
 
-  function primaryTextColorReversed() { return theme != Style.Theme.Light ? primaryTextColorLight :
-    primaryTextColorDark }
+  function primaryTextColorReversed()
+  {
+    return theme != Style.Theme.Light ? primaryTextColorLight :
+      primaryTextColorDark
+  }
 
-  function displayTextColorReversed() { return theme != Style.Theme.Light ? displayTextColorLight :
-    displayTextColorDark }
+  function displayTextColorReversed()
+  {
+    return theme != Style.Theme.Light ? displayTextColorLight :
+      displayTextColorDark
+  }
 
-  function secondaryTextColorReversed() { return theme != Style.Theme.Light ? secondaryTextColorLight :
-      secondaryTextColorDark }
+  function secondaryTextColorReversed()
+  {
+    return theme != Style.Theme.Light ? secondaryTextColorLight :
+      secondaryTextColorDark
+  }
 
-  function disabledTextColorReversed() { return theme != Style.Theme.Light ? disabledTextColorLight :
-      disabledTextColorDark }
+  function disabledTextColorReversed()
+  {
+    return theme != Style.Theme.Light ? disabledTextColorLight :
+      disabledTextColorDark
+  }
 
   function hintTextColorReversed() { return theme != Style.Theme.Light ? hintTextColorLight : hintTextColorDark }
 
@@ -185,8 +199,11 @@ QtObject
 
   function dividersColorReversed() { return theme != Style.Theme.Light ? dividersColorLight : dividersColorDark }
 
-  function disabledDividersColorReversed() { return theme != Style.Theme.Light ? disabledDividersColorLight :
-      disabledDividersColorDark }
+  function disabledDividersColorReversed()
+  {
+    return theme != Style.Theme.Light ? disabledDividersColorLight :
+      disabledDividersColorDark
+  }
 
   function errorTextColorReversed() { return theme != Style.Theme.Light ? errorTextColorLight : errorTextColorDark }
 
@@ -1009,8 +1026,11 @@ QtObject
     } // function baselineOffsetOverline(lines)
 
     function roundWidth(large) { return squareWidth(large) } // function roundWidth(large)
-    function squareWidth(large) { return large ? (_root.dense ? 44 : 56) : (_root.dense ? 32 :
-      40) } // function squareWidth(large)
+    function squareWidth(large)
+    {
+      return large ? (_root.dense ? 44 : 56) : (_root.dense ? 32 :
+        40)
+    } // function squareWidth(large)
     function largeWidth() { return _root.dense ? 80 : 100 } // function largeWidth()
     function largeHeight(lines) { return (_root.dense ? 44 : 56) } // function largeHeight(lines)
 

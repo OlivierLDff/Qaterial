@@ -102,8 +102,11 @@ T.TextArea
 
     Behavior on opacity
     {
-      NumberAnimation { easing.type: Easing.InQuad;
-        duration: placeholder.shouldBeVisible ? 50 : 200 } // NumberAnimation
+      NumberAnimation
+      {
+        easing.type: Easing.InQuad;
+        duration: placeholder.shouldBeVisible ? 50 : 200
+      } // NumberAnimation
     } // Behavior
   } // PlaceholderText
 

@@ -19,8 +19,11 @@ Qaterial.Expandable
       verticalAlignment: Text.AlignVCenter
     }
 
-    Qaterial.DebugRectangle { anchors.fill: parent;
-      border.color: Qaterial.Style.green }
+    Qaterial.DebugRectangle
+    {
+      anchors.fill: parent;
+      border.color: Qaterial.Style.green
+    }
   }
 
   delegate: Qaterial.Label
@@ -31,7 +34,10 @@ Qaterial.Expandable
     verticalAlignment: Text.AlignVCenter
     height: 100
 
-    Qaterial.DebugRectangle { anchors.fill: parent;
-      border.color: Qaterial.Style.amber }
+    Qaterial.DebugRectangle
+    {
+      anchors.fill: parent;
+      border.color: Qaterial.Style.amber
+    }
   }
 } // Expandable
