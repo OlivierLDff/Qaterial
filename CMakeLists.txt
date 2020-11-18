@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
 include(cmake/Version.cmake)
 
+option(QATERIAL_FIND_DEPS "Use `find_package()` for including Qaterial dependencies." OFF)
 set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
@@ -41,6 +42,7 @@ message(STATUS "QATERIAL_PROJECT                : ${QATERIAL_PROJECT}")
 message(STATUS "QATERIAL_TARGET                 : ${QATERIAL_TARGET}")
 message(STATUS "QATERIAL_VERSION                : ${QATERIAL_VERSION}")
 message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
+message(STATUS "QATERIAL_FIND_DEPS              : ${QATERIAL_FIND_DEPS}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
 
@@ -72,13 +74,16 @@ find_package(Qt5 REQUIRED COMPONENTS
 )
 find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
-# ───── FETCH DEPEDENCIES ─────
+# ───── FETCH DEPENDENCIES ─────
 
 include(cmake/Dependencies.cmake)
-include(cmake/FetchSpdlog.cmake)
 include(cmake/FetchQOlm.cmake)
 include(cmake/FetchQtGeneratorCMake.cmake)
-
+if(${QATERIAL_FIND_DEPS})
+  find_package(spdlog CONFIG REQUIRED)
+else()
+  include(cmake/FetchSpdlog.cmake)
+endif()
 # ───── RESSOURCES ─────
 
 add_subdirectory(res)
@@ -185,7 +190,7 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
 )
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
-  spdlog
+  spdlog::spdlog
   QOlm
   Qt::Core
   Qt::Gui
