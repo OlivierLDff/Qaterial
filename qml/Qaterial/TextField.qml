@@ -447,6 +447,7 @@ T.TextField
     color: _control.placeholderTextColor
     textType: _control.placeholderTextType
     verticalAlignment: _control.verticalAlignment
+    horizontalAlignment: _control.horizontalAlignment
     elide: Text.ElideRight
     renderType: _control.renderType
     readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !
