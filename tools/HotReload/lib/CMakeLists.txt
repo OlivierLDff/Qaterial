@@ -71,7 +71,7 @@ set_target_properties(${QATERIAL_HOTRELOAD_LIB} PROPERTIES
 target_include_directories(${QATERIAL_HOTRELOAD_LIB} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIAL_HOTRELOAD_LIB} PRIVATE ${PROJECT_SOURCE_DIR}/include/Qaterial/Pch/Pch.hpp)
+  target_precompile_headers(${QATERIAL_HOTRELOAD_LIB} PRIVATE ${PROJECT_SOURCE_DIR}/src/Qaterial/Pch/Pch.hpp)
 endif()
 
 get_target_property(QT_TARGET_TYPE Qt::Core TYPE)

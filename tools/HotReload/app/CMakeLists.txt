@@ -14,7 +14,7 @@ set_target_properties(${QATERIAL_HOTRELOAD} PROPERTIES
   FOLDER "${QATERIAL_FOLDER_PREFIX}/HotReload")
 
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIAL_HOTRELOAD} PRIVATE ${PROJECT_SOURCE_DIR}/include/Qaterial/Pch/Pch.hpp)
+  target_precompile_headers(${QATERIAL_HOTRELOAD} PRIVATE ${PROJECT_SOURCE_DIR}/src/Qaterial/Pch/Pch.hpp)
 endif()
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Windows")
