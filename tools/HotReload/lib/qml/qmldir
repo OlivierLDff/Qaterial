@@ -1,9 +1,0 @@
-module Qaterial.HotReload
-
-StatusView              1.0 StatusView.qml
-IconsMenu               1.0 IconsMenu.qml
-ImportPathMenu          1.0 ImportPathMenu.qml
-TypoMenu                1.0 TypoMenu.qml
-HotReload               1.0 HotReload.qml
-HotReloadWindow         1.0 HotReloadWindow.qml
-SplashScreenWindow      1.0 SplashScreenWindow.qml

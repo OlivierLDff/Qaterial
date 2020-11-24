@@ -1,6 +1,24 @@
+# MIT License
 #
-#   Qaterial CMake script by Olivier Le Doeuff
+# Copyright (c) 2020 Olivier Le Doeuff
 #
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
 cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
@@ -13,13 +31,6 @@ set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
-set(QATERIAL_ENABLE_HOTRELOAD OFF CACHE BOOL "Build Qaterial HotReload executable")
-if(QATERIAL_ENABLE_HOTRELOAD)
-  set(QATERIAL_ENABLE_HOTRELOAD_LIB ${QATERIAL_ENABLE_HOTRELOAD} CACHE BOOL "Build Qaterial HotReload executable" FORCE)
-else()
-  set(QATERIAL_ENABLE_HOTRELOAD_LIB ${QATERIAL_ENABLE_HOTRELOAD} CACHE BOOL "Build Qaterial HotReload executable")
-endif()
-set(QATERIAL_ENABLE_HELLOWORLD OFF CACHE BOOL "Build Qaterial HelloWorld executable")
 set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
@@ -53,9 +64,6 @@ message(STATUS "QATERIAL_ENABLE_ROBOTO          : ${QATERIAL_ENABLE_ROBOTO}")
 message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}")
 message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
 
-message(STATUS "QATERIAL_ENABLE_HOTRELOAD       : ${QATERIAL_ENABLE_HOTRELOAD}")
-message(STATUS "QATERIAL_ENABLE_HOTRELOAD_LIB   : ${QATERIAL_ENABLE_HOTRELOAD_LIB}")
-message(STATUS "QATERIAL_ENABLE_HELLOWORLD      : ${QATERIAL_ENABLE_HELLOWORLD}")
 message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
 
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
@@ -72,7 +80,6 @@ find_package(Qt5 REQUIRED COMPONENTS
   Xml
   QuickCompiler
 )
-find_package(Qt5 QUIET COMPONENTS QmlWorkerScript)
 
 # ───── FETCH DEPENDENCIES ─────
 
@@ -86,72 +93,43 @@ else()
 endif()
 # ───── RESSOURCES ─────
 
-add_subdirectory(res)
+add_subdirectory(qml)
 
 # ───── QML SOURCES ─────
 
-file(GLOB_RECURSE QATERIAL_QML_SRCS qml/*.qml)
-
-foreach(SOURCE IN ITEMS ${QATERIAL_QML_SRCS})
-  get_filename_component(SOURCE_PATH "${SOURCE}" PATH)
-  file(RELATIVE_PATH SOURCE_PATH_REL ${CMAKE_CURRENT_SOURCE_DIR}/qml "${SOURCE_PATH}")
-  string(REPLACE "/" "\\" GROUP_PATH "${SOURCE_PATH_REL}")
-  source_group("Qml\\${GROUP_PATH}" FILES "${SOURCE}")
-endforeach()
-
-qt_generate_qmldir(QATERIAL_QMLDIR_FILE
- SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
- MODULE "Qaterial")
-
-qt_generate_qrc(QATERIAL_QML_QRC
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial
-  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/QaterialGenerated
-  NAME Qaterial.qrc
-  PREFIX "Qaterial"
-  GLOB_EXPRESSION "*.qml;qmldir"
-  ALWAYS_OVERWRITE
-  RECURSE)
-
-# Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
-
-# Dont Run Moc on cpp file generated from qml
-foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
-  set_property(SOURCE ${QATERIAL_CURRENT_QML_FILE} PROPERTY SKIP_AUTOMOC ON)
-  source_group("Qml\\QtQuickCompiler Files" FILES ${QATERIAL_CURRENT_QML_FILE})
-endforeach()
+set(QATERIAL_SOURCE_DIR src/Qaterial)
 
 set(QATERIAL_LAYOUT_SRCS
-  include/Qaterial/Layout.hpp
-  src/Layout.cpp
+  ${QATERIAL_SOURCE_DIR}/Layout.hpp
+  ${QATERIAL_SOURCE_DIR}/Layout.cpp
 )
 
 set(QATERIAL_IO_SRCS
-  include/Qaterial/TextFile.hpp
-  src/TextFile.cpp
-  include/Qaterial/Clipboard.hpp
-  src/Clipboard.cpp
-  include/Qaterial/FolderTreeModel.hpp
-  src/FolderTreeModel.cpp
+  ${QATERIAL_SOURCE_DIR}/TextFile.hpp
+  ${QATERIAL_SOURCE_DIR}/TextFile.cpp
+  ${QATERIAL_SOURCE_DIR}/Clipboard.hpp
+  ${QATERIAL_SOURCE_DIR}/Clipboard.cpp
+  ${QATERIAL_SOURCE_DIR}/FolderTreeModel.hpp
+  ${QATERIAL_SOURCE_DIR}/FolderTreeModel.cpp
 )
 
 set(QATERIAL_NAVIGATION_SRCS
-  include/Qaterial/StepperElement.hpp
-  src/StepperElement.cpp
-  include/Qaterial/TreeElement.hpp
-  src/TreeElement.cpp
+  ${QATERIAL_SOURCE_DIR}/StepperElement.hpp
+  ${QATERIAL_SOURCE_DIR}/StepperElement.cpp
+  ${QATERIAL_SOURCE_DIR}/TreeElement.hpp
+  ${QATERIAL_SOURCE_DIR}/TreeElement.cpp
 )
 
 set(QATERIAL_UTILS_SRCS
-  include/Qaterial/Qaterial.hpp
-  include/Qaterial/Export.hpp
-  include/Qaterial/Property.hpp
-  include/Qaterial/Version.hpp
-  src/Version.cpp
-  include/Qaterial/Utils.hpp
-  src/Utils.cpp
-  include/Qaterial/Logger.hpp
-  src/Logger.cpp
+  ${QATERIAL_SOURCE_DIR}/Qaterial.hpp
+  ${QATERIAL_SOURCE_DIR}/Export.hpp
+  ${QATERIAL_SOURCE_DIR}/Property.hpp
+  ${QATERIAL_SOURCE_DIR}/Version.hpp
+  ${QATERIAL_SOURCE_DIR}/Version.cpp
+  ${QATERIAL_SOURCE_DIR}/Utils.hpp
+  ${QATERIAL_SOURCE_DIR}/Utils.cpp
+  ${QATERIAL_SOURCE_DIR}/Logger.hpp
+  ${QATERIAL_SOURCE_DIR}/Logger.cpp
 )
 
 set(QATERIAL_SRCS
@@ -159,8 +137,6 @@ set(QATERIAL_SRCS
   ${QATERIAL_IO_SRCS}
   ${QATERIAL_NAVIGATION_SRCS}
   ${QATERIAL_UTILS_SRCS}
-  ${QATERIAL_QML_RES}
-  ${QATERIAL_QML_SRCS}
 )
 
 source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
@@ -179,14 +155,15 @@ else()
 endif()
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
-target_include_directories(${QATERIAL_TARGET} PUBLIC include)
+target_include_directories(${QATERIAL_TARGET} PUBLIC src)
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIAL_TARGET} PRIVATE include/Qaterial/Pch/Pch.hpp)
+  target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()
 
 target_link_libraries(${QATERIAL_TARGET} PRIVATE
-  ${QATERIAL_TARGET}Icons
-  ${QATERIAL_TARGET}Fonts
+  ${QATERIAL_TARGET}::Icons
+  ${QATERIAL_TARGET}::Fonts
+  ${QATERIAL_TARGET}::Components
 )
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
@@ -201,7 +178,6 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
   Qt::QuickControls2
 )
 
-set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTORCC TRUE)
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
 
 # Version
@@ -220,26 +196,10 @@ endif()
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
-  include(cmake/FetchQtStaticCMake.cmake)
-  qt_generate_qml_plugin_import(${QATERIAL_TARGET}
-    QML_SRC qml
-    EXTRA_PLUGIN
-      QtQuickVirtualKeyboardPlugin
-      QtQuickVirtualKeyboardSettingsPlugin
-      QtQuickVirtualKeyboardStylesPlugin
-      QmlFolderListModelPlugin
-    VERBOSE
-  )
-  qt_generate_plugin_import(${QATERIAL_TARGET} VERBOSE)
+  include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
+  qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
+  qt_generate_plugin_import(${QATERIAL_TARGET})
 endif()
-
-if(TARGET Qt5::QmlWorkerScript)
-  target_link_libraries(${QATERIAL_TARGET} PUBLIC Qt5::QmlWorkerScript)
-endif()
-
-# ───── QATERIAL TOOLS ─────
-
-add_subdirectory(tools)
 
 # ───── QATERIAL TESTS ─────
 

@@ -244,6 +244,7 @@ T.TextField
     y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset : _control.topPadding
     width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding
     verticalAlignment: _control.verticalAlignment
+    horizontalAlignment: _control.horizontalAlignment
     renderType: _control.renderType
     elide: Text.ElideRight
 
@@ -446,6 +447,7 @@ T.TextField
     color: _control.placeholderTextColor
     textType: _control.placeholderTextType
     verticalAlignment: _control.verticalAlignment
+    horizontalAlignment: _control.horizontalAlignment
     elide: Text.ElideRight
     renderType: _control.renderType
     readonly property bool shouldBeVisible: (_control.title == "" || _control.activeFocus) && !_control.length && !
