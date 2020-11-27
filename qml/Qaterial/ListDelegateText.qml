@@ -57,9 +57,9 @@ Rectangle
     _text.reanchors()
   } // function reanchors()
 
-  onMirroredChanged: Qt.callLater(reanchors)
-  onTypeChanged: Qt.callLater(reanchors)
-  onLinesChanged: Qt.callLater(reanchors)
+  onMirroredChanged: reanchors()
+  onTypeChanged: reanchors()
+  onLinesChanged: reanchors()
   Component.onCompleted: reanchors()
 
   Qaterial.Label
