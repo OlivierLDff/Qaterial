@@ -12,23 +12,13 @@ Qaterial.SquacleButton
 
   padding: 8
 
-  contentItem: Item
+  contentItem: Qaterial.ClipRRect
   {
-    id: _imageClipper
+    id: clipper
 
-    property real radius: control.squared ? 16 : width / 2
+    radius: control.squared ? 16 : width / 2
+
     Behavior on radius { NumberAnimation { duration: 150;easing.type: Easing.InOutQuad } }
-
-    layer.enabled: true
-    layer.effect: OpacityMask
-    {
-      maskSource: Rectangle
-      {
-        width: _imageClipper.width
-        height: _imageClipper.height
-        radius: _imageClipper.radius
-      } // Rectangle
-    }
 
     Image
     {
