@@ -85,13 +85,13 @@ Row
   {
     running: true
     loops: Animation.Infinite
-    NumberAnimation { target: root; property: "radius"; to: 24; duration: 500 }
+    NumberAnimation { target: root;property: "radius";to: 24;duration: 500 }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "radius"; to: 48; duration: 500 }
+    NumberAnimation { target: root;property: "radius";to: 48;duration: 500 }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "radius"; to: 0; duration: 500 }
+    NumberAnimation { target: root;property: "radius";to: 0;duration: 500 }
     PauseAnimation { duration: 1000 }
-    NumberAnimation { target: root; property: "radius"; to: 4; duration: 500 }
+    NumberAnimation { target: root;property: "radius";to: 4;duration: 500 }
     PauseAnimation { duration: 1000 }
   }
 }
