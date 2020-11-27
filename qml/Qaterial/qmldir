@@ -42,6 +42,7 @@ CheckableListViewDelegate 1.0 CheckableListViewDelegate.qml
 CircularMinute 1.0 CircularMinute.qml
 CircularMinutePicker 1.0 CircularMinutePicker.qml
 CircularPathLabel 1.0 CircularPathLabel.qml
+ClipRRect 1.0 ClipRRect.qml
 ClusteredTabBar 1.0 ClusteredTabBar.qml
 ColorAlphaSlider 1.0 ColorAlphaSlider.qml
 ColorBlueSlider 1.0 ColorBlueSlider.qml
