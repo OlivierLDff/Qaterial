@@ -29,7 +29,7 @@ QQ.Item
 
   property real radius: 8
 
-  layer.enabled: true
+  layer.enabled: radius > 0
   layer.effect: QGE.OpacityMask
   {
     maskSource: QQ.Rectangle
