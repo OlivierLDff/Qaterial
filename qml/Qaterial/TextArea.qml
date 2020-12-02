@@ -24,6 +24,9 @@ Control
   property int wrapMode: Text.Wrap
   property bool cursorVisible: true
 
+  property bool selectByMouse
+  property bool persistentSelection
+
   // CONTENT
   property string title
   property string helperText
@@ -399,6 +402,8 @@ Control
     textType: _control.textType
     placeholderText: _control.placeholderText
     text: _control.text
+    selectByMouse: _control.selectByMouse
+    persistentSelection: _control.persistentSelection
     wrapMode: _control.wrapMode
     cursorVisible: _control.cursorVisible
     color: _control.color
