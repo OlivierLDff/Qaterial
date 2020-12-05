@@ -82,7 +82,7 @@ Row
       icon.height: 48
 
       text: "Multi Line\n" +
-            "Image Label"
+        "Image Label"
       LayoutMirroring.enabled: mirroredButton.checked
       display: root.display
     }
@@ -181,4 +181,3 @@ Row
     }
   }
 }
-
