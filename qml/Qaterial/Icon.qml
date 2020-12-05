@@ -14,27 +14,32 @@ Item
   id: root
 
   property color color: Qaterial.Style.primaryTextColor()
-  property url icon
+  property alias icon: dummyImage.source
   property real size: 24
+  property alias cached: iconOverlay.cached
 
-  implicitWidth: size
-  implicitHeight: size
+  readonly property real _implicitSize: icon.toString() ? size : 0
+
+  implicitWidth: _implicitSize
+  implicitHeight: _implicitSize
 
   Image
   {
     id: dummyImage
 
-    width: root.width
-    height: root.height
+    anchors.fill: parent
+
     fillMode: Image.PreserveAspectFit
-    source: root.icon
-    sourceSize: Qt.size(parent.width, parent.height)
+    sourceSize: Qt.size(root.width, root.height)
     visible: false
   } // Image
 
   ColorOverlay
   {
+    id: iconOverlay
+
     anchors.fill: dummyImage
+
     source: dummyImage
     color: Qt.rgba(root.color.r, root.color.g, root.color.b, 1)
     cached: true

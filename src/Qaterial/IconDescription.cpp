@@ -20,23 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import QtQuick 2.12 as QQ
-import QtGraphicalEffects 1.12 as QGE
+// ──── INCLUDE ────
 
-QQ.Item
-{
-  id: root
+// Library Headers
+#include <Qaterial/IconDescription.hpp>
 
-  property real radius: 8
+// Dependencies Headers
 
-  layer.enabled: radius > 0
-  layer.effect: QGE.OpacityMask
-  {
-    maskSource: QQ.Rectangle
-    {
-      width: root.width
-      height: root.height
-      radius: root.radius
-    }
-  }
+// Qt Headers
+
+// Stl Headers
+
+// ──── DECLARATION ────
+
+// ──── FUNCTIONS ────
+
+namespace qaterial {
+
 }

@@ -20,23 +20,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import QtQuick 2.12 as QQ
-import QtGraphicalEffects 1.12 as QGE
+import QtQuick 2.15
+import Qaterial 1.0 as Qaterial
 
-QQ.Item
+Qaterial.IconLabel
 {
   id: root
 
-  property real radius: 8
+  property int radius: 0
+  property int fillMode: Image.PreserveAspectFit
 
-  layer.enabled: radius > 0
-  layer.effect: QGE.OpacityMask
+  iconItem: Qaterial.ClipRRect
   {
-    maskSource: QQ.Rectangle
+    id: clipper
+
+    radius: root.radius
+
+    Image
     {
-      width: root.width
-      height: root.height
-      radius: root.radius
+      anchors.fill: parent
+
+      source: root.icon.source
+      fillMode: root.fillMode
     }
   }
 }

@@ -144,7 +144,11 @@ T.Button
     id: _iconLabel
     spacing: _control.spacing
     display: _control.display
-    icon: _control.icon
+    icon.source: _control.icon.source
+    icon.width: _control.icon.width
+    icon.height: _control.icon.height
+    icon.color: _control.icon.color
+    icon.cache: _control.icon.cache
     text: _control.text
     font: _control.font
     color: _control.foregroundColor
