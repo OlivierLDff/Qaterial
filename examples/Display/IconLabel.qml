@@ -163,7 +163,7 @@ Column
             textType: Qaterial.Style.TextType.Overline
             Qaterial.DebugRectangle
             {
-              anchors.fill: parent;
+              anchors.fill: parent
               border.color: Qaterial.Colors.green
             }
           }
