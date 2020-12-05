@@ -34,6 +34,8 @@
 #include <Qaterial/Clipboard.hpp>
 #include <Qaterial/FolderTreeModel.hpp>
 #include <Qaterial/Layout.hpp>
+#include <Qaterial/IconDescription.hpp>
+#include <Qaterial/IconLabelPositionner.hpp>
 
 // Qt Core
 #include <QDir>
@@ -102,6 +104,12 @@ static void Qaterial_registerTypes()
 
     LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
     qaterial::Logger::registerSingleton(*_uri, _major, _minor);
+
+    // DISPLAY
+    LOG_DEV_INFO("Register {}.IconDescription {}.{} to QML", *_uri, _major, _minor);
+    qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.IconLabelPositionner {}.{} to QML", *_uri, _major, _minor);
+    qaterial::IconLabelPositionner::registerToQml(*_uri, _major, _minor);
 
     // NAVIGATION
 
