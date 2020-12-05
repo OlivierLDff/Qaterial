@@ -47,10 +47,8 @@ Column
     verticalAlignment: Qt.AlignVCenter
     spacing: 8
     mirrored: mirroredButton.checked
-    //iconImplicitSize: Qt.size(iconSizeSlider.value, iconSizeSlider.value)
-    //labelImplicitSize: Qt.size(labelWidthSlider.value, 20)
-    iconImplicitSize: Qt.size(icon.implicitWidth, icon.implicitHeight)
-    labelImplicitSize: Qt.size(label.implicitWidth, label.implicitHeight)
+    iconImplicitSize: Qt.size(iconSizeSlider.value, iconSizeSlider.value)
+    labelImplicitSize: Qt.size(labelWidthSlider.value, 20)
     containerSize: Qt.size(containerWidthSlider.value, 100)
   }
 
@@ -130,14 +128,6 @@ Column
 
         width: positionner.labelRect.width
         height: positionner.labelRect.height
-
-        Qaterial.Label
-        {
-          id: label
-          text: "Icon Label"
-          elide: Text.ElideRight
-          anchors.fill: parent
-        }
       }
     }
   }

@@ -26,7 +26,21 @@ import Qaterial 1.0 as Qaterial
 
 Column
 {
+  id: root
+
   spacing: 8
+
+  property int display:
+  {
+    if(iconOnlyRadio.checked)
+      return QQC2.AbstractButton.IconOnly
+    if(textOnlyRadio.checked)
+      return QQC2.AbstractButton.TextOnly
+    if(textBesideIconRadio.checked)
+      return QQC2.AbstractButton.TextBesideIcon
+    if(textUnderIconRadio.checked)
+      return QQC2.AbstractButton.TextUnderIcon
+  }
 
   Row
   {
@@ -62,17 +76,7 @@ Column
           icon.height: iconSizeSlider.value
 
           spacing: spacingSlider.value
-          display:
-          {
-            if(iconOnlyRadio.checked)
-              return QQC2.AbstractButton.IconOnly
-            if(textOnlyRadio.checked)
-              return QQC2.AbstractButton.TextOnly
-            if(textBesideIconRadio.checked)
-              return QQC2.AbstractButton.TextBesideIcon
-            if(textUnderIconRadio.checked)
-              return QQC2.AbstractButton.TextUnderIcon
-          }
+          display: root.display
 
           Qaterial.DebugRectangle
           {
@@ -94,17 +98,7 @@ Column
           width: Math.min(100, implicitWidth)
 
           spacing: spacingSlider.value
-          display:
-          {
-            if(iconOnlyRadio.checked)
-              return QQC2.AbstractButton.IconOnly
-            if(textOnlyRadio.checked)
-              return QQC2.AbstractButton.TextOnly
-            if(textBesideIconRadio.checked)
-              return QQC2.AbstractButton.TextBesideIcon
-            if(textUnderIconRadio.checked)
-              return QQC2.AbstractButton.TextUnderIcon
-          }
+          display: root.display
 
           Qaterial.DebugRectangle
           {
@@ -143,17 +137,7 @@ Column
           }
 
           spacing: spacingSlider.value
-          display:
-          {
-            if(iconOnlyRadio.checked)
-              return QQC2.AbstractButton.IconOnly
-            if(textOnlyRadio.checked)
-              return QQC2.AbstractButton.TextOnly
-            if(textBesideIconRadio.checked)
-              return QQC2.AbstractButton.TextBesideIcon
-            if(textUnderIconRadio.checked)
-              return QQC2.AbstractButton.TextUnderIcon
-          }
+          display: root.display
 
           Qaterial.DebugRectangle
           {
@@ -185,17 +169,7 @@ Column
           }
 
           spacing: spacingSlider.value
-          display:
-          {
-            if(iconOnlyRadio.checked)
-              return QQC2.AbstractButton.IconOnly
-            if(textOnlyRadio.checked)
-              return QQC2.AbstractButton.TextOnly
-            if(textBesideIconRadio.checked)
-              return QQC2.AbstractButton.TextBesideIcon
-            if(textUnderIconRadio.checked)
-              return QQC2.AbstractButton.TextUnderIcon
-          }
+          display: root.display
 
           Qaterial.DebugRectangle
           {
