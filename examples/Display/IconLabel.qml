@@ -123,6 +123,7 @@ Column
 
           icon.width: iconSizeSlider.value
           icon.height: iconSizeSlider.value
+          icon.source: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/langfr-1280px-Qt_logo_2016.svg.png"
 
           iconItem: Qaterial.ClipRRect
           {
@@ -130,17 +131,14 @@ Column
 
             radius: 0
 
-            implicitWidth: imageLabel.icon.width
-            implicitHeight: imageLabel.icon.height
-
             Image
             {
-              source: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/langfr-1280px-Qt_logo_2016.svg.png"
+              source: imageLabel.icon.source
               fillMode: Image.PreserveAspectFit
               anchors.centerIn: parent
 
-              width: parent.implicitWidth
-              height: parent.implicitHeight
+              width: parent.width
+              height: parent.height
             }
           }
 

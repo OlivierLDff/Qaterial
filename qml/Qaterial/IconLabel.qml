@@ -93,15 +93,15 @@ QQC2.Control
 
       Binding on iconImplicitSize
       {
-        when: iconLoader.item
-        value: iconLoader.item ? Qt.size(iconLoader.item.implicitWidth, iconLoader.item.implicitHeight) : Qt.size(-1, -1)
+        when: iconLoader.item && root.icon.source.toString()
+        value: iconLoader.item ? Qt.size(iconLoader.item.width, iconLoader.item.height) : undefined
         restoreMode: Binding.RestoreBindingOrValue
       }
 
       Binding on labelImplicitSize
       {
         when: labelLoader.item
-        value: labelLoader.item ? Qt.size(labelLoader.item.implicitWidth, labelLoader.item.implicitHeight) : Qt.size(-1, -1)
+        value: labelLoader.item ? Qt.size(labelLoader.item.implicitWidth, labelLoader.item.implicitHeight) : undefined
         restoreMode: Binding.RestoreBindingOrValue
       }
 
@@ -147,8 +147,8 @@ QQC2.Control
 
       x: _positionner.iconRect.x
       y: _positionner.iconRect.y
-      width: _positionner.iconRect.width
-      height: _positionner.iconRect.height
+      width: root.icon.width
+      height: root.icon.height
 
       //Qaterial.DebugRectangle
       //{
