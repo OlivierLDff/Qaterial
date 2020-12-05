@@ -72,9 +72,9 @@ QQC2.Control
   }
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                          implicitContentWidth + leftPadding + rightPadding)
+    implicitContentWidth + leftPadding + rightPadding)
   implicitHeight: Math.max(implicitBackgroundHeight + leftInset + rightInset,
-                           implicitContentHeight + leftPadding + rightPadding)
+    implicitContentHeight + leftPadding + rightPadding)
 
   contentItem: Item
   {

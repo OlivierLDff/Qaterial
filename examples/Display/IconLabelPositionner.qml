@@ -79,7 +79,7 @@ Column
           if(positionner.horizontalAlignment & Qt.AlignRight)
             return parent.width - width
           if(positionner.horizontalAlignment & Qt.AlignHCenter)
-            return (parent.width - width)/2
+            return (parent.width - width) / 2
           return 0
         }
 
@@ -88,7 +88,7 @@ Column
           if(positionner.verticalAlignment & Qt.AlignBottom)
             return parent.height - height
           if(positionner.verticalAlignment & Qt.AlignVCenter)
-            return (parent.height - height)/2
+            return (parent.height - height) / 2
           return 0
         }
 

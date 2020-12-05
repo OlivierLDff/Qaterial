@@ -179,7 +179,8 @@ Column
           {
             text: customLabel.text
             textType: Qaterial.Style.TextType.Overline
-            Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Colors.green }
+            Qaterial.DebugRectangle { anchors.fill: parent;
+              border.color: Qaterial.Colors.green }
           }
 
           spacing: spacingSlider.value
