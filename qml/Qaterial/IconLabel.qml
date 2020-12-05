@@ -47,6 +47,8 @@ QQC2.Control
   property string text
   property int textType: Qaterial.Style.TextType.Body1
   property int elide: Text.ElideRight
+  property int wrapMode: Text.NoWrap
+  property int maximumLineCount: Number.MAX_SAFE_INTEGER
 
   property Qaterial.IconDescription icon: Qaterial.IconDescription
   {
@@ -69,6 +71,8 @@ QQC2.Control
     textType: root.textType
     color: root.color
     elide: root.elide
+    wrapMode: root.wrapMode
+    maximumLineCount: root.maximumLineCount
   }
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
@@ -79,6 +83,9 @@ QQC2.Control
   contentItem: Item
   {
     id: _contentItem
+
+    implicitWidth: _positionner.implicitSize.width
+    implicitHeight: _positionner.implicitSize.height
 
     Qaterial.IconLabelPositionner
     {
@@ -103,18 +110,16 @@ QQC2.Control
         when: labelLoader.item
         value: labelLoader.item ? Qt.size(labelLoader.item.implicitWidth, labelLoader.item.implicitHeight) : undefined
         restoreMode: Binding.RestoreBindingOrValue
+        delayed: true
       }
 
       containerSize: Qt.size(_contentItem.width, _contentItem.height)
     }
 
-    implicitWidth: _positionner.implicitSize.width
-    implicitHeight: _positionner.implicitSize.height
-
     //Qaterial.DebugRectangle
     //{
     //  anchors.fill: parent
-    //  border.color: Qaterial.Colors.blue
+    //  border.color: Qaterial.Colors.red
     //}
 
     Loader
