@@ -1,159 +1,165 @@
-/**
- * Copyright (C) Olivier Le Doeuff 2019
- * Contact: olivier.ldff@gmail.com
- */
+// MIT License
+//
+// Copyright (c) 2020 Olivier Le Doeuff
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-// Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-
-// Qaterial
+import QtQuick 2.15
+import QtQuick.Controls 2.15 as QQC2
+import QtQml 2.15
 import Qaterial 1.0 as Qaterial
 
-Item
+QQC2.Control
 {
-  id: _control
-  property
-  var icon: QtObject
+  id: root
+
+  enum Display
   {
-    property double width: 24
-    property double height: width
-    property string source: ""
-    property color color: _control.color
+    IconOnly,
+    TextOnly,
+    TextBesideIcon,
+    TextUnderIcon
   }
-  property alias text: _label.text
-  property color color
-  property alias font: _label.font
-  property alias textType: _label.textType
-  property bool mirrored: false
-  property double spacing: 0
-  property int elide: Text.ElideNone
-  property alias alignment: _label.horizontalAlignment
-  property bool alwaysRenderIcon: false
 
-  readonly property double iconWidth: (_icon.visible ? icon.width : 0)
-  readonly property double iconHeight: (_icon.visible ? icon.height : 0)
+  property int display: IconLabel.Display.TextBesideIcon
+  spacing: 8
+  property color color: root.enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.disabledTextColor()
 
-  readonly property double labelWidth: (_label.visible ? _label.contentWidth : 0)
-  readonly property double labelHeight: (_label.visible ? _label.contentHeight : 0)
+  property int horizontalAlignment: Qt.AlignHCenter
+  property int verticalAlignment: Qt.AlignVCenter
 
-  implicitWidth: iconOnTop ? Math.max(iconWidth, labelWidth) : iconWidth + labelWidth + spacing
-  implicitHeight: iconOnTop ? iconHeight + labelHeight : Math.max(iconHeight, labelHeight)
+  property string text
+  property int textType: Qaterial.Style.TextType.Body1
+  property int elide: Text.ElideRight
+  property int wrapMode: Text.NoWrap
+  property int maximumLineCount: Number.MAX_SAFE_INTEGER
 
-  property bool drawline: Qaterial.Style.debug.drawDebugIconLabel
-
-  // AbstractButton.IconOnly | AbstractButton.TextOnly | AbstractButton.TextBesideIcon | AbstractButton.TextUnderIcon
-  property int display: AbstractButton.TextBesideIcon
-
-  readonly property bool iconOnTop: display === AbstractButton.TextUnderIcon && _icon.visible
-
-  Qaterial.DebugRectangle
+  property Qaterial.IconDescription icon: Qaterial.IconDescription
   {
-    anchors.fill: parent
-    border.color: "green"
-    visible: _control.drawline
-  } // DebugRectangle
+    color: root.color
+  }
 
-  Item
+  // Component to be instanciated as render for icon
+  property Component iconItem: Qaterial.Icon
   {
-    id: _iconItem
-    width: _control.icon.width
-    height: _control.icon.height
-    visible: (_control.display != AbstractButton.TextOnly) && ((_icon.source != "") || alwaysRenderIcon)
+    icon: root.icon.source
+    implicitWidth: icon.toString() ? root.icon.width : 0
+    implicitHeight: icon.toString() ? root.icon.height : 0
+    color: root.icon.color
+    cached: root.icon.cache
+  }
 
-    Qaterial.ColorIcon
-    {
-      id: _icon
-      source: _control.icon.source
-      width: _control.icon.width
-      height: _control.icon.height
-      iconSize: Math.max(width, height)
-      color: _control.icon.color
-
-      anchors.centerIn: parent
-    } // ColorIcon
-
-    Qaterial.DebugRectangle
-    {
-      anchors.fill: parent
-      border.color: "orange"
-      visible: _control.drawline
-    } // DebugRectangle
-
-    //readonly property bool textOnLeft: !_control.iconOnTop && _control.mirrored && _label.visible
-    //readonly property bool textOnRight: !_control.iconOnTop && !_control.mirrored && _label.visible
-
-    function reanchors()
-    {
-      anchors.left = undefined
-      anchors.right = undefined
-
-      var textOnLeft = !_control.iconOnTop && _control.mirrored && ((_control.display != AbstractButton.IconOnly) &&
-        _label.text != "")
-      var textOnRight = !_control.iconOnTop && !_control.mirrored && ((_control.display != AbstractButton.IconOnly) &&
-        _label.text != "")
-
-      if((!textOnLeft && !_control.iconOnTop) || _control.iconOnTop)
-        anchors.left = _control.left
-
-      if((!textOnRight && !_control.iconOnTop) || _control.iconOnTop)
-        anchors.right = _control.right
-
-      anchors.verticalCenter = undefined
-      anchors.top = undefined
-      if(_control.iconOnTop)
-        anchors.top = _control.top
-      else
-        anchors.verticalCenter = _control.verticalCenter
-    } // function reanchors()
-    //Component.onCompleted: reanchors()
-  } // Item
-
-  Qaterial.Label
+  property Component labelItem: Qaterial.Label
   {
-    id: _label
-    color: _control.color
-    visible: (_control.display != AbstractButton.IconOnly) && (text != "")
-    elide: _control.elide
-    horizontalAlignment: Text.AlignHCenter
+    text: root.text
+    textType: root.textType
+    color: root.color
+    elide: root.elide
+    wrapMode: root.wrapMode
+    maximumLineCount: root.maximumLineCount
+  }
 
-    readonly property bool iconOnLeft: !_control.iconOnTop && !_control.mirrored && _icon.visible
-    readonly property bool iconOnRight: !_control.iconOnTop && _control.mirrored && _icon.visible
+  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+    implicitContentWidth + leftPadding + rightPadding)
+  implicitHeight: Math.max(implicitBackgroundHeight + leftInset + rightInset,
+    implicitContentHeight + leftPadding + rightPadding)
 
-    anchors.left: iconOnLeft ? _iconItem.right : _control.left
-    anchors.right: iconOnRight ? _iconItem.left : _control.right
+  contentItem: Item
+  {
+    id: _contentItem
 
-    anchors.leftMargin: iconOnLeft ? _control.spacing : _control.anchors.leftMargin
-    anchors.rightMargin: iconOnRight ? _control.spacing : _control.anchors.rightMargin
-    anchors.baselineOffset: _control.iconOnTop ? _control.spacing : 0
+    implicitWidth: _positionner.implicitSize.width
+    implicitHeight: _positionner.implicitSize.height
 
-    function reanchors()
+    Qaterial.IconLabelPositionner
     {
-      anchors.verticalCenter = undefined
-      anchors.baseline = undefined
-      if(_control.iconOnTop)
+      id: _positionner
+
+      display: root.display
+      spacing: root.spacing
+      mirrored: root.mirrored
+
+      horizontalAlignment: root.horizontalAlignment
+      verticalAlignment: root.verticalAlignment
+
+      Binding on iconImplicitSize
       {
-        anchors.baseline = _control.verticalCenter
+        when: iconLoader.item && root.icon.source.toString()
+        value: iconLoader.item ? Qt.size(iconLoader.item.width, iconLoader.item.height) : undefined
+        restoreMode: Binding.RestoreBindingOrValue
       }
-      else
-        anchors.verticalCenter = _control.verticalCenter
-    } // function reanchors()
 
-    Qaterial.DebugRectangle
+      Binding on labelImplicitSize
+      {
+        when: labelLoader.item
+        value: labelLoader.item ? Qt.size(labelLoader.item.implicitWidth, labelLoader.item.implicitHeight) : undefined
+        restoreMode: Binding.RestoreBindingOrValue
+        delayed: true
+      }
+
+      containerSize: Qt.size(_contentItem.width, _contentItem.height)
+    }
+
+    //Qaterial.DebugRectangle
+    //{
+    //  anchors.fill: parent
+    //  border.color: Qaterial.Colors.red
+    //}
+
+    Loader
     {
-      anchors.fill: parent
-      border.color: "red"
-      visible: _control.drawline
-    } // DebugRectangle
-  } // Label
+      id: labelLoader
 
-  function reanchors()
-  {
-    _label.reanchors()
-    _iconItem.reanchors()
-  } // function reanchors()
+      active: root.display !== IconLabel.Display.IconOnly
+      sourceComponent: root.labelItem
 
-  Component.onCompleted: reanchors()
-  onIconOnTopChanged: reanchors()
-  onTextChanged: reanchors()
-} // Item
+      x: _positionner.labelRect.x
+      y: _positionner.labelRect.y
+
+      // ALl the trick is here !
+      // We need to force the Label to evaluate its implicitWidth
+      width: _positionner.labelRect.width || undefined
+
+      //Qaterial.DebugRectangle
+      //{
+      //  anchors.fill: parent
+      //  border.color: Qaterial.Colors.blue
+      //}
+    }
+
+    Loader
+    {
+      id: iconLoader
+
+      active: root.display !== IconLabel.Display.TextOnly
+      sourceComponent: root.iconItem
+
+      x: _positionner.iconRect.x
+      y: _positionner.iconRect.y
+      width: root.icon.width
+      height: root.icon.height
+
+      //Qaterial.DebugRectangle
+      //{
+      //  anchors.fill: parent
+      //  border.color: Qaterial.Colors.orange
+      //}
+    }
+  }
+}

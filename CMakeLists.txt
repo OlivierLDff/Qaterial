@@ -94,6 +94,13 @@ add_subdirectory(qml)
 
 set(QATERIAL_SOURCE_DIR src/Qaterial)
 
+set(QATERIAL_DISPLAY_SRCS
+  ${QATERIAL_SOURCE_DIR}/IconDescription.hpp
+  ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.hpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.cpp
+)
+
 set(QATERIAL_LAYOUT_SRCS
   ${QATERIAL_SOURCE_DIR}/Layout.hpp
   ${QATERIAL_SOURCE_DIR}/Layout.cpp
@@ -128,12 +135,14 @@ set(QATERIAL_UTILS_SRCS
 )
 
 set(QATERIAL_SRCS
+  ${QATERIAL_DISPLAY_SRCS}
   ${QATERIAL_LAYOUT_SRCS}
   ${QATERIAL_IO_SRCS}
   ${QATERIAL_NAVIGATION_SRCS}
   ${QATERIAL_UTILS_SRCS}
 )
 
+source_group("Display" FILES ${QATERIAL_DISPLAY_SRCS})
 source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
 source_group("IO" FILES ${QATERIAL_IO_SRCS})
 source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
