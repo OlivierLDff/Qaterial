@@ -102,6 +102,12 @@ Item
           root.settings.rejectedCallback()
         }
       }
+
+      onDiscarded: function()
+      {
+        if(root.settings && root.settings.onDiscarded)
+          root.settings.onDiscarded()
+      }
     } // AlertIconDialog
   } // Component
 
