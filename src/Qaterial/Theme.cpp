@@ -20,33 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_TEMPLATE_HPP__
-#define __QATERIAL_TEMPLATE_HPP__
-
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+#include <Qaterial/Theme.hpp>
 
 // Dependencies Headers
 
 // ──── DECLARATION ────
 
-// ──── CLASS ────
+// ──── FUNCTIONS ────
 
 namespace qaterial {
 
-class QATERIAL_API_ _SingletonClass : public QObject
-{
-    Q_OBJECT
-    QATERIAL_SINGLETON_IMPL(_SingletonClass, _singletonClass, _SingletonClass);
-
-    // ──── CONSTRUCTOR ────
-public:
-    _SingletonClass(QObject* parent = nullptr) : QObject(parent) {}
-};
-
 }
-
-#endif

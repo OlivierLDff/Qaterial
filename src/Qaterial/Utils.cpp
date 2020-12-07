@@ -28,6 +28,7 @@
 #include <Qaterial/Utils.hpp>
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Logger.hpp>
+#include <Qaterial/Theme.hpp>
 #include <Qaterial/StepperElement.hpp>
 #include <Qaterial/TreeElement.hpp>
 #include <Qaterial/TextFile.hpp>
@@ -105,7 +106,14 @@ static void Qaterial_registerTypes()
     LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
     qaterial::Logger::registerSingleton(*_uri, _major, _minor);
 
+    // THEME
+    LOG_DEV_INFO("Register {}.TextTheme {}.{} to QML", *_uri, _major, _minor);
+    qaterial::TextTheme::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.Theme {}.{} to QML", *_uri, _major, _minor);
+    qaterial::Theme::registerToQml(*_uri, _major, _minor);
+
     // DISPLAY
+
     LOG_DEV_INFO("Register {}.IconDescription {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.IconLabelPositionner {}.{} to QML", *_uri, _major, _minor);

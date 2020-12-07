@@ -27,10 +27,6 @@
 
 // Dependencies Headers
 
-// Qt Headers
-
-// Stl Headers
-
 // ──── DECLARATION ────
 
 // ──── FUNCTIONS ────
