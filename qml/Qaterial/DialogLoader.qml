@@ -459,7 +459,15 @@ Item
     }
     _protectPopStack = false
 
-    _dialogLoader.sourceComponent = comp
+    if(_dialogLoader.sourceComponent === comp)
+    {
+      _dialogLoader.active = false
+      _dialogLoader.active = true
+    }
+    else
+    {
+      _dialogLoader.sourceComponent = comp
+    }
   }
 
   function _popStack()
