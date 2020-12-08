@@ -58,7 +58,7 @@ Row
       icon.height: 32
 
       text: "Image Label"
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
 
@@ -71,7 +71,7 @@ Row
       text: "Rounded Image Label"
       radius: 16
       fillMode: Image.PreserveAspectCrop
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
 
@@ -83,7 +83,7 @@ Row
 
       text: "Multi Line\n" +
         "Image Label"
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
 
@@ -96,7 +96,7 @@ Row
       width: 200
 
       text: "Some long text being elided"
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
 
@@ -111,7 +111,7 @@ Row
       text: "Some long text being wrapped on the next line. Whaou this text is very long."
       wrapMode: Text.WordWrap
 
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
 
@@ -126,7 +126,7 @@ Row
       text: "Some long text being wrapped on the next line that should only be displayed in two line then elide"
       wrapMode: Text.WordWrap
       maximumLineCount: 2
-      LayoutMirroring.enabled: mirroredButton.checked
+      mirrored: mirroredButton.checked
       display: root.display
     }
   }
