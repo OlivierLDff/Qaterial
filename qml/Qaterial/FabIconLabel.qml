@@ -24,7 +24,7 @@ Item
 
   property alias text: _label.text
   property color color
-  property alias font: _label.font
+  property alias textType: _label.textType
   property bool mirrored: false
   property double spacing: 0
   property int elide: Text.ElideNone
