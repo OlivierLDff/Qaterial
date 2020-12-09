@@ -21,11 +21,10 @@
 // SOFTWARE.
 
 import QtQuick 2.15
-import QtQuick.Controls 2.15 as QQC2
 import QtQml 2.15
 import Qaterial 1.0 as Qaterial
 
-QQC2.Control
+Item
 {
   id: root
 
@@ -38,7 +37,7 @@ QQC2.Control
   }
 
   property int display: IconLabel.Display.TextBesideIcon
-  spacing: 8
+  property real spacing: 8
   property color color: root.enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.disabledTextColor()
 
   property int horizontalAlignment: Qt.AlignHCenter
@@ -49,6 +48,7 @@ QQC2.Control
   property int elide: Text.ElideRight
   property int wrapMode: Text.NoWrap
   property int maximumLineCount: Number.MAX_SAFE_INTEGER
+  property bool mirrored: false
 
   property Qaterial.IconDescription icon: Qaterial.IconDescription
   {
@@ -56,7 +56,7 @@ QQC2.Control
   }
 
   // Component to be instanciated as render for icon
-  property Component iconItem: Qaterial.Icon
+  property Item iconItem: Qaterial.Icon
   {
     icon: root.icon.source
     implicitWidth: icon.toString() ? root.icon.width : 0
@@ -65,7 +65,7 @@ QQC2.Control
     cached: root.icon.cache
   }
 
-  property Component labelItem: Qaterial.Label
+  property Item labelItem: Qaterial.Label
   {
     text: root.text
     textType: root.textType
@@ -75,91 +75,99 @@ QQC2.Control
     maximumLineCount: root.maximumLineCount
   }
 
-  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    implicitContentWidth + leftPadding + rightPadding)
-  implicitHeight: Math.max(implicitBackgroundHeight + leftInset + rightInset,
-    implicitContentHeight + leftPadding + rightPadding)
+  implicitWidth: _positionner.implicitSize.width
+  implicitHeight: _positionner.implicitSize.height
 
-  contentItem: Item
+  Qaterial.IconLabelPositionner
   {
-    id: _contentItem
+    id: _positionner
 
-    implicitWidth: _positionner.implicitSize.width
-    implicitHeight: _positionner.implicitSize.height
+    display: root.display
+    spacing: root.spacing
+    mirrored: root.mirrored
 
-    Qaterial.IconLabelPositionner
+    horizontalAlignment: root.horizontalAlignment
+    verticalAlignment: root.verticalAlignment
+
+    iconImplicitSize: root.icon.source.toString() && root.display !== IconLabel.Display.TextOnly ? Qt.size(root.icon.width, root.icon.height) : undefined
+    labelImplicitSize: root.display !== IconLabel.Display.IconOnly ? Qt.size(root.labelItem.implicitWidth, root.labelItem.implicitHeight) : undefined
+
+    Binding on containerSize
     {
-      id: _positionner
-
-      display: root.display
-      spacing: root.spacing
-      mirrored: root.mirrored
-
-      horizontalAlignment: root.horizontalAlignment
-      verticalAlignment: root.verticalAlignment
-
-      Binding on iconImplicitSize
-      {
-        when: iconLoader.item && root.icon.source.toString()
-        value: iconLoader.item ? Qt.size(iconLoader.item.width, iconLoader.item.height) : undefined
-        restoreMode: Binding.RestoreBindingOrValue
-      }
-
-      Binding on labelImplicitSize
-      {
-        when: labelLoader.item
-        value: labelLoader.item ? Qt.size(labelLoader.item.implicitWidth, labelLoader.item.implicitHeight) : undefined
-        restoreMode: Binding.RestoreBindingOrValue
-        delayed: true
-      }
-
-      containerSize: Qt.size(_contentItem.width, _contentItem.height)
+      value: Qt.size(root.width, root.height)
+      delayed: true
     }
+  }
 
-    //Qaterial.DebugRectangle
-    //{
-    //  anchors.fill: parent
-    //  border.color: Qaterial.Colors.red
-    //}
+  // Qaterial.DebugRectangle
+  // {
+  //   id: rect
+  //   anchors.fill: parent
+  //   border.color: Qaterial.Colors.red
+  // }
 
-    Loader
-    {
-      id: labelLoader
+  children: [iconItem, labelItem]
 
-      active: root.display !== IconLabel.Display.IconOnly
-      sourceComponent: root.labelItem
+  Binding
+  {
+    target: root.labelItem
+    property: "visible"
+    value: root.display !== IconLabel.Display.IconOnly
+  }
 
-      x: _positionner.labelRect.x
-      y: _positionner.labelRect.y
+  Binding
+  {
+    target: root.labelItem
+    property: "x"
+    value: _positionner.labelRect.x
+  }
 
-      // ALl the trick is here !
-      // We need to force the Label to evaluate its implicitWidth
-      width: _positionner.labelRect.width || undefined
+  Binding
+  {
+    target: root.labelItem
+    property: "y"
+    value: _positionner.labelRect.y
+  }
 
-      //Qaterial.DebugRectangle
-      //{
-      //  anchors.fill: parent
-      //  border.color: Qaterial.Colors.blue
-      //}
-    }
+  Binding
+  {
+    target: root.labelItem
+    property: "width"
+    value: _positionner.labelRect.width
+  }
 
-    Loader
-    {
-      id: iconLoader
+  Binding
+  {
+    target: root.iconItem
+    property: "visible"
+    value: root.display !== IconLabel.Display.TextOnly
+  }
 
-      active: root.display !== IconLabel.Display.TextOnly
-      sourceComponent: root.iconItem
+  Binding
+  {
+    target: root.iconItem
+    property: "x"
+    value: _positionner.iconRect.x
+  }
 
-      x: _positionner.iconRect.x
-      y: _positionner.iconRect.y
-      width: root.icon.width
-      height: root.icon.height
+  Binding
+  {
+    target: root.iconItem
+    property: "y"
+    value: _positionner.iconRect.y
+  }
 
-      //Qaterial.DebugRectangle
-      //{
-      //  anchors.fill: parent
-      //  border.color: Qaterial.Colors.orange
-      //}
-    }
+  Binding
+  {
+    target: root.iconItem
+    property: "width"
+    value: root.icon.width
+  }
+
+  Binding
+  {
+    target: root.iconItem
+    property: "height"
+    value: root.icon.height
   }
 }

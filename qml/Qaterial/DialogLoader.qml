@@ -102,6 +102,12 @@ Item
           root.settings.rejectedCallback()
         }
       }
+
+      onDiscarded: function()
+      {
+        if(root.settings && root.settings.onDiscarded)
+          root.settings.onDiscarded()
+      }
     } // AlertIconDialog
   } // Component
 
@@ -453,7 +459,15 @@ Item
     }
     _protectPopStack = false
 
-    _dialogLoader.sourceComponent = comp
+    if(_dialogLoader.sourceComponent === comp)
+    {
+      _dialogLoader.active = false
+      _dialogLoader.active = true
+    }
+    else
+    {
+      _dialogLoader.sourceComponent = comp
+    }
   }
 
   function _popStack()

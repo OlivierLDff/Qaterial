@@ -97,12 +97,19 @@ T.MenuItem
     //width: _control.icon.width
     //height: _control.icon.height
     width: Qaterial.Style.menuItem.shortcutImplicitWidth
-    text: _control.action && _control.action.shortcut ? _control.action.shortcut : ""
-    visible: _control.action && _control.action.shortcut != ""
+    text: dummyShortcut.nativeText
+    visible: _control.action && dummyShortcut.nativeText != ""
     horizontalAlignment: _control.mirrored ? Qt.AlignRight : Qt.AlignLeft
     textType: Qaterial.Style.TextType.MenuHint
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
+
+    Shortcut
+    {
+      id: dummyShortcut
+      enabled: false
+      sequence: _control.action ? _control.action.shortcut : ""
+    }
 
     Qaterial.DebugRectangle
     {

@@ -37,13 +37,6 @@ T.TabButton
     Qaterial.Style.tabButton.spacingVertical) : (useSmallFont ? Qaterial.Style.tabButton.smallSpacing : Qaterial
     .Style.tabButton.spacing)
 
-  font.family: Qaterial.Style.textTypeToFontFamily(Qaterial.Style.TextType.Button)
-  font.styleName: Qaterial.Style.textTypeToStyleName(Qaterial.Style.TextType.Button)
-  font.pixelSize: useSmallFont ? Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Hint) : Qaterial.Style
-    .textTypeToPixelSize(Qaterial.Style.TextType.Button)
-  font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Button)
-  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
-
   icon.width: Qaterial.Style.tabButton.iconWidth
   icon.height: Qaterial.Style.tabButton.iconWidth
   icon.color: foregroundColor
@@ -83,7 +76,6 @@ T.TabButton
     icon.color: _control.icon.color
     icon.cache: _control.icon.cache
     text: _control.text
-    font: _control.font
     color: _control.foregroundColor
   } // IconLabel
 

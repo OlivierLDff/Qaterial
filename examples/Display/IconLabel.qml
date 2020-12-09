@@ -66,7 +66,7 @@ Column
         {
           id: iconLabel
 
-          LayoutMirroring.enabled: mirroredButton.checked
+          mirrored: mirroredButton.checked
 
           enabled: enabledButton.checked
           text: textField.text
@@ -86,7 +86,7 @@ Column
 
         Qaterial.IconLabel
         {
-          LayoutMirroring.enabled: mirroredButton.checked
+          mirrored: mirroredButton.checked
 
           enabled: enabledButton.checked
           text: textField.text
@@ -110,7 +110,7 @@ Column
         {
           id: imageLabel
 
-          LayoutMirroring.enabled: mirroredButton.checked
+          mirrored: mirroredButton.checked
 
           enabled: enabledButton.checked
           text: "Custom Image"
@@ -149,7 +149,7 @@ Column
         {
           id: customLabel
 
-          LayoutMirroring.enabled: mirroredButton.checked
+          mirrored: mirroredButton.checked
 
           enabled: enabledButton.checked
           text: "Custom Label"
@@ -283,7 +283,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `IconOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -295,7 +295,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -307,7 +307,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextBesideIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -319,7 +319,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextUnderIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -335,7 +335,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `IconOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -347,7 +347,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -359,7 +359,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextBesideIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -371,7 +371,7 @@ Column
         Qaterial.IconLabel
         {
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextUnderIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -412,7 +412,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `IconOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -425,7 +425,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -438,7 +438,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextBesideIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -451,7 +451,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: false
+          mirrored: false
 
           text: `TextUnderIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -470,7 +470,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `IconOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -483,7 +483,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextOnly`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -496,7 +496,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextBesideIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
@@ -509,7 +509,7 @@ Column
         {
           width: widthSlider.value
           anchors.verticalCenter: parent.verticalCenter
-          LayoutMirroring.enabled: true
+          mirrored: true
 
           text: `TextUnderIcon`
           icon.source: Qaterial.Icons.rocketLaunchOutline
