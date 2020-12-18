@@ -20,7 +20,7 @@ Qaterial.ModalDialog
   contentItem: Qaterial.Label
   {
     text: _control.text
-    textType: Qaterial.Style.TextType.ListText
+    font: _control.font
     color: Qaterial.Style.secondaryTextColor()
     wrapMode: Text.Wrap
   } // Label

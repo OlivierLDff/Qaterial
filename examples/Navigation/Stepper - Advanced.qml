@@ -139,7 +139,7 @@ Item
   } // HorizontalStepper
 
   // It can be interesting to display steps supportingText
-  Qaterial.Label
+  Qaterial.LabelBody1
   {
     id: supportingTextLabel
 
@@ -148,7 +148,6 @@ Item
     y: stepper.vertical ? (_row.y - height) : (stepper.height + 10)
 
     text: stepper.currentElement.supportingText
-    textType: Qaterial.Style.TextType.Body2
     horizontalAlignment: Text.AlignHCenter
 
     wrapMode: Text.Wrap

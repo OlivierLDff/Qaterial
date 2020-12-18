@@ -146,10 +146,9 @@ Column
       spacing: 8
       width: 220
 
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         text: "Input"
-        textType: Qaterial.Style.TextType.Title
       }
 
       Qaterial.Label
@@ -164,10 +163,9 @@ Column
           `containerSize : ${positionner.containerSize}`
       }
 
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         text: "Output"
-        textType: Qaterial.Style.TextType.Title
       }
 
       Qaterial.Label
@@ -192,10 +190,9 @@ Column
         spacing: 32
         Column
         {
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             text: "Horizontal Align"
-            textType: Qaterial.Style.TextType.Title
           }
 
           Row
@@ -229,10 +226,9 @@ Column
 
         Column
         {
-          Qaterial.Label
+          Qaterial.LabelHeadline6
           {
             text: "Vertical Align"
-            textType: Qaterial.Style.TextType.Title
           }
 
           Row
@@ -265,10 +261,9 @@ Column
         }
       } // Row
 
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         text: "Layout"
-        textType: Qaterial.Style.TextType.Title
       }
 
       Qaterial.SwitchButton
@@ -279,10 +274,9 @@ Column
         checked: false
       }
 
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         text: "Display"
-        textType: Qaterial.Style.TextType.Title
       }
 
       Grid
@@ -320,10 +314,9 @@ Column
 
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         text: "Size"
-        textType: Qaterial.Style.TextType.Title
       }
 
       Qaterial.Slider

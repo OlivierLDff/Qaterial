@@ -22,7 +22,6 @@ Qaterial.ModalDialog
   property alias value: _progressBar.value
 
   property alias text: _text.text
-  property alias textType: _text.textType
   property alias textColor: _text.color
   property alias textElide: _text.elide
 

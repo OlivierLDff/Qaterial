@@ -26,12 +26,5 @@ Qaterial.Label
 {
   id: root
 
-  font
-  {
-    family: Qaterial.Style.textTheme.button.family
-    pixelSize: Qaterial.Style.textTheme.button.pixelSize
-    weight: Qaterial.Style.textTheme.button.weight
-    capitalization: Qaterial.Style.textTheme.button.capitalization
-    letterSpacing: Qaterial.Style.textTheme.button.letterSpacing
-  }
+  font: Qaterial.Style.textTheme.button
 }

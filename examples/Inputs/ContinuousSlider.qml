@@ -4,10 +4,9 @@ import Qaterial 1.0 as Qaterial
 
 Column
 {
-  Qaterial.Label
+  Qaterial.LabelHeadline6
   {
     text: "Volume"
-    textType: Qaterial.Style.TextType.Title
   }
   Row
   {
@@ -31,10 +30,9 @@ Column
     }
   }
 
-  Qaterial.Label
+  Qaterial.LabelHeadline6
   {
     text: "Disabled Slider"
-    textType: Qaterial.Style.TextType.Title
   }
 
   Qaterial.Slider

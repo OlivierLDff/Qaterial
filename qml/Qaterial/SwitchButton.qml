@@ -31,8 +31,7 @@ T.Switch
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
-  property alias elide: _label.elide
-  property alias textType: _label.textType
+  font: Qaterial.Style.textTheme.body2
 
   Qaterial.DebugRectangle
   {
@@ -70,7 +69,6 @@ T.Switch
 
   contentItem: Qaterial.Label
   {
-    id: _label
     leftPadding: (text && _control.indicator && !_control.mirrored) ? _control.indicator.width + _control.spacing : 0
     rightPadding: (text && _control.indicator && _control.mirrored) ? _control.indicator.width + _control.spacing : 0
 
@@ -78,6 +76,7 @@ T.Switch
     colorReversed: _control.colorReversed
 
     text: _control.text
+    font: _control.font
     enabled: _control.enabled
     elide: !_control.mirrored ? Text.ElideRight : Text.ElideLeft
     verticalAlignment: Text.AlignVCenter

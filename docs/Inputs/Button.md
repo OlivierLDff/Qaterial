@@ -53,11 +53,6 @@ Every `Qaterial` Buttons are made from this `Component`. Inherited from *QtQuick
 
 - `drawline`: `bool` allowing to see `Qaterial.DebugRectangle` filling the Button and his background. (default: false)
 
-#### Text Properties :
-
-- `textType`: Typography of the text displayed (default: `Qaterial.Style.TextType.Button`)
-- `elide`: text elide property (default: `Text.ElideNone`)
-
 #### Appearance Properties :
 
 - `outlined`: `bool` changing the appearance, true for `OutlineButton` (default: false)

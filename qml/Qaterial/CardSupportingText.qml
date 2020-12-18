@@ -16,14 +16,13 @@ Item
   implicitWidth: 200
   property alias supportingText: _label.text
 
-  Qaterial.Label
+  Qaterial.LabelBody1
   {
     id: _label
     wrapMode: Text.WordWrap
     elide: Text.ElideRight
     maximumLineCount: 2
     verticalAlignment: Text.AlignVCenter
-    textType: Qaterial.Style.TextType.ListSecText
     anchors.fill: parent
   } // Label
 } // Item

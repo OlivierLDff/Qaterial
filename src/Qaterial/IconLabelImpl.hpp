@@ -91,6 +91,7 @@ Q_SIGNALS:
 
     // ──── PROPERTY ────
 public:
+    // fixme : Use QQuickIcon when it will turn public API.
     QATERIAL_PTR_WITH_CONNECTION(IconDescription, icon, Icon);
     QATERIAL_PTR_WITH_CONNECTION(QQuickItem, iconItem, IconItem);
     QATERIAL_PTR_WITH_CONNECTION(QQuickItem, labelItem, LabelItem);

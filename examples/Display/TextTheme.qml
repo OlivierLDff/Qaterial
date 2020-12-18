@@ -124,91 +124,76 @@ Row
   {
     Qaterial.LabelHeadline1
     {
-      font: Qaterial.Style.textTheme.headline1
       text: "headline1"
     }
 
     Qaterial.LabelHeadline2
     {
-      font: Qaterial.Style.textTheme.headline2
       text: "headline2"
     }
 
     Qaterial.LabelHeadline3
     {
-      font: Qaterial.Style.textTheme.headline3
       text: "headline3"
     }
 
     Qaterial.LabelHeadline4
     {
-      font: Qaterial.Style.textTheme.headline4
       text: "headline4"
     }
 
     Qaterial.LabelHeadline5
     {
-      font: Qaterial.Style.textTheme.headline5
       text: "headline5"
     }
 
     Qaterial.LabelHeadline6
     {
-      font: Qaterial.Style.textTheme.headline6
       text: "headline6"
     }
 
     Qaterial.LabelSubtitle1
     {
-      font: Qaterial.Style.textTheme.subtitle1
       text: "subtitle1"
     }
 
     Qaterial.LabelSubtitle2
     {
-      font: Qaterial.Style.textTheme.subtitle2
       text: "subtitle2"
     }
 
     Qaterial.LabelBody1
     {
-      font: Qaterial.Style.textTheme.body1
       text: "body1"
     }
 
     Qaterial.LabelBody2
     {
-      font: Qaterial.Style.textTheme.body2
       text: "body2"
     }
 
     Qaterial.LabelButton
     {
-      font: Qaterial.Style.textTheme.button
       text: "button"
     }
 
     Qaterial.LabelOverline
     {
-      font: Qaterial.Style.textTheme.overline
       text: "overline"
     }
 
     Qaterial.LabelCaption
     {
-      font: Qaterial.Style.textTheme.caption
       text: "caption"
     }
 
     Qaterial.LabelHint1
     {
-      font: Qaterial.Style.textTheme.hint1
       text: "hint1"
     }
 
     Qaterial.LabelHint2
     {
-      font: Qaterial.Style.textTheme.hint2
       text: "hint2"
     }
   }

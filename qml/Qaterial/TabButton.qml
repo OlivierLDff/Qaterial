@@ -37,6 +37,8 @@ T.TabButton
     Qaterial.Style.tabButton.spacingVertical) : (useSmallFont ? Qaterial.Style.tabButton.smallSpacing : Qaterial
     .Style.tabButton.spacing)
 
+  font: Qaterial.Style.textTheme.button
+
   icon.width: Qaterial.Style.tabButton.iconWidth
   icon.height: Qaterial.Style.tabButton.iconWidth
   icon.color: foregroundColor
@@ -67,7 +69,7 @@ T.TabButton
   contentItem: Qaterial.IconLabel
   {
     id: _iconLabel
-    textType: Qaterial.Style.TextType.Button
+    font: _control.font
     spacing: _control.spacing
     display: _control.display
     icon.source: _control.icon.source

@@ -29,8 +29,7 @@ T.Button
     visible: _control.drawline
   } // DebugRectangle
 
-  property int textType: Qaterial.Style.TextType.Button
-  property int elide: Text.ElideNone
+  font: Qaterial.Style.textTheme.button
 
   topInset: Qaterial.Style.rawButton.topInset
   bottomInset: Qaterial.Style.rawButton.bottomInset
@@ -128,7 +127,7 @@ T.Button
 
   contentItem: Qaterial.IconLabel
   {
-    textType: _control.textType
+    font: _control.font
     spacing: _control.spacing
     display: _control.display
     icon.source: _control.icon.source
@@ -138,8 +137,6 @@ T.Button
     icon.cache: _control.icon.cache
     text: _control.text
     color: _control.foregroundColor
-
-    elide: _control.elide
   } // IconLabel
 
   property double backgroundImplicitWidth: Qaterial.Style.rawButton.minWidth

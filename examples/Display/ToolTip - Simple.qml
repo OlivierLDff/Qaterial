@@ -50,10 +50,29 @@ Row
 
     Qaterial.ToolTip
     {
+      id: customizedTooltip
       text: "Customized ToolTip"
       visible: button4.hovered || button4.pressed
-      backgroundRadius: height / 2
-      textType: Qaterial.Style.TextType.Display1
+      font: Qaterial.Style.textTheme.hint2
+
+      leftPadding: 4
+      rightPadding: 6
+
+      contentItem: Qaterial.IconLabel
+      {
+        text: customizedTooltip.text
+        font: customizedTooltip.font
+        icon.source: Qaterial.Icons.accountCircle
+        color: Qaterial.Style.snackbarTextColor()
+      }
+
+      background: Rectangle
+      {
+        implicitHeight: 24
+        color: Qaterial.Style.snackbarColor()
+        opacity: Qaterial.Style.toolTip.opacity
+        radius: height / 2
+      } // Rectangle
     } // ToolTip
   } // FlatButton
 } // Row

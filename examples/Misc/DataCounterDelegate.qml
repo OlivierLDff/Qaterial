@@ -21,15 +21,13 @@ Qaterial.ItemDelegate
     Column
     {
       anchors.verticalCenter: parent.verticalCenter
-      Qaterial.Label
+      Qaterial.LabelHeadline6
       {
         id: title
-        textType: Qaterial.Style.TextType.Title
         text: "Packet Counter"
       }
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
-        textType: Qaterial.Style.TextType.Caption
         text: "Secondary info"
       }
     }
@@ -41,16 +39,14 @@ Qaterial.ItemDelegate
 
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
         id: info
         text: "Info "
-        textType: Qaterial.Style.TextType.Overline
       }
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         text: "1 Hz - Total : 14.5K"
-        textType: Qaterial.Style.TextType.Caption
       }
 
       Item
@@ -87,15 +83,13 @@ Qaterial.ItemDelegate
 
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
         text: "Data"
-        textType: Qaterial.Style.TextType.Overline
       }
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         text: "60 Hz - Total : 25M"
-        textType: Qaterial.Style.TextType.Caption
       }
 
       Item

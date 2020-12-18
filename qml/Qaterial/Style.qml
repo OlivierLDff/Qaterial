@@ -285,25 +285,25 @@ Qaterial.Theme
     Center
   } // Position
 
-  enum TextType
-  {
-    Display3,
-    Display2,
-    Display1,
-    Heading,
-    Title,
-    Subheading,
-    ListText,
-    ListSecText,
-    Overline,
-    Body2,
-    Body1,
-    Caption,
-    Hint,
-    Button,
-    Menu,
-    MenuHint
-  } // TextType
+  //  enum TextType
+  //  {
+  //    Display3,
+  //    Display2,
+  //    Display1,
+  //    Heading,
+  //    Title,
+  //    Subheading,
+  //    ListText,
+  //    ListSecText,
+  //    Overline,
+  //    Body2,
+  //    Body1,
+  //    Caption,
+  //    Hint,
+  //    Button,
+  //    Menu,
+  //    MenuHint
+  //  } // TextType
 
   property bool usePixelSize: true
 

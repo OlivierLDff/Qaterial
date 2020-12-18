@@ -25,7 +25,7 @@ Qaterial.FolderTreeView
   // caseSensitive: true
   //
   // path: file:///Path/To/Folder
-  path: "file://C:/Users/olivi/Documents/dev/Naostage/Kratos/build/_deps/qaterial-src"
+  path: ""
 
   property QtObject selectedElement
 

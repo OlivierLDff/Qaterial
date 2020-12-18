@@ -45,10 +45,9 @@ Item
     anchors.right: parent.right
     anchors.left: parent.left
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       id: _title
-      textType: Qaterial.Style.TextType.Title
       elide: Text.ElideRight
       horizontalAlignment: _control.mirrored ? Text.AlignRight : Text.AlignLeft
       width: parent.width - _control.rightPadding - _control.leftPadding
@@ -61,10 +60,9 @@ Item
       } // DebugRectangle
     } // Label
 
-    Qaterial.Label
+    Qaterial.LabelBody1
     {
       id: _text
-      textType: Qaterial.Style.TextType.ListSecText
       elide: Text.ElideRight
       horizontalAlignment: _control.mirrored ? Text.AlignRight : Text.AlignLeft
       width: parent.width - _control.rightPadding - _control.leftPadding
