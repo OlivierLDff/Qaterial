@@ -37,6 +37,7 @@
 #include <Qaterial/Layout.hpp>
 #include <Qaterial/IconDescription.hpp>
 #include <Qaterial/IconLabelPositionner.hpp>
+#include <Qaterial/IconLabelImpl.hpp>
 
 // Qt Core
 #include <QDir>
@@ -118,6 +119,8 @@ static void Qaterial_registerTypes()
     qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.IconLabelPositionner {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconLabelPositionner::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.IconLabelImpl {}.{} to QML", *_uri, _major, _minor);
+    qaterial::IconLabelImpl::registerToQml(*_uri, _major, _minor);
 
     // NAVIGATION
 

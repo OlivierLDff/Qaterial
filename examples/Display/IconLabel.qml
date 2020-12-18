@@ -157,10 +157,9 @@ Column
           icon.width: iconSizeSlider.value
           icon.height: iconSizeSlider.value
 
-          labelItem: Qaterial.Label
+          labelItem: Qaterial.LabelOverline
           {
             text: customLabel.text
-            textType: Qaterial.Style.TextType.Overline
             Qaterial.DebugRectangle
             {
               anchors.fill: parent

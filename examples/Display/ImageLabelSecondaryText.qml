@@ -56,34 +56,41 @@ Row
       icon.width: 32
       icon.height: 32
 
-      text: "Image Label"
       mirrored: mirroredButton.checked
       display: root.display
-    }
 
-    Qaterial.ImageLabel
-    {
-      icon.source: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Qt_logo_2016.svg/langfr-1280px-Qt_logo_2016.svg.png"
-      icon.width: 32
-      icon.height: 32
+      labelItem: Item
+      {
+        implicitWidth: Math.max(subtitle1.implicitWidth, subtitle2.implicitWidth)
+        implicitHeight: subtitle1.implicitHeight + subtitle2.implicitHeight
 
-      text: "Rounded Image Label"
-      radius: 16
-      fillMode: Image.PreserveAspectCrop
-      mirrored: mirroredButton.checked
-      display: root.display
-    }
+        Qaterial.LabelSubtitle1
+        {
+          id: subtitle1
 
-    Qaterial.ImageLabel
-    {
-      icon.source: "https://www.flaticon.com/svg/static/icons/svg/119/119574.svg"
-      icon.width: 48
-      icon.height: 48
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+          }
 
-      text: "Multi Line\n" +
-        "Image Label"
-      mirrored: mirroredButton.checked
-      display: root.display
+          text: "Main Text"
+        }
+
+        Qaterial.LabelCaption
+        {
+          id: subtitle2
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+            top: subtitle1.bottom
+          }
+
+          text: "Secondary Text"
+        }
+      }
     }
 
     Qaterial.ImageLabel
@@ -94,9 +101,43 @@ Row
 
       width: 200
 
-      text: "Some long text being elided"
       mirrored: mirroredButton.checked
       display: root.display
+
+      labelItem: Item
+      {
+        implicitWidth: Math.max(subtitle1LongText.implicitWidth, subtitle2LongText.implicitWidth)
+        implicitHeight: subtitle1LongText.implicitHeight + subtitle2LongText.implicitHeight
+
+        Qaterial.LabelSubtitle1
+        {
+          id: subtitle1LongText
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+          }
+
+          text: "Some long text being elided"
+          elide: Text.ElideRight
+        }
+
+        Qaterial.LabelCaption
+        {
+          id: subtitle2LongText
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+            top: subtitle1LongText.bottom
+          }
+
+          text: "Secondary Text"
+          elide: Text.ElideRight
+        }
+      }
     }
 
     Qaterial.ImageLabel
@@ -108,10 +149,44 @@ Row
       width: 200
 
       text: "Some long text being wrapped on the next line. Whaou this text is very long."
-      wrapMode: Text.WordWrap
 
       mirrored: mirroredButton.checked
       display: root.display
+
+      labelItem: Item
+      {
+        implicitWidth: Math.max(subtitle1LongTextWrap.implicitWidth, subtitle2LongTextWrap.implicitWidth)
+        implicitHeight: subtitle1LongTextWrap.implicitHeight + subtitle2LongTextWrap.implicitHeight
+
+        Qaterial.LabelSubtitle1
+        {
+          id: subtitle1LongTextWrap
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+          }
+
+          text: "Some long text being wrapped"
+          wrapMode: Text.WordWrap
+        }
+
+        Qaterial.LabelCaption
+        {
+          id: subtitle2LongTextWrap
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+            top: subtitle1LongTextWrap.bottom
+          }
+
+          text: "Some long text being wrapped on the next line. Whaou this text is very long."
+          wrapMode: Text.WordWrap
+        }
+      }
     }
 
     Qaterial.ImageLabel
@@ -122,11 +197,48 @@ Row
 
       width: 200
 
-      text: "Some long text being wrapped on 2 lines that should be elided"
-      wrapMode: Text.WordWrap
-      maximumLineCount: 2
+      text: "Some long text being wrapped on the next line that should only be displayed in two line then elide"
       mirrored: mirroredButton.checked
       display: root.display
+
+      labelItem: Item
+      {
+        implicitWidth: Math.max(subtitle1LongTextElide.implicitWidth, subtitle2LongTextWrapElide.implicitWidth)
+        implicitHeight: subtitle1LongTextElide.implicitHeight + subtitle2LongTextWrapElide.implicitHeight
+
+        Qaterial.LabelSubtitle1
+        {
+          id: subtitle1LongTextElide
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+          }
+
+          text: "Some long text being wrapped"
+          wrapMode: Text.WordWrap
+          maximumLineCount: 1
+          elide: Text.ElideRight
+        }
+
+        Qaterial.LabelCaption
+        {
+          id: subtitle2LongTextWrapElide
+
+          anchors
+          {
+            left: parent.left
+            right: parent.right
+            top: subtitle1LongTextElide.bottom
+          }
+
+          text: "Some long text being wrapped on the next line. Whaou this text is very long."
+          wrapMode: Text.WordWrap
+          maximumLineCount: 2
+          elide: Text.ElideRight
+        }
+      }
     }
   }
 

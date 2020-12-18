@@ -51,7 +51,7 @@ IconLabelPositionner::IconLabelPositionner(QObject* parent) : QObject(parent)
 
 void IconLabelPositionner::computeRects()
 {
-    if(!isContainerSizeValid())
+    if(!_enabled || !isContainerSizeValid())
         return;
 
     switch(Display(display()))
