@@ -10,11 +10,13 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-QtObject
+Qaterial.Theme
 {
   id: _root
+
+  textTheme: Qaterial.TextTheme {}
 
   enum Theme
   {
@@ -414,7 +416,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontFamily;
   } // function textTypeToFontFamily(type)
 
@@ -457,7 +459,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontStyleName;
   } // function textTypeToStyleName(type)
 
@@ -500,7 +502,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontPointSize;
   } // function textTypeToPointSize(type)
 
@@ -543,7 +545,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontPixelSize;
   } // function textTypeToPixelSize(type)
 
@@ -586,7 +588,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return primaryTextColor();
   } // function textTypeToColor(type)
 
@@ -629,7 +631,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return primaryTextColorReversed();
   } // function textTypeToColorReversed(type)
 

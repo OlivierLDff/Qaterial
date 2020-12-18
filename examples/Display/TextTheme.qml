@@ -20,86 +20,196 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import QtQuick 2.12
+import QtQuick 2.0
+import QtQuick.Controls 2.0
+
 import Qaterial 1.0 as Qaterial
 
-Column
+Row
 {
-  property Qaterial.TextTheme textTheme: Qaterial.TextTheme {}
+  Column
+  {
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline1
+      text: "headline1"
+    }
 
-  Qaterial.Label
-  {
-    font: textTheme.headline1
-    text: "headline1"
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline2
+      text: "headline2"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline3
+      text: "headline3"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline4
+      text: "headline4"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline5
+      text: "headline5"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.headline6
+      text: "headline6"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.subtitle1
+      text: "subtitle1"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.subtitle2
+      text: "subtitle2"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.body1
+      text: "body1"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.body2
+      text: "body2"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.button
+      text: "button"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.overline
+      text: "overline"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.caption
+      text: "caption"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.hint1
+      text: "hint1"
+    }
+
+    Label
+    {
+      font: Qaterial.Style.textTheme.hint2
+      text: "hint2"
+    }
   }
-  Qaterial.Label
+
+  Column
   {
-    font: textTheme.headline2
-    text: "headline2"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.headline3
-    text: "headline3"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.headline4
-    text: "headline4"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.headline5
-    text: "headline5"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.headline6
-    text: "headline6"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.subtitle1
-    text: "subtitle1"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.subtitle2
-    text: "subtitle2"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.body1
-    text: "body1"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.body2
-    text: "body2"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.button
-    text: "button"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.overline
-    text: "overline"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.caption
-    text: "caption"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.hint1
-    text: "hint1"
-  }
-  Qaterial.Label
-  {
-    font: textTheme.hint2
-    text: "hint2"
+    Qaterial.LabelHeadline1
+    {
+      font: Qaterial.Style.textTheme.headline1
+      text: "headline1"
+    }
+
+    Qaterial.LabelHeadline2
+    {
+      font: Qaterial.Style.textTheme.headline2
+      text: "headline2"
+    }
+
+    Qaterial.LabelHeadline3
+    {
+      font: Qaterial.Style.textTheme.headline3
+      text: "headline3"
+    }
+
+    Qaterial.LabelHeadline4
+    {
+      font: Qaterial.Style.textTheme.headline4
+      text: "headline4"
+    }
+
+    Qaterial.LabelHeadline5
+    {
+      font: Qaterial.Style.textTheme.headline5
+      text: "headline5"
+    }
+
+    Qaterial.LabelHeadline6
+    {
+      font: Qaterial.Style.textTheme.headline6
+      text: "headline6"
+    }
+
+    Qaterial.LabelSubtitle1
+    {
+      font: Qaterial.Style.textTheme.subtitle1
+      text: "subtitle1"
+    }
+
+    Qaterial.LabelSubtitle2
+    {
+      font: Qaterial.Style.textTheme.subtitle2
+      text: "subtitle2"
+    }
+
+    Qaterial.LabelBody1
+    {
+      font: Qaterial.Style.textTheme.body1
+      text: "body1"
+    }
+
+    Qaterial.LabelBody2
+    {
+      font: Qaterial.Style.textTheme.body2
+      text: "body2"
+    }
+
+    Qaterial.LabelButton
+    {
+      font: Qaterial.Style.textTheme.button
+      text: "button"
+    }
+
+    Qaterial.LabelOverline
+    {
+      font: Qaterial.Style.textTheme.overline
+      text: "overline"
+    }
+
+    Qaterial.LabelCaption
+    {
+      font: Qaterial.Style.textTheme.caption
+      text: "caption"
+    }
+
+    Qaterial.LabelHint1
+    {
+      font: Qaterial.Style.textTheme.hint1
+      text: "hint1"
+    }
+
+    Qaterial.LabelHint2
+    {
+      font: Qaterial.Style.textTheme.hint2
+      text: "hint2"
+    }
   }
 }

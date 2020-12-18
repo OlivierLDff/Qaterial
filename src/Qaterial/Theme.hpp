@@ -127,7 +127,7 @@ public:
         _overline.setLetterSpacing(QFont::SpacingType::AbsoluteSpacing, 1.5);
 
         _hint1.setFamily("Roboto");
-        _hint2.setPixelSize(11);
+        _hint1.setPixelSize(11);
         _hint1.setWeight(QFont::Weight::Medium);
         _hint1.setCapitalization(QFont::Capitalization::MixedCase);
         _hint1.setLetterSpacing(QFont::SpacingType::AbsoluteSpacing, 0);
@@ -138,43 +138,6 @@ public:
         _hint2.setCapitalization(QFont::Capitalization::MixedCase);
         _hint2.setLetterSpacing(QFont::SpacingType::AbsoluteSpacing, 0);
     }
-
-    // ──── PROPERTY ────
-public:
-    enum Type
-    {
-        // Material 2018
-        Headline1,
-        Headline2,
-        Headline3,
-        Headline4,
-        Headline5,
-        Headline6,
-        Subtitle1,
-        Subtitle2,
-        Body1,
-        Body2,
-        Button,
-        Caption,
-        Overline,
-
-        // Qaterial Extra
-        Hint1,
-        Hint2,
-
-        // Material 2014 mapping
-        Display4 = Headline1,
-        Display3 = Headline2,
-        Display2 = Headline3,
-        Display1 = Headline4,
-        Heading = Headline5,
-        Title = Headline6,
-        Subheading = Subtitle1,
-        Subhead = Subtitle1,
-        Body2_2014 = Body1,
-        Body1_2014 = Body2,
-    };
-    Q_ENUM(Type);
 
 public:
     QATERIAL_PROPERTY(QFont, headline1, Headline1);
