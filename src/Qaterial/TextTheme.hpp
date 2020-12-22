@@ -20,13 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_THEME_HPP__
-#define __QATERIAL_THEME_HPP__
+#ifndef __QATERIAL_TEXT_THEME_HPP__
+#define __QATERIAL_TEXT_THEME_HPP__
 
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/TextTheme.hpp>
+#include <Qaterial/Export.hpp>
+#include <Qaterial/Property.hpp>
+
+// Dependencies Headers
+#include <QtCore/QObject>
+#include <QtGui/QFont>
 
 // ──── DECLARATION ────
 
@@ -34,18 +39,31 @@
 
 namespace qaterial {
 
-class QATERIAL_API_ Theme : public QObject
+class QATERIAL_API_ TextTheme : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(Theme);
+    QATERIAL_REGISTER_TO_QML(TextTheme);
 
     // ──── CONSTRUCTOR ────
 public:
-    Theme(QObject* parent = nullptr) : QObject(parent) {}
+    TextTheme(QObject* parent = nullptr);
 
-    // ──── PROPERTY ────
 public:
-    QATERIAL_PTR(TextTheme, textTheme, TextTheme);
+    QATERIAL_PROPERTY(QFont, headline1, Headline1);
+    QATERIAL_PROPERTY(QFont, headline2, Headline2);
+    QATERIAL_PROPERTY(QFont, headline3, Headline3);
+    QATERIAL_PROPERTY(QFont, headline4, Headline4);
+    QATERIAL_PROPERTY(QFont, headline5, Headline5);
+    QATERIAL_PROPERTY(QFont, headline6, Headline6);
+    QATERIAL_PROPERTY(QFont, subtitle1, Subtitle1);
+    QATERIAL_PROPERTY(QFont, subtitle2, Subtitle2);
+    QATERIAL_PROPERTY(QFont, body1, Body1);
+    QATERIAL_PROPERTY(QFont, body2, Body2);
+    QATERIAL_PROPERTY(QFont, button, Button);
+    QATERIAL_PROPERTY(QFont, caption, Caption);
+    QATERIAL_PROPERTY(QFont, overline, Overline);
+    QATERIAL_PROPERTY(QFont, hint1, Hint1);
+    QATERIAL_PROPERTY(QFont, hint2, Hint2);
 };
 
 }
