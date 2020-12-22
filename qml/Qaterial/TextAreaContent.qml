@@ -15,16 +15,10 @@ T.TextArea
 {
   id: _control
 
-  property int textType: Qaterial.Style.TextType.ListText
-  property int placeholderTextType: textType
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-  font.family: Qaterial.Style.textTypeToFontFamily(textType)
-  font.styleName: Qaterial.Style.textTypeToStyleName(textType)
-  font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
-  font.capitalization: Qaterial.Style.fontCapitalization(textType)
-  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(textType)
+  font: Qaterial.Style.textTheme.body2
 
   // DEBUG
   property bool drawline: Qaterial.Style.debug.drawDebugButton
@@ -91,7 +85,7 @@ T.TextArea
     height: _control.height - (_control.topPadding + _control.bottomPadding)
     text: _control.placeholderText
     color: _control.placeholderTextColor
-    textType: _control.placeholderTextType
+    font: _control.font
     verticalAlignment: _control.verticalAlignment
     elide: Text.ElideRight
     wrapMode: _control.wrapMode

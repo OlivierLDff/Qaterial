@@ -7,11 +7,10 @@ Column
 
   width: 100
 
-  Qaterial.Label
+  Qaterial.LabelHeadline6
   {
     anchors.horizontalCenter: parent.horizontalCenter
     text: `${root.width.toFixed(0)} dp`
-    textType: Qaterial.Style.TextType.Title
     color: Qaterial.Colors.pink
   }
 
@@ -33,18 +32,16 @@ Column
     return "Unknown"
   }
 
-  Qaterial.Label
+  Qaterial.LabelCaption
   {
     anchors.horizontalCenter: parent.horizontalCenter
     text: `Layout : ${root.layoutTypeToString(grid.type)}`
-    textType: Qaterial.Style.TextType.Caption
   }
 
-  Qaterial.Label
+  Qaterial.LabelHint1
   {
     anchors.horizontalCenter: parent.horizontalCenter
     text: `Columns : ${grid.columns}`
-    textType: Qaterial.Style.TextType.Hint
   }
 
   Item

@@ -67,13 +67,6 @@ T.TextField
   property bool leadingIconErrorAnimation: false
   property bool trailingInline: true
 
-  property int textType: Qaterial.Style.TextType.ListText
-  property int titleTextType: titleUp ? Qaterial.Style.TextType.Caption : textType
-  property int placeholderTextType: textType
-  property int prefixTextType: textType
-  property int suffixTextType: textType
-  property int hintTextType: Qaterial.Style.TextType.Hint
-
   property bool titleUp: _control.activeFocus || _control.length || _control.preeditText
   readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel
     .visible
@@ -81,11 +74,7 @@ T.TextField
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-  font.family: Qaterial.Style.textTypeToFontFamily(textType)
-  font.styleName: Qaterial.Style.textTypeToStyleName(textType)
-  font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
-  font.capitalization: Qaterial.Style.fontCapitalization(textType)
-  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(textType)
+  font: Qaterial.Style.textTheme.body2
 
   // DEBUG
   property bool drawline: Qaterial.Style.debug.drawDebugButton
@@ -238,7 +227,7 @@ T.TextField
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.titleTextType
+    font: _control.titleUp ? Qaterial.Style.textTheme.caption : _control.font
     color: _control.titleTextColor
     x: _control.virtualLeftPadding
     y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset : _control.topPadding
@@ -256,7 +245,7 @@ T.TextField
         duration: 200
       } // NumberAnimation
     } // Behavior y
-    font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
+
     Behavior on font.pixelSize
     {
       NumberAnimation
@@ -265,6 +254,7 @@ T.TextField
         duration: 200
       } // NumberAnimation
     } // Behavior pixelsize
+
     Behavior on color
     {
       ColorAnimation
@@ -320,7 +310,7 @@ T.TextField
     }
   } // function setError(s)
 
-  Qaterial.Label // Hint
+  Qaterial.LabelHint1 // Hint
   {
     opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
     Behavior on opacity
@@ -340,7 +330,6 @@ T.TextField
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.hintTextType
     color: _control.helperTextColor
     width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding - _lineCountLabel.width
     x: _control.virtualLeftPadding
@@ -352,7 +341,7 @@ T.TextField
 
   property int maximumLengthCount: maximumLength
 
-  Qaterial.Label // LineCounter
+  Qaterial.LabelHint1 // LineCounter
   {
     id: _lineCountLabel
     visible: _control.maximumLengthCount > 0 && _control.maximumLengthCount < 32767
@@ -365,7 +354,6 @@ T.TextField
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.hintTextType
     color: _control.helperTextColor
     x: _control.width - width - (_control.trailingInline ? 0 : _control.virtualRightPadding)
     y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
@@ -389,7 +377,7 @@ T.TextField
     y: _control.topPadding
     text: _control.prefixText
     color: _control.prefixTextColor
-    textType: _control.prefixTextType
+    font: _control.font
     verticalAlignment: _control.verticalAlignment
     renderType: _control.renderType
     opacity: (_control.prefixText != "" && _control.activeFocus || _control.length) ? 1.0 : 0.0
@@ -418,7 +406,7 @@ T.TextField
     height: _control.contentHeight
     x: _control.width - width - _control.virtualRightPadding
     y: _control.topPadding
-    textType: _control.suffixTextType
+    font: _control.font
     text: _control.suffixText
     color: _control.suffixTextColor
     verticalAlignment: _control.verticalAlignment
@@ -445,7 +433,7 @@ T.TextField
     height: _control.height - (_control.topPadding + _control.bottomPadding)
     text: _control.placeholderText
     color: _control.placeholderTextColor
-    textType: _control.placeholderTextType
+    font: _control.font
     verticalAlignment: _control.verticalAlignment
     horizontalAlignment: _control.horizontalAlignment
     elide: Text.ElideRight

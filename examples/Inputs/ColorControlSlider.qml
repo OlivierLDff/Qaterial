@@ -28,11 +28,10 @@ Column
       ToolTip.visible: hovered || pressed
     }
 
-    Qaterial.Label
+    Qaterial.LabelHeadline5
     {
       anchors.verticalCenter: parent.verticalCenter
       width: 200
-      textType: Qaterial.Style.TextType.Heading
       text: `Color: ${root.color.toString().toUpperCase()}`
     }
   }
@@ -48,9 +47,8 @@ Column
     spacing: 16
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Red: ${redSlider.value.toFixed(2)}`
       }
 
@@ -63,9 +61,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Green: ${greenSlider.value.toFixed(2)}`
       }
 
@@ -78,9 +75,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Blue: ${blueSlider.value.toFixed(2)}`
       }
 
@@ -102,9 +98,8 @@ Column
 
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Hue: ${hueSlider.value.toFixed(2)}`
       }
 
@@ -117,9 +112,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Saturation: ${saturationSlider.value.toFixed(2)}`
       }
 
@@ -132,9 +126,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Value: ${valueSlider.value.toFixed(2)}`
       }
 
@@ -156,9 +149,8 @@ Column
 
     Column
     {
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Hue: ${hueSliderHsl.value.toFixed(2)}`
       }
 
@@ -171,9 +163,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Saturation: ${saturationSliderHsl.value.toFixed(2)}`
       }
 
@@ -186,9 +177,8 @@ Column
         onMoved: () => root.color = getNewColor()
       }
 
-      Qaterial.Label
+      Qaterial.LabelOverline
       {
-        textType: Qaterial.Style.TextType.Overline
         text: `Lightness: ${valueSliderHsl.value.toFixed(2)}`
       }
 

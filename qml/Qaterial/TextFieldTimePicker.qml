@@ -45,7 +45,6 @@ Qaterial.TextField
     {
       visible: root.styleAm
       text: root.am ? "AM" : "PM"
-      textType: Qaterial.Style.TextType.Button
       onClicked: root.am = !root.am
     }
 

@@ -62,12 +62,11 @@ Rectangle
   onLinesChanged: reanchors()
   Component.onCompleted: reanchors()
 
-  Qaterial.Label
+  Qaterial.LabelOverline
   {
     id: _overline
     visible: text != ""
     enabled: _control.enabled
-    textType: Qaterial.Style.TextType.Overline
     elide: _control.elide
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
@@ -89,12 +88,11 @@ Rectangle
     } // DebugRectangle
   } // Label
 
-  Qaterial.Label
+  Qaterial.LabelBody1
   {
     id: _text
     visible: text != ""
     enabled: _control.enabled
-    textType: Qaterial.Style.TextType.ListText
     elide: _control.elide
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
@@ -129,12 +127,11 @@ Rectangle
     } // DebugRectangle
   } // Label
 
-  Qaterial.Label
+  Qaterial.LabelBody2
   {
     id: _info
     visible: text != ""
     enabled: _control.enabled
-    textType: Qaterial.Style.TextType.ListSecText
     elide: _control.elide
     maximumLineCount: 2
     onPrimary: _control.onPrimary

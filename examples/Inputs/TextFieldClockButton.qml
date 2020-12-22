@@ -8,7 +8,7 @@ Qaterial.TextFieldClockButton
   minute: 30
 
   // Style of the clock, European by default
-  styleAm: true
+  styleAm: false
   // If Am/Pm style, time slot of the hour
   am: false // Pm
 

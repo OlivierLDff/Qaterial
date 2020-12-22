@@ -43,7 +43,7 @@ Item
     id: _pmHour
     anchors.centerIn: parent
     radius: parent.radius - root.pmHourOffset
-    textType: Qaterial.Style.TextType.Caption
+    font: Qaterial.Style.textTheme.caption
     model: ["00", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
     currentIndex:
     {

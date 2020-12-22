@@ -30,19 +30,17 @@ Row
     anchors.verticalCenter: parent.verticalCenter
     width: 100
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       anchors.right: parent.right
       text: `${root.height.toFixed(0)} dp`
-      textType: Qaterial.Style.TextType.Title
       color: Qaterial.Colors.pink
     }
 
-    Qaterial.Label
+    Qaterial.LabelCaption
     {
       anchors.right: parent.right
       text: `Layout : ${root.layoutTypeToString(grid.type)}`
-      textType: Qaterial.Style.TextType.Caption
     }
   }
 

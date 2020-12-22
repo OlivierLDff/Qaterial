@@ -30,8 +30,7 @@ T.RadioButton
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
-  property alias elide: _label.elide
-  property alias textType: _label.textType
+  font: Qaterial.Style.textTheme.body2
 
   Qaterial.DebugRectangle
   {
@@ -72,7 +71,6 @@ T.RadioButton
 
   contentItem: Qaterial.Label
   {
-    id: _label
     leftPadding: _control.indicator && !_control.mirrored ? _control.indicator.width + _control.spacing : 0
     rightPadding: _control.indicator && _control.mirrored ? _control.indicator.width + _control.spacing : 0
 
@@ -80,6 +78,7 @@ T.RadioButton
     colorReversed: _control.colorReversed
 
     text: _control.text
+    font: _control.font
     enabled: _control.enabled
     verticalAlignment: Text.AlignVCenter
     elide: !_control.mirrored ? Text.ElideRight : Text.ElideLeft

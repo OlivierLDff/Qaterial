@@ -35,11 +35,10 @@ Item
   {
     color: StackView.index >= 0 ? root.colors[StackView.index] : "transparent"
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       anchors.centerIn: parent
       text: parent.StackView.index.toString()
-      textType: Qaterial.Style.TextType.Title
     }
   }
 

@@ -8,6 +8,6 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Label
 {
-  id: _control
-  property int textType: Qaterial.Style.TextType.Hint
+  id: root
+  color: Qaterial.Style.hintTextColor()
 } // Label

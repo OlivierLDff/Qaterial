@@ -7,10 +7,9 @@ Row
   Column
   {
     spacing: 24
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       text: "Mini"
-      textType: Qaterial.Style.TextType.Title
       horizontalAlignment: Text.AlignHCenter
     }
     Qaterial.MiniFabButton
@@ -37,10 +36,9 @@ Row
   Column
   {
     spacing: 10
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       text: "Default"
-      textType: Qaterial.Style.TextType.Title
       horizontalAlignment: Text.AlignHCenter
     }
     Qaterial.FabButton
@@ -67,10 +65,9 @@ Row
   Column
   {
     spacing: 10
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       text: "Fab To Extended"
-      textType: Qaterial.Style.TextType.Title
       anchors.horizontalCenter: parent.horizontalCenter
     }
     Qaterial.ExtendedFabButton

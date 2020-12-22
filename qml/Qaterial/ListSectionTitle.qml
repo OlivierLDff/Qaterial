@@ -10,7 +10,7 @@ import QtQuick.Controls 2.12
 // Qaterial
 import Qaterial 1.0 as Qaterial
 
-Qaterial.Label
+Qaterial.LabelOverline
 {
   id: _control
   property bool separatorVisible: false
@@ -28,6 +28,5 @@ Qaterial.Label
   padding: Qaterial.Style.card.horizontalPadding
   bottomPadding: Qaterial.Style.card.verticalPadding
   topPadding: _separator.visible ? Qaterial.Style.card.horizontalPadding : Qaterial.Style.card.verticalPadding
-  textType: Qaterial.Style.TextType.Overline
   elide: Text.ElideRight
 } // Label

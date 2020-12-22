@@ -90,11 +90,10 @@ Item
     Component
     {
       id: stepNumber
-      Qaterial.Label
+      Qaterial.LabelButton
       {
         anchors.centerIn: parent
         text: index + 1
-        textType: Qaterial.Style.TextType.Button
       } // Label
     } // Component
     Loader

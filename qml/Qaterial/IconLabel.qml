@@ -24,7 +24,7 @@ import QtQuick 2.15
 import QtQml 2.15
 import Qaterial 1.0 as Qaterial
 
-Item
+Qaterial.IconLabelImpl
 {
   id: root
 
@@ -36,27 +36,24 @@ Item
     TextUnderIcon
   }
 
-  property int display: IconLabel.Display.TextBesideIcon
-  property real spacing: 8
-  property color color: root.enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.disabledTextColor()
-
-  property int horizontalAlignment: Qt.AlignHCenter
-  property int verticalAlignment: Qt.AlignVCenter
-
   property string text
-  property int textType: Qaterial.Style.TextType.Body1
+  property color color: root.enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.disabledTextColor()
+  property font font: Qaterial.Style.textTheme.body2
   property int elide: Text.ElideRight
   property int wrapMode: Text.NoWrap
   property int maximumLineCount: Number.MAX_SAFE_INTEGER
-  property bool mirrored: false
 
-  property Qaterial.IconDescription icon: Qaterial.IconDescription
-  {
-    color: root.color
-  }
+  horizontalAlignment: Qt.AlignHCenter
+  verticalAlignment: Qt.AlignVCenter
+  display: IconLabel.Display.TextBesideIcon
+  spacing: 8
+  mirrored: false
 
-  // Component to be instanciated as render for icon
-  property Item iconItem: Qaterial.Icon
+  icon.color: root.color
+  icon.width: 24
+  icon.height: 24
+
+  iconItem: Qaterial.Icon
   {
     icon: root.icon.source
     implicitWidth: icon.toString() ? root.icon.width : 0
@@ -65,109 +62,13 @@ Item
     cached: root.icon.cache
   }
 
-  property Item labelItem: Qaterial.Label
+  labelItem: Qaterial.Label
   {
     text: root.text
-    textType: root.textType
+    font: root.font
     color: root.color
     elide: root.elide
     wrapMode: root.wrapMode
     maximumLineCount: root.maximumLineCount
-  }
-
-  implicitWidth: _positionner.implicitSize.width
-  implicitHeight: _positionner.implicitSize.height
-
-  Qaterial.IconLabelPositionner
-  {
-    id: _positionner
-
-    display: root.display
-    spacing: root.spacing
-    mirrored: root.mirrored
-
-    horizontalAlignment: root.horizontalAlignment
-    verticalAlignment: root.verticalAlignment
-
-    iconImplicitSize: root.icon.source.toString() && root.display !== IconLabel.Display.TextOnly ? Qt.size(root.icon.width, root.icon.height) : undefined
-    labelImplicitSize: root.display !== IconLabel.Display.IconOnly ? Qt.size(root.labelItem.implicitWidth, root.labelItem.implicitHeight) : undefined
-
-    Binding on containerSize
-    {
-      value: Qt.size(root.width, root.height)
-      delayed: true
-    }
-  }
-
-  // Qaterial.DebugRectangle
-  // {
-  //   id: rect
-  //   anchors.fill: parent
-  //   border.color: Qaterial.Colors.red
-  // }
-
-  children: [iconItem, labelItem]
-
-  Binding
-  {
-    target: root.labelItem
-    property: "visible"
-    value: root.display !== IconLabel.Display.IconOnly
-  }
-
-  Binding
-  {
-    target: root.labelItem
-    property: "x"
-    value: _positionner.labelRect.x
-  }
-
-  Binding
-  {
-    target: root.labelItem
-    property: "y"
-    value: _positionner.labelRect.y
-  }
-
-  Binding
-  {
-    target: root.labelItem
-    property: "width"
-    value: _positionner.labelRect.width
-  }
-
-  Binding
-  {
-    target: root.iconItem
-    property: "visible"
-    value: root.display !== IconLabel.Display.TextOnly
-  }
-
-  Binding
-  {
-    target: root.iconItem
-    property: "x"
-    value: _positionner.iconRect.x
-  }
-
-  Binding
-  {
-    target: root.iconItem
-    property: "y"
-    value: _positionner.iconRect.y
-  }
-
-  Binding
-  {
-    target: root.iconItem
-    property: "width"
-    value: root.icon.width
-  }
-
-  Binding
-  {
-    target: root.iconItem
-    property: "height"
-    value: root.icon.height
   }
 }

@@ -9,27 +9,34 @@ Column
     text: "Debug"
     width: parent.width
     backgroundColor: Qaterial.Style.blue
-    onClicked: () => Qaterial.Logger.debug(`This is a debug message`)
+    onClicked: () => console.debug(`This is a debug message`)
   }
   Qaterial.RaisedButton
   {
     text: "Info"
     width: parent.width
     backgroundColor: Qaterial.Style.green
-    onClicked: () => Qaterial.Logger.info(`This is a info message`)
+    onClicked: () => console.log(`This is a info message`)
   }
   Qaterial.RaisedButton
   {
     text: "Warning"
     width: parent.width
     backgroundColor: Qaterial.Style.orange
-    onClicked: () => Qaterial.Logger.warn(`This is a warning message`)
+    onClicked: () => console.warn(`This is a warning message`)
   }
   Qaterial.RaisedButton
   {
     text: "Error"
     width: parent.width
     backgroundColor: Qaterial.Style.red
-    onClicked: () => Qaterial.Logger.error(`This is a error message`)
+    onClicked: () => console.error(`This is a error message`)
+  }
+  Qaterial.RaisedButton
+  {
+    text: "Exception"
+    width: parent.width
+    backgroundColor: Qaterial.Colors.red900
+    onClicked: () => console.exception(`This is a exception message`)
   }
 }

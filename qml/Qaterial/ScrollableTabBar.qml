@@ -28,7 +28,6 @@ Qaterial.TabBar
     id: _repeater
     delegate: Qaterial.TabButton
     {
-      elide: Text.ElideRight
       width: Math.max(_root.minWidth, Math.min(_root.width / _root.maxElement, _root.maxWidth))
       implicitWidth: width
       display: _root.display

@@ -9,11 +9,10 @@ Column
 
   spacing: 8
 
-  Qaterial.Label
+  Qaterial.LabelHeadline6
   {
     anchors.horizontalCenter: parent.horizontalCenter
     text: `${root.width.toFixed(0)} dp`
-    textType: Qaterial.Style.TextType.Title
     color: Qaterial.Colors.pink
   }
 
@@ -35,11 +34,10 @@ Column
     return "Unknown"
   }
 
-  Qaterial.Label
+  Qaterial.LabelCaption
   {
     anchors.horizontalCenter: parent.horizontalCenter
     text: `Layout : ${root.layoutTypeToString(grid.type)}`
-    textType: Qaterial.Style.TextType.Caption
   }
 
   Item
@@ -118,10 +116,9 @@ Column
       {
         width: parent.width
 
-        Qaterial.Label
+        Qaterial.LabelHeadline6
         {
           text: "Fluid Grid"
-          textType: Qaterial.Style.TextType.Subheading
 
           leftPadding: grid.leftPadding
           topPadding: grid.spacing
