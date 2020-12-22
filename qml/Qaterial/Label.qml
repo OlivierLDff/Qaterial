@@ -18,11 +18,11 @@ T.Label
   //font: Qaterial.Style.textTheme.body2
   font
   {
-    family: Qaterial.Style.textTheme._deprecatedFont.family
-    pixelSize: Qaterial.Style.textTheme._deprecatedFont.pixelSize
-    weight: Qaterial.Style.textTheme._deprecatedFont.weight
-    capitalization: Qaterial.Style.textTheme._deprecatedFont.capitalization
-    letterSpacing: Qaterial.Style.textTheme._deprecatedFont.letterSpacing
+    family: root._deprecatedFont.family
+    pixelSize: root._deprecatedFont.pixelSize
+    weight: root._deprecatedFont.weight
+    capitalization: root._deprecatedFont.capitalization
+    letterSpacing: root._deprecatedFont.letterSpacing
   }
 
   //color:
