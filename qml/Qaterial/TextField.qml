@@ -246,15 +246,6 @@ T.TextField
       } // NumberAnimation
     } // Behavior y
 
-    Behavior on font.pixelSize
-    {
-      NumberAnimation
-      {
-        easing.type: Easing.OutCubic;
-        duration: 200
-      } // NumberAnimation
-    } // Behavior pixelsize
-
     Behavior on color
     {
       ColorAnimation
