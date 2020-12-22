@@ -27,4 +27,5 @@ Qaterial.Label
   id: root
 
   font: Qaterial.Style.textTheme.hint2
+  color: Qaterial.Style.hintTextColor()
 }

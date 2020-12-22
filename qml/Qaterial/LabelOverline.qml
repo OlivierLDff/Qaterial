@@ -27,4 +27,5 @@ Qaterial.Label
   id: root
 
   font: Qaterial.Style.textTheme.overline
+  color: Qaterial.Style.secondaryTextColor()
 }
