@@ -23,12 +23,36 @@
 import QtQuick 2.15
 import Qaterial 1.0 as Qaterial
 
-Qaterial.IconLabel
+Qaterial.IconLabelImpl
 {
   id: root
 
+  enum Display
+  {
+    IconOnly,
+    TextOnly,
+    TextBesideIcon,
+    TextUnderIcon
+  }
+
   property int radius: 0
   property int fillMode: Image.PreserveAspectFit
+  property string text
+  property color color: root.enabled ? Qaterial.Style.primaryTextColor() : Qaterial.Style.disabledTextColor()
+  property font font: Qaterial.Style.textTheme.body2
+  property int elide: Text.ElideRight
+  property int wrapMode: Text.NoWrap
+  property int maximumLineCount: Number.MAX_SAFE_INTEGER
+
+  horizontalAlignment: Qt.AlignHCenter
+  verticalAlignment: Qt.AlignVCenter
+  display: IconLabel.Display.TextBesideIcon
+  spacing: 8
+  mirrored: false
+
+  icon.color: root.color
+  icon.width: 24
+  icon.height: 24
 
   iconItem: Qaterial.ClipRRect
   {
@@ -43,5 +67,15 @@ Qaterial.IconLabel
       source: root.icon.source
       fillMode: root.fillMode
     }
+  }
+
+  labelItem: Qaterial.Label
+  {
+    text: root.text
+    font: root.font
+    color: root.color
+    elide: root.elide
+    wrapMode: root.wrapMode
+    maximumLineCount: root.maximumLineCount
   }
 }

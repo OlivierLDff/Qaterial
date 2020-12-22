@@ -57,16 +57,14 @@ Control
     {
       id: _textLabel
       text: _control.text
-      textType: Style.TextType.Body1
     } // Label
 
-    Qaterial.Label
+    Qaterial.LabelHint1
     {
       id: _secondaryLabel
       x: _textLabel.implicitWidth + _control.spacing
       anchors.baseline: _textLabel.baseline
       text: _control.secondaryText
-      textType: Style.TextType.Hint
     } // Label
 
     Qaterial.RangeSlider

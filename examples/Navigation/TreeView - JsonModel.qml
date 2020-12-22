@@ -262,9 +262,8 @@ Qaterial.TreeView
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
       }
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
-        textType: Qaterial.Style.TextType.Caption
         text: control.model ? control.model.type : ""
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter

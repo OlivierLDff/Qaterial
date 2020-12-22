@@ -42,11 +42,11 @@ T.TabButton
   font.family: "Lato"
   font.styleName: "Regular"
   font.bold: true
+  font.pixelSize: 16
 
   contentItem: Qaterial.Label
   {
     id: _iconLabel
-    textType: Qaterial.Style.TextType.ListText
     text: control.text
     font: control.font
     color:

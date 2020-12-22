@@ -22,7 +22,7 @@ Qaterial.FabButton
     display: _control.display
     icon: _control.icon
     text: _control.text
-    textType: Qaterial.Style.TextType.Button
+    font: _control.font
     color: _control.foregroundColor
   } // FabIconLabel
 

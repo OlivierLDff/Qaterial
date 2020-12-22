@@ -13,7 +13,7 @@ import Qaterial 1.0 as Qaterial
 
 T.Dialog
 {
-  id: _control
+  id: root
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
     contentWidth + leftPadding + rightPadding,
@@ -27,6 +27,7 @@ T.Dialog
   padding: Qaterial.Style.dialog.horizontalPadding
   topPadding: Qaterial.Style.dialog.topPadding //+ (drawSeparator ? 1 : 0)
   bottomPadding: (drawSeparator ? 1 : (Qaterial.Style.dialog.horizontalPadding + 1))
+  font: Qaterial.Style.textTheme.body1
 
   enter: Transition
   {
@@ -52,45 +53,44 @@ T.Dialog
     radius: Qaterial.Style.dialog.radius
     color: Qaterial.Style.dialogColor
 
-    layer.enabled: _control.elevation > 0
+    layer.enabled: root.elevation > 0
     layer.effect: Qaterial.ElevationEffect
     {
-      elevation: _control.elevation
+      elevation: root.elevation
     } // ElevationEffect
 
     Qaterial.HorizontalLineSeparator
     {
-      visible: _control.drawSeparator && header.visible
+      visible: root.drawSeparator && header.visible
       //anchors.top: header.bottom
-      //anchors.topMargin: _control.topPadding
+      //anchors.topMargin: root.topPadding
       anchors.horizontalCenter: parent.horizontalCenter
-      implicitWidth: _control.width
-      y: _control.header.height + _control.topPadding - 1
+      implicitWidth: root.width
+      y: root.header.height + root.topPadding - 1
     } // HorizontalLineSeparator
 
     Qaterial.HorizontalLineSeparator
     {
-      visible: _control.drawSeparator && footer.visible
-      y: _control.height - footer.height - _control.bottomPadding
+      visible: root.drawSeparator && footer.visible
+      y: root.height - footer.height - root.bottomPadding
       //anchors.bottom: footer.top
-      //anchors.bottomMargin: _control.bottomPadding
+      //anchors.bottomMargin: root.bottomPadding
       anchors.horizontalCenter: parent.horizontalCenter
-      implicitWidth: _control.width
+      implicitWidth: root.width
     } // HorizontalLineSeparator
   } // Rectangle
 
-  header: Qaterial.Label
+  header: Qaterial.LabelHeadline6
   {
-    text: _control.title
-    visible: _control.title
+    text: root.title
+    visible: root.title
     elide: Label.ElideRight
     padding: Qaterial.Style.dialog.horizontalPadding
     bottomPadding: 0
-    textType: Qaterial.Style.TextType.Title
     background: Rectangle
     {
       radius: Qaterial.Style.dialog.radius
-      color: _control.backgroundColor
+      color: root.backgroundColor
       //clip: true
     } // Rectangle
   } // Label
@@ -98,18 +98,18 @@ T.Dialog
   footer: Qaterial.DialogButtonBox
   {
     visible: count > 0
-    backgroundColor: _control.backgroundColor
+    backgroundColor: root.backgroundColor
   } // DialogButtonBox
 
   T.Overlay.modal: Rectangle
   {
-    color: _control.overlayColor
+    color: root.overlayColor
     Behavior on opacity { NumberAnimation { duration: 150 } }
   } // Rectangle
 
   T.Overlay.modeless: Rectangle
   {
-    color: _control.overlayColor
+    color: root.overlayColor
     Behavior on opacity { NumberAnimation { duration: 150 } }
   } // Rectangle
 } // Dialog

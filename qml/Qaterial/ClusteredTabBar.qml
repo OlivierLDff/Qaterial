@@ -25,7 +25,6 @@ Qaterial.TabBar
       display: _root.display
       text: model.text ? model.text : ""
       icon.source: model.source ? model.source : ""
-      onPrimary: _root.onPrimary
       enabled: _root.enabled
     } // TabButton
   } // Repeater

@@ -110,6 +110,8 @@ T.Button
 
   property double radius: height / 2
 
+  font: Qaterial.Style.textTheme.button
+
   icon.width: Qaterial.Style.fab.iconWidth
   icon.height: Qaterial.Style.fab.iconWidth
   icon.color: foregroundColor
@@ -144,7 +146,7 @@ T.Button
     icon.color: _control.icon.color
     icon.cache: _control.icon.cache
     text: _control.text
-    textType: Qaterial.Style.TextType.Button
+    font: _control.font
     color: _control.foregroundColor
   } // IconLabel
 

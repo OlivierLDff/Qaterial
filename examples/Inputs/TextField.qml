@@ -56,7 +56,7 @@ Column
     title: "Salary"
     prefixText: "$"
     suffixText: "USD"
-    suffixTextType: Qaterial.Style.TextType.Overline
+    //suffixTextType: Qaterial.Style.TextType.Overline
     suffixTextColor: "#8BC34A"
     placeholderText: "Enter your Salary"
     validator: RegExpValidator { regExp: /[0-9]*[.,]?[0-9]{0,2}/ }

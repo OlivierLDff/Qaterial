@@ -25,13 +25,14 @@ T.CheckBox
   horizontalPadding: Qaterial.Style.checkButton.horizontalPadding
   verticalPadding: Qaterial.Style.checkButton.verticalPadding
 
+  font: Qaterial.Style.textTheme.body2
+
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
   property bool drawline: Qaterial.Style.debug.drawDebugButton
 
   property alias elide: _label.elide
-  property alias textType: _label.textType
 
   Qaterial.DebugRectangle
   {
@@ -82,6 +83,7 @@ T.CheckBox
 
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
+    font: root.font
 
     text: _control.text
     enabled: _control.enabled

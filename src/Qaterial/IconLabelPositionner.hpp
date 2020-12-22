@@ -71,6 +71,20 @@ public:
     QATERIAL_PROPERTY(QSizeF, labelImplicitSize, LabelImplicitSize);
     QATERIAL_PROPERTY(QSizeF, containerSize, ContainerSize);
 
+private:
+    bool _enabled = true;
+
+public:
+    void setEnabled(bool value)
+    {
+        if(value != _enabled)
+        {
+            _enabled = value;
+            if(_enabled)
+                computeRects();
+        }
+    }
+
     // ──── PROPERTY OUT ────
 public:
     QATERIAL_PROPERTY_D(QSizeF, implicitSize, ImplicitSize, QSizeF(0, 0));

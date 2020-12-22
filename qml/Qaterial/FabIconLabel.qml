@@ -24,10 +24,10 @@ Item
 
   property alias text: _label.text
   property color color
-  property alias textType: _label.textType
   property bool mirrored: false
   property double spacing: 0
   property int elide: Text.ElideNone
+  property font font: Qaterial.Style.textTheme.button
 
   readonly property bool iconVisible: display != AbstractButton.TextOnly
   readonly property bool labelVisible: display != AbstractButton.IconOnly
@@ -89,6 +89,7 @@ Item
     elide: _control.elide
     visible: width > 0
     clip: true
+    font: _control.font
 
     anchors.left: !mirrored ? _iconItem.right : _control.left
     anchors.right: mirrored ? _iconItem.left : _control.right

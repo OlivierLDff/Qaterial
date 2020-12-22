@@ -34,18 +34,17 @@ T.GroupBox
   property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
   property alias radius: _rect.radius
 
-  property int textType: Qaterial.Style.TextType.Overline
-
   property bool inlineTitle: false
+
+  font: Qaterial.Style.textTheme.overline
 
   label: Qaterial.Label
   {
-    id: _label
     x: _control.leftPadding + (_control.inlineTitle ? (_control.verticalPadding) : 0)
     width: _control.availableWidth - x
 
     text: _control.title
-    textType: _control.textType
+    font: _control.font
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
     elide: Text.ElideRight

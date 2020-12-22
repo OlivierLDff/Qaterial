@@ -45,10 +45,9 @@ Row
   {
     spacing: 8
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       text: "ImageLabel"
-      textType: Qaterial.Style.TextType.Title
     }
 
     Qaterial.ImageLabel
@@ -123,7 +122,7 @@ Row
 
       width: 200
 
-      text: "Some long text being wrapped on the next line that should only be displayed in two line then elide"
+      text: "Some long text being wrapped on 2 lines that should be elided"
       wrapMode: Text.WordWrap
       maximumLineCount: 2
       mirrored: mirroredButton.checked
@@ -141,10 +140,9 @@ Row
   {
     spacing: 8
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       text: "Controls"
-      textType: Qaterial.Style.TextType.Title
     }
 
     Qaterial.SwitchButton

@@ -236,6 +236,21 @@ public:                                                                         
         return false;                                                                                                                      \
     }
 
+#define _QATERIAL_PTR_SETTER_WITH_CONNECTION(type, attribute, Attribute, override)                                                         \
+public:                                                                                                                                    \
+    virtual bool set##Attribute(type* value) override                                                                                      \
+    {                                                                                                                                      \
+        if(value != _##attribute)                                                                                                          \
+        {                                                                                                                                  \
+            disconnectFrom##Attribute();                                                                                                   \
+            _##attribute = value;                                                                                                          \
+            connectTo##Attribute();                                                                                                        \
+            Q_EMIT attribute##Changed(value);                                                                                              \
+            return true;                                                                                                                   \
+        }                                                                                                                                  \
+        return false;                                                                                                                      \
+    }
+
 #define _QATERIAL_ABSTRACT_PTR_GETTER(type, attribute)                                                                                     \
 public:                                                                                                                                    \
     virtual type* attribute() const = 0;
@@ -253,6 +268,15 @@ Q_SIGNALS:                                                                      
     _QATERIAL_PROPERTY_MEMBER(type*, attribute, nullptr)                                                                                   \
     _QATERIAL_PTR_GETTER(type, attribute, )                                                                                                \
     _QATERIAL_PTR_SETTER(type, attribute, Attribute, )                                                                                     \
+    _QATERIAL_PROPERTY_RESET(type, Attribute, nullptr)                                                                                     \
+    _QATERIAL_PTR_SIGNAL(type, attribute)                                                                                                  \
+private:
+
+#define QATERIAL_PTR_WITH_CONNECTION(type, attribute, Attribute)                                                                           \
+    _QATERIAL_Q_PROPERTY(type*, attribute, Attribute)                                                                                      \
+    _QATERIAL_PROPERTY_MEMBER(type*, attribute, nullptr)                                                                                   \
+    _QATERIAL_PTR_GETTER(type, attribute, )                                                                                                \
+    _QATERIAL_PTR_SETTER_WITH_CONNECTION(type, attribute, Attribute, )                                                                     \
     _QATERIAL_PROPERTY_RESET(type, Attribute, nullptr)                                                                                     \
     _QATERIAL_PTR_SIGNAL(type, attribute)                                                                                                  \
 private:

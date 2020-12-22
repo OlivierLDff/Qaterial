@@ -104,6 +104,15 @@ set(QATERIAL_DISPLAY_SRCS
   ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
   ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.hpp
   ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.cpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelImpl.hpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelImpl.cpp
+)
+
+set(QATERIAL_THEME_SRCS
+  ${QATERIAL_SOURCE_DIR}/TextTheme.hpp
+  ${QATERIAL_SOURCE_DIR}/TextTheme.cpp
+  ${QATERIAL_SOURCE_DIR}/Theme.hpp
+  ${QATERIAL_SOURCE_DIR}/Theme.cpp
 )
 
 set(QATERIAL_LAYOUT_SRCS
@@ -141,6 +150,7 @@ set(QATERIAL_UTILS_SRCS
 
 set(QATERIAL_SRCS
   ${QATERIAL_DISPLAY_SRCS}
+  ${QATERIAL_THEME_SRCS}
   ${QATERIAL_LAYOUT_SRCS}
   ${QATERIAL_IO_SRCS}
   ${QATERIAL_NAVIGATION_SRCS}
@@ -148,6 +158,7 @@ set(QATERIAL_SRCS
 )
 
 source_group("Display" FILES ${QATERIAL_DISPLAY_SRCS})
+source_group("Theme" FILES ${QATERIAL_THEME_SRCS})
 source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
 source_group("IO" FILES ${QATERIAL_IO_SRCS})
 source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})

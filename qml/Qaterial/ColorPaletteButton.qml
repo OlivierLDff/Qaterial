@@ -40,22 +40,20 @@ T.Button
       anchors.right: parent.right
       anchors.bottom: parent.bottom
 
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         visible: root.showName
         width: parent.width
         elide: Text.ElideRight
         text: root.name
-        textType: Qaterial.Style.TextType.Caption
         color: root.light ? Qaterial.Style.primaryTextColorLight : Qaterial.Style.primaryTextColorDark
       }
 
-      Qaterial.Label
+      Qaterial.LabelHint1
       {
         visible: root.showShade
         width: parent.width
         text: root.shade
-        textType: Qaterial.Style.TextType.Hint
         color: root.light ? Qaterial.Style.secondaryTextColorLight : Qaterial.Style.secondaryTextColorDark
       }
     }

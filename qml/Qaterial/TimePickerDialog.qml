@@ -64,7 +64,7 @@ Qaterial.ModalDialog
         leftInset: 0;rightInset: 0;topInset: 0;bottomInset: 0
 
         text: _header.pad(_dialog.hour, 2)
-        textType: Qaterial.Style.TextType.Display3
+        font: Qaterial.Style.textTheme.headline3
         highlighted: false
         opacity: showMinutes ? _dialog._unfocusedOpacity : 1
         onClicked: _dialog.showMinutes = false
@@ -74,7 +74,7 @@ Qaterial.ModalDialog
       {
         id: _hourSeparator
         text: ":"
-        textType: Qaterial.Style.TextType.Display3
+        font: Qaterial.Style.textTheme.headline3
         opacity: _dialog._unfocusedOpacity
       } // Hour Separator: Label
 
@@ -86,7 +86,7 @@ Qaterial.ModalDialog
         leftInset: 0;rightInset: 0;topInset: 0;bottomInset: 0
 
         text: _header.pad(_dialog.minute, 2)
-        textType: Qaterial.Style.TextType.Display3
+        font: Qaterial.Style.textTheme.headline3
         highlighted: false
         opacity: showMinutes ? 1 : _dialog._unfocusedOpacity
         onClicked: _dialog.showMinutes = true
@@ -107,10 +107,9 @@ Qaterial.ModalDialog
           leftInset: 0;rightInset: 0;topInset: 0;bottomInset: 0
 
           text: "AM"
-          textType: Qaterial.Style.TextType.Subheading
+          font: Qaterial.Style.textTheme.subtitle2
           highlighted: false
           opacity: _dialog.am ? 1 : _dialog._unfocusedOpacity
-          font.bold: true
 
           onClicked: _dialog.am = true
         } // AM: FlatButton
@@ -124,10 +123,9 @@ Qaterial.ModalDialog
           leftInset: 0;rightInset: 0;topInset: 0;bottomInset: 0
 
           text: "PM"
-          textType: Qaterial.Style.TextType.Subheading
+          font: Qaterial.Style.textTheme.subtitle2
           highlighted: false
           opacity: _dialog.am ? _dialog._unfocusedOpacity : 1
-          font.bold: true
 
           onClicked: _dialog.am = false
         } // PM: FlatButton
