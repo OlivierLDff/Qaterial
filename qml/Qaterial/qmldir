@@ -215,6 +215,7 @@ TextAreaContent 1.0 TextAreaContent.qml
 TextAreaScrollBar 1.0 TextAreaScrollBar.qml
 TextAreaScrollView 1.0 TextAreaScrollView.qml
 TextField 1.0 TextField.qml
+TextField2014 1.0 TextField2014.qml
 TextFieldAlertIcon 1.0 TextFieldAlertIcon.qml
 TextFieldButtonContainer 1.0 TextFieldButtonContainer.qml
 TextFieldClearButton 1.0 TextFieldClearButton.qml
