@@ -132,7 +132,7 @@ Item
   {
     id: _delegateClipper
 
-    property bool animationEnabled: true
+    property bool animationEnabled
 
     y: _headerLoader.height
     width: root.width
@@ -155,7 +155,12 @@ Item
       sourceComponent: root.delegate
 
       // Make sure to resize when a item is loaded
-      onItemChanged: () => root.evaluateDelegateClipperHeight()
+      onItemChanged: function()
+      {
+        _delegateClipper.animationEnabled = false
+        root.evaluateDelegateClipperHeight()
+        _delayEnableAnimation.start()
+      }
 
       Component.onCompleted: () => active = root.expanded
     } // Loader
