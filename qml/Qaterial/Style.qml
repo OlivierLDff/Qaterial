@@ -16,7 +16,39 @@ Qaterial.Theme
 {
   id: _root
 
+  dark: theme === Style.Theme.Dark
+
   textTheme: Qaterial.TextTheme {}
+
+  darkColorTheme: Qaterial.ColorTheme
+  {
+    dark: true
+    useBrandedBackground: true
+
+    primary: Qaterial.Colors.purple300
+    onPrimaryText: Qaterial.Colors.white
+
+    accent: Qaterial.Colors.amber500
+    onAccentText: Qaterial.Colors.white
+
+    background: "#252525"
+    toolTip: "#F0F0F0"
+  }
+
+  lightColorTheme: Qaterial.ColorTheme
+  {
+    dark: false
+    useBrandedBackground: false
+
+    primary: Qaterial.Colors.purple500
+    onPrimaryText: Qaterial.Colors.white
+
+    accent: Qaterial.Colors.amber500
+    onAccentText: Qaterial.Colors.white
+
+    background: "#FFFFFF"
+    toolTip: "#323232"
+  }
 
   enum Theme
   {
