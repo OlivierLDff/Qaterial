@@ -49,7 +49,7 @@ Rectangle
         onClicked: _root.expanded = !_root.expanded
       } // AppBarButton
 
-      Qaterial.LabelBody1
+      Qaterial.LabelSubtitle1
       {
         text: _root.title
         anchors.verticalCenter: parent.verticalCenter

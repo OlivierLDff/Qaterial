@@ -74,7 +74,7 @@ T.TextField
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
-  font: Qaterial.Style.textTheme.body2
+  font: Qaterial.Style.textTheme.subtitle1
 
   // DEBUG
   property bool drawline: Qaterial.Style.debug.drawDebugButton
