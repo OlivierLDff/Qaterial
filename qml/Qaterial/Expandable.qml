@@ -116,7 +116,11 @@ Item
   {
     id: _delayEnableAnimation
     interval: 0
-    onTriggered: () => _delegateClipper.animationEnabled = true
+    onTriggered: function()
+    {
+      _delegateClipper.animationEnabled = true
+      _delegateLoader._loadedOnce = true
+    }
   }
 
   // Always load the header
@@ -168,7 +172,14 @@ Item
         }
       }
 
-      Component.onCompleted: () => active = root.expanded
+      Component.onCompleted: function()
+      {
+        active = root.expanded
+        if(!active)
+        {
+          _delayEnableAnimation.start()
+        }
+      }
     } // Loader
   } // Item
 } // Rectangle
