@@ -154,12 +154,18 @@ Item
       width: _delegateClipper.width
       sourceComponent: root.delegate
 
+      property bool _loadedOnce
+
       // Make sure to resize when a item is loaded
       onItemChanged: function()
       {
-        _delegateClipper.animationEnabled = false
-        root.evaluateDelegateClipperHeight()
-        _delayEnableAnimation.start()
+        if(!_loadedOnce)
+        {
+          _delegateClipper.animationEnabled = false
+          root.evaluateDelegateClipperHeight()
+          _delayEnableAnimation.start()
+          _loadedOnce = true
+        }
       }
 
       Component.onCompleted: () => active = root.expanded
