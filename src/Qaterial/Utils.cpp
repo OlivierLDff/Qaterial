@@ -38,6 +38,7 @@
 #include <Qaterial/IconDescription.hpp>
 #include <Qaterial/IconLabelPositionner.hpp>
 #include <Qaterial/IconLabelImpl.hpp>
+#include <Qaterial/Icons.hpp>
 
 // Qt Core
 #include <QDir>
@@ -112,6 +113,8 @@ static void Qaterial_registerTypes()
     qaterial::TextTheme::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.Theme {}.{} to QML", *_uri, _major, _minor);
     qaterial::Theme::registerToQml(*_uri, _major, _minor);
+
+    qaterial::Icons::registerSingleton();
 
     // DISPLAY
 
@@ -188,7 +191,6 @@ static void Qaterial_loadResources(bool autoRegisterStyle = true)
     Q_INIT_RESOURCE(Qaterial);
     Q_INIT_RESOURCE(QaterialFonts);
     Q_INIT_RESOURCE(QaterialIcons);
-    Q_INIT_RESOURCE(QaterialIconsImpl);
 
     // Load all fonts embedded in QaterialFonts
     Qaterial_loadFonts();

@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        version: ['5.15.1']
+        version: ['5.15.2']
     steps:
       - uses: actions/checkout@v2
 

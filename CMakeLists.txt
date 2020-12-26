@@ -94,12 +94,17 @@ endif()
 # ───── RESSOURCES ─────
 
 add_subdirectory(qml)
+include(cmake/QaterialGenerateIcons.cmake)
+set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
+set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Icons.hpp")
+qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE})
 
 # ───── QML SOURCES ─────
 
 set(QATERIAL_SOURCE_DIR src/Qaterial)
 
 set(QATERIAL_DISPLAY_SRCS
+  ${QATERIAL_ICONS_CLASS_FILE}
   ${QATERIAL_SOURCE_DIR}/IconDescription.hpp
   ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
   ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.hpp
@@ -175,7 +180,7 @@ else()
 endif()
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
-target_include_directories(${QATERIAL_TARGET} PUBLIC src)
+target_include_directories(${QATERIAL_TARGET} PUBLIC src ${QATERIAL_ICONS_OUTPUT_FOLDER})
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()

@@ -116,7 +116,11 @@ Item
   {
     id: _delayEnableAnimation
     interval: 0
-    onTriggered: () => _delegateClipper.animationEnabled = true
+    onTriggered: function()
+    {
+      _delegateClipper.animationEnabled = true
+      _delegateLoader._loadedOnce = true
+    }
   }
 
   // Always load the header
@@ -154,15 +158,28 @@ Item
       width: _delegateClipper.width
       sourceComponent: root.delegate
 
+      property bool _loadedOnce
+
       // Make sure to resize when a item is loaded
       onItemChanged: function()
       {
-        _delegateClipper.animationEnabled = false
-        root.evaluateDelegateClipperHeight()
-        _delayEnableAnimation.start()
+        if(!_loadedOnce)
+        {
+          _delegateClipper.animationEnabled = false
+          root.evaluateDelegateClipperHeight()
+          _delayEnableAnimation.start()
+          _loadedOnce = true
+        }
       }
 
-      Component.onCompleted: () => active = root.expanded
+      Component.onCompleted: function()
+      {
+        active = root.expanded
+        if(!active)
+        {
+          _delayEnableAnimation.start()
+        }
+      }
     } // Loader
   } // Item
 } // Rectangle
