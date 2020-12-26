@@ -241,7 +241,7 @@ Column
             maximumLengthCount: 32
           }
 
-          Qaterial.Label { text: "spacing" }
+          Qaterial.LabelBody2 { text: "Spacing" }
 
           Qaterial.Slider
           {
@@ -252,7 +252,7 @@ Column
             value: 8
           }
 
-          Qaterial.Label { text: "icon size" }
+          Qaterial.LabelBody2 { text: "icon size" }
 
           Qaterial.Slider
           {
