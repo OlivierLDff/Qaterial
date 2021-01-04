@@ -20,46 +20,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
+import QtQuick 2.0
+import QtQuick.Controls 2.0
 
-// Library Headers
-#include <Qaterial/Theme.hpp>
+import Qaterial 1.0 as Qaterial
 
-// Dependencies Headers
-
-// ──── DECLARATION ────
-
-// ──── FUNCTIONS ────
-
-namespace qaterial {
-
-Theme::Theme(QObject* parent) : QObject(parent)
+Column
 {
-    connect(this,
-        &Theme::darkChanged,
-        this,
-        [this]()
-        {
-            if(lightColorTheme() != darkColorTheme())
-                Q_EMIT colorThemeChanged();
-        });
-
-    connect(this,
-        &Theme::darkColorThemeChanged,
-        this,
-        [this]()
-        {
-            if(_dark)
-                Q_EMIT colorThemeChanged();
-        });
-    connect(this,
-        &Theme::lightColorThemeChanged,
-        this,
-        [this]()
-        {
-            if(!_dark)
-                Q_EMIT colorThemeChanged();
-        });
-}
-
+  Qaterial.Label
+  {
+    text: "High Emphasis"
+    color: Qaterial.Style.colorTheme.primaryText
+  }
+  Qaterial.Label
+  {
+    text: "Medium Emphasis"
+    color: Qaterial.Style.colorTheme.secondaryText
+  }
+  Qaterial.Label
+  {
+    text: "Disabled"
+    color: Qaterial.Style.colorTheme.disabledText
+  }
 }

@@ -27,6 +27,7 @@
 
 // Library Headers
 #include <Qaterial/TextTheme.hpp>
+#include <Qaterial/ColorTheme.hpp>
 
 // ──── DECLARATION ────
 
@@ -34,18 +35,50 @@
 
 namespace qaterial {
 
+class ThemeAttached : public QObject
+{
+    Q_OBJECT
+    QML_ANONYMOUS
+    QATERIAL_REGISTER_ANONYMOUS_TO_QML(ThemeAttached);
+
+    // ──── CONSTRUCTOR ────
+public:
+    ThemeAttached(QObject* parent = nullptr) : QObject(parent) {}
+
+    // ──── PROPERTY ────
+public:
+    QATERIAL_PROPERTY(int, elevation, Elevation);
+};
+
 class QATERIAL_API_ Theme : public QObject
 {
     Q_OBJECT
     QATERIAL_REGISTER_TO_QML(Theme);
+    QML_ATTACHED(ThemeAttached)
 
     // ──── CONSTRUCTOR ────
 public:
-    Theme(QObject* parent = nullptr) : QObject(parent) {}
+    Theme(QObject* parent = nullptr);
 
     // ──── PROPERTY ────
 public:
     QATERIAL_PTR(TextTheme, textTheme, TextTheme);
+    QATERIAL_PROPERTY_D(bool, dark, Dark, true);
+    QATERIAL_PTR(ColorTheme, darkColorTheme, DarkColorTheme);
+    QATERIAL_PTR(ColorTheme, lightColorTheme, LightColorTheme);
+
+protected:
+    Q_PROPERTY(qaterial::ColorTheme* colorTheme READ colorTheme NOTIFY colorThemeChanged);
+
+public:
+    ColorTheme* colorTheme() const { return _dark ? _darkColorTheme : _lightColorTheme; }
+
+Q_SIGNALS:
+    void colorThemeChanged();
+
+    // ──── ATTACHED ────
+public:
+    static ThemeAttached* qmlAttachedProperties(QObject* parent) { return new ThemeAttached(parent); }
 };
 
 }

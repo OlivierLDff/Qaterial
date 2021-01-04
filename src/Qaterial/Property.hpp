@@ -332,6 +332,18 @@ public:                                                                         
                                                                                                                                            \
 private:
 
+#define QATERIAL_REGISTER_ANONYMOUS_TO_QML(Type)                                                                                           \
+public:                                                                                                                                    \
+    static void registerToQml(const char* uri = "Qaterial",                                                                                \
+        const int majorVersion = 1,                                                                                                        \
+        const int minorVersion = 0,                                                                                                        \
+        const char* name = #Type)                                                                                                          \
+    {                                                                                                                                      \
+        qmlRegisterAnonymousType<Type>(uri, majorVersion);                                                                                 \
+    }                                                                                                                                      \
+                                                                                                                                           \
+private:
+
 #define QATERIAL_SINGLETON_IMPL(Class, name, Name)                                                                                         \
 public:                                                                                                                                    \
     static Class& name()                                                                                                                   \

@@ -111,8 +111,12 @@ static void Qaterial_registerTypes()
     // THEME
     LOG_DEV_INFO("Register {}.TextTheme {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextTheme::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.ColorTheme {}.{} to QML", *_uri, _major, _minor);
+    qaterial::ColorTheme::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.Theme {}.{} to QML", *_uri, _major, _minor);
     qaterial::Theme::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.ThemeAttached {}.{} to QML", *_uri, _major, _minor);
+    qaterial::ThemeAttached::registerToQml(*_uri, _major, _minor);
 
     qaterial::Icons::registerSingleton();
 
