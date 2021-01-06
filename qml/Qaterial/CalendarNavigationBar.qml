@@ -44,7 +44,7 @@ Item
       leftInset: 1
       rightPadding: 0
       leftPadding: 0
-      textType: Qaterial.Style.TextType.Body1
+      font: Qaterial.Style.textTheme.Body2
       highlighted: false
       backgroundImplicitWidth: 0
 
@@ -59,7 +59,7 @@ Item
       leftInset: 1
       rightPadding: 0
       leftPadding: 0
-      textType: Qaterial.Style.TextType.Body1
+      font: Qaterial.Style.textTheme.Body2
       highlighted: false
       backgroundImplicitWidth: 0
 

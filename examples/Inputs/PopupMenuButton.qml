@@ -15,19 +15,21 @@ Row
   }
   Qaterial.PopupMenuItem
   {
+    id: customIcon
     text: "Delete"
-    iconItem: Qaterial.Icon
-    {
-      icon: Qaterial.Icons.trashCanOutline
-      color: Qaterial.Colors.red500
-    }
+
+    icon.source: Qaterial.Icons.trashCanOutline
+    icon.color: Qaterial.Colors.red500
   }
   Qaterial.PopupMenuItem
   {
+    id: imageItem
     text: "Image"
+    icon.source: "https://www.flaticon.com/svg/static/icons/svg/3426/3426645.svg"
+
     iconItem: Image
     {
-      source: "https://www.flaticon.com/svg/static/icons/svg/3426/3426645.svg"
+      source: imageItem.icon.source
     }
   }
 }

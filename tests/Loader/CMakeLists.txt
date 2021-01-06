@@ -13,11 +13,10 @@ set_target_properties(${QATERIAL_TEST_LOADER} PROPERTIES FOLDER "${QATERIAL_FOLD
 
 # Fix gcc7 bug major/minor
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-  target_precompile_headers(${QATERIAL_TEST_LOADER} PRIVATE ${PROJECT_SOURCE_DIR}/include/Qaterial/Pch/Pch.hpp)
+  target_precompile_headers(${QATERIAL_TEST_LOADER} PRIVATE ${PROJECT_SOURCE_DIR}/src/Qaterial/Pch/Pch.hpp)
 endif()
 
-
-file(GLOB QML_FILES ${PROJECT_SOURCE_DIR}/qml/*.qml)
+file(GLOB_RECURSE QML_FILES ${PROJECT_SOURCE_DIR}/qml/*.qml)
 
 foreach(QML_FILE ${QML_FILES})
 

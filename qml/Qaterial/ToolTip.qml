@@ -12,11 +12,10 @@ import Qaterial 1.0 as Qaterial
 
 T.ToolTip
 {
-
   id: control
 
   property double backgroundRadius: Qaterial.Style.toolTip.radius
-  property int textType: Qaterial.Style.dense ? Qaterial.Style.TextType.Caption : Qaterial.Style.TextType.Body1
+  font: Qaterial.Style.dense ? Qaterial.Style.textTheme.caption : Qaterial.Style.textTheme.body2
 
   property int position: Qaterial.Style.Position.Top
 
@@ -130,7 +129,7 @@ T.ToolTip
   contentItem: Qaterial.Label
   {
     text: control.text
-    textType: control.textType
+    font: control.font
     color: Qaterial.Style.snackbarTextColor()
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter

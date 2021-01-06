@@ -6,6 +6,8 @@ Item
 {
   id: root
 
+  anchors.fill: parent
+
   readonly property
   var colors: [
     Qaterial.Colors.red,
@@ -46,20 +48,18 @@ Item
       border.width: 2
     }
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       x: 16
       y: 16
 
       text: `Depth ${parent.StackView.index.toString()}`
-      textType: Qaterial.Style.TextType.Title
     }
   }
 
-  Qaterial.Label
+  Qaterial.LabelSubtitle1
   {
     text: "Qaterial.DepthStackView Example"
-    textType: Qaterial.Style.TextType.Heading
     anchors.bottom: stackView.top
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.margins: 16

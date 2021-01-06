@@ -24,6 +24,9 @@ Control
   property int wrapMode: Text.Wrap
   property bool cursorVisible: true
 
+  property bool selectByMouse
+  property bool persistentSelection
+
   // CONTENT
   property string title
   property string helperText
@@ -53,13 +56,6 @@ Control
   property bool leadingIconVisible: leadingIconSource != ""
   property bool leadingIconErrorAnimation: false
   property bool trailingInline: true
-
-  property int textType: Qaterial.Style.TextType.ListText
-  property int titleTextType: titleUp ? Qaterial.Style.TextType.Caption : textType
-  property int placeholderTextType: textType
-  property int prefixTextType: textType
-  property int suffixTextType: textType
-  property int hintTextType: Qaterial.Style.TextType.Hint
 
   property bool titleUp: textAreaActiveFocus || _control.length || _control.preeditText
   readonly property bool anyHintVisible: (_control.helperText != "" || _control._errorText != "") || _lineCountLabel
@@ -162,7 +158,7 @@ Control
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.titleTextType
+    font: _control.titleUp ? Qaterial.Style.textTheme.caption : _control.font
     color: _control.titleTextColor
     x: textAreaLeftPadding
     y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset : textAreaTopPadding
@@ -178,7 +174,6 @@ Control
         duration: 200
       } // NumberAnimation
     } // Behavior y
-    font.pixelSize: Qaterial.Style.textTypeToPixelSize(textType)
     Behavior on font.pixelSize
     {
       NumberAnimation
@@ -244,7 +239,7 @@ Control
     }
   } // function setError(s)
 
-  Qaterial.Label // Hint
+  Qaterial.LabelHint1 // Hint
   {
     opacity: (_control.helperText != "" || _control._errorText != "") ? 1.0 : 0.0
     Behavior on opacity
@@ -264,7 +259,6 @@ Control
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.hintTextType
     color: _control.helperTextColor
     width: _control.width - textAreaLeftPadding - _control.rightPadding - _lineCountLabel.width
     x: textAreaLeftPadding
@@ -276,7 +270,7 @@ Control
 
   property int maximumLengthCount: 32767
 
-  Qaterial.Label // LineCounter
+  Qaterial.LabelHint1 // LineCounter
   {
     id: _lineCountLabel
     visible: _control.maximumLengthCount > 0 && _control.maximumLengthCount < 32767
@@ -289,7 +283,6 @@ Control
       visible: _control.drawline
     } // DebugRectangle
 
-    textType: _control.hintTextType
     color: _control.helperTextColor
     x: _control.width - width - (_control.trailingInline ? 0 : _control.rightPadding)
     y: _control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset
@@ -313,7 +306,7 @@ Control
     y: _control.topPadding
     text: _control.prefixText
     color: _control.prefixTextColor
-    textType: _control.prefixTextType
+    font: _control.font
     verticalAlignment: _control.verticalAlignment
     renderType: _control.renderType
     opacity: (_control.prefixText != "" && textAreaActiveFocus || _control.length) ? 1.0 : 0.0
@@ -342,7 +335,7 @@ Control
     height: _control.contentHeight
     x: _control.width - width - _control.rightPadding
     y: _control.topPadding
-    textType: _control.suffixTextType
+    font: _control.font
     text: _control.suffixText
     color: _control.suffixTextColor
     verticalAlignment: _control.verticalAlignment
@@ -396,9 +389,11 @@ Control
     onLinkHovered: _control.linkHovered(link)
 
     forcePlaceholderOff: !_control.titleUp
-    textType: _control.textType
+    font: _control.font
     placeholderText: _control.placeholderText
     text: _control.text
+    selectByMouse: _control.selectByMouse
+    persistentSelection: _control.persistentSelection
     wrapMode: _control.wrapMode
     cursorVisible: _control.cursorVisible
     color: _control.color

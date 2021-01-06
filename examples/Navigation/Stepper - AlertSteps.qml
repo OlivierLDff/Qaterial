@@ -73,11 +73,10 @@ Item
       Component
       {
         id: stepNumber
-        Qaterial.Label
+        Qaterial.LabelButton
         {
           anchors.centerIn: parent
           text: indicatorCircle.index + 1
-          textType: Qaterial.Style.TextType.Button
         } // Label
       } // Component
       Component
@@ -122,7 +121,7 @@ Item
         return element.text
       }
       horizontalAlignment: stepper.vertical ? Text.AlignLeft : Text.AlignHCenter
-      font.bold: isCurrent
+      onIsCurrentChanged: () => font.bold = isCurrent
       color:
       {
         if(isAlertStep)

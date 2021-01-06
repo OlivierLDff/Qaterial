@@ -16,8 +16,6 @@ Qaterial.TabBar
   property alias model: _repeater.model
   property alias button: _repeater.delegate
   property int display: AbstractButton.TextUnderIcon
-  property bool hintText: false
-  property bool useSmallFont: false
   implicitWidth: width
 
   Repeater
@@ -25,16 +23,14 @@ Qaterial.TabBar
     id: _repeater
     delegate: Qaterial.TabButton
     {
-      elide: Text.ElideRight
-      width: _root.width / model.count
-      implicitWidth: width
-      display: hintText ? (!checked ? AbstractButton.IconOnly : AbstractButton.TextUnderIcon) : _root.display
+      width: implicitWidth
+      implicitWidth: _root.width / model.count
+      display: _root.display
       text: model.text ? model.text : ""
       icon.source: model.source ? model.source : ""
       onPrimary: _root.onPrimary
+      spacing: _root.spacing
       enabled: _root.enabled
-      hintText: _root.hintText
-      useSmallFont: _root.useSmallFont
     } // TabButton
   } // Repeater
 } // TabBar

@@ -162,6 +162,7 @@ T.ItemDelegate
 
   // Qaterial.DebugRectangle { anchors.fill: parent; border.color: "red" }
 
+  // todo : replace with Qaterial.IconLabel
   contentItem: Item
   {
     implicitHeight: Math.max(fileIcon.implicitHeight, fileLabel.implicitHeight)
@@ -181,7 +182,7 @@ T.ItemDelegate
       color: control.icon.color
     }
 
-    Qaterial.Label
+    Qaterial.LabelCaption
     {
       id: fileLabel
 
@@ -191,7 +192,6 @@ T.ItemDelegate
       width: parent.width - fileIcon.width - control.spacing
 
       text: control.text
-      textType: Qaterial.Style.TextType.Caption
       elide: Text.ElideRight
       verticalAlignment: Text.AlignVCenter
 

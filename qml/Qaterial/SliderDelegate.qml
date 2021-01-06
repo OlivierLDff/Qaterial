@@ -47,20 +47,18 @@ Control
     implicitHeight: _textLabel.implicitHeight
     implicitWidth: _textLabel.implicitWidth + _secondaryLabel.implicitWidth
 
-    Qaterial.Label
+    Qaterial.LabelBody2
     {
       id: _textLabel
       text: _control.text
-      textType: Qaterial.Style.TextType.Body1
     } // Label
 
-    Qaterial.Label
+    Qaterial.LabelHint1
     {
       id: _secondaryLabel
       x: _textLabel.implicitWidth + _control.spacing
       anchors.baseline: _textLabel.baseline
       text: _control.secondaryText
-      textType: Qaterial.Style.TextType.Hint
     } // Label
 
     Qaterial.Slider

@@ -10,11 +10,45 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 // Qaterial
-import Qaterial 1.0
+import Qaterial 1.0 as Qaterial
 
-QtObject
+Qaterial.Theme
 {
   id: _root
+
+  dark: theme === Style.Theme.Dark
+
+  textTheme: Qaterial.TextTheme {}
+
+  darkColorTheme: Qaterial.ColorTheme
+  {
+    dark: true
+    useBrandedBackground: true
+
+    primary: Qaterial.Colors.purple300
+    onPrimaryText: Qaterial.Colors.white
+
+    accent: Qaterial.Colors.amber500
+    onAccentText: Qaterial.Colors.white
+
+    background: "#252525"
+    toolTip: "#F0F0F0"
+  }
+
+  lightColorTheme: Qaterial.ColorTheme
+  {
+    dark: false
+    useBrandedBackground: false
+
+    primary: Qaterial.Colors.purple500
+    onPrimaryText: Qaterial.Colors.white
+
+    accent: Qaterial.Colors.amber500
+    onAccentText: Qaterial.Colors.white
+
+    background: "#FFFFFF"
+    toolTip: "#323232"
+  }
 
   enum Theme
   {
@@ -283,25 +317,25 @@ QtObject
     Center
   } // Position
 
-  enum TextType
-  {
-    Display3,
-    Display2,
-    Display1,
-    Heading,
-    Title,
-    Subheading,
-    ListText,
-    ListSecText,
-    Overline,
-    Body2,
-    Body1,
-    Caption,
-    Hint,
-    Button,
-    Menu,
-    MenuHint
-  } // TextType
+  //  enum TextType
+  //  {
+  //    Display3,
+  //    Display2,
+  //    Display1,
+  //    Heading,
+  //    Title,
+  //    Subheading,
+  //    ListText,
+  //    ListSecText,
+  //    Overline,
+  //    Body2,
+  //    Body1,
+  //    Caption,
+  //    Hint,
+  //    Button,
+  //    Menu,
+  //    MenuHint
+  //  } // TextType
 
   property bool usePixelSize: true
 
@@ -414,7 +448,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontFamily;
   } // function textTypeToFontFamily(type)
 
@@ -457,7 +491,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontStyleName;
   } // function textTypeToStyleName(type)
 
@@ -500,7 +534,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontPointSize;
   } // function textTypeToPointSize(type)
 
@@ -543,7 +577,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return body1FontPixelSize;
   } // function textTypeToPixelSize(type)
 
@@ -586,7 +620,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return primaryTextColor();
   } // function textTypeToColor(type)
 
@@ -629,7 +663,7 @@ QtObject
       default:
         break;
     }
-    console.log("Unknown Text Type : " + type)
+    //console.log("Unknown Text Type : " + type)
     return primaryTextColorReversed();
   } // function textTypeToColorReversed(type)
 

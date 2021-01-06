@@ -37,7 +37,6 @@ Qaterial.TextArea
       onLinkHovered: _control.linkHovered(link)
 
       forcePlaceholderOff: !_control.titleUp
-      textType: _control.textType
       placeholderText: _control.placeholderText
       text: _control.text
       wrapMode: _control.wrapMode

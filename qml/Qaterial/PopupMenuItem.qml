@@ -11,89 +11,62 @@ import QtQuick.Templates 2.12 as T
 // Qaterial
 import Qaterial 1.0 as Qaterial
 
-T.Button
+Qaterial.RoundButton
 {
   id: root
 
-  property Component iconItem: Qaterial.Icon
-  {
-    icon: root.icon.source
-    color: Qaterial.Style.accentColor
-  }
+  property alias iconItem: _iconLabel.iconItem
 
-  implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    implicitContentWidth + leftPadding + rightPadding)
-  implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    implicitContentHeight + topPadding + bottomPadding)
+  spacing: 4
 
   topInset: Qaterial.Style.toolButton.padding
   bottomInset: Qaterial.Style.toolButton.padding
   leftInset: Qaterial.Style.toolButton.padding
   rightInset: Qaterial.Style.toolButton.padding
 
-  leftPadding: 0
-  rightPadding: 0
+  topPadding: Qaterial.Style.toolButton.padding * 2
+  bottomPadding: Qaterial.Style.toolButton.padding * 1.5
+  leftPadding: Qaterial.Style.toolButton.padding * 2
+  rightPadding: Qaterial.Style.toolButton.padding * 2
 
   icon.width: Qaterial.Style.fab.iconWidth
   icon.height: Qaterial.Style.fab.iconWidth
+  icon.color: Qaterial.Style.accentColor
 
-  contentItem: Item
+  contentItem: Qaterial.IconLabel
   {
-    implicitHeight: _icon.height
-
-    Loader
-    {
-      id: _icon
-
-      anchors.centerIn: parent
-      anchors.verticalCenterOffset: -height / 4
-
-      width: root.icon.width
-      height: root.icon.height
-
-      sourceComponent: root.iconItem
-
-      //Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Colors.green500 }
-    }
-
-    Qaterial.Label
-    {
-      anchors.top: _icon.bottom
-      anchors.topMargin: 4
-      anchors.horizontalCenter: parent.horizontalCenter
-
-      width: parent.width
-
-      text: root.text
-      textType: Qaterial.Style.TextType.Hint
-      elide: Text.ElideRight
-      horizontalAlignment: Text.AlignHCenter
-
-      //Qaterial.DebugRectangle { anchors.fill: parent; border.color: Qaterial.Colors.red500 }
-    }
-
-    // Qaterial.DebugRectangle { anchors.fill: parent }
+    id: _iconLabel
+    iconItem: root.iconItem
+    font: Qaterial.Style.textTheme.hint1
+    display: Qaterial.IconLabel.TextUnderIcon
+    spacing: root.spacing
+    text: root.text
+    icon.width: root.icon.width
+    icon.height: root.icon.height
+    icon.source: root.icon.source
+    icon.color: root.icon.color
   }
 
-  background: Item
-  {
-    implicitWidth: Qaterial.Style.toolButton.minWidth
-    implicitHeight: Qaterial.Style.toolButton.minHeight
-
-    Qaterial.Ripple
-    {
-      id: _ripple
-
-      width: root.width
-      height: root.height
-
-      anchors.centerIn: parent
-
-      pressed: root.pressed
-      anchor: root
-      active: root.down || root.visualFocus //|| root.hovered
-
-      color: Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Background)
-    } // Ripple
-  }
+  //  // fixme : herit from button with RoundButton with flat:true
+  //  background: Item
+  //  {
+  //    implicitWidth: Qaterial.Style.toolButton.minWidth
+  //    implicitHeight: Qaterial.Style.toolButton.minHeight
+  //
+  //    Qaterial.Ripple
+  //    {
+  //      id: _ripple
+  //
+  //      width: root.width
+  //      height: root.height
+  //
+  //      anchors.centerIn: parent
+  //
+  //      pressed: root.pressed
+  //      anchor: root
+  //      active: root.down || root.visualFocus //|| root.hovered
+  //
+  //      color: Qaterial.Style.rippleColor(Qaterial.Style.RippleBackground.Background)
+  //    } // Ripple
+  //  }
 } // Button

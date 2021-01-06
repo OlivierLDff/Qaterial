@@ -15,7 +15,7 @@ Item
   width: 2 * bottomLeft.width + rectangle.width + 2 * bottomRight.width
   height: 2 * top.height + rectangle.height + 2 * bottom.height + label.height + 20
 
-  Qaterial.Label
+  Qaterial.LabelCaption
   {
     id: label
     x: (parent.width - width) / 2
@@ -26,7 +26,6 @@ Item
     wrapMode: Text.Wrap
     elide: Text.ElideRight
     text: "ToolTip are displayed spaced apart by \"margins/2\" pixels from their parent's border (default: margins = 12)"
-    textType: Qaterial.Style.TextType.Caption
   }
 
   Rectangle

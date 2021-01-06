@@ -16,10 +16,9 @@ Row
       text: "Header"
       onClicked: () => root.expanded = !root.expanded
 
-      contentItem: Qaterial.Label
+      contentItem: Qaterial.LabelHeadline6
       {
         text: parent.text
-        textType: Qaterial.Style.TextType.Title
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
       }
@@ -36,11 +35,10 @@ Row
   {
     id: delegateComponent
 
-    Qaterial.Label
+    Qaterial.LabelHeadline6
     {
       id: delegate
       text: `Height : ${height.toFixed(0)}`
-      textType: Qaterial.Style.TextType.Title
       horizontalAlignment: Text.AlignHCenter
       verticalAlignment: Text.AlignVCenter
       height: 100

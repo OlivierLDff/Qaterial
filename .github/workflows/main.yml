@@ -15,8 +15,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macOS-latest, ubuntu-latest]
-        version: ['5.15.1']
+        os: [ubuntu-latest]
+        version: ['5.15.2']
     steps:
       - uses: actions/checkout@v2
 
@@ -35,7 +35,7 @@ jobs:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          modules: 'qtcharts qtdatavis3d qtvirtualkeyboard qtwebengine qtquick3d'
+          modules: ''
 
       - name: Configure
         run: |
@@ -45,20 +45,6 @@ jobs:
 
       - name: Build Qaterial
         run: cmake --build build --target "Qaterial" --config "Release" -j
-
-      - name: Build QaterialHotReload
-        run: cmake --build build --target "QaterialHotReload" --config "Release" -j
-
-      - name: Build QaterialHotReload Installer
-        run: cmake --build build --target "QaterialHotReloadInstallerX64" --config "Release" -j
-        if: contains(matrix.os, 'windows')
-
-      - name: Upload QaterialHotReload Installer
-        uses: actions/upload-artifact@v2
-        with:
-          name: Qaterial HotReloader Installer X64 Windows (${{ matrix.version }})
-          path: build/tools/HotReload/app/QaterialHotReloadInstallerX64Release.exe
-        if: contains(matrix.os, 'windows')
 
       - name: Build QaterialTestLoader
         run: cmake --build build --target "QaterialTestLoader" --config "Release" -j

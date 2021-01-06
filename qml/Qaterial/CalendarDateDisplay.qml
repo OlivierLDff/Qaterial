@@ -22,11 +22,10 @@ Rectangle
     color: parent.color
   }
 
-  Qaterial.Label
+  Qaterial.LabelHeadline4
   {
     leftPadding: 20
     anchors.verticalCenter: parent.verticalCenter
-    textType: Qaterial.Style.TextType.Heading
     text: root.text
     color: Qaterial.Style.textColorDark
   }

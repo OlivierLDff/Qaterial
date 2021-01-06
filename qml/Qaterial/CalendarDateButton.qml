@@ -23,10 +23,12 @@ T.Button
 
   horizontalPadding: Qaterial.Style.roundIcon.size / 4
 
+  font: Qaterial.Style.textTheme.button
+
   contentItem: Qaterial.Label
   {
     text: control.text
-    textType: Qaterial.Style.TextType.Button
+    font: control.font
 
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter

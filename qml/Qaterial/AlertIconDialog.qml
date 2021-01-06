@@ -13,9 +13,9 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.ModalDialog
 {
-  id: _control
+  id: root
 
-  property alias text: _text.text
+  property string text
 
   property alias iconSource: _icon.source
 
@@ -50,10 +50,10 @@ Qaterial.ModalDialog
     {
       id: _text
 
-      text: _control.text
-      x: _icon.visible ? (_icon.width + _control.horizontalPadding) : 0
+      text: root.text
+      x: _icon.visible ? (_icon.width + root.horizontalPadding) : 0
       width: parent.width - x
-      textType: Qaterial.Style.TextType.ListText
+      font: root.font
       color: Qaterial.Style.secondaryTextColor()
       wrapMode: Text.Wrap
       elide: Text.ElideRight

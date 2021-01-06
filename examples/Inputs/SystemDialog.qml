@@ -5,7 +5,7 @@ Column
 {
   id: root
 
-  width: 220
+  width: 230
 
   function showSaveFile()
   {

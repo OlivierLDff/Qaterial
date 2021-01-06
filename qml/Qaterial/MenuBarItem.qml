@@ -35,8 +35,6 @@ T.MenuBarItem
   leftInset: Qaterial.Style.menuBarItem.leftInset
   rightInset: Qaterial.Style.menuBarItem.rightInset
 
-  property alias textType: _iconLabel.textType
-
   leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
     .menuBarItem.padding) + leftInset
   rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
@@ -65,6 +63,8 @@ T.MenuBarItem
   icon.height: Qaterial.Style.menuBarItem.iconWidth
   icon.color: foregroundColor
 
+  font: Qaterial.Style.textTheme.button
+
   property bool clipRipple: true
   property bool forceRipple: false
   property bool accentRipple: false
@@ -74,9 +74,13 @@ T.MenuBarItem
     id: _iconLabel
     spacing: _control.spacing
     display: _control.display
-    icon: _control.icon
+    icon.source: _control.icon.source
+    icon.width: _control.icon.width
+    icon.height: _control.icon.height
+    icon.color: _control.icon.color
+    icon.cache: _control.icon.cache
     text: _control.text
-    textType: Qaterial.Style.TextType.Menu
+    font: _control.font
     color: _control.foregroundColor
   } // IconLabel
 

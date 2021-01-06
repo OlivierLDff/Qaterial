@@ -81,6 +81,8 @@ T.MenuItem
     readonly property url source: _control.checked ? Qaterial.Icons.radioboxMarked : Qaterial.Icons.radioboxBlank
   } // QtObject
 
+  font: Qaterial.Style.textTheme.body2
+
   icon.width: Qaterial.Style.menuItem.iconWidth
   icon.height: Qaterial.Style.menuItem.iconWidth
   icon.color: foregroundColor
@@ -90,19 +92,25 @@ T.MenuItem
   property bool forceRipple: false
   property bool accentRipple: false
 
-  indicator: Qaterial.Label
+  indicator: Qaterial.LabelHint2
   {
     x: _control.mirrored ? _control.leftPadding : _control.width - width - _control.rightPadding
     y: _control.topPadding + (_control.availableHeight - height) / 2
     //width: _control.icon.width
     //height: _control.icon.height
     width: Qaterial.Style.menuItem.shortcutImplicitWidth
-    text: _control.action && _control.action.shortcut ? _control.action.shortcut : ""
-    visible: _control.action && _control.action.shortcut != ""
+    text: dummyShortcut.nativeText
+    visible: _control.action && dummyShortcut.nativeText != ""
     horizontalAlignment: _control.mirrored ? Qt.AlignRight : Qt.AlignLeft
-    textType: Qaterial.Style.TextType.MenuHint
     onPrimary: _control.onPrimary
     colorReversed: _control.colorReversed
+
+    Shortcut
+    {
+      id: dummyShortcut
+      enabled: false
+      sequence: _control.action ? _control.action.shortcut : ""
+    }
 
     Qaterial.DebugRectangle
     {
@@ -134,15 +142,19 @@ T.MenuItem
     anchors.leftMargin: _control.mirrored ? indicatorPadding + arrowPadding : 0
     anchors.rightMargin: !_control.mirrored ? indicatorPadding + arrowPadding : 0
 
-    alwaysRenderIcon: true
+    //alwaysRenderIcon: true
 
-    alignment: Qt.AlignLeft
+    horizontalAlignment: Qt.AlignLeft
     elide: Text.ElideRight
 
     spacing: _control.spacing
     display: _control.display
-    textType: Qaterial.Style.TextType.Menu
-    icon: _control.icon
+    font: _control.font
+    icon.source: _control.icon.source
+    icon.width: _control.icon.width
+    icon.height: _control.icon.height
+    icon.color: _control.icon.color
+    icon.cache: _control.icon.cache
     text: _control.text
     color: _control.foregroundColor
   } // IconLabel

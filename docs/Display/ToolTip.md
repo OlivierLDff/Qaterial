@@ -24,7 +24,6 @@ Inherited from `QtQuick.Templates`, `Qaterial.ToolTip` owns different properties
 `Qaterial` properties :
 
 - `backgroundRadius`: radius of the background Rectangle (default: 4)
-- `textType`: label's textType (default: `Body1`)
 - `position`: ToolTip display position (default: on top of parent)
 
 ### ✏️ Position

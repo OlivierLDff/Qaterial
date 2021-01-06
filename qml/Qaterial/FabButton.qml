@@ -53,12 +53,6 @@ T.Button
   leftInset: Qaterial.Style.fab.leftInset
   rightInset: Qaterial.Style.fab.rightInset
 
-  font.family: Qaterial.Style.textTypeToFontFamily(Qaterial.Style.TextType.Button)
-  font.styleName: Qaterial.Style.textTypeToStyleName(Qaterial.Style.TextType.Button)
-  font.pixelSize: Qaterial.Style.textTypeToPixelSize(Qaterial.Style.TextType.Button)
-  font.capitalization: Qaterial.Style.fontCapitalization(Qaterial.Style.TextType.Button)
-  font.letterSpacing: Qaterial.Style.textTypeToLetterSpacing(Qaterial.Style.TextType.Button)
-
   readonly property bool defaultPadding:
   {
     if(type === Qaterial.Style.FabType.Default)
@@ -116,6 +110,8 @@ T.Button
 
   property double radius: height / 2
 
+  font: Qaterial.Style.textTheme.button
+
   icon.width: Qaterial.Style.fab.iconWidth
   icon.height: Qaterial.Style.fab.iconWidth
   icon.color: foregroundColor
@@ -144,7 +140,11 @@ T.Button
     id: _iconLabel
     spacing: _control.spacing
     display: _control.display
-    icon: _control.icon
+    icon.source: _control.icon.source
+    icon.width: _control.icon.width
+    icon.height: _control.icon.height
+    icon.color: _control.icon.color
+    icon.cache: _control.icon.cache
     text: _control.text
     font: _control.font
     color: _control.foregroundColor

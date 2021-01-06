@@ -77,11 +77,10 @@ Qaterial.TreeView
         }
         Behavior on rotation { NumberAnimation { duration: 200;easing.type: Easing.OutQuart } }
       }
-      Qaterial.Label
+      Qaterial.LabelCaption
       {
         Layout.fillWidth: true
         text: (control.model ? control.model.fileName : "")
-        textType: Qaterial.Style.TextType.Caption
         elide: Text.ElideRight
         verticalAlignment: Text.AlignVCenter
 
