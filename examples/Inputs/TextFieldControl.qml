@@ -17,7 +17,7 @@ Item
       anchors.fill: parent
       Qaterial.TabBar
       {
-          id: tabBar
+        id: tabBar
         Layout.fillWidth: true
         Qaterial.TabButton
         {
@@ -41,11 +41,11 @@ Item
         Layout.fillHeight: true
         RowLayout
         {
-         anchors.fill: parent
+          anchors.fill: parent
           Qaterial.SwipeView
           {
-              id: swipeView
-              currentIndex: tabBar.currentIndex
+            id: swipeView
+            currentIndex: tabBar.currentIndex
             Layout.fillWidth: true
             Layout.fillHeight: true
             clip: true

@@ -120,21 +120,21 @@ T.TextField
     contentHeight + topPadding + bottomPadding,
     placeholder.implicitHeight + topPadding + bottomPadding)
 
-  topPadding: _control.title != "" ? Qaterial.Style.textField.topPaddingTitle-5 : Qaterial.Style.textField.topPadding
-  bottomPadding: anyHintVisible ? Qaterial.Style.textField.bottomPaddingHint+5 : Qaterial.Style.textField.bottomPadding+10
+  topPadding: _control.title != "" ? Qaterial.Style.textField.topPaddingTitle - 5 : Qaterial.Style.textField.topPadding
+  bottomPadding: anyHintVisible ? Qaterial.Style.textField.bottomPaddingHint + 5 : Qaterial.Style.textField.bottomPadding + 10
 
-  property double virtualLeftPadding: ((leadingIconVisible) ? leadingIconInline? (_leadingIcon.width + leadingSpacing)-20 : (_leadingIcon.width + leadingSpacing)-0 : 0) + ((leadingIconVisible && !leadingIconInline) ? Qaterial.Style.textField.horizontalPadding : 0)
+  property double virtualLeftPadding: ((leadingIconVisible) ? leadingIconInline ? (_leadingIcon.width + leadingSpacing) - 20 : (_leadingIcon.width + leadingSpacing) - 0 : 0) + ((leadingIconVisible && !leadingIconInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
   property double virtualRightPadding: ((trailingVisible) ? _trailingContent.width + trailingSpacing : 0) + ((
     trailingVisible && !trailingInline) ? Qaterial.Style.textField.horizontalPadding : 0)
 
-  leftPadding: (virtualLeftPadding + (prefixText != "" ? _prefixLabel.contentWidth + textSpacing : 0))+10
-  rightPadding: (virtualRightPadding + (suffixText != "" ? _suffixLabel.contentWidth + textSpacing : 0))+20
+  leftPadding: (virtualLeftPadding + (prefixText != "" ? _prefixLabel.contentWidth + textSpacing : 0)) + 10
+  rightPadding: (virtualRightPadding + (suffixText != "" ? _suffixLabel.contentWidth + textSpacing : 0)) + 20
   property double leadingSpacing: Qaterial.Style.textField.leadingSpacing
   property double textSpacing: Qaterial.Style.textField.textSpacing
   property double trailingSpacing: 0
 
-  leftInset: (!leadingIconInline && leadingIconVisible) ? (_leadingIcon.width + leadingSpacing)-10 : 0
+  leftInset: (!leadingIconInline && leadingIconVisible) ? (_leadingIcon.width + leadingSpacing) - 10 : 0
   rightInset: (!trailingInline && trailingVisible) ? _trailingContent.width + trailingSpacing : 0
 
   Behavior on bottomPadding
@@ -160,7 +160,7 @@ T.TextField
     .hintTextColor()) : Qaterial.Style.dividersColor()
   property color prefixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
   property color suffixTextColor: enabled ? (Qaterial.Style.hintTextColor()) : Qaterial.Style.dividersColor()
-  property color leadingIconColor: enabled ?  Qaterial.Style.secondaryTextColor() : Qaterial.Style.disabledTextColor()
+  property color leadingIconColor: enabled ? Qaterial.Style.secondaryTextColor() : Qaterial.Style.disabledTextColor()
 
   // BEHAVIOR
   selectByMouse: true
@@ -178,7 +178,7 @@ T.TextField
     width: Qaterial.Style.textField.iconWidth
     height: Qaterial.Style.textField.iconWidth
     y: Qaterial.Style.textField.topPadding
-    x: leadingIconVisible? 8 : 0
+    x: leadingIconVisible ? 8 : 0
     opacity: _control.leadingIconVisible ? color.a : 0.0
     Behavior on opacity
     {
@@ -219,12 +219,16 @@ T.TextField
   } // Loader
 
   // TITLE
-  onTitleUpChanged: {
-      if(titleUp){
-          _titleLabel.font = Qaterial.Style.textTheme.caption
-      }else {
-          _titleLabel.font = _control.textFont
-      }
+  onTitleUpChanged:
+  {
+    if(titleUp)
+    {
+      _titleLabel.font = Qaterial.Style.textTheme.caption
+    }
+    else
+    {
+      _titleLabel.font = _control.textFont
+    }
   }
 
   Qaterial.Label
@@ -240,12 +244,12 @@ T.TextField
       visible: _control.drawline
     } // DebugRectangle
 
-    font: _control.titleUp? Qaterial.Style.textTheme.caption : _control.textFont
-    color: _control.activeFocus? errorState? Qaterial.Style.errorColor : Qaterial.Style.accentColor : _control.titleTextColor
+    font: _control.titleUp ? Qaterial.Style.textTheme.caption : _control.textFont
+    color: _control.activeFocus ? errorState ? Qaterial.Style.errorColor : Qaterial.Style.accentColor : _control.titleTextColor
     //leftPadding: parent.leftPadding
-    x: titleUp? leadingIconVisible? leadingIconInline?  15  : 60: _control.virtualLeftPadding+15 : _control.virtualLeftPadding+15
-    y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset-10 : _control.topPadding
-    width: implicitWidth+3
+    x: titleUp ? leadingIconVisible ? leadingIconInline ? 15 : 60 : _control.virtualLeftPadding + 15 : _control.virtualLeftPadding + 15
+    y: titleUp ? Qaterial.Style.textField.topPaddingTitleOffset - 10 : _control.topPadding
+    width: implicitWidth + 3
     verticalAlignment: _control.verticalAlignment
     horizontalAlignment: _control.horizontalAlignment
     renderType: _control.renderType
@@ -283,12 +287,13 @@ T.TextField
         duration: 200
       } // ColorAnimation
     } // Behavior color
-    background: Rectangle {
-        y:4
-        visible: titleUp
-        radius: 4
-        height: 4
-        color: Qaterial.Style.backgroundColor
+    background: Rectangle
+    {
+      y: 4
+      visible: titleUp
+      radius: 4
+      height: 4
+      color: Qaterial.Style.backgroundColor
     }
   } // Label
 
@@ -306,7 +311,7 @@ T.TextField
     if(autoSubmit)
       Qt.callLater(submitInput)
   }
-  ErrorSequentialAnimation { id: _errorAnimation;target: _titleLabel;x: _control.virtualLeftPadding+15 }
+  ErrorSequentialAnimation { id: _errorAnimation;target: _titleLabel;x: _control.virtualLeftPadding + 15 }
   ErrorSequentialAnimation { id: _errorLeadingAnimation;target: _leadingIcon;x: _control.width - _leadingIcon.width }
 
   function submitInput()
@@ -336,8 +341,6 @@ T.TextField
         console.log("Error: No Error text provided, please provide errorText property to guide your user")
     }
   } // function setError(s)
-
-
 
   property int maximumLengthCount: maximumLength
 
@@ -374,7 +377,7 @@ T.TextField
     } // DebugRectangle
 
     height: _control.contentHeight
-    x: (_control.virtualLeftPadding)+15
+    x: (_control.virtualLeftPadding) + 15
     y: _control.topPadding
     text: _control.prefixText
     color: _control.prefixTextColor
@@ -405,7 +408,7 @@ T.TextField
     } // DebugRectangle
 
     height: _control.contentHeight
-    x: (_control.width - width - _control.virtualRightPadding)-20
+    x: (_control.width - width - _control.virtualRightPadding) - 20
     y: _control.topPadding
     font: _control.suffixfont
     text: _control.suffixText
@@ -459,12 +462,13 @@ T.TextField
   property color borderColor: Qaterial.Colors.gray400
   property color backgroundHighlightColor: errorState ? Qaterial.Style.errorColor : Qaterial.Style.accentColor
 
-  background: Rectangle {
-      color: _control.backgroundColor
-      border.color: _control.activeFocus? errorState? Qaterial.Style.errorColor : Qaterial.Style.accentColor : parent.borderColor
-      border.width: _control.activeFocus? 2 : 1
-      radius: 6
-      height: (_control.helperText != "" || _control._errorText != "") ? parent.height-15 : parent.height
+  background: Rectangle
+  {
+    color: _control.backgroundColor
+    border.color: _control.activeFocus ? errorState ? Qaterial.Style.errorColor : Qaterial.Style.accentColor : parent.borderColor
+    border.width: _control.activeFocus ? 2 : 1
+    radius: 6
+    height: (_control.helperText != "" || _control._errorText != "") ? parent.height - 15 : parent.height
   }
   Qaterial.Label // Hint
   {
@@ -489,8 +493,8 @@ T.TextField
     font: _control.hintfont
     color: _control.helperTextColor
     width: _control.width - _control.virtualLeftPadding - _control.virtualRightPadding - _lineCountLabel.width
-    x: leadingIconVisible? leadingIconInline? (_control.virtualLeftPadding)-15 : (_control.virtualLeftPadding)+10  : (_control.virtualLeftPadding)+10
-    y: (_control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset)+4
+    x: leadingIconVisible ? leadingIconInline ? (_control.virtualLeftPadding) - 15 : (_control.virtualLeftPadding) + 10 : (_control.virtualLeftPadding) + 10
+    y: (_control.height - height - Qaterial.Style.textField.bottomPaddingHintOffset) + 4
     verticalAlignment: _control.verticalAlignment
     renderType: _control.renderType
     elide: Text.ElideRight
