@@ -89,6 +89,7 @@ Expandable 1.0 Expandable.qml
 ExtendedFabButton 1.0 ExtendedFabButton.qml
 FabButton 1.0 FabButton.qml
 FabIconLabel 1.0 FabIconLabel.qml
+FilledTextField 1.0 FilledTextField.qml
 FixedGrid 1.0 FixedGrid.qml
 FixedTabBar 1.0 FixedTabBar.qml
 FlatButton 1.0 FlatButton.qml
@@ -149,6 +150,7 @@ MiniFlatFabButton 1.0 MiniFlatFabButton.qml
 MiniOutlinedFabButton 1.0 MiniOutlinedFabButton.qml
 ModalDialog 1.0 ModalDialog.qml
 OutlineButton 1.0 OutlineButton.qml
+OutlineTextField 1.0 OutlineTextField.qml
 OutlinedCard 1.0 OutlinedCard.qml
 OutlinedFabButton 1.0 OutlinedFabButton.qml
 Page 1.0 Page.qml
