@@ -17,10 +17,21 @@ Item
       anchors.fill: parent
       Qaterial.TabBar
       {
+        id: tabBar
         Layout.fillWidth: true
         Qaterial.TabButton
         {
           text: "Default"
+          width: 120
+        }
+        Qaterial.TabButton
+        {
+          text: "Filled"
+          width: 120
+        }
+        Qaterial.TabButton
+        {
+          text: "Outline"
           width: 120
         }
       }
@@ -33,8 +44,11 @@ Item
           anchors.fill: parent
           Qaterial.SwipeView
           {
+            id: swipeView
+            currentIndex: tabBar.currentIndex
             Layout.fillWidth: true
             Layout.fillHeight: true
+            clip: true
             Item
             {
               Column
@@ -80,6 +94,134 @@ Item
                     onClicked:
                     {
                       if(parent.parent.echoMode == Qaterial.TextField.Normal)
+                      {
+                        parent.parent.echoMode = Qaterial.TextField.Password
+                      }
+                      else
+                      {
+                        parent.parent.echoMode = Qaterial.TextField.Normal
+                      }
+                    }
+                  }
+                  width: parent.width - 40
+                }
+                Qaterial.Button
+                {
+                  text: "Submit"
+                  onClicked:
+                  {
+                    field1.submitInput()
+                    field2.submitInput()
+                  }
+                }
+              }
+            }
+            Item
+            {
+              Column
+              {
+                x: 20
+                y: 10
+                spacing: 20
+                width: parent.width
+                Qaterial.FilledTextField
+                {
+                  id: field12
+                  error: errorS.checked
+                  title: titleS.checked ? "Username" : ""
+                  helperText: helpS.checked ? "Username : user_revilio" : ""
+                  placeholderText: placeHolderS.checked ? "Revilio" : ""
+                  leadingIconInline: leadingInlineS.checked
+                  prefixText: prefixS.checked ? "user_" : ""
+                  suffixText: suffixS.checked ? text.length : ""
+                  trailingInline: trailingInlineS.checked
+                  trailingVisible: trailingS.checked
+                  leadingIconSource: leadingS.checked ? Qaterial.Icons.account : ""
+                  width: parent.width - 40
+                }
+                Qaterial.FilledTextField
+                {
+                  id: field22
+                  error: errorS.checked
+                  title: titleS.checked ? "Password" : ""
+                  echoMode: Qaterial.TextField.Password
+                  helperText: helpS.checked ? "Password : Z3D223_21QSDs: " : ""
+                  placeholderText: placeHolderS.checked ? "Z3Ds3_1QSDs" : ""
+                  leadingIconInline: leadingInlineS.checked
+                  leadingIconSource: leadingS.checked ? Qaterial.Icons.account : ""
+                  trailingInline: trailingInlineS.checked
+                  trailingVisible: trailingS.checked
+                  trailingContent: Qaterial.AppBarButton
+                  {
+                    icon.source: Qaterial.Icons.eye
+                    rightInset: 0
+                    onClicked:
+                    {
+                      if(parent.parent.echoMode == Qaterial.TextField.Normal)
+                      {
+                        parent.parent.echoMode = Qaterial.TextField.Password
+                      }
+                      else
+                      {
+                        parent.parent.echoMode = Qaterial.TextField.Normal
+                      }
+                    }
+                  }
+                  width: parent.width - 40
+                }
+                Qaterial.Button
+                {
+                  text: "Submit"
+                  onClicked:
+                  {
+                    field1.submitInput()
+                    field2.submitInput()
+                  }
+                }
+              }
+            }
+            Item
+            {
+              Column
+              {
+                x: 20
+                y: 10
+                spacing: 20
+                width: parent.width
+                Qaterial.OutlineTextField
+                {
+                  id: field13
+                  error: errorS.checked
+                  title: titleS.checked ? "Username" : ""
+                  helperText: helpS.checked ? "Username : user_revilio" : ""
+                  placeholderText: placeHolderS.checked ? "Revilio" : ""
+                  leadingIconInline: leadingInlineS.checked
+                  prefixText: prefixS.checked ? "user_" : ""
+                  suffixText: suffixS.checked ? text.length : ""
+                  trailingInline: trailingInlineS.checked
+                  trailingVisible: trailingS.checked
+                  leadingIconSource: leadingS.checked ? Qaterial.Icons.account : ""
+                  width: parent.width - 40
+                }
+                Qaterial.OutlineTextField
+                {
+                  id: field23
+                  error: errorS.checked
+                  title: titleS.checked ? "Password" : ""
+                  echoMode: Qaterial.TextField.Password
+                  helperText: helpS.checked ? "Password : Z3D223_21QSDs: " : ""
+                  placeholderText: placeHolderS.checked ? "Z3Ds3_1QSDs" : ""
+                  leadingIconInline: leadingInlineS.checked
+                  leadingIconSource: leadingS.checked ? Qaterial.Icons.account : ""
+                  trailingInline: trailingInlineS.checked
+                  trailingVisible: trailingS.checked
+                  trailingContent: Qaterial.AppBarButton
+                  {
+                    icon.source: Qaterial.Icons.eye
+                    rightInset: 0
+                    onClicked:
+                    {
+                      if(parent.parent.echoMode === Qaterial.TextField.Normal)
                       {
                         parent.parent.echoMode = Qaterial.TextField.Password
                       }
