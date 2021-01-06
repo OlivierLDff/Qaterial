@@ -223,6 +223,10 @@ if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   qt_generate_plugin_import(${QATERIAL_TARGET})
 endif()
 
+if(MSVC)
+  target_compile_options(${QATERIAL_TARGET} PUBLIC -bigobj)
+endif()
+
 # ───── QATERIAL TESTS ─────
 
 if(QATERIAL_ENABLE_TESTS)
