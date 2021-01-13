@@ -3,7 +3,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-
 int main(int argc, char* argv[])
 {
     QGuiApplication app(argc, argv);
@@ -20,7 +19,7 @@ int main(int argc, char* argv[])
     // Load QaterialHelloWorld
     Q_INIT_RESOURCE(HelloWorld);
 
-   	// This path is defined by the prefix in HelloWorld.qrc
+    // This path is defined by the prefix in HelloWorld.qrc
     engine.load(QUrl("qrc:/HelloWorld.qml"));
     if(engine.rootObjects().isEmpty())
         return -1;
