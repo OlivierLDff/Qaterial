@@ -42,6 +42,7 @@ set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
 set(QATERIAL_ENABLE_ROBOTO ON CACHE BOOL "Embed to qrc Roboto Regular & Medium")
 set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
 set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
+set(QATERIAL_ENABLE_EXAMPLES OFF CACHE BOOL "Build Qaterial examples executable")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -63,6 +64,7 @@ message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}"
 message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
 
 message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
+message(STATUS "QATERIAL_ENABLE_EXAMPLES        : ${QATERIAL_ENABLE_EXAMPLES}")
 
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
@@ -232,4 +234,8 @@ endif()
 if(QATERIAL_ENABLE_TESTS)
   enable_testing()
   add_subdirectory(tests)
+endif()
+
+if(QATERIAL_ENABLE_EXAMPLES)
+  add_subdirectory(examples)
 endif()
