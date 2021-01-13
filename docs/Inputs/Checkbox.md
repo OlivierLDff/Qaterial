@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Checkbox
+title: ✔️ Checkbox
 ---
 
-# Checkbox
+# ✔️ Checkbox

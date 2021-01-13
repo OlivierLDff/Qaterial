@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Dialog
+title: 🗨️ Dialog
 ---
 
-# Dialog
+# 🗨️ Dialog

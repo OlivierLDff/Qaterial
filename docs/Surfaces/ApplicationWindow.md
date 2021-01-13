@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Application Window
+title: 📱 Application Window
 ---
 
-# Application Window
+# 📱 Application Window
 
 [ApplicationWindow](https://doc.qt.io/qt-5/qml-qtquick-controls2-applicationwindow.html) is a [Window](https://doc.qt.io/qt-5/qml-qtquick-window-window.html) which makes it convenient to add a [menu bar](https://doc.qt.io/qt-5/qml-qtquick-controls2-applicationwindow.html#menuBar-attached-prop), [header](https://doc.qt.io/qt-5/qml-qtquick-controls2-applicationwindow.html#header-attached-prop) and [footer](https://doc.qt.io/qt-5/qml-qtquick-controls2-applicationwindow.html#footer-attached-prop) item to the window.
 

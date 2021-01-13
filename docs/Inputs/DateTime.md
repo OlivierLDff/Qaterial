@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Date / Time
+title: 📅 Date / Time ⌚
 ---
 
 # Date / Time
 
-## Date Picker
+## 📅 Date Picker
 
 ### DatePickerDialog
 
@@ -60,7 +60,7 @@ This TextField allows the user to select a date by editing the text field with f
 
 * `accepted(date date)` : Signal emitted when the date entered by the user is valid
 
-## Time Picker
+## ⌚ Time Picker
 
 ### TimePickerDialog
 
@@ -78,7 +78,7 @@ Dialog providing a simple way to pick an Hour. The clock style can be changed fr
 
 ### TextFieldTimePicker
 
-This TextField allows the user to select an EU hour by editing the text in the field or by picking an hour in a TimePickerDialog.
+This TextField allows the user to select an hour by editing the text in the field or by picking an hour in a TimePickerDialog.
 
 **Properties**
 
@@ -89,7 +89,7 @@ This TextField allows the user to select an EU hour by editing the text in the f
 
 **Signal** : `hourAccepted(hour, minute, am)`, emitted when a correct hour is picked by the user
 
-## Advanced Use
+## ✏️ Advanced Use
 
 ### Date Components
 
@@ -292,7 +292,6 @@ CircularPathLabel
 * `radius`: (default 100)
 * `model` : Table of values displayed in the path (default, hours of the day)
 * `numberOfElement` : Number of values display in circle (default 12)
-* `textType` : Text characteristics of elements displayed (default, *Qaterial.Style.TextType.Body1*, can be choose among **Qaterial.Style.TextType** Enum)
 * `currentIndex` : Index of the element "highlighted" (default -1)
 * `labelSize` : Size of text area (default 32)
 

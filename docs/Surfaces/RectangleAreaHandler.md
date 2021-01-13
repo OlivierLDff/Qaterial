@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Rectangle Area Handler
+title: 🔲 Rectangle Area Handler
 ---
 
-# Rectangle Area Handler
+# 🔲 Rectangle Area Handler
 
 ![RectangleAreaHandlerDemo](https://user-images.githubusercontent.com/17255804/85398203-283aa100-b555-11ea-921b-12772e3a1bf7.gif)
 
@@ -26,12 +26,12 @@ Rectangle
   {
     // Selected area will be render in 200x200 parent
     anchors.fill: parent
-    
+
     // Default start point will be 50px, 50px
     start: Qt.vector2d(0.25, 0.25)
     // Default end point will be 150px, 150px
     end: Qt.vector2d(0.75, 0.75)
-      
+
     onMoved: (start, end) => console.log(`moved start: ${start}, end: ${end}`)
   }
 }

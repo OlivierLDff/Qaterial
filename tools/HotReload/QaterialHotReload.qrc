@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-
-    <file>QaterialHotReload.qml</file>
-    <file>StatusView.qml</file>
-
-    </qresource>
-</RCC>

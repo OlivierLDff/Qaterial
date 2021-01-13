@@ -1,3 +1,5 @@
+name: 🔊 Notify QaterialOnline & Gallery
+
 on:
   push:
     branches: [ master ]
