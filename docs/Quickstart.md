@@ -6,7 +6,7 @@ nav_order: 1
 
 # 🚀 Getting Start
 
-A C++ Hello World project is located in `tools/HelloWorld`.
+A C++ Hello World project is located [here](https://github.com/OlivierLDff/QaterialHelloWorld).
 
 |      File      |                         Description                          |
 | :------------: | :----------------------------------------------------------: |
