@@ -41,7 +41,8 @@ else()
 
   # Generate fake qrc to embed svgs files
   message(STATUS "Generate Fake QaterialIcons.qrc")
-  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/Generated/QaterialIcons.qrc
+  set(QATERIAL_QML_ICONS_QRC ${CMAKE_CURRENT_BINARY_DIR}/Generated/QaterialIcons.qrc)
+  file(WRITE ${QATERIAL_QML_ICONS_QRC}
    "<!-- File auto with CMake to mock the absence of Mdi icons. Everything written here will be lost. -->\n"
     "<RCC>\n"
     "  <qresource prefix=\"/Qaterial/Icons\">\n"

@@ -195,7 +195,7 @@ function(qaterial_generate_icons_class OUTPUT_FILE)
       "    QATERIAL_SINGLETON_IMPL(Icons, icons, Icons);\n\n"
       "public:\n"
       "    Icons(QObject* parent = nullptr) : QObject(parent) {}\n\n"
-      "}\;\n\n"
+      "};\n\n"
       "}\n\n"
       "#endif"
     )
