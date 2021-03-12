@@ -77,6 +77,27 @@ public:
     // ──── BACKGROUND COLORS ────
 public:
     QATERIAL_PROPERTY_D(QColor, background, Background, "#121212");
+
+private:
+    Q_PROPERTY(QColor background1 READ background1 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background2 READ background2 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background4 READ background4 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background6 READ background6 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background8 READ background8 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background12 READ background12 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background16 READ background16 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor background24 READ background24 NOTIFY backgroundChanged);
+
+public:
+    QColor background1() const { return getElevatedColor(_background, 1); }
+    QColor background2() const { return getElevatedColor(_background, 2); }
+    QColor background4() const { return getElevatedColor(_background, 4); }
+    QColor background6() const { return getElevatedColor(_background, 6); }
+    QColor background8() const { return getElevatedColor(_background, 8); }
+    QColor background12() const { return getElevatedColor(_background, 12); }
+    QColor background16() const { return getElevatedColor(_background, 16); }
+    QColor background24() const { return getElevatedColor(_background, 24); }
+
     QATERIAL_PROPERTY_RO(QColor, brandedBackground, BrandedBackground);
 
 protected:
