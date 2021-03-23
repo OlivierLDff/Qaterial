@@ -31,7 +31,7 @@ Qaterial.Theme
     accent: Qaterial.Colors.amber500
     onAccentText: Qaterial.Colors.white
 
-    background: "#252525"
+    background: "#121212"
     toolTip: "#F0F0F0"
   }
 
