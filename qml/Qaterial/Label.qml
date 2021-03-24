@@ -32,7 +32,7 @@ T.Label
   //      textType)
   //  return Qaterial.Style.hintTextColor()
   //}
-  color: Qaterial.Style.primaryTextColor()
+  color: enabled ? Qaterial.Style.colorTheme.primaryText : Qaterial.Style.colorTheme.disabledText
   linkColor: Qaterial.Style.accentColor
 
   property int textType: -1 // Qaterial.Style.TextType.Body1

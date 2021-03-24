@@ -27,5 +27,5 @@ Qaterial.Label
   id: root
 
   font: Qaterial.Style.textTheme.hint1
-  color: Qaterial.Style.hintTextColor()
+  color: enabled ? Qaterial.Style.colorTheme.secondaryText : Qaterial.Style.colorTheme.disabledText
 }
