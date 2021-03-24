@@ -21,14 +21,14 @@ jobs:
       -
         uses: actions/checkout@v2
       -
-        name: Cache Qt
+        name: 📦 Cache Qt
         id: cache-qt
         uses: actions/cache@v2
         with:
           path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
       -
-        name: Install Qt
+        name: ⬇ Install Qt
         uses: jurplel/install-qt-action@v2
         with:
           version: ${{ matrix.version }}
@@ -36,23 +36,23 @@ jobs:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           modules: ''
       -
-        name: Configure
+        name: 🔧 CMake
         run: |
           mkdir -p build
           cmake -DQATERIAL_ENABLE_HOTRELOAD=ON -DQATERIAL_ENABLE_TOOLS=ON -DQATERIAL_ENABLE_TESTS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
         shell: bash
       -
-        name: Build Qaterial
+        name: 🔨 Qaterial
         run: cmake --build build --target "Qaterial" --config "Release" -j
       -
-        name: Build QaterialTestLoader
+        name: 🔨 QaterialTestLoader
         run: cmake --build build --target "QaterialTestLoader" --config "Release" -j
       -
-        name: Run Unit tests
+        name: ✅ Unit Tests
         run: cd build && ctest --build-config "Release" --progress --verbose --parallel 12
         if: "!contains(matrix.os, 'ubuntu')"
       -
-        name: Run Unit tests
+        name: ✅ Unit Tests
         run: |
           sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-xinerama0 libxcb-keysyms1 libxcb1 libxcb-render-util0
           cd build
