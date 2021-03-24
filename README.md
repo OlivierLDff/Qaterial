@@ -1,6 +1,6 @@
 # Qaterial
 
-[![👷 Continuous Deployment](https://github.com/OlivierLDff/Qaterial/workflows/%F0%9F%91%B7%20Continuous%20Deployment/badge.svg))](https://github.com/OlivierLDff/Qaterial/actions?query=workflow%3ACI)
+[![👷 Continuous Deployment](https://github.com/OlivierLDff/Qaterial/workflows/%F0%9F%91%B7%20Continuous%20Deployment/badge.svg)](https://github.com/OlivierLDff/Qaterial/actions?query=workflow%3ACI)
 
 A collection Material Components to build faster UI using Qml. 
 
