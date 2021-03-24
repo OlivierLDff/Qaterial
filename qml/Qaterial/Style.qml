@@ -77,6 +77,11 @@ Qaterial.Theme
   property bool shouldReverseForegroundOnAccent: theme === Style.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
   property bool preferAccentOnPrimary: theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
 
+  // amount of spacing that should be used around smaller UI elements, for example as spacing in Columns.
+  property double smallSpacing: dense ? 6 : 8
+  // amount of spacing that should be used inside bigger UI elements, for example between an icon and the corresponding text.
+  property double largeSpacing: dense ? 12 : 16
+
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"
   property color accentColorLight: "#FFC107"
