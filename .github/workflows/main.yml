@@ -54,7 +54,7 @@ jobs:
       -
         name: ✅ Unit Tests
         run: |
-          sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-xinerama0 libxcb-keysyms1 libxcb1 libxcb-render-util0
+          sudo apt install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-xinerama0 libxcb-keysyms1 libxcb1 libxcb-render-util0 libxcb-randr0
           cd build
           xvfb-run ctest --build-config "Release" --progress --verbose --parallel 12
         if: contains(matrix.os, 'ubuntu')
