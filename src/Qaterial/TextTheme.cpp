@@ -108,7 +108,7 @@ TextTheme::TextTheme(QObject* parent) : QObject(parent)
     _caption.setLetterSpacing(QFont::SpacingType::AbsoluteSpacing, 0.4);
 
     _overline.setFamily("Roboto");
-    _overline.setPixelSize(10);
+    _overline.setPixelSize(12);
     _overline.setWeight(QFont::Weight::Normal);
     _overline.setCapitalization(QFont::Capitalization::AllUppercase);
     _overline.setLetterSpacing(QFont::SpacingType::AbsoluteSpacing, 1.5);

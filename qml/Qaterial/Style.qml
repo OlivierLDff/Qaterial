@@ -31,7 +31,7 @@ Qaterial.Theme
     accent: Qaterial.Colors.amber500
     onAccentText: Qaterial.Colors.white
 
-    background: "#252525"
+    background: "#121212"
     toolTip: "#F0F0F0"
   }
 
@@ -76,6 +76,11 @@ Qaterial.Theme
   property bool shouldReverseRippleOnPrimary: theme === Style.Theme.Light ? rippleReversedOnPrimaryLight : rippleReversedOnPrimaryDark
   property bool shouldReverseForegroundOnAccent: theme === Style.Theme.Light ? foregroundReversedOnAccentLight : foregroundReversedOnAccentDark
   property bool preferAccentOnPrimary: theme === Style.Theme.Light ? preferAccentOnPrimaryLight : preferAccentOnPrimaryDark
+
+  // amount of spacing that should be used around smaller UI elements, for example as spacing in Columns.
+  property double smallSpacing: dense ? 6 : 8
+  // amount of spacing that should be used inside bigger UI elements, for example between an icon and the corresponding text.
+  property double largeSpacing: dense ? 12 : 16
 
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"
