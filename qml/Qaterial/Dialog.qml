@@ -66,13 +66,13 @@ T.Dialog
       //anchors.topMargin: root.topPadding
       anchors.horizontalCenter: parent.horizontalCenter
       implicitWidth: root.width
-      y: root.header.height + root.topPadding - 1
+      y: root.header ? root.header.height + root.topPadding - 1 : 0
     } // HorizontalLineSeparator
 
     Qaterial.HorizontalLineSeparator
     {
       visible: root.drawSeparator && footer.visible
-      y: root.height - footer.height - root.bottomPadding
+      y: root.footer ? root.height - footer.height - root.bottomPadding : 0
       //anchors.bottom: footer.top
       //anchors.bottomMargin: root.bottomPadding
       anchors.horizontalCenter: parent.horizontalCenter
