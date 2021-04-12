@@ -7,7 +7,6 @@ FetchContent_Declare(
   Qaterial
   GIT_REPOSITORY ${QATERIAL_REPOSITORY}
   GIT_TAG        ${QATERIAL_TAG}
-  GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(Qaterial)

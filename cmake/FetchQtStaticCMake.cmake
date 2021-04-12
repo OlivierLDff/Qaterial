@@ -7,7 +7,6 @@ FetchContent_Declare(
   QtStaticCMake
   GIT_REPOSITORY ${QTSTATICCMAKE_REPOSITORY}
   GIT_TAG        ${QTSTATICCMAKE_TAG}
-  GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(QtStaticCMake)

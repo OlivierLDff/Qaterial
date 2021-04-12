@@ -7,7 +7,6 @@ FetchContent_Declare(
   FetchGoogleFontCMake
   GIT_REPOSITORY ${FETCHGOOGLEFONTCMAKE_REPOSITORY}
   GIT_TAG        ${FETCHGOOGLEFONTCMAKE_TAG}
-  GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(FetchGoogleFontCMake)
