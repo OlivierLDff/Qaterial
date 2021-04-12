@@ -157,8 +157,8 @@ void FolderTreeModel::initializeBindings()
         });
 
     // Spread filter configuration
-    onInserted(
-        [this](const FolderTreeModel::InsertedCallbackArgs& folder)
+    onInserted(this,
+        [this](FolderTreeModel* folder)
         {
             folder->setCaseSensitive(caseSensitive());
             folder->setNameFilters(nameFilters());
