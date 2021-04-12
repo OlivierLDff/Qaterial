@@ -38,6 +38,9 @@ add_library(${QATERIAL_TARGET}Components STATIC ${QATERIAL_QML_RES})
 add_library(${QATERIAL_TARGET}::Components ALIAS ${QATERIAL_TARGET}Components)
 
 set_target_properties(${QATERIAL_TARGET}Components PROPERTIES AUTORCC TRUE)
+if(QATERIAL_ENABLE_UNITY_BUILD)
+  set_target_properties(${QATERIAL_TARGET}Components PROPERTIES UNITY_BUILD ON)
+endif()
 
 target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::Core

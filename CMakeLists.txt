@@ -35,6 +35,7 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
+set(QATERIAL_ENABLE_UNITY_BUILD ON CACHE BOOL "Qaterial source files will be combined into batches for faster compilation.")
 
 set(QATERIAL_ENABLE_ICONS ON CACHE BOOL "Embed Mdi Icons in Qaterial.Icons (MATERIALDESIGNICONS_REPOSITORY)")
 set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
@@ -54,6 +55,8 @@ message(STATUS "QATERIAL_VERSION                : ${QATERIAL_VERSION}")
 message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
+message(STATUS "QATERIAL_ENABLE_PCH             : ${QATERIAL_ENABLE_PCH}")
+message(STATUS "QATERIAL_ENABLE_UNITY_BUILD     : ${QATERIAL_ENABLE_UNITY_BUILD}")
 
 message(STATUS "QATERIAL_ENABLE_ICONS           : ${QATERIAL_ENABLE_ICONS}")
 message(STATUS "QATERIAL_ICONS                  : ${QATERIAL_ICONS}")
@@ -203,6 +206,9 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
 )
 
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
+if(QATERIAL_ENABLE_UNITY_BUILD)
+  set_target_properties(${QATERIAL_TARGET} PROPERTIES UNITY_BUILD ON)
+endif()
 
 # Version
 target_compile_definitions(${QATERIAL_TARGET}
