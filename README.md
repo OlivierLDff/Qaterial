@@ -9,7 +9,7 @@ A collection Material Components to build faster UI using Qml.
 
 Feel free to pull request.
 
-## Overview
+## 🚀 Overview
 
 - Checkout [Qaterial Gallery](https://olivierldff.github.io/QaterialGallery/) for example of most components.
 - [Getting Start Guide](https://olivierldff.github.io/Qaterial/Quickstart.html).
@@ -55,3 +55,12 @@ My goal is to move to more standard API relying more only on QtQuickControls def
 - [ ] Bottom sheets
 - [ ] SearchBar
 
+## 📌 Dependencies
+
+* [QOlm](https://github.com/OlivierLDff/QOlm)
+* [spdlog](https://github.com/gabime/spdlog)
+* `Qt::Core`, `Qt::Gui`, `Qt::Qml`, `Qt::Quick`, `Qt::QuickControls2`, `Qt::Svg`, `Qt::Xml`
+* [googlefonts](https://github.com/OlivierLDff/fonts)
+* [MaterialDesignIcons](https://github.com/OlivierLDff/MaterialDesignSvgo)
+
+![dependencies](./docs/dependencies.svg)
