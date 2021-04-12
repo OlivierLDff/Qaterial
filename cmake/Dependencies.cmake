@@ -25,4 +25,4 @@ set(QOLM_TAG "ed6dad0934cbd647ec854ae404aac7d3d91c50db" CACHE STRING "QOlm git t
 ## Ressources
 
 set(MATERIALDESIGNICONS_REPOSITORY "https://github.com/OlivierLDff/MaterialDesignSvgo" CACHE STRING "MaterialDesignIcons repository url")
-set(MATERIALDESIGNICONS_TAG "d069956a9c1f54453b6b81ce189fb594178f3af4" CACHE STRING "MaterialDesignIcons git tag")
+set(MATERIALDESIGNICONS_TAG "7cc6cc10a0a77d2b23dced9247bd73850f57dc29" CACHE STRING "MaterialDesignIcons git tag")
