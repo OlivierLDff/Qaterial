@@ -49,13 +49,11 @@ int main(int argc, char* argv[])
     engine.load(sourceUrl);
     if(engine.rootObjects().isEmpty())
     {
-        const QString error = "Fail to load " + source;
-        qWarning(error.toUtf8());
+        qWarning() << "Fail to load " << source;
         return -1;
     }
 
     // Success load
-    const QString info = "Success load " + source;
-    qDebug(info.toUtf8());
+    qInfo() << "Success load " << source;
     return 0;
 }
