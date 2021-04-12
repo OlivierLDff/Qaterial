@@ -7,7 +7,6 @@ FetchContent_Declare(
   MaterialDesignIcons
   GIT_REPOSITORY ${MATERIALDESIGNICONS_REPOSITORY}
   GIT_TAG        ${MATERIALDESIGNICONS_TAG}
-  GIT_SHALLOW    1
 )
 
 message(STATUS "Download MaterialDesignIcons from ${MATERIALDESIGNICONS_REPOSITORY}")
