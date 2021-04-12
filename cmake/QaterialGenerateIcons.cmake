@@ -139,7 +139,7 @@ function(_qaterial_generate_icons_class VAR)
 
         string(APPEND OUT_CONTENT
           "    "
-          "QATERIAL_PROPERTY_RO_D(QString, ${PROPERTY_NAME}, ${PROPERTY_NAME_U}, "
+          "QATERIAL_PROPERTY_CONST_D(QString, ${PROPERTY_NAME}, ${PROPERTY_NAME_U}, "
           "\"${QRC_PATH}/${FILENAME}\")\;\n")
       endif()
     endforeach()
