@@ -20,7 +20,7 @@ set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog re
 set(SPDLOG_TAG "v1.x" CACHE STRING "spdlog git tag")
 
 set(QOLM_REPOSITORY "https://github.com/OlivierLDff/QOlm.git" CACHE STRING "QOlm repository url")
-set(QOLM_TAG master CACHE STRING "QOlm git tag")
+set(QOLM_TAG "ed6dad0934cbd647ec854ae404aac7d3d91c50db" CACHE STRING "QOlm git tag")
 
 ## Ressources
 
