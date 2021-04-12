@@ -2,9 +2,9 @@
 
 #include <Qaterial/Qaterial.hpp>
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QCommandLineParser>
+#include <QtCore/QCommandLineParser>
+#include <QtGui/QGuiApplication>
+#include <QtQml/QQmlApplicationEngine>
 
 // ──── FUNCTIONS ────
 
