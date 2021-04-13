@@ -58,3 +58,23 @@ jobs:
           cd build
           xvfb-run ctest --build-config "Release" --progress --verbose --parallel 12
         if: contains(matrix.os, 'ubuntu')
+
+  BuildWasm:
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+      uses: actions/checkout@v2
+    -
+      name: 🔧 Prepare
+      id: prep
+      run: |
+        # Set output parameters.
+        export DOCKER_TAG="reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10"
+        echo ::set-output name=tags::${DOCKER_TAG}
+    -
+      name: 🔧 Configure
+      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ steps.prep.outputs.tags }} cmake -B ./build/ -S . ..
+    -
+      name: 🔨 Build
+      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ steps.prep.outputs.tags }} make -C build -j
