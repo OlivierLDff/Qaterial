@@ -164,6 +164,11 @@ function(_qaterial_generate_icons_class HEADER SRC)
     string(APPEND OUT_CONTENT_CPP
       "#include <Qaterial/Icons.hpp>\n"
       "#include \"moc_Icons.cpp\"\n"
+      "\n"
+      "void __Qaterial_registerIconsSingleton()\n"
+      "{\n"
+      "    qaterial::Icons::registerSingleton()\;\n"
+      "}\n"
     )
 
     file(WRITE ${OUT_FILENAME_ABS_CPP}.temp ${OUT_CONTENT_CPP})
