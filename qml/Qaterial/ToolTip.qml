@@ -22,7 +22,7 @@ T.ToolTip
   x:
   {
     if(!parent) return 0;
-    switch (position)
+    switch(position)
     {
       case Qaterial.Style.Position.BottomLeft:
       case Qaterial.Style.Position.TopLeft:
@@ -62,7 +62,7 @@ T.ToolTip
   y:
   {
     if(!parent) return 0;
-    switch (position)
+    switch(position)
     {
       case Qaterial.Style.Position.TopLeft:
       case Qaterial.Style.Position.TopStart:
