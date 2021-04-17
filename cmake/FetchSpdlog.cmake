@@ -7,7 +7,6 @@ FetchContent_Declare(
   spdlog
   GIT_REPOSITORY ${SPDLOG_REPOSITORY}
   GIT_TAG        ${SPDLOG_TAG}
-  GIT_SHALLOW    1
 )
 
 option(SPDLOG_ENABLE_PCH "Build static or shared library using precompiled header to speed up compilation time" ON)

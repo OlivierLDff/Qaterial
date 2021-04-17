@@ -7,7 +7,6 @@ FetchContent_Declare(
   QtGeneratorCMake
   GIT_REPOSITORY ${QTGENERATORCMAKE_REPOSITORY}
   GIT_TAG        ${QTGENERATORCMAKE_TAG}
-  GIT_SHALLOW    1
 )
 
 FetchContent_MakeAvailable(QtGeneratorCMake)

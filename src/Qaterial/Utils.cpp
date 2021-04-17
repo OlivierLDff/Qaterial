@@ -38,7 +38,6 @@
 #include <Qaterial/IconDescription.hpp>
 #include <Qaterial/IconLabelPositionner.hpp>
 #include <Qaterial/IconLabelImpl.hpp>
-#include <Qaterial/Icons.hpp>
 
 // Qt Core
 #include <QDir>
@@ -98,6 +97,8 @@ static const char** _uri = &_defaultUri;
 static quint8 _major = 1;
 static quint8 _minor = 0;
 
+void __Qaterial_registerIconsSingleton();
+
 static void Qaterial_registerTypes()
 {
     LOG_DEV_INFO("Register Qaterial v{}", qaterial::Version::version().readable().toStdString());
@@ -118,7 +119,7 @@ static void Qaterial_registerTypes()
     LOG_DEV_INFO("Register {}.ThemeAttached {}.{} to QML", *_uri, _major, _minor);
     qaterial::ThemeAttached::registerToQml(*_uri, _major, _minor);
 
-    qaterial::Icons::registerSingleton();
+    __Qaterial_registerIconsSingleton();
 
     // DISPLAY
 

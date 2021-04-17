@@ -36,6 +36,7 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
+set(QATERIAL_ENABLE_UNITY_BUILD ON CACHE BOOL "Qaterial source files will be combined into batches for faster compilation.")
 
 set(QATERIAL_ENABLE_ICONS ON CACHE BOOL "Embed Mdi Icons in Qaterial.Icons (MATERIALDESIGNICONS_REPOSITORY)")
 set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
@@ -56,6 +57,8 @@ message(STATUS "QATERIAL_VERSION_TAG_HEX        : ${QATERIAL_VERSION_TAG_HEX}")
 message(STATUS "QATERIAL_FIND_DEPS              : ${QATERIAL_FIND_DEPS}")
 message(STATUS "QATERIAL_BUILD_SHARED           : ${QATERIAL_BUILD_SHARED}")
 message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
+message(STATUS "QATERIAL_ENABLE_PCH             : ${QATERIAL_ENABLE_PCH}")
+message(STATUS "QATERIAL_ENABLE_UNITY_BUILD     : ${QATERIAL_ENABLE_UNITY_BUILD}")
 
 message(STATUS "QATERIAL_ENABLE_ICONS           : ${QATERIAL_ENABLE_ICONS}")
 message(STATUS "QATERIAL_ICONS                  : ${QATERIAL_ICONS}")
@@ -97,7 +100,8 @@ add_subdirectory(qml)
 include(cmake/QaterialGenerateIcons.cmake)
 set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
 set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Icons.hpp")
-qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE})
+set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Icons.cpp")
+qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE} ${QATERIAL_ICONS_SRC_FILE})
 
 # ───── QML SOURCES ─────
 
@@ -105,6 +109,7 @@ set(QATERIAL_SOURCE_DIR src/Qaterial)
 
 set(QATERIAL_DISPLAY_SRCS
   ${QATERIAL_ICONS_CLASS_FILE}
+  ${QATERIAL_ICONS_SRC_FILE}
   ${QATERIAL_SOURCE_DIR}/IconDescription.hpp
   ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
   ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.hpp

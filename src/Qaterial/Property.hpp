@@ -175,7 +175,8 @@ private:
 
 #define QATERIAL_PROPERTY_CONST_D(type, attribute, Attribute, def)                                                                         \
     _QATERIAL_Q_PROPERTY_CONST(type, attribute)                                                                                            \
-    _QATERIAL_ATTRIBUTE_SHARED(type, attribute, Attribute, def)                                                                            \
+    _QATERIAL_PROPERTY_MEMBER(type, attribute, def)                                                                                        \
+    _QATERIAL_PROPERTY_GETTER(type, attribute, )                                                                                           \
 private:
 
 #define QATERIAL_PROPERTY_CONST(type, attribute, Attribute) QATERIAL_PROPERTY_CONST_D(type, attribute, Attribute, {})
