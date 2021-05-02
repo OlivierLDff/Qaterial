@@ -175,7 +175,7 @@ source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
 
 if(${QATERIAL_BUILD_SHARED})
   add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
-  target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_SHARED)
+  target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
 else()
   add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
