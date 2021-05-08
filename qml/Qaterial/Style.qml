@@ -285,7 +285,7 @@ Qaterial.Theme
 
   function rippleColor(rippleBackground)
   {
-    switch (rippleBackground)
+    switch(rippleBackground)
     {
       case Style.RippleBackground.Background:
         return theme === Style.Theme.Light ? rippleColorDark : rippleColorLight
@@ -416,7 +416,7 @@ Qaterial.Theme
 
   function textTypeToFontFamily(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return display3FontFamily;
@@ -459,7 +459,7 @@ Qaterial.Theme
 
   function textTypeToStyleName(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return display3FontStyleName;
@@ -502,7 +502,7 @@ Qaterial.Theme
 
   function textTypeToPointSize(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return display3FontPointSize;
@@ -545,7 +545,7 @@ Qaterial.Theme
 
   function textTypeToPixelSize(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return display3FontPixelSize;
@@ -588,7 +588,7 @@ Qaterial.Theme
 
   function textTypeToColor(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return displayTextColor();
@@ -631,7 +631,7 @@ Qaterial.Theme
 
   function textTypeToColorReversed(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Display3:
         return displayTextColorReversed();
@@ -674,7 +674,7 @@ Qaterial.Theme
 
   function fontCapitalization(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Overline:
       case Style.TextType.Button:
@@ -687,7 +687,7 @@ Qaterial.Theme
 
   function textTypeToLetterSpacing(type)
   {
-    switch (type)
+    switch(type)
     {
       case Style.TextType.Overline:
         return 2;
@@ -849,7 +849,7 @@ Qaterial.Theme
 
     function implicitHeight1Line(type)
     {
-      switch (type)
+      switch(type)
       {
         case Style.DelegateType.Overline:
           return _root.dense ? 52 : 64
@@ -867,7 +867,7 @@ Qaterial.Theme
 
     function implicitHeight2Line(type)
     {
-      switch (type)
+      switch(type)
       {
         case Style.DelegateType.Overline:
           return _root.dense ? 70 : 88
@@ -889,7 +889,7 @@ Qaterial.Theme
 
     function implicitHeight(type, lines)
     {
-      switch (lines)
+      switch(lines)
       {
         case 2:
           return implicitHeight2Line(type)
@@ -904,7 +904,7 @@ Qaterial.Theme
     {
       if(lines === 3)
       {
-        switch (type)
+        switch(type)
         {
           case Style.DelegateType.Icon:
             return _root.dense ? 26 : 32
@@ -920,7 +920,7 @@ Qaterial.Theme
       }
       else
       {
-        switch (type)
+        switch(type)
         {
           case Style.DelegateType.Icon:
             return _root.dense ? 26 : 32
@@ -937,7 +937,7 @@ Qaterial.Theme
 
     function topPadding1Line(type, lines)
     {
-      switch (type)
+      switch(type)
       {
         case Style.DelegateType.Icon:
           return _root.dense ? 12 : 16
@@ -954,7 +954,7 @@ Qaterial.Theme
 
     function topPadding2Line(type, lines)
     {
-      switch (type)
+      switch(type)
       {
         case Style.DelegateType.Icon:
           return _root.dense ? 20 : 24
@@ -971,7 +971,7 @@ Qaterial.Theme
 
     function topPadding3Line(type, lines)
     {
-      switch (type)
+      switch(type)
       {
         case Style.DelegateType.Icon:
         case Style.DelegateType.Round:
@@ -986,7 +986,7 @@ Qaterial.Theme
 
     function topPadding(type, lines)
     {
-      switch (lines)
+      switch(lines)
       {
         case 2:
           return topPadding2Line(type)
@@ -1015,7 +1015,7 @@ Qaterial.Theme
         return _root.dense ? 38 : 48
       else if(lines === 2)
       {
-        switch (type)
+        switch(type)
         {
           case Style.DelegateType.Icon:
           case Style.DelegateType.Round:
@@ -1040,7 +1040,7 @@ Qaterial.Theme
         return _root.dense ? 53 : 70
       else if(lines === 2)
       {
-        switch (type)
+        switch(type)
         {
           case Style.DelegateType.Icon:
           case Style.DelegateType.Round:

@@ -47,7 +47,7 @@ T.Label
 
     console.warn("Qaterial.Style.TextType is deprecated. Please consider using either Qaterial.Style.textTheme.<style> or Qaterial.Label<Style>.\nQaterial.Style.TextType will be removed with Qaterial 1.4")
 
-    switch (textType)
+    switch(textType)
     {
       case Qaterial.Style.TextType.Display3:
         return Qaterial.Style.textTheme.headline2
