@@ -187,7 +187,7 @@ static void Qaterial_loadFonts()
     }
 }
 
-static void Qaterial_loadResources()
+static void Qaterial_loadResources(bool autoRegisterStyle)
 {
     LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
 
@@ -202,10 +202,15 @@ static void Qaterial_loadResources()
 
     // By default Qaterial is set as qt quick controls 2 style.
     // It can be disabled for people not using Qaterial as Style, but just using some components.
-#ifndef NO_REGISTER_STYLES
-    QQuickStyle::setStyle(QStringLiteral("Qaterial"));
-    QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
-#endif
+    if(autoRegisterStyle)
+    {
+        QQuickStyle::setStyle(QStringLiteral("Qaterial"));
+        QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
+    }
+}
+static void Qaterial_loadResources()
+{
+    Qaterial_loadResources(true);
 }
 
 #ifndef QATERIAL_STATIC
@@ -221,7 +226,7 @@ void Utils::loadResources() { ::Qaterial_loadResources(); }
 
 void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
 
-void qaterial::loadQmlResources() { ::Qaterial_loadResources(); }
+void qaterial::loadQmlResources(bool autoRegisterStyle) { ::Qaterial_loadResources(autoRegisterStyle); }
 
 // Fix dpi at application startup
 class HighDpiFix
