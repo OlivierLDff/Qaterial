@@ -117,27 +117,27 @@ T.ItemDelegate
   property color color:
   {
     if(model && model.isDir && model.expanded)
-      return Qaterial.Style.accentColor
+      return Qaterial.Style.colorTheme.accent
 
     if(highlighted)
-      return Qaterial.Style.accentColor
+      return Qaterial.Style.colorTheme.accent
 
     if(hovered)
-      return Qaterial.Style.primaryTextColor()
+      return Qaterial.Style.colorTheme.primaryText
 
-    return Qaterial.Style.hintTextColor()
+    return Qaterial.Style.colorTheme.secondaryText
   }
 
   icon.source: extensionIcon
   icon.color:
   {
     if(highlighted || hovered)
-      return Qaterial.Style.accentColor
+      return Qaterial.Style.colorTheme.accent
 
     if(model && model.isDir && model.expanded)
-      return Qaterial.Style.accentColor
+      return Qaterial.Style.colorTheme.accent
 
-    Qaterial.Style.hintTextColor()
+    return Qaterial.Style.colorTheme.secondaryText
   }
 
   onClicked: function()
@@ -203,7 +203,7 @@ T.ItemDelegate
   Rectangle
   {
     visible: control.highlighted
-    color: Qaterial.Style.accentColor
+    color: Qaterial.Style.colorTheme.accent
     height: control.height - 4
     width: 2
     x: 2
@@ -213,7 +213,7 @@ T.ItemDelegate
   background: Qaterial.ListDelegateBackground
   {
     implicitHeight: 24
-    color: control.highlighted ? Qaterial.Style.backgroundColor : "transparent"
+    color: control.highlighted ? Qaterial.Style.colorTheme.surface : "transparent"
     pressed: control.pressed
     rippleActive: control.down || control.visualFocus || control.hovered
     rippleAnchor: control
