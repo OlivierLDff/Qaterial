@@ -131,6 +131,7 @@ LabelHint2 1.0 LabelHint2.qml
 LabelOverline 1.0 LabelOverline.qml
 LabelSubtitle1 1.0 LabelSubtitle1.qml
 LabelSubtitle2 1.0 LabelSubtitle2.qml
+LabelWithCaption 1.0 LabelWithCaption.qml
 LargeSlider 1.0 LargeSlider.qml
 LatoTabBar 1.0 LatoTabBar.qml
 LatoTabButton 1.0 LatoTabButton.qml
