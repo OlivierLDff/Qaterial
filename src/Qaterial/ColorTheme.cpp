@@ -62,7 +62,7 @@ static qreal elevationToOverlay(const int& elevation)
         {24, 0.16},
     };
 
-    auto iterator = elevationToOverlay.lower_bound(elevation);
+    const auto iterator = elevationToOverlay.lower_bound(elevation);
     if(iterator == elevationToOverlay.end())
     {
         return elevationToOverlay.rbegin()->second;
