@@ -27,12 +27,6 @@ import Qaterial 1.0 as Qaterial
 
 Column
 {
-  Qaterial.SwitchButton
-  {
-    text: "Use Branded Background"
-    checked: Qaterial.Style.colorTheme.useBrandedBackground
-    onToggled: () => Qaterial.Style.colorTheme.useBrandedBackground = checked
-  }
   Grid
   {
     width: 300
@@ -51,7 +45,7 @@ Column
         Qaterial.Theme.elevation: modelData
         elevation: Qaterial.Theme.elevation
         outlined: Qaterial.Theme.elevation === 0
-        backgroundColor: Qaterial.Style.colorTheme.getElevatedColor(Qaterial.Style.colorTheme.realBrandedBackground, Qaterial.Theme.elevation)
+        backgroundColor: Qaterial.Style.colorTheme.getElevatedColor(Qaterial.Style.colorTheme.background0, Qaterial.Theme.elevation)
         width: 112
         height: 112
 

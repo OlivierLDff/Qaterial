@@ -51,8 +51,6 @@ public:
 public:
     // Define text colors, background, etc...
     QATERIAL_PROPERTY_D(bool, dark, Dark, true);
-    // In dark mode, primary color is overlayed on top of background
-    QATERIAL_PROPERTY_D(bool, useBrandedBackground, UseBrandedBackground, true);
 
     // ──── TEXT COLORS ────
 public:
@@ -79,6 +77,7 @@ public:
     QATERIAL_PROPERTY_D(QColor, background, Background, "#121212");
 
 private:
+    Q_PROPERTY(QColor background0 READ background0 NOTIFY backgroundChanged);
     Q_PROPERTY(QColor background1 READ background1 NOTIFY backgroundChanged);
     Q_PROPERTY(QColor background2 READ background2 NOTIFY backgroundChanged);
     Q_PROPERTY(QColor background4 READ background4 NOTIFY backgroundChanged);
@@ -88,24 +87,19 @@ private:
     Q_PROPERTY(QColor background16 READ background16 NOTIFY backgroundChanged);
     Q_PROPERTY(QColor background24 READ background24 NOTIFY backgroundChanged);
 
-public:
-    QColor background1() const { return getElevatedColor(_background, 1); }
-    QColor background2() const { return getElevatedColor(_background, 2); }
-    QColor background4() const { return getElevatedColor(_background, 4); }
-    QColor background6() const { return getElevatedColor(_background, 6); }
-    QColor background8() const { return getElevatedColor(_background, 8); }
-    QColor background12() const { return getElevatedColor(_background, 12); }
-    QColor background16() const { return getElevatedColor(_background, 16); }
-    QColor background24() const { return getElevatedColor(_background, 24); }
+private:
+    QColor getBrandedBackground() const;
 
-    QATERIAL_PROPERTY_RO(QColor, brandedBackground, BrandedBackground);
-
-protected:
-    Q_PROPERTY(QColor realBrandedBackground READ realBrandedBackground NOTIFY realBrandedBackgroundChanged)
 public:
-    QColor realBrandedBackground() const { return _useBrandedBackground ? _brandedBackground : _background; }
-Q_SIGNALS:
-    void realBrandedBackgroundChanged();
+    QColor background0() const;
+    QColor background1() const;
+    QColor background2() const;
+    QColor background4() const;
+    QColor background6() const;
+    QColor background8() const;
+    QColor background12() const;
+    QColor background16() const;
+    QColor background24() const;
 
     // ──── TOOLTIP COLORS ────
 public:
@@ -114,34 +108,12 @@ public:
 
     // ──── ELEVATED COLORS ────
 public:
-    // Surface is 1dp
-    QATERIAL_PROPERTY_RO(QColor, surface, Surface);
-    // Button is 2dp
-    QATERIAL_PROPERTY_RO(QColor, button, Button);
-    // AppBar is 4dp
-    QATERIAL_PROPERTY_RO(QColor, appBar, AppBar);
-    // AppBar is 6dp
-    QATERIAL_PROPERTY_RO(QColor, fab, Fab);
-    // NavDrawer is 16dp
-    QATERIAL_PROPERTY_RO(QColor, navDrawer, NavDrawer);
-    // Dialog is 24dp
-    QATERIAL_PROPERTY_RO(QColor, dialog, Dialog);
-
-protected:
-    Q_PROPERTY(QColor surfaceDisabled READ surfaceDisabled NOTIFY surfaceChanged);
-    Q_PROPERTY(QColor buttonDisabled READ buttonDisabled NOTIFY buttonChanged);
-    Q_PROPERTY(QColor appBarDisabled READ appBarDisabled NOTIFY appBarChanged);
-    Q_PROPERTY(QColor fabDisabled READ fabDisabled NOTIFY fabChanged);
-    Q_PROPERTY(QColor navDrawerDisabled READ navDrawerDisabled NOTIFY navDrawerChanged);
-    Q_PROPERTY(QColor dialogDisabled READ dialogDisabled NOTIFY dialogChanged);
-
-public:
-    QColor surfaceDisabled() const { return getElevatedColor(_surface, 1); }
-    QColor buttonDisabled() const { return getElevatedColor(_button, 2); }
-    QColor appBarDisabled() const { return getElevatedColor(_appBar, 4); }
-    QColor fabDisabled() const { return getElevatedColor(_fab, 6); }
-    QColor navDrawerDisabled() const { return getElevatedColor(_navDrawer, 16); }
-    QColor dialogDisabled() const { return getElevatedColor(_dialog, 24); }
+    Q_PROPERTY(QColor surface READ background1 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor button READ background2 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor appBar READ background4 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor fab READ background6 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor navDrawer READ background16 NOTIFY backgroundChanged);
+    Q_PROPERTY(QColor dialog READ background24 NOTIFY backgroundChanged);
 
     // ──── API ────
 public Q_SLOTS:
@@ -151,11 +123,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void computeColors();
-
-private:
-    void computeBackgroundColors();
-    void computeTextColors();
-    void computeToolTipColors();
 };
 
 }

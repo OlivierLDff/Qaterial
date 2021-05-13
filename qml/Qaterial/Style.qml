@@ -23,9 +23,8 @@ Qaterial.Theme
   darkColorTheme: Qaterial.ColorTheme
   {
     dark: true
-    useBrandedBackground: true
 
-    primary: Qaterial.Colors.purple300
+    primary: Qaterial.Colors.indigo500
     onPrimaryText: Qaterial.Colors.white
 
     accent: Qaterial.Colors.amber500
@@ -38,7 +37,6 @@ Qaterial.Theme
   lightColorTheme: Qaterial.ColorTheme
   {
     dark: false
-    useBrandedBackground: false
 
     primary: Qaterial.Colors.purple500
     onPrimaryText: Qaterial.Colors.white

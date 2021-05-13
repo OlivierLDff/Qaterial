@@ -83,35 +83,52 @@ static qreal elevationToOverlay(const int& elevation)
 
 ColorTheme::ColorTheme(QObject* parent) : QObject(parent)
 {
-    computeTextColors();
-    computeBackgroundColors();
-
-    // realBrandedBackgroundChanged
+    computeColors();
 
     connect(this,
-        &ColorTheme::backgroundChanged,
+        &ColorTheme::primaryChanged,
         this,
         [this]()
         {
-            if(!useBrandedBackground())
-                Q_EMIT realBrandedBackgroundChanged();
+            // In Dark mode, background is branded with primary color.
+            // The result is that when primary changed, all the dependent background color change too
+            if(dark())
+                Q_EMIT backgroundChanged(_background);
         });
-    connect(this,
-        &ColorTheme::brandedBackgroundChanged,
-        this,
-        [this]()
-        {
-            if(useBrandedBackground())
-                Q_EMIT realBrandedBackgroundChanged();
-        });
-    connect(this, &ColorTheme::useBrandedBackgroundChanged, this, &ColorTheme::realBrandedBackgroundChanged);
 
     // computeColors
-
     connect(this, &ColorTheme::darkChanged, this, &ColorTheme::computeColors);
     connect(this, &ColorTheme::primaryChanged, this, &ColorTheme::computeColors);
     connect(this, &ColorTheme::backgroundChanged, this, &ColorTheme::computeColors);
 }
+
+QColor ColorTheme::getBrandedBackground() const
+{
+    // Only brand the color in dark mode
+    if(!_dark)
+        return _background;
+
+    static const double brandingRatio = 0.08;
+    return blendedColor(_background, _primary, brandingRatio);
+}
+
+QColor ColorTheme::background0() const { return getElevatedColor(getBrandedBackground(), 0); }
+
+QColor ColorTheme::background1() const { return getElevatedColor(getBrandedBackground(), 1); }
+
+QColor ColorTheme::background2() const { return getElevatedColor(getBrandedBackground(), 2); }
+
+QColor ColorTheme::background4() const { return getElevatedColor(getBrandedBackground(), 4); }
+
+QColor ColorTheme::background6() const { return getElevatedColor(getBrandedBackground(), 6); }
+
+QColor ColorTheme::background8() const { return getElevatedColor(getBrandedBackground(), 8); }
+
+QColor ColorTheme::background12() const { return getElevatedColor(getBrandedBackground(), 12); }
+
+QColor ColorTheme::background16() const { return getElevatedColor(getBrandedBackground(), 16); }
+
+QColor ColorTheme::background24() const { return getElevatedColor(getBrandedBackground(), 24); }
 
 QColor ColorTheme::blendedColor(const QColor& color1, const QColor& color2, const qreal& alpha)
 {
@@ -141,40 +158,36 @@ qreal ColorTheme::getOverlayForElevation(const int& elevation) { return elevatio
 
 void ColorTheme::computeColors()
 {
-    computeBackgroundColors();
-    computeTextColors();
-}
+    // Color plays an important role in text legibility.
+    // https://material.io/design/color/text-legibility.html#text-backgrounds
 
-void ColorTheme::computeBackgroundColors() { setBrandedBackground(blendedColor(background(), primary(), 0.08)); }
-
-void ColorTheme::computeTextColors()
-{
     if(dark())
     {
-        QColor white(Qt::white);
-        setPrimaryText(blendedColor(realBrandedBackground(), white, 1));
-        setSecondaryText(blendedColor(realBrandedBackground(), white, 0.7));
-        setDisabledText(blendedColor(realBrandedBackground(), white, 0.38));
+        static const QColor white(Qt::white);
+
+        static double primaryRatio = 1;
+        static double secondaryRatio = 0.70;
+        static double disabledRatio = 0.38;
+
+        setPrimaryText(blendedColor(getBrandedBackground(), white, primaryRatio));
+        setSecondaryText(blendedColor(getBrandedBackground(), white, secondaryRatio));
+        setDisabledText(blendedColor(getBrandedBackground(), white, disabledRatio));
+
+        setToolTipText(blendedColor(toolTip(), QColor(Qt::black), primaryRatio));
     }
     else
     {
-        // https://material.io/design/color/text-legibility.html#text-backgrounds
-        QColor black(Qt::black);
-        setPrimaryText(blendedColor(realBrandedBackground(), black, 0.87));
-        setSecondaryText(blendedColor(realBrandedBackground(), black, 0.60));
-        setDisabledText(blendedColor(realBrandedBackground(), black, 0.38));
-    }
-}
+        static const QColor black(Qt::black);
 
-void ColorTheme::computeToolTipColors()
-{
-    if(dark())
-    {
-        setPrimaryText(blendedColor(toolTip(), QColor(Qt::white), 1));
-    }
-    else
-    {
-        setPrimaryText(blendedColor(toolTip(), QColor(Qt::black), 0.87));
+        static double primaryRatio = 0.87;
+        static double secondaryRatio = 0.60;
+        static double disabledRatio = 0.38;
+
+        setPrimaryText(blendedColor(getBrandedBackground(), black, primaryRatio));
+        setSecondaryText(blendedColor(getBrandedBackground(), black, secondaryRatio));
+        setDisabledText(blendedColor(getBrandedBackground(), black, disabledRatio));
+
+        setToolTipText(blendedColor(toolTip(), QColor(Qt::white), primaryRatio));
     }
 }
 
