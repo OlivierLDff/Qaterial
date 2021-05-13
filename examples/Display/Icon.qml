@@ -88,7 +88,6 @@ Column
         Qaterial.DebugRectangle { anchors.fill: parent }
       }
 
-
       Qaterial.Label
       {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -117,6 +116,58 @@ Column
       {
         anchors.horizontalCenter: parent.horizontalCenter
         text: "large"
+      }
+    }
+  }
+
+  Row
+  {
+    anchors.horizontalCenter: parent.horizontalCenter
+
+    spacing: Qaterial.Style.largeSpacing
+
+    Column
+    {
+      anchors.bottom: parent.bottom
+
+      spacing: Qaterial.Style.smallSpacing
+
+      Qaterial.Icon
+      {
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        icon: "https://www.flaticon.com/svg/static/icons/svg/119/119591.svg"
+        color: "transparent"
+        size: Qaterial.Style.largeIcon
+      }
+
+      Qaterial.Label
+      {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "transparent"
+      }
+    }
+
+    Column
+    {
+      anchors.bottom: parent.bottom
+
+      spacing: Qaterial.Style.smallSpacing
+
+      Qaterial.Icon
+      {
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        icon: "https://www.flaticon.com/svg/static/icons/svg/119/119591.svg"
+        color: "transparent"
+        size: Qaterial.Style.largeIcon
+        enabled: false
+      }
+
+      Qaterial.Label
+      {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: "disabled"
       }
     }
   }

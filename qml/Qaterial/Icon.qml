@@ -5,7 +5,7 @@
 
 // Qt
 import QtQuick 2.12
-import QtGraphicalEffects 1.12
+import QtGraphicalEffects 1.12 as QGE
 
 import Qaterial 1.0 as Qaterial
 
@@ -13,12 +13,13 @@ Item
 {
   id: root
 
-  property color color: Qaterial.Style.primaryTextColor()
+  property color color: enabled ? Qaterial.Style.colorTheme.primaryText : Qaterial.Style.colorTheme.disabledText
   property alias icon: dummyImage.source
-  property real size: 24
-  property alias cached: iconOverlay.cached
+  property real size: Qaterial.Style.smallIcon
+  property bool cached: true
 
   readonly property real _implicitSize: icon.toString() ? size : 0
+  readonly property bool isImage: color.a === 0
 
   implicitWidth: _implicitSize
   implicitHeight: _implicitSize
@@ -31,19 +32,30 @@ Item
 
     fillMode: Image.PreserveAspectFit
     sourceSize: Qt.size(root.width, root.height)
-    visible: false
+    visible: root.isImage && root.enabled
   } // Image
 
-  ColorOverlay
+  QGE.ColorOverlay
   {
-    id: iconOverlay
-
-    anchors.fill: dummyImage
+    anchors.fill: parent
 
     source: dummyImage
     color: Qt.rgba(root.color.r, root.color.g, root.color.b, 1)
-    cached: true
+
+    cached: root.cached
+    visible: !root.isImage
   } // ColorOverlay
 
-  opacity: color.a
+  QGE.Colorize
+  {
+    anchors.fill: parent
+
+    source: dummyImage
+    hue: 0
+    saturation: 0
+    lightness: 0
+
+    cached: root.cached
+    visible: root.isImage && !root.enabled
+  } // Colorize
 } // Item
