@@ -187,7 +187,7 @@ static void Qaterial_loadFonts()
     }
 }
 
-static void Qaterial_loadResources(bool autoRegisterStyle = true)
+static void Qaterial_loadResources(bool autoRegisterStyle)
 {
     LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
 
@@ -208,6 +208,8 @@ static void Qaterial_loadResources(bool autoRegisterStyle = true)
         QQuickStyle::setFallbackStyle(QStringLiteral("Material"));
     }
 }
+
+static void Qaterial_loadResources() { Qaterial_loadResources(true); }
 
 #ifndef QATERIAL_STATIC
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);

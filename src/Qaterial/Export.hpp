@@ -24,7 +24,7 @@
 #define __QATERIAL_EXPORT_HPP__
 
 #ifdef WIN32
-#    ifdef QATERIAL_DLL_EXPORT
+#    ifdef QATERIAL_SHARED
 #        define QATERIAL_API_ __declspec(dllexport)
 #    elif QATERIAL_STATIC
 #        define QATERIAL_API_

@@ -57,7 +57,7 @@ public:
     Q_DECL_DEPRECATED static void loadResources();
 };
 
-void registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
 
 /**
  * @brief      Load qrc content in qrc:/Qaterial/
@@ -67,7 +67,7 @@ void registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const q
  * If you are not using Qaterial as your main qt quick control style. Set autoRegisterStyle to false.
  * It is true by default to be as plug and play as possible to use Qaterial.
  */
-void loadQmlResources(bool autoRegisterStyle = true);
+void QATERIAL_API_ loadQmlResources(bool autoRegisterStyle = true);
 
 }
 
