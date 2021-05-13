@@ -82,6 +82,10 @@ Qaterial.Theme
   // amount of spacing that should be used inside bigger UI elements, for example between an icon and the corresponding text.
   property double largeSpacing: dense ? 12 : 16
 
+  property double smallIcon: dense ? 20 : 24
+  property double mediumIcon: dense ? 28 : 32
+  property double largeIcon: dense ? 36 : 40
+
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"
   property color accentColorLight: "#FFC107"
