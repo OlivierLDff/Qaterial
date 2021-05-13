@@ -23,7 +23,7 @@ Flow
 
   padding:
   {
-    switch (type)
+    switch(type)
     {
       case Qaterial.Layout.ExtraLarge:
         return 24

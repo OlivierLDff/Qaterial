@@ -18,7 +18,7 @@ Column
 
   function layoutTypeToString(type)
   {
-    switch (type)
+    switch(type)
     {
       case Qaterial.Layout.ExtraLarge:
         return "Extra Large"

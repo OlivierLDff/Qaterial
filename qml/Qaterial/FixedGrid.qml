@@ -7,7 +7,7 @@ Qaterial.Grid
 
   readonly property real idealSize:
   {
-    switch (type)
+    switch(type)
     {
       case Qaterial.Layout.ExtraLarge:
         return extraLargeBreakpoint

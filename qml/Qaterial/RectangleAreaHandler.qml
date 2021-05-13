@@ -460,7 +460,7 @@ Item
         if(root.containsMouseInsideHandle)
           return true
 
-        switch (index)
+        switch(index)
         {
           case 0:
             return root.topHovered
@@ -520,7 +520,7 @@ Item
         if(root.containsMouseInsideHandle)
           return true
 
-        switch (index)
+        switch(index)
         {
           case 0:
             return root.topHovered || root.leftHovered
