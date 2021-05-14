@@ -13,7 +13,7 @@ import Qaterial 1.0 as Qaterial
 
 T.DialogButtonBox
 {
-  id: _control
+  id: root
 
   implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
     contentWidth + leftPadding + rightPadding)
@@ -25,17 +25,15 @@ T.DialogButtonBox
   alignment: Qt.AlignRight
   buttonLayout: T.DialogButtonBox.AndroidLayout
 
-  property color foregroundColor: Qaterial.Style.accentColor
-  property color backgroundColor: Qaterial.Style.backgroundColor
+  property alias backgroundColor: root.palette.base
+  palette.base: Qaterial.Style.colorTheme.dialog
 
-  //delegate: Qaterial.FlatButton { foregroundColor: _control.foregroundColor; onClicked: _list.positionViewAtBeginning() }
   delegate: Qaterial.FlatButton {}
 
   contentItem: ListView
   {
-    id: _list
-    model: _control.contentModel
-    spacing: _control.spacing
+    model: root.contentModel
+    spacing: root.spacing
     orientation: ListView.Horizontal
     boundsBehavior: Flickable.StopAtBounds
     snapMode: ListView.SnapToItem
@@ -45,10 +43,20 @@ T.DialogButtonBox
   {
     implicitHeight: Qaterial.Style.dialog.buttonRectImplicitHeight
     radius: Qaterial.Style.dialog.radius
-    color: _control.backgroundColor
-    // Rounded corners should be only at the top or at the bottom
-    //topPadding: _control.position === T.DialogButtonBox.Footer ? -2 : 0
-    //bottomPadding: _control.position === T.DialogButtonBox.Header ? -2 : 0
-    //clip: true
+    color: root.palette.base
+
+    Rectangle
+    {
+      anchors
+      {
+        right: parent.right
+        left: parent.left
+      }
+
+      y: root.position === T.DialogButtonBox.Footer ? 0 : parent.height - height
+      height: Qaterial.Style.dialog.radius
+
+      color: root.palette.base
+    }
   } // Rectangle
 } // DialogButtonBox
