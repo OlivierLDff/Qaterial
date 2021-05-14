@@ -29,11 +29,11 @@ Item
 
   property alias text: textLabel.text
   property alias textFont: textLabel.font
-  property alias textColor: textLabel.color
+  property color textColor: Qaterial.Style.colorTheme.primaryText
 
   property alias caption: captionLabel.text
   property alias captionFont: captionLabel.font
-  property alias captionColor: captionLabel.color
+  property color captionColor: Qaterial.Style.colorTheme.secondaryText
 
   implicitWidth: Math.max(textLabel.implicitWidth, captionLabel.implicitWidth)
   implicitHeight: (text ? textLabel.implicitHeight : 0) + (caption ? captionLabel.implicitHeight : 0) + (text && caption ? spacing : 0)
@@ -66,7 +66,7 @@ Item
     height: text ? implicitHeight : 0
 
     font: Qaterial.Style.textTheme.body1
-    color: Qaterial.Style.colorTheme.primaryText
+    color: enabled ? root.textColor : Qaterial.Style.colorTheme.disabledText
     elide: root.elide
     horizontalAlignment: root.horizontalAlignment
   }
@@ -85,7 +85,7 @@ Item
     height: text ? implicitHeight : 0
 
     font: Qaterial.Style.textTheme.caption
-    color: Qaterial.Style.colorTheme.secondaryText
+    color: enabled ? root.captionColor : Qaterial.Style.colorTheme.disabledText
     elide: root.elide
     horizontalAlignment: root.horizontalAlignment
     wrapMode: root.wrapMode
