@@ -23,9 +23,8 @@ Qaterial.Theme
   darkColorTheme: Qaterial.ColorTheme
   {
     dark: true
-    useBrandedBackground: true
 
-    primary: Qaterial.Colors.purple300
+    primary: Qaterial.Colors.indigo500
     onPrimaryText: Qaterial.Colors.white
 
     accent: Qaterial.Colors.amber500
@@ -38,7 +37,6 @@ Qaterial.Theme
   lightColorTheme: Qaterial.ColorTheme
   {
     dark: false
-    useBrandedBackground: false
 
     primary: Qaterial.Colors.purple500
     onPrimaryText: Qaterial.Colors.white
@@ -81,6 +79,10 @@ Qaterial.Theme
   property double smallSpacing: dense ? 6 : 8
   // amount of spacing that should be used inside bigger UI elements, for example between an icon and the corresponding text.
   property double largeSpacing: dense ? 12 : 16
+
+  property double smallIcon: dense ? 20 : 24
+  property double mediumIcon: dense ? 28 : 32
+  property double largeIcon: dense ? 36 : 40
 
   property color primaryColorLight: "white"
   property color primaryColorDark: "#202225" //"#212121"

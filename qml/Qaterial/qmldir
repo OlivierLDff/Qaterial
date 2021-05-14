@@ -27,6 +27,7 @@ CalendarNavigationBar 1.0 CalendarNavigationBar.qml
 CalendarView 1.0 CalendarView.qml
 CalendarWeekDayRow 1.0 CalendarWeekDayRow.qml
 CalendarYearPickerView 1.0 CalendarYearPickerView.qml
+CaptionWithLabel 1.0 CaptionWithLabel.qml
 Card 1.0 Card.qml
 CardBackground 1.0 CardBackground.qml
 CardMedia 1.0 CardMedia.qml
@@ -131,6 +132,7 @@ LabelHint2 1.0 LabelHint2.qml
 LabelOverline 1.0 LabelOverline.qml
 LabelSubtitle1 1.0 LabelSubtitle1.qml
 LabelSubtitle2 1.0 LabelSubtitle2.qml
+LabelWithCaption 1.0 LabelWithCaption.qml
 LargeSlider 1.0 LargeSlider.qml
 LatoTabBar 1.0 LatoTabBar.qml
 LatoTabButton 1.0 LatoTabButton.qml
@@ -153,6 +155,7 @@ OutlineButton 1.0 OutlineButton.qml
 OutlineTextField 1.0 OutlineTextField.qml
 OutlinedCard 1.0 OutlinedCard.qml
 OutlinedFabButton 1.0 OutlinedFabButton.qml
+OverlineWithLabel 1.0 OverlineWithLabel.qml
 Page 1.0 Page.qml
 Pane 1.0 Pane.qml
 PlaceholderText 1.0 PlaceholderText.qml

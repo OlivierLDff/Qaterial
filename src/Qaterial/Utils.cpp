@@ -213,6 +213,8 @@ static void Qaterial_loadResources()
     Qaterial_loadResources(true);
 }
 
+static void Qaterial_loadResources() { Qaterial_loadResources(true); }
+
 #ifndef QATERIAL_STATIC
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
