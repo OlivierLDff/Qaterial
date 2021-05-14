@@ -12,14 +12,15 @@ import Qaterial 1.0 as Qaterial
 
 Qaterial.Pane
 {
-  id: _control
+  id: root
   padding: 0
   property bool onPrimary: false
   property bool colorReversed: onPrimary && Qaterial.Style.shouldReverseForegroundOnPrimary
 
   radius: Qaterial.Style.card.radius
 
-  property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
+  property alias backgroundColor: root.palette.base
+  //property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
   property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
   property bool outlined: false
 
@@ -41,16 +42,17 @@ Qaterial.Pane
   property bool pressed: false
   property bool elevationOnHovered: false
 
+  palette.base: Qaterial.Style.colorTheme.background8
+
   background: Qaterial.CardBackground
   {
-    id: _cardBackground
-    isActive: _control.isActive
-    onPrimary: _control.onPrimary
-    enabled: _control.enabled
-    radius: _control.radius
-    color: _control.backgroundColor
-    borderColor: _control.borderColor
-    outlined: _control.outlined
-    elevation: _control.elevation
+    isActive: root.isActive
+    onPrimary: root.onPrimary
+    enabled: root.enabled
+    radius: root.radius
+    color: root.backgroundColor
+    borderColor: root.borderColor
+    outlined: root.outlined
+    elevation: root.elevation
   } // CardBackground
 } // Pane

@@ -13,7 +13,7 @@ Item
 {
   id: root
 
-  property color color: enabled ? Qaterial.Style.colorTheme.primaryText : Qaterial.Style.colorTheme.disabledText
+  property color color: Qaterial.Style.colorTheme.primaryText
   property alias icon: dummyImage.source
   property real size: Qaterial.Style.smallIcon
   property bool cached: true
@@ -40,7 +40,8 @@ Item
     anchors.fill: parent
 
     source: dummyImage
-    color: Qt.rgba(root.color.r, root.color.g, root.color.b, 1)
+    readonly property color implicitColor: enabled ? root.color : Qaterial.Style.colorTheme.disabledText
+    color: Qt.rgba(implicitColor.r, implicitColor.g, implicitColor.b, implicitColor.a)
 
     cached: root.cached
     visible: !root.isImage
@@ -53,7 +54,7 @@ Item
     source: dummyImage
     hue: 0
     saturation: 0
-    lightness: 0
+    lightness: -0.2
 
     cached: root.cached
     visible: root.isImage && !root.enabled
