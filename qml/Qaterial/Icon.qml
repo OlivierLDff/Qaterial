@@ -54,7 +54,7 @@ Item
     source: dummyImage
     hue: 0
     saturation: 0
-    lightness: 0
+    lightness: -0.2
 
     cached: root.cached
     visible: root.isImage && !root.enabled
