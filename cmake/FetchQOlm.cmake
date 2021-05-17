@@ -1,3 +1,7 @@
+if(TARGET QOlm)
+  return()
+endif()
+
 include(FetchContent)
 
 set(QOLM_REPOSITORY "https://github.com/OlivierLDff/QOlm.git" CACHE STRING "QOlm repository url")
