@@ -1,3 +1,7 @@
+if(TARGET spdlog::spdlog)
+  return()
+endif()
+
 include(FetchContent)
 
 set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog repository url")
