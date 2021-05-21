@@ -61,12 +61,14 @@ T.Button
 
   property bool outlined: false
 
+  palette.highlight: Qaterial.Style.ColorTheme.accent
+
   property color foregroundColor:
   {
     if(!enabled)
       return Qaterial.Style.disabledTextColor()
     if(flat && highlighted)
-      return Qaterial.Style.accentColor
+      return palette.highlight
     return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
   }
   property color backgroundColor:
@@ -75,7 +77,7 @@ T.Button
       return (outlined && pressed) ? Qaterial.Style.backgroundColor : "transparent"
     if(!enabled)
       return Qaterial.Style.buttonDisabledColor
-    return highlighted ? Qaterial.Style.accentColor : Qaterial.Style.buttonColor
+    return highlighted ? palette.highlight : Qaterial.Style.buttonColor
   }
 
   readonly property int flatRippleColor: onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style
