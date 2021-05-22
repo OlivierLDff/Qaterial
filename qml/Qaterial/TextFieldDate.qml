@@ -25,7 +25,7 @@ Qaterial.TextField
   implicitWidth: 150
 
   title: "Date"
-  validator: RegExpValidator { regExp: /([1-9]|0[1-9]|[12][0-9]|3[01])[/](0[1-9]|[1-9]|1[0-2])[/]\d{4}/ }
+  validator: RegularExpressionValidator { regularExpression: /([1-9]|0[1-9]|[12][0-9]|3[01])[/](0[1-9]|[1-9]|1[0-2])[/]\d{4}/ }
   errorText: dateOutOfBound ? "Date is Out of Bound" : "Invalid Date Format"
   readonly property bool dateOutOfBound: !Qaterial.Calendar.isDateValid(from, to, date)
   error: !acceptableInput || dateOutOfBound
