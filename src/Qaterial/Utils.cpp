@@ -236,7 +236,9 @@ class HighDpiFix
         ::SetProcessDPIAware();
 #    endif
 #endif // Q_OS_WIN
+#if QT_VERSION_MAJOR < 6
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     }
     static HighDpiFix singleton;
 };
