@@ -1,9 +1,9 @@
 // Copyright Olivier Le Doeuff 2020 (C)
 
-import QtQml 2.14
-import QtQuick 2.14
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
+import QtQml
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
 
 import Qaterial 1.0 as Qaterial
 

@@ -4,9 +4,9 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.14
-import QtQml 2.12
+import QtQuick
+import QtQuick.Controls
+import QtQml
 import Qt.labs.platform 1.1 as QLab
 // Qaterial
 import Qaterial 1.0 as Qaterial

@@ -1,7 +1,7 @@
-import QtQuick 2.14
+import QtQuick
 import QtQuick.Layouts 1.14
-import QtQml 2.14
-import Qt.labs.folderlistmodel 2.14 as QFlm
+import QtQml
+import Qt.labs.folderlistmodel as QFlm
 
 import Qaterial 1.0 as Qaterial
 

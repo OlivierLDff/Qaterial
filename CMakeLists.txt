@@ -79,6 +79,7 @@ find_package(Qt6 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
+  Core5Compat
 #  QuickCompiler
 )
 
@@ -203,6 +204,7 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
+  Qt::Core5Compat
 )
 
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
