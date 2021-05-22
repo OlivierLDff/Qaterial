@@ -210,43 +210,43 @@ Qaterial.Theme
 
   function primaryTextColorReversed()
   {
-    return theme != Style.Theme.Light ? primaryTextColorLight :
+    return theme !== Style.Theme.Light ? primaryTextColorLight :
       primaryTextColorDark
   }
 
   function displayTextColorReversed()
   {
-    return theme != Style.Theme.Light ? displayTextColorLight :
+    return theme !== Style.Theme.Light ? displayTextColorLight :
       displayTextColorDark
   }
 
   function secondaryTextColorReversed()
   {
-    return theme != Style.Theme.Light ? secondaryTextColorLight :
+    return theme !== Style.Theme.Light ? secondaryTextColorLight :
       secondaryTextColorDark
   }
 
   function disabledTextColorReversed()
   {
-    return theme != Style.Theme.Light ? disabledTextColorLight :
+    return theme !== Style.Theme.Light ? disabledTextColorLight :
       disabledTextColorDark
   }
 
-  function hintTextColorReversed() { return theme != Style.Theme.Light ? hintTextColorLight : hintTextColorDark }
+  function hintTextColorReversed() { return theme !== Style.Theme.Light ? hintTextColorLight : hintTextColorDark }
 
-  function iconColorReversed() { return theme != Style.Theme.Light ? iconColorLight : iconColorDark }
+  function iconColorReversed() { return theme !== Style.Theme.Light ? iconColorLight : iconColorDark }
 
-  function helperTextColorReversed() { return theme != Style.Theme.Light ? helperTextColorLight : helperTextColorDark }
+  function helperTextColorReversed() { return theme !== Style.Theme.Light ? helperTextColorLight : helperTextColorDark }
 
-  function dividersColorReversed() { return theme != Style.Theme.Light ? dividersColorLight : dividersColorDark }
+  function dividersColorReversed() { return theme !== Style.Theme.Light ? dividersColorLight : dividersColorDark }
 
   function disabledDividersColorReversed()
   {
-    return theme != Style.Theme.Light ? disabledDividersColorLight :
+    return theme !== Style.Theme.Light ? disabledDividersColorLight :
       disabledDividersColorDark
   }
 
-  function errorTextColorReversed() { return theme != Style.Theme.Light ? errorTextColorLight : errorTextColorDark }
+  function errorTextColorReversed() { return theme !== Style.Theme.Light ? errorTextColorLight : errorTextColorDark }
 
   property color appBarColor: primaryColor
   property color dialogColor: Qt.lighter(backgroundColor, 1.375)
