@@ -61,7 +61,7 @@ T.Button
 
   property bool outlined: false
 
-  palette.highlight: Qaterial.Style.ColorTheme.accent
+  palette.highlight: Qaterial.Style.colorTheme.accent
 
   property color foregroundColor:
   {

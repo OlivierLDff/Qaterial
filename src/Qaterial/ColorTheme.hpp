@@ -57,6 +57,7 @@ public:
     QATERIAL_PROPERTY_RO(QColor, primaryText, PrimaryText);
     QATERIAL_PROPERTY_RO(QColor, secondaryText, SecondaryText);
     QATERIAL_PROPERTY_RO(QColor, disabledText, DisabledText);
+    QATERIAL_PROPERTY_RO(QColor, errorText, ErrorText);
 
     // ──── PRIMARY COLORS ────
 public:

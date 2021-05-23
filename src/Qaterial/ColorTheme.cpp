@@ -173,6 +173,7 @@ void ColorTheme::computeColors()
         setSecondaryText(blendedColor(getBrandedBackground(), white, secondaryRatio));
         setDisabledText(blendedColor(getBrandedBackground(), white, disabledRatio));
 
+        setErrorText(blendedColor(getBrandedBackground(), QColor("#EF5350"), primaryRatio));
         setToolTipText(blendedColor(toolTip(), QColor(Qt::black), primaryRatio));
     }
     else
@@ -187,6 +188,7 @@ void ColorTheme::computeColors()
         setSecondaryText(blendedColor(getBrandedBackground(), black, secondaryRatio));
         setDisabledText(blendedColor(getBrandedBackground(), black, disabledRatio));
 
+        setErrorText(blendedColor(getBrandedBackground(), QColor("#F44336"), primaryRatio));
         setToolTipText(blendedColor(toolTip(), QColor(Qt::white), primaryRatio));
     }
 }
