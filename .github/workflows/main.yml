@@ -34,7 +34,6 @@ jobs:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          modules: 'qt5compat'
       -
         name: 🔧 CMake
         run: |
