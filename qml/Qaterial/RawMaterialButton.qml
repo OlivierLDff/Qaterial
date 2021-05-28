@@ -38,7 +38,7 @@ T.Button
 
   leftPadding:
   {
-    if(icon.source != "" && !mirrored || text == "")
+    if(icon.source !== "" && !mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + leftInset
 
     if(flat && !outlined)
@@ -47,7 +47,7 @@ T.Button
   }
   rightPadding:
   {
-    if(icon.source != "" && mirrored || text == "")
+    if(icon.source !== "" && mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + rightInset
 
     if(flat && !outlined)

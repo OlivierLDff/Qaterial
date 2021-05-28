@@ -35,9 +35,9 @@ T.MenuBarItem
   leftInset: Qaterial.Style.menuBarItem.leftInset
   rightInset: Qaterial.Style.menuBarItem.rightInset
 
-  leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
+  leftPadding: (icon.source !== "" && !mirrored || text === "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
     .menuBarItem.padding) + leftInset
-  rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
+  rightPadding: (icon.source !== "" && mirrored || text === "" ? Qaterial.Style.menuBarItem.iconPadding : Qaterial.Style
     .menuBarItem.padding) + rightInset
   topPadding: 0
   bottomPadding: 0

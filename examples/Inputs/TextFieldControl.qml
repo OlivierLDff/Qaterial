@@ -93,7 +93,7 @@ Item
                     rightInset: 0
                     onClicked:
                     {
-                      if(parent.parent.echoMode == Qaterial.TextField.Normal)
+                      if(parent.parent.echoMode === Qaterial.TextField.Normal)
                       {
                         parent.parent.echoMode = Qaterial.TextField.Password
                       }
@@ -157,7 +157,7 @@ Item
                     rightInset: 0
                     onClicked:
                     {
-                      if(parent.parent.echoMode == Qaterial.TextField.Normal)
+                      if(parent.parent.echoMode === Qaterial.TextField.Normal)
                       {
                         parent.parent.echoMode = Qaterial.TextField.Password
                       }

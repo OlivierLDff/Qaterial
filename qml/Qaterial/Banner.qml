@@ -60,14 +60,14 @@ Qaterial.Pane
       visible: _control.drawline
     } // DebugRectangle
 
-    readonly property bool displaySmallText: (((_action2.text == "" && _action1.text != "") || (_action2.text !=
-      "" && _action1.text == "")) && _smallLabel.contentWidth < _smallLabel.width)
+    readonly property bool displaySmallText: (((_action2.text === "" && _action1.text !== "") || (_action2.text !==
+      "" && _action1.text === "")) && _smallLabel.contentWidth < _smallLabel.width)
 
     readonly property bool useSmallText: _control.mobileOrientation ? _content.displaySmallText : true
 
     readonly property int lineCount: useSmallText ? _smallLabel.lineCount : _medLabel.lineCount
 
-    readonly property bool thumbnailVisible: _roundIcon.source != "" || _roundImage.source != ""
+    readonly property bool thumbnailVisible: _roundIcon.source != "" || _roundImage.source !== ""
 
     onThumbnailVisibleChanged: Qt.callLater(reanchors)
     onUseSmallTextChanged: Qt.callLater(reanchors)
