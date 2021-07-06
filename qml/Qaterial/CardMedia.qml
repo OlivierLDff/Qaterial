@@ -5,7 +5,7 @@
 
 // Qt
 import QtQuick
-import QtGraphicalEffects
+import Qt5Compat.GraphicalEffects
 
 // Qaterial
 import Qaterial 1.0 as Qaterial

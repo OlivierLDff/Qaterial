@@ -6,7 +6,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Templates as T
-import QtGraphicalEffects
+import Qt5Compat.GraphicalEffects
 
 import Qaterial 1.0 as Qaterial
 

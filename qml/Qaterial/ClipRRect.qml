@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import QtQuick as QQ
-import QtGraphicalEffects as QGE
+import Qt5Compat.GraphicalEffects as QGE
 
 QQ.Item
 {

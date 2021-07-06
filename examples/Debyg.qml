@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Controls
-import QtGraphicalEffects
+import Qt5Compat.GraphicalEffects
 
 Item
 {
