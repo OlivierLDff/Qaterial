@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        version: ['6.1.0']
+        version: ['6.2.0']
     steps:
       -
         uses: actions/checkout@v2
@@ -35,6 +35,7 @@ jobs:
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
           modules: 'qt5compat'
+          aqtversion: ==1.2.2 # See miurahr/aqtinstall#288
       -
         name: 🔧 CMake
         run: |
