@@ -23,7 +23,7 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/IconLabelPositionner.hpp>
+#include <Qaterial/IconLabelPositioner.hpp>
 
 // Dependencies Headers
 
@@ -37,19 +37,19 @@
 
 namespace qaterial {
 
-IconLabelPositionner::IconLabelPositionner(QObject* parent) : QObject(parent)
+IconLabelPositioner::IconLabelPositioner(QObject* parent) : QObject(parent)
 {
-    connect(this, &IconLabelPositionner::horizontalAlignmentChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::verticalAlignmentChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::displayChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::spacingChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::mirroredChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::iconImplicitSizeChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::labelImplicitSizeChanged, this, &IconLabelPositionner::computeRects);
-    connect(this, &IconLabelPositionner::containerSizeChanged, this, &IconLabelPositionner::computeRects);
+    connect(this, &IconLabelPositioner::horizontalAlignmentChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::verticalAlignmentChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::displayChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::spacingChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::mirroredChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::iconImplicitSizeChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::labelImplicitSizeChanged, this, &IconLabelPositioner::computeRects);
+    connect(this, &IconLabelPositioner::containerSizeChanged, this, &IconLabelPositioner::computeRects);
 }
 
-void IconLabelPositionner::computeRects()
+void IconLabelPositioner::computeRects()
 {
     if(!_enabled || !isContainerSizeValid())
         return;
@@ -64,13 +64,13 @@ void IconLabelPositionner::computeRects()
     }
 }
 
-bool IconLabelPositionner::isIconImplicitWidthValid() const { return _iconImplicitSize.width() >= 0 && _iconImplicitSize.height() >= 0; }
+bool IconLabelPositioner::isIconImplicitWidthValid() const { return _iconImplicitSize.width() >= 0 && _iconImplicitSize.height() >= 0; }
 
-bool IconLabelPositionner::isLabelImplicitWidthValid() const { return _labelImplicitSize.width() >= 0 && _labelImplicitSize.height() >= 0; }
+bool IconLabelPositioner::isLabelImplicitWidthValid() const { return _labelImplicitSize.width() >= 0 && _labelImplicitSize.height() >= 0; }
 
-bool IconLabelPositionner::isContainerSizeValid() const { return _containerSize.width() >= 0 && _containerSize.height() >= 0; }
+bool IconLabelPositioner::isContainerSizeValid() const { return _containerSize.width() >= 0 && _containerSize.height() >= 0; }
 
-void IconLabelPositionner::computeIconOnlyRect()
+void IconLabelPositioner::computeIconOnlyRect()
 {
     if(!isIconImplicitWidthValid())
         return;
@@ -105,7 +105,7 @@ void IconLabelPositionner::computeIconOnlyRect()
     setImplicitSize(_iconImplicitSize);
 }
 
-void IconLabelPositionner::computeTextOnlyRect()
+void IconLabelPositioner::computeTextOnlyRect()
 {
     if(!isLabelImplicitWidthValid())
         return;
@@ -144,7 +144,7 @@ void IconLabelPositionner::computeTextOnlyRect()
     setImplicitSize(_labelImplicitSize);
 }
 
-void IconLabelPositionner::computeTextBesideIcon()
+void IconLabelPositioner::computeTextBesideIcon()
 {
     if(!isLabelImplicitWidthValid() && !isIconImplicitWidthValid())
         return;
@@ -225,7 +225,7 @@ void IconLabelPositionner::computeTextBesideIcon()
     setImplicitSize(QSizeF(implicitSizeWidth, implicitSizeHeight));
 }
 
-void IconLabelPositionner::computeTextUnderIcon()
+void IconLabelPositioner::computeTextUnderIcon()
 {
     if(!isLabelImplicitWidthValid() || !isIconImplicitWidthValid())
         return;

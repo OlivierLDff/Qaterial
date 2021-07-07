@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
-#define __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
+#ifndef __QATERIAL_ICON_LABEL_POSITIONER_HPP__
+#define __QATERIAL_ICON_LABEL_POSITIONER_HPP__
 
 // ──── INCLUDE ────
 
@@ -41,14 +41,14 @@
 
 namespace qaterial {
 
-class QATERIAL_API_ IconLabelPositionner : public QObject
+class QATERIAL_API_ IconLabelPositioner : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(IconLabelPositionner);
+    QATERIAL_REGISTER_TO_QML(IconLabelPositioner);
 
     // ──── CONSTRUCTOR ────
 public:
-    IconLabelPositionner(QObject* parent = nullptr);
+    IconLabelPositioner(QObject* parent = nullptr);
 
 public:
     enum Display

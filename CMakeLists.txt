@@ -112,8 +112,8 @@ set(QATERIAL_DISPLAY_SRCS
   ${QATERIAL_ICONS_SRC_FILE}
   ${QATERIAL_SOURCE_DIR}/IconDescription.hpp
   ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.hpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelPositionner.cpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.hpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.cpp
   ${QATERIAL_SOURCE_DIR}/IconLabelImpl.hpp
   ${QATERIAL_SOURCE_DIR}/IconLabelImpl.cpp
 )
