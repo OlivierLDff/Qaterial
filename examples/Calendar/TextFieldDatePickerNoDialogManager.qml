@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick
 
 // Qaterial
 import Qaterial 1.0 as Qaterial

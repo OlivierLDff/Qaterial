@@ -71,7 +71,7 @@ message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -79,7 +79,7 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  QuickCompiler
+  Core5Compat
 )
 
 # ───── FETCH DEPEDENCIES ─────
@@ -203,6 +203,7 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
+  Qt::Core5Compat
 )
 
 set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
@@ -221,7 +222,7 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 # Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)

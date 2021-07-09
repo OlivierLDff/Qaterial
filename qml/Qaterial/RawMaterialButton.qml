@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Templates 2.12 as T
-import QtGraphicalEffects 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Templates as T
+import Qt5Compat.GraphicalEffects
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -38,7 +38,7 @@ T.Button
 
   leftPadding:
   {
-    if(icon.source != "" && !mirrored || text == "")
+    if(icon.source !== "" && !mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + leftInset
 
     if(flat && !outlined)
@@ -47,7 +47,7 @@ T.Button
   }
   rightPadding:
   {
-    if(icon.source != "" && mirrored || text == "")
+    if(icon.source !== "" && mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + rightInset
 
     if(flat && !outlined)

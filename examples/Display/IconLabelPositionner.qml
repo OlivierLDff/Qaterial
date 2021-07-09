@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import QtQuick 2.0
-import QtQuick.Controls 2.12 as QQC2
+import QtQuick
+import QtQuick.Controls as QQC2
 import Qaterial 1.0 as Qaterial
 
 Column

@@ -1,9 +1,9 @@
 // Copyright Olivier Le Doeuff 2020 (C)
 
-import QtQml 2.14
-import QtQuick 2.14
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
+import QtQml
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
 
 import Qaterial 1.0 as Qaterial
 
@@ -38,67 +38,67 @@ T.ItemDelegate
     if(model.fileBaseName === "")
       return Qaterial.Icons.asterisk
 
-    if(ext == 'cpp' || ext == 'hpp' || ext == 'cxx' || ext == 'hxx' || ext == 'cc')
+    if(ext === 'cpp' || ext === 'hpp' || ext === 'cxx' || ext === 'hxx' || ext === 'cc')
       return Qaterial.Icons.languageCpp
 
-    if(ext == 'c' || ext == 'h')
+    if(ext === 'c' || ext === 'h')
       return Qaterial.Icons.languageC
 
-    if(ext == 'cs')
+    if(ext === 'cs')
       return Qaterial.Icons.languageCsharp
 
-    if(ext == 'css')
+    if(ext === 'css')
       return Qaterial.Icons.languageCss3
 
-    if(ext == 'go')
+    if(ext === 'go')
       return Qaterial.Icons.languageGo
 
-    if(ext == 'html')
+    if(ext === 'html')
       return Qaterial.Icons.languageHtml
 
-    if(ext == 'java')
+    if(ext === 'java')
       return Qaterial.Icons.languageJava
 
-    if(ext == 'js')
+    if(ext === 'js')
       return Qaterial.Icons.languageJavascript
 
-    if(ext == 'kt')
+    if(ext === 'kt')
       return Qaterial.Icons.languageKotlin
 
-    if(ext == 'lua')
+    if(ext === 'lua')
       return Qaterial.Icons.languageLua
 
-    if(ext == 'md')
+    if(ext === 'md')
       return Qaterial.Icons.languageMarkdown
 
-    if(ext == 'php')
+    if(ext === 'php')
       return Qaterial.Icons.languagePhp
 
-    if(ext == 'py')
+    if(ext === 'py')
       return Qaterial.Icons.languagePython
 
-    if(ext == 'ruby')
+    if(ext === 'ruby')
       return Qaterial.Icons.languageRuby
 
-    if(ext == 'ts')
+    if(ext === 'ts')
       return Qaterial.Icons.languageTypescript
 
-    if(ext == 'swift')
+    if(ext === 'swift')
       return Qaterial.Icons.languageSwift
 
-    if(ext == 'xaml')
+    if(ext === 'xaml')
       return Qaterial.Icons.languageXaml
 
-    if(ext == 'txt')
+    if(ext === 'txt')
       return Qaterial.Icons.text
 
-    if(ext == 'json')
+    if(ext === 'json')
       return Qaterial.Icons.text
 
-    if(ext.includes('vcxproj') || ext == 'sln')
+    if(ext.includes('vcxproj') || ext === 'sln')
       return Qaterial.Icons.microsoftVisualStudioCode
 
-    if(ext == 'png' || ext == 'jpg' || ext == 'jpeg' || ext == 'svg')
+    if(ext === 'png' || ext === 'jpg' || ext === 'jpeg' || ext === 'svg')
       return Qaterial.Icons.codeJson
 
     return Qaterial.Icons.codeTags
