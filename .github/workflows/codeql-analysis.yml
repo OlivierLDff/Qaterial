@@ -64,7 +64,7 @@ jobs:
       name: ⬇ Install Qt
       uses: jurplel/install-qt-action@v2
       with:
-        version: ${{ matrix.version }}
+        version: ${{ matrix.qt-version }}
         dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.qt-version }}
         cached: ${{ steps.cache-qt.outputs.cache-hit }}
         modules: ''
