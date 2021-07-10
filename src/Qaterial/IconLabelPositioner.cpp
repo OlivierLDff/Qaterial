@@ -23,7 +23,7 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/IconLabelPositioner.hpp>
+#include <IconLabelPositioner.hpp>
 
 // Dependencies Headers
 

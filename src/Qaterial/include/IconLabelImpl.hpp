@@ -26,10 +26,10 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
-#include <Qaterial/IconLabelPositioner.hpp>
-#include <Qaterial/IconDescription.hpp>
+#include <Export.hpp>
+#include <Property.hpp>
+#include <IconLabelPositioner.hpp>
+#include <IconDescription.hpp>
 
 // Dependencies Headers
 #include <QtQuick/QQuickItem>

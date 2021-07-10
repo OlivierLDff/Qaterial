@@ -20,19 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
+#ifndef __QATERIAL_HPP__
+#define __QATERIAL_HPP__
 
-// Library Headers
-#include <TreeElement.hpp>
+#include <Export.hpp>
+#include <Version.hpp>
+#include <Utils.hpp>
+#include <Logger.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
-
-// Stl Headers
-
-// ──── DECLARATION ────
-
-using namespace qaterial;
-
-// ──── FUNCTIONS ────
+#endif

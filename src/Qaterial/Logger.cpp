@@ -25,7 +25,7 @@
 // ─────────────────────────────────────────────────────────────
 
 // Library Headers
-#include <Qaterial/Logger.hpp>
+#include <Logger.hpp>
 
 // Qt Headers
 #include <QString>

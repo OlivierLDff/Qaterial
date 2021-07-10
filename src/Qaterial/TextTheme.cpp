@@ -23,7 +23,7 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/TextTheme.hpp>
+#include <TextTheme.hpp>
 
 // Dependencies Headers
 

@@ -25,19 +25,19 @@
 // ─────────────────────────────────────────────────────────────
 
 // Application Header
-#include <Qaterial/Utils.hpp>
-#include <Qaterial/Version.hpp>
-#include <Qaterial/Logger.hpp>
-#include <Qaterial/Theme.hpp>
-#include <Qaterial/StepperElement.hpp>
-#include <Qaterial/TreeElement.hpp>
-#include <Qaterial/TextFile.hpp>
-#include <Qaterial/Clipboard.hpp>
-#include <Qaterial/FolderTreeModel.hpp>
-#include <Qaterial/Layout.hpp>
-#include <Qaterial/IconDescription.hpp>
-#include <Qaterial/IconLabelPositioner.hpp>
-#include <Qaterial/IconLabelImpl.hpp>
+#include <Utils.hpp>
+#include <Version.hpp>
+#include <Logger.hpp>
+#include <Theme.hpp>
+#include <StepperElement.hpp>
+#include <TreeElement.hpp>
+#include <TextFile.hpp>
+#include <Clipboard.hpp>
+#include <FolderTreeModel.hpp>
+#include <Layout.hpp>
+#include <IconDescription.hpp>
+#include <IconLabelPositioner.hpp>
+#include <IconLabelImpl.hpp>
 
 // Qt Core
 #include <QDir>

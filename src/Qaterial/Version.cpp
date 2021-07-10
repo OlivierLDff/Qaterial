@@ -25,7 +25,7 @@
 // ─────────────────────────────────────────────────────────────
 
 // Application Header
-#include <Qaterial/Version.hpp>
+#include <Version.hpp>
 
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION

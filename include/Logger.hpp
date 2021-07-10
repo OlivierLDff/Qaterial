@@ -28,8 +28,8 @@
 // ─────────────────────────────────────────────────────────────
 
 // Library Headers
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+#include <Export.hpp>
+#include <Property.hpp>
 
 // Dependencies Headers
 #include <spdlog/spdlog.h>

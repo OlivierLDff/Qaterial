@@ -23,7 +23,7 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/ColorTheme.hpp>
+#include <ColorTheme.hpp>
 
 // Dependencies Headers
 

@@ -23,7 +23,7 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/Clipboard.hpp>
+#include <Clipboard.hpp>
 
 // Dependencies Headers
 

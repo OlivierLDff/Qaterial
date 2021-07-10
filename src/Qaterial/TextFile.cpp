@@ -23,8 +23,8 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/TextFile.hpp>
-#include <Qaterial/Logger.hpp>
+#include <TextFile.hpp>
+#include <Logger.hpp>
 
 // Dependencies Headers
 

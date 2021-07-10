@@ -20,14 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_THEME_HPP__
-#define __QATERIAL_THEME_HPP__
+#ifndef __QATERIAL_ICON_DESCRIPTION_HPP__
+#define __QATERIAL_ICON_DESCRIPTION_HPP__
 
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/TextTheme.hpp>
-#include <Qaterial/ColorTheme.hpp>
+#include <Export.hpp>
+#include <Property.hpp>
+
+// Dependencies Headers
+#include <QtCore/QUrl>
+#include <QtGui/QColor>
 
 // ──── DECLARATION ────
 
@@ -35,50 +39,37 @@
 
 namespace qaterial {
 
-class ThemeAttached : public QObject
+// Behave like QQuickIcon (that is private)
+class QATERIAL_API_ IconDescription : public QObject
 {
     Q_OBJECT
-    QML_ANONYMOUS
-    QATERIAL_REGISTER_ANONYMOUS_TO_QML(ThemeAttached);
+    QATERIAL_REGISTER_TO_QML(IconDescription);
 
     // ──── CONSTRUCTOR ────
 public:
-    ThemeAttached(QObject* parent = nullptr) : QObject(parent) {}
+    IconDescription(QObject* parent = nullptr) : QObject(parent) {}
 
     // ──── PROPERTY ────
 public:
-    QATERIAL_PROPERTY(int, elevation, Elevation);
-};
+    // This property holds the name of the icon to use.
+    // The icon will be loaded as a regular image.
+    QATERIAL_PROPERTY(QUrl, source, Source);
 
-class QATERIAL_API_ Theme : public QObject
-{
-    Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(Theme);
-    QML_ATTACHED(ThemeAttached)
+    // This property holds the width of the icon.
+    // The icon's width will never exceed this value, though it will shrink when necessary.
+    QATERIAL_PROPERTY_D(int, width, Width, 24);
 
-    // ──── CONSTRUCTOR ────
-public:
-    Theme(QObject* parent = nullptr);
+    // This property holds the height of the icon.
+    // The icon's height will never exceed this value, though it will shrink when necessary.
+    QATERIAL_PROPERTY_D(int, height, Height, 24);
 
-    // ──── PROPERTY ────
-public:
-    QATERIAL_PTR(TextTheme, textTheme, TextTheme);
-    QATERIAL_PROPERTY_D(bool, dark, Dark, true);
-    QATERIAL_PTR(ColorTheme, darkColorTheme, DarkColorTheme);
-    QATERIAL_PTR(ColorTheme, lightColorTheme, LightColorTheme);
+    // This property holds the color of the icon.
+    // The icon is tinted with the specified color, unless the color is set to "transparent".
+    QATERIAL_PROPERTY(QColor, color, Color);
 
-protected:
-    Q_PROPERTY(qaterial::ColorTheme* colorTheme READ colorTheme NOTIFY colorThemeChanged);
-
-public:
-    ColorTheme* colorTheme() const { return _dark ? _darkColorTheme : _lightColorTheme; }
-
-Q_SIGNALS:
-    void colorThemeChanged();
-
-    // ──── ATTACHED ────
-public:
-    static ThemeAttached* qmlAttachedProperties(QObject* parent) { return new ThemeAttached(parent); }
+    // This property specifies whether the icon should be cached.
+    // The default value is true.
+    QATERIAL_PROPERTY_D(bool, cache, Cache, true);
 };
 
 }

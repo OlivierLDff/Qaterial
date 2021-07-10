@@ -23,8 +23,8 @@
 // ──── INCLUDE ────
 
 // Library Headers
-#include <Qaterial/FolderTreeModel.hpp>
-#include <Qaterial/Logger.hpp>
+#include <FolderTreeModel.hpp>
+#include <Logger.hpp>
 
 // Dependencies Headers
 
