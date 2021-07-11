@@ -74,15 +74,15 @@ message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 # ───── QT DEPENDENCIES ─────
 
 find_package(Qt5 REQUIRED COMPONENTS
-        Core
-        Gui
-        Qml
-        Quick
-        QuickControls2
-        Svg
-        Xml
-        QuickCompiler
-        )
+  Core
+  Gui
+  Qml
+  Quick
+  QuickControls2
+  Svg
+  Xml
+  QuickCompiler
+)
 
 # ───── FETCH DEPENDENCIES ─────
 
@@ -109,70 +109,70 @@ set(QATERIAL_SOURCE_DIR src/Qaterial)
 set(QATERIAL_PUBLIC_HEADERS_DIR include)
 
 set(QATERIAL_PUBLIC_HEADERS
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Version.hpp
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Qaterial.hpp
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Export.hpp
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Property.hpp
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Logger.hpp
-        ${QATERIAL_PUBLIC_HEADERS_DIR}/Utils.hpp
-        )
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Version.hpp
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Qaterial.hpp
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Export.hpp
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Property.hpp
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Logger.hpp
+  ${QATERIAL_PUBLIC_HEADERS_DIR}/Utils.hpp
+)
 
 set(QATERIAL_DISPLAY_SRCS
-        ${QATERIAL_ICONS_CLASS_FILE}
-        ${QATERIAL_ICONS_SRC_FILE}
-        ${QATERIAL_SOURCE_DIR}/include/IconDescription.hpp
-        ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
-        ${QATERIAL_SOURCE_DIR}/include/IconLabelPositioner.hpp
-        ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.cpp
-        ${QATERIAL_SOURCE_DIR}/include/IconLabelImpl.hpp
-        ${QATERIAL_SOURCE_DIR}/IconLabelImpl.cpp
-        )
+  ${QATERIAL_ICONS_CLASS_FILE}
+  ${QATERIAL_ICONS_SRC_FILE}
+  ${QATERIAL_SOURCE_DIR}/include/IconDescription.hpp
+  ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
+  ${QATERIAL_SOURCE_DIR}/include/IconLabelPositioner.hpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.cpp
+  ${QATERIAL_SOURCE_DIR}/include/IconLabelImpl.hpp
+  ${QATERIAL_SOURCE_DIR}/IconLabelImpl.cpp
+)
 
 set(QATERIAL_THEME_SRCS
-        ${QATERIAL_SOURCE_DIR}/include/ColorTheme.hpp
-        ${QATERIAL_SOURCE_DIR}/ColorTheme.cpp
-        ${QATERIAL_SOURCE_DIR}/include/TextTheme.hpp
-        ${QATERIAL_SOURCE_DIR}/TextTheme.cpp
-        ${QATERIAL_SOURCE_DIR}/include/Theme.hpp
-        ${QATERIAL_SOURCE_DIR}/Theme.cpp
-        )
+  ${QATERIAL_SOURCE_DIR}/include/ColorTheme.hpp
+  ${QATERIAL_SOURCE_DIR}/ColorTheme.cpp
+  ${QATERIAL_SOURCE_DIR}/include/TextTheme.hpp
+  ${QATERIAL_SOURCE_DIR}/TextTheme.cpp
+  ${QATERIAL_SOURCE_DIR}/include/Theme.hpp
+  ${QATERIAL_SOURCE_DIR}/Theme.cpp
+)
 
 set(QATERIAL_LAYOUT_SRCS
-        ${QATERIAL_SOURCE_DIR}/include/Layout.hpp
-        ${QATERIAL_SOURCE_DIR}/Layout.cpp
-        )
+  ${QATERIAL_SOURCE_DIR}/include/Layout.hpp
+  ${QATERIAL_SOURCE_DIR}/Layout.cpp
+)
 
 set(QATERIAL_IO_SRCS
-        ${QATERIAL_SOURCE_DIR}/include/TextFile.hpp
-        ${QATERIAL_SOURCE_DIR}/TextFile.cpp
-        ${QATERIAL_SOURCE_DIR}/include/Clipboard.hpp
-        ${QATERIAL_SOURCE_DIR}/Clipboard.cpp
-        ${QATERIAL_SOURCE_DIR}/include/FolderTreeModel.hpp
-        ${QATERIAL_SOURCE_DIR}/FolderTreeModel.cpp
-        )
+  ${QATERIAL_SOURCE_DIR}/include/TextFile.hpp
+  ${QATERIAL_SOURCE_DIR}/TextFile.cpp
+  ${QATERIAL_SOURCE_DIR}/include/Clipboard.hpp
+  ${QATERIAL_SOURCE_DIR}/Clipboard.cpp
+  ${QATERIAL_SOURCE_DIR}/include/FolderTreeModel.hpp
+  ${QATERIAL_SOURCE_DIR}/FolderTreeModel.cpp
+)
 
 set(QATERIAL_NAVIGATION_SRCS
-        ${QATERIAL_SOURCE_DIR}/include/StepperElement.hpp
-        ${QATERIAL_SOURCE_DIR}/StepperElement.cpp
-        ${QATERIAL_SOURCE_DIR}/include/TreeElement.hpp
-        ${QATERIAL_SOURCE_DIR}/TreeElement.cpp
-        )
+  ${QATERIAL_SOURCE_DIR}/include/StepperElement.hpp
+  ${QATERIAL_SOURCE_DIR}/StepperElement.cpp
+  ${QATERIAL_SOURCE_DIR}/include/TreeElement.hpp
+  ${QATERIAL_SOURCE_DIR}/TreeElement.cpp
+)
 
 set(QATERIAL_UTILS_SRCS
-        ${QATERIAL_SOURCE_DIR}/Version.cpp
-        ${QATERIAL_SOURCE_DIR}/Utils.cpp
-        ${QATERIAL_SOURCE_DIR}/Logger.cpp
-        )
+  ${QATERIAL_SOURCE_DIR}/Version.cpp
+  ${QATERIAL_SOURCE_DIR}/Utils.cpp
+  ${QATERIAL_SOURCE_DIR}/Logger.cpp
+)
 
 set(QATERIAL_SRCS
-        ${QATERIAL_PUBLIC_HEADERS}
-        ${QATERIAL_DISPLAY_SRCS}
-        ${QATERIAL_THEME_SRCS}
-        ${QATERIAL_LAYOUT_SRCS}
-        ${QATERIAL_IO_SRCS}
-        ${QATERIAL_NAVIGATION_SRCS}
-        ${QATERIAL_UTILS_SRCS}
-        )
+  ${QATERIAL_PUBLIC_HEADERS}
+  ${QATERIAL_DISPLAY_SRCS}
+  ${QATERIAL_THEME_SRCS}
+  ${QATERIAL_LAYOUT_SRCS}
+  ${QATERIAL_IO_SRCS}
+  ${QATERIAL_NAVIGATION_SRCS}
+  ${QATERIAL_UTILS_SRCS}
+)
 
 source_group("Display" FILES ${QATERIAL_DISPLAY_SRCS})
 source_group("Theme" FILES ${QATERIAL_THEME_SRCS})
@@ -183,80 +183,81 @@ source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
 
 # ───── QATERIAL TARGET ─────
 
-if (${QATERIAL_BUILD_SHARED})
-    add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
-    target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
-else ()
-    add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
-    target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
-endif ()
+if(${QATERIAL_BUILD_SHARED})
+  add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
+  target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
+else()
+  add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
+  target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
+endif()
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${QATERIAL_PUBLIC_HEADERS_DIR}>
-        $<INSTALL_INTERFACE:${QATERIAL_PUBLIC_HEADERS_DIR}>
-        )
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/${QATERIAL_PUBLIC_HEADERS_DIR}>
+  $<INSTALL_INTERFACE:${QATERIAL_PUBLIC_HEADERS_DIR}>
+)
 target_include_directories(${QATERIAL_TARGET} PRIVATE
-        ${QATERIAL_SOURCE_DIR}/include/
-        ${QATERIAL_ICONS_OUTPUT_FOLDER})
-if (QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
-    target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
-endif ()
+  ${QATERIAL_SOURCE_DIR}/include/
+  ${QATERIAL_ICONS_OUTPUT_FOLDER}
+)
+if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
+  target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
+endif()
 
 target_link_libraries(${QATERIAL_TARGET} PRIVATE
-        ${QATERIAL_TARGET}::Icons
-        ${QATERIAL_TARGET}::Fonts
-        ${QATERIAL_TARGET}::Components
-        )
+  ${QATERIAL_TARGET}::Icons
+  ${QATERIAL_TARGET}::Fonts
+  ${QATERIAL_TARGET}::Components
+)
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
-        spdlog::spdlog
-        QOlm
-        Qt::Core
-        Qt::Gui
-        Qt::Svg
-        Qt::Xml
-        Qt::Qml
-        Qt::Quick
-        Qt::QuickControls2
-        )
+  spdlog::spdlog
+  QOlm
+  Qt::Core
+  Qt::Gui
+  Qt::Svg
+  Qt::Xml
+  Qt::Qml
+  Qt::Quick
+  Qt::QuickControls2
+)
 
 set_target_properties(${QATERIAL_TARGET}
-        PROPERTIES
-        AUTOMOC TRUE
-        PUBLIC_HEADER "${QATERIAL_PUBLIC_HEADERS}")
+  PROPERTIES
+  AUTOMOC TRUE
+  PUBLIC_HEADER "${QATERIAL_PUBLIC_HEADERS}")
 
 # Version
 target_compile_definitions(${QATERIAL_TARGET}
-        PRIVATE -DQATERIAL_VERSION_MAJOR=${QATERIAL_VERSION_MAJOR}
-        PRIVATE -DQATERIAL_VERSION_MINOR=${QATERIAL_VERSION_MINOR}
-        PRIVATE -DQATERIAL_VERSION_PATCH=${QATERIAL_VERSION_PATCH}
-        PRIVATE -DQATERIAL_VERSION_TAG=${QATERIAL_VERSION_TAG}
-        PRIVATE -DQATERIAL_VERSION_TAG_HEX=${QATERIAL_VERSION_TAG_HEX}
-        )
+  PRIVATE -DQATERIAL_VERSION_MAJOR=${QATERIAL_VERSION_MAJOR}
+  PRIVATE -DQATERIAL_VERSION_MINOR=${QATERIAL_VERSION_MINOR}
+  PRIVATE -DQATERIAL_VERSION_PATCH=${QATERIAL_VERSION_PATCH}
+  PRIVATE -DQATERIAL_VERSION_TAG=${QATERIAL_VERSION_TAG}
+  PRIVATE -DQATERIAL_VERSION_TAG_HEX=${QATERIAL_VERSION_TAG_HEX}
+)
 
-if (QATERIAL_FOLDER_PREFIX)
-    set_target_properties(${QATERIAL_TARGET} PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
-endif ()
+if(QATERIAL_FOLDER_PREFIX)
+  set_target_properties(${QATERIAL_TARGET} PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
+endif()
 
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
-if (${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
-    include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
-    qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
-    qt_generate_plugin_import(${QATERIAL_TARGET})
-endif ()
+if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
+  include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
+  qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
+  qt_generate_plugin_import(${QATERIAL_TARGET})
+endif()
 
-if (MSVC)
-    target_compile_options(${QATERIAL_TARGET} PUBLIC -bigobj)
-endif ()
+if(MSVC)
+  target_compile_options(${QATERIAL_TARGET} PUBLIC -bigobj)
+endif()
 
 # ───── QATERIAL TESTS ─────
 
-if (QATERIAL_ENABLE_TESTS)
-    enable_testing()
-    add_subdirectory(tests)
-endif ()
+if(QATERIAL_ENABLE_TESTS)
+  enable_testing()
+  add_subdirectory(tests)
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS ${QATERIAL_TARGET}
