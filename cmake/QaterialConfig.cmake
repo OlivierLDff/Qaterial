@@ -1,0 +1,5 @@
+include("${CMAKE_CURRENT_LIST_DIR}/../QOlm/QOlmTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@IconsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@FontsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@ComponentsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@Targets.cmake")
