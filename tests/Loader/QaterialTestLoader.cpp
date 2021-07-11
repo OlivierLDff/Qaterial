@@ -1,6 +1,6 @@
 // ──── INCLUDE ────
 
-#include <Qaterial/Qaterial.hpp>
+#include <Qaterial.hpp>
 
 #include <QtCore/QCommandLineParser>
 #include <QtGui/QGuiApplication>
