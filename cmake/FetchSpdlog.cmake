@@ -14,7 +14,6 @@ FetchContent_Declare(
 )
 
 option(SPDLOG_ENABLE_PCH "Build static or shared library using precompiled header to speed up compilation time" ON)
-option(SPDLOG_INSTALL "Create installation scripts" ON)
 
 FetchContent_MakeAvailable(spdlog)
 set_target_properties(spdlog PROPERTIES FOLDER "Dependencies")
