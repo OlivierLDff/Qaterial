@@ -33,7 +33,7 @@ set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for a
 set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
-        "Enable precompile headers support for 'Qaterial'. \"
+ "Enable precompile headers support for 'Qaterial'. \"
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
 set(QATERIAL_ENABLE_UNITY_BUILD ON CACHE BOOL "Qaterial source files will be combined into batches for faster compilation.")
@@ -90,9 +90,9 @@ include(cmake/Dependencies.cmake)
 include(cmake/FetchQOlm.cmake)
 include(cmake/FetchQtGeneratorCMake.cmake)
 if (${QATERIAL_FIND_DEPS})
-    find_package(spdlog CONFIG REQUIRED)
+  find_package(spdlog CONFIG REQUIRED)
 else ()
-    include(cmake/FetchSpdlog.cmake)
+  include(cmake/FetchSpdlog.cmake)
 endif ()
 # ───── RESSOURCES ─────
 
