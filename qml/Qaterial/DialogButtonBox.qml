@@ -30,14 +30,15 @@ T.DialogButtonBox
 
   delegate: Qaterial.FlatButton {}
 
-  contentItem: ListView
+  contentItem: Row
   {
-    model: root.contentModel
     spacing: root.spacing
-    orientation: ListView.Horizontal
-    boundsBehavior: Flickable.StopAtBounds
-    snapMode: ListView.SnapToItem
-  } // ListView
+
+    Repeater
+    {
+      model: root.contentModel
+    }
+  } // Row
 
   background: Rectangle
   {
