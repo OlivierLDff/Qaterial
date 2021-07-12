@@ -262,39 +262,40 @@ endif()
 if (${QATERIAL_FIND_DEPS})
   include(GNUInstallDirs)
   install(TARGETS ${QATERIAL_TARGET}
-          EXPORT ${QATERIAL_TARGET}Targets)
+    EXPORT ${QATERIAL_TARGET}Targets
+  )
 
   include(CMakePackageConfigHelpers)
   write_basic_package_version_file(
-          "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
-          VERSION ${QATERIAL_VERSION}
-          COMPATIBILITY AnyNewerVersion
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
+    VERSION ${QATERIAL_VERSION}
+    COMPATIBILITY AnyNewerVersion
   )
 
   export(EXPORT ${QATERIAL_TARGET}Targets
-          FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Targets.cmake"
-          NAMESPACE ${QATERIAL_TARGET}::
-          )
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Targets.cmake"
+    NAMESPACE ${QATERIAL_TARGET}::
+  )
 
   configure_file(cmake/${QATERIAL_TARGET}Config.cmake
-          "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
-          @ONLY
-          )
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
+    @ONLY
+  )
 
   set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
   install(EXPORT ${QATERIAL_TARGET}Targets
-          FILE
-          ${QATERIAL_TARGET}Targets.cmake
-          NAMESPACE
-          ${QATERIAL_TARGET}::
-          DESTINATION
-          ${ConfigPackageLocation}
-          )
+    FILE
+    ${QATERIAL_TARGET}Targets.cmake
+    NAMESPACE
+    ${QATERIAL_TARGET}::
+    DESTINATION
+    ${ConfigPackageLocation}
+  )
   install(
-          FILES
-          "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
-          "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
-          DESTINATION
-          ${ConfigPackageLocation}
+    FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
+    DESTINATION
+    ${ConfigPackageLocation}
   )
 endif()

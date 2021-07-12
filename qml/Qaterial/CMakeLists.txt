@@ -58,16 +58,17 @@ endif()
 
 include(GNUInstallDirs)
 install(TARGETS ${QATERIAL_TARGET}Components
-        EXPORT ${QATERIAL_TARGET}ComponentsTargets)
+  EXPORT ${QATERIAL_TARGET}ComponentsTargets
+)
 
 export(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ComponentsTargets.cmake"
-        )
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ComponentsTargets.cmake"
+)
 
 set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
 install(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-        FILE
-        ${QATERIAL_TARGET}ComponentsTargets.cmake
-        DESTINATION
-        ${ConfigPackageLocation}
-        )
+  FILE
+  ${QATERIAL_TARGET}ComponentsTargets.cmake
+  DESTINATION
+  ${ConfigPackageLocation}
+)

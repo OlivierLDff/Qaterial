@@ -70,16 +70,17 @@ endif()
 
 include(GNUInstallDirs)
 install(TARGETS ${QATERIAL_TARGET}Icons
-        EXPORT ${QATERIAL_TARGET}IconsTargets)
+  EXPORT ${QATERIAL_TARGET}IconsTargets
+)
 
 export(EXPORT ${QATERIAL_TARGET}IconsTargets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}IconsTargets.cmake"
-        )
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}IconsTargets.cmake"
+)
 
 set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
 install(EXPORT ${QATERIAL_TARGET}IconsTargets
-        FILE
-        ${QATERIAL_TARGET}IconsTargets.cmake
-        DESTINATION
-        ${ConfigPackageLocation}
-        )
+  FILE
+  ${QATERIAL_TARGET}IconsTargets.cmake
+  DESTINATION
+  ${ConfigPackageLocation}
+)

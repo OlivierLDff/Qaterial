@@ -93,16 +93,17 @@ endif()
 
 include(GNUInstallDirs)
 install(TARGETS ${QATERIAL_TARGET}Fonts
-        EXPORT ${QATERIAL_TARGET}FontsTargets)
+  EXPORT ${QATERIAL_TARGET}FontsTargets
+)
 
 export(EXPORT ${QATERIAL_TARGET}FontsTargets
-        FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}FontsTargets.cmake"
-        )
+  FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}FontsTargets.cmake"
+)
 
 set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
 install(EXPORT ${QATERIAL_TARGET}FontsTargets
-        FILE
-        ${QATERIAL_TARGET}FontsTargets.cmake
-        DESTINATION
-        ${ConfigPackageLocation}
-        )
+  FILE
+  ${QATERIAL_TARGET}FontsTargets.cmake
+  DESTINATION
+  ${ConfigPackageLocation}
+)
