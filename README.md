@@ -58,7 +58,6 @@ My goal is to move to more standard API relying more only on QtQuickControls def
 ## 📌 Dependencies
 
 * [QOlm](https://github.com/OlivierLDff/QOlm)
-* [spdlog](https://github.com/gabime/spdlog)
 * `Qt::Core`, `Qt::Gui`, `Qt::Qml`, `Qt::Quick`, `Qt::QuickControls2`, `Qt::Svg`, `Qt::Xml`
 * [googlefonts](https://github.com/OlivierLDff/fonts)
 * [MaterialDesignIcons](https://github.com/OlivierLDff/MaterialDesignSvgo)
