@@ -158,8 +158,6 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 #endif
 
-using namespace qaterial;
-
 void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
 {
     ::Qaterial_registerTypes(uri, major, minor);
