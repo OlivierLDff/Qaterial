@@ -238,3 +238,9 @@ if(QATERIAL_ENABLE_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()
+
+# ───── DUMP CONFIG ─────
+
+if(QATERIAL_MAIN_PROJECT)
+  include(cmake/PrintConfiguration.cmake)
+endif()
