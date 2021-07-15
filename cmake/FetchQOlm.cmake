@@ -1,4 +1,4 @@
-if(TARGET QOlm)
+if(TARGET QOlm::QOlm)
   return()
 endif()
 
