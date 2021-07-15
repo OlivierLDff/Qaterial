@@ -23,25 +23,15 @@
 #ifndef __QATERIAL_TEXT_FILE_HPP__
 #define __QATERIAL_TEXT_FILE_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QFile>
 #include <QSaveFile>
 #include <QObject>
 #include <QString>
 
-// Standard Header
-
-// ──── DECLARATION ────
-
 namespace qaterial {
-
-// ──── CLASS ────
 
 class QATERIAL_API_ TextFile : public QObject
 {

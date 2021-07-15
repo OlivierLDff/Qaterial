@@ -23,21 +23,11 @@
 #ifndef __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
 #define __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QtCore/QRect>
 #include <QtCore/QSize>
-
-// Standard Header
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 

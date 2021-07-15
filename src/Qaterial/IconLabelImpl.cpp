@@ -20,16 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/IconLabelImpl.hpp>
-
-// Dependencies Headers
-
-// ──── DECLARATION ────
-
-// ──── FUNCTIONS ────
 
 namespace qaterial {
 

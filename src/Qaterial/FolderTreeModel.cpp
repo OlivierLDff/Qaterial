@@ -20,20 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/FolderTreeModel.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
 #include <QStandardPaths>
 #include <QDir>
 #include <QFileInfo>
 #include <QLoggingCategory>
-
-// Stl Headers
 
 Q_LOGGING_CATEGORY(qaterialFTM, "qaterial.folderTreeModel")
 

@@ -23,15 +23,8 @@
 #ifndef __QATERIAL_THEME_HPP__
 #define __QATERIAL_THEME_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/TextTheme.hpp>
 #include <Qaterial/ColorTheme.hpp>
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 

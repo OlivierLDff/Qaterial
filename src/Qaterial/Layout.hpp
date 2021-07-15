@@ -23,22 +23,12 @@
 #ifndef __QATERIAL_LAYOUT_HPP__
 #define __QATERIAL_LAYOUT_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QQuickItem>
 
-// Standard Header
-
-// ──── DECLARATION ────
-
 namespace qaterial {
-
-// ──── CLASS ────
 
 class LayoutAttached : public QObject
 {

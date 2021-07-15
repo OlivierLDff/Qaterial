@@ -23,20 +23,10 @@
 #ifndef __QATERIAL_VERSION_HPP__
 #define __QATERIAL_VERSION_HPP__
 
-// ─────────────────────────────────────────────────────────────
-//                  INCLUDE
-// ─────────────────────────────────────────────────────────────
-
-// Application Header
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Qt Header
 #include <QObject>
-
-// ─────────────────────────────────────────────────────────────
-//                  DECLARATION
-// ─────────────────────────────────────────────────────────────
 
 namespace qaterial {
 

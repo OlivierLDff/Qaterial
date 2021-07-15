@@ -1,12 +1,8 @@
-// ──── INCLUDE ────
-
 #include <Qaterial/Qaterial.hpp>
 
 #include <QtCore/QCommandLineParser>
 #include <QtGui/QGuiApplication>
 #include <QtQml/QQmlApplicationEngine>
-
-// ──── FUNCTIONS ────
 
 int main(int argc, char* argv[])
 {

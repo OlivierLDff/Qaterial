@@ -23,25 +23,15 @@
 #ifndef __QATERIAL_FOLDER_TREE_MODEL_HPP__
 #define __QATERIAL_FOLDER_TREE_MODEL_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QOlm/QOlm.hpp>
 #include <QObject>
 #include <QString>
 #include <QDateTime>
 
-// Standard Header
-
-// ──── DECLARATION ────
-
 namespace qaterial {
-
-// ──── CLASS ────
 
 // FolderListModel provides access to information about the contents of a folder in the local file system,
 // exposing a list of files to views and other data components.

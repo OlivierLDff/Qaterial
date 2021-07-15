@@ -20,23 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Layout.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
-
-// Stl Headers
 #include <cmath>
 
-// ──── DECLARATION ────
-
 using namespace qaterial;
-
-// ──── FUNCTIONS ────
 
 LayoutAttached::LayoutAttached(QObject* object) :
     _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge)),

@@ -23,23 +23,13 @@
 #ifndef __QATERIAL_STEPPER_ELEMENT_HPP__
 #define __QATERIAL_STEPPER_ELEMENT_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QObject>
 #include <QString>
 
-// Standard Header
-
-// ──── DECLARATION ────
-
 namespace qaterial {
-
-// ──── CLASS ────
 
 class QATERIAL_API_ StepperElement : public QObject
 {

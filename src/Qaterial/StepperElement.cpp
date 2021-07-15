@@ -20,19 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/StepperElement.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
-
-// Stl Headers
-
-// ──── DECLARATION ────
-
 using namespace qaterial;
-
-// ──── FUNCTIONS ────

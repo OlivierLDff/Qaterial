@@ -23,19 +23,11 @@
 #ifndef __QATERIAL_TEXT_THEME_HPP__
 #define __QATERIAL_TEXT_THEME_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QtCore/QObject>
 #include <QtGui/QFont>
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 

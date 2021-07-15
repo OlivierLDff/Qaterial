@@ -23,18 +23,10 @@
 #ifndef __QATERIAL_COLOR_THEME_HPP__
 #define __QATERIAL_COLOR_THEME_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QtGui/QColor>
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 

@@ -23,24 +23,14 @@
 #ifndef __QATERIAL_TREE_ELEMENT_HPP__
 #define __QATERIAL_TREE_ELEMENT_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QOlm/QOlm.hpp>
 #include <QObject>
 #include <QString>
 
-// Standard Header
-
-// ──── DECLARATION ────
-
 namespace qaterial {
-
-// ──── CLASS ────
 
 using TreeModel = qolm::QOlm<class TreeElement>;
 

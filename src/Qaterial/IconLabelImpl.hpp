@@ -23,20 +23,12 @@
 #ifndef __QATERIAL_ICON_LABEL_IMPL_HPP__
 #define __QATERIAL_ICON_LABEL_IMPL_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 #include <Qaterial/IconLabelPositioner.hpp>
 #include <Qaterial/IconDescription.hpp>
 
-// Dependencies Headers
 #include <QtQuick/QQuickItem>
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 

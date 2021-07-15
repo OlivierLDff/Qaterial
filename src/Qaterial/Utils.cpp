@@ -20,11 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ─────────────────────────────────────────────────────────────
-//                  INCLUDE
-// ─────────────────────────────────────────────────────────────
-
-// Application Header
 #include <Qaterial/Utils.hpp>
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Theme.hpp>
@@ -38,15 +33,12 @@
 #include <Qaterial/IconLabelPositioner.hpp>
 #include <Qaterial/IconLabelImpl.hpp>
 
-// Qt Core
 #include <QDir>
 #include <QLoggingCategory>
 
-// Qt Gui
 #include <QGuiApplication>
 #include <QFontDatabase>
 
-// Qt Quick Controls 2
 #include <QQuickStyle>
 
 #ifdef Q_OS_WIN
@@ -54,14 +46,6 @@
 #endif
 
 Q_LOGGING_CATEGORY(qaterialUtils, "qaterial.utils");
-
-// ─────────────────────────────────────────────────────────────
-//                  DECLARATION
-// ─────────────────────────────────────────────────────────────
-
-// ─────────────────────────────────────────────────────────────
-//                  FUNCTIONS
-// ─────────────────────────────────────────────────────────────
 
 static const char* _defaultUri = "Qaterial";
 static const char** _uri = &_defaultUri;

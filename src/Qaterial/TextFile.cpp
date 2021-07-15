@@ -20,29 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/TextFile.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
 #include <QFile>
 #include <QFileInfo>
 #include <QQmlFile>
 #include <QUrl>
 #include <QLoggingCategory>
 
-// Stl Headers
-
 Q_LOGGING_CATEGORY(qaterialTextFile, "qaterial.textfile")
 
-// ──── DECLARATION ────
-
 using namespace qaterial;
-
-// ──── FUNCTIONS ────
 
 TextFile::TextFile(QObject* parent) : QObject(parent)
 {

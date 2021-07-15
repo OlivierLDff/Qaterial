@@ -20,25 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Clipboard.hpp>
 
-// Dependencies Headers
-
-// Qt Headers
 #include <QGuiApplication>
 #include <QClipboard>
 #include <QMimeData>
 
-// Stl Headers
-
-// ──── DECLARATION ────
-
 using namespace qaterial;
-
-// ──── FUNCTIONS ────
 
 Clipboard::Clipboard(QObject* parent) : QObject(parent), _clipboard(QGuiApplication::clipboard())
 {

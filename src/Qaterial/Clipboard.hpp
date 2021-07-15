@@ -23,20 +23,12 @@
 #ifndef __QATERIAL_CLIPBOARD_HPP__
 #define __QATERIAL_CLIPBOARD_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QString>
 #include <QObject>
 class QClipboard;
-
-// Standard Header
-
-// ──── DECLARATION ────
 
 namespace qaterial {
 

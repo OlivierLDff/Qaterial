@@ -23,19 +23,11 @@
 #ifndef __QATERIAL_ICON_DESCRIPTION_HPP__
 #define __QATERIAL_ICON_DESCRIPTION_HPP__
 
-// ──── INCLUDE ────
-
-// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-// Dependencies Headers
 #include <QtCore/QUrl>
 #include <QtGui/QColor>
-
-// ──── DECLARATION ────
-
-// ──── CLASS ────
 
 namespace qaterial {
 
