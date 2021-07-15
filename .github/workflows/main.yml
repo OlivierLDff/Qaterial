@@ -62,6 +62,24 @@ jobs:
           cd build
           xvfb-run ctest --build-config "Release" --progress --verbose --parallel 12
         if: contains(matrix.os, 'ubuntu')
+      -
+        name: 🚀 Install Qaterial
+        run: cmake --install build --prefix install
+      -
+        name: ✅ Test install work with find_package
+        run: |
+          cmake -E make_directory tests/FindPackageTest/build
+          cmake                                 \
+            -DCMAKE_BUILD_TYPE="Release"        \
+            -DCMAKE_INSTALL_PREFIX=install      \
+            -B tests/FindPackageTest/build      \
+            -S tests/FindPackageTest
+          cmake                                 \
+            --build tests/FindPackageTest/build \
+            --target "QaterialFindPackageTest"  \
+            --config "Release"                  \
+            -j
+        shell: bash
 
   BuildWasm:
     runs-on: ubuntu-latest
