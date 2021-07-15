@@ -246,12 +246,6 @@ if(QATERIAL_ENABLE_TESTS)
   add_subdirectory(tests)
 endif()
 
-# ───── DUMP CONFIG ─────
-
-if(QATERIAL_MAIN_PROJECT)
-  include(cmake/PrintConfiguration.cmake)
-endif()
-
 # ───── INSTALL ─────
 
 if (QATERIAL_ENABLE_INSTALL)
@@ -300,4 +294,10 @@ if (QATERIAL_ENABLE_INSTALL)
     DESTINATION
     ${ConfigPackageLocation}
   )
+endif()
+
+# ───── DUMP CONFIG ─────
+
+if(QATERIAL_MAIN_PROJECT)
+  include(cmake/PrintConfiguration.cmake)
 endif()
