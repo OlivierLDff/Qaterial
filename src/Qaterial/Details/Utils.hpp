@@ -28,18 +28,6 @@
 
 namespace qaterial {
 
-class QATERIAL_API_ Utils
-{
-public:
-    /**
-     * Register type to the qml engines
-     * Registered types are:
-     * -
-     */
-    Q_DECL_DEPRECATED static void registerTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
-    Q_DECL_DEPRECATED static void loadResources();
-};
-
 void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
 
 /**
