@@ -82,7 +82,7 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickCompiler
 )
 
-# ───── FETCH DEPEDENCIES ─────
+# ───── FETCH DEPENDENCIES ─────
 
 include(cmake/Dependencies.cmake)
 include(cmake/FetchSpdlog.cmake)
