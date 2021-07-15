@@ -180,6 +180,7 @@ else()
   add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
 endif()
+add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PUBLIC src ${QATERIAL_ICONS_OUTPUT_FOLDER})
