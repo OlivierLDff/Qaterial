@@ -195,7 +195,7 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
   spdlog::spdlog
-  QOlm
+  QOlm::QOlm
   Qt::Core
   Qt::Gui
   Qt::Svg
