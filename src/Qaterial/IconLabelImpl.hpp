@@ -28,7 +28,7 @@
 // Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
-#include <Qaterial/IconLabelPositionner.hpp>
+#include <Qaterial/IconLabelPositioner.hpp>
 #include <Qaterial/IconDescription.hpp>
 
 // Dependencies Headers
@@ -51,7 +51,7 @@ public:
 
     // ──── PROPERTY ────
 private:
-    IconLabelPositionner* _positionner = nullptr;
+    IconLabelPositioner* _positioner = nullptr;
 
     // ──── POSITIONNER PROXY ────
 public:
@@ -64,23 +64,23 @@ public:
     Q_PROPERTY(bool mirrored READ mirrored WRITE setMirrored RESET resetMirrored NOTIFY mirroredChanged);
 
 public:
-    Qt::Alignment horizontalAlignment() const { return _positionner->horizontalAlignment(); }
-    Qt::Alignment verticalAlignment() const { return _positionner->verticalAlignment(); }
-    int display() const { return _positionner->display(); }
-    qreal spacing() const { return _positionner->spacing(); }
-    bool mirrored() const { return _positionner->mirrored(); }
+    Qt::Alignment horizontalAlignment() const { return _positioner->horizontalAlignment(); }
+    Qt::Alignment verticalAlignment() const { return _positioner->verticalAlignment(); }
+    int display() const { return _positioner->display(); }
+    qreal spacing() const { return _positioner->spacing(); }
+    bool mirrored() const { return _positioner->mirrored(); }
 
-    void setHorizontalAlignment(const Qt::Alignment& value) const { _positionner->setHorizontalAlignment(value); }
-    void setVerticalAlignment(const Qt::Alignment& value) const { _positionner->setVerticalAlignment(value); }
-    void setDisplay(const int& value) const { _positionner->setDisplay(IconLabelPositionner::Display(value)); }
-    void setSpacing(const qreal& value) const { _positionner->setSpacing(value); }
-    void setMirrored(const bool& value) const { _positionner->setMirrored(value); }
+    void setHorizontalAlignment(const Qt::Alignment& value) const { _positioner->setHorizontalAlignment(value); }
+    void setVerticalAlignment(const Qt::Alignment& value) const { _positioner->setVerticalAlignment(value); }
+    void setDisplay(const int& value) const { _positioner->setDisplay(IconLabelPositioner::Display(value)); }
+    void setSpacing(const qreal& value) const { _positioner->setSpacing(value); }
+    void setMirrored(const bool& value) const { _positioner->setMirrored(value); }
 
-    void resetHorizontalAlignment() const { _positionner->resetHorizontalAlignment(); }
-    void resetVerticalAlignment() const { _positionner->resetVerticalAlignment(); }
-    void resetDisplay() const { _positionner->resetDisplay(); }
-    void resetSpacing() const { _positionner->resetSpacing(); }
-    void resetMirrored() const { _positionner->resetMirrored(); }
+    void resetHorizontalAlignment() const { _positioner->resetHorizontalAlignment(); }
+    void resetVerticalAlignment() const { _positioner->resetVerticalAlignment(); }
+    void resetDisplay() const { _positioner->resetDisplay(); }
+    void resetSpacing() const { _positioner->resetSpacing(); }
+    void resetMirrored() const { _positioner->resetMirrored(); }
 
 Q_SIGNALS:
     void horizontalAlignmentChanged(const Qt::Alignment& value);

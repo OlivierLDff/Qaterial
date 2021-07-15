@@ -28,20 +28,20 @@ Column
 {
   spacing: 8
 
-  Qaterial.IconLabelPositionner
+  Qaterial.IconLabelPositioner
   {
-    id: positionner
+    id: positioner
 
     display:
     {
       if(iconOnlyRadio.checked)
-        return Qaterial.IconLabelPositionner.IconOnly
+        return Qaterial.IconLabelPositioner.IconOnly
       if(textOnlyRadio.checked)
-        return Qaterial.IconLabelPositionner.TextOnly
+        return Qaterial.IconLabelPositioner.TextOnly
       if(textBesideIconRadio.checked)
-        return Qaterial.IconLabelPositionner.TextBesideIcon
+        return Qaterial.IconLabelPositioner.TextBesideIcon
       if(textUnderIconRadio.checked)
-        return Qaterial.IconLabelPositionner.TextUnderIcon
+        return Qaterial.IconLabelPositioner.TextUnderIcon
     }
     horizontalAlignment: Qt.AlignHCenter
     verticalAlignment: Qt.AlignVCenter
@@ -65,8 +65,8 @@ Column
 
       anchors.centerIn: parent
 
-      width: positionner.containerSize.width
-      height: positionner.containerSize.height
+      width: positioner.containerSize.width
+      height: positioner.containerSize.height
 
       Qaterial.DebugRectangle
       {
@@ -74,26 +74,26 @@ Column
 
         x:
         {
-          if(positionner.horizontalAlignment & Qt.AlignRight)
+          if(positioner.horizontalAlignment & Qt.AlignRight)
             return parent.width - width
-          if(positionner.horizontalAlignment & Qt.AlignHCenter)
+          if(positioner.horizontalAlignment & Qt.AlignHCenter)
             return (parent.width - width) / 2
           return 0
         }
 
         y:
         {
-          if(positionner.verticalAlignment & Qt.AlignBottom)
+          if(positioner.verticalAlignment & Qt.AlignBottom)
             return parent.height - height
-          if(positionner.verticalAlignment & Qt.AlignVCenter)
+          if(positioner.verticalAlignment & Qt.AlignVCenter)
             return (parent.height - height) / 2
           return 0
         }
 
         border.color: Qaterial.Colors.green
 
-        width: positionner.implicitSize.width
-        height: positionner.implicitSize.height
+        width: positioner.implicitSize.width
+        height: positioner.implicitSize.height
       }
 
       Qaterial.DebugRectangle
@@ -102,11 +102,11 @@ Column
 
         border.color: Qaterial.Colors.orange
 
-        x: positionner.iconRect.x
-        y: positionner.iconRect.y
+        x: positioner.iconRect.x
+        y: positioner.iconRect.y
 
-        width: positionner.iconRect.width
-        height: positionner.iconRect.height
+        width: positioner.iconRect.width
+        height: positioner.iconRect.height
 
         Qaterial.Icon
         {
@@ -123,11 +123,11 @@ Column
 
         border.color: Qaterial.Colors.blue
 
-        x: positionner.labelRect.x
-        y: positionner.labelRect.y
+        x: positioner.labelRect.x
+        y: positioner.labelRect.y
 
-        width: positionner.labelRect.width
-        height: positionner.labelRect.height
+        width: positioner.labelRect.width
+        height: positioner.labelRect.height
       }
     }
   }
@@ -153,14 +153,14 @@ Column
 
       Qaterial.Label
       {
-        text: `display : ${positionner.display}\n` +
-          `horizontalAlignment : ${positionner.horizontalAlignment}\n` +
-          `verticalAlignment : ${positionner.verticalAlignment}\n` +
-          `spacing : ${positionner.spacing}\n` +
-          `mirrored : ${positionner.mirrored}\n` +
-          `iconImplicitSize : ${positionner.iconImplicitSize}\n` +
-          `labelImplicitSize : ${positionner.labelImplicitSize}\n` +
-          `containerSize : ${positionner.containerSize}`
+        text: `display : ${positioner.display}\n` +
+          `horizontalAlignment : ${positioner.horizontalAlignment}\n` +
+          `verticalAlignment : ${positioner.verticalAlignment}\n` +
+          `spacing : ${positioner.spacing}\n` +
+          `mirrored : ${positioner.mirrored}\n` +
+          `iconImplicitSize : ${positioner.iconImplicitSize}\n` +
+          `labelImplicitSize : ${positioner.labelImplicitSize}\n` +
+          `containerSize : ${positioner.containerSize}`
       }
 
       Qaterial.LabelHeadline6
@@ -170,9 +170,9 @@ Column
 
       Qaterial.Label
       {
-        text: `implicitSize : ${positionner.implicitSize}\n` +
-          `iconRect : ${positionner.iconRect}\n` +
-          `labelRect : ${positionner.labelRect}`
+        text: `implicitSize : ${positioner.implicitSize}\n` +
+          `iconRect : ${positioner.iconRect}\n` +
+          `labelRect : ${positioner.labelRect}`
       }
     }
 
@@ -200,26 +200,26 @@ Column
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignHorizontalLeft
-              highlighted: positionner.horizontalAlignment === Qt.AlignLeft
+              highlighted: positioner.horizontalAlignment === Qt.AlignLeft
               checkable: false
 
-              onClicked: () => positionner.horizontalAlignment = Qt.AlignLeft
+              onClicked: () => positioner.horizontalAlignment = Qt.AlignLeft
             }
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignHorizontalCenter
-              highlighted: positionner.horizontalAlignment === Qt.AlignHCenter
+              highlighted: positioner.horizontalAlignment === Qt.AlignHCenter
               checkable: false
 
-              onClicked: () => positionner.horizontalAlignment = Qt.AlignHCenter
+              onClicked: () => positioner.horizontalAlignment = Qt.AlignHCenter
             }
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignHorizontalRight
-              highlighted: positionner.horizontalAlignment === Qt.AlignRight
+              highlighted: positioner.horizontalAlignment === Qt.AlignRight
               checkable: false
 
-              onClicked: () => positionner.horizontalAlignment = Qt.AlignRight
+              onClicked: () => positioner.horizontalAlignment = Qt.AlignRight
             }
           }
         }
@@ -236,26 +236,26 @@ Column
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignVerticalTop
-              highlighted: positionner.verticalAlignment === Qt.AlignTop
+              highlighted: positioner.verticalAlignment === Qt.AlignTop
               checkable: false
 
-              onClicked: () => positionner.verticalAlignment = Qt.AlignTop
+              onClicked: () => positioner.verticalAlignment = Qt.AlignTop
             }
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignVerticalCenter
-              highlighted: positionner.verticalAlignment === Qt.AlignVCenter
+              highlighted: positioner.verticalAlignment === Qt.AlignVCenter
               checkable: false
 
-              onClicked: () => positionner.verticalAlignment = Qt.AlignVCenter
+              onClicked: () => positioner.verticalAlignment = Qt.AlignVCenter
             }
             Qaterial.ToolButton
             {
               icon.source: Qaterial.Icons.alignVerticalBottom
-              highlighted: positionner.verticalAlignment === Qt.AlignBottom
+              highlighted: positioner.verticalAlignment === Qt.AlignBottom
               checkable: false
 
-              onClicked: () => positionner.verticalAlignment = Qt.AlignBottom
+              onClicked: () => positioner.verticalAlignment = Qt.AlignBottom
             }
           }
         }

@@ -34,24 +34,24 @@
 namespace qaterial {
 
 IconLabelImpl::IconLabelImpl(QQuickItem* parent) :
-    QQuickItem(parent), _positionner(new IconLabelPositionner(this)), _icon(new IconDescription(this))
+    QQuickItem(parent), _positioner(new IconLabelPositioner(this)), _icon(new IconDescription(this))
 {
-    _positionner->setEnabled(false);
+    _positioner->setEnabled(false);
 
-    connect(_positionner, &IconLabelPositionner::horizontalAlignmentChanged, this, &IconLabelImpl::horizontalAlignmentChanged);
-    connect(_positionner, &IconLabelPositionner::verticalAlignmentChanged, this, &IconLabelImpl::verticalAlignmentChanged);
-    connect(_positionner, &IconLabelPositionner::displayChanged, this, &IconLabelImpl::displayChanged);
-    connect(_positionner, &IconLabelPositionner::spacingChanged, this, &IconLabelImpl::spacingChanged);
-    connect(_positionner, &IconLabelPositionner::mirroredChanged, this, &IconLabelImpl::mirroredChanged);
+    connect(_positioner, &IconLabelPositioner::horizontalAlignmentChanged, this, &IconLabelImpl::horizontalAlignmentChanged);
+    connect(_positioner, &IconLabelPositioner::verticalAlignmentChanged, this, &IconLabelImpl::verticalAlignmentChanged);
+    connect(_positioner, &IconLabelPositioner::displayChanged, this, &IconLabelImpl::displayChanged);
+    connect(_positioner, &IconLabelPositioner::spacingChanged, this, &IconLabelImpl::spacingChanged);
+    connect(_positioner, &IconLabelPositioner::mirroredChanged, this, &IconLabelImpl::mirroredChanged);
 
-    connect(_positionner, &IconLabelPositionner::implicitSizeChanged, this, &IconLabelImpl::updateImplicitSize);
-    connect(_positionner, &IconLabelPositionner::iconRectChanged, this, &IconLabelImpl::updateIconRect);
-    connect(_positionner, &IconLabelPositionner::labelRectChanged, this, &IconLabelImpl::updateLabelRect);
+    connect(_positioner, &IconLabelPositioner::implicitSizeChanged, this, &IconLabelImpl::updateImplicitSize);
+    connect(_positioner, &IconLabelPositioner::iconRectChanged, this, &IconLabelImpl::updateIconRect);
+    connect(_positioner, &IconLabelPositioner::labelRectChanged, this, &IconLabelImpl::updateLabelRect);
 
     connect(this, &IconLabelImpl::widthChanged, this, &IconLabelImpl::updateContainerSize);
     connect(this, &IconLabelImpl::heightChanged, this, &IconLabelImpl::updateContainerSize);
 
-    _positionner->setContainerSize(size());
+    _positioner->setContainerSize(size());
 }
 
 void IconLabelImpl::connectToIcon() const
@@ -146,49 +146,49 @@ void IconLabelImpl::disconnectFromLabelItem() const
 void IconLabelImpl::updateIconItemVisible() const
 {
     if(_iconItem)
-        _iconItem->setVisible(display() != IconLabelPositionner::TextOnly);
+        _iconItem->setVisible(display() != IconLabelPositioner::TextOnly);
 }
 
 void IconLabelImpl::updateLabelItemVisible() const
 {
     if(_labelItem)
-        _labelItem->setVisible(display() != IconLabelPositionner::IconOnly);
+        _labelItem->setVisible(display() != IconLabelPositioner::IconOnly);
 }
 
 void IconLabelImpl::updateIconImplicitSize() const
 {
-    Q_CHECK_PTR(_positionner);
+    Q_CHECK_PTR(_positioner);
 
-    if(display() == IconLabelPositionner::TextOnly || !_iconItem || !_icon || _icon->source().isEmpty())
+    if(display() == IconLabelPositioner::TextOnly || !_iconItem || !_icon || _icon->source().isEmpty())
     {
-        _positionner->resetIconImplicitSize();
+        _positioner->resetIconImplicitSize();
     }
     else
     {
-        _positionner->setIconImplicitSize(QSizeF(_icon->width(), _icon->height()));
+        _positioner->setIconImplicitSize(QSizeF(_icon->width(), _icon->height()));
     }
 }
 
 void IconLabelImpl::updateLabelImplicitSize() const
 {
-    if(display() == IconLabelPositionner::IconOnly || !_labelItem || !(_labelItem->implicitWidth() > 0 && _labelItem->implicitHeight() > 0))
+    if(display() == IconLabelPositioner::IconOnly || !_labelItem || !(_labelItem->implicitWidth() > 0 && _labelItem->implicitHeight() > 0))
     {
-        _positionner->resetLabelImplicitSize();
+        _positioner->resetLabelImplicitSize();
     }
     else
     {
-        _positionner->setLabelImplicitSize(QSizeF(_labelItem->implicitWidth(), _labelItem->implicitHeight()));
+        _positioner->setLabelImplicitSize(QSizeF(_labelItem->implicitWidth(), _labelItem->implicitHeight()));
     }
 }
 
-void IconLabelImpl::updateContainerSize() const { _positionner->setContainerSize(size()); }
+void IconLabelImpl::updateContainerSize() const { _positioner->setContainerSize(size()); }
 
 void IconLabelImpl::updateImplicitSize()
 {
     if(!isComponentComplete())
         return;
 
-    setImplicitSize(_positionner->implicitSize().width(), _positionner->implicitSize().height());
+    setImplicitSize(_positioner->implicitSize().width(), _positioner->implicitSize().height());
 }
 
 void IconLabelImpl::updateIconRect() const
@@ -196,8 +196,8 @@ void IconLabelImpl::updateIconRect() const
     if(!_iconItem || !isComponentComplete())
         return;
 
-    _iconItem->setPosition(_positionner->iconRect().topLeft());
-    _iconItem->setSize(_positionner->iconRect().size());
+    _iconItem->setPosition(_positioner->iconRect().topLeft());
+    _iconItem->setSize(_positioner->iconRect().size());
 }
 
 void IconLabelImpl::updateLabelRect() const
@@ -205,8 +205,8 @@ void IconLabelImpl::updateLabelRect() const
     if(!_labelItem || !isComponentComplete())
         return;
 
-    _labelItem->setPosition(_positionner->labelRect().topLeft());
-    _labelItem->setWidth(_positionner->labelRect().width());
+    _labelItem->setPosition(_positioner->labelRect().topLeft());
+    _labelItem->setWidth(_positioner->labelRect().width());
 }
 
 void IconLabelImpl::componentComplete()
@@ -227,7 +227,7 @@ void IconLabelImpl::componentComplete()
     connectToIcon();
     connectToIconItem();
     connectToLabelItem();
-    _positionner->setEnabled(true);
+    _positioner->setEnabled(true);
 }
 
 }

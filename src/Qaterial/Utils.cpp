@@ -36,7 +36,7 @@
 #include <Qaterial/FolderTreeModel.hpp>
 #include <Qaterial/Layout.hpp>
 #include <Qaterial/IconDescription.hpp>
-#include <Qaterial/IconLabelPositionner.hpp>
+#include <Qaterial/IconLabelPositioner.hpp>
 #include <Qaterial/IconLabelImpl.hpp>
 
 // Qt Core
@@ -125,8 +125,8 @@ static void Qaterial_registerTypes()
 
     LOG_DEV_INFO("Register {}.IconDescription {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.IconLabelPositionner {}.{} to QML", *_uri, _major, _minor);
-    qaterial::IconLabelPositionner::registerToQml(*_uri, _major, _minor);
+    LOG_DEV_INFO("Register {}.IconLabelPositioner {}.{} to QML", *_uri, _major, _minor);
+    qaterial::IconLabelPositioner::registerToQml(*_uri, _major, _minor);
     LOG_DEV_INFO("Register {}.IconLabelImpl {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconLabelImpl::registerToQml(*_uri, _major, _minor);
 

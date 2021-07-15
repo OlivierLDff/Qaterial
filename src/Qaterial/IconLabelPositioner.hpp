@@ -41,14 +41,14 @@
 
 namespace qaterial {
 
-class QATERIAL_API_ IconLabelPositionner : public QObject
+class QATERIAL_API_ IconLabelPositioner : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(IconLabelPositionner);
+    QATERIAL_REGISTER_TO_QML(IconLabelPositioner);
 
     // ──── CONSTRUCTOR ────
 public:
-    IconLabelPositionner(QObject* parent = nullptr);
+    IconLabelPositioner(QObject* parent = nullptr);
 
 public:
     enum Display
