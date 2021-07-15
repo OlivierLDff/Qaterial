@@ -24,7 +24,7 @@
 #define __QATERIAL_UTILS_HPP__
 
 #include <Qaterial/Export.hpp>
-#include <QtGlobal>
+#include <QtCore/QtGlobal>
 
 namespace qaterial {
 

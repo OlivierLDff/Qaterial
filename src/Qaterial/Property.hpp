@@ -23,7 +23,7 @@
 #ifndef __QATERIAL_PROPERTY_HPP__
 #define __QATERIAL_PROPERTY_HPP__
 
-#include <QQmlEngine>
+#include <QtQml/QQmlEngine>
 
 #define _QATERIAL_Q_PROPERTY(type, attribute, Attribute)                                                                                   \
 protected:                                                                                                                                 \

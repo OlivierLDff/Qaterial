@@ -22,11 +22,11 @@
 
 #include <Qaterial/TextFile.hpp>
 
-#include <QFile>
-#include <QFileInfo>
-#include <QQmlFile>
-#include <QUrl>
-#include <QLoggingCategory>
+#include <QtCore/QFile>
+#include <QtCore/QFileInfo>
+#include <QtCore/QUrl>
+#include <QtCore/QLoggingCategory>
+#include <QtQml/QQmlFile>
 
 Q_LOGGING_CATEGORY(qaterialTextFile, "qaterial.textfile")
 

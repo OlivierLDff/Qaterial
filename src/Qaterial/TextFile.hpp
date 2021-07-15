@@ -26,10 +26,10 @@
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-#include <QFile>
-#include <QSaveFile>
-#include <QObject>
-#include <QString>
+#include <QtCore/QFile>
+#include <QtCore/QSaveFile>
+#include <QtCore/QObject>
+#include <QtCore/QString>
 
 namespace qaterial {
 

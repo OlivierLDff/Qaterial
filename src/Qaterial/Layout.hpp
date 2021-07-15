@@ -26,7 +26,7 @@
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-#include <QQuickItem>
+#include <QtQuick/QQuickItem>
 
 namespace qaterial {
 

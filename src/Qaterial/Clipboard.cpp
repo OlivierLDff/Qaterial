@@ -22,9 +22,9 @@
 
 #include <Qaterial/Clipboard.hpp>
 
-#include <QGuiApplication>
-#include <QClipboard>
-#include <QMimeData>
+#include <QtGui/QGuiApplication>
+#include <QtGui/QClipboard>
+#include <QtCore/QMimeData>
 
 using namespace qaterial;
 

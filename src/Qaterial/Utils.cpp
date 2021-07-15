@@ -33,13 +33,13 @@
 #include <Qaterial/IconLabelPositioner.hpp>
 #include <Qaterial/IconLabelImpl.hpp>
 
-#include <QDir>
-#include <QLoggingCategory>
+#include <QtCore/QDir>
+#include <QtCore/QLoggingCategory>
 
-#include <QGuiApplication>
-#include <QFontDatabase>
+#include <QtGui/QGuiApplication>
+#include <QtGui/QFontDatabase>
 
-#include <QQuickStyle>
+#include <QtQuickControls2/QQuickStyle>
 
 #ifdef Q_OS_WIN
 #    include <Windows.h>

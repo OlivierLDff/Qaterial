@@ -22,10 +22,9 @@
 
 #include <Qaterial/FolderTreeModel.hpp>
 
-#include <QStandardPaths>
-#include <QDir>
-#include <QFileInfo>
-#include <QLoggingCategory>
+#include <QtCore/QDir>
+#include <QtCore/QFileInfo>
+#include <QtCore/QLoggingCategory>
 
 Q_LOGGING_CATEGORY(qaterialFTM, "qaterial.folderTreeModel")
 

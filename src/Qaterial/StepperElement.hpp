@@ -26,8 +26,8 @@
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-#include <QObject>
-#include <QString>
+#include <QtCore/QObject>
+#include <QtCore/QString>
 
 namespace qaterial {
 

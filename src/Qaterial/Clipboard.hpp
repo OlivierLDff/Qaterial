@@ -26,9 +26,10 @@
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
 
-#include <QString>
-#include <QObject>
-class QClipboard;
+#include <QtCore/QString>
+#include <QtCore/QObject>
+
+QT_FORWARD_DECLARE_CLASS(QClipboard);
 
 namespace qaterial {
 

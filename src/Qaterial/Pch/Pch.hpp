@@ -6,21 +6,21 @@
 
 #include <QOlm/QOlm.hpp>
 
-#include <QObject>
-#include <QFile>
-#include <QSaveFile>
-#include <QObject>
-#include <QString>
-#include <QFileInfo>
-#include <QUrl>
-#include <QGuiApplication>
-#include <QDir>
-#include <QFontDatabase>
+#include <QtCore/QObject>
+#include <QtCore/QString>
+#include <QtCore/QFile>
+#include <QtCore/QSaveFile>
+#include <QtCore/QFileInfo>
+#include <QtCore/QUrl>
+#include <QtCore/QDir>
 
-#include <QQmlEngine>
-#include <QQmlFile>
+#include <QtGui/QGuiApplication>
+#include <QtGui/QFontDatabase>
 
-#include <QQuickStyle>
+#include <QtQml/QQmlEngine>
+#include <QtQml/QQmlFile>
+
+#include <QtQuickControls2/QQuickStyle>
 
 #ifdef major
 #    undef major
