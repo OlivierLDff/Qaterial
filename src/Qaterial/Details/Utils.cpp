@@ -108,7 +108,7 @@ static void Qaterial_loadFonts()
             }
             else
             {
-                qCWarning(qaterialUtils) << "Fail to load font " << fileUrl;
+                qCWarning(qaterialUtils) << "Fail to load font" << fileUrl;
             }
         }
     };
@@ -123,7 +123,7 @@ static void Qaterial_loadFonts()
 
 static void Qaterial_loadResources(bool autoRegisterStyle)
 {
-    qCDebug(qaterialUtils) << "Load Qaterial v" << qaterial::Version::version().readable();
+    qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
 
     // Force load qrc resources
     // This is mandatory when used as a static library
