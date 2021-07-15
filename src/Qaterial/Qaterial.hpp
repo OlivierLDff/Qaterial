@@ -26,6 +26,5 @@
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Version.hpp>
 #include <Qaterial/Utils.hpp>
-#include <Qaterial/Logger.hpp>
 
 #endif

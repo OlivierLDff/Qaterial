@@ -27,7 +27,6 @@
 // Application Header
 #include <Qaterial/Utils.hpp>
 #include <Qaterial/Version.hpp>
-#include <Qaterial/Logger.hpp>
 #include <Qaterial/Theme.hpp>
 #include <Qaterial/StepperElement.hpp>
 #include <Qaterial/TreeElement.hpp>
@@ -41,6 +40,7 @@
 
 // Qt Core
 #include <QDir>
+#include <QLoggingCategory>
 
 // Qt Gui
 #include <QGuiApplication>
@@ -53,40 +53,11 @@
 #    include <Windows.h>
 #endif
 
+Q_LOGGING_CATEGORY(qaterialUtils, "qaterial.utils");
+
 // ─────────────────────────────────────────────────────────────
 //                  DECLARATION
 // ─────────────────────────────────────────────────────────────
-
-// clang-format off
-#ifdef NDEBUG
-# define LOG_DEV_DEBUG(str, ...) do {} while (0)
-#else
-# define LOG_DEV_DEBUG(str, ...) qaterial::Logger::UTILS->debug( str, ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_INFO(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_INFO(str, ...)  qaterial::Logger::UTILS->info(  str, ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_WARN(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_WARN(str, ...)  qaterial::Logger::UTILS->warn(  str, ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_ERR(str, ...)   do {} while (0)
-#else
-# define LOG_DEV_ERR(str, ...)   qaterial::Logger::UTILS->error( str, ## __VA_ARGS__ )
-#endif
-
-#define LOG_DEBUG(str, ...)      qaterial::Logger::UTILS->debug( str, ## __VA_ARGS__ )
-#define LOG_INFO(str, ...)       qaterial::Logger::UTILS->info(  str, ## __VA_ARGS__ )
-#define LOG_WARN(str, ...)       qaterial::Logger::UTILS->warn(  str, ## __VA_ARGS__ )
-#define LOG_ERR(str, ...)        qaterial::Logger::UTILS->error( str, ## __VA_ARGS__ )
-// clang-format on
 
 // ─────────────────────────────────────────────────────────────
 //                  FUNCTIONS
@@ -101,54 +72,34 @@ void __Qaterial_registerIconsSingleton();
 
 static void Qaterial_registerTypes()
 {
-    LOG_DEV_INFO("Register Qaterial v{}", qaterial::Version::version().readable().toStdString());
-
-    LOG_DEV_INFO("Register Singleton {}.Version {}.{} to QML", *_uri, _major, _minor);
     qaterial::Version::registerSingleton(*_uri, _major, _minor);
 
-    LOG_DEV_INFO("Register Singleton {}.Logger {}.{} to QML", *_uri, _major, _minor);
-    qaterial::Logger::registerSingleton(*_uri, _major, _minor);
-
     // THEME
-    LOG_DEV_INFO("Register {}.TextTheme {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextTheme::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.ColorTheme {}.{} to QML", *_uri, _major, _minor);
     qaterial::ColorTheme::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.Theme {}.{} to QML", *_uri, _major, _minor);
     qaterial::Theme::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.ThemeAttached {}.{} to QML", *_uri, _major, _minor);
     qaterial::ThemeAttached::registerToQml(*_uri, _major, _minor);
 
     __Qaterial_registerIconsSingleton();
 
     // DISPLAY
 
-    LOG_DEV_INFO("Register {}.IconDescription {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.IconLabelPositioner {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconLabelPositioner::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.IconLabelImpl {}.{} to QML", *_uri, _major, _minor);
     qaterial::IconLabelImpl::registerToQml(*_uri, _major, _minor);
 
     // NAVIGATION
 
-    LOG_DEV_INFO("Register {}.StepperElement {}.{} to QML", *_uri, _major, _minor);
     qaterial::StepperElement::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
     qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>(*_uri, _major, _minor, "StepperModel");
 
-    LOG_DEV_INFO("Register {}.TreeElement {}.{} to QML", *_uri, _major, _minor);
     qaterial::TreeElement::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.StepperModel {}.{} to QML", *_uri, _major, _minor);
     qmlRegisterType<qaterial::TreeModel>(*_uri, _major, _minor, "TreeModel");
 
     // IO
 
-    LOG_DEV_INFO("Register {}.TextFile {}.{} to QML", *_uri, _major, _minor);
     qaterial::TextFile::registerToQml(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register Singleton {}.Clipboard {}.{} to QML", *_uri, _major, _minor);
     qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
-    LOG_DEV_INFO("Register {}.FolderTreeModel {}.{} to QML", *_uri, _major, _minor);
     qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
 
     qmlRegisterAnonymousType<qaterial::LayoutAttached>(*_uri, _major);
@@ -173,9 +124,13 @@ static void Qaterial_loadFonts()
         {
             const auto fileUrl = fontFolderPath + "/" + file;
             if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
-                LOG_INFO("Load font {}", fileUrl.toStdString());
+            {
+                qCInfo(qaterialUtils) << "Load font" << fileUrl;
+            }
             else
-                LOG_ERR("Fail to load font {}", fileUrl.toStdString());
+            {
+                qCWarning(qaterialUtils) << "Fail to load font " << fileUrl;
+            }
         }
     };
 
@@ -189,7 +144,7 @@ static void Qaterial_loadFonts()
 
 static void Qaterial_loadResources(bool autoRegisterStyle)
 {
-    LOG_DEV_INFO("Load Qaterial v{}", qPrintable(qaterial::Version::version().readable()));
+    qCDebug(qaterialUtils) << "Load Qaterial v" << qaterial::Version::version().readable();
 
     // Force load qrc resources
     // This is mandatory when used as a static library

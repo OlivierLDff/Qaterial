@@ -24,7 +24,6 @@
 
 // Library Headers
 #include <Qaterial/FolderTreeModel.hpp>
-#include <Qaterial/Logger.hpp>
 
 // Dependencies Headers
 
@@ -32,42 +31,15 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QFileInfo>
+#include <QLoggingCategory>
 
 // Stl Headers
+
+Q_LOGGING_CATEGORY(qaterialFTM, "qaterial.folderTreeModel")
 
 // ──── DECLARATION ────
 
 using namespace qaterial;
-
-// clang-format off
-#ifdef NDEBUG
-# define LOG_DEV_DEBUG(str, ...) do {} while (0)
-#else
-# define LOG_DEV_DEBUG(str, ...) Logger::FILE->debug( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_INFO(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_INFO(str, ...)  Logger::FILE->info(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_WARN(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_WARN(str, ...)  Logger::FILE->warn(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-#ifdef NDEBUG
-# define LOG_DEV_ERR(str, ...)   do {} while (0)
-#else
-# define LOG_DEV_ERR(str, ...)   Logger::FILE->error( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#define LOG_DEBUG(str, ...)      Logger::FILE->debug( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_INFO(str, ...)       Logger::FILE->info(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_WARN(str, ...)       Logger::FILE->warn(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_ERR(str, ...)        Logger::FILE->error( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-// clang-format on
 
 // ──── FUNCTIONS ────
 
@@ -212,7 +184,7 @@ void FolderTreeModel::fetch()
 {
     if(!fileIsDir())
     {
-        LOG_WARN("Can't fetch folders of a file {}.", path().path().toStdString());
+        qCWarning(qaterialFTM) << "Can't fetch folders of a file {}." << path().path();
         return;
     }
 

@@ -1,11 +1,8 @@
-#ifndef __QATERIAL_PCH_HPP__
+﻿#ifndef __QATERIAL_PCH_HPP__
 #define __QATERIAL_PCH_HPP__
 
 #include <memory>
 #include <set>
-
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/sink.h>
 
 #include <QOlm/QOlm.hpp>
 

@@ -85,7 +85,6 @@ find_package(Qt5 REQUIRED COMPONENTS
 # ───── FETCH DEPENDENCIES ─────
 
 include(cmake/Dependencies.cmake)
-include(cmake/FetchSpdlog.cmake)
 include(cmake/FetchQOlm.cmake)
 include(cmake/FetchQtGeneratorCMake.cmake)
 
@@ -151,8 +150,6 @@ set(QATERIAL_UTILS_SRCS
   ${QATERIAL_SOURCE_DIR}/Version.cpp
   ${QATERIAL_SOURCE_DIR}/Utils.hpp
   ${QATERIAL_SOURCE_DIR}/Utils.cpp
-  ${QATERIAL_SOURCE_DIR}/Logger.hpp
-  ${QATERIAL_SOURCE_DIR}/Logger.cpp
 )
 
 set(QATERIAL_SRCS
@@ -195,7 +192,6 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
 )
 
 target_link_libraries(${QATERIAL_TARGET} PUBLIC
-  spdlog::spdlog
   QOlm::QOlm
   Qt::Core
   Qt::Gui

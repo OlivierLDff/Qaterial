@@ -16,9 +16,6 @@ set(GOOGLEFONTS_TAG "0cdadf80ac5f29f10a73c29ce1f4f1ca75ffb392" CACHE STRING "Goo
 
 ## C++ libraries
 
-set(SPDLOG_REPOSITORY "https://github.com/gabime/spdlog" CACHE STRING "spdlog repository url")
-set(SPDLOG_TAG "7d07e0312a9185789977b9b0d1b18bae52db6b72" CACHE STRING "spdlog git tag")
-
 set(QOLM_REPOSITORY "https://github.com/OlivierLDff/QOlm.git" CACHE STRING "QOlm repository url")
 set(QOLM_TAG "v3.1.2" CACHE STRING "QOlm git tag")
 

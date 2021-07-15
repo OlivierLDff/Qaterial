@@ -24,7 +24,6 @@
 
 // Library Headers
 #include <Qaterial/TextFile.hpp>
-#include <Qaterial/Logger.hpp>
 
 // Dependencies Headers
 
@@ -33,42 +32,15 @@
 #include <QFileInfo>
 #include <QQmlFile>
 #include <QUrl>
+#include <QLoggingCategory>
 
 // Stl Headers
+
+Q_LOGGING_CATEGORY(qaterialTextFile, "qaterial.textfile")
 
 // ──── DECLARATION ────
 
 using namespace qaterial;
-
-// clang-format off
-#ifdef NDEBUG
-# define LOG_DEV_DEBUG(str, ...) do {} while (0)
-#else
-# define LOG_DEV_DEBUG(str, ...) Logger::FILE->debug( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_INFO(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_INFO(str, ...)  Logger::FILE->info(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#ifdef NDEBUG
-# define LOG_DEV_WARN(str, ...)  do {} while (0)
-#else
-# define LOG_DEV_WARN(str, ...)  Logger::FILE->warn(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-#ifdef NDEBUG
-# define LOG_DEV_ERR(str, ...)   do {} while (0)
-#else
-# define LOG_DEV_ERR(str, ...)   Logger::FILE->error( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#endif
-
-#define LOG_DEBUG(str, ...)      Logger::FILE->debug( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_INFO(str, ...)       Logger::FILE->info(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_WARN(str, ...)       Logger::FILE->warn(  "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-#define LOG_ERR(str, ...)        Logger::FILE->error( "[{}] " str, (void*)(this), ## __VA_ARGS__ )
-// clang-format on
 
 // ──── FUNCTIONS ────
 
@@ -77,10 +49,12 @@ TextFile::TextFile(QObject* parent) : QObject(parent)
     connect(this,
         &TextFile::errorChanged,
         this,
-        [this](const auto& value)
+        [this](const QString& value)
         {
             if(!value.isEmpty())
-                LOG_ERR("File Error : {}", value.toStdString());
+            {
+                qCWarning(qaterialTextFile) << "File Error : " << value;
+            }
         });
 }
 
@@ -97,7 +71,8 @@ QString TextFile::fileType() const { return QFileInfo(fileName()).suffix(); }
 
 bool TextFile::open(QUrl url, int mode)
 {
-    LOG_DEV_INFO("open url : {}", url.toString().toStdString());
+    qCDebug(qaterialTextFile) << "open file : " << url;
+
     // Make sure url is valid as a local file
     if(url.isRelative())
         url = "file:" + url.toString();
@@ -135,7 +110,7 @@ void TextFile::close()
     _error = "";
     if(!_file())
     {
-        LOG_DEV_WARN("File isn't open.");
+        qCWarning(qaterialTextFile) << "Fail to close file that is not opened";
         return;
     }
 
@@ -195,7 +170,7 @@ bool TextFile::createAndOpenFile(const QString& file, QFileDevice::OpenMode mode
 {
     if(_file())
     {
-        LOG_WARN("Close file {} before opening {}", fileName().toStdString(), file.toStdString());
+        qCWarning(qaterialTextFile) << "Close file " << fileName() << " before opening " << file;
         closeAndDeleteFile();
     }
 
