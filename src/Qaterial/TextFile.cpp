@@ -87,7 +87,7 @@ TextFile::TextFile(QObject* parent) : QObject(parent)
 QString TextFile::fileName() const
 {
     const QString filePath = QQmlFile::urlToLocalFileOrQrc(_fileUrl);
-    const QString fileName = QFileInfo(filePath).fileName();
+    auto fileName = QFileInfo(filePath).fileName();
     if(fileName.isEmpty())
         return "untitled.txt";
     return fileName;
