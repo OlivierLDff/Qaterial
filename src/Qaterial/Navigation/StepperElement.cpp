@@ -22,4 +22,5 @@
 
 #include <Qaterial/Navigation/StepperElement.hpp>
 
-using namespace qaterial;
+namespace qaterial {
+}

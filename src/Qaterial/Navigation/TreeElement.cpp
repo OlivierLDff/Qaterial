@@ -22,4 +22,5 @@
 
 #include <Qaterial/Navigation/TreeElement.hpp>
 
-using namespace qaterial;
+namespace qaterial {
+}

@@ -26,7 +26,7 @@
 #include <QtGui/QClipboard>
 #include <QtCore/QMimeData>
 
-using namespace qaterial;
+namespace qaterial {
 
 Clipboard::Clipboard(QObject* parent)
     : QObject(parent)
@@ -80,4 +80,6 @@ void Clipboard::clear()
 {
     QClipboard* clipboard = QGuiApplication::clipboard();
     clipboard->clear();
+}
+
 }

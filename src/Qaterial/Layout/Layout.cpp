@@ -24,7 +24,7 @@
 
 #include <cmath>
 
-using namespace qaterial;
+namespace qaterial {
 
 LayoutAttached::LayoutAttached(QObject* object)
     : _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge))
@@ -294,4 +294,6 @@ void Layout::computeColumnsFromType()
     default:
         setColumns(12);
     }
+}
+
 }

@@ -30,7 +30,7 @@
 
 Q_LOGGING_CATEGORY(qaterialTextFile, "qaterial.textfile")
 
-using namespace qaterial;
+namespace qaterial {
 
 TextFile::TextFile(QObject* parent)
     : QObject(parent)
@@ -192,4 +192,6 @@ void TextFile::closeAndDeleteFile()
 
     _writeFile = nullptr;
     _readFile = nullptr;
+}
+
 }

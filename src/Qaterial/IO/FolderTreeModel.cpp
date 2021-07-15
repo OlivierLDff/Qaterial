@@ -28,11 +28,7 @@
 
 Q_LOGGING_CATEGORY(qaterialFTM, "qaterial.folderTreeModel")
 
-// ──── DECLARATION ────
-
-using namespace qaterial;
-
-// ──── FUNCTIONS ────
+namespace qaterial {
 
 FolderTreeModel::FolderTreeModel(QObject* parent)
     : qolm::QOlm<FolderTreeModel>(parent)
@@ -268,4 +264,6 @@ void FolderTreeModel::fetch()
 
     if(!folders.empty())
         append(folders);
+}
+
 }
