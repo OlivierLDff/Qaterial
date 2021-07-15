@@ -180,7 +180,10 @@ endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
-target_include_directories(${QATERIAL_TARGET} PUBLIC src ${QATERIAL_ICONS_OUTPUT_FOLDER})
+target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
+target_include_directories(${QATERIAL_TARGET} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+)
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()
