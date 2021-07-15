@@ -144,7 +144,7 @@ QString TextFile::readAll()
 
     const auto buffer = _file()->readAll();
 
-    if(_file()->error())
+    if(auto* f = _file(); f && f->error())
     {
         setError(_file()->errorString());
         closeAndDeleteFile();
