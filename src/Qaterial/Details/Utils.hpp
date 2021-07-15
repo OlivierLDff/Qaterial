@@ -24,11 +24,11 @@
 #define __QATERIAL_UTILS_HPP__
 
 #include <Qaterial/Details/Export.hpp>
-#include <QtCore/QtGlobal>
+#include <cstdint>
 
 namespace qaterial {
 
-void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const std::uint8_t major = 1, const std::uint8_t minor = 0);
 
 /**
  * @brief      Load qrc content in qrc:/Qaterial/
