@@ -1,0 +1,17 @@
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS
+  Core
+  Gui
+  Qml
+  Quick
+  QuickControls2
+  Svg
+  Xml
+  REQUIRED
+)
+find_package(QOlm REQUIRED)
+
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@IconsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@FontsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@ComponentsTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@Targets.cmake")

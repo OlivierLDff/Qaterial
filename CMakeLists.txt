@@ -50,6 +50,8 @@ set(QATERIAL_ENABLE_ROBOTO ON CACHE BOOL "Embed to qrc Roboto Regular & Medium")
 set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
 set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
 
+set(QATERIAL_ENABLE_INSTALL ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Generate the install target")
+
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 if(QATERIAL_MAIN_PROJECT)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -75,6 +77,8 @@ message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}"
 message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
 
 message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
+message(STATUS "QATERIAL_ENABLE_INSTALL         : ${QATERIAL_ENABLE_INSTALL}")
+
 
 message(STATUS "------ ${QATERIAL_TARGET} End Configuration ------")
 
@@ -183,6 +187,7 @@ target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
 target_include_directories(${QATERIAL_TARGET} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+  $<INSTALL_INTERFACE:include>
 )
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
@@ -245,4 +250,54 @@ endif()
 
 if(QATERIAL_MAIN_PROJECT)
   include(cmake/PrintConfiguration.cmake)
+endif()
+
+# ───── INSTALL ─────
+
+if (QATERIAL_ENABLE_INSTALL)
+  include(GNUInstallDirs)
+  install(TARGETS ${QATERIAL_TARGET}
+    EXPORT ${QATERIAL_TARGET}Targets
+  )
+
+  foreach(HDR_FILE ${QATERIAL_PUBLIC_HEADERS})
+    get_filename_component(HDR_DIRECTORY ${HDR_FILE} DIRECTORY)
+    get_filename_component(ABSOLUTE_HDR_DIRECTORY ${HDR_DIRECTORY} ABSOLUTE)
+    file(RELATIVE_PATH RELATIVE_HDR_PATH ${CMAKE_CURRENT_SOURCE_DIR}/src ${ABSOLUTE_HDR_DIRECTORY})
+    install(FILES ${HDR_FILE} DESTINATION include/${RELATIVE_HDR_PATH})
+  endforeach()
+
+  include(CMakePackageConfigHelpers)
+  write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
+    VERSION ${QATERIAL_VERSION}
+    COMPATIBILITY AnyNewerVersion
+  )
+
+  export(EXPORT ${QATERIAL_TARGET}Targets
+    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Targets.cmake"
+    NAMESPACE ${QATERIAL_TARGET}::
+  )
+
+  configure_file(cmake/${QATERIAL_TARGET}Config.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
+    @ONLY
+  )
+
+  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
+  install(EXPORT ${QATERIAL_TARGET}Targets
+    FILE
+    ${QATERIAL_TARGET}Targets.cmake
+    NAMESPACE
+    ${QATERIAL_TARGET}::
+    DESTINATION
+    ${ConfigPackageLocation}
+  )
+  install(
+    FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ConfigVersion.cmake"
+    DESTINATION
+    ${ConfigPackageLocation}
+  )
 endif()
