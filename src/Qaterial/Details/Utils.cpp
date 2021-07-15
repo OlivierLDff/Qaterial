@@ -153,12 +153,36 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 #endif
 
-void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
+namespace qaterial {
+
+void registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
 {
     ::Qaterial_registerTypes(uri, major, minor);
 }
 
-void qaterial::loadQmlResources(bool autoRegisterStyle)
+void loadQmlResources(bool autoRegisterStyle)
 {
     ::Qaterial_loadResources(autoRegisterStyle);
+}
+
+std::uint8_t versionMajor()
+{
+    return QATERIAL_VERSION_MAJOR;
+}
+
+std::uint8_t versionMinor()
+{
+    return QATERIAL_VERSION_MINOR;
+}
+
+std::uint8_t versionPatch()
+{
+    return QATERIAL_VERSION_PATCH;
+}
+
+std::uint32_t versionTag()
+{
+    return QATERIAL_VERSION_TAG_HEX;
+}
+
 }

@@ -40,6 +40,11 @@ void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const std::uint8_
  */
 void QATERIAL_API_ loadQmlResources(bool autoRegisterStyle = true);
 
+std::uint8_t QATERIAL_API_ versionMajor();
+std::uint8_t QATERIAL_API_ versionMinor();
+std::uint8_t QATERIAL_API_ versionPatch();
+std::uint32_t QATERIAL_API_ versionTag();
+
 }
 
 #endif // __QATERIAL_UTILS_HPP__
