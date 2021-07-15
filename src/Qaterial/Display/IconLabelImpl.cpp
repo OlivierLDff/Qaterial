@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <Qaterial/IconLabelImpl.hpp>
+#include <Qaterial/Display/IconLabelImpl.hpp>
 
 namespace qaterial {
 

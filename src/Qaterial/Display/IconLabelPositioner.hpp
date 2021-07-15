@@ -23,8 +23,8 @@
 #ifndef __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
 #define __QATERIAL_ICON_LABEL_POSITIONNER_HPP__
 
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+#include <Qaterial/Details/Export.hpp>
+#include <Qaterial/Details/Property.hpp>
 
 #include <QtCore/QRect>
 #include <QtCore/QSize>

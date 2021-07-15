@@ -23,8 +23,8 @@
 #ifndef __QATERIAL_COLOR_THEME_HPP__
 #define __QATERIAL_COLOR_THEME_HPP__
 
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+#include <Qaterial/Details/Export.hpp>
+#include <Qaterial/Details/Property.hpp>
 
 #include <QtGui/QColor>
 

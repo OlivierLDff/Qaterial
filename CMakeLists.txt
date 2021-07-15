@@ -93,80 +93,65 @@ include(cmake/FetchQtGeneratorCMake.cmake)
 add_subdirectory(qml)
 include(cmake/QaterialGenerateIcons.cmake)
 set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
-set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Icons.hpp")
-set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Icons.cpp")
+set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.hpp")
+set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.cpp")
 qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE} ${QATERIAL_ICONS_SRC_FILE})
+set(QATERIAL_GEN_SRCS
+  ${QATERIAL_ICONS_CLASS_FILE}
+  ${QATERIAL_ICONS_SRC_FILE}
+)
 
 # ───── QML SOURCES ─────
 
-set(QATERIAL_SOURCE_DIR src/Qaterial)
+set(QATERIAL_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/Qaterial)
 
-set(QATERIAL_DISPLAY_SRCS
-  ${QATERIAL_ICONS_CLASS_FILE}
-  ${QATERIAL_ICONS_SRC_FILE}
-  ${QATERIAL_SOURCE_DIR}/IconDescription.hpp
-  ${QATERIAL_SOURCE_DIR}/IconDescription.cpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.hpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelPositioner.cpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelImpl.hpp
-  ${QATERIAL_SOURCE_DIR}/IconLabelImpl.cpp
-)
-
-set(QATERIAL_THEME_SRCS
-  ${QATERIAL_SOURCE_DIR}/ColorTheme.hpp
-  ${QATERIAL_SOURCE_DIR}/ColorTheme.cpp
-  ${QATERIAL_SOURCE_DIR}/TextTheme.hpp
-  ${QATERIAL_SOURCE_DIR}/TextTheme.cpp
-  ${QATERIAL_SOURCE_DIR}/Theme.hpp
-  ${QATERIAL_SOURCE_DIR}/Theme.cpp
-)
-
-set(QATERIAL_LAYOUT_SRCS
-  ${QATERIAL_SOURCE_DIR}/Layout.hpp
-  ${QATERIAL_SOURCE_DIR}/Layout.cpp
-)
-
-set(QATERIAL_IO_SRCS
-  ${QATERIAL_SOURCE_DIR}/TextFile.hpp
-  ${QATERIAL_SOURCE_DIR}/TextFile.cpp
-  ${QATERIAL_SOURCE_DIR}/Clipboard.hpp
-  ${QATERIAL_SOURCE_DIR}/Clipboard.cpp
-  ${QATERIAL_SOURCE_DIR}/FolderTreeModel.hpp
-  ${QATERIAL_SOURCE_DIR}/FolderTreeModel.cpp
-)
-
-set(QATERIAL_NAVIGATION_SRCS
-  ${QATERIAL_SOURCE_DIR}/StepperElement.hpp
-  ${QATERIAL_SOURCE_DIR}/StepperElement.cpp
-  ${QATERIAL_SOURCE_DIR}/TreeElement.hpp
-  ${QATERIAL_SOURCE_DIR}/TreeElement.cpp
-)
-
-set(QATERIAL_UTILS_SRCS
+set(QATERIAL_PUBLIC_HEADERS
   ${QATERIAL_SOURCE_DIR}/Qaterial.hpp
-  ${QATERIAL_SOURCE_DIR}/Export.hpp
-  ${QATERIAL_SOURCE_DIR}/Property.hpp
-  ${QATERIAL_SOURCE_DIR}/Version.hpp
-  ${QATERIAL_SOURCE_DIR}/Version.cpp
-  ${QATERIAL_SOURCE_DIR}/Utils.hpp
-  ${QATERIAL_SOURCE_DIR}/Utils.cpp
+  ${QATERIAL_SOURCE_DIR}/Details/Export.hpp
+  ${QATERIAL_SOURCE_DIR}/Details/Utils.hpp
 )
 
 set(QATERIAL_SRCS
-  ${QATERIAL_DISPLAY_SRCS}
-  ${QATERIAL_THEME_SRCS}
-  ${QATERIAL_LAYOUT_SRCS}
-  ${QATERIAL_IO_SRCS}
-  ${QATERIAL_NAVIGATION_SRCS}
-  ${QATERIAL_UTILS_SRCS}
+  ${QATERIAL_PUBLIC_HEADERS}
+  ${QATERIAL_SOURCE_DIR}/Display/IconDescription.hpp
+  ${QATERIAL_SOURCE_DIR}/Display/IconDescription.cpp
+  ${QATERIAL_SOURCE_DIR}/Display/IconLabelPositioner.hpp
+  ${QATERIAL_SOURCE_DIR}/Display/IconLabelPositioner.cpp
+  ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.hpp
+  ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.cpp
+
+  ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.hpp
+  ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.cpp
+  ${QATERIAL_SOURCE_DIR}/Theme/TextTheme.hpp
+  ${QATERIAL_SOURCE_DIR}/Theme/TextTheme.cpp
+  ${QATERIAL_SOURCE_DIR}/Theme/Theme.hpp
+  ${QATERIAL_SOURCE_DIR}/Theme/Theme.cpp
+
+  ${QATERIAL_SOURCE_DIR}/Layout/Layout.hpp
+  ${QATERIAL_SOURCE_DIR}/Layout/Layout.cpp
+
+  ${QATERIAL_SOURCE_DIR}/IO/TextFile.hpp
+  ${QATERIAL_SOURCE_DIR}/IO/TextFile.cpp
+  ${QATERIAL_SOURCE_DIR}/IO/Clipboard.hpp
+  ${QATERIAL_SOURCE_DIR}/IO/Clipboard.cpp
+  ${QATERIAL_SOURCE_DIR}/IO/FolderTreeModel.hpp
+  ${QATERIAL_SOURCE_DIR}/IO/FolderTreeModel.cpp
+
+  ${QATERIAL_SOURCE_DIR}/Navigation/StepperElement.hpp
+  ${QATERIAL_SOURCE_DIR}/Navigation/StepperElement.cpp
+  ${QATERIAL_SOURCE_DIR}/Navigation/TreeElement.hpp
+  ${QATERIAL_SOURCE_DIR}/Navigation/TreeElement.cpp
+
+  ${QATERIAL_SOURCE_DIR}/Details/Property.hpp
+  ${QATERIAL_SOURCE_DIR}/Details/Version.hpp
+  ${QATERIAL_SOURCE_DIR}/Details/Version.cpp
+  ${QATERIAL_SOURCE_DIR}/Details/Utils.cpp
 )
 
-source_group("Display" FILES ${QATERIAL_DISPLAY_SRCS})
-source_group("Theme" FILES ${QATERIAL_THEME_SRCS})
-source_group("Layout" FILES ${QATERIAL_LAYOUT_SRCS})
-source_group("IO" FILES ${QATERIAL_IO_SRCS})
-source_group("Navigation" FILES ${QATERIAL_NAVIGATION_SRCS})
-source_group("Utils" FILES ${QATERIAL_UTILS_SRCS})
+source_group(TREE "${QATERIAL_SOURCE_DIR}" FILES ${QATERIAL_SRCS})
+source_group(TREE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial" FILES ${QATERIAL_GEN_SRCS})
+
+set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
 
 # ───── QATERIAL TARGET ─────
 

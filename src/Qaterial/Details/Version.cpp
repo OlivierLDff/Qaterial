@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,35 +20,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_STEPPER_ELEMENT_HPP__
-#define __QATERIAL_STEPPER_ELEMENT_HPP__
+#include <Qaterial/Details/Version.hpp>
 
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+using namespace qaterial;
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-
-namespace qaterial {
-
-class QATERIAL_API_ StepperElement : public QObject
+Version::Version(QObject* parent)
+    : QObject(parent)
+    , _major(QATERIAL_VERSION_MAJOR)
+    , _minor(QATERIAL_VERSION_MINOR)
+    , _patch(QATERIAL_VERSION_PATCH)
+    , _tag(QATERIAL_VERSION_TAG_HEX)
+    , _readable(QString::number(_major) + QStringLiteral(".") + QString::number(_minor) + QStringLiteral(".") + QString::number(_patch)
+                + QStringLiteral(".0x") + QString::number(_tag, 16).rightJustified(8, QChar('0')))
 {
-    Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(StepperElement)
-
-public:
-    StepperElement(QObject* parent = nullptr)
-        : QObject(parent)
-    {
-    }
-
-    QATERIAL_PROPERTY(QString, text, Text);
-    QATERIAL_PROPERTY(bool, done, Done);
-    QATERIAL_PROPERTY(bool, optional, Optional);
-    QATERIAL_PROPERTY(QString, alertMessage, AlertMessage);
-    QATERIAL_PROPERTY(QString, supportingText, SupportingText);
-};
-
 }
-
-#endif

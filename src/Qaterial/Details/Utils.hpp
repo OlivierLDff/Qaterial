@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,8 +20,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <Qaterial/IconDescription.hpp>
+#ifndef __QATERIAL_UTILS_HPP__
+#define __QATERIAL_UTILS_HPP__
+
+#include <Qaterial/Details/Export.hpp>
+#include <QtCore/QtGlobal>
 
 namespace qaterial {
 
+class QATERIAL_API_ Utils
+{
+public:
+    /**
+     * Register type to the qml engines
+     * Registered types are:
+     * -
+     */
+    Q_DECL_DEPRECATED static void registerTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+    Q_DECL_DEPRECATED static void loadResources();
+};
+
+void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
+
+/**
+ * @brief      Load qrc content in qrc:/Qaterial/
+ *
+ * @param[in]  autoRegisterStyle  Register Qaterial as default QQuickStyle.
+ * When true, every Controls from QtQuick.Controls will be Qaterial Control's.
+ * If you are not using Qaterial as your main qt quick control style. Set autoRegisterStyle to false.
+ * It is true by default to be as plug and play as possible to use Qaterial.
+ */
+void QATERIAL_API_ loadQmlResources(bool autoRegisterStyle = true);
+
 }
+
+#endif // __QATERIAL_UTILS_HPP__

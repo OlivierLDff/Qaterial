@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <Qaterial/Clipboard.hpp>
+#include <Qaterial/IO/Clipboard.hpp>
 
 #include <QtGui/QGuiApplication>
 #include <QtGui/QClipboard>

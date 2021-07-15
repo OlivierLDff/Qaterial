@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -23,8 +23,8 @@
 #ifndef __QATERIAL_TREE_ELEMENT_HPP__
 #define __QATERIAL_TREE_ELEMENT_HPP__
 
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
+#include <Qaterial/Details/Export.hpp>
+#include <Qaterial/Details/Property.hpp>
 
 #include <QOlm/QOlm.hpp>
 #include <QtCore/QObject>

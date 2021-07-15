@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,38 +20,35 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef __QATERIAL_UTILS_HPP__
-#define __QATERIAL_UTILS_HPP__
+#ifndef __QATERIAL_STEPPER_ELEMENT_HPP__
+#define __QATERIAL_STEPPER_ELEMENT_HPP__
 
-#include <Qaterial/Export.hpp>
-#include <QtCore/QtGlobal>
+#include <Qaterial/Details/Export.hpp>
+#include <Qaterial/Details/Property.hpp>
+
+#include <QtCore/QObject>
+#include <QtCore/QString>
 
 namespace qaterial {
 
-class QATERIAL_API_ Utils
+class QATERIAL_API_ StepperElement : public QObject
 {
+    Q_OBJECT
+    QATERIAL_REGISTER_TO_QML(StepperElement)
+
 public:
-    /**
-     * Register type to the qml engines
-     * Registered types are:
-     * -
-     */
-    Q_DECL_DEPRECATED static void registerTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
-    Q_DECL_DEPRECATED static void loadResources();
+    StepperElement(QObject* parent = nullptr)
+        : QObject(parent)
+    {
+    }
+
+    QATERIAL_PROPERTY(QString, text, Text);
+    QATERIAL_PROPERTY(bool, done, Done);
+    QATERIAL_PROPERTY(bool, optional, Optional);
+    QATERIAL_PROPERTY(QString, alertMessage, AlertMessage);
+    QATERIAL_PROPERTY(QString, supportingText, SupportingText);
 };
-
-void QATERIAL_API_ registerQmlTypes(const char* uri = nullptr, const quint8 major = 1, const quint8 minor = 0);
-
-/**
- * @brief      Load qrc content in qrc:/Qaterial/
- *
- * @param[in]  autoRegisterStyle  Register Qaterial as default QQuickStyle.
- * When true, every Controls from QtQuick.Controls will be Qaterial Control's.
- * If you are not using Qaterial as your main qt quick control style. Set autoRegisterStyle to false.
- * It is true by default to be as plug and play as possible to use Qaterial.
- */
-void QATERIAL_API_ loadQmlResources(bool autoRegisterStyle = true);
 
 }
 
-#endif // __QATERIAL_UTILS_HPP__
+#endif

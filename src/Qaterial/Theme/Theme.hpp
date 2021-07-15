@@ -23,8 +23,8 @@
 #ifndef __QATERIAL_THEME_HPP__
 #define __QATERIAL_THEME_HPP__
 
-#include <Qaterial/TextTheme.hpp>
-#include <Qaterial/ColorTheme.hpp>
+#include <Qaterial/Theme/TextTheme.hpp>
+#include <Qaterial/Theme/ColorTheme.hpp>
 
 namespace qaterial {
 

@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 //
 // Copyright (c) 2020 Olivier Le Doeuff
 //
@@ -20,18 +20,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <Qaterial/Utils.hpp>
-#include <Qaterial/Version.hpp>
-#include <Qaterial/Theme.hpp>
-#include <Qaterial/StepperElement.hpp>
-#include <Qaterial/TreeElement.hpp>
-#include <Qaterial/TextFile.hpp>
-#include <Qaterial/Clipboard.hpp>
-#include <Qaterial/FolderTreeModel.hpp>
-#include <Qaterial/Layout.hpp>
-#include <Qaterial/IconDescription.hpp>
-#include <Qaterial/IconLabelPositioner.hpp>
-#include <Qaterial/IconLabelImpl.hpp>
+#include <Qaterial/Details/Utils.hpp>
+#include <Qaterial/Details/Version.hpp>
+#include <Qaterial/Theme/Theme.hpp>
+#include <Qaterial/Navigation/StepperElement.hpp>
+#include <Qaterial/Navigation/TreeElement.hpp>
+#include <Qaterial/IO/TextFile.hpp>
+#include <Qaterial/IO/Clipboard.hpp>
+#include <Qaterial/IO/FolderTreeModel.hpp>
+#include <Qaterial/Layout/Layout.hpp>
+#include <Qaterial/Display/IconDescription.hpp>
+#include <Qaterial/Display/IconLabelPositioner.hpp>
+#include <Qaterial/Display/IconLabelImpl.hpp>
 
 #include <QtCore/QDir>
 #include <QtCore/QLoggingCategory>

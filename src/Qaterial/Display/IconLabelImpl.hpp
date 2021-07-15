@@ -23,10 +23,10 @@
 #ifndef __QATERIAL_ICON_LABEL_IMPL_HPP__
 #define __QATERIAL_ICON_LABEL_IMPL_HPP__
 
-#include <Qaterial/Export.hpp>
-#include <Qaterial/Property.hpp>
-#include <Qaterial/IconLabelPositioner.hpp>
-#include <Qaterial/IconDescription.hpp>
+#include <Qaterial/Details/Export.hpp>
+#include <Qaterial/Details/Property.hpp>
+#include <Qaterial/Display/IconLabelPositioner.hpp>
+#include <Qaterial/Display/IconDescription.hpp>
 
 #include <QtQuick/QQuickItem>
 
