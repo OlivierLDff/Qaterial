@@ -17,7 +17,7 @@ set(GOOGLEFONTS_TAG "0cdadf80ac5f29f10a73c29ce1f4f1ca75ffb392" CACHE STRING "Goo
 ## C++ libraries
 
 set(QOLM_REPOSITORY "https://github.com/OlivierLDff/QOlm.git" CACHE STRING "QOlm repository url")
-set(QOLM_TAG "v3.1.2" CACHE STRING "QOlm git tag")
+set(QOLM_TAG "v3.1.4" CACHE STRING "QOlm git tag")
 
 ## Ressources
 
