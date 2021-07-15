@@ -36,14 +36,9 @@
 #include <QtCore/QDir>
 #include <QtCore/QLoggingCategory>
 
-#include <QtGui/QGuiApplication>
 #include <QtGui/QFontDatabase>
 
 #include <QtQuickControls2/QQuickStyle>
-
-#ifdef Q_OS_WIN
-#    include <Windows.h>
-#endif
 
 Q_LOGGING_CATEGORY(qaterialUtils, "qaterial.utils");
 
@@ -167,20 +162,3 @@ void qaterial::loadQmlResources(bool autoRegisterStyle)
 {
     ::Qaterial_loadResources(autoRegisterStyle);
 }
-
-// Fix dpi at application startup
-class HighDpiFix
-{
-    HighDpiFix()
-    {
-#ifdef Q_OS_WIN
-#    if _WIN32_WINNT >= 0x0600
-        ::SetProcessDPIAware();
-#    endif
-#endif // Q_OS_WIN
-        QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    }
-    static HighDpiFix singleton;
-};
-
-HighDpiFix HighDpiFix::singleton;
