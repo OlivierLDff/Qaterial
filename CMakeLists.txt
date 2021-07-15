@@ -189,9 +189,6 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
   ${QATERIAL_TARGET}::Icons
   ${QATERIAL_TARGET}::Fonts
   ${QATERIAL_TARGET}::Components
-)
-
-target_link_libraries(${QATERIAL_TARGET} PUBLIC
   QOlm::QOlm
   Qt::Core
   Qt::Gui
