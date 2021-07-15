@@ -24,6 +24,5 @@
 #define __QATERIAL_HPP__
 
 #include <Qaterial/Details/Utils.hpp>
-#include <Qaterial/Details/Version.hpp>
 
 #endif

@@ -14,7 +14,10 @@ int main(int argc, char* argv[])
     QGuiApplication::setOrganizationName("Qaterial");
     QGuiApplication::setApplicationName("Qaterial Tests Loader");
     QGuiApplication::setOrganizationDomain("https://olivierldff.github.io/Qaterial/");
-    QGuiApplication::setApplicationVersion(qaterial::Version::version().readable());
+    const QString version = QString::number(qaterial::versionMajor()) + QStringLiteral(".") + QString::number(qaterial::versionMinor())
+                            + QStringLiteral(".") + QString::number(qaterial::versionPatch()) + QStringLiteral(".0x")
+                            + QString::number(qaterial::versionTag(), 16).rightJustified(8, QChar('0'));
+    QGuiApplication::setApplicationVersion(version);
 
     QCommandLineParser parser;
     parser.addPositionalArgument("source", QCoreApplication::translate("main", "Source file to load."));
