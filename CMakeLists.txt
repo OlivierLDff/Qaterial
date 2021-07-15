@@ -22,6 +22,11 @@
 
 cmake_minimum_required(VERSION 3.14.0 FATAL_ERROR)
 
+set(QATERIAL_MAIN_PROJECT OFF)
+if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+  set(QATERIAL_MAIN_PROJECT ON)
+endif()
+
 # ───── PROJECT OPTIONS ─────
 
 include(cmake/Version.cmake)
@@ -46,7 +51,9 @@ set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
 set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+if(QATERIAL_MAIN_PROJECT)
+  set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+endif()
 
 message(STATUS "------ ${QATERIAL_TARGET} Configuration ------")
 
