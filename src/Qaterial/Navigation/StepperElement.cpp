@@ -23,4 +23,10 @@
 #include <Qaterial/Navigation/StepperElement.hpp>
 
 namespace qaterial {
+
+StepperElement::StepperElement(QObject* parent)
+    : QObject(parent)
+{
+}
+
 }

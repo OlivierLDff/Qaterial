@@ -37,10 +37,7 @@ class QATERIAL_API_ StepperElement : public QObject
     QATERIAL_REGISTER_TO_QML(StepperElement)
 
 public:
-    StepperElement(QObject* parent = nullptr)
-        : QObject(parent)
-    {
-    }
+    StepperElement(QObject* parent = nullptr);
 
     QATERIAL_PROPERTY(QString, text, Text);
     QATERIAL_PROPERTY(bool, done, Done);

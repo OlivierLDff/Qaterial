@@ -23,4 +23,15 @@
 #include <Qaterial/Navigation/TreeElement.hpp>
 
 namespace qaterial {
+
+TreeElement::TreeElement(QObject* parent)
+    : TreeModel(parent)
+{
+}
+
+TreeElement* TreeElement::children()
+{
+    return this;
+}
+
 }

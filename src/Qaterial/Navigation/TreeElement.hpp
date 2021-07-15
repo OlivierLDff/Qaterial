@@ -40,10 +40,7 @@ class QATERIAL_API_ TreeElement : public TreeModel
     QATERIAL_REGISTER_TO_QML(TreeElement)
 
 public:
-    TreeElement(QObject* parent = nullptr)
-        : TreeModel(parent)
-    {
-    }
+    TreeElement(QObject* parent = nullptr);
 
 protected:
     Q_PROPERTY(TreeElement* children READ children CONSTANT);
@@ -51,10 +48,7 @@ protected:
     QATERIAL_PROPERTY(QString, text, Text);
 
 public:
-    TreeElement* children()
-    {
-        return this;
-    }
+    TreeElement* children();
 };
 
 }
