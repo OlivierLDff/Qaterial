@@ -202,7 +202,10 @@ target_link_libraries(${QATERIAL_TARGET} PUBLIC
   Qt::QuickControls2
 )
 
-set_target_properties(${QATERIAL_TARGET} PROPERTIES AUTOMOC TRUE)
+set_target_properties(${QATERIAL_TARGET} PROPERTIES
+  AUTOMOC TRUE
+  PUBLIC_HEADER "${QATERIAL_PUBLIC_HEADERS}"
+)
 if(QATERIAL_ENABLE_UNITY_BUILD)
   set_target_properties(${QATERIAL_TARGET} PROPERTIES UNITY_BUILD ON)
 endif()
