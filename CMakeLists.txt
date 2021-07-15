@@ -229,7 +229,7 @@ endif()
 
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
-if(${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
+if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
   qt_generate_plugin_import(${QATERIAL_TARGET})
