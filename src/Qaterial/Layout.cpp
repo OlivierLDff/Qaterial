@@ -26,16 +26,17 @@
 
 using namespace qaterial;
 
-LayoutAttached::LayoutAttached(QObject* object) :
-    _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge)),
-    _large(Layout::defaultPreferredFill(Layout::Large)),
-    _medium(Layout::defaultPreferredFill(Layout::Medium)),
-    _small(Layout::defaultPreferredFill(Layout::Small)),
-    _extraSmall(Layout::defaultPreferredFill(Layout::ExtraSmall))
+LayoutAttached::LayoutAttached(QObject* object)
+    : _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge))
+    , _large(Layout::defaultPreferredFill(Layout::Large))
+    , _medium(Layout::defaultPreferredFill(Layout::Medium))
+    , _small(Layout::defaultPreferredFill(Layout::Small))
+    , _extraSmall(Layout::defaultPreferredFill(Layout::ExtraSmall))
 {
 }
 
-Layout::Layout(QObject* parent) : QObject(parent)
+Layout::Layout(QObject* parent)
+    : QObject(parent)
 {
     // Reevaluate no matter if horizontal or vertical layout
     connect(this, &Layout::itemsChanged, this, &Layout::computeChildItemsSize, Qt::QueuedConnection);
@@ -110,7 +111,10 @@ void Layout::resetUserColumns()
     computeColumnsFromType();
 }
 
-void Layout::forceUpdate() { computeChildItemsSize(); }
+void Layout::forceUpdate()
+{
+    computeChildItemsSize();
+}
 
 void Layout::triggerHorizontalReevaluate()
 {
@@ -158,7 +162,10 @@ void Layout::resetItemsWidth()
 {
     if(!_widthForcedOnce)
         return;
-    for(const auto item: _items) { item->resetWidth(); }
+    for(const auto item: _items)
+    {
+        item->resetWidth();
+    }
     _widthForcedOnce = false;
 }
 
@@ -166,7 +173,10 @@ void Layout::resetItemsHeight()
 {
     if(!_heightForcedOnce)
         return;
-    for(const auto item: _items) { item->resetHeight(); }
+    for(const auto item: _items)
+    {
+        item->resetHeight();
+    }
     _heightForcedOnce = false;
 }
 
@@ -199,11 +209,17 @@ void Layout::doForeachItem(const std::function<void(QQuickItem*)>& callback)
 
     if(layoutDirection() == Qt::LeftToRight)
     {
-        for(auto it = _items.begin(); it != _items.end(); ++it) { callback(*it); }
+        for(auto it = _items.begin(); it != _items.end(); ++it)
+        {
+            callback(*it);
+        }
     }
     else
     {
-        for(auto it = _items.rbegin(); it != _items.rend(); ++it) { callback(*it); }
+        for(auto it = _items.rbegin(); it != _items.rend(); ++it)
+        {
+            callback(*it);
+        }
     }
 }
 
@@ -215,16 +231,25 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
 
     switch(LayoutBreakpoint(type()))
     {
-    case ExtraLarge: return LayoutFill(attached->extraLarge());
-    case Large: return LayoutFill(attached->large());
-    case Medium: return LayoutFill(attached->medium());
-    case Small: return LayoutFill(attached->small());
-    case ExtraSmall: return LayoutFill(attached->extraSmall());
-    default: return FillParent;
+    case ExtraLarge:
+        return LayoutFill(attached->extraLarge());
+    case Large:
+        return LayoutFill(attached->large());
+    case Medium:
+        return LayoutFill(attached->medium());
+    case Small:
+        return LayoutFill(attached->small());
+    case ExtraSmall:
+        return LayoutFill(attached->extraSmall());
+    default:
+        return FillParent;
     }
 }
 
-Layout::LayoutFill Layout::defaultPreferredFill() const { return defaultPreferredFill(type()); }
+Layout::LayoutFill Layout::defaultPreferredFill() const
+{
+    return defaultPreferredFill(type());
+}
 
 int Layout::fillToRealBlockCount(LayoutFill fill) const
 {
@@ -256,10 +281,17 @@ void Layout::computeColumnsFromType()
     switch(LayoutBreakpoint(type()))
     {
     case ExtraLarge:
-    case Large: setColumns(12); break;
-    case Medium: setColumns(8); break;
+    case Large:
+        setColumns(12);
+        break;
+    case Medium:
+        setColumns(8);
+        break;
     case Small:
-    case ExtraSmall: setColumns(4); break;
-    default: setColumns(12);
+    case ExtraSmall:
+        setColumns(4);
+        break;
+    default:
+        setColumns(12);
     }
 }

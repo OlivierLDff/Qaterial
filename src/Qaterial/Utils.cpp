@@ -148,7 +148,10 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
     }
 }
 
-static void Qaterial_loadResources() { Qaterial_loadResources(true); }
+static void Qaterial_loadResources()
+{
+    Qaterial_loadResources(true);
+}
 
 #ifndef QATERIAL_STATIC
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
@@ -157,13 +160,25 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 
 using namespace qaterial;
 
-void Utils::registerTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
+void Utils::registerTypes(const char* uri, const quint8 major, const quint8 minor)
+{
+    ::Qaterial_registerTypes(uri, major, minor);
+}
 
-void Utils::loadResources() { ::Qaterial_loadResources(); }
+void Utils::loadResources()
+{
+    ::Qaterial_loadResources();
+}
 
-void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
+void qaterial::registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
+{
+    ::Qaterial_registerTypes(uri, major, minor);
+}
 
-void qaterial::loadQmlResources(bool autoRegisterStyle) { ::Qaterial_loadResources(autoRegisterStyle); }
+void qaterial::loadQmlResources(bool autoRegisterStyle)
+{
+    ::Qaterial_loadResources(autoRegisterStyle);
+}
 
 // Fix dpi at application startup
 class HighDpiFix

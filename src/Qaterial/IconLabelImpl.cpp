@@ -24,8 +24,10 @@
 
 namespace qaterial {
 
-IconLabelImpl::IconLabelImpl(QQuickItem* parent) :
-    QQuickItem(parent), _positioner(new IconLabelPositioner(this)), _icon(new IconDescription(this))
+IconLabelImpl::IconLabelImpl(QQuickItem* parent)
+    : QQuickItem(parent)
+    , _positioner(new IconLabelPositioner(this))
+    , _icon(new IconDescription(this))
 {
     _positioner->setEnabled(false);
 
@@ -172,7 +174,10 @@ void IconLabelImpl::updateLabelImplicitSize() const
     }
 }
 
-void IconLabelImpl::updateContainerSize() const { _positioner->setContainerSize(size()); }
+void IconLabelImpl::updateContainerSize() const
+{
+    _positioner->setContainerSize(size());
+}
 
 void IconLabelImpl::updateImplicitSize()
 {

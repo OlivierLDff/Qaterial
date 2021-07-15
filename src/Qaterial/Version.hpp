@@ -55,11 +55,26 @@ private:
     QString _readable;
 
 public:
-    quint32 major() const { return _major; }
-    quint32 minor() const { return _minor; }
-    quint32 patch() const { return _patch; }
-    quint32 tag() const { return _tag; }
-    QString readable() const { return _readable; }
+    quint32 major() const
+    {
+        return _major;
+    }
+    quint32 minor() const
+    {
+        return _minor;
+    }
+    quint32 patch() const
+    {
+        return _patch;
+    }
+    quint32 tag() const
+    {
+        return _tag;
+    }
+    QString readable() const
+    {
+        return _readable;
+    }
 };
 
 }

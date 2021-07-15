@@ -28,7 +28,9 @@
 
 using namespace qaterial;
 
-Clipboard::Clipboard(QObject* parent) : QObject(parent), _clipboard(QGuiApplication::clipboard())
+Clipboard::Clipboard(QObject* parent)
+    : QObject(parent)
+    , _clipboard(QGuiApplication::clipboard())
 {
     // If assert here it mean Clipboard have been instantiated in a non QGuiApplication context
     Q_ASSERT(_clipboard);

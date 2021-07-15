@@ -36,7 +36,10 @@ class ThemeAttached : public QObject
 
     // ──── CONSTRUCTOR ────
 public:
-    ThemeAttached(QObject* parent = nullptr) : QObject(parent) {}
+    ThemeAttached(QObject* parent = nullptr)
+        : QObject(parent)
+    {
+    }
 
     // ──── PROPERTY ────
 public:
@@ -64,14 +67,20 @@ protected:
     Q_PROPERTY(qaterial::ColorTheme* colorTheme READ colorTheme NOTIFY colorThemeChanged);
 
 public:
-    ColorTheme* colorTheme() const { return _dark ? _darkColorTheme : _lightColorTheme; }
+    ColorTheme* colorTheme() const
+    {
+        return _dark ? _darkColorTheme : _lightColorTheme;
+    }
 
 Q_SIGNALS:
     void colorThemeChanged();
 
     // ──── ATTACHED ────
 public:
-    static ThemeAttached* qmlAttachedProperties(QObject* parent) { return new ThemeAttached(parent); }
+    static ThemeAttached* qmlAttachedProperties(QObject* parent)
+    {
+        return new ThemeAttached(parent);
+    }
 };
 
 }

@@ -24,7 +24,8 @@
 
 namespace qaterial {
 
-Theme::Theme(QObject* parent) : QObject(parent)
+Theme::Theme(QObject* parent)
+    : QObject(parent)
 {
     connect(this,
         &Theme::darkChanged,

@@ -24,7 +24,8 @@
 
 namespace qaterial {
 
-TextTheme::TextTheme(QObject* parent) : QObject(parent)
+TextTheme::TextTheme(QObject* parent)
+    : QObject(parent)
 {
     _headline1.setFamily("Roboto");
     _headline1.setPixelSize(96);
