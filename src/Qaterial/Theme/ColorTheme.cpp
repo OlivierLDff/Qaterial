@@ -32,8 +32,10 @@ static T lerp(T a, T b, T f)
     return a + f * (b - a);
 }
 template<typename T>
-static T dotProduct(T a, T b, T f)
+static T invLerp(T a, T b, T f)
 {
+    if(qFuzzyCompare(a, b))
+        return 0;
     return (f - a) / (b - a);
 }
 
@@ -67,7 +69,7 @@ static qreal elevationToOverlay(const int& elevation)
     const auto [fromKey, fromOverlay] = *std::prev(iterator);
     const auto [toKey, toOverlay] = *iterator;
 
-    const auto overlayRatio = dotProduct(qreal(fromKey), qreal(toKey), qreal(elevation));
+    const auto overlayRatio = invLerp(qreal(fromKey), qreal(toKey), qreal(elevation));
 
     return lerp(fromOverlay, toOverlay, overlayRatio);
 }
