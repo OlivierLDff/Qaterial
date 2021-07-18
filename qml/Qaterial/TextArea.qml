@@ -384,6 +384,7 @@ Control
     leftPadding: _control.virtualLeftPadding + (_control.prefixText != "" ? _prefixLabel.contentWidth + _control
       .textSpacing : 0)
 
+    onTextChanged: () => _control.text = text
     onEditingFinished: _control.editingFinished()
     onLinkActivated: _control.linkActivated(link)
     onLinkHovered: _control.linkHovered(link)
