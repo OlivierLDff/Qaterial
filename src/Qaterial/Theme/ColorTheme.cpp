@@ -162,10 +162,10 @@ QColor ColorTheme::blendedColor(const QColor& color1, const QColor& color2, cons
     if(color1 == color2)
         return color1;
 
-    return QColor::fromRgbF(lerp(color1.redF(), color2.redF(), alpha),
-        lerp(color1.greenF(), color2.greenF(), alpha),
-        lerp(color1.blueF(), color2.blueF(), alpha),
-        lerp(color1.alphaF(), color2.alphaF(), alpha));
+    return QColor::fromRgbF(lerp<double>(color1.redF(), color2.redF(), alpha),
+        lerp<double>(color1.greenF(), color2.greenF(), alpha),
+        lerp<double>(color1.blueF(), color2.blueF(), alpha),
+        lerp<double>(color1.alphaF(), color2.alphaF(), alpha));
 }
 
 QColor ColorTheme::getElevatedColor(const QColor& color, const int& elevation)
