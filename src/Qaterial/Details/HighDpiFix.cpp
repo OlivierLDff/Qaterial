@@ -37,7 +37,10 @@ class HighDpiFix
         ::SetProcessDPIAware();
 #    endif
 #endif // Q_OS_WIN
+
+#if QT_VERSION_MAJOR < 6 // AA_EnableHighDpiScaling is enabled by default on qt6
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     }
     static HighDpiFix singleton;
 };
