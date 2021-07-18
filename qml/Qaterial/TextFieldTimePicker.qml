@@ -4,7 +4,7 @@
  */
 
 // Qt
-import QtQuick 2.0
+import QtQuick 2.15
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -31,9 +31,9 @@ Qaterial.TextField
 
   title: "Time"
   placeholderText: "_ _ : _ _"
-  validator: RegExpValidator
+  validator: RegularExpressionValidator
   {
-    regExp: root.styleAm ? /(0[1-9]|1[0-2]):[0-5][0-9]/ : /([01]?[0-9]|2[0-3]):[0-5][0-9]/
+    regularExpression: root.styleAm ? /(0[1-9]|1[0-2]):[0-5][0-9]/ : /([01]?[0-9]|2[0-3]):[0-5][0-9]/
   }
   errorText: "Invalid Time Format"
 
