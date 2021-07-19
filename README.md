@@ -1,6 +1,7 @@
 # Qaterial
 
 [![👷 Continuous Deployment](https://github.com/OlivierLDff/Qaterial/workflows/%F0%9F%91%B7%20Continuous%20Deployment/badge.svg)](https://github.com/OlivierLDff/Qaterial/actions/workflows/main.yml)
+[![gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev/) 
 
 A collection Material Components to build faster UI using Qml. 
 
