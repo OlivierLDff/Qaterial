@@ -41,6 +41,9 @@ Clipboard::Clipboard(QObject* parent)
         [this]()
         {
             QClipboard* clipboard = QGuiApplication::clipboard();
+            if(!clipboard)
+                return;
+
             const auto mimeData = clipboard->mimeData();
             if(!mimeData)
                 return;
