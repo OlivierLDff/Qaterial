@@ -88,11 +88,6 @@ if(QATERIAL_VERBOSE)
 endif()
 
 # ───── QT DEPENDENCIES ─────
-if (MSVC)
-  if (NOT QATERIAL_BUILD_SHARED)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-  endif ()
-endif ()
 
 find_package(Qt5 REQUIRED COMPONENTS
   Core
