@@ -1,0 +1,22 @@
+# File auto generated with CMake qt_generate_qmldir. Run CMake to regenerate if files changed.
+
+module Qaterial.Qt5Compat
+
+CardMedia 1.0 CardMedia.qml
+CardRippleBackground 1.0 CardRippleBackground.qml
+ClipRRect 1.0 ClipRRect.qml
+ColorIcon 1.0 ColorIcon.qml
+ColorPaletteButton 1.0 ColorPaletteButton.qml
+FabButton 1.0 FabButton.qml
+FlatFabButton 1.0 FlatFabButton.qml
+GradientSlider 1.0 GradientSlider.qml
+GroupBox 1.0 GroupBox.qml
+Icon 1.0 Icon.qml
+ListDelegateContent 1.0 ListDelegateContent.qml
+MenuBarItem 1.0 MenuBarItem.qml
+MenuItem 1.0 MenuItem.qml
+RawMaterialButton 1.0 RawMaterialButton.qml
+RoundImage 1.0 RoundImage.qml
+SliderHandle 1.0 SliderHandle.qml
+SquacleButton 1.0 SquacleButton.qml
+SquacleImageButton 1.0 SquacleImageButton.qml

@@ -5,9 +5,12 @@
 
 // Qt
 import QtQuick
+import QtQuick.Controls
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
+import Qaterial.Qt5Compat 1.0 as Qaterial
+
 
 Item
 {
@@ -29,6 +32,11 @@ Item
   readonly property bool imagePresent: _roundImage.source != ""
 
   property bool drawline: Qaterial.Style.debug.drawDebugIconLabel
+
+  property int topPadding: 0
+  property int bottomPadding: 0
+  property int rightPadding: 0
+  property int leftPadding: 0
 
   Qaterial.DebugRectangle
   {

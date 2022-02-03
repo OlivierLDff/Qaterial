@@ -13,6 +13,7 @@ import QtQuick.Controls.Material
 import QtQuick.Controls.Material.impl
 
 import Qaterial 1.0 as Qaterial
+import Qaterial.Qt5Compat 1.0 as Qaterial
 
 T.ComboBox
 {

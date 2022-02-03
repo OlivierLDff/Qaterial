@@ -8,6 +8,7 @@
 
 import QtQuick
 import Qaterial 1.0 as Qaterial
+import Qaterial.Qt5Compat 1.0 as Qaterial
 
 Qaterial.IconLabelImpl
 {
