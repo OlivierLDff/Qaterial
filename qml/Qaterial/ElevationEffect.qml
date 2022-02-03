@@ -35,8 +35,8 @@
  ****************************************************************************/
 
 import QtQuick 2.6
-import QtQuick.Controls.Material 2.0
-import QtQuick.Controls.Material.impl 2.0
+import QtQuick.Controls.Material
+import QtQuick.Controls.Material.impl
 
 /*!
    An effect for standard Material Design elevation shadows. Useful for using as \c layer.effect.

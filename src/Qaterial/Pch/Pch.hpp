@@ -1,26 +1,29 @@
-﻿#ifndef __QATERIAL_PCH_HPP__
+#ifndef __QATERIAL_PCH_HPP__
 #define __QATERIAL_PCH_HPP__
 
 #include <memory>
 #include <set>
 
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/sink.h>
+
 #include <QOlm/QOlm.hpp>
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QFile>
-#include <QtCore/QSaveFile>
-#include <QtCore/QFileInfo>
-#include <QtCore/QUrl>
-#include <QtCore/QDir>
+#include <QObject>
+#include <QFile>
+#include <QSaveFile>
+#include <QObject>
+#include <QString>
+#include <QFileInfo>
+#include <QUrl>
+#include <QGuiApplication>
+#include <QDir>
+#include <QFontDatabase>
 
-#include <QtGui/QGuiApplication>
-#include <QtGui/QFontDatabase>
+#include <QQmlEngine>
+#include <QQmlFile>
 
-#include <QtQml/QQmlEngine>
-#include <QtQml/QQmlFile>
-
-#include <QtQuickControls2/QQuickStyle>
+#include <QQuickStyle>
 
 #ifdef major
 #    undef major

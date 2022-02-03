@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Templates 2.12 as T
-import QtGraphicalEffects 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Templates as T
+import Qt5Compat.GraphicalEffects
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -38,7 +38,7 @@ T.Button
 
   leftPadding:
   {
-    if(icon.source != "" && !mirrored || text == "")
+    if(icon.source !== "" && !mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + leftInset
 
     if(flat && !outlined)
@@ -47,7 +47,7 @@ T.Button
   }
   rightPadding:
   {
-    if(icon.source != "" && mirrored || text == "")
+    if(icon.source !== "" && mirrored || text === "")
       return Qaterial.Style.rawButton.iconPadding + rightInset
 
     if(flat && !outlined)
@@ -61,14 +61,12 @@ T.Button
 
   property bool outlined: false
 
-  palette.highlight: Qaterial.Style.colorTheme.accent
-
   property color foregroundColor:
   {
     if(!enabled)
       return Qaterial.Style.disabledTextColor()
     if(flat && highlighted)
-      return palette.highlight
+      return Qaterial.Style.accentColor
     return colorReversed ? Qaterial.Style.primaryTextColorReversed() : Qaterial.Style.primaryTextColor()
   }
   property color backgroundColor:
@@ -77,7 +75,7 @@ T.Button
       return (outlined && pressed) ? Qaterial.Style.backgroundColor : "transparent"
     if(!enabled)
       return Qaterial.Style.buttonDisabledColor
-    return highlighted ? palette.highlight : Qaterial.Style.buttonColor
+    return highlighted ? Qaterial.Style.accentColor : Qaterial.Style.buttonColor
   }
 
   readonly property int flatRippleColor: onPrimary ? Qaterial.Style.RippleBackground.Primary : Qaterial.Style

@@ -5,16 +5,16 @@ message(STATUS "Add Test: ${QATERIAL_TEST_LOADER}")
 add_executable(${QATERIAL_TEST_LOADER} QaterialTestLoader.cpp)
 
 # We assume that Qaterial is available somewhere. You should have a look at 'cmake/FetchQaterial.cmake'
-target_link_libraries(${QATERIAL_TEST_LOADER} PRIVATE
-  ${QATERIAL_TARGET}::${QATERIAL_TARGET}
-  Qt::Core
-  Qt::Gui
-  Qt::Qml
-)
+target_link_libraries(${QATERIAL_TEST_LOADER} PRIVATE Qaterial)
 
 # AUTOMOC isn't necessary here, but it's a hello world
 # AUTORCC is to compile the .qrc files
 set_target_properties(${QATERIAL_TEST_LOADER} PROPERTIES FOLDER "${QATERIAL_FOLDER_PREFIX}/Test")
+
+# Fix gcc7 bug major/minor
+if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
+  target_precompile_headers(${QATERIAL_TEST_LOADER} PRIVATE ${PROJECT_SOURCE_DIR}/src/Qaterial/Pch/Pch.hpp)
+endif()
 
 file(GLOB_RECURSE QML_FILES ${PROJECT_SOURCE_DIR}/qml/*.qml)
 

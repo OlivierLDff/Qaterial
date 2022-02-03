@@ -4,8 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -384,7 +384,6 @@ Control
     leftPadding: _control.virtualLeftPadding + (_control.prefixText != "" ? _prefixLabel.contentWidth + _control
       .textSpacing : 0)
 
-    onTextChanged: () => _control.text = text
     onEditingFinished: _control.editingFinished()
     onLinkActivated: _control.linkActivated(link)
     onLinkHovered: _control.linkHovered(link)

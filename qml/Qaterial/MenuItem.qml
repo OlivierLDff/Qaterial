@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
-import QtGraphicalEffects 1.12
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
+import Qt5Compat.GraphicalEffects
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -39,9 +39,9 @@ T.MenuItem
   leftInset: Qaterial.Style.menuItem.leftInset
   rightInset: Qaterial.Style.menuItem.rightInset
 
-  leftPadding: (icon.source != "" && !mirrored || text == "" ? Qaterial.Style.menuItem.iconPadding : Qaterial.Style
+  leftPadding: (icon.source !== "" && !mirrored || text === "" ? Qaterial.Style.menuItem.iconPadding : Qaterial.Style
     .menuItem.padding) + leftInset
-  rightPadding: (icon.source != "" && mirrored || text == "" ? Qaterial.Style.menuItem.iconPadding : Qaterial.Style
+  rightPadding: (icon.source !== "" && mirrored || text === "" ? Qaterial.Style.menuItem.iconPadding : Qaterial.Style
     .menuItem.padding) + rightInset
   topPadding: 0
   bottomPadding: 0

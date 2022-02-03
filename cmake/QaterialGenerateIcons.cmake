@@ -87,8 +87,8 @@ function(_qaterial_generate_icons_class HEADER SRC)
       "// Everything written here will be lost.\n\n"
       "#ifndef __QATERIAL_ICONS_HPP__\n"
       "#define __QATERIAL_ICONS_HPP__\n\n"
-      "#include <Qaterial/Details/Export.hpp>\n"
-      "#include <Qaterial/Details/Property.hpp>\n\n"
+      "#include <Qaterial/Export.hpp>\n"
+      "#include <Qaterial/Property.hpp>\n\n"
       "#include <QtCore/QObject>\n\n"
       "namespace qaterial {\n\n"
       "class QATERIAL_API_ Icons : public QObject\n"
@@ -162,7 +162,7 @@ function(_qaterial_generate_icons_class HEADER SRC)
 
     set(OUT_CONTENT_CPP "")
     string(APPEND OUT_CONTENT_CPP
-      "#include <Qaterial/Display/Icons.hpp>\n"
+      "#include <Qaterial/Icons.hpp>\n"
       "#include \"moc_Icons.cpp\"\n"
       "\n"
       "void __Qaterial_registerIconsSingleton()\n"
@@ -206,8 +206,8 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       "// Everything written here will be lost.\n\n"
       "#ifndef __QATERIAL_ICONS_HPP__\n"
       "#define __QATERIAL_ICONS_HPP__\n\n"
-      "#include <Qaterial/Details/Export.hpp>\n"
-      "#include <Qaterial/Details/Property.hpp>\n\n"
+      "#include <Qaterial/Export.hpp>\n"
+      "#include <Qaterial/Property.hpp>\n\n"
       "#include <QtCore/QObject>\n\n"
       "namespace qaterial {\n\n"
       "class QATERIAL_API_ Icons : public QObject\n"

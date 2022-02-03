@@ -90,22 +90,3 @@ target_link_libraries(${QATERIAL_TARGET}Fonts PRIVATE
 if(QATERIAL_FOLDER_PREFIX)
   set_target_properties(${QATERIAL_TARGET}Fonts PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
 endif()
-
-if(QATERIAL_ENABLE_INSTALL)
-  include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Fonts
-    EXPORT ${QATERIAL_TARGET}FontsTargets
-  )
-
-  export(EXPORT ${QATERIAL_TARGET}FontsTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}FontsTargets.cmake"
-  )
-
-  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
-  install(EXPORT ${QATERIAL_TARGET}FontsTargets
-    FILE
-    ${QATERIAL_TARGET}FontsTargets.cmake
-    DESTINATION
-    ${ConfigPackageLocation}
-  )
-endif()

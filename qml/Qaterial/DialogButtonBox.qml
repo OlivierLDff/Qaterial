@@ -4,9 +4,9 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -30,15 +30,14 @@ T.DialogButtonBox
 
   delegate: Qaterial.FlatButton {}
 
-  contentItem: Row
+  contentItem: ListView
   {
+    model: root.contentModel
     spacing: root.spacing
-
-    Repeater
-    {
-      model: root.contentModel
-    }
-  } // Row
+    orientation: ListView.Horizontal
+    boundsBehavior: Flickable.StopAtBounds
+    snapMode: ListView.SnapToItem
+  } // ListView
 
   background: Rectangle
   {

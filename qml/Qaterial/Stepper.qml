@@ -4,8 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.14
-import QtQml 2.14
+import QtQuick
+import QtQml
 
 // Qaterial
 import Qaterial 1.0 as Qaterial

@@ -20,7 +20,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include <Qaterial/_Template.hpp>
+// ──── INCLUDE ────
+
+// Library Headers
+#include <Qaterial/.hpp>
+
+// Dependencies Headers
+
+// ──── DECLARATION ────
+
+// ──── FUNCTIONS ────
 
 namespace qaterial {
 

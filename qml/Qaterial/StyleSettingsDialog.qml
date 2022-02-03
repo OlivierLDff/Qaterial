@@ -4,8 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Layouts
 
 // Qaterial
 import Qaterial 1.0 as Qaterial
@@ -239,7 +239,7 @@ Qaterial.Dialog
               anchors.fill: parent
               onClicked:
               {
-                if(Qaterial.Style.theme == Qaterial.Style.Theme.Light)
+                if(Qaterial.Style.theme === Qaterial.Style.Theme.Light)
                 {
                   Qaterial.Style.primaryColorLight = model.materialColor ? model.color : model.colorString
                 } // if
@@ -280,7 +280,7 @@ Qaterial.Dialog
               anchors.fill: parent
               onClicked:
               {
-                if(Qaterial.Style.theme == Qaterial.Style.Theme.Light)
+                if(Qaterial.Style.theme === Qaterial.Style.Theme.Light)
                 {
                   Qaterial.Style.accentColorLight = model.materialColor ? model.color : model.colorString
                 } // if

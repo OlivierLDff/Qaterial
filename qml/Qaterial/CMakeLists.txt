@@ -27,7 +27,7 @@ qt_generate_qrc(QATERIAL_QML_QRC
 )
 
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
+qt6_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
@@ -54,23 +54,4 @@ target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
 
 if(QATERIAL_FOLDER_PREFIX)
   set_target_properties(${QATERIAL_TARGET}Components PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
-endif()
-
-if(QATERIAL_ENABLE_INSTALL)
-  include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Components
-    EXPORT ${QATERIAL_TARGET}ComponentsTargets
-  )
-
-  export(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ComponentsTargets.cmake"
-  )
-
-  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
-  install(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-    FILE
-    ${QATERIAL_TARGET}ComponentsTargets.cmake
-    DESTINATION
-    ${ConfigPackageLocation}
-  )
 endif()

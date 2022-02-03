@@ -1,4 +1,4 @@
-if(TARGET QOlm::QOlm)
+if(TARGET QOlm)
   return()
 endif()
 
@@ -14,5 +14,4 @@ FetchContent_Declare(
 )
 
 set(QOLM_FOLDER_PREFIX "Dependencies" CACHE STRING "Prefix folder for all QOlm generated targets in generated project (only decorative)")
-set(QOLM_ENABLE_INSTALL ${QATERIAL_ENABLE_INSTALL} CACHE BOOL "Generate the install target")
 FetchContent_MakeAvailable(QOlm)

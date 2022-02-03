@@ -1,7 +1,6 @@
 # Qaterial
 
 [![👷 Continuous Deployment](https://github.com/OlivierLDff/Qaterial/workflows/%F0%9F%91%B7%20Continuous%20Deployment/badge.svg)](https://github.com/OlivierLDff/Qaterial/actions/workflows/main.yml)
-[![gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.dev/) 
 
 A collection Material Components to build faster UI using Qml. 
 
@@ -59,6 +58,7 @@ My goal is to move to more standard API relying more only on QtQuickControls def
 ## 📌 Dependencies
 
 * [QOlm](https://github.com/OlivierLDff/QOlm)
+* [spdlog](https://github.com/gabime/spdlog)
 * `Qt::Core`, `Qt::Gui`, `Qt::Qml`, `Qt::Quick`, `Qt::QuickControls2`, `Qt::Svg`, `Qt::Xml`
 * [googlefonts](https://github.com/OlivierLDff/fonts)
 * [MaterialDesignIcons](https://github.com/OlivierLDff/MaterialDesignSvgo)

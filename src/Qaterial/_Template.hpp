@@ -23,8 +23,17 @@
 #ifndef __QATERIAL_TEMPLATE_HPP__
 #define __QATERIAL_TEMPLATE_HPP__
 
+// ──── INCLUDE ────
+
+// Library Headers
 #include <Qaterial/Export.hpp>
 #include <Qaterial/Property.hpp>
+
+// Dependencies Headers
+
+// ──── DECLARATION ────
+
+// ──── CLASS ────
 
 namespace qaterial {
 
