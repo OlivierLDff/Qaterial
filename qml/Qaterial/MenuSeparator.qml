@@ -9,7 +9,7 @@ import QtQuick.Templates as T
 import QtQuick.Controls
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 T.MenuSeparator
 {

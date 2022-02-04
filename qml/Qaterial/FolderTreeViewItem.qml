@@ -5,7 +5,8 @@ import QtQuick
 import QtQuick.Templates as T
 import QtQuick.Controls
 
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
+import Qaterial.Qt5Compat 1.0 as Qaterial
 
 T.ItemDelegate
 {
