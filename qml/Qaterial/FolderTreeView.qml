@@ -5,7 +5,6 @@ import QtQuick
 
 import Qaterial as Qaterial
 
-
 Qaterial.TreeView
 {
   id: treeView
