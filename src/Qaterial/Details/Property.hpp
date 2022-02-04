@@ -54,10 +54,7 @@ private:
 
 #define _QATERIAL_PROPERTY_GETTER(type, attribute, override)                                                                               \
 public:                                                                                                                                    \
-    type attribute() const override                                                                                                        \
-    {                                                                                                                                      \
-        return _##attribute;                                                                                                               \
-    }                                                                                                                                      \
+    type attribute() const override { return _##attribute; }                                                                               \
                                                                                                                                            \
 private:
 
@@ -104,10 +101,7 @@ private:
 
 #define _QATERIAL_PROPERTY_RESET(type, Attribute, def)                                                                                     \
 public:                                                                                                                                    \
-    void reset##Attribute()                                                                                                                \
-    {                                                                                                                                      \
-        set##Attribute(def);                                                                                                               \
-    }                                                                                                                                      \
+    void reset##Attribute() { set##Attribute(def); }                                                                                       \
                                                                                                                                            \
 private:
 
@@ -191,10 +185,7 @@ private:
 
 #define QATERIAL_PROXY_IMPL(proxiedType, proxied, proxiedAttribute, ProxiedAttribute, type, attribute, Attribute, def)                     \
 public:                                                                                                                                    \
-    type attribute() const override final                                                                                                  \
-    {                                                                                                                                      \
-        return type(proxied ? type(proxied->proxiedAttribute()) : type(def));                                                              \
-    }                                                                                                                                      \
+    type attribute() const override final { return type(proxied ? type(proxied->proxiedAttribute()) : type(def)); }                        \
     bool set##Attribute(const type& value) override                                                                                        \
     {                                                                                                                                      \
         if(proxied)                                                                                                                        \
@@ -214,25 +205,16 @@ private:
 
 #define _QATERIAL_PTR_GETTER(type, attribute, override)                                                                                    \
 public:                                                                                                                                    \
-    type* attribute() const override                                                                                                       \
-    {                                                                                                                                      \
-        return _##attribute;                                                                                                               \
-    }
+    type* attribute() const override { return _##attribute; }
 
 #define _QATERIAL_PTR_CONST_ONLY_GETTER(type, attribute, override)                                                                         \
 public:                                                                                                                                    \
-    const type* attribute() const override                                                                                                 \
-    {                                                                                                                                      \
-        return &_##attribute;                                                                                                              \
-    }
+    const type* attribute() const override { return &_##attribute; }
 
 #define _QATERIAL_PTR_CONST_GETTER(type, attribute, override)                                                                              \
 public:                                                                                                                                    \
     _QATERIAL_PTR_CONST_ONLY_GETTER(type, attribute, override)                                                                             \
-    type* attribute() override                                                                                                             \
-    {                                                                                                                                      \
-        return &_##attribute;                                                                                                              \
-    }
+    type* attribute() override { return &_##attribute; }
 
 #define _QATERIAL_PTR_SETTER(type, attribute, Attribute, override)                                                                         \
 public:                                                                                                                                    \

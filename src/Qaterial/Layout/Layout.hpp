@@ -112,22 +112,10 @@ public:
     Q_ENUM(LayoutFill);
 
 public:
-    static constexpr qreal EXTRA_LARGE_BREAKPOINT()
-    {
-        return 1280.f;
-    }
-    static constexpr qreal LARGE_BREAKPOINT()
-    {
-        return 960.f;
-    }
-    static constexpr qreal MEDIUM_BREAKPOINT()
-    {
-        return 600.f;
-    }
-    static constexpr qreal SMALL_BREAKPOINT()
-    {
-        return 360.f;
-    }
+    static constexpr qreal EXTRA_LARGE_BREAKPOINT() { return 1280.f; }
+    static constexpr qreal LARGE_BREAKPOINT() { return 960.f; }
+    static constexpr qreal MEDIUM_BREAKPOINT() { return 600.f; }
+    static constexpr qreal SMALL_BREAKPOINT() { return 360.f; }
 
     static constexpr int sizeToType(qreal size)
     {
@@ -145,18 +133,12 @@ public:
     {
         switch(LayoutBreakpoint(type))
         {
-        case ExtraLarge:
-            return FillTwelfth;
-        case Large:
-            return FillSixth;
-        case Medium:
-            return FillQuarter;
-        case Small:
-            return FillHalf;
-        case ExtraSmall:
-            return FillParent;
-        default:
-            return FillParent;
+        case ExtraLarge: return FillTwelfth;
+        case Large: return FillSixth;
+        case Medium: return FillQuarter;
+        case Small: return FillHalf;
+        case ExtraSmall: return FillParent;
+        default: return FillParent;
         }
     }
 
@@ -196,46 +178,25 @@ private:
     Q_PROPERTY(qreal extraLargeBreakpoint READ extraLargeBreakpoint CONSTANT)
 
 public:
-    QQmlListReference items() const
-    {
-        return _itemListRef;
-    }
+    QQmlListReference items() const { return _itemListRef; }
     void setItems(QQmlListReference value);
 
-    int columns() const
-    {
-        return _columns;
-    }
+    int columns() const { return _columns; }
     bool setColumns(int value);
     void setUserColumns(int value);
     void resetUserColumns();
 
-    static qreal smallBreakpoint()
-    {
-        return SMALL_BREAKPOINT();
-    }
-    static qreal mediumBreakpoint()
-    {
-        return MEDIUM_BREAKPOINT();
-    }
-    static qreal largeBreakpoint()
-    {
-        return LARGE_BREAKPOINT();
-    }
-    static qreal extraLargeBreakpoint()
-    {
-        return EXTRA_LARGE_BREAKPOINT();
-    }
+    static qreal smallBreakpoint() { return SMALL_BREAKPOINT(); }
+    static qreal mediumBreakpoint() { return MEDIUM_BREAKPOINT(); }
+    static qreal largeBreakpoint() { return LARGE_BREAKPOINT(); }
+    static qreal extraLargeBreakpoint() { return EXTRA_LARGE_BREAKPOINT(); }
 
 Q_SIGNALS:
     void itemsChanged();
     void columnsChanged();
 
 public:
-    static LayoutAttached* qmlAttachedProperties(QObject* parent)
-    {
-        return new LayoutAttached(parent);
-    }
+    static LayoutAttached* qmlAttachedProperties(QObject* parent) { return new LayoutAttached(parent); }
 
 private:
     QQmlListReference _itemListRef;
@@ -258,15 +219,9 @@ private Q_SLOTS:
 
 private:
     // Flow.LeftToRight == 0 (In private API for now, THIS CODE MIGHT BREAK)
-    bool flowIsLeftToRight() const
-    {
-        return flow() == 0;
-    }
+    bool flowIsLeftToRight() const { return flow() == 0; }
     // Flow.TopToBottom == 1 (In private API for now, THIS CODE MIGHT BREAK)
-    bool flowIsTopToBottom() const
-    {
-        return flow() == 1;
-    }
+    bool flowIsTopToBottom() const { return flow() == 1; }
 
     void resetItemsWidth();
     void resetItemsHeight();
@@ -274,18 +229,9 @@ private:
 
     void evaluateType();
 
-    qreal paddingLessWidth() const
-    {
-        return width() - leftPadding() - rightPadding();
-    }
-    qreal paddingLessHeight() const
-    {
-        return height() - topPadding() - bottomPadding();
-    }
-    qreal paddingLessSize() const
-    {
-        return flowIsLeftToRight() ? paddingLessWidth() : paddingLessHeight();
-    }
+    qreal paddingLessWidth() const { return width() - leftPadding() - rightPadding(); }
+    qreal paddingLessHeight() const { return height() - topPadding() - bottomPadding(); }
+    qreal paddingLessSize() const { return flowIsLeftToRight() ? paddingLessWidth() : paddingLessHeight(); }
 
     void doForeachItem(const std::function<void(QQuickItem*)>& callback);
 

@@ -74,8 +74,7 @@ static qreal elevationToOverlay(const int& elevation)
     return lerp(fromOverlay, toOverlay, overlayRatio);
 }
 
-ColorTheme::ColorTheme(QObject* parent)
-    : QObject(parent)
+ColorTheme::ColorTheme(QObject* parent) : QObject(parent)
 {
     computeColors();
 
@@ -106,50 +105,23 @@ QColor ColorTheme::getBrandedBackground() const
     return blendedColor(_background, _primary, brandingRatio);
 }
 
-QColor ColorTheme::background0() const
-{
-    return getElevatedColor(getBrandedBackground(), 0);
-}
+QColor ColorTheme::background0() const { return getElevatedColor(getBrandedBackground(), 0); }
 
-QColor ColorTheme::background1() const
-{
-    return getElevatedColor(getBrandedBackground(), 1);
-}
+QColor ColorTheme::background1() const { return getElevatedColor(getBrandedBackground(), 1); }
 
-QColor ColorTheme::background2() const
-{
-    return getElevatedColor(getBrandedBackground(), 2);
-}
+QColor ColorTheme::background2() const { return getElevatedColor(getBrandedBackground(), 2); }
 
-QColor ColorTheme::background4() const
-{
-    return getElevatedColor(getBrandedBackground(), 4);
-}
+QColor ColorTheme::background4() const { return getElevatedColor(getBrandedBackground(), 4); }
 
-QColor ColorTheme::background6() const
-{
-    return getElevatedColor(getBrandedBackground(), 6);
-}
+QColor ColorTheme::background6() const { return getElevatedColor(getBrandedBackground(), 6); }
 
-QColor ColorTheme::background8() const
-{
-    return getElevatedColor(getBrandedBackground(), 8);
-}
+QColor ColorTheme::background8() const { return getElevatedColor(getBrandedBackground(), 8); }
 
-QColor ColorTheme::background12() const
-{
-    return getElevatedColor(getBrandedBackground(), 12);
-}
+QColor ColorTheme::background12() const { return getElevatedColor(getBrandedBackground(), 12); }
 
-QColor ColorTheme::background16() const
-{
-    return getElevatedColor(getBrandedBackground(), 16);
-}
+QColor ColorTheme::background16() const { return getElevatedColor(getBrandedBackground(), 16); }
 
-QColor ColorTheme::background24() const
-{
-    return getElevatedColor(getBrandedBackground(), 24);
-}
+QColor ColorTheme::background24() const { return getElevatedColor(getBrandedBackground(), 24); }
 
 QColor ColorTheme::blendedColor(const QColor& color1, const QColor& color2, const qreal& alpha)
 {
@@ -175,10 +147,7 @@ QColor ColorTheme::getElevatedColor(const QColor& color, const int& elevation)
     return blendedColor(color, QColor(Qt::white), getOverlayForElevation(elevation));
 }
 
-qreal ColorTheme::getOverlayForElevation(const int& elevation)
-{
-    return elevationToOverlay(elevation);
-}
+qreal ColorTheme::getOverlayForElevation(const int& elevation) { return elevationToOverlay(elevation); }
 
 void ColorTheme::computeColors()
 {

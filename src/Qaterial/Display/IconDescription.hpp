@@ -39,10 +39,7 @@ class QATERIAL_API_ IconDescription : public QObject
 
     // ──── CONSTRUCTOR ────
 public:
-    IconDescription(QObject* parent = nullptr)
-        : QObject(parent)
-    {
-    }
+    IconDescription(QObject* parent = nullptr) : QObject(parent) {}
 
     // ──── PROPERTY ────
 public:

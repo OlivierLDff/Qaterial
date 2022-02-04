@@ -32,8 +32,7 @@ Q_LOGGING_CATEGORY(qaterialTextFile, "qaterial.textfile")
 
 namespace qaterial {
 
-TextFile::TextFile(QObject* parent)
-    : QObject(parent)
+TextFile::TextFile(QObject* parent) : QObject(parent)
 {
     connect(this,
         &TextFile::errorChanged,
@@ -56,10 +55,7 @@ QString TextFile::fileName() const
     return fileName;
 }
 
-QString TextFile::fileType() const
-{
-    return QFileInfo(fileName()).suffix();
-}
+QString TextFile::fileType() const { return QFileInfo(fileName()).suffix(); }
 
 bool TextFile::open(QUrl url, int mode)
 {
@@ -85,12 +81,9 @@ bool TextFile::open(QUrl url, int mode)
     {
         switch(OpenMode(mode))
         {
-        case Read:
-            return QFile::OpenModeFlag::ReadOnly;
-        case Write:
-            return QFile::OpenModeFlag::WriteOnly;
-        default:
-            return QFile::OpenModeFlag::ReadWrite;
+        case Read: return QFile::OpenModeFlag::ReadOnly;
+        case Write: return QFile::OpenModeFlag::WriteOnly;
+        default: return QFile::OpenModeFlag::ReadWrite;
         }
     }() | QFile::OpenModeFlag::Text;
 

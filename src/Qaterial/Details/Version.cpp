@@ -24,37 +24,19 @@
 
 using namespace qaterial;
 
-Version::Version(QObject* parent)
-    : QObject(parent)
-{
-}
+Version::Version(QObject* parent) : QObject(parent) {}
 
-quint32 Version::major()
-{
-    return QATERIAL_VERSION_MAJOR;
-}
+quint32 Version::major() { return QATERIAL_VERSION_MAJOR; }
 
-quint32 Version::minor()
-{
-    return QATERIAL_VERSION_MINOR;
-}
+quint32 Version::minor() { return QATERIAL_VERSION_MINOR; }
 
-quint32 Version::patch()
-{
-    return QATERIAL_VERSION_PATCH;
-}
+quint32 Version::patch() { return QATERIAL_VERSION_PATCH; }
 
-quint32 Version::tag()
-{
-    return QATERIAL_VERSION_TAG_HEX;
-}
+quint32 Version::tag() { return QATERIAL_VERSION_TAG_HEX; }
 
 QString Version::readable()
 {
     return QString::number(major()) + QStringLiteral(".") + QString::number(minor()) + QStringLiteral(".") + QString::number(patch());
 }
 
-QString Version::readableWithTag()
-{
-    return readable() + QStringLiteral(".0x") + QString::number(tag(), 16).rightJustified(8, QChar('0'));
-}
+QString Version::readableWithTag() { return readable() + QStringLiteral(".0x") + QString::number(tag(), 16).rightJustified(8, QChar('0')); }

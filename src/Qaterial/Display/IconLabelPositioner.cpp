@@ -24,8 +24,7 @@
 
 namespace qaterial {
 
-IconLabelPositioner::IconLabelPositioner(QObject* parent)
-    : QObject(parent)
+IconLabelPositioner::IconLabelPositioner(QObject* parent) : QObject(parent)
 {
     connect(this, &IconLabelPositioner::horizontalAlignmentChanged, this, &IconLabelPositioner::computeRects);
     connect(this, &IconLabelPositioner::verticalAlignmentChanged, this, &IconLabelPositioner::computeRects);
@@ -44,37 +43,19 @@ void IconLabelPositioner::computeRects()
 
     switch(Display(display()))
     {
-    case IconOnly:
-        computeIconOnlyRect();
-        break;
-    case TextOnly:
-        computeTextOnlyRect();
-        break;
-    case TextBesideIcon:
-        computeTextBesideIcon();
-        break;
-    case TextUnderIcon:
-        computeTextUnderIcon();
-        break;
-    default:
-        break;
+    case IconOnly: computeIconOnlyRect(); break;
+    case TextOnly: computeTextOnlyRect(); break;
+    case TextBesideIcon: computeTextBesideIcon(); break;
+    case TextUnderIcon: computeTextUnderIcon(); break;
+    default: break;
     }
 }
 
-bool IconLabelPositioner::isIconImplicitWidthValid() const
-{
-    return _iconImplicitSize.width() >= 0 && _iconImplicitSize.height() >= 0;
-}
+bool IconLabelPositioner::isIconImplicitWidthValid() const { return _iconImplicitSize.width() >= 0 && _iconImplicitSize.height() >= 0; }
 
-bool IconLabelPositioner::isLabelImplicitWidthValid() const
-{
-    return _labelImplicitSize.width() >= 0 && _labelImplicitSize.height() >= 0;
-}
+bool IconLabelPositioner::isLabelImplicitWidthValid() const { return _labelImplicitSize.width() >= 0 && _labelImplicitSize.height() >= 0; }
 
-bool IconLabelPositioner::isContainerSizeValid() const
-{
-    return _containerSize.width() >= 0 && _containerSize.height() >= 0;
-}
+bool IconLabelPositioner::isContainerSizeValid() const { return _containerSize.width() >= 0 && _containerSize.height() >= 0; }
 
 void IconLabelPositioner::computeIconOnlyRect()
 {
@@ -179,8 +160,8 @@ void IconLabelPositioner::computeTextBesideIcon()
     const auto iconX = [&]() -> qreal
     {
         if(mirrored())
-            return (labelImplicitWidthFitInContainer ? implicitSizeWidth : _containerSize.width()) - _iconImplicitSize.width()
-                   + xAlignmentOffset;
+            return (labelImplicitWidthFitInContainer ? implicitSizeWidth : _containerSize.width()) - _iconImplicitSize.width() +
+                   xAlignmentOffset;
         return xAlignmentOffset;
     }();
 

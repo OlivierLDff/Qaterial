@@ -30,8 +30,7 @@ Q_LOGGING_CATEGORY(qaterialFTM, "qaterial.folderTreeModel")
 
 namespace qaterial {
 
-FolderTreeModel::FolderTreeModel(QObject* parent)
-    : qolm::QOlm<FolderTreeModel>(parent)
+FolderTreeModel::FolderTreeModel(QObject* parent) : qolm::QOlm<FolderTreeModel>(parent)
 {
     // Default the url to the application location if one is found
     _path.setPath(QDir::currentPath());
@@ -62,19 +61,19 @@ FolderTreeModel::FolderTreeModel(const QUrl& path,
     const QDateTime& fileModified,
     const QDateTime& fileAccessed,
     bool fileIsDir,
-    QObject* parent)
-    : QOlm<FolderTreeModel>(parent)
-    , _path(path)
-    , _fileName(fileName)
-    , _filePath(filePath)
-    , _fileBaseName(fileBaseName)
-    , _fileCompleteBaseName(fileCompleteBaseName)
-    , _fileSuffix(fileSuffix)
-    , _fileCompleteSuffix(fileCompleteSuffix)
-    , _fileSize(fileSize)
-    , _fileModified(fileModified)
-    , _fileAccessed(fileAccessed)
-    , _fileIsDir(fileIsDir)
+    QObject* parent) :
+    QOlm<FolderTreeModel>(parent),
+    _path(path),
+    _fileName(fileName),
+    _filePath(filePath),
+    _fileBaseName(fileBaseName),
+    _fileCompleteBaseName(fileCompleteBaseName),
+    _fileSuffix(fileSuffix),
+    _fileCompleteSuffix(fileCompleteSuffix),
+    _fileSize(fileSize),
+    _fileModified(fileModified),
+    _fileAccessed(fileAccessed),
+    _fileIsDir(fileIsDir)
 {
     initializeBindings();
 }
@@ -135,15 +134,9 @@ void FolderTreeModel::initializeBindings()
         });
 }
 
-FolderTreeModel* FolderTreeModel::children()
-{
-    return this;
-}
+FolderTreeModel* FolderTreeModel::children() { return this; }
 
-QUrl FolderTreeModel::path() const
-{
-    return _path;
-}
+QUrl FolderTreeModel::path() const { return _path; }
 
 bool FolderTreeModel::setPath(const QUrl& value)
 {
@@ -172,10 +165,7 @@ bool FolderTreeModel::setPath(const QUrl& value)
     return false;
 }
 
-void FolderTreeModel::resetPath()
-{
-    setPath({});
-}
+void FolderTreeModel::resetPath() { setPath({}); }
 
 void FolderTreeModel::fetch()
 {
@@ -216,18 +206,10 @@ void FolderTreeModel::fetch()
         sortFlags.setFlag(QDir::IgnoreCase);
     switch(SortField(sortField()))
     {
-    case Name:
-        sortFlags.setFlag(QDir::Name);
-        break;
-    case Time:
-        sortFlags.setFlag(QDir::Time);
-        break;
-    case Size:
-        sortFlags.setFlag(QDir::Size);
-        break;
-    case Type:
-        sortFlags.setFlag(QDir::Type);
-        break;
+    case Name: sortFlags.setFlag(QDir::Name); break;
+    case Time: sortFlags.setFlag(QDir::Time); break;
+    case Size: sortFlags.setFlag(QDir::Size); break;
+    case Type: sortFlags.setFlag(QDir::Type); break;
     default:;
     }
 

@@ -24,9 +24,6 @@
 
 namespace qaterial {
 
-StepperElement::StepperElement(QObject* parent)
-    : QObject(parent)
-{
-}
+StepperElement::StepperElement(QObject* parent) : QObject(parent) {}
 
 }

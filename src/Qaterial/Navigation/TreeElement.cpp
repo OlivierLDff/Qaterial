@@ -24,14 +24,8 @@
 
 namespace qaterial {
 
-TreeElement::TreeElement(QObject* parent)
-    : TreeModel(parent)
-{
-}
+TreeElement::TreeElement(QObject* parent) : TreeModel(parent) {}
 
-TreeElement* TreeElement::children()
-{
-    return this;
-}
+TreeElement* TreeElement::children() { return this; }
 
 }

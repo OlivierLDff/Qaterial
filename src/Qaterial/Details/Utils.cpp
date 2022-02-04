@@ -143,10 +143,7 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
     }
 }
 
-static void Qaterial_loadResources()
-{
-    Qaterial_loadResources(true);
-}
+static void Qaterial_loadResources() { Qaterial_loadResources(true); }
 
 #ifndef QATERIAL_STATIC
 Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
@@ -155,34 +152,16 @@ Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
 
 namespace qaterial {
 
-void registerQmlTypes(const char* uri, const quint8 major, const quint8 minor)
-{
-    ::Qaterial_registerTypes(uri, major, minor);
-}
+void registerQmlTypes(const char* uri, const quint8 major, const quint8 minor) { ::Qaterial_registerTypes(uri, major, minor); }
 
-void loadQmlResources(bool autoRegisterStyle)
-{
-    ::Qaterial_loadResources(autoRegisterStyle);
-}
+void loadQmlResources(bool autoRegisterStyle) { ::Qaterial_loadResources(autoRegisterStyle); }
 
-std::uint8_t versionMajor()
-{
-    return QATERIAL_VERSION_MAJOR;
-}
+std::uint8_t versionMajor() { return QATERIAL_VERSION_MAJOR; }
 
-std::uint8_t versionMinor()
-{
-    return QATERIAL_VERSION_MINOR;
-}
+std::uint8_t versionMinor() { return QATERIAL_VERSION_MINOR; }
 
-std::uint8_t versionPatch()
-{
-    return QATERIAL_VERSION_PATCH;
-}
+std::uint8_t versionPatch() { return QATERIAL_VERSION_PATCH; }
 
-std::uint32_t versionTag()
-{
-    return QATERIAL_VERSION_TAG_HEX;
-}
+std::uint32_t versionTag() { return QATERIAL_VERSION_TAG_HEX; }
 
 }
