@@ -4,8 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 
 /**
  * This item is a delegate container that contain a normal and a checked Delegate

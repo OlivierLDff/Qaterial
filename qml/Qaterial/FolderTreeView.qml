@@ -1,9 +1,9 @@
 // Copyright Olivier Le Doeuff 2020 (C)
 
 import QtQml 2.14
-import QtQuick 2.14
+import QtQuick
 
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.TreeView
 {

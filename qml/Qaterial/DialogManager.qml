@@ -6,7 +6,7 @@
 pragma Singleton
 
 // Qt
-import QtQuick 2.12
+import QtQuick
 
 QtObject
 {

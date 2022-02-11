@@ -27,7 +27,7 @@ qt_generate_qrc(QATERIAL_QML_QRC
 )
 
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
+qt6_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
@@ -50,6 +50,7 @@ target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
+  Qt6::Core5Compat
 )
 
 if(QATERIAL_FOLDER_PREFIX)
