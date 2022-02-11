@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        version: ['5.15.2']
+        version: ['6.2.0']
     steps:
       -
         uses: actions/checkout@v2
@@ -34,16 +34,13 @@ jobs:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          modules: ''
+          modules: 'qt5compat'
+          aqtversion: ==1.2.2 # See miurahr/aqtinstall#288
       -
         name: 🔧 CMake
         run: |
-          cmake -E make_directory build
-          cmake                           \
-            -DQATERIAL_ENABLE_TESTS=ON    \
-            -DCMAKE_BUILD_TYPE="Release"  \
-            -B build                      \
-            -S .
+          mkdir -p build
+          cmake -DQATERIAL_ENABLE_HOTRELOAD=ON -DQATERIAL_ENABLE_TOOLS=ON -DQATERIAL_ENABLE_TESTS=ON -DCMAKE_BUILD_TYPE="Release" -B build -S .
         shell: bash
       -
         name: 🔨 Qaterial
@@ -62,39 +59,23 @@ jobs:
           cd build
           xvfb-run ctest --build-config "Release" --progress --verbose --parallel 12
         if: contains(matrix.os, 'ubuntu')
-      -
-        name: 🚀 Install Qaterial
-        run: cmake --install build --prefix install
-      -
-        name: ✅ Test install work with find_package
-        run: |
-          cmake -E make_directory tests/FindPackageTest/build
-          cmake                                 \
-            -DCMAKE_BUILD_TYPE="Release"        \
-            -DCMAKE_INSTALL_PREFIX=install      \
-            -B tests/FindPackageTest/build      \
-            -S tests/FindPackageTest
-          cmake                                 \
-            --build tests/FindPackageTest/build \
-            --target "QaterialFindPackageTest"  \
-            --config "Release"                  \
-            -j
-        shell: bash
 
-  BuildWasm:
-    runs-on: ubuntu-latest
+  # BuildWasm:
+  #   runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        include:
-          - docker-image: 'reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.8'
-
-    steps:
-    -
-      uses: actions/checkout@v2
-    -
-      name: 🔧 Configure
-      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} cmake -DQATERIAL_ENABLE_PCH=OFF -DQATERIAL_ENABLE_UNITY_BUILD=OFF -B ./build/ -S . ..
-    -
-      name: 🔨 Build
-      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} make -C build -j
+  #   steps:
+  #   -
+  #     uses: actions/checkout@v2
+  #   -
+  #     name: 🔧 Prepare
+  #     id: prep
+  #     run: |
+  #       # Set output parameters.
+  #       export DOCKER_TAG="reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.10"
+  #       echo ::set-output name=tags::${DOCKER_TAG}
+  #   -
+  #     name: 🔧 Configure
+  #     run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ steps.prep.outputs.tags }} cmake -B ./build/ -S . ..
+  #   -
+  #     name: 🔨 Build
+  #     run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ steps.prep.outputs.tags }} make -C build -j
