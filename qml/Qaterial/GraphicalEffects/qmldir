@@ -1,0 +1,22 @@
+# File auto generated with CMake qt_generate_qmldir. Run CMake to regenerate if files changed.
+
+module Qaterial.GraphicalEffects
+
+BrightnessContrast 1.0 BrightnessContrast.qml
+ColorOverlay 1.0 ColorOverlay.qml
+Colorize 1.0 Colorize.qml
+ConicalGradient 1.0 ConicalGradient.qml
+Desaturate 1.0 Desaturate.qml
+Displace 1.0 Displace.qml
+DropShadow 1.0 DropShadow.qml
+FastBlur 1.0 FastBlur.qml
+FastGlow 1.0 FastGlow.qml
+GammaAdjust 1.0 GammaAdjust.qml
+Glow 1.0 Glow.qml
+HueSaturation 1.0 HueSaturation.qml
+LevelAdjust 1.0 LevelAdjust.qml
+LinearGradient 1.0 LinearGradient.qml
+OpacityMask 1.0 OpacityMask.qml
+RadialGradient 1.0 RadialGradient.qml
+RectangularGlow 1.0 RectangularGlow.qml
+ThresholdMask 1.0 ThresholdMask.qml
