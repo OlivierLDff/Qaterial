@@ -32,6 +32,7 @@
 #include <Qaterial/Display/IconDescription.hpp>
 #include <Qaterial/Display/IconLabelPositioner.hpp>
 #include <Qaterial/Display/IconLabelImpl.hpp>
+#include <Qaterial/Display/GraphicalEffectsSourceProxy.hpp>
 
 #include <QtCore/QDir>
 #include <QtCore/QLoggingCategory>
@@ -80,6 +81,9 @@ static void Qaterial_registerTypes()
     qaterial::TextFile::registerToQml(*_uri, _major, _minor);
     qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
     qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
+
+    qmlRegisterType<QGfxSourceProxy>("GraphicalEffects", 1, 0, "SourceProxy");
+    qmlRegisterModule("GraphicalEffects", 1, 0);
 
     qmlRegisterAnonymousType<qaterial::LayoutAttached>(*_uri, _major);
     qaterial::Layout::registerToQml();

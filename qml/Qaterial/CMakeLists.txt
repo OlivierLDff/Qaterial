@@ -10,6 +10,8 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+add_subdirectory(GraphicalEffects)
+
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
  MODULE "Qaterial"
@@ -21,7 +23,7 @@ qt_generate_qrc(QATERIAL_QML_QRC
   DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/Generated
   NAME Qaterial.qrc
   PREFIX "Qaterial"
-  GLOB_EXPRESSION "*.qml;qmldir"
+  GLOB_EXPRESSION "*.qml;qmldir;*.qsb"
   ALWAYS_OVERWRITE
   RECURSE
 )
@@ -50,7 +52,6 @@ target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
-  Qt6::Core5Compat
 )
 
 if(QATERIAL_FOLDER_PREFIX)

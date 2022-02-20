@@ -8,7 +8,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Templates as T
 import QtQuick.Window 2.12
-import Qt5Compat.GraphicalEffects
+import Qaterial.GraphicalEffects
 
 // Qaterial
 import Qaterial as Qaterial

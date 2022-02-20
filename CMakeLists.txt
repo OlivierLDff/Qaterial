@@ -97,7 +97,6 @@ find_package(Qt6 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  Core5Compat
 )
 
 # ───── FETCH DEPENDENCIES ─────
@@ -137,6 +136,8 @@ set(QATERIAL_SRCS
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelPositioner.cpp
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.hpp
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.cpp
+  ${QATERIAL_SOURCE_DIR}/Display/GraphicalEffectsSourceProxy.hpp
+  ${QATERIAL_SOURCE_DIR}/Display/GraphicalEffectsSourceProxy.cpp
 
   ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.hpp
   ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.cpp
@@ -189,6 +190,7 @@ endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
+target_include_directories(${QATERIAL_TARGET} PRIVATE ${Qt6Quick_PRIVATE_INCLUDE_DIRS})
 target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
 target_include_directories(${QATERIAL_TARGET} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
@@ -210,7 +212,6 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
-  Qt6::Core5Compat
 )
 
 set_target_properties(${QATERIAL_TARGET} PROPERTIES
