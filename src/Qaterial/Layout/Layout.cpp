@@ -30,7 +30,7 @@ LayoutAttached::LayoutAttached(QObject* object)
     : _extraLarge(Layout::defaultPreferredFill(Layout::ExtraLarge))
     , _large(Layout::defaultPreferredFill(Layout::Large))
     , _medium(Layout::defaultPreferredFill(Layout::Medium))
-    , _small(Layout::defaultPreferredFill(Layout::Small))
+    , _smallp(Layout::defaultPreferredFill(Layout::Small))
     , _extraSmall(Layout::defaultPreferredFill(Layout::ExtraSmall))
 {
 }
@@ -238,7 +238,7 @@ Layout::LayoutFill Layout::getPreferredFill(QQuickItem* item) const
     case Medium:
         return LayoutFill(attached->medium());
     case Small:
-        return LayoutFill(attached->small());
+        return LayoutFill(attached->smallp());
     case ExtraSmall:
         return LayoutFill(attached->extraSmall());
     default:
