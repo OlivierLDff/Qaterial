@@ -61,8 +61,8 @@ class QGfxSourceProxy : public QQuickItem
 {
     Q_OBJECT
 
-    Q_PROPERTY(QQuickItem *input READ input WRITE setInput NOTIFY inputChanged RESET resetInput)
-    Q_PROPERTY(QQuickItem *output READ output NOTIFY outputChanged)
+    Q_PROPERTY(QQuickItem* input READ input WRITE setInput NOTIFY inputChanged RESET resetInput)
+    Q_PROPERTY(QQuickItem* output READ output NOTIFY outputChanged)
     Q_PROPERTY(QRectF sourceRect READ sourceRect WRITE setSourceRect NOTIFY sourceRectChanged)
 
     Q_PROPERTY(bool active READ isActive NOTIFY activeChanged)
@@ -70,7 +70,7 @@ class QGfxSourceProxy : public QQuickItem
 
     Q_ENUMS(Interpolation)
 
-  public:
+public:
     enum Interpolation
     {
         AnyInterpolation,
@@ -78,20 +78,20 @@ class QGfxSourceProxy : public QQuickItem
         LinearInterpolation
     };
 
-    QGfxSourceProxy(QQuickItem *item = 0);
+    QGfxSourceProxy(QQuickItem* item = 0);
     ~QGfxSourceProxy();
 
-    QQuickItem *input() const
+    QQuickItem* input() const
     {
         return m_input;
     }
-    void setInput(QQuickItem *input);
+    void setInput(QQuickItem* input);
     void resetInput()
     {
         setInput(0);
     }
 
-    QQuickItem *output() const
+    QQuickItem* output() const
     {
         return m_output;
     }
@@ -100,7 +100,7 @@ class QGfxSourceProxy : public QQuickItem
     {
         return m_sourceRect;
     }
-    void setSourceRect(const QRectF &sourceRect);
+    void setSourceRect(const QRectF& sourceRect);
 
     bool isActive() const
     {
@@ -113,28 +113,28 @@ class QGfxSourceProxy : public QQuickItem
         return m_interpolation;
     }
 
-  protected:
+protected:
     void updatePolish() override;
 
-  signals:
+signals:
     void inputChanged();
     void outputChanged();
     void sourceRectChanged();
     void activeChanged();
     void interpolationChanged();
 
-  private slots:
+private slots:
     void repolish();
 
-  private:
-    void setOutput(QQuickItem *output);
+private:
+    void setOutput(QQuickItem* output);
     void useProxy();
-    static QObject *findLayer(QQuickItem *);
+    static QObject* findLayer(QQuickItem*);
 
     QRectF m_sourceRect;
-    QQuickItem *m_input;
-    QQuickItem *m_output;
-    QQuickShaderEffectSource *m_proxy;
+    QQuickItem* m_input;
+    QQuickItem* m_output;
+    QQuickShaderEffectSource* m_proxy;
 
     Interpolation m_interpolation;
 };

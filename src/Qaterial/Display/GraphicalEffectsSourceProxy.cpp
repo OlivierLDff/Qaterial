@@ -56,7 +56,12 @@
 
 QT_BEGIN_NAMESPACE
 
-QGfxSourceProxy::QGfxSourceProxy(QQuickItem *item) : QQuickItem(item), m_input(0), m_output(0), m_proxy(0), m_interpolation(AnyInterpolation)
+QGfxSourceProxy::QGfxSourceProxy(QQuickItem* item)
+    : QQuickItem(item)
+    , m_input(0)
+    , m_output(0)
+    , m_proxy(0)
+    , m_interpolation(AnyInterpolation)
 {
 }
 
@@ -65,18 +70,18 @@ QGfxSourceProxy::~QGfxSourceProxy()
     delete m_proxy;
 }
 
-void QGfxSourceProxy::setInput(QQuickItem *input)
+void QGfxSourceProxy::setInput(QQuickItem* input)
 {
-    if (m_input == input)
+    if(m_input == input)
         return;
 
-    if (m_input != nullptr)
+    if(m_input != nullptr)
         m_input->disconnect(this);
     m_input = input;
     polish();
-    if (m_input != nullptr)
+    if(m_input != nullptr)
     {
-        if (QQuickImage *image = qobject_cast<QQuickImage *>(m_input))
+        if(QQuickImage* image = qobject_cast<QQuickImage*>(m_input))
         {
             connect(image, &QQuickImage::sourceSizeChanged, this, &QGfxSourceProxy::repolish);
             connect(image, &QQuickImage::fillModeChanged, this, &QGfxSourceProxy::repolish);
@@ -86,18 +91,18 @@ void QGfxSourceProxy::setInput(QQuickItem *input)
     emit inputChanged();
 }
 
-void QGfxSourceProxy::setOutput(QQuickItem *output)
+void QGfxSourceProxy::setOutput(QQuickItem* output)
 {
-    if (m_output == output)
+    if(m_output == output)
         return;
     m_output = output;
     emit activeChanged();
     emit outputChanged();
 }
 
-void QGfxSourceProxy::setSourceRect(const QRectF &sourceRect)
+void QGfxSourceProxy::setSourceRect(const QRectF& sourceRect)
 {
-    if (m_sourceRect == sourceRect)
+    if(m_sourceRect == sourceRect)
         return;
     m_sourceRect = sourceRect;
     polish();
@@ -106,7 +111,7 @@ void QGfxSourceProxy::setSourceRect(const QRectF &sourceRect)
 
 void QGfxSourceProxy::setInterpolation(Interpolation i)
 {
-    if (m_interpolation == i)
+    if(m_interpolation == i)
         return;
     m_interpolation = i;
     polish();
@@ -115,7 +120,7 @@ void QGfxSourceProxy::setInterpolation(Interpolation i)
 
 void QGfxSourceProxy::useProxy()
 {
-    if (!m_proxy)
+    if(!m_proxy)
         m_proxy = new QQuickShaderEffectSource(this);
     m_proxy->setSourceRect(m_sourceRect);
     m_proxy->setSourceItem(m_input);
@@ -128,15 +133,15 @@ void QGfxSourceProxy::repolish()
     polish();
 }
 
-QObject *QGfxSourceProxy::findLayer(QQuickItem *item)
+QObject* QGfxSourceProxy::findLayer(QQuickItem* item)
 {
-    if (!item)
+    if(!item)
         return 0;
-    QQuickItemPrivate *d = QQuickItemPrivate::get(item);
-    if (d->extra.isAllocated() && d->extra->layer)
+    QQuickItemPrivate* d = QQuickItemPrivate::get(item);
+    if(d->extra.isAllocated() && d->extra->layer)
     {
-        QObject *layer = qvariant_cast<QObject *>(item->property("layer"));
-        if (layer && layer->property("enabled").toBool())
+        QObject* layer = qvariant_cast<QObject*>(item->property("layer"));
+        if(layer && layer->property("enabled").toBool())
             return layer;
     }
     return 0;
@@ -144,23 +149,23 @@ QObject *QGfxSourceProxy::findLayer(QQuickItem *item)
 
 void QGfxSourceProxy::updatePolish()
 {
-    if (m_input == 0)
+    if(m_input == 0)
     {
         setOutput(0);
         return;
     }
 
-    QQuickImage *image = qobject_cast<QQuickImage *>(m_input);
-    QQuickShaderEffectSource *shaderSource = qobject_cast<QQuickShaderEffectSource *>(m_input);
+    QQuickImage* image = qobject_cast<QQuickImage*>(m_input);
+    QQuickShaderEffectSource* shaderSource = qobject_cast<QQuickShaderEffectSource*>(m_input);
     bool childless = m_input->childItems().size() == 0;
-    bool interpOk = m_interpolation == AnyInterpolation || (m_interpolation == LinearInterpolation && m_input->smooth() == true) ||
-                    (m_interpolation == NearestInterpolation && m_input->smooth() == false);
+    bool interpOk = m_interpolation == AnyInterpolation || (m_interpolation == LinearInterpolation && m_input->smooth() == true)
+                    || (m_interpolation == NearestInterpolation && m_input->smooth() == false);
 
     // Layers can be used in two different ways. Option 1 is when the item is
     // used as input to a separate ShaderEffect component. In this case,
     // m_input will be the item itself.
-    QObject *layer = findLayer(m_input);
-    if (!layer && shaderSource)
+    QObject* layer = findLayer(m_input);
+    if(!layer && shaderSource)
     {
         // Alternatively, the effect is applied via layer.effect, and the
         // input to the effect will be the layer's internal ShaderEffectSource
@@ -175,7 +180,7 @@ void QGfxSourceProxy::updatePolish()
 
     bool direct = false;
 
-    if (layer)
+    if(layer)
     {
         // Auto-configure the layer so interpolation and padding works as
         // expected without allocating additional FBOs. In edgecases, where
@@ -185,21 +190,22 @@ void QGfxSourceProxy::updatePolish()
         layer->setProperty("smooth", m_interpolation != NearestInterpolation);
         direct = true;
     }
-    else if (childless && interpOk)
+    else if(childless && interpOk)
     {
-
-        if (shaderSource)
+        if(shaderSource)
         {
-            if (shaderSource->sourceRect() == m_sourceRect || m_sourceRect.isEmpty())
+            if(shaderSource->sourceRect() == m_sourceRect || m_sourceRect.isEmpty())
                 direct = true;
         }
-        else if (!padded && ((image && image->fillMode() == QQuickImage::Stretch && !image->sourceSize().isNull()) || (!image && m_input->isTextureProvider())))
+        else if(!padded
+                && ((image && image->fillMode() == QQuickImage::Stretch && !image->sourceSize().isNull())
+                    || (!image && m_input->isTextureProvider())))
         {
             direct = true;
         }
     }
 
-    if (direct)
+    if(direct)
     {
         setOutput(m_input);
     }
@@ -209,7 +215,7 @@ void QGfxSourceProxy::updatePolish()
     }
 
     // Remove the proxy if it is not in use..
-    if (m_proxy && m_output == m_input)
+    if(m_proxy && m_output == m_input)
     {
         delete m_proxy;
         m_proxy = 0;
