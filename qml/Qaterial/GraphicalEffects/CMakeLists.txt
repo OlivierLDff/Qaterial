@@ -61,22 +61,12 @@ qt_add_qml_module(graphicaleffects
         "GraphicalEffects"
     VERSION
         1.0
-    RESOURCE_PREFIX
-        ""
-    SOURCES
-        plugin.cpp
-        qgfxsourceproxy.cpp
-        qgfxsourceproxy_p.h
     QML_FILES
         ${qml_files}
     RESOURCES
         ${qtgraphicaleffectsshaders_resource_files}
     DEPENDENCIES
         QtQuick.Window/auto
-    PLUGIN_TARGET
-           "graphicaleffects"
-       CLASS_NAME
-           "GraphicalEffectsPlugin"
     NO_GENERATE_PLUGIN_SOURCE
     NO_PLUGIN_OPTIONAL
     )
