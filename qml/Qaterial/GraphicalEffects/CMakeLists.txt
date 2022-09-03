@@ -19,7 +19,6 @@ set(qtgraphicaleffectsshaders_resource_files
 set(qml_files
     "ColorOverlay.qml"
     "Colorize.qml"
-    "DropShadow.qml"
     "LinearGradient.qml"
     "OpacityMask.qml"
     )
