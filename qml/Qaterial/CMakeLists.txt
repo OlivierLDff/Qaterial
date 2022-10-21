@@ -28,6 +28,26 @@ qt_generate_qrc(QATERIAL_QML_QRC
   RECURSE
 )
 
+qt_generate_qrc_alias_qt_object(
+    QATERIAL_QML_ICONS_QML
+    SOURCE_DIR ${CMAKE_BINARY_DIR}/_deps/materialdesignicons-src/svg
+    NAME "Icons.qml"
+    PREFIX "Qaterial/Icons"
+    SINGLETON
+    ALWAYS_OVERWRITE
+    GLOB_EXPRESSION "*")
+
+message(STATUS "Generate Qaterial.qrc")
+qt_generate_qrc(QATERIAL_QML_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/Generated
+  NAME Qaterial.qrc
+  PREFIX "Qaterial"
+  GLOB_EXPRESSION "*.qml;qmldir;*.qsb"
+  ALWAYS_OVERWRITE
+  RECURSE
+)
+
 # Add qml to the qtquick compiler (should only be call once per target)
 qt6_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
 
