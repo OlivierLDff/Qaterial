@@ -4,12 +4,12 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 T.DialogButtonBox
 {

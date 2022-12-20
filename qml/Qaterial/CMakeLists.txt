@@ -10,6 +10,8 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+add_subdirectory(GraphicalEffects)
+
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
  MODULE "Qaterial"
@@ -21,13 +23,33 @@ qt_generate_qrc(QATERIAL_QML_QRC
   DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/Generated
   NAME Qaterial.qrc
   PREFIX "Qaterial"
-  GLOB_EXPRESSION "*.qml;qmldir"
+  GLOB_EXPRESSION "*.qml;qmldir;*.qsb"
+  ALWAYS_OVERWRITE
+  RECURSE
+)
+
+qt_generate_qrc_alias_qt_object(
+    QATERIAL_QML_ICONS_QML
+    SOURCE_DIR ${CMAKE_BINARY_DIR}/_deps/materialdesignicons-src/svg
+    NAME "Icons.qml"
+    PREFIX "Qaterial/Icons"
+    SINGLETON
+    ALWAYS_OVERWRITE
+    GLOB_EXPRESSION "*")
+
+message(STATUS "Generate Qaterial.qrc")
+qt_generate_qrc(QATERIAL_QML_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/Generated
+  NAME Qaterial.qrc
+  PREFIX "Qaterial"
+  GLOB_EXPRESSION "*.qml;qmldir;*.qsb"
   ALWAYS_OVERWRITE
   RECURSE
 )
 
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
+qt6_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})

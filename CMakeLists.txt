@@ -89,7 +89,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -97,7 +97,6 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  QuickCompiler
 )
 
 # ───── FETCH DEPENDENCIES ─────
@@ -137,6 +136,8 @@ set(QATERIAL_SRCS
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelPositioner.cpp
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.hpp
   ${QATERIAL_SOURCE_DIR}/Display/IconLabelImpl.cpp
+  ${QATERIAL_SOURCE_DIR}/Display/GraphicalEffectsSourceProxy.hpp
+  ${QATERIAL_SOURCE_DIR}/Display/GraphicalEffectsSourceProxy.cpp
 
   ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.hpp
   ${QATERIAL_SOURCE_DIR}/Theme/ColorTheme.cpp
@@ -189,6 +190,7 @@ endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
+target_include_directories(${QATERIAL_TARGET} PRIVATE ${Qt6Quick_PRIVATE_INCLUDE_DIRS})
 target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
 target_include_directories(${QATERIAL_TARGET} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
@@ -233,12 +235,20 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 # Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
   qt_generate_plugin_import(${QATERIAL_TARGET})
 endif()
+list(APPEND QML_IMPORTPATH "${CMAKE_CURRENT_SOURCE_DIR}/qml")
+list(APPEND QML_IMPORTPATH ${QML_IMPORT_PATH})
+list(APPEND QML2_IMPORTPATH "${CMAKE_CURRENT_SOURCE_DIR}/qml")
+list(APPEND QML2_IMPORTPATH ${QML2_IMPORT_PATH})
+
+message(STATUS ${QML_IMPORT_PATH})
+set(QML_IMPORT_PATH "${QML_IMPORTPATH}" CACHE STRING "Qt Creator 4.1 extra qml import paths" FORCE)
+set(QML2_IMPORT_PATH "${QML2_IMPORTPATH}" CACHE STRING "Qt Creator 4.1 extra qml import paths" FORCE)
 
 list(APPEND QML_IMPORTPATH "${CMAKE_CURRENT_SOURCE_DIR}/qml")
 list(APPEND QML_IMPORTPATH ${QML_IMPORT_PATH})

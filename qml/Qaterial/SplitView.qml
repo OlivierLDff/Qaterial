@@ -4,12 +4,12 @@
  */
 
 // Qt
-import QtQuick 2.13
-import QtQuick.Templates 2.13 as T
-import QtQuick.Controls 2.13
+import QtQuick
+import QtQuick.Templates as T
+import QtQuick.Controls
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 T.SplitView
 {

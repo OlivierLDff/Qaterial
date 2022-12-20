@@ -1,0 +1,8 @@
+# File auto generated with CMake qt_generate_qmldir. Run CMake to regenerate if files changed.
+
+module Qaterial.GraphicalEffects
+
+ColorOverlay 1.0 ColorOverlay.qml
+Colorize 1.0 Colorize.qml
+LinearGradient 1.0 LinearGradient.qml
+OpacityMask 1.0 OpacityMask.qml

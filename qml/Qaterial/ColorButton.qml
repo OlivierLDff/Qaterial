@@ -6,11 +6,11 @@
 // Qt
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.OutlinedFabButton
 {
-  property color color
+  property variant color
   backgroundColor: color
 
   borderWidth: 2

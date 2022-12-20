@@ -25,7 +25,6 @@
 
 #include <Qaterial/Details/Export.hpp>
 #include <Qaterial/Details/Property.hpp>
-
 #include <QtQuick/QQuickItem>
 
 namespace qaterial {
@@ -41,7 +40,7 @@ public:
     QATERIAL_PROPERTY(int, extraLarge, ExtraLarge);
     QATERIAL_PROPERTY(int, large, Large);
     QATERIAL_PROPERTY(int, medium, Medium);
-    QATERIAL_PROPERTY(int, small, Small);
+    QATERIAL_PROPERTY(int, smallp, Small);
     QATERIAL_PROPERTY(int, extraSmall, ExtraSmall);
 };
 

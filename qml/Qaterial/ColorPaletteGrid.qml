@@ -3,9 +3,9 @@
  * Contact: olivier.ldff@gmail.com
  */
 
-import QtQuick 2.12
+import QtQuick
 
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 GridView
 {

@@ -2,11 +2,11 @@
  * Contact: olivier.ldff@gmail.com */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.ModalDialog
 {

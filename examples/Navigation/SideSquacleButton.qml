@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import Qaterial 1.0 as Qaterial
-import QtGraphicalEffects 1.12
+import GraphicalEffects 1.12
 
 Column
 {
