@@ -1,12 +1,17 @@
-include(FetchContent)
+# ~~~
+# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
+# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
+# SPDX-License-Identifier: MIT
+# ~~~
 
-set(QTGENERATORCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtGeneratorCMake.git" CACHE STRING "QtGeneratorCMake repository, can be a local URL")
-set(QTGENERATORCMAKE_TAG "master" CACHE STRING "QtGeneratorCMake git tag")
+if(COMMAND qt_generate_qmldir)
+  return()
+endif()
 
-FetchContent_Declare(
-  QtGeneratorCMake
-  GIT_REPOSITORY ${QTGENERATORCMAKE_REPOSITORY}
-  GIT_TAG        ${QTGENERATORCMAKE_TAG}
+include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
+
+CPMAddPackage(
+  NAME QtGeneratorCMake
+  GIT_REPOSITORY "https://github.com/OlivierLDff/QtGeneratorCMake.git"
+  GIT_TAG "162d7e748ea588be4eb1403e5224471a589ae266"
 )
-
-FetchContent_MakeAvailable(QtGeneratorCMake)

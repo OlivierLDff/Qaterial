@@ -1,12 +1,17 @@
-include(FetchContent)
+# ~~~
+# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
+# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
+# SPDX-License-Identifier: MIT
+# ~~~
 
-set(QATERIAL_REPOSITORY "https://github.com/OlivierLDff/Qaterial.git" CACHE STRING "Qaterial repository url")
-set(QATERIAL_TAG master CACHE STRING "Qaterial git tag")
+if(TARGET Qaterial::Qaterial)
+  return()
+endif()
 
-FetchContent_Declare(
-  Qaterial
-  GIT_REPOSITORY ${QATERIAL_REPOSITORY}
-  GIT_TAG        ${QATERIAL_TAG}
+include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
+
+CPMAddPackage(
+  NAME QOlm
+  GIT_REPOSITORY "https://github.com/OlivierLDff/Qaterial.git"
+  GIT_TAG "master"
 )
-
-FetchContent_MakeAvailable(Qaterial)

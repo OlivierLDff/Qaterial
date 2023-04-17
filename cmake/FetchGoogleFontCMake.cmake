@@ -1,12 +1,17 @@
-include(FetchContent)
+# ~~~
+# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
+# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
+# SPDX-License-Identifier: MIT
+# ~~~
 
-set(FETCHGOOGLEFONTCMAKE_REPOSITORY "https://github.com/OlivierLDff/FetchGoogleFontCMake.git" CACHE STRING "FetchGoogleFontCMake repository, can be a local URL")
-set(FETCHGOOGLEFONTCMAKE_TAG "master" CACHE STRING "FetchGoogleFontCMake git tag")
+if(COMMAND fetch_google_font)
+  return()
+endif()
 
-FetchContent_Declare(
-  FetchGoogleFontCMake
-  GIT_REPOSITORY ${FETCHGOOGLEFONTCMAKE_REPOSITORY}
-  GIT_TAG        ${FETCHGOOGLEFONTCMAKE_TAG}
+include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
+
+CPMAddPackage(
+  NAME FetchGoogleFontCMake
+  GIT_REPOSITORY "https://github.com/OlivierLDff/FetchGoogleFontCMake.git"
+  GIT_TAG "c19d83a68eda83b9dd3033893dbb63d84c941196"
 )
-
-FetchContent_MakeAvailable(FetchGoogleFontCMake)
