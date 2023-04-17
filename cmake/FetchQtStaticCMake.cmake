@@ -1,12 +1,17 @@
-include(FetchContent)
+# ~~~
+# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
+# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
+# SPDX-License-Identifier: MIT
+# ~~~
 
-set(QTSTATICCMAKE_REPOSITORY "https://github.com/OlivierLDff/QtStaticCMake.git" CACHE STRING "QtStaticCMake repository, can be a local URL")
-set(QTSTATICCMAKE_TAG "master" CACHE STRING "QtStaticCMake git tag")
+if(COMMAND qt_generate_plugin_import)
+  return()
+endif()
 
-FetchContent_Declare(
-  QtStaticCMake
-  GIT_REPOSITORY ${QTSTATICCMAKE_REPOSITORY}
-  GIT_TAG        ${QTSTATICCMAKE_TAG}
+include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
+
+CPMAddPackage(
+  NAME QtStaticCMake
+  GIT_REPOSITORY "https://github.com/OlivierLDff/QtStaticCMake.git"
+  GIT_TAG "5b4bb893934bd5cdeb39a52a46b4c05536603f95"
 )
-
-FetchContent_MakeAvailable(QtStaticCMake)

@@ -1,15 +1,15 @@
-include(FetchContent)
+# ~~~
+# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
+# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
+# SPDX-License-Identifier: MIT
+# ~~~
 
-set(MATERIALDESIGNICONS_REPOSITORY "https://github.com/OlivierLDff/MaterialDesignSvgo" CACHE STRING "MaterialDesignIcons repository url")
-set(MATERIALDESIGNICONS_TAG master CACHE STRING "MaterialDesignIcons git tag")
+include(${CMAKE_CURRENT_LIST_DIR}/CPM.cmake)
 
-FetchContent_Declare(
-  MaterialDesignIcons
-  GIT_REPOSITORY ${MATERIALDESIGNICONS_REPOSITORY}
-  GIT_TAG        ${MATERIALDESIGNICONS_TAG}
+CPMAddPackage(
+  NAME MaterialDesignIcons
+  GIT_REPOSITORY "https://github.com/OlivierLDff/MaterialDesignSvgo"
+  GIT_TAG "7cc6cc10a0a77d2b23dced9247bd73850f57dc29"
 )
-
-message(STATUS "Download MaterialDesignIcons from ${MATERIALDESIGNICONS_REPOSITORY}")
-FetchContent_MakeAvailable(MaterialDesignIcons)
 
 set(MATERIALDESIGNICONS_ICONS_DIR "${materialdesignicons_SOURCE_DIR}/svg")
