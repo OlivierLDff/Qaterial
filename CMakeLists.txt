@@ -102,7 +102,6 @@ find_package(Qt5 REQUIRED COMPONENTS
 
 # ───── FETCH DEPENDENCIES ─────
 
-include(cmake/Dependencies.cmake)
 include(cmake/FetchQOlm.cmake)
 include(cmake/FetchQtGeneratorCMake.cmake)
 
