@@ -27,6 +27,9 @@ set(QATERIAL_FONT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Generated/Qaterial)
 # Make sure directory is created even if no font are created
 file(MAKE_DIRECTORY ${QATERIAL_FONT_DIRECTORY})
 
+set(GOOGLEFONTS_REPOSITORY "https://github.com/OlivierLDff/fonts")
+set(GOOGLEFONTS_TAG "0cdadf80ac5f29f10a73c29ce1f4f1ca75ffb392")
+
 if(QATERIAL_ENABLE_ROBOTO)
   message(STATUS "Fetch Roboto Medium/Regular")
   fetch_google_font(
