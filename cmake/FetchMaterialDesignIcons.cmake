@@ -12,4 +12,4 @@ CPMAddPackage(
   GIT_TAG "7cc6cc10a0a77d2b23dced9247bd73850f57dc29"
 )
 
-set(MATERIALDESIGNICONS_ICONS_DIR "${materialdesignicons_SOURCE_DIR}/svg")
+set(MATERIALDESIGNICONS_ICONS_DIR "${MaterialDesignIcons_SOURCE_DIR}/svg")
