@@ -35,7 +35,7 @@ QtObject
   function showOpenFilesDialog(settings)
   {
     if(dialogLoader)
-      dialogLoader.showOpenFileDialog(settings)
+      dialogLoader.showOpenFilesDialog(settings)
   }
 
   function showFolderDialog(settings)
