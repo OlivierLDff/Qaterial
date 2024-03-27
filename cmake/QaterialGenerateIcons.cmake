@@ -199,7 +199,6 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
 
   else()
 
-    # Generate fake Qaterial.Impl.Icons.Icons.qml
     message(STATUS "Generate Fake ${OUTPUT_FILE_HPP}")
     file(WRITE ${OUTPUT_FILE_HPP}
       "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
@@ -221,11 +220,16 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       "#endif"
     )
 
-    # Generate fake Qaterial.Impl.Icons.Icons.cpp
     message(STATUS "Generate Fake ${OUTPUT_FILE_CPP}")
     file(WRITE ${OUTPUT_FILE_CPP}
       "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
       "// Everything written here will be lost.\n\n"
+      "#include <Qaterial/Display/Icons.hpp>\n"
+      "#include \"moc_Icons.cpp\"\n"
+      "void __Qaterial_registerIconsSingleton()\n"
+      "{\n"
+      "    qaterial::Icons::registerSingleton();\n"
+      "}\n"
     )
 
   endif()
