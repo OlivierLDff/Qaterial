@@ -200,8 +200,8 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
   else()
 
     # Generate fake Qaterial.Impl.Icons.Icons.qml
-    message(STATUS "Generate Fake ${OUTPUT_FILE}")
-    file(WRITE ${OUTPUT_FILE}
+    message(STATUS "Generate Fake ${OUTPUT_FILE_HPP}")
+    file(WRITE ${OUTPUT_FILE_HPP}
       "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
       "// Everything written here will be lost.\n\n"
       "#ifndef __QATERIAL_ICONS_HPP__\n"
@@ -219,6 +219,13 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       "};\n\n"
       "}\n\n"
       "#endif"
+    )
+
+    # Generate fake Qaterial.Impl.Icons.Icons.cpp
+    message(STATUS "Generate Fake ${OUTPUT_FILE_CPP}")
+    file(WRITE ${OUTPUT_FILE_CPP}
+      "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
+      "// Everything written here will be lost.\n\n"
     )
 
   endif()

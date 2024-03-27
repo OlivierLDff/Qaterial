@@ -17,6 +17,16 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         version: ['5.15.2']
+        include:
+          - os: ubuntu-latest
+            enable_icons: 'ON'
+          - os: ubuntu-latest
+            enable_icons: 'OFF'
+          - os: macOS-latest
+            enable_icons: 'ON'
+          - os: windows-latest
+            enable_icons: 'ON'
+
     steps:
       -
         uses: actions/checkout@v2
@@ -41,6 +51,7 @@ jobs:
           cmake -E make_directory build
           cmake                           \
             -DQATERIAL_ENABLE_TESTS=ON    \
+            -DQATERIAL_ENABLE_ICONS=${{ matrix.enable_icons }} \
             -DCMAKE_BUILD_TYPE="Release"  \
             -DCPM_SOURCE_CACHE=.cpm       \
             -B build                      \
