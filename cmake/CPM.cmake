@@ -1,33 +1,45 @@
-# ~~~
-# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
-# SPDX-FileContributor: Olivier Le Doeuff <olivier.ledoeuff@naostage.com>
 # SPDX-License-Identifier: MIT
-# ~~~
+#
+# SPDX-FileCopyrightText: Copyright (c) 2019-2023 Lars Melchior and contributors
 
-set(CPM_DOWNLOAD_VERSION "10bf25a8113e2003f259536bc88ad7bc81eff8ff") # v0.35.5
-set(CPM_VERSION "v0.35.5")
+# Heuristic to check if file have already been found
+if(COMMAND CpmAddPackage)
+  return()
+endif()
+
+if(QATERIAL_USE_LOCAL_CPM_FILE)
+  find_file(CPM_LOCAL_FILE
+    CPM.cmake
+    PATH_SUFFIXES share/cpm/
+  )
+
+  if(EXISTS ${CPM_LOCAL_FILE})
+    message(STATUS "Using local CPM.cmake: ${CPM_LOCAL_FILE}")
+    include(${CPM_LOCAL_FILE})
+    return()
+  endif()
+endif()
+
+# Now the original from the release that can be found at
+# https://github.com/cpm-cmake/CPM.cmake/releases
+
+set(CPM_DOWNLOAD_VERSION 0.39.0)
+set(CPM_HASH_SUM "66639bcac9dd2907b2918de466783554c1334446b9874e90d38e3778d404c2ef")
 
 if(CPM_SOURCE_CACHE)
-  # Expand relative path. This is important if the provided path contains a
-  # tilde (~)
-  get_filename_component(CPM_SOURCE_CACHE ${CPM_SOURCE_CACHE} ABSOLUTE)
-  set(CPM_DOWNLOAD_LOCATION
-      "${CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+  set(CPM_DOWNLOAD_LOCATION "${CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
 elseif(DEFINED ENV{CPM_SOURCE_CACHE})
-  set(CPM_DOWNLOAD_LOCATION
-      "$ENV{CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+  set(CPM_DOWNLOAD_LOCATION "$ENV{CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
 else()
-  set(CPM_DOWNLOAD_LOCATION
-      "${CMAKE_BINARY_DIR}/cmake/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+  set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
 endif()
 
-if(NOT (EXISTS ${CPM_DOWNLOAD_LOCATION}))
-  message(STATUS "Downloading CPM.cmake to ${CPM_DOWNLOAD_LOCATION}")
-  file(
-    DOWNLOAD
-    https://raw.githubusercontent.com/OlivierLDff/CPM.cmake/${CPM_DOWNLOAD_VERSION}/cmake/CPM.cmake
-    ${CPM_DOWNLOAD_LOCATION}
-    EXPECTED_HASH MD5=b0aa63cde03b88f5c71079eeb68e9449)
-endif()
+# Expand relative path. This is important if the provided path contains a tilde (~)
+get_filename_component(CPM_DOWNLOAD_LOCATION ${CPM_DOWNLOAD_LOCATION} ABSOLUTE)
+
+file(DOWNLOAD
+     https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake
+     ${CPM_DOWNLOAD_LOCATION} EXPECTED_HASH SHA256=${CPM_HASH_SUM}
+)
 
 include(${CPM_DOWNLOAD_LOCATION})
