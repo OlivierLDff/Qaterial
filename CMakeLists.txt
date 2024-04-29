@@ -50,6 +50,9 @@ set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
 set(QATERIAL_ENABLE_ROBOTO ON CACHE BOOL "Embed to qrc Roboto Regular & Medium")
 set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
 set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
+# The goal here is to leave source dir untouched from configure/build stage
+# This stays as an option if legacy behavior is desired (for example to do hot reload of qml)
+set(QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR ON CACHE BOOL "Generate `qmldir` file in binary folder instead of source folder")
 
 set(QATERIAL_ENABLE_INSTALL ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Generate the install target")
 
@@ -78,6 +81,8 @@ if(QATERIAL_VERBOSE)
   message(STATUS "QATERIAL_ENABLE_ROBOTO          : ${QATERIAL_ENABLE_ROBOTO}")
   message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}")
   message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
+
+  message(STATUS "QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR: ${QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR}")
 
   message(STATUS "QATERIAL_ENABLE_TESTS           : ${QATERIAL_ENABLE_TESTS}")
   message(STATUS "QATERIAL_ENABLE_INSTALL         : ${QATERIAL_ENABLE_INSTALL}")
