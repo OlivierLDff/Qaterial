@@ -10,8 +10,15 @@
 # DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+if(QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR)
+  set(QMLDIR_DIR ${CMAKE_CURRENT_BINARY_DIR}/qml_generated)
+else()
+  set(QMLDIR_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+endif()
+
 qt_generate_qmldir(QATERIAL_QMLDIR_FILE
  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
+ OUTPUT_DIR ${QMLDIR_DIR}
  MODULE "Qaterial"
 )
 
@@ -26,8 +33,18 @@ qt_generate_qrc(QATERIAL_QML_QRC
   RECURSE
 )
 
+qt_generate_qrc(QATERIAL_QML_GENERATED_QRC
+  SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/qml_generated
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/qml_generated/Generated
+  NAME QaterialGenerated.qrc
+  PREFIX "Qaterial"
+  GLOB_EXPRESSION "qmldir"
+  ALWAYS_OVERWRITE
+  RECURSE
+)
+
 # Add qml to the qtquick compiler (should only be call once per target)
-qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC})
+qtquick_compiler_add_resources(QATERIAL_QML_RES ${QATERIAL_QML_QRC} ${QATERIAL_QML_GENERATED_QRC})
 
 # Dont Run Moc on cpp file generated from qml
 foreach(QATERIAL_CURRENT_QML_FILE ${QATERIAL_QML_RES})
@@ -38,9 +55,6 @@ add_library(${QATERIAL_TARGET}Components STATIC ${QATERIAL_QML_RES})
 add_library(${QATERIAL_TARGET}::Components ALIAS ${QATERIAL_TARGET}Components)
 
 set_target_properties(${QATERIAL_TARGET}Components PROPERTIES AUTORCC TRUE)
-if(QATERIAL_ENABLE_UNITY_BUILD)
-  set_target_properties(${QATERIAL_TARGET}Components PROPERTIES UNITY_BUILD ON)
-endif()
 
 target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::Core
