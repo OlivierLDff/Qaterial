@@ -35,7 +35,7 @@ qt_generate_qrc(QATERIAL_QML_QRC
 
 qt_generate_qrc(QATERIAL_QML_GENERATED_QRC
   SOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/qml_generated
-  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/Generated
+  DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/qml_generated/Generated
   NAME QaterialGenerated.qrc
   PREFIX "Qaterial"
   GLOB_EXPRESSION "qmldir"
