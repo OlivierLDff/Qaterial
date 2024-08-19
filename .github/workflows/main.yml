@@ -22,7 +22,7 @@ jobs:
             enable_icons: 'ON'
           - os: ubuntu-latest
             enable_icons: 'OFF'
-          - os: macOS-13
+          - os: macOS-latest
             enable_icons: 'ON'
           - os: windows-latest
             enable_icons: 'ON'
@@ -92,21 +92,3 @@ jobs:
             --config "Release"                  \
             -j
         shell: bash
-
-  BuildWasm:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        include:
-          - docker-image: 'reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.8'
-
-    steps:
-    -
-      uses: actions/checkout@v2
-    -
-      name: 🔧 Configure
-      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} cmake -DQATERIAL_ENABLE_PCH=OFF -DQATERIAL_ENABLE_UNITY_BUILD=OFF -B ./build/ -S . ..
-    -
-      name: 🔨 Build
-      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} make -C build -j
