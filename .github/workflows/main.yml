@@ -39,12 +39,18 @@ jobs:
           cache: true
           modules: 'qt5compat'
       -
+        name: Enable ninja on ubuntu
+        # set CMAKE_GENERATOR to Ninja on ubuntu
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+            echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
+          fi
+      -
         name: 🔧 CMake
         run: |
           cmake --version
           cmake -E make_directory build
           cmake                           \
-            -G Ninja                      \
             -DQATERIAL_ENABLE_TESTS=ON    \
             -DQATERIAL_ENABLE_ICONS=${{ matrix.enable_icons }} \
             -DCMAKE_BUILD_TYPE="Release"  \
