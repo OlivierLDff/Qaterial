@@ -6,12 +6,17 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     flake-utils.url = "github:numtide/flake-utils";
+    nix-gl-host = {
+      url = "github:numtide/nix-gl-host";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     { self
     , nixpkgs
     , flake-utils
+    , nix-gl-host
     }:
     flake-utils.lib.eachDefaultSystem (system:
     let
@@ -20,6 +25,7 @@
       };
 
       qt = pkgs.qt6;
+      nixglhost = nix-gl-host.packages.${system}.default;
 
       nativeBuildInputs = with pkgs; [
         qt.wrapQtAppsHook
@@ -87,6 +93,7 @@
         clang-tools
         lazygit
         neovim
+        nixglhost
       ]
         ++ pkgs.lib.lists.optionals (stdenv.isLinux) [
         gdb

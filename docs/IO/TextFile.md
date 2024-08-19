@@ -46,8 +46,8 @@ To write to a file:
 * Close the file with `close()`.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.FlatButton
 {
@@ -79,8 +79,8 @@ To read a file:
 * Close the file with `close()`.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.FlatButton
 {

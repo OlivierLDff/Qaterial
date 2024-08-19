@@ -14,7 +14,7 @@ You can declare ApplicationWindow as the root item of your application, and run 
 `WindowLayoutSave` is an easy to use Item that will save and restore its target `Window` properties: `x`, `y`, `width`, `height`. It will also respect `minimumWidth` and `minimumHeight`.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.ApplicationWindow
 {
@@ -50,7 +50,7 @@ When using a `WindowSaveLayout`, the `ApplicationWindow`'s `visible` property sh
 If you need to manage the visible property of the Window by yourself, then set visible of `WindowLayoutSave` to false.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.ApplicationWindow
 {

@@ -17,7 +17,7 @@ A TreeView has a `model`, which defines the data to be displayed, and a `itemDel
 The TreeView doesn't provide a `itemDelegate` by it's own. You should provide your own:
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 Qaterial.TreeView
 {
   itemDelegate: Qaterial.ItemDelegate
@@ -47,7 +47,7 @@ The itemDelegate component should have `model`, `depth` and `index` properties.
 For convenience Qaterial provide a basic `TreeModel` and `TreeElement` objects that can be used as follow:
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.TreeModel
 {
@@ -91,7 +91,7 @@ The `TreeModel` support dynamic insertion and deletion. It is based on [QOlm](ht
 It is also possible to use a JSON model that needs to be inserted inside a `ListModel`. Each element should have an `expanded` and `children` field.
 
 ```js
-import QtQuick 2.14
+import QtQuick
 
 ListModel
 {

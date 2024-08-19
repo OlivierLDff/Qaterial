@@ -14,8 +14,8 @@ The `RectangleAreaHandler` allow easy manipulation of a `start` and `end` **vect
 By default the size of the handler is undefined. It should fill a parent.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Rectangle
 {
@@ -58,7 +58,7 @@ Grabbing Area can be controlled with 3 parameters:
 * `inMargin`: Margin inside visual handles before grabbing the full rectangle for move. Rendered in orange in the example.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.RectangleAreaHandler
 {
@@ -77,7 +77,7 @@ Qaterial.RectangleAreaHandler
 By default the selection will reversed itself if user try to do a negative rectangle. This can be disabled by settings `reversedAllowed` to false. This can be finer tuned by using `horizontalReverseAllowed` or `verticalReverseAllowed` to only disable on a particular axis.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.RectangleAreaHandler
 {
@@ -93,7 +93,7 @@ Qaterial.RectangleAreaHandler
 By default the minimum size of made with start/end is 0. This behavior can be changed by setting `minSize`.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.RectangleAreaHandler
 {
@@ -115,8 +115,8 @@ A `RectangleAreaHandler` is made a 4 `handle` and 4 `handleLinker` that can be c
   * When `horizontal` is **false**, `height` is set by loader, `width` should be set by the item.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 import QtQuick.Shapes 1.14
 
 Qaterial.RectangleAreaHandler

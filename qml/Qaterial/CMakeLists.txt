@@ -16,6 +16,17 @@ file(GLOB_RECURSE QATERIAL_QML_FILES
   "*.qml"
 )
 
+set(SINGLETON_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/Style.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/Colors.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/DataFormat.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/DialogManager.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/SnackbarManager.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/Style.qml
+)
+
+set_source_files_properties(${SINGLETON_FILES} PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 qt_add_library(${QATERIAL_TARGET}Components STATIC)
 qt_add_qml_module(${QATERIAL_TARGET}Components
   URI Qaterial
@@ -38,6 +49,7 @@ target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
+  Qt::Core5Compat
 )
 
 if(QATERIAL_FOLDER_PREFIX)

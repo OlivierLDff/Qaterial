@@ -174,7 +174,7 @@ The `SliderHandle` is controlled with 4 properties:
 * `pressed`: Do the ripple animation and scale the handle
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.SliderHandle
 {

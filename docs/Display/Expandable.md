@@ -9,8 +9,8 @@ title: Expandable
 `Expandable` is a lightweight item that display a `header` and a `delegate`. The delegate is shown with an `animation` when `expanded` is set to true.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.Expandable
 {
@@ -72,8 +72,8 @@ When `delegate` component is loaded, the loaded item can be accessed thru `deleg
 This example shows how to customize the `animation`.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.Expandable
 {
@@ -109,8 +109,8 @@ Qaterial.Expandable
 This example shows how to create a complex `delegate`.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.Expandable
 {

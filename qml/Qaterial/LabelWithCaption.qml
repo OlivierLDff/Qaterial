@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import QtQuick 2.12
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Item
 {

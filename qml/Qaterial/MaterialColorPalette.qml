@@ -3,8 +3,8 @@
  * Contact: olivier.ldff@gmail.com
  */
 
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Column
 {

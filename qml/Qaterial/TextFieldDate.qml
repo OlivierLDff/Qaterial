@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.15
+import QtQuick
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.TextField
 {

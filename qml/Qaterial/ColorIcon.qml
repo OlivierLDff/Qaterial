@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtGraphicalEffects 1.12
+import QtQuick
+import Qt5Compat.GraphicalEffects
 
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Item
 {

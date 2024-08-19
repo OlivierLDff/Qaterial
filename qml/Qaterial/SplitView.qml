@@ -9,7 +9,7 @@ import QtQuick.Templates 2.13 as T
 import QtQuick.Controls 2.13
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 T.SplitView
 {

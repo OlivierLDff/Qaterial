@@ -102,6 +102,7 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
+  Core5Compat
 )
 
 if(QATERIAL_MAIN_PROJECT)
@@ -216,6 +217,7 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
   Qt::Qml
   Qt::Quick
   Qt::QuickControls2
+  Qt::Core5Compat
 )
 
 if(QATERIAL_ENABLE_UNITY_BUILD)
