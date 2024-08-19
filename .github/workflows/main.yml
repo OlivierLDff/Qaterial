@@ -29,22 +29,15 @@ jobs:
 
     steps:
       -
-        uses: actions/checkout@v2
-      -
-        name: 📦 Cache Qt
-        id: cache-qt
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-          key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
+        uses: actions/checkout@v4
       -
         name: ⬇ Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          modules: ''
+          cache: true
+          modules: 'qt5compat'
       -
         name: 🔧 CMake
         run: |
