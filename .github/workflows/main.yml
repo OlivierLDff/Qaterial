@@ -37,7 +37,7 @@ jobs:
           version: ${{ matrix.version }}
           dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
           cache: true
-          modules: 'qt5compat'
+          modules: 'qt5compat qtshadertools'
       -
         name: Enable ninja on ubuntu
         if: contains(matrix.os, 'ubuntu')
