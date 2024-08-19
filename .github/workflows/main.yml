@@ -40,11 +40,9 @@ jobs:
           modules: 'qt5compat'
       -
         name: Enable ninja on ubuntu
-        # set CMAKE_GENERATOR to Ninja on ubuntu
+        if: contains(matrix.os, 'ubuntu')
         run: |
-          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-            echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
-          fi
+          echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
       -
         name: 🔧 CMake
         run: |
