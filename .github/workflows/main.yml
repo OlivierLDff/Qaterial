@@ -15,23 +15,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         qt-version: ['6.6.2']
-        include:
-          - os: ubuntu-latest
-            qt-version: '6.6.2'
-            enable_icons: 'ON'
-            build_shared: 'ON'
-          - os: ubuntu-latest
-            qt-version: '6.6.2'
-            enable_icons: 'ON'
-            build_shared: 'OFF'
-          # - os: ubuntu-latest
-          #   enable_icons: 'OFF'
-          - os: macOS-latest
-            qt-version: '6.6.2'
-            enable_icons: 'ON'
-          - os: windows-latest
-            qt-version: '6.6.2'
-            enable_icons: 'ON'
+        enable_icons: ['ON', 'OFF']
+        build_shared: ['ON', 'OFF']
 
     steps:
       -
