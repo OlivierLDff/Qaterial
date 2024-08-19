@@ -94,7 +94,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
   Core
   Gui
   Qml
