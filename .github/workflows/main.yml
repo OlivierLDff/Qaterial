@@ -16,19 +16,23 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        version: ['6.6.2']
+        qt-version: ['6.6.2']
         include:
           - os: ubuntu-latest
+            qt-version: '6.6.2'
             enable_icons: 'ON'
             build_shared: 'ON'
           - os: ubuntu-latest
+            qt-version: '6.6.2'
             enable_icons: 'ON'
             build_shared: 'OFF'
           # - os: ubuntu-latest
           #   enable_icons: 'OFF'
           - os: macOS-latest
+            qt-version: '6.6.2'
             enable_icons: 'ON'
           - os: windows-latest
+            qt-version: '6.6.2'
             enable_icons: 'ON'
 
     steps:
@@ -38,8 +42,7 @@ jobs:
         name: ⬇ Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: ${{ matrix.version }}
-          dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
+          version: ${{ matrix.qt-version }}
           cache: true
           modules: 'qt5compat qtshadertools'
       -

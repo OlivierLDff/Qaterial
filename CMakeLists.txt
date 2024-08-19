@@ -54,7 +54,8 @@ set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
 # This stays as an option if legacy behavior is desired (for example to do hot reload of qml)
 set(QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR ON CACHE BOOL "Generate `qmldir` file in binary folder instead of source folder")
 
-set(QATERIAL_ENABLE_INSTALL ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Generate the install target")
+set(_default_QATERIAL_ENABLE_INSTALL ${QATERIAL_MAIN_PROJECT} and NOT ${QATERIAL_BUILD_SHARED})
+set(QATERIAL_ENABLE_INSTALL ${_default_QATERIAL_ENABLE_INSTALL} CACHE BOOL "Generate the install target")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 if(QATERIAL_MAIN_PROJECT)
