@@ -44,6 +44,7 @@ jobs:
           cmake --version
           cmake -E make_directory build
           cmake                           \
+            -G Ninja                      \
             -DQATERIAL_ENABLE_TESTS=ON    \
             -DQATERIAL_ENABLE_ICONS=${{ matrix.enable_icons }} \
             -DCMAKE_BUILD_TYPE="Release"  \
