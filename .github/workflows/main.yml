@@ -42,6 +42,7 @@ jobs:
         name: Enable ninja on ubuntu
         if: contains(matrix.os, 'ubuntu')
         run: |
+          sudo apt-get install ninja-build
           echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
       -
         name: 🔧 CMake
