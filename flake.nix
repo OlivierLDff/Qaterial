@@ -35,7 +35,6 @@
         cmake
         cpm-cmake
         ninja
-
         gtest
       ];
 
@@ -64,7 +63,6 @@
       devShellHook = pkgs.lib.concatStringsSep "\n" (
         [ shellHook ]
       );
-
 
       CPM_USE_LOCAL_PACKAGES = "ON";
 

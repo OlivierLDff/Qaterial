@@ -20,11 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 
 project(QaterialFindPackageTest)
 
-find_package(Qaterial REQUIRED)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(QaterialFindPackageTest main.cpp)
-target_link_libraries(QaterialFindPackageTest Qaterial::Qaterial)
+find_package(Qaterial REQUIRED)
+find_package(Qt6  REQUIRED COMPONENTS Core Gui Quick)
+qt_standard_project_setup()
+qt_add_executable(QaterialFindPackageTest main.cpp)
+target_link_libraries(QaterialFindPackageTest
+    PRIVATE Qaterial::Qaterial
+)

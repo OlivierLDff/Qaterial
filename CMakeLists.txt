@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.15.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.25.0 FATAL_ERROR)
 
 set(QATERIAL_MAIN_PROJECT OFF)
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -35,7 +35,7 @@ set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_VERBOSE ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Qaterial log configuration")
-set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
+set(QATERIAL_BUILD_SHARED ${BUILD_SHARED_LIBS} CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
@@ -205,19 +205,19 @@ if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()
 
-target_link_libraries(${QATERIAL_TARGET} PRIVATE
-  ${QATERIAL_TARGET}::Icons
-  ${QATERIAL_TARGET}::Fonts
-  ${QATERIAL_TARGET}::Components
-  QOlm::QOlm
-  Qt::Core
-  Qt::Gui
-  Qt::Svg
-  Qt::Xml
-  Qt::Qml
-  Qt::Quick
-  Qt::QuickControls2
-  Qt::Core5Compat
+target_link_libraries(${QATERIAL_TARGET}
+  PRIVATE ${QATERIAL_TARGET}::Icons
+  PRIVATE ${QATERIAL_TARGET}::Fonts
+  PRIVATE ${QATERIAL_TARGET}::Components
+  PUBLIC QOlm::QOlm
+  PUBLIC Qt::Core
+  PUBLIC Qt::Gui
+  PUBLIC Qt::Svg
+  PUBLIC Qt::Xml
+  PUBLIC Qt::Qml
+  PUBLIC Qt::Quick
+  PUBLIC Qt::QuickControls2
+  PUBLIC Qt::Core5Compat
 )
 
 if(QATERIAL_ENABLE_UNITY_BUILD)
@@ -268,6 +268,10 @@ endif()
 # ───── INSTALL ─────
 
 if (QATERIAL_ENABLE_INSTALL)
+  if(NOT QATERIAL_BUILD_SHARED)
+    message(FATAL_ERROR "Qaterial must be built as a shared library to be installed")
+  endif()
+
   include(GNUInstallDirs)
   install(TARGETS ${QATERIAL_TARGET}
     EXPORT ${QATERIAL_TARGET}Targets
