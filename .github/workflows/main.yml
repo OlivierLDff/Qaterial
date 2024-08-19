@@ -91,6 +91,7 @@ jobs:
       -
         name: 🚀 Install Qaterial
         run: cmake --install build --prefix install
+        if: contains(matrix.build_shared, 'ON')
       -
         name: ✅ Test install work with find_package
         run: |
