@@ -41,6 +41,7 @@ jobs:
       -
         name: 🔧 CMake
         run: |
+          cmake --version
           cmake -E make_directory build
           cmake                           \
             -DQATERIAL_ENABLE_TESTS=ON    \
