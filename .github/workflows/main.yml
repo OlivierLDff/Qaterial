@@ -15,8 +15,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-13, windows-latest]
-        version: ['5.15.2']
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        version: ['6.6.2']
         include:
           - os: ubuntu-latest
             enable_icons: 'ON'

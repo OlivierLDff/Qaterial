@@ -33,11 +33,11 @@
         gtest
       ];
 
-      buildInputs = with pkgs; [
-        qt.qtbase
-        qt.qtsvg
-        qt.qtdeclarative
-        qt.qtquickcontrols2
+      buildInputs = with pkgs.qt6; [
+        qtbase
+        qtsvg
+        qtdeclarative
+        qt5compat
       ];
 
       nativeCheckInputs = with pkgs; [

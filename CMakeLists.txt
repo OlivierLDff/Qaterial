@@ -94,7 +94,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 6.5 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -102,13 +102,15 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  QuickCompiler
 )
+
+if(QATERIAL_MAIN_PROJECT)
+  qt_standard_project_setup()
+endif()
 
 # ───── FETCH DEPENDENCIES ─────
 
 include(cmake/FetchQOlm.cmake)
-include(cmake/FetchQtGeneratorCMake.cmake)
 
 # ───── RESSOURCES ─────
 
@@ -184,10 +186,10 @@ set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
 # ───── QATERIAL TARGET ─────
 
 if(${QATERIAL_BUILD_SHARED})
-  add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
+  qt_add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
 else()
-  add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
+  qt_add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
 endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
@@ -216,9 +218,6 @@ target_link_libraries(${QATERIAL_TARGET} PRIVATE
   Qt::QuickControls2
 )
 
-set_target_properties(${QATERIAL_TARGET} PROPERTIES
-  AUTOMOC TRUE
-)
 if(QATERIAL_ENABLE_UNITY_BUILD)
   set_target_properties(${QATERIAL_TARGET} PROPERTIES UNITY_BUILD ON)
 endif()
@@ -237,7 +236,7 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 # Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)

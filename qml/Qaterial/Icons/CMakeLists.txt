@@ -28,31 +28,29 @@ if(QATERIAL_ENABLE_ICONS)
   # Download svgs icons
   include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
 
-  # Generate qrc to embed svgs files
-  message(STATUS "Generate QaterialIcons.qrc")
-  qt_generate_qrc(QATERIAL_QML_ICONS_QRC
-    SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
-    NAME QaterialIcons.qrc
-    DEST_DIR ${CMAKE_CURRENT_BINARY_DIR}
-    PREFIX "Qaterial/Icons"
-    GLOB_EXPRESSION ${QATERIAL_ICONS})
-
-else()
-
-  # Generate fake qrc to embed svgs files
-  message(STATUS "Generate Fake QaterialIcons.qrc")
-  set(QATERIAL_QML_ICONS_QRC ${CMAKE_CURRENT_BINARY_DIR}/Generated/QaterialIcons.qrc)
-  file(WRITE ${QATERIAL_QML_ICONS_QRC}
-   "<!-- File auto with CMake to mock the absence of Mdi icons. Everything written here will be lost. -->\n"
-    "<RCC>\n"
-    "  <qresource prefix=\"/Qaterial/Icons\">\n"
-    "  </qresource>\n"
-    "</RCC>\n"
-  )
-
 endif()
 
-add_library(${QATERIAL_TARGET}Icons STATIC ${QATERIAL_QML_ICONS_QRC})
+file(GLOB_RECURSE QATERIAL_ICONS_FILES
+  LIST_DIRECTORIES false
+  ${MATERIALDESIGNICONS_ICONS_DIR}/${QATERIAL_ICONS}
+)
+
+foreach(QATERIAL_ICON_FILE ${QATERIAL_ICONS_FILES})
+  get_filename_component(QATERIAL_ICON_FILE_NAME ${QATERIAL_ICON_FILE} NAME)
+  set_source_files_properties(${QATERIAL_ICON_FILE} PROPERTIES
+    QT_RESOURCE_ALIAS ${QATERIAL_ICON_FILE_NAME}
+  )
+endforeach()
+
+qt_add_library(${QATERIAL_TARGET}Icons STATIC ${QATERIAL_QML_ICONS_QRC})
+qt_add_qml_module(${QATERIAL_TARGET}Icons
+  URI "Qaterial.Icons"
+  RESOURCE_PREFIX "/"
+  RESOURCES
+    ${QATERIAL_ICONS_FILES}
+  OUTPUT_TARGETS QATERIAL_ICONS_QML_TARGETS
+  NO_PLUGIN
+)
 add_library(${QATERIAL_TARGET}::Icons ALIAS ${QATERIAL_TARGET}Icons)
 set_target_properties(${QATERIAL_TARGET}Icons PROPERTIES AUTORCC TRUE)
 
@@ -70,7 +68,7 @@ endif()
 
 if(QATERIAL_ENABLE_INSTALL)
 include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Icons
+  install(TARGETS ${QATERIAL_TARGET}Icons ${QATERIAL_ICONS_QML_TARGETS}
     EXPORT ${QATERIAL_TARGET}IconsTargets
   )
 

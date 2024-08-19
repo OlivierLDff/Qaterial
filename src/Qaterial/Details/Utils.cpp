@@ -125,13 +125,6 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
 {
     qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
 
-    // Force load qrc resources
-    // This is mandatory when used as a static library
-    Q_INIT_RESOURCE(Qaterial);
-    Q_INIT_RESOURCE(QaterialGenerated);
-    Q_INIT_RESOURCE(QaterialFonts);
-    Q_INIT_RESOURCE(QaterialIcons);
-
     // Load all fonts embedded in QaterialFonts
     Qaterial_loadFonts();
 
