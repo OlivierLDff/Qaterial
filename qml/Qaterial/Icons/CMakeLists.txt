@@ -28,19 +28,18 @@ if(QATERIAL_ENABLE_ICONS)
   # Download svgs icons
   include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
 
-file(GLOB_RECURSE QATERIAL_ICONS_FILES
-  LIST_DIRECTORIES false
-  ${MATERIALDESIGNICONS_ICONS_DIR}/${QATERIAL_ICONS}
-)
-
-foreach(QATERIAL_ICON_FILE ${QATERIAL_ICONS_FILES})
-  get_filename_component(QATERIAL_ICON_FILE_NAME ${QATERIAL_ICON_FILE} NAME)
-  set_source_files_properties(${QATERIAL_ICON_FILE} PROPERTIES
-    QT_RESOURCE_ALIAS ${QATERIAL_ICON_FILE_NAME}
+  file(GLOB_RECURSE QATERIAL_ICONS_FILES
+    LIST_DIRECTORIES false
+    ${MATERIALDESIGNICONS_ICONS_DIR}/${QATERIAL_ICONS}
   )
-endforeach()
-endif()
 
+  foreach(QATERIAL_ICON_FILE ${QATERIAL_ICONS_FILES})
+    get_filename_component(QATERIAL_ICON_FILE_NAME ${QATERIAL_ICON_FILE} NAME)
+    set_source_files_properties(${QATERIAL_ICON_FILE} PROPERTIES
+      QT_RESOURCE_ALIAS ${QATERIAL_ICON_FILE_NAME}
+    )
+  endforeach()
+endif()
 
 qt_add_library(${QATERIAL_TARGET}Icons STATIC)
 
@@ -56,7 +55,6 @@ if(QATERIAL_ENABLE_ICONS)
 endif()
 
 add_library(${QATERIAL_TARGET}::Icons ALIAS ${QATERIAL_TARGET}Icons)
-set_target_properties(${QATERIAL_TARGET}Icons PROPERTIES AUTORCC TRUE)
 
 target_link_libraries(${QATERIAL_TARGET}Icons PRIVATE
   Qt::Core

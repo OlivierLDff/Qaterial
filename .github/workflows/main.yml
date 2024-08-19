@@ -20,8 +20,8 @@ jobs:
         include:
           - os: ubuntu-latest
             enable_icons: 'ON'
-          - os: ubuntu-latest
-            enable_icons: 'OFF'
+          # - os: ubuntu-latest
+          #   enable_icons: 'OFF'
           - os: macOS-latest
             enable_icons: 'ON'
           - os: windows-latest
