@@ -69,18 +69,28 @@ if(QATERIAL_ENABLE_LATO)
   )
 endif()
 
-message(STATUS "Generate QaterialFonts.qrc")
+file(GLOB_RECURSE QATERIAL_FONTS_FILES
+  LIST_DIRECTORIES false
+  "${QATERIAL_FONT_DIRECTORY}/*.ttf"
+)
 
-# Always generate a qrc, even if no font exist
-qt_generate_qrc(QATERIAL_FONTS_QML_QRC
-  SOURCE_DIR ${QATERIAL_FONT_DIRECTORY}
-  DEST_DIR ${QATERIAL_FONT_DIRECTORY}
-  NAME QaterialFonts.qrc
-  PREFIX "Qaterial"
-  GLOB_EXPRESSION "*.ttf"
-  RECURSE)
+foreach(QATERIAL_FONT_FILE ${QATERIAL_FONTS_FILES})
+  get_filename_component(QATERIAL_FONT_FILE_NAME ${QATERIAL_FONT_FILE} NAME)
 
-add_library(${QATERIAL_TARGET}Fonts STATIC ${QATERIAL_FONTS_QML_QRC})
+  get_filename_component(QATERIAL_FONT_FOLDER ${QATERIAL_FONT_FILE} DIRECTORY)
+  get_filename_component(QATERIAL_FONT_FOLDER ${QATERIAL_FONT_FOLDER} NAME)
+
+  set_source_files_properties(${QATERIAL_FONT_FILE} PROPERTIES
+    QT_RESOURCE_ALIAS ${QATERIAL_FONT_FOLDER}/${QATERIAL_FONT_FILE_NAME}
+  )
+endforeach()
+
+qt_add_library(${QATERIAL_TARGET}Fonts STATIC ${QATERIAL_FONTS_QML_QRC})
+qt_add_resources(${QATERIAL_TARGET}Fonts "${QATERIAL_TARGET}Fonts"
+  FILES ${QATERIAL_FONTS_FILES}
+  PREFIX "/Qaterial/Fonts"
+  OUTPUT_TARGETS QATERIAL_FONTS_QML_TARGETS
+)
 add_library(${QATERIAL_TARGET}::Fonts ALIAS ${QATERIAL_TARGET}Fonts)
 set_target_properties(${QATERIAL_TARGET}Fonts PROPERTIES AUTORCC TRUE)
 
@@ -98,7 +108,7 @@ endif()
 
 if(QATERIAL_ENABLE_INSTALL)
   include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Fonts
+  install(TARGETS ${QATERIAL_TARGET}Fonts ${QATERIAL_FONTS_QML_TARGETS}
     EXPORT ${QATERIAL_TARGET}FontsTargets
   )
 

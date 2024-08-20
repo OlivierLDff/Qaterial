@@ -4,10 +4,10 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.impl 2.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Controls.Material.impl 2.12 as QQuickMaterial
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Controls.impl
+import QtQuick.Controls.Material
+import QtQuick.Controls.Material.impl as QQuickMaterial
 
 QQuickMaterial.Ripple {}

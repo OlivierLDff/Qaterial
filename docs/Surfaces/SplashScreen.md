@@ -16,7 +16,7 @@ The `SplashScreen` component contain an `image`, a `text` and a `version` string
 It is based on `Rectangle`.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.SplashScreen
 {
@@ -40,8 +40,8 @@ The `SplashScreenWindow`  turn visible as soon as the window finished to load.
 The easiest way to show a SplashScreen then your main application is to use `SplashScreenApplication`.
 
 ```js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 
 Qaterial.SplashScreenApplication
 {

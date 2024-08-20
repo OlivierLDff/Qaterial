@@ -38,7 +38,7 @@ namespace qaterial {
 // The clipboard offers a simple mechanism to copy and paste data between applications.
 // This object is a singleton accessible from Qml:
 // ``` js
-// import Qaterial 1.0 as Qaterial
+// import Qaterial as Qaterial
 // Item
 // {
 //   Component.onCompleted: Qaterial.Clipboard.copy("my text to copy")

@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 **HelloWorld.qml**
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.ApplicationWindow
 {
@@ -135,4 +135,3 @@ You might also need to deploy qt dlls near your executable. Or update your path 
 * **Qt5_DIR**: Give a default Qt5 installation for path for the `find_package` command. Example: `C:\Qt\5.15.0\msvc2019_64`.
 * **QML2_IMPORT_PATH**: Indicate where to look for qml files & plugins. Example Value: ` .;C:\Qt\5.15.0\msvc2019_64\qml;./Debug;./Release`
 * **QT_PLUGIN_PATH**: Path where the application is looking for plugins like platform plugin or svg, ... Example: `.;C:\Qt\5.15.0\msvc2019_64\plugins;C:\Qt\5.15.0\msvc2019_64\qml`.
-

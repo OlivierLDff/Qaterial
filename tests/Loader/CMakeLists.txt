@@ -2,7 +2,7 @@ set(QATERIAL_TEST_LOADER QaterialTestLoader)
 message(STATUS "Add Test: ${QATERIAL_TEST_LOADER}")
 
 # Create our app
-add_executable(${QATERIAL_TEST_LOADER} QaterialTestLoader.cpp)
+qt_add_executable(${QATERIAL_TEST_LOADER} QaterialTestLoader.cpp)
 
 # We assume that Qaterial is available somewhere. You should have a look at 'cmake/FetchQaterial.cmake'
 target_link_libraries(${QATERIAL_TEST_LOADER} PRIVATE

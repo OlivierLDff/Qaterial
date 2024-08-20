@@ -18,44 +18,7 @@
             }
         },
         {
-            "name": "base-dev-ninja",
-            "hidden": true,
-            "inherits": "base-dev",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "USE_CCACHE": true
-            }
-        },
-        {
-            "name": "ninja-debug",
-            "inherits": "base-dev-ninja",
-            "displayName": "Debug Ninja",
-            "description": "Build in Debug with Ninja generator",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
-            }
-        },
-        {
-            "name": "ninja-relwithdebinfo",
-            "inherits": "base-dev-ninja",
-            "displayName": "RelWithDebInfo Ninja",
-            "description": "Build in RelWithDebInfo with Ninja generator",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
-            }
-        },
-        {
-            "name": "ninja-release",
-            "inherits": "base-dev-ninja",
-            "displayName": "Release Ninja",
-            "description": "Build in Release with Ninja generator",
-            "generator": "Ninja",
-            "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
-            }
-        },
-        {
-            "name": "ninja-multi",
+            "name": "ninja",
             "inherits": "base-dev",
             "displayName": "Ninja Multi-Config",
             "description": "Default build using Ninja Multi-Config generator",

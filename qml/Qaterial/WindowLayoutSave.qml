@@ -1,7 +1,7 @@
-import QtQml 2.14
-import QtQuick 2.14
-import QtQuick.Window 2.4
-import Qt.labs.settings 1.0 as QLab
+import QtCore
+import QtQml
+import QtQuick
+import QtQuick.Window
 
 Item
 {
@@ -153,7 +153,7 @@ Item
       target.height = height
   }
 
-  QLab.Settings
+  Settings
   {
     id: settings
 

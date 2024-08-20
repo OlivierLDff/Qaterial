@@ -12,10 +12,9 @@ For easy access, Qaterial also comes with a singleton `Icons` that provide a pro
 
 Example:
 
-
 ``` js
-import QtQuick 2.0
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import Qaterial as Qaterial
 Row
 {
     Qaterial.Button { icon.source: Qaterial.Icons.add }
@@ -34,14 +33,14 @@ A convenient example `IconsListView` is also available to filter and search in t
 
 ## Icon Component
 
-A Simple `Icon` component display an icon with a color. 
+A Simple `Icon` component display an icon with a color.
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Icon
 {
-	icon: Qaterial.Icons.rocketLaunchOutline
+ icon: Qaterial.Icons.rocketLaunchOutline
     size: 32
     color: "#FF9800"
 }
@@ -59,6 +58,7 @@ By default all svg from MaterialDesignIcons are package in Qaterial (take 3-4Mb)
 To filter which icons are going to be embedded use the CMake argument `QATERIAL_ICONS`.
 
 This example demonstrate how to embed only icons starting with `ab`, `account`, and that contains `outline`
+
 ``` bash
 cmake -DQATERIAL_ICONS="ab*;account*;*outline*" ..
 ```

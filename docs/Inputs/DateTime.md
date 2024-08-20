@@ -302,7 +302,7 @@ It is controlled by rotation. For example, if the `HandClock` should match 6 hou
 The radius should match the radius of your `CircularPathLabel` and be centered in it.
 
 ````js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 HandClock
 {

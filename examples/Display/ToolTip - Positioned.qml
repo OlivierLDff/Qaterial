@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.14
-import Qaterial 1.0 as Qaterial
+import QtQuick
+import QtQuick.Controls
+import Qaterial as Qaterial
 
 Item
 {

@@ -12,7 +12,7 @@ title: 🗨️ System Dialog
 # 💾 Save File Dialog
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Button
 {
@@ -35,7 +35,7 @@ Qaterial.Button
 # 📁 Open File Dialog
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Button
 {
@@ -58,7 +58,7 @@ Qaterial.Button
 # 📁 Open Files Dialog
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Button
 {
@@ -81,7 +81,7 @@ Qaterial.Button
 # 📂 Open Folder Dialog
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Button
 {
@@ -99,4 +99,3 @@ Qaterial.Button
   }
 }
 ```
-

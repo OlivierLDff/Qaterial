@@ -27,7 +27,7 @@ Steppers are Navigation Components used to display progress through a sequence o
 `Qaterial.StepperModel` is a **cpp** implemented list of `Qaterial.SteppeElement`
 
 ```javascript
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.StepperModel
 {
@@ -152,7 +152,7 @@ In this example `indicator` and `contentItem` are a bit customized to displayed 
 To access at the model from those components you have to set some properties :
 
 ```javascript
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 contentItem: Qaterial.Label
 {
@@ -170,7 +170,7 @@ Those lines allow you to access `Components`loaded inside the **Stepper**.
 This last example is the more customized with a new property added to the model :
 
 ```javascript
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.StepperElement
 {
@@ -185,7 +185,7 @@ Then you can set the indicator to display it :
 ![bordel](https://user-images.githubusercontent.com/51703091/86032422-a0163900-ba37-11ea-8efe-874f87746889.gif)
 
 ```js
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 indicator: Qaterial.ColorIcon
 {
@@ -202,6 +202,3 @@ If your separator element already has a property named `next` you can use Elemen
 nextRole: "newNextElementRole"
 separator: Rectangle { property Qaterial.StepperElement newNextElementRole }
 ```
-
-
-

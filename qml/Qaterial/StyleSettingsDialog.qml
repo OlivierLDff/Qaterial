@@ -4,11 +4,11 @@
  */
 
 // Qt
-import QtQuick 2.12
+import QtQuick
 import QtQuick.Layouts 1.12
 
 // Qaterial
-import Qaterial 1.0 as Qaterial
+import Qaterial as Qaterial
 
 Qaterial.Dialog
 {

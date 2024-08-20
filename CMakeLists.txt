@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.15.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.25.0 FATAL_ERROR)
 
 set(QATERIAL_MAIN_PROJECT OFF)
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -35,7 +35,7 @@ set(QATERIAL_PROJECT "Qaterial" CACHE STRING "Project Name")
 set(QATERIAL_TARGET ${QATERIAL_PROJECT} CACHE STRING "Target Name")
 set(QATERIAL_FOLDER_PREFIX ${QATERIAL_PROJECT} CACHE STRING "Prefix folder for all Qaterial generated targets in generated project (only decorative)")
 set(QATERIAL_VERBOSE ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Qaterial log configuration")
-set(QATERIAL_BUILD_SHARED OFF CACHE BOOL "Build as a shared library")
+set(QATERIAL_BUILD_SHARED ${BUILD_SHARED_LIBS} CACHE BOOL "Build as a shared library")
 set(QATERIAL_ENABLE_TESTS OFF CACHE BOOL "Build Qaterial test executable")
 set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  "Enable precompile headers support for 'Qaterial'. \"
@@ -54,7 +54,13 @@ set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
 # This stays as an option if legacy behavior is desired (for example to do hot reload of qml)
 set(QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR ON CACHE BOOL "Generate `qmldir` file in binary folder instead of source folder")
 
-set(QATERIAL_ENABLE_INSTALL ${QATERIAL_MAIN_PROJECT} CACHE BOOL "Generate the install target")
+if(QATERIAL_MAIN_PROJECT AND QATERIAL_BUILD_SHARED)
+  set(_default_QATERIAL_ENABLE_INSTALL ON)
+else()
+  set(_default_QATERIAL_ENABLE_INSTALL OFF)
+endif()
+
+set(QATERIAL_ENABLE_INSTALL ${_default_QATERIAL_ENABLE_INSTALL} CACHE BOOL "Generate the install target")
 
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 if(QATERIAL_MAIN_PROJECT)
@@ -94,7 +100,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -102,13 +108,16 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  QuickCompiler
+  Core5Compat
 )
+
+if(QATERIAL_MAIN_PROJECT)
+  qt_standard_project_setup()
+endif()
 
 # ───── FETCH DEPENDENCIES ─────
 
 include(cmake/FetchQOlm.cmake)
-include(cmake/FetchQtGeneratorCMake.cmake)
 
 # ───── RESSOURCES ─────
 
@@ -184,10 +193,10 @@ set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
 # ───── QATERIAL TARGET ─────
 
 if(${QATERIAL_BUILD_SHARED})
-  add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
+  qt_add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
 else()
-  add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
+  qt_add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PUBLIC -DQATERIAL_STATIC)
 endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
@@ -202,23 +211,21 @@ if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()
 
-target_link_libraries(${QATERIAL_TARGET} PRIVATE
-  ${QATERIAL_TARGET}::Icons
-  ${QATERIAL_TARGET}::Fonts
-  ${QATERIAL_TARGET}::Components
-  QOlm::QOlm
-  Qt::Core
-  Qt::Gui
-  Qt::Svg
-  Qt::Xml
-  Qt::Qml
-  Qt::Quick
-  Qt::QuickControls2
+target_link_libraries(${QATERIAL_TARGET}
+  PRIVATE ${QATERIAL_TARGET}::Icons
+  PRIVATE ${QATERIAL_TARGET}::Fonts
+  PRIVATE ${QATERIAL_TARGET}::Components
+  PUBLIC QOlm::QOlm
+  PUBLIC Qt::Core
+  PUBLIC Qt::Gui
+  PUBLIC Qt::Svg
+  PUBLIC Qt::Xml
+  PUBLIC Qt::Qml
+  PUBLIC Qt::Quick
+  PUBLIC Qt::QuickControls2
+  PUBLIC Qt::Core5Compat
 )
 
-set_target_properties(${QATERIAL_TARGET} PROPERTIES
-  AUTOMOC TRUE
-)
 if(QATERIAL_ENABLE_UNITY_BUILD)
   set_target_properties(${QATERIAL_TARGET} PROPERTIES UNITY_BUILD ON)
 endif()
@@ -237,7 +244,7 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 # Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
 if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
@@ -267,6 +274,10 @@ endif()
 # ───── INSTALL ─────
 
 if (QATERIAL_ENABLE_INSTALL)
+  if(NOT QATERIAL_BUILD_SHARED)
+    message(FATAL_ERROR "Qaterial must be built as a shared library to be installed")
+  endif()
+
   include(GNUInstallDirs)
   install(TARGETS ${QATERIAL_TARGET}
     EXPORT ${QATERIAL_TARGET}Targets

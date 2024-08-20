@@ -3,55 +3,52 @@ name: 👷 Continuous Deployment
 on:
   push:
     branches:
-      - master
-      - ci
-
+      - main
   pull_request:
-    branches:
-      - master
+    types: [opened, synchronize, unlabeled]
+  workflow_dispatch:
 
 jobs:
-  Build:
+  BuildQt6:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-13, windows-latest]
-        version: ['5.15.2']
-        include:
-          - os: ubuntu-latest
-            enable_icons: 'ON'
-          - os: ubuntu-latest
-            enable_icons: 'OFF'
-          - os: macOS-13
-            enable_icons: 'ON'
-          - os: windows-latest
-            enable_icons: 'ON'
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        qt-version: ['6.6.2']
+        enable_icons: ['ON', 'OFF']
+        build_shared: ['ON', 'OFF']
 
     steps:
       -
-        uses: actions/checkout@v2
-      -
-        name: 📦 Cache Qt
-        id: cache-qt
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-          key: ${{ runner.os }}-QtCache-${{ matrix.version }}-modules
+        uses: actions/checkout@v4
       -
         name: ⬇ Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: ${{ matrix.version }}
-          dir: ${{ github.workspace }}/Qt-${{ runner.os }}-${{ matrix.version }}
-          cached: ${{ steps.cache-qt.outputs.cache-hit }}
-          modules: ''
+          version: ${{ matrix.qt-version }}
+          cache: true
+          modules: 'qt5compat qtshadertools'
+      -
+        name: Enable ninja on ubuntu
+        if: contains(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get install ninja-build
+          echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
+      -
+        name: Enable ninja on macOS
+        if: contains(matrix.os, 'macOS')
+        run: |
+          brew install ninja
+          echo "CMAKE_GENERATOR=Ninja" >> $GITHUB_ENV
       -
         name: 🔧 CMake
         run: |
+          cmake --version
           cmake -E make_directory build
           cmake                           \
             -DQATERIAL_ENABLE_TESTS=ON    \
             -DQATERIAL_ENABLE_ICONS=${{ matrix.enable_icons }} \
+            -DBUILD_SHARED_LIBS=${{ matrix.build_shared }} \
             -DCMAKE_BUILD_TYPE="Release"  \
             -DCPM_SOURCE_CACHE=.cpm       \
             -B build                      \
@@ -77,6 +74,7 @@ jobs:
       -
         name: 🚀 Install Qaterial
         run: cmake --install build --prefix install
+        if: contains(matrix.build_shared, 'ON')
       -
         name: ✅ Test install work with find_package
         run: |
@@ -92,21 +90,4 @@ jobs:
             --config "Release"                  \
             -j
         shell: bash
-
-  BuildWasm:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        include:
-          - docker-image: 'reivilo1234/qt-webassembly-cmake:qt5.15-em1.39.8'
-
-    steps:
-    -
-      uses: actions/checkout@v2
-    -
-      name: 🔧 Configure
-      run: mkdir -p build && docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} cmake -DQATERIAL_ENABLE_PCH=OFF -DQATERIAL_ENABLE_UNITY_BUILD=OFF -B ./build/ -S . ..
-    -
-      name: 🔨 Build
-      run: docker run --rm -v $(pwd):/src/ -u $(id -u):$(id -g) ${{ matrix.docker-image }} make -C build -j
+        if: contains(matrix.build_shared, 'ON')
