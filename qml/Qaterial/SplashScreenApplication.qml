@@ -13,7 +13,17 @@ Item
     onStatusChanged: function()
     {
       if(splashScreenLoader.status === Loader.Ready)
+      {
         applicationLoader.active = true
+        if(splashScreenLoader.item)
+        {
+          splashScreenLoader.item.show()
+        }
+        else
+        {
+          console.error("SplashScreenApplication: SplashScreen loaded, but item is null")
+        }
+      }
     }
   }
 
@@ -25,7 +35,17 @@ Item
     onStatusChanged: function()
     {
       if(applicationLoader.status === Loader.Ready)
-        splashScreenLoader.active = false
+      {
+        if(applicationLoader.item)
+        {
+          applicationLoader.item.show()
+          splashScreenLoader.item.close()
+        }
+        else
+        {
+          console.error("SplashScreenApplication: Application loaded, but item is null")
+        }
+      }
     }
   }
 
