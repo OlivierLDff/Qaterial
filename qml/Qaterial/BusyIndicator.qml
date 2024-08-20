@@ -27,7 +27,7 @@
  ** General Public License version 2.0 or later as published by the Free
  ** Software Foundation and appearing in the file LICENSE.GPL included in
  ** the packaging of this file. Please review the following information to
- ** ensure the GNU General Public License version requirements will be
+ ** ensure the GNU General Public License version 2.0 requirements will be
  ** met: http://www.gnu.org/licenses/gpl-2.0.html.
  **
  ** $QT_END_LICENSE$
