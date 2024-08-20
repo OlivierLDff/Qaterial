@@ -57,6 +57,7 @@ Item
   }
 
   function _laterActiveSplashScreen() { splashScreenLoader.active = true }
+
   function _laterDeactiveSplashScreen() { splashScreenLoader.active = false }
 
   Component.onCompleted: () => Qt.callLater(_laterActiveSplashScreen)
