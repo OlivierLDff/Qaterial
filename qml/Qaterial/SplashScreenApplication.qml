@@ -12,16 +12,20 @@ Item
 
     onStatusChanged: function()
     {
-      if(splashScreenLoader.status === Loader.Ready)
+      if(!active)
+        return
+
+      if(splashScreenLoader.status === Loader.Ready && !applicationLoader.active)
       {
         applicationLoader.active = true
         if(splashScreenLoader.item)
         {
+          console.log("SplashScreenLoaderApplication: SplashScreen loaded")
           splashScreenLoader.item.show()
         }
         else
         {
-          console.error("SplashScreenApplication: SplashScreen loaded, but item is null")
+          console.error("SplashScreenLoaderApplication: SplashScreen loaded, but item is null")
         }
       }
     }
@@ -38,8 +42,11 @@ Item
       {
         if(applicationLoader.item)
         {
+          console.log("SplashScreenApplication: Application loaded")
           applicationLoader.item.show()
-          splashScreenLoader.item.close()
+
+          console.log("Deactivate splashScreenLoader")
+          Qt.callLater(_laterDeactiveSplashScreen)
         }
         else
         {
@@ -50,6 +57,7 @@ Item
   }
 
   function _laterActiveSplashScreen() { splashScreenLoader.active = true }
+  function _laterDeactiveSplashScreen() { splashScreenLoader.active = false }
 
   Component.onCompleted: () => Qt.callLater(_laterActiveSplashScreen)
 }
