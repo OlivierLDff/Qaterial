@@ -1,5 +1,5 @@
-# SPDX-FileCopyrightText: Naostage <contact@naostage.com>
-# SPDX-License-Identifier: UNLICENSED
+# SPDX-FileCopyrightText: Olivier Le Doeuff<olivier.ldff@gmail.com>
+# SPDX-License-Identifier: MIT
 {
   description = "qaterial";
 
