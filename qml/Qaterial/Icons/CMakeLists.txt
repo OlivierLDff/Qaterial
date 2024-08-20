@@ -65,7 +65,7 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 if(QATERIAL_ENABLE_INSTALL)
-include(GNUInstallDirs)
+  include(GNUInstallDirs)
   install(TARGETS ${QATERIAL_TARGET}Icons ${QATERIAL_ICONS_QML_TARGETS}
     EXPORT ${QATERIAL_TARGET}IconsTargets
   )
