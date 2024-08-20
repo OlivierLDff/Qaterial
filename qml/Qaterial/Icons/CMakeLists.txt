@@ -44,8 +44,9 @@ endif()
 qt_add_library(${QATERIAL_TARGET}Icons STATIC)
 
 if(QATERIAL_ENABLE_ICONS)
-  qt_add_resources(${QATERIAL_TARGET}Icons ${QATERIAL_ICONS_FILES}
-    RESOURCE_PREFIX "/Qaterial/Icons"
+  qt_add_resources(${QATERIAL_TARGET}Icons "${QATERIAL_TARGET}Icons"
+    PREFIX "/Qaterial/Icons"
+    FILES ${QATERIAL_ICONS_FILES}
     OUTPUT_TARGETS QATERIAL_ICONS_QML_TARGETS
   )
 endif()
