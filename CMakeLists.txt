@@ -295,7 +295,10 @@ if (QATERIAL_ENABLE_INSTALL)
     NAMESPACE ${QATERIAL_TARGET}::
   )
 
-  configure_file(cmake/${QATERIAL_TARGET}Config.cmake.in
+  if(QATERIAL_BUILD_SHARED)
+    set(SUFFIX_CMAKE_SHARED "Shared")
+  endif()
+  configure_file(cmake/${QATERIAL_TARGET}Config${SUFFIX_CMAKE_SHARED}.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
     @ONLY
   )

@@ -160,8 +160,6 @@
           echo "Run shell hook"
           ${shellHook}
 
-          # This used to work with Qt5, but not with Qt6...?
-          # More investigation needed
           xvfb-run dbus-run-session \
             --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
             ctest -C "${cmakeConfigType}" --output-on-failure --verbose
@@ -174,14 +172,14 @@
         doInstallCheck = doCheck;
         installCheckPhase = pkgs.lib.optionalString doInstallCheck ''
           echo "test that cmake package is found"
-          cmake -E make_directory tests/FindPackageTest/build
+          cmake -E make_directory find_package_build
           cmake \
             -DCMAKE_BUILD_TYPE="${cmakeConfigType}" \
             -DCMAKE_INSTALL_PREFIX=$out \
-            -B tests/FindPackageTest/build \
-            -S tests/FindPackageTest
+            -B find_package_build \
+            -S ../tests/FindPackageTest
           cmake \
-            --build tests/FindPackageTest/build \
+            --build find_package_build \
             --target "QaterialFindPackageTest" \
             --config "${cmakeConfigType}" \
             --parallel $NIX_BUILD_CORES
