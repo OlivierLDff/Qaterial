@@ -35,6 +35,12 @@ Clipboard::Clipboard(QObject* parent)
     // If assert here it mean Clipboard have been instantiated in a non QGuiApplication context
     Q_ASSERT(_clipboard);
 
+    if(!_clipboard)
+    {
+        qWarning() << "Clipboard can't be instantiated in a non QGuiApplication context";
+        return;
+    }
+
     connect(_clipboard,
         &QClipboard::dataChanged,
         this,
@@ -57,12 +63,21 @@ Clipboard::Clipboard(QObject* parent)
 
 QString Clipboard::text() const
 {
+    if(!_clipboard)
+        return "";
+
     const auto mimeData = _clipboard->mimeData();
     return mimeData && mimeData->hasText() ? mimeData->text() : "";
 }
 
 void Clipboard::setText(const QString& value)
 {
+    if(!_clipboard)
+    {
+        qWarning() << "Clipboard can't be instantiated in a non QGuiApplication context";
+        return;
+    }
+
     // Don't copy data in clipboard if we already own the data, and data is same
     if(owns() && _clipboard->mimeData() && _clipboard->mimeData()->hasText() && _clipboard->text() == value)
         return;
@@ -76,12 +91,18 @@ void Clipboard::setText(const QString& value)
 bool Clipboard::owns() const
 {
     QClipboard* clipboard = QGuiApplication::clipboard();
+    if(!clipboard)
+        return false;
+
     return clipboard->ownsClipboard();
 }
 
 void Clipboard::clear()
 {
     QClipboard* clipboard = QGuiApplication::clipboard();
+    if(!clipboard)
+        return;
+
     clipboard->clear();
 }
 
