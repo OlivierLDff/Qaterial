@@ -46,6 +46,8 @@ static const char* _defaultUri = "Qaterial";
 static const char** _uri = &_defaultUri;
 static quint8 _major = 1;
 static quint8 _minor = 0;
+static bool registeredTypes = false;
+static bool registeredRes = false;
 
 void __Qaterial_registerIconsSingleton();
 
@@ -123,6 +125,9 @@ static void Qaterial_loadFonts()
 
 static void Qaterial_loadResources(bool autoRegisterStyle)
 {
+    if(registeredRes)
+        return;
+
     qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
 
     // Load all fonts embedded in QaterialFonts
@@ -139,6 +144,9 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
 
 static void Qaterial_loadResources()
 {
+    if(registeredRes)
+        return;
+
     Qaterial_loadResources(true);
 }
 
