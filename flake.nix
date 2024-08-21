@@ -106,6 +106,7 @@
       qaterial = with pkgs; stdenv.mkDerivation rec {
         inherit version nativeBuildInputs buildInputs nativeCheckInputs;
         inherit CPM_USE_LOCAL_PACKAGES;
+        propagatedBuildInputs = buildInputs;
 
         pname = "qaterial";
         src = nix-filter {
