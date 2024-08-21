@@ -21,9 +21,13 @@
 // SOFTWARE.
 
 #include <Qaterial/Qaterial.hpp>
+#include <QtGui/QGuiApplication>
 
-int main()
+int main(int argc, char* argv[])
 {
+    QGuiApplication app(argc, argv);
     qaterial::registerQmlTypes();
     qaterial::loadQmlResources();
+
+    return 0;
 }
