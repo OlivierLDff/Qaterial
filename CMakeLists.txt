@@ -42,7 +42,6 @@ set(QATERIAL_ENABLE_PCH ON CACHE BOOL
  Only work if CMake support 'target_precompile_headers'. \"
  This can speed up compilation time.")
 set(QATERIAL_ENABLE_UNITY_BUILD ON CACHE BOOL "Qaterial source files will be combined into batches for faster compilation.")
-set(QATERIAL_ENABLE_HIGHDPIFIX ON CACHE BOOL "Fix high dpi at application startup without any additional code")
 
 set(QATERIAL_ENABLE_ICONS ON CACHE BOOL "Embed Mdi Icons in Qaterial.Icons (MATERIALDESIGNICONS_REPOSITORY)")
 set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
@@ -79,7 +78,6 @@ if(QATERIAL_VERBOSE)
   message(STATUS "QATERIAL_FOLDER_PREFIX          : ${QATERIAL_FOLDER_PREFIX}")
   message(STATUS "QATERIAL_ENABLE_PCH             : ${QATERIAL_ENABLE_PCH}")
   message(STATUS "QATERIAL_ENABLE_UNITY_BUILD     : ${QATERIAL_ENABLE_UNITY_BUILD}")
-  message(STATUS "QATERIAL_ENABLE_HIGHDPIFIX      : ${QATERIAL_ENABLE_HIGHDPIFIX}")
 
   message(STATUS "QATERIAL_ENABLE_ICONS           : ${QATERIAL_ENABLE_ICONS}")
   message(STATUS "QATERIAL_ICONS                  : ${QATERIAL_ICONS}")
@@ -178,12 +176,6 @@ set(QATERIAL_SRCS
   ${QATERIAL_SOURCE_DIR}/Details/Version.cpp
   ${QATERIAL_SOURCE_DIR}/Details/Utils.cpp
 )
-
-if(QATERIAL_ENABLE_HIGHDPIFIX)
-  set(QATERIAL_SRCS ${QATERIAL_SRCS}
-    ${QATERIAL_SOURCE_DIR}/Details/HighDpiFix.cpp
-  )
-endif()
 
 source_group(TREE "${QATERIAL_SOURCE_DIR}" FILES ${QATERIAL_SRCS})
 source_group(TREE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial" FILES ${QATERIAL_GEN_SRCS})
