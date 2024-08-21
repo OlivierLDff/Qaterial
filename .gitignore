@@ -11,3 +11,6 @@ CMakeLists.txt.user
 
 # CPM cache
 .cpm
+
+# nix files
+result*

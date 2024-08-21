@@ -49,6 +49,7 @@ set(QATERIAL_ICONS "*.svg" CACHE STRING "Filter embedded icons")
 set(QATERIAL_ENABLE_ROBOTO ON CACHE BOOL "Embed to qrc Roboto Regular & Medium")
 set(QATERIAL_ENABLE_ROBOTOMONO ON CACHE BOOL "Embed to qrc RobotoMono Regular")
 set(QATERIAL_ENABLE_LATO ON CACHE BOOL "Embed to qrc Lato Regular")
+set(QATERIAL_FONTS_DIRS "" CACHE STRING "Additional where the library has to look")
 # The goal here is to leave source dir untouched from configure/build stage
 # This stays as an option if legacy behavior is desired (for example to do hot reload of qml)
 set(QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR ON CACHE BOOL "Generate `qmldir` file in binary folder instead of source folder")
@@ -85,6 +86,7 @@ if(QATERIAL_VERBOSE)
   message(STATUS "QATERIAL_ENABLE_ROBOTO          : ${QATERIAL_ENABLE_ROBOTO}")
   message(STATUS "QATERIAL_ENABLE_ROBOTOMONO      : ${QATERIAL_ENABLE_ROBOTOMONO}")
   message(STATUS "QATERIAL_ENABLE_LATO            : ${QATERIAL_ENABLE_LATO}")
+  message(STATUS "QATERIAL_FONTS_DIRS             : ${QATERIAL_FONTS_DIRS}")
 
   message(STATUS "QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR: ${QATERIAL_ENABLE_GEN_QMLDIR_BINARY_DIR}")
 
@@ -237,11 +239,6 @@ endif()
 
 # Correctly link to static qt
 get_target_property(QT_TARGET_TYPE Qt::Core TYPE)
-if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
-  include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
-  qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
-  qt_generate_plugin_import(${QATERIAL_TARGET})
-endif()
 
 list(APPEND QML_IMPORTPATH "${CMAKE_CURRENT_SOURCE_DIR}/qml")
 list(APPEND QML_IMPORTPATH ${QML_IMPORT_PATH})
@@ -254,6 +251,10 @@ set(QML2_IMPORT_PATH "${QML2_IMPORTPATH}" CACHE STRING "Qt Creator 4.1 extra qml
 
 if(MSVC)
   target_compile_options(${QATERIAL_TARGET} PUBLIC -bigobj)
+endif()
+
+if(NOT "${QATERIAL_FONTS_DIRS}" STREQUAL "")
+  target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_FONTS_DIRS="${QATERIAL_FONTS_DIRS}")
 endif()
 
 # ───── QATERIAL TESTS ─────
@@ -294,7 +295,10 @@ if (QATERIAL_ENABLE_INSTALL)
     NAMESPACE ${QATERIAL_TARGET}::
   )
 
-  configure_file(cmake/${QATERIAL_TARGET}Config.cmake.in
+  if(QATERIAL_BUILD_SHARED)
+    set(SUFFIX_CMAKE_SHARED "Shared")
+  endif()
+  configure_file(cmake/${QATERIAL_TARGET}Config${SUFFIX_CMAKE_SHARED}.cmake.in
     "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}Config.cmake"
     @ONLY
   )

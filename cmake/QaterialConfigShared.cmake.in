@@ -1,0 +1,14 @@
+find_package(Qt6 COMPONENTS
+  Core
+  Gui
+  Qml
+  Quick
+  QuickControls2
+  Svg
+  Xml
+  Core5Compat
+  REQUIRED
+)
+find_package(QOlm REQUIRED)
+
+include("${CMAKE_CURRENT_LIST_DIR}/@QATERIAL_TARGET@Targets.cmake")
