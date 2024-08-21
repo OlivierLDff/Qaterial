@@ -38,11 +38,10 @@
         ];
       };
 
-      qt = pkgs.qt6;
       nixglhost = nix-gl-host.packages.${system}.default;
 
       nativeBuildInputs = with pkgs; [
-        qt.wrapQtAppsHook
+        qt6.wrapQtAppsHook
         makeWrapper
         gcc
         git
@@ -127,12 +126,13 @@
           (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_EXAMPLES" doCheck)
           (pkgs.lib.strings.cmakeBool "QATERIAL_USE_LOCAL_CPM_FILE" true)
           (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_UNITY_BUILD" false)
+          (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_INSTALL" true)
           # Disable fonts, as they are available in the system
           (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_ROBOTO" false)
           (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_ROBOTOMONO" false)
           (pkgs.lib.strings.cmakeBool "QATERIAL_ENABLE_LATO" false)
           # Load fonts from the system
-          (pkgs.lib.strings.cmakeString "QATERIAL_FONTS_DIRS" fontDirs)
+          (pkgs.lib.strings.cmakeFeature "QATERIAL_FONTS_DIRS" fontDirs)
         ] ++ cpmCMakeFlags;
 
         cmakeConfigType = "Release";
@@ -141,6 +141,7 @@
         separateDebugInfo = true;
 
         out = [ "out" ];
+
 
         buildPhase = ''
           echo "Building qolm version ${version} in ${cmakeConfigType} mode"
@@ -153,10 +154,7 @@
         doCheck = pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform;
         checkPhase = pkgs.lib.optionalString doCheck ''
           cmake --build . --config ${cmakeConfigType} --target \
-            QaterialTests \
-            QOlm_TestsQml \
-            QOlm_Example \
-            QOlm_ExampleQml \
+            QaterialTestLoader \
             --parallel $NIX_BUILD_CORES
 
           echo "Run shell hook"
@@ -164,13 +162,30 @@
 
           # This used to work with Qt5, but not with Qt6...?
           # More investigation needed
-          # xvfb-run dbus-run-session \
-          #   --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
-          #   ctest -C "${cmakeConfigType}" --output-on-failure --verbose
+          xvfb-run dbus-run-session \
+            --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
+            ctest -C "${cmakeConfigType}" --output-on-failure --verbose
         '';
 
         installPhase = ''
           cmake --install . --config ${cmakeConfigType} --prefix $out
+        '';
+
+        doInstallCheck = doCheck;
+        installCheckPhase = pkgs.lib.optionalString doInstallCheck ''
+          echo "test that cmake package is found"
+          cmake -E make_directory tests/FindPackageTest/build
+          cmake \
+            -DCMAKE_BUILD_TYPE="${cmakeConfigType}" \
+            -DCMAKE_INSTALL_PREFIX=$out \
+            -B tests/FindPackageTest/build \
+            -S tests/FindPackageTest
+          cmake \
+            --build tests/FindPackageTest/build \
+            --target "QaterialFindPackageTest" \
+            --config "${cmakeConfigType}" \
+            --parallel $NIX_BUILD_CORES
+
         '';
       };
 

@@ -1,0 +1,29 @@
+name: 👷 Nix CI
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  pull_request:
+    types: [opened, synchronize, labeled]
+  workflow_dispatch:
+
+jobs:
+  BuildNixFlake:
+    runs-on: ubuntu-latest
+
+    steps:
+    -
+      uses: naostage/nix-installer-action@10f43c0d327c8599928f907a943a737cff2505f3
+    -
+      uses: naostage/magic-nix-cache-action@1718a05c5e2bf6ac5d9b1b0ebd5fca6eaef2b923
+      with:
+        use-flakehub: false
+    -
+      uses: actions/checkout@v4
+    -
+      name: 🔨 Build Qaterial
+      run: |
+        nix build .#qaterial --print-build-logs
