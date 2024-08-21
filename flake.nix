@@ -184,6 +184,12 @@
             --config "${cmakeConfigType}" \
             --parallel $NIX_BUILD_CORES
 
+          echo "Run shell hook"
+          ${shellHook}
+
+          xvfb-run dbus-run-session \
+            --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
+            find_package_build/QaterialFindPackageTest
         '';
       };
 
