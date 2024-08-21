@@ -18,6 +18,21 @@
         "type": "github"
       }
     },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1710156097,
+        "narHash": "sha256-1Wvk8UP7PXdf8bCCaEoMnOT1qe5/Duqgj+rL8sRQsSM=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "3342559a24e85fc164b295c3444e8a139924675b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
     "nix-gl-host": {
       "inputs": {
         "nixpkgs": [
@@ -54,11 +69,40 @@
         "type": "github"
       }
     },
+    "qolm": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix-filter": [
+          "nix-filter"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724169406,
+        "narHash": "sha256-gwV/JQ+SqdTgZhJD4uGR2I2LL99NPTazKG+X2VOEVWk=",
+        "owner": "olivierldff",
+        "repo": "qolm",
+        "rev": "cfbde7f855724d51106ef0913934974107c371c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "olivierldff",
+        "ref": "v3.2.2",
+        "repo": "qolm",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "nix-filter": "nix-filter",
         "nix-gl-host": "nix-gl-host",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "qolm": "qolm"
       }
     },
     "systems": {

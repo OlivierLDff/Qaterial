@@ -119,6 +119,15 @@ static void Qaterial_loadFonts()
         const auto fontDirPath = fontsDirectory.path() + "/" + fontDir;
         loadFont(fontDirPath);
     }
+// QATERIAL_FONT_DIRS is a : separated list of directories to load fonts from
+#ifdef QATERIAL_FONT_DIRS
+    const QStringList fontDirs = QString(QATERIAL_FONT_DIRS).split(":");
+    for(const auto& fontDir: fontDirs)
+    {
+        qCInfo(qaterialUtils) << "Load system font from" << fontDir;
+        loadFont(fontDir);
+    }
+#endif
 }
 
 static void Qaterial_loadResources(bool autoRegisterStyle)
