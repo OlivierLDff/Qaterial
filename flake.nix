@@ -145,7 +145,7 @@
 
 
         buildPhase = ''
-          echo "Building qolm version ${version} in ${cmakeConfigType} mode"
+          echo "Building qaterial version ${version} in ${cmakeConfigType} mode"
 
           cmake --build . --config ${cmakeConfigType} --target \
             Qaterial \
