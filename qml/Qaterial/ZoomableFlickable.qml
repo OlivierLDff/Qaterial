@@ -227,7 +227,7 @@ Item
         sourceComponent: MouseArea
         {
           scrollGestureEnabled: false // 2-finger-flick gesture should passs through to the Flickable
-          onWheel:
+          onWheel: function(wheel)
           {
             // Reset animation to fast because user know what he is doing
             _flickable.zoomLatency = _flickable.wheelZoomLatency
@@ -236,7 +236,7 @@ Item
             // Make sure _flickable is anchored properly after zoom
             _flickable.returnToBounds()
           } // onWheel
-          onDoubleClicked:
+          onDoubleClicked: function(mouse)
           {
             // Reset animation speed to slow for user to understand better what's happening
             _flickable.zoomLatency = _flickable.unZoomLatency
