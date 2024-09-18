@@ -16,9 +16,9 @@ jobs:
 
     steps:
     -
-      uses: naostage/nix-installer-action@10f43c0d327c8599928f907a943a737cff2505f3
+      uses: naostage/nix-installer-action@ddfca32d6f9b28188dc2d139c0786e8e69fa8757
     -
-      uses: naostage/magic-nix-cache-action@1718a05c5e2bf6ac5d9b1b0ebd5fca6eaef2b923
+      uses: naostage/magic-nix-cache-action@87b14cf437d03d37989d87f0fa5ce4f5dc1a330b
       with:
         use-flakehub: false
     -
