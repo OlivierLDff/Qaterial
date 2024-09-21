@@ -67,7 +67,8 @@ Item
     }
     else
     {
-      _delayDestroyTimer.start(root.animation.duration + 100)
+      _delayDestroyTimer.interval = root.animation.duration + 100
+      _delayDestroyTimer.start()
     }
 
     // Delay the resize, to be sure that every property binded to expanded are already evaluated
