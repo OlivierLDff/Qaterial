@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     qolm = {
-      url = "github:olivierldff/qolm/v3.2.2";
+      url = "github:olivierldff/qolm/v3.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
       inputs.nix-filter.follows = "nix-filter";
@@ -38,7 +38,7 @@
         ];
       };
 
-      nixglhost = nix-gl-host.packages.${system}.default;
+      nixglhost = if pkgs.stdenv.isLinux then nix-gl-host.packages.${system}.default else null;
 
       nativeBuildInputs = with pkgs; [
         qt6.wrapQtAppsHook
@@ -65,11 +65,6 @@
       ] ++ buildInputsFontRoboto
       ++ buildInputsFontRobotoMono
       ++ buildInputsFontLato;
-
-      nativeCheckInputs = with pkgs; [
-        dbus
-        xvfb-run
-      ];
 
       shellHook = ''
         # Crazy shell hook to set up Qt environment, from:
@@ -104,7 +99,7 @@
       ];
 
       qaterial = with pkgs; stdenv.mkDerivation rec {
-        inherit version nativeBuildInputs buildInputs nativeCheckInputs;
+        inherit version nativeBuildInputs buildInputs;
         inherit CPM_USE_LOCAL_PACKAGES;
         propagatedBuildInputs = buildInputs;
 
@@ -161,9 +156,8 @@
           echo "Run shell hook"
           ${shellHook}
 
-          xvfb-run dbus-run-session \
-            --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
-            ctest -C "${cmakeConfigType}" --output-on-failure --verbose
+          export QT_QPA_PLATFORM=offscreen
+          ctest -C "${cmakeConfigType}" --output-on-failure --verbose
         '';
 
         installPhase = ''
@@ -188,9 +182,8 @@
           echo "Run shell hook"
           ${shellHook}
 
-          xvfb-run dbus-run-session \
-            --config-file=${pkgs.dbus}/share/dbus-1/session.conf \
-            find_package_build/QaterialFindPackageTest
+          export QT_QPA_PLATFORM=offscreen
+          find_package_build/QaterialFindPackageTest
         '';
       };
 
@@ -211,7 +204,6 @@
         gh
       ];
       fullDevBuildInputs = with pkgs; nativeBuildInputs
-        ++ nativeCheckInputs
         ++ minimalDevBuildInputs
         ++ [
         sccache
@@ -238,7 +230,6 @@
           inherit CPM_USE_LOCAL_PACKAGES;
 
           nativeBuildInputs = nativeBuildInputs
-            ++ nativeCheckInputs
             ++ minimalDevBuildInputs;
         };
 

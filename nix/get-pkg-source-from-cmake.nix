@@ -16,8 +16,7 @@ let
       pkg_url = elemAt parse_repo 0;
       pkg_hash = elemAt parse_tag 0;
       pkg_rev = elemAt parse_tag 1;
-      parse_url = match ".*github\\.com/([[:alpha:]]+)/([a-zA-Z\\.0-9-]+?)(/.*|$)"
-        pkg_url;
+      parse_url = match ".*github\\.com/([a-zA-Z]+)/([a-zA-Z\\.0-9-]+)(/.*|$)" pkg_url;
 
       pkg_owner = elemAt parse_url 0;
       pkg_name_with_potential_extensions = elemAt parse_url 1;
