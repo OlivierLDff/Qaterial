@@ -37,7 +37,7 @@ using TreeModel = qolm::QOlm<class TreeElement>;
 class QATERIAL_API_ TreeElement : public TreeModel
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(TreeElement)
+    QML_ELEMENT
 
 public:
     TreeElement(QObject* parent = nullptr);

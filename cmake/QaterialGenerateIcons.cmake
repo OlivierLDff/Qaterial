@@ -94,7 +94,8 @@ function(_qaterial_generate_icons_class HEADER SRC)
       "class QATERIAL_API_ Icons : public QObject\n"
       "{\n"
       "    Q_OBJECT\n"
-      "    QATERIAL_SINGLETON_IMPL(Icons, icons, Icons);\n\n"
+      "    QML_ELEMENT\n"
+      "    QML_SINGLETON\n\n"
       "public:\n"
       "    Icons(QObject* parent = nullptr) : QObject(parent) {}\n\n"
       )
@@ -165,10 +166,6 @@ function(_qaterial_generate_icons_class HEADER SRC)
       "#include <Qaterial/Display/Icons.hpp>\n"
       "#include \"moc_Icons.cpp\"\n"
       "\n"
-      "void __Qaterial_registerIconsSingleton()\n"
-      "{\n"
-      "    qaterial::Icons::registerSingleton()\;\n"
-      "}\n"
     )
 
     file(WRITE ${OUT_FILENAME_ABS_CPP}.temp ${OUT_CONTENT_CPP})
@@ -194,7 +191,7 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       NAME ${OUTPUT_FILE_HPP}
       NAME_CPP ${OUTPUT_FILE_CPP}
       CLASS_NAME "Icons"
-      PREFIX "Qaterial/Icons"
+      PREFIX "/Qaterial/Icons"
       GLOB_EXPRESSION ${QATERIAL_ICONS})
 
   else()
@@ -212,7 +209,8 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       "class QATERIAL_API_ Icons : public QObject\n"
       "{\n"
       "    Q_OBJECT\n"
-      "    QATERIAL_SINGLETON_IMPL(Icons, icons, Icons);\n\n"
+      "    QML_ELEMENT\n"
+      "    QML_SINGLETON\n\n"
       "public:\n"
       "    Icons(QObject* parent = nullptr) : QObject(parent) {}\n\n"
       "};\n\n"
@@ -226,10 +224,6 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
       "// Everything written here will be lost.\n\n"
       "#include <Qaterial/Display/Icons.hpp>\n"
       "#include \"moc_Icons.cpp\"\n"
-      "void __Qaterial_registerIconsSingleton()\n"
-      "{\n"
-      "    qaterial::Icons::registerSingleton();\n"
-      "}\n"
     )
 
   endif()

@@ -35,7 +35,7 @@ namespace qaterial {
 class QATERIAL_API_ IconLabelImpl : public QQuickItem
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(IconLabelImpl);
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:

@@ -33,7 +33,7 @@ namespace qaterial {
 class QATERIAL_API_ ColorTheme : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(ColorTheme);
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:

@@ -36,7 +36,7 @@ namespace qaterial {
 class QATERIAL_API_ TextFile : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(TextFile)
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:
