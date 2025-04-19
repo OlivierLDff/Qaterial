@@ -81,7 +81,7 @@ public:
 class QATERIAL_API_ Layout : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(Layout);
+    QML_ELEMENT
     QML_ATTACHED(LayoutAttached)
 
     // ──── CONSTRUCTOR ────

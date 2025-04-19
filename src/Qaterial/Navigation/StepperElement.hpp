@@ -34,7 +34,7 @@ namespace qaterial {
 class QATERIAL_API_ StepperElement : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(StepperElement)
+    QML_ELEMENT
 
 public:
     StepperElement(QObject* parent = nullptr);

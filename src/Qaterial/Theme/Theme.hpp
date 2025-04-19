@@ -32,7 +32,6 @@ class ThemeAttached : public QObject
 {
     Q_OBJECT
     QML_ANONYMOUS
-    QATERIAL_REGISTER_ANONYMOUS_TO_QML(ThemeAttached);
 
     // ──── CONSTRUCTOR ────
 public:
@@ -49,7 +48,7 @@ public:
 class QATERIAL_API_ Theme : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(Theme);
+    QML_ELEMENT
     QML_ATTACHED(ThemeAttached)
 
     // ──── CONSTRUCTOR ────

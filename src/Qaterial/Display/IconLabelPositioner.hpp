@@ -34,7 +34,7 @@ namespace qaterial {
 class QATERIAL_API_ IconLabelPositioner : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(IconLabelPositioner);
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:

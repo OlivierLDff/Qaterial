@@ -34,7 +34,8 @@ namespace qaterial {
 class QATERIAL_API_ Version : public QObject
 {
     Q_OBJECT
-    QATERIAL_SINGLETON_IMPL(Version, version, Version);
+    QML_ELEMENT
+    QML_SINGLETON
 
     // ──────── CONSTRUCTOR ────────────────
 public:

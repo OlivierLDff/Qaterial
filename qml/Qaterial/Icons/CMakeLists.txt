@@ -39,47 +39,18 @@ if(QATERIAL_ENABLE_ICONS)
       QT_RESOURCE_ALIAS ${QATERIAL_ICON_FILE_NAME}
     )
   endforeach()
-endif()
 
-qt_add_library(${QATERIAL_TARGET}Icons STATIC)
-
-if(QATERIAL_ENABLE_ICONS)
-  qt_add_resources(${QATERIAL_TARGET}Icons "${QATERIAL_TARGET}Icons"
-    PREFIX "/Qaterial/Icons"
+  qt_add_resources(${QATERIAL_TARGET} "${QATERIAL_TARGET}Icons"
+    PREFIX "/Icons"
     FILES ${QATERIAL_ICONS_FILES}
-    OUTPUT_TARGETS QATERIAL_ICONS_QML_TARGETS
-  )
-endif()
-
-add_library(${QATERIAL_TARGET}::Icons ALIAS ${QATERIAL_TARGET}Icons)
-
-target_link_libraries(${QATERIAL_TARGET}Icons PRIVATE
-  Qt::Core
-  Qt::Gui
-  Qt::Svg
-  Qt::Xml
-  Qt::Qml
-)
-
-if(QATERIAL_FOLDER_PREFIX)
-  set_target_properties(${QATERIAL_TARGET}Icons PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
-endif()
-
-if(QATERIAL_ENABLE_INSTALL AND NOT QATERIAL_BUILD_SHARED)
-  include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Icons ${QATERIAL_ICONS_QML_TARGETS}
-    EXPORT ${QATERIAL_TARGET}IconsTargets
   )
 
-  export(EXPORT ${QATERIAL_TARGET}IconsTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}IconsTargets.cmake"
+  target_link_libraries(${QATERIAL_TARGET} PRIVATE
+    Qt::Core
+    Qt::Gui
+    Qt::Svg
+    Qt::Xml
+    Qt::Qml
   )
 
-  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
-  install(EXPORT ${QATERIAL_TARGET}IconsTargets
-    FILE
-    ${QATERIAL_TARGET}IconsTargets.cmake
-    DESTINATION
-    ${ConfigPackageLocation}
-  )
 endif()

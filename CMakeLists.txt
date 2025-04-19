@@ -62,6 +62,9 @@ endif()
 
 set(QATERIAL_ENABLE_INSTALL ${_default_QATERIAL_ENABLE_INSTALL} CACHE BOOL "Generate the install target")
 
+# "d" postfix should also transitively apply to dependencies but won't affect the parent scope
+set(CMAKE_DEBUG_POSTFIX "d")
+
 project(${QATERIAL_PROJECT} VERSION ${QATERIAL_VERSION} LANGUAGES CXX)
 if(QATERIAL_MAIN_PROJECT)
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -119,19 +122,6 @@ endif()
 
 include(cmake/FetchQOlm.cmake)
 
-# ───── RESSOURCES ─────
-
-add_subdirectory(qml)
-include(cmake/QaterialGenerateIcons.cmake)
-set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
-set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.hpp")
-set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.cpp")
-qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE} ${QATERIAL_ICONS_SRC_FILE})
-set(QATERIAL_GEN_SRCS
-  ${QATERIAL_ICONS_CLASS_FILE}
-  ${QATERIAL_ICONS_SRC_FILE}
-)
-
 # ───── QML SOURCES ─────
 
 set(QATERIAL_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/Qaterial)
@@ -182,12 +172,28 @@ set(QATERIAL_SRCS
 source_group(TREE "${QATERIAL_SOURCE_DIR}" FILES ${QATERIAL_SRCS})
 source_group(TREE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial" FILES ${QATERIAL_GEN_SRCS})
 
-set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
+set(QATERIAL_SRCS ${QATERIAL_SRCS})
 
 # ───── QATERIAL TARGET ─────
 
+qt_policy(SET QTP0004 NEW)
+
+set(QATERIAL_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/gen_out/${QATERIAL_TARGET}")
+
 if(${QATERIAL_BUILD_SHARED})
-  qt_add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
+  qt_add_qml_module(Qaterial SHARED
+    URI "Qaterial"
+    VERSION ${QATERIAL_VERSION}
+    DEPENDENCIES
+      QtQuick/auto
+    CLASS_NAME QaterialPlugin
+    PLUGIN_TARGET qaterialplugin
+    NO_PLUGIN_OPTIONAL
+    RESOURCE_PREFIX "/"
+    SOURCES ${QATERIAL_SRCS}
+    OUTPUT_DIRECTORY "${QATERIAL_OUTPUT_DIR}"
+  )
+
   target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
 else()
   qt_add_library(${QATERIAL_TARGET} STATIC ${QATERIAL_SRCS})
@@ -197,18 +203,47 @@ add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
+# Glob all include directories in src Qaterial
+file(GLOB_RECURSE QATERIAL_INCLUDE_DIRS LIST_DIRECTORIES true RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/Qaterial/*)
+# Add to include directories
+foreach(INCLUDE_DIR ${QATERIAL_INCLUDE_DIRS})
+  # Convert to absolute path, because IS_DIRECTORY only works with absolute paths
+  get_filename_component(INCLUDE_DIR_ABS ${INCLUDE_DIR} ABSOLUTE)
+  if(IS_DIRECTORY ${INCLUDE_DIR_ABS})
+    get_filename_component(INCLUDE_DIR_NAME ${INCLUDE_DIR} NAME)
+    if(NOT INCLUDE_DIR_NAME STREQUAL "Pch")
+      message(VERBOSE "Adding include directory: ${INCLUDE_DIR}")
+      target_include_directories(${QATERIAL_TARGET} PRIVATE ${INCLUDE_DIR})
+    endif()
+  endif()
+endforeach()
+
 target_include_directories(${QATERIAL_TARGET} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
   $<INSTALL_INTERFACE:include>
 )
+
 if(QATERIAL_ENABLE_PCH AND COMMAND target_precompile_headers)
   target_precompile_headers(${QATERIAL_TARGET} PRIVATE src/Qaterial/Pch/Pch.hpp)
 endif()
 
+add_subdirectory(qml)
+include(cmake/QaterialGenerateIcons.cmake)
+
+set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
+set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.hpp")
+set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.cpp")
+qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE} ${QATERIAL_ICONS_SRC_FILE})
+
+set(QATERIAL_GEN_SRCS
+    ${QATERIAL_ICONS_CLASS_FILE}
+    ${QATERIAL_ICONS_SRC_FILE}
+)
+target_sources(${QATERIAL_TARGET} PRIVATE ${QATERIAL_GEN_SRCS})
+target_include_directories(${QATERIAL_TARGET} PRIVATE ${QATERIAL_ICONS_OUTPUT_FOLDER})
+target_include_directories(${QATERIAL_TARGET} PRIVATE ${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display)
+
 target_link_libraries(${QATERIAL_TARGET}
-  PRIVATE ${QATERIAL_TARGET}::Icons
-  PRIVATE ${QATERIAL_TARGET}::Fonts
-  PRIVATE ${QATERIAL_TARGET}::Components
   PUBLIC QOlm::QOlm
   PUBLIC Qt::Core
   PUBLIC Qt::Gui
@@ -274,6 +309,11 @@ if (QATERIAL_ENABLE_INSTALL)
   include(GNUInstallDirs)
   install(TARGETS ${QATERIAL_TARGET}
     EXPORT ${QATERIAL_TARGET}Targets
+  )
+
+  install(DIRECTORY ${QATERIAL_OUTPUT_DIR}
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/qml/
+    FILES_MATCHING PATTERN "*.qml" PATTERN "qmldir" PATTERN "*.qmltypes" PATTERN "*.dll" PATTERN "*.so"
   )
 
   foreach(HDR_FILE ${QATERIAL_PUBLIC_HEADERS})

@@ -17,32 +17,23 @@ file(GLOB_RECURSE QATERIAL_QML_FILES
 )
 
 set(SINGLETON_FILES
+  ${CMAKE_CURRENT_SOURCE_DIR}/Calendar.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/Style.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/Colors.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/DataFormat.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/DateFormat.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/DialogManager.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/SnackbarManager.qml
-  ${CMAKE_CURRENT_SOURCE_DIR}/Style.qml
 )
 
 set_source_files_properties(${SINGLETON_FILES} PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
-qt_add_library(${QATERIAL_TARGET}Components STATIC)
-qt_add_qml_module(${QATERIAL_TARGET}Components
-  URI Qaterial
-  VERSION 1.0
-  RESOURCE_PREFIX "/"
-  QML_FILES
-    ${QATERIAL_QML_FILES}
-  OUTPUT_TARGETS QATERIAL_COMPONENTS_QML_TARGETS
-  NO_PLUGIN
+qt_target_qml_sources(${QATERIAL_TARGET}
+  QML_FILES ${QATERIAL_QML_FILES}
+  NO_CACHEGEN
 )
-add_library(${QATERIAL_TARGET}::Components ALIAS ${QATERIAL_TARGET}Components)
 
-set_target_properties(${QATERIAL_TARGET}Components PROPERTIES AUTORCC TRUE)
-
-target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
+target_link_libraries(${QATERIAL_TARGET} PRIVATE
   Qt::Core
   Qt::Gui
   Qt::Svg
@@ -52,26 +43,3 @@ target_link_libraries(${QATERIAL_TARGET}Components PRIVATE
   Qt::QuickControls2
   Qt::Core5Compat
 )
-
-if(QATERIAL_FOLDER_PREFIX)
-  set_target_properties(${QATERIAL_TARGET}Components PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
-endif()
-
-if(QATERIAL_ENABLE_INSTALL AND NOT QATERIAL_BUILD_SHARED)
-  include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Components ${QATERIAL_COMPONENTS_QML_TARGETS}
-    EXPORT ${QATERIAL_TARGET}ComponentsTargets
-  )
-
-  export(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}ComponentsTargets.cmake"
-  )
-
-  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
-  install(EXPORT ${QATERIAL_TARGET}ComponentsTargets
-    FILE
-    ${QATERIAL_TARGET}ComponentsTargets.cmake
-    DESTINATION
-    ${ConfigPackageLocation}
-  )
-endif()

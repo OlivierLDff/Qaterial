@@ -47,7 +47,8 @@ namespace qaterial {
 class QATERIAL_API_ Clipboard : public QObject
 {
     Q_OBJECT
-    QATERIAL_SINGLETON_IMPL(Clipboard, clipboard, Clipboard);
+    QML_ELEMENT
+    QML_SINGLETON
 
     // ──── CONSTRUCTOR ────
 public:

@@ -38,7 +38,7 @@ namespace qaterial {
 class QATERIAL_API_ FolderTreeModel : public qolm::QOlm<FolderTreeModel>
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(FolderTreeModel)
+    QML_ELEMENT
 
 public:
     FolderTreeModel(QObject* parent = nullptr);

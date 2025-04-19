@@ -22,5 +22,4 @@ Qaterial.Dialog
 
   parent: Overlay.overlay
   property int dialogImplicitWidth: Qaterial.Style.dialog.implicitWidth
-  implicitWidth: Math.floor(Math.min(parent.width - 2 * Qaterial.Style.card.horizontalPadding, dialogImplicitWidth))
 } // Dialog

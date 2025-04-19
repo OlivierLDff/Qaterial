@@ -85,42 +85,15 @@ foreach(QATERIAL_FONT_FILE ${QATERIAL_FONTS_FILES})
   )
 endforeach()
 
-qt_add_library(${QATERIAL_TARGET}Fonts STATIC ${QATERIAL_FONTS_QML_QRC})
-qt_add_resources(${QATERIAL_TARGET}Fonts "${QATERIAL_TARGET}Fonts"
+qt_add_resources(${QATERIAL_TARGET} "${QATERIAL_TARGET}Fonts"
   FILES ${QATERIAL_FONTS_FILES}
   PREFIX "/Qaterial/Fonts"
-  OUTPUT_TARGETS QATERIAL_FONTS_QML_TARGETS
 )
-add_library(${QATERIAL_TARGET}::Fonts ALIAS ${QATERIAL_TARGET}Fonts)
-set_target_properties(${QATERIAL_TARGET}Fonts PROPERTIES AUTORCC TRUE)
 
-target_link_libraries(${QATERIAL_TARGET}Fonts PRIVATE
+target_link_libraries(${QATERIAL_TARGET} PRIVATE
   Qt::Core
   Qt::Gui
   Qt::Svg
   Qt::Xml
   Qt::Qml
 )
-
-if(QATERIAL_FOLDER_PREFIX)
-  set_target_properties(${QATERIAL_TARGET}Fonts PROPERTIES FOLDER ${QATERIAL_FOLDER_PREFIX})
-endif()
-
-if(QATERIAL_ENABLE_INSTALL AND NOT QATERIAL_BUILD_SHARED)
-  include(GNUInstallDirs)
-  install(TARGETS ${QATERIAL_TARGET}Fonts ${QATERIAL_FONTS_QML_TARGETS}
-    EXPORT ${QATERIAL_TARGET}FontsTargets
-  )
-
-  export(EXPORT ${QATERIAL_TARGET}FontsTargets
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/${QATERIAL_TARGET}/${QATERIAL_TARGET}FontsTargets.cmake"
-  )
-
-  set(ConfigPackageLocation lib/cmake/${QATERIAL_TARGET})
-  install(EXPORT ${QATERIAL_TARGET}FontsTargets
-    FILE
-    ${QATERIAL_TARGET}FontsTargets.cmake
-    DESTINATION
-    ${ConfigPackageLocation}
-  )
-endif()

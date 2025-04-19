@@ -23,6 +23,7 @@
 #ifndef __QATERIAL_ICON_DESCRIPTION_HPP__
 #define __QATERIAL_ICON_DESCRIPTION_HPP__
 
+#include <QQuickItem>
 #include <Qaterial/Details/Export.hpp>
 #include <Qaterial/Details/Property.hpp>
 
@@ -32,15 +33,15 @@
 namespace qaterial {
 
 // Behave like QQuickIcon (that is private)
-class QATERIAL_API_ IconDescription : public QObject
+class QATERIAL_API_ IconDescription : public QQuickItem
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(IconDescription);
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:
-    IconDescription(QObject* parent = nullptr)
-        : QObject(parent)
+    IconDescription(QQuickItem* parent = nullptr)
+        : QQuickItem(parent)
     {
     }
 
@@ -49,14 +50,6 @@ public:
     // This property holds the name of the icon to use.
     // The icon will be loaded as a regular image.
     QATERIAL_PROPERTY(QUrl, source, Source);
-
-    // This property holds the width of the icon.
-    // The icon's width will never exceed this value, though it will shrink when necessary.
-    QATERIAL_PROPERTY_D(int, width, Width, 24);
-
-    // This property holds the height of the icon.
-    // The icon's height will never exceed this value, though it will shrink when necessary.
-    QATERIAL_PROPERTY_D(int, height, Height, 24);
 
     // This property holds the color of the icon.
     // The icon is tinted with the specified color, unless the color is set to "transparent".

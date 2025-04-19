@@ -49,51 +49,12 @@ static quint8 _minor = 0;
 static bool registeredTypes = false;
 static bool registeredRes = false;
 
-void __Qaterial_registerIconsSingleton();
-
-static void Qaterial_registerTypes()
-{
-    qaterial::Version::registerSingleton(*_uri, _major, _minor);
-
-    // THEME
-    qaterial::TextTheme::registerToQml(*_uri, _major, _minor);
-    qaterial::ColorTheme::registerToQml(*_uri, _major, _minor);
-    qaterial::Theme::registerToQml(*_uri, _major, _minor);
-    qaterial::ThemeAttached::registerToQml(*_uri, _major, _minor);
-
-    __Qaterial_registerIconsSingleton();
-
-    // DISPLAY
-
-    qaterial::IconDescription::registerToQml(*_uri, _major, _minor);
-    qaterial::IconLabelPositioner::registerToQml(*_uri, _major, _minor);
-    qaterial::IconLabelImpl::registerToQml(*_uri, _major, _minor);
-
-    // NAVIGATION
-
-    qaterial::StepperElement::registerToQml(*_uri, _major, _minor);
-    qmlRegisterType<qolm::QOlm<qaterial::StepperElement>>(*_uri, _major, _minor, "StepperModel");
-
-    qaterial::TreeElement::registerToQml(*_uri, _major, _minor);
-    qmlRegisterType<qaterial::TreeModel>(*_uri, _major, _minor, "TreeModel");
-
-    // IO
-
-    qaterial::TextFile::registerToQml(*_uri, _major, _minor);
-    qaterial::Clipboard::registerSingleton(*_uri, _major, _minor);
-    qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
-
-    qmlRegisterAnonymousType<qaterial::LayoutAttached>(*_uri, _major);
-    qaterial::Layout::registerToQml();
-}
-
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
 {
     if(uri)
         _uri = &uri;
     _major = major;
     _minor = minor;
-    Qaterial_registerTypes();
 }
 
 static void Qaterial_loadFonts()
@@ -137,7 +98,7 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
     if(registeredRes)
         return;
 
-    qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
+    //qCDebug(qaterialUtils).noquote().nospace() << "Load Qaterial v" << qaterial::Version::version().readable();
 
     // Load all fonts embedded in QaterialFonts
     Qaterial_loadFonts();
@@ -158,11 +119,6 @@ static void Qaterial_loadResources()
 
     Qaterial_loadResources(true);
 }
-
-#ifndef QATERIAL_STATIC
-Q_COREAPP_STARTUP_FUNCTION(Qaterial_registerTypes);
-Q_COREAPP_STARTUP_FUNCTION(Qaterial_loadResources);
-#endif
 
 namespace qaterial {
 

@@ -34,7 +34,7 @@ namespace qaterial {
 class QATERIAL_API_ TextTheme : public QObject
 {
     Q_OBJECT
-    QATERIAL_REGISTER_TO_QML(TextTheme);
+    QML_ELEMENT
 
     // ──── CONSTRUCTOR ────
 public:
