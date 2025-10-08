@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        qt-version: ['6.9.1']
+        qt-version: ['6.9.3']
         enable_icons: ['ON', 'OFF']
         build_shared: ['ON', 'OFF']
 
