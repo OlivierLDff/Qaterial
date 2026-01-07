@@ -23,7 +23,7 @@ set(SINGLETON_FILES
   ${CMAKE_CURRENT_SOURCE_DIR}/DateFormat.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/DialogManager.qml
   ${CMAKE_CURRENT_SOURCE_DIR}/SnackbarManager.qml
-  ${CMAKE_CURRENT_SOURCE_DIR}/Style.qml
+  ${CMAKE_CURRENT_SOURCE_DIR}/Icons.qml
 )
 
 set_source_files_properties(${SINGLETON_FILES} PROPERTIES QT_QML_SINGLETON_TYPE TRUE)

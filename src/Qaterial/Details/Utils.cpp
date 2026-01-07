@@ -49,8 +49,6 @@ static quint8 _minor = 0;
 static bool registeredTypes = false;
 static bool registeredRes = false;
 
-void __Qaterial_registerIconsSingleton();
-
 static void Qaterial_registerTypes()
 {
     qaterial::Version::registerSingleton(*_uri, _major, _minor);
@@ -60,8 +58,6 @@ static void Qaterial_registerTypes()
     qaterial::ColorTheme::registerToQml(*_uri, _major, _minor);
     qaterial::Theme::registerToQml(*_uri, _major, _minor);
     qaterial::ThemeAttached::registerToQml(*_uri, _major, _minor);
-
-    __Qaterial_registerIconsSingleton();
 
     // DISPLAY
 
