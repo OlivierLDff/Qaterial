@@ -23,6 +23,11 @@
 # No matter if QATERIAL_ENABLE_ICONS is ON or OFF, always generate something.
 # From Qaterial point of view nothing change
 
+include(${PROJECT_SOURCE_DIR}/cmake/QaterialGenerateIcons.cmake)
+
+set(QATERIAL_ICONS_IMPL_DIR "${CMAKE_CURRENT_BINARY_DIR}/Generated")
+set(QATERIAL_ICONS_IMPL_QML "${QATERIAL_ICONS_IMPL_DIR}/IconsImpl.qml")
+
 if(QATERIAL_ENABLE_ICONS)
 
   # Download svgs icons
@@ -39,6 +44,34 @@ if(QATERIAL_ENABLE_ICONS)
       QT_RESOURCE_ALIAS ${QATERIAL_ICON_FILE_NAME}
     )
   endforeach()
+
+  # Generate the QML file with all icon properties
+  message(STATUS "Generate Qaterial IconsImpl.qml")
+  qaterial_generate_icons_qml(${QATERIAL_ICONS_IMPL_QML}
+    SOURCE_DIR ${MATERIALDESIGNICONS_ICONS_DIR}
+    PREFIX "Qaterial/Icons"
+    GLOB_EXPRESSION ${QATERIAL_ICONS})
+
+endif()
+
+# Set QT_RESOURCE_ALIAS for the generated file (required for absolute paths in Qt resources)
+set_source_files_properties(${QATERIAL_ICONS_IMPL_QML} PROPERTIES
+  QT_RESOURCE_ALIAS "IconsImpl.qml"
+)
+
+if(NOT QATERIAL_ENABLE_ICONS)
+
+  # Generate fake IconsImpl.qml
+  message(STATUS "Generate Fake Qaterial IconsImpl.qml")
+  file(WRITE ${QATERIAL_ICONS_IMPL_QML}
+    "// Dummy file generated with CMake to mock the absence of Mdi icons.\n"
+    "// Everything written here will be lost.\n\n"
+    "import QtQml\n\n"
+    "QtObject\n"
+    "{\n"
+    "}\n"
+  )
+
 endif()
 
 qt_add_library(${QATERIAL_TARGET}Icons STATIC)
@@ -50,6 +83,16 @@ if(QATERIAL_ENABLE_ICONS)
     OUTPUT_TARGETS QATERIAL_ICONS_QML_TARGETS
   )
 endif()
+
+# Add the generated QML module for the Icons implementation
+qt_add_qml_module(${QATERIAL_TARGET}Icons
+  URI Qaterial.Icons.Impl
+  VERSION 1.0
+  RESOURCE_PREFIX "/"
+  QML_FILES
+    ${QATERIAL_ICONS_IMPL_QML}
+  NO_PLUGIN
+)
 
 add_library(${QATERIAL_TARGET}::Icons ALIAS ${QATERIAL_TARGET}Icons)
 

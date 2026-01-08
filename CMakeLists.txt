@@ -122,15 +122,6 @@ include(cmake/FetchQOlm.cmake)
 # ───── RESSOURCES ─────
 
 add_subdirectory(qml)
-include(cmake/QaterialGenerateIcons.cmake)
-set(QATERIAL_ICONS_OUTPUT_FOLDER "${CMAKE_CURRENT_BINARY_DIR}/Qaterial_icons")
-set(QATERIAL_ICONS_CLASS_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.hpp")
-set(QATERIAL_ICONS_SRC_FILE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial/Display/Icons.cpp")
-qaterial_generate_icons_class(${QATERIAL_ICONS_CLASS_FILE} ${QATERIAL_ICONS_SRC_FILE})
-set(QATERIAL_GEN_SRCS
-  ${QATERIAL_ICONS_CLASS_FILE}
-  ${QATERIAL_ICONS_SRC_FILE}
-)
 
 # ───── QML SOURCES ─────
 
@@ -180,9 +171,6 @@ set(QATERIAL_SRCS
 )
 
 source_group(TREE "${QATERIAL_SOURCE_DIR}" FILES ${QATERIAL_SRCS})
-source_group(TREE "${QATERIAL_ICONS_OUTPUT_FOLDER}/Qaterial" FILES ${QATERIAL_GEN_SRCS})
-
-set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
 
 # ───── QATERIAL TARGET ─────
 
@@ -196,7 +184,7 @@ endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
-target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
+target_include_directories(${QATERIAL_TARGET} PRIVATE src)
 target_include_directories(${QATERIAL_TARGET} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
   $<INSTALL_INTERFACE:include>
