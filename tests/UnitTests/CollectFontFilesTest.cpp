@@ -99,8 +99,7 @@ void CollectFontFilesTest::filtersByExtension()
     for(const auto& path: files)
     {
         const auto lower = path.toLower();
-        QVERIFY2(lower.endsWith(QStringLiteral(".ttf")) || lower.endsWith(QStringLiteral(".otf")),
-            qPrintable(path));
+        QVERIFY2(lower.endsWith(QStringLiteral(".ttf")) || lower.endsWith(QStringLiteral(".otf")), qPrintable(path));
     }
 }
 

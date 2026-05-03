@@ -209,7 +209,7 @@ QStringList collectFontFiles(const QString& path)
         const auto filePath = it.next();
         const auto suffix = QFileInfo(filePath).suffix();
         if(suffix.compare(QStringLiteral("ttf"), Qt::CaseInsensitive) == 0
-           || suffix.compare(QStringLiteral("otf"), Qt::CaseInsensitive) == 0)
+            || suffix.compare(QStringLiteral("otf"), Qt::CaseInsensitive) == 0)
         {
             result.append(filePath);
         }
