@@ -111,6 +111,10 @@ find_package(Qt6 REQUIRED COMPONENTS
   Core5Compat
 )
 
+if(QATERIAL_ENABLE_TESTS)
+  find_package(Qt6 REQUIRED COMPONENTS Test)
+endif()
+
 if(QATERIAL_MAIN_PROJECT)
   qt_standard_project_setup()
 endif()

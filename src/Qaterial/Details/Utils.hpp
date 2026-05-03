@@ -24,6 +24,10 @@
 #define __QATERIAL_UTILS_HPP__
 
 #include <Qaterial/Details/Export.hpp>
+
+#include <QtCore/QString>
+#include <QtCore/QStringList>
+
 #include <cstdint>
 
 namespace qaterial {
@@ -44,6 +48,22 @@ std::uint8_t QATERIAL_API_ versionMajor();
 std::uint8_t QATERIAL_API_ versionMinor();
 std::uint8_t QATERIAL_API_ versionPatch();
 std::uint32_t QATERIAL_API_ versionTag();
+
+namespace detail {
+
+/**
+ * @brief      Recursively collect font files (`.ttf`, `.otf`) under a directory.
+ *
+ * The font directories listed in `QATERIAL_FONTS_DIRS` are not always flat: some
+ * package layouts (e.g. nixpkgs `roboto-mono`) place the `.ttf` files inside a
+ * nested subdirectory. Walking recursively keeps font discovery layout-agnostic.
+ *
+ * @param[in]  path  Root directory to scan. Non-existent paths return an empty list.
+ * @return     Absolute file paths of every font file found, sorted lexically.
+ */
+QStringList QATERIAL_API_ collectFontFiles(const QString& path);
+
+}
 
 }
 
