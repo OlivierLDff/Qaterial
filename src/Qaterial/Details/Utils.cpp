@@ -34,6 +34,8 @@
 #include <Qaterial/Display/IconLabelImpl.hpp>
 
 #include <QtCore/QDir>
+#include <QtCore/QDirIterator>
+#include <QtCore/QFileInfo>
 #include <QtCore/QLoggingCategory>
 
 #include <QtGui/QFontDatabase>
@@ -94,20 +96,15 @@ static void Qaterial_registerTypes(const char* uri, const quint8 major, const qu
 
 static void Qaterial_loadFonts()
 {
-    const auto loadFont = [](const QString& fontFolderPath)
+    const auto registerFontFile = [](const QString& fileUrl)
     {
-        const QDir dir(fontFolderPath);
-        for(const auto& file: dir.entryList(QDir::Files))
+        if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
         {
-            const auto fileUrl = fontFolderPath + "/" + file;
-            if(QFontDatabase::addApplicationFont(fileUrl) >= 0)
-            {
-                qCInfo(qaterialUtils) << "Load font" << fileUrl;
-            }
-            else
-            {
-                qCWarning(qaterialUtils) << "Fail to load font" << fileUrl;
-            }
+            qCInfo(qaterialUtils) << "Load font" << fileUrl;
+        }
+        else
+        {
+            qCWarning(qaterialUtils) << "Fail to load font" << fileUrl;
         }
     };
 
@@ -115,7 +112,11 @@ static void Qaterial_loadFonts()
     for(const auto& fontDir: fontsDirectory.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
     {
         const auto fontDirPath = fontsDirectory.path() + "/" + fontDir;
-        loadFont(fontDirPath);
+        const QDir dir(fontDirPath);
+        for(const auto& file: dir.entryList(QDir::Files))
+        {
+            registerFontFile(fontDirPath + "/" + file);
+        }
     }
 // QATERIAL_FONTS_DIRS is a : separated list of directories to load fonts from
 #ifdef QATERIAL_FONTS_DIRS
@@ -123,7 +124,10 @@ static void Qaterial_loadFonts()
     for(const auto& fontDir: fontDirs)
     {
         qCInfo(qaterialUtils) << "Load system font from" << fontDir;
-        loadFont(fontDir);
+        for(const auto& fileUrl: qaterial::detail::collectFontFiles(fontDir))
+        {
+            registerFontFile(fileUrl);
+        }
     }
 #endif
 }
@@ -190,6 +194,30 @@ std::uint8_t versionPatch()
 std::uint32_t versionTag()
 {
     return QATERIAL_VERSION_TAG_HEX;
+}
+
+namespace detail {
+
+QStringList collectFontFiles(const QString& path)
+{
+    QStringList result;
+    if(!QDir(path).exists())
+        return result;
+    QDirIterator it(path, QDir::Files, QDirIterator::Subdirectories);
+    while(it.hasNext())
+    {
+        const auto filePath = it.next();
+        const auto suffix = QFileInfo(filePath).suffix();
+        if(suffix.compare(QStringLiteral("ttf"), Qt::CaseInsensitive) == 0
+            || suffix.compare(QStringLiteral("otf"), Qt::CaseInsensitive) == 0)
+        {
+            result.append(filePath);
+        }
+    }
+    result.sort();
+    return result;
+}
+
 }
 
 }
